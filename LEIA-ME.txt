@@ -1,7 +1,15 @@
-SANTINO NOBRE — catálogo de decants
+SANTINO NOBRE — catálogo de decants e frascos inteiros
 
-Como testar: abra index.html em um navegador atualizado. As fotos são carregadas de páginas externas e precisam de internet.
+Como testar: abra index.html em um navegador atualizado. As fotos dos perfumes são carregadas de páginas externas e precisam de internet; se alguma imagem não carregar, o cartão mostra uma ilustração substituta.
 
-Funcionalidades: preços definidos para 2 ml, 5 ml e 10 ml; carrinho com controle de quantidade; pedido encaminhado ao WhatsApp 55 31 99631-2579 após clicar em “Finalizar pelo WhatsApp”. A mensagem inclui produtos, volumes, quantidades e total.
+Catálogo:
+- Decants: preços definidos para 2 ml, 5 ml e 10 ml.
+- Frascos inteiros: nove produtos em seção própria, com navegação no topo e carrinho compartilhado. Como custos, preço de venda e estoque da SANTINO ainda não foram confirmados, a página orienta o cliente a consultar valores e disponibilidade pelo WhatsApp. As referências públicas de mercado ficam na planilha financeira e não são exibidas como preço de venda.
 
-Para publicar, envie o arquivo index.html para um serviço de hospedagem estática.
+Carrinho e finalização:
+- Controle de quantidades e remoção de itens.
+- Pedido encaminhado ao WhatsApp 55 31 99631-2579.
+- A mensagem descreve categoria, marca, produto, volume, quantidade e informa quando o preço ainda precisa ser confirmado.
+- Se houver frascos inteiros sem preço definido, o carrinho não apresenta um total fictício.
+
+Para publicar: envie o arquivo index.html para o serviço de hospedagem estática utilizado pela SANTINO. Esta alteração no repositório não publica automaticamente o site em uma hospedagem externa.
