@@ -18,11 +18,9 @@ header{position:sticky;top:0;z-index:5;background:rgba(17,17,15,.96);border-bott
 .eyebrow{color:var(--beige);letter-spacing:.2em;text-transform:uppercase;font-size:11px;font-weight:bold}
 h1{font-family:Georgia,serif;font-size:clamp(34px,5vw,56px);line-height:1.04;font-weight:400;margin:12px 0}
 .hero p{color:var(--muted);line-height:1.6;max-width:520px;margin:10px 0}
-.hero-art{min-height:230px;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 45%,#4a3e2b 0,#28231c 34%,#171613 70%);display:grid;place-items:center;position:relative;overflow:hidden}
-.bottle{width:112px;height:180px;border:1px solid #d8c4a1;border-radius:13px 13px 23px 23px;background:linear-gradient(90deg,#29251e,#6d5b3d 45%,#28231d);box-shadow:0 22px 45px #0009;position:relative}
-.bottle:before{content:"";position:absolute;left:32px;top:-42px;width:46px;height:43px;background:#b8a17b;border:1px solid #dfc99f;border-radius:4px 4px 0 0}
-.bottle:after{content:"FRAGRANCE\A DISCOVERY";white-space:pre;position:absolute;left:10px;right:10px;top:67px;padding:13px 0;text-align:center;border-top:1px solid #c9b18b;border-bottom:1px solid #c9b18b;font-size:8px;line-height:1.8;letter-spacing:.12em;color:#f3eadb}
-.hero-art:after{content:"";position:absolute;width:260px;height:260px;border:1px solid #b9a17a33;border-radius:50%}
+.hero-art{height:clamp(190px,28vw,300px);border:1px solid var(--line);background:#090807;display:block;position:relative;overflow:hidden}
+.hero-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 48%}
+@media(max-width:720px){.hero-art{height:clamp(175px,48vw,240px)}.hero-art img{object-position:center 48%}}
 .section{max-width:1120px;margin:auto;padding:8px 22px 56px;scroll-margin-top:92px}.section[hidden]{display:none!important}
 .catalog-switch{max-width:1120px;margin:0 auto 22px;padding:0 22px;display:flex;gap:8px;scroll-margin-top:92px}.catalog-tab{flex:1;max-width:240px;padding:13px 16px;border:1px solid var(--line);background:#171613;color:var(--muted);font-weight:700}.catalog-tab[aria-pressed="true"]{background:var(--beige);border-color:var(--beige);color:#171512}
 .trust-strip{max-width:1120px;margin:0 auto 26px;padding:0 22px;color:var(--muted);font-size:12px;letter-spacing:.02em;line-height:1.6}.trust-strip span{color:var(--beige)}
@@ -73,7 +71,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
       <p>Conheça os perfumes em frascos inteiros. Adicione os modelos que deseja consultar e confirme preço, disponibilidade e entrega pelo WhatsApp.</p>
       <a class="btn" href="#full-size-catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Ver frascos inteiros</a> <a class="btn secondary-hero" href="decants.html" style="display:inline-block;text-decoration:none;margin-top:10px">Decants</a>
     </div>
-    <div class="hero-art" aria-label="Ilustração decorativa de perfume"><div class="bottle"></div></div>
+    <div class="hero-art"><img src="/Santino/file_00000000acc4820eaf3161e80d0986d8.png" alt="Perfume em frasco inteiro sem marca, vidro transparente e líquido âmbar sob iluminação dourada" fetchpriority="high"></div>
   </section>
   <section class="section full-size-section" id="full-size-catalog">
     <div class="section-head"><div><div class="eyebrow">Fragrâncias em frasco original</div><h2>Frascos inteiros</h2><p>Adicione os perfumes que deseja consultar. Preço final, disponibilidade, frete e prazo serão confirmados pelo WhatsApp.</p></div></div>
