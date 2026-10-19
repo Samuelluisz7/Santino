@@ -76,7 +76,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
     <div class="products" id="products"></div>
   </section>
   <section class="section full-size-section" id="full-size-catalog">
-    <div class="section-head"><div><div class="eyebrow">Fragrâncias em frasco original</div><h2>Frascos inteiros</h2><p>Preços de mercado são referências. O preço de venda e a disponibilidade da SANTINO precisam ser confirmados antes da compra.</p></div></div>
+    <div class="section-head"><div><div class="eyebrow">Fragrâncias em frasco original</div><h2>Frascos inteiros</h2><p>Adicione os perfumes que deseja consultar. Preço final, disponibilidade, frete e prazo serão confirmados pelo WhatsApp.</p></div></div>
     <div class="products" id="fullSizeProducts"></div>
   </section>
 </main>
@@ -114,15 +114,15 @@ const PRODUCTS = [
  {id:"k-max",name:"K Max",brand:"Natura Kaiak",image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2ilre9m85au14",tag:"Nacional",description:"Aromático e amadeirado, com frescor cítrico e especiarias.",volumes:[{ml:2,price:10},{ml:5,price:18},{ml:10,price:32}]}
 ];
 const FULL_SIZE_PRODUCTS = [
- {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,version:"Eau de Parfum Intense",marketRange:"R$ 665–839",image:"https://arome.mx/cdn/shop/files/perfume-le-male-le-parfum-para-hombre-de-jean-paul-gaultier-arome-mexico-3_1200x1200.jpg?v=1725558080",description:"Frasco original de 125 ml. Preço de venda SANTINO ainda não definido."},
- {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,version:"Eau de Parfum",marketRange:"R$ 216,81–349,90",image:"https://images.tcdn.com.br/img/img_prod/1387058/afnan_9pm_eau_de_parfum_100ml_1_20250806094327_a0fd637de4cf.jpeg",description:"Frasco original de 100 ml. Opção de perfumaria árabe com preço público observado abaixo de R$ 500."},
- {id:"full-asad-black",name:"Asad Black",brand:"Lattafa",ml:100,version:"Eau de Parfum — nome de mercado a confirmar",marketRange:"R$ 204–330 (provisório)",image:"https://a-static.mlcdn.com.br/800x800/perfume-asad-black-100ml-lattafa/storebox/ce767e0e6bf811f08ebc42010a480899/0e6675af5039b2313377c68723aee99d.jpeg",description:"Confirmar SKU/EAN: fontes de mercado podem usar Asad Black como apelido do Asad tradicional."},
- {id:"full-asad",name:"Asad tradicional",brand:"Lattafa",ml:100,version:"Eau de Parfum",marketRange:"R$ 199,90–249,90",image:"https://epocacosmeticos.vteximg.com.br/arquivos/ids/1310679-800-800/17603916694210.jpg?v=639001969767870000",description:"Frasco original de 100 ml. Confirmar se a listagem separada de Asad Black representa outro SKU."},
- {id:"full-eros",name:"Eros",brand:"Versace",ml:100,version:"Eau de Toilette",marketRange:"R$ 440,71–495,99",image:"https://bulldog.vn/uploads/tt_hinh/90-r740010-r100mls-rnul-20-eros-edt-100-ml-versace-online-store-0-0-jpg-20230928124005EBeB4zX6y5.jpg",description:"Frasco original de 100 ml. Preço de venda SANTINO ainda não definido."},
+ {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,version:"Eau de Parfum Intense",marketRange:"R$ 665–839",image:"https://arome.mx/cdn/shop/files/perfume-le-male-le-parfum-para-hombre-de-jean-paul-gaultier-arome-mexico-3_1200x1200.jpg?v=1725558080",description:"Eau de Parfum Intense de 125 ml, com assinatura amadeirada e âmbar."},
+ {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,version:"Eau de Parfum",marketRange:"R$ 199–299",image:"https://cdn.dooca.store/181275/products/frasco-afnan-9pm-100ml-edp-masculino-noturno-ambar-perfumes.jpg?v=1771204807",description:"Eau de Parfum de 100 ml. Ofertas públicas brasileiras observadas abaixo de R$ 500; confirme vendedor, frete e autenticidade."},
+ {id:"full-asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",ml:100,version:"Eau de Parfum",marketRange:"R$ 249,90–359,99",image:"https://media.cdn.kaufland.de/product-images/original/b4a7cd262b1b59538f425245be4fff95.jpg",description:"Eau de Parfum de 100 ml; variante distinta do Asad original, com perfil gourmand ambarado."},
+ {id:"full-asad",name:"Asad tradicional",brand:"Lattafa",ml:100,version:"Eau de Parfum",marketRange:"R$ 199,90–249,90",image:"https://epocacosmeticos.vteximg.com.br/arquivos/ids/1310679-800-800/17603916694210.jpg?v=639001969767870000",description:"Eau de Parfum de 100 ml, versão original de Lattafa Asad."},
+ {id:"full-eros",name:"Eros",brand:"Versace",ml:100,version:"Eau de Toilette",marketRange:"R$ 440,71–495,99",image:"https://bulldog.vn/uploads/tt_hinh/90-r740010-r100mls-rnul-20-eros-edt-100-ml-versace-online-store-0-0-jpg-20230928124005EBeB4zX6y5.jpg",description:"Frasco original de 100 ml. Consulte preço e disponibilidade pelo WhatsApp."},
  {id:"full-million",name:"1 Million",brand:"Rabanne",ml:100,version:"Eau de Toilette",marketRange:"R$ 400–453 (referência provisória)",image:"https://hogiesonline.co.uk/cdn/shop/files/opy3hsarjs2.png?v=1763026114&width=1946",description:"Frasco original de 100 ml. Confirmar preço e disponibilidade no fornecedor."},
- {id:"full-sauvage",name:"Sauvage",brand:"Dior",ml:100,version:"Eau de Toilette",marketRange:"R$ 869–939",image:"https://www.sephora.com.mx/on/demandware.static/-/Sites-masterCatalog_Sephora/es_MX/dwdefc1b76/images/hi-res/eau-de-toilette-dior-dior-sauvage-eau-de-toilette-100ml3348901250146A.jpg",description:"Frasco original de 100 ml. Preço de venda SANTINO ainda não definido."},
- {id:"full-invictus",name:"Invictus",brand:"Rabanne",ml:100,version:"Eau de Toilette",marketRange:"A partir de R$ 647 — confirmar volume",image:"https://product-data.raiadrogasil.io/images/5890913.webp",description:"A referência encontrada é preço inicial da linha; confirmar valor exato do EDT de 100 ml."},
- {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,version:"Eau de Parfum",marketRange:"A partir de R$ 1.025",image:"https://www.adorebeauty.com.au/pim_media/000/437/935/Yves_Saint_Laurent_MYSLF_100ml.png?fmt=webp&h=386&w=386",description:"Frasco original de 100 ml. Referência de mercado inicial, não preço de venda da loja."}
+ {id:"full-sauvage",name:"Sauvage",brand:"Dior",ml:100,version:"Eau de Toilette",marketRange:"R$ 869–939",image:"https://www.sephora.com.mx/on/demandware.static/-/Sites-masterCatalog_Sephora/es_MX/dwdefc1b76/images/hi-res/eau-de-toilette-dior-dior-sauvage-eau-de-toilette-100ml3348901250146A.jpg",description:"Frasco original de 100 ml. Consulte preço e disponibilidade pelo WhatsApp."},
+ {id:"full-invictus",name:"Invictus",brand:"Rabanne",ml:100,version:"Eau de Toilette",marketRange:"R$ 647,10–831",image:"https://product-data.raiadrogasil.io/images/5890913.webp",description:"Eau de Toilette de 100 ml; ofertas públicas consultadas em varejistas, com valores que variam por pagamento."},
+ {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,version:"Eau de Parfum",marketRange:"A partir de R$ 1.025",image:"https://www.adorebeauty.com.au/pim_media/000/437/935/Yves_Saint_Laurent_MYSLF_100ml.png?fmt=webp&h=386&w=386",description:"Eau de Parfum de 100 ml. Consulte preço e disponibilidade pelo WhatsApp."}
 ];
 let cart = [];
 const $ = id => document.getElementById(id);
@@ -148,7 +148,7 @@ function renderFullSizeProducts(){
    <h3>${escapeHTML(p.name)}</h3>
    <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
    <p class="desc">${escapeHTML(p.version)} · ${p.ml} ml</p>
-   <p class="market-reference">Referência de mercado: ${escapeHTML(p.marketRange)}<br>Preço de venda SANTINO: a confirmar</p>
+   <p class="market-reference">Consulte o preço final e a disponibilidade pelo WhatsApp.</p>
    <p class="desc">${escapeHTML(p.description)}</p>
    <div class="price-row"><span class="price price-pending">Consultar valor</span><span class="volume">${p.ml} ml</span></div>
    <button class="add" data-add-full="${p.id}">Adicionar para consulta</button>
