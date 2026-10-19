@@ -18,11 +18,9 @@ header{position:sticky;top:0;z-index:5;background:rgba(17,17,15,.96);border-bott
 .eyebrow{color:var(--beige);letter-spacing:.2em;text-transform:uppercase;font-size:11px;font-weight:bold}
 h1{font-family:Georgia,serif;font-size:clamp(34px,5vw,56px);line-height:1.04;font-weight:400;margin:12px 0}
 .hero p{color:var(--muted);line-height:1.6;max-width:520px;margin:10px 0}
-.hero-art{min-height:230px;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 45%,#4a3e2b 0,#28231c 34%,#171613 70%);display:grid;place-items:center;position:relative;overflow:hidden}
-.bottle{width:112px;height:180px;border:1px solid #d8c4a1;border-radius:13px 13px 23px 23px;background:linear-gradient(90deg,#29251e,#6d5b3d 45%,#28231d);box-shadow:0 22px 45px #0009;position:relative}
-.bottle:before{content:"";position:absolute;left:32px;top:-42px;width:46px;height:43px;background:#b8a17b;border:1px solid #dfc99f;border-radius:4px 4px 0 0}
-.bottle:after{content:"FRAGRANCE\A DISCOVERY";white-space:pre;position:absolute;left:10px;right:10px;top:67px;padding:13px 0;text-align:center;border-top:1px solid #c9b18b;border-bottom:1px solid #c9b18b;font-size:8px;line-height:1.8;letter-spacing:.12em;color:#f3eadb}
-.hero-art:after{content:"";position:absolute;width:260px;height:260px;border:1px solid #b9a17a33;border-radius:50%}
+.hero-art{min-height:0;border:1px solid var(--line);background:#090807;display:block;position:relative;overflow:hidden;border-radius:3px;box-shadow:0 18px 45px #0007}
+.hero-banner{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;object-position:center}
+@media(max-width:720px){.hero-banner{aspect-ratio:auto;width:100%;height:auto;object-fit:contain}}
 .section{max-width:1120px;margin:auto;padding:8px 22px 56px;scroll-margin-top:92px}.section[hidden]{display:none!important}
 .catalog-switch{max-width:1120px;margin:0 auto 22px;padding:0 22px;display:flex;gap:8px;scroll-margin-top:92px}.catalog-tab{flex:1;max-width:240px;padding:13px 16px;border:1px solid var(--line);background:#171613;color:var(--muted);font-weight:700}.catalog-tab[aria-pressed="true"]{background:var(--beige);border-color:var(--beige);color:#171512}
 .trust-strip{max-width:1120px;margin:0 auto 26px;padding:0 22px;color:var(--muted);font-size:12px;letter-spacing:.02em;line-height:1.6}.trust-strip span{color:var(--beige)}
@@ -74,7 +72,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
       <h1>Sua próxima fragrância começa aqui.</h1>
       <p>Escolha como quer comprar: experimente perfumes em decants de 2 ml, 5 ml e 10 ml ou consulte os modelos disponíveis em frascos inteiros.</p>
     </div>
-    <div class="hero-art"><img class="hero-banner" src="a_professional_studio_still_life_product_photograp.png" alt="Seleção de perfumes SANTINO NOBRE alinhados em composição sofisticada" fetchpriority="high"></div>
+    <div class="hero-art"><img class="hero-banner" src="/Santino/a_professional_studio_still_life_product_photograp.png" alt="Seleção de perfumes SANTINO NOBRE alinhados em composição sofisticada" fetchpriority="high"></div>
   </section>
   <section class="section" aria-label="Ofertas e benefícios">
     <div class="category-grid" style="margin-bottom:28px">
