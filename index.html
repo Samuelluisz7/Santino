@@ -36,6 +36,7 @@ h2{font-family:Georgia,serif;font-weight:400;font-size:29px;margin:0 0 6px}.sect
 .variants{display:flex;gap:7px;align-items:center;margin:0 0 13px;flex-wrap:wrap}
 .variants label{font-size:11px;color:var(--muted)}.variants select{background:#11110f;color:var(--cream);border:1px solid var(--line);padding:7px;width:100%;margin-top:5px}
 .price-row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;margin-bottom:12px}.price{font-size:20px;color:var(--cream)}.volume{color:var(--muted);font-size:11px}
+.info-details{margin:0 0 13px;border:1px solid var(--line);background:#151411}.info-details summary{list-style:none;cursor:pointer;padding:10px 11px;color:var(--beige);font-size:12px;font-weight:700}.info-details summary::-webkit-details-marker{display:none}.info-details summary:after{content:"+";float:right;font-size:15px}.info-details[open] summary:after{content:"−"}.info-content{padding:0 11px 12px;color:var(--muted);font-size:12px;line-height:1.55}.info-content p{margin:7px 0}.info-content strong{color:var(--cream);font-weight:600}.info-content a{color:var(--beige);text-decoration:underline}
 .add{width:100%;padding:12px;border:1px solid var(--beige);background:transparent;color:var(--cream);font-weight:700;transition:.2s}.add:hover{background:var(--beige);color:var(--black)}
 footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);font-size:12px;text-align:center;line-height:1.7}
 .overlay{display:none;position:fixed;inset:0;background:#000b;z-index:20}.overlay.open{display:block}
@@ -114,6 +115,38 @@ const PRODUCTS = [
  {id:"fakhar-black",name:"Fakhar Black",brand:"Lattafa",image:"https://m.magazineluiza.com.br/a-static/420x420/perfume-arabe-fakhar-black-lattafa-masculino-original-100ml/glowgomake/0156/2810be863dd32d57db7241f9d98ef18c.jpeg",tag:"Importado",description:"Aromático e amadeirado, combinando frescor e notas ambaradas.",volumes:[{ml:2,price:5.9},{ml:5,price:12.9},{ml:10,price:23.9}]},
  {id:"k-max",name:"K Max",brand:"Natura Kaiak",image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2ilre9m85au14",tag:"Nacional",description:"Aromático e amadeirado, com frescor cítrico e especiarias.",volumes:[{ml:2,price:7.9},{ml:5,price:16.9},{ml:10,price:30.9}]}
 ];
+const PERFUME_INFO = {
+ "kingdom":{family:"Aromático, ambarado e adocicado",top:"Sálvia, lavanda e menta",heart:"Tabaco, baunilha e flor de laranjeira",base:"Benjoim, fava tonka e ládano",use:"Versátil; combina com encontros, saídas à noite e clima ameno.",source:"https://lattafa.com/product/kingdom-men/"},
+ "212-vip-black":{family:"Aromático, ambarado e amadeirado",top:"Absinto",heart:"Lavanda e couro preto",base:"Baunilha e almíscar",use:"Perfil intenso e sensual; melhor para festas, encontros e noite.",source:"https://www.carolinaherrera.com/br/pt/p-fragrance/212-vip-black?sku=000000000065224438"},
+ "the-blend-bourbon":{family:"Oriental especiado e ambarado",top:"Pimenta rosa e lavanda",heart:"Cravo, canela, pimenta-preta e noz-moscada",base:"Baunilha Bourbon e acordes ambarados",use:"Quente, marcante e adocicado; indicado para noites, encontros e clima fresco.",source:"https://www.boticario.com.br/produto/the-blend-bourbon-eau-de-parfum-100ml-v2"},
+ "asad-bourbon":{family:"Ambarado, especiado e adocicado",top:"Pimenta rosa, lavanda e ameixa Mirabelle",heart:"Cacau, davana e noz-moscada",base:"Vetiver, baunilha Bourbon e âmbar",use:"Doce e encorpado; funciona bem em festas, encontros e noites mais frescas.",source:"https://lattafa.com/product/asad-bourbon/"},
+ "homem-sagaz":{family:"Amadeirado e adocicado",top:"Mandarina verde, erva-cidreira, cipreste e sálvia",heart:"Pimenta-preta, noz-moscada e ameixa-preta",base:"Cedro, âmbar, sândalo, baunilha e fava tonka",use:"Marcante; boa escolha para sair e ocasiões especiais.",source:"https://www.natura.com.br/p/deo-parfum-natura-homem-sagaz-100ml/NATBRA-81951"},
+ "homem-dom":{family:"Adocicado, amadeirado e especiado",top:"Cardamomo, pimenta-preta e cypriol",heart:"Baunilha negra, tonka, acorde balsâmico e folhas de violeta",base:"Priprioca, guaiaco, sândalo, vetiver, ambroxan, cashmeran e musk",use:"Sofisticado e marcante; indicado para encontros, eventos e ocasiões especiais.",source:"https://www.natura.com.br/p/natura-homem-dom-deo-parfum-100-ml/NATBRA-71770"},
+ "homem-essence":{family:"Amadeirado e ambarado",top:"Bergamota, gengibre, grapefruit e limão",heart:"Pimenta-preta, violeta, cardamomo, canela e coentro",base:"Patchouli, âmbar, guaiaco, cashmeran e cedro",use:"Amadeirado especiado e elegante; indicado para sair e ocasiões especiais.",source:"https://www.natura.com.br/p/desodorante-perfume-natura-homem-essence-100-ml/NATBRA-59847"},
+ "essencial-sentir":{family:"Amadeirado aromático intenso",top:"Bergamota e piper",heart:"Lavanda",base:"Sândalo e patchouli",use:"Tem presença e frescor especiado; bom para compromissos longos, confraternizações e eventos noturnos.",source:"https://www.natura.com.br/blog/perfumaria/melhores-fragrancias-da-natura"},
+ "fakhar-black":{family:"Aromático, fresco e amadeirado",top:"Bergamota, maçã e gengibre",heart:"Lavanda, sálvia, bagas de zimbro e gerânio",base:"Fava tonka, âmbar, cedro e vetiver",use:"Versátil e moderno; pode acompanhar o dia a dia e também festas.",source:"https://lattafa.com/"},
+ "k-max":{family:"Aromático intenso e amadeirado",top:"Pimenta rosa, grapefruit, pimenta-preta, gengibre e acorde aquoso",heart:"Lavanda, zimbro, cardamomo, couro, olíbano e violeta",base:"Sândalo, cedro, musk, cashmeran, patchouli, vetiver e âmbar",use:"Intenso, mas com frescor cítrico; funciona no dia a dia e em ocasiões especiais.",source:"https://www.natura.com.br/p/k-max-masculino-100-ml/NATBRA-72468"},
+ "full-le-male":{family:"Âmbar e amadeirado",top:"Cardamomo",heart:"Lavanda e íris",base:"Baunilha",use:"Quente e elegante; especialmente indicado para noite, encontros e clima fresco.",source:"https://www.jeanpaulgaultier.com/"},
+ "full-afnan-9pm":{family:"Frutado e especiado",top:"Bergamota, lavandim, canela e maçã",heart:"Lírio-do-vale e flor de laranjeira",base:"Patchouli, âmbar, baunilha e fava tonka",use:"Adocicado e chamativo; favorece festas, encontros e uso noturno.",source:"https://afnan.com/products/9-pm"},
+ "full-asad-bourbon":{family:"Ambarado, especiado e adocicado",top:"Pimenta rosa, lavanda e ameixa Mirabelle",heart:"Cacau, davana e noz-moscada",base:"Vetiver, baunilha Bourbon e âmbar",use:"Encorpado e quente; bom para noites, festas e clima fresco.",source:"https://lattafa.com/product/asad-bourbon/"},
+ "full-asad":{family:"Ambarado e especiado",top:"Pimenta-preta, abacaxi e tabaco",heart:"Café, íris e patchouli",base:"Âmbar, baunilha, madeiras secas, benjoim e ládano",use:"Intenso e quente; melhor em noites, encontros e clima ameno.",source:"https://lattafa.com/product/asad/"},
+ "full-eros":{family:"Aromático fougère",top:"Limão, mandarina, menta e maçã",heart:"Gerânio, sálvia e acordes aromáticos",base:"Baunilha, cedro, vetiver, patchouli e fava tonka",use:"Fresco e doce, com projeção; bom para festas, encontros e uso versátil conforme a dose.",source:"https://www.versace.com/"},
+ "full-million":{family:"Fresco, especiado e amadeirado",top:"Tangerina vermelha, toranja e hortelã",heart:"Canela amadeirada e rosa",base:"Âmbar com nuances de couro, madeiras fumadas e patchouli",use:"Marcante e sensual; especialmente indicado para noite, festas e encontros.",source:"https://www.rabanne.com/br/pt/fragrance/p/1-million--000000000065189326"},
+ "full-sauvage":{family:"Aromático fougère",top:"Bergamota da Calábria",heart:"Pimenta e notas aromáticas",base:"Ambroxan e madeiras ambaradas",use:"Fresco e versátil; adequado ao dia a dia, encontros e ocasiões noturnas.",source:"https://www.dior.com/"},
+ "full-invictus":{family:"Amadeirado aquático",top:"Notas marinhas, toranja e mandarina",heart:"Folha de louro e jasmim",base:"Madeira guaiac, musgo de carvalho, patchouli e âmbar",use:"Fresco, esportivo e versátil; combina com calor, lazer e festas informais.",source:"https://www.rabanne.com/"},
+ "full-myslf":{family:"Amadeirado floral",top:"Bergamota da Calábria",heart:"Flor de laranjeira",base:"Madeiras e patchouli",use:"Limpo e moderno; versátil para trabalho, encontros e eventos.",source:"https://www.yslbeautyus.com/"}
+};
+function infoMarkup(id){
+ const i=PERFUME_INFO[id]; if(!i)return "";
+ return `<details class="info-details"><summary>Informações e notas</summary><div class="info-content">
+ <p><strong>Perfil olfativo:</strong> ${escapeHTML(i.family)}</p>
+ <p><strong>Notas de saída:</strong> ${escapeHTML(i.top)}</p>
+ <p><strong>Notas de coração:</strong> ${escapeHTML(i.heart)}</p>
+ <p><strong>Notas de fundo:</strong> ${escapeHTML(i.base)}</p>
+ <p><strong>Quando usar:</strong> ${escapeHTML(i.use)}</p>
+ <p><a href="${escapeHTML(i.source)}" target="_blank" rel="noopener noreferrer">Consultar fonte</a></p>
+ </div></details>`;
+}
 const FULL_SIZE_PRODUCTS = [
  {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,version:"Eau de Parfum Intense",image:"https://arome.mx/cdn/shop/files/perfume-le-male-le-parfum-para-hombre-de-jean-paul-gaultier-arome-mexico-3_1200x1200.jpg?v=1725558080",description:"Eau de Parfum Intense de 125 ml, com assinatura amadeirada e âmbar."},
  {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,version:"Eau de Parfum",image:"https://cdn.dooca.store/181275/products/frasco-afnan-9pm-100ml-edp-masculino-noturno-ambar-perfumes.jpg?v=1771204807",description:"Eau de Parfum de 100 ml. Ofertas públicas abaixo de R$ 500; confirme vendedor, frete e autenticidade."},
@@ -134,6 +167,7 @@ function renderProducts(){
    <h3>${escapeHTML(p.name)}</h3>
    <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
    <p class="desc">${escapeHTML(p.description)}</p>
+   ${infoMarkup(p.id)}
    <div class="variants"><label style="width:100%">Tamanho
      <select id="volume-${p.id}" aria-label="Volume de ${escapeHTML(p.name)}">${p.volumes.map((v,i)=>`<option value="${i}">${v.ml} ml</option>`).join("")}</select>
    </label></div>
@@ -149,6 +183,7 @@ function renderFullSizeProducts(){
    <h3>${escapeHTML(p.name)}</h3>
    <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
    <p class="desc">${escapeHTML(p.version)} · ${p.ml} ml</p>
+   ${infoMarkup(p.id)}
    <div class="price-row"><span class="price price-pending">Sob consulta</span></div>
    <button class="add" data-add-full="${p.id}">Adicionar ao carrinho</button>
  </article>`).join("");
