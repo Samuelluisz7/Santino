@@ -89,6 +89,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
     <div class="section-head"><div><div class="eyebrow">Antes de pedir</div><h2>Dúvidas frequentes</h2><p>Informações essenciais para comprar com mais clareza.</p></div></div>
     <div class="faq-list">
       <details class="faq-item"><summary>O que é um decant?</summary><div class="faq-answer">É uma quantidade de perfume acondicionada em um recipiente menor, nos volumes de 2 ml, 5 ml ou 10 ml, para experimentar ou usar sem comprar o frasco inteiro.</div></details>
+      <details class="faq-item"><summary>Como o perfume é fracionado?</summary><div class="faq-answer">A fragrância é acondicionada em um recipiente menor, no volume selecionado. Se quiser detalhes sobre o processo ou a procedência de um perfume específico, consulte a loja pelo WhatsApp antes de fechar o pedido.</div></details>
       <details class="faq-item"><summary>O recipiente do decant é o frasco original da marca?</summary><div class="faq-answer">Não. O perfume é vendido fracionado em um recipiente menor; a embalagem do decant não é a embalagem de fábrica da marca. Para esclarecer a procedência de uma fragrância específica, fale com a loja pelo <a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">WhatsApp</a> antes de concluir o pedido.</div></details>
       <details class="faq-item"><summary>Como funcionam frete e prazo de entrega?</summary><div class="faq-answer">O frete e o prazo dependem do endereço e serão confirmados pelo WhatsApp antes da finalização do pedido.</div></details>
       <details class="faq-item"><summary>Quais formas de pagamento são aceitas?</summary><div class="faq-answer">As formas de pagamento disponíveis serão informadas pelo atendimento no WhatsApp antes de confirmar a compra.</div></details>
@@ -252,7 +253,7 @@ function checkout(){
  let number=STORE_WHATSAPP;
  if(!/^55\d{10,11}$/.test(number)){number=prompt("Digite o WhatsApp da loja com código do país e DDD, somente números (ex.: 5531999999999):")||"";number=number.replace(/\D/g,"")}
  if(!/^55\d{10,11}$/.test(number)){showToast("Número de WhatsApp inválido. Informe um número válido.");return}
- const lines=cart.map(x=>`• ${x.name} — ${x.ml} ml × ${x.qty}: ${Number.isFinite(x.price)?money(x.price*x.qty):"preço a confirmar"}`);
+ const lines=cart.map(x=>`• ${x.name} (${x.brand}) — ${x.ml} ml × ${x.qty}: ${Number.isFinite(x.price)?money(x.price*x.qty):"preço a confirmar"}`);
  const decantSubtotal=cart.reduce((s,x)=>s+(Number.isFinite(x.price)&&x.category==="Decant"?x.price*x.qty:0),0);
  const discount=decantSubtotal>=80?decantSubtotal*0.10:0;
  const fullSizePending=cart.some(x=>x.category==="Frasco inteiro");
