@@ -23,20 +23,23 @@ h1{font-family:Georgia,serif;font-size:clamp(34px,5vw,56px);line-height:1.04;fon
 .bottle:before{content:"";position:absolute;left:32px;top:-42px;width:46px;height:43px;background:#b8a17b;border:1px solid #dfc99f;border-radius:4px 4px 0 0}
 .bottle:after{content:"FRAGRANCE\A DISCOVERY";white-space:pre;position:absolute;left:10px;right:10px;top:67px;padding:13px 0;text-align:center;border-top:1px solid #c9b18b;border-bottom:1px solid #c9b18b;font-size:8px;line-height:1.8;letter-spacing:.12em;color:#f3eadb}
 .hero-art:after{content:"";position:absolute;width:260px;height:260px;border:1px solid #b9a17a33;border-radius:50%}
-.section{max-width:1120px;margin:auto;padding:8px 22px 56px}
+.section{max-width:1120px;margin:auto;padding:8px 22px 56px;scroll-margin-top:92px}.section[hidden]{display:none!important}
+.catalog-switch{max-width:1120px;margin:0 auto 22px;padding:0 22px;display:flex;gap:8px;scroll-margin-top:92px}.catalog-tab{flex:1;max-width:240px;padding:13px 16px;border:1px solid var(--line);background:#171613;color:var(--muted);font-weight:700}.catalog-tab[aria-pressed="true"]{background:var(--beige);border-color:var(--beige);color:#171512}
+.trust-strip{max-width:1120px;margin:0 auto 26px;padding:0 22px;color:var(--muted);font-size:12px;letter-spacing:.02em;line-height:1.6}.trust-strip span{color:var(--beige)}
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:16px}
 h2{font-family:Georgia,serif;font-weight:400;font-size:29px;margin:0 0 6px}.section-head p{margin:0;color:var(--muted);font-size:14px}
 .products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .product{border:1px solid var(--line);background:var(--panel);padding:13px;display:flex;flex-direction:column}
-.product-art{height:190px;display:grid;place-items:center;background:linear-gradient(145deg,#29251f,#151412);margin-bottom:15px;position:relative;overflow:hidden}.product-photo{width:100%;height:100%;object-fit:contain;background:#f7f4ee;padding:8px}.photo-fallback{height:100%;width:100%;display:grid;place-items:center;background:linear-gradient(145deg,#29251f,#151412);position:absolute;inset:0}.vial{height:108px;width:31px;border:1px solid #d2bc92;border-radius:5px 5px 8px 8px;background:linear-gradient(90deg,#3b2d1c,#b49a6d 50%,#4d3b24);position:relative;box-shadow:0 12px 22px #0007}
+.product-art{height:190px;display:grid;place-items:center;background:#f0e9de;margin-bottom:15px;position:relative;overflow:hidden;border:1px solid #39352f}.product-photo{width:100%;height:100%;object-fit:contain;background:transparent;padding:12px;mix-blend-mode:multiply}.photo-fallback{height:100%;width:100%;display:grid;place-items:center;background:linear-gradient(145deg,#29251f,#151412);position:absolute;inset:0}.vial{height:108px;width:31px;border:1px solid #d2bc92;border-radius:5px 5px 8px 8px;background:linear-gradient(90deg,#3b2d1c,#b49a6d 50%,#4d3b24);position:relative;box-shadow:0 12px 22px #0007}
 .vial:before{content:"";position:absolute;top:-19px;left:7px;width:15px;height:19px;background:#b7a17b;border:1px solid #d2bc92}
 .vial:after{content:"";position:absolute;top:38px;left:3px;right:3px;height:24px;border-top:1px solid #e2d0ad;border-bottom:1px solid #e2d0ad}
 .product h3{font-family:Georgia,serif;font-weight:400;font-size:21px;margin:0 0 7px}
-.product .desc{color:var(--muted);font-size:13px;line-height:1.5;min-height:39px;margin:0 0 13px}
+.product .desc{color:var(--muted);font-size:13px;line-height:1.5;min-height:39px;margin:0 0 13px}.card-meta{color:var(--muted);font-size:12px;line-height:1.5;margin:0 0 13px}
 .variants{display:flex;gap:7px;align-items:center;margin:0 0 13px;flex-wrap:wrap}
 .variants label{font-size:11px;color:var(--muted)}.variants select{background:#11110f;color:var(--cream);border:1px solid var(--line);padding:7px;width:100%;margin-top:5px}
 .price-row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;margin-bottom:12px}.price{font-size:20px;color:var(--cream)}.volume{color:var(--muted);font-size:11px}
 .info-details{margin:0 0 13px;border:1px solid var(--line);background:#151411}.info-details summary{list-style:none;cursor:pointer;padding:10px 11px;color:var(--beige);font-size:12px;font-weight:700}.info-details summary::-webkit-details-marker{display:none}.info-details summary:after{content:"+";float:right;font-size:15px}.info-details[open] summary:after{content:"−"}.info-content{padding:0 11px 12px;color:var(--muted);font-size:12px;line-height:1.55}.info-content p{margin:7px 0}.info-content strong{color:var(--cream);font-weight:600}.info-content a{color:var(--beige);text-decoration:underline}
+.faq-section{border-top:1px solid var(--line);padding-top:32px}.faq-list{max-width:850px;margin-top:18px;border-top:1px solid var(--line)}.faq-item{border-bottom:1px solid var(--line)}.faq-item summary{padding:16px 4px;cursor:pointer;list-style:none;font-size:14px;color:var(--cream)}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{content:"+";float:right;color:var(--beige);font-size:18px}.faq-item[open] summary:after{content:"−"}.faq-answer{color:var(--muted);font-size:13px;line-height:1.7;padding:0 4px 16px;max-width:760px}.faq-answer a{color:var(--beige)}
 .add{width:100%;padding:12px;border:1px solid var(--beige);background:transparent;color:var(--cream);font-weight:700;transition:.2s}.add:hover{background:var(--beige);color:var(--black)}
 footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);font-size:12px;text-align:center;line-height:1.7}
 .overlay{display:none;position:fixed;inset:0;background:#000b;z-index:20}.overlay.open{display:block}
@@ -51,7 +54,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .catalog-nav{display:flex;align-items:center;gap:14px;margin-left:auto}.catalog-nav a{color:var(--muted);font-size:12px;text-decoration:none;white-space:nowrap}.catalog-nav a:hover{color:var(--beige)}
 .secondary-hero{background:transparent;color:var(--cream);margin-left:6px}
 .full-size-section{border-top:1px solid var(--line);padding-top:35px}.market-reference{font-size:12px;color:var(--muted);line-height:1.5;min-height:37px;margin:0 0 10px}.price-pending{font-size:16px!important;color:var(--beige)!important}
-@media(max-width:720px){.catalog-nav{order:3;width:100%;margin:4px 0 0;justify-content:flex-start}.nav{flex-wrap:wrap}.secondary-hero{margin-left:0}}
+@media(max-width:720px){.catalog-nav{order:3;width:100%;margin:4px 0 0;justify-content:flex-start}.nav{flex-wrap:wrap}.secondary-hero{margin-left:0}.catalog-switch{padding:0 15px}.trust-strip{padding:0 15px;margin-bottom:22px}.catalog-tab{max-width:none;padding:12px 7px;font-size:12px}}
 @media(max-width:720px){.hero{grid-template-columns:1fr;padding:24px 15px 22px;gap:18px}.hero-art{min-height:150px;max-height:170px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product{padding:9px}.product-art{height:132px}.product h3{font-size:18px}.product .desc{font-size:12px}.section-head{align-items:start;flex-direction:column}.nav{padding:13px 15px}.section{padding-left:15px;padding-right:15px}}
 @media(max-width:390px){.products{grid-template-columns:1fr}.product-art{height:190px}}
 </style>
@@ -59,7 +62,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 <body>
 <header><div class="nav">
   <div class="brand" id="brand">SANTINO NOBRE<small>DECANTS & FRAGRÂNCIAS</small></div>
-  <nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="#catalog">Decants</a><a href="#full-size-catalog">Frascos inteiros</a></nav>
+  <nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="#catalog" data-catalog-view="decants">Decants</a><a href="#full-size-catalog" data-catalog-view="full-size">Frascos inteiros</a></nav>
   <button class="cart-button" id="openCart" aria-label="Abrir carrinho">Carrinho <span id="cartCount">0</span></button>
 </div></header>
 <main>
@@ -68,17 +71,29 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
       <div class="eyebrow">Descubra. Experimente. Escolha.</div>
       <h1>Sua próxima fragrância começa aqui.</h1>
       <p>Explore decants de 2 ml, 5 ml e 10 ml ou conheça os perfumes em frascos inteiros. Monte seu pedido e finalize pelo WhatsApp.</p>
-      <a class="btn" href="#catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Explorar decants</a> <a class="btn secondary-hero" href="#full-size-catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Frascos inteiros</a>
+      <a class="btn" href="#catalog" data-catalog-view="decants" style="display:inline-block;text-decoration:none;margin-top:10px">Explorar decants</a> <a class="btn secondary-hero" href="#full-size-catalog" data-catalog-view="full-size" style="display:inline-block;text-decoration:none;margin-top:10px">Frascos inteiros</a>
     </div>
     <div class="hero-art" aria-label="Ilustração decorativa de perfume"><div class="bottle"></div></div>
   </section>
-  <section class="section" id="catalog">
+  <div class="catalog-switch" role="group" aria-label="Escolha o tipo de catálogo"><button class="catalog-tab" id="tab-decants" type="button" aria-pressed="true" data-catalog-view="decants">Decants</button><button class="catalog-tab" id="tab-full-size" type="button" aria-pressed="false" data-catalog-view="full-size">Frascos inteiros</button></div>
+  <p class="trust-strip"><span>Decants de 2 ml, 5 ml e 10 ml</span> · Informações olfativas em cada produto · Atendimento pelo WhatsApp</p>
+  <section class="section catalog-view" id="catalog">
     <div class="section-head"><div><div class="eyebrow">A seleção</div><h2>Escolha sua fragrância</h2><p>Escolha o tamanho e adicione ao carrinho.</p></div></div>
     <div class="products" id="products"></div>
   </section>
-  <section class="section full-size-section" id="full-size-catalog">
+  <section class="section full-size-section catalog-view" id="full-size-catalog" hidden>
     <div class="section-head"><div><div class="eyebrow">Fragrâncias em frasco original</div><h2>Frascos inteiros</h2><p>Adicione os perfumes que deseja consultar. Preço final, disponibilidade, frete e prazo serão confirmados pelo WhatsApp.</p></div></div>
     <div class="products" id="fullSizeProducts"></div>
+  </section>
+  <section class="section faq-section" id="faq">
+    <div class="section-head"><div><div class="eyebrow">Antes de pedir</div><h2>Dúvidas frequentes</h2><p>Informações essenciais para comprar com mais clareza.</p></div></div>
+    <div class="faq-list">
+      <details class="faq-item"><summary>O que é um decant?</summary><div class="faq-answer">É uma quantidade de perfume acondicionada em um recipiente menor, nos volumes de 2 ml, 5 ml ou 10 ml, para experimentar ou usar sem comprar o frasco inteiro.</div></details>
+      <details class="faq-item"><summary>O recipiente do decant é o frasco original da marca?</summary><div class="faq-answer">Não. O perfume é vendido fracionado em um recipiente menor; a embalagem do decant não é a embalagem de fábrica da marca. Para esclarecer a procedência de uma fragrância específica, fale com a loja pelo <a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">WhatsApp</a> antes de concluir o pedido.</div></details>
+      <details class="faq-item"><summary>Como funcionam frete e prazo de entrega?</summary><div class="faq-answer">O frete e o prazo dependem do endereço e serão confirmados pelo WhatsApp antes da finalização do pedido.</div></details>
+      <details class="faq-item"><summary>Quais formas de pagamento são aceitas?</summary><div class="faq-answer">As formas de pagamento disponíveis serão informadas pelo atendimento no WhatsApp antes de confirmar a compra.</div></details>
+      <details class="faq-item"><summary>Os perfumes em frascos inteiros têm preço definido?</summary><div class="faq-answer">No momento, são exibidos como “Sob consulta”. Preço, disponibilidade, frete e prazo serão confirmados pelo WhatsApp.</div></details>
+    </div>
   </section>
 </main>
 <footer>
@@ -166,7 +181,6 @@ function renderProducts(){
    <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
    <h3>${escapeHTML(p.name)}</h3>
    <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
-   <p class="desc">${escapeHTML(p.description)}</p>
    ${infoMarkup(p.id)}
    <div class="variants"><label style="width:100%">Tamanho
      <select id="volume-${p.id}" aria-label="Volume de ${escapeHTML(p.name)}">${p.volumes.map((v,i)=>`<option value="${i}">${v.ml} ml</option>`).join("")}</select>
@@ -182,7 +196,7 @@ function renderFullSizeProducts(){
    <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
    <h3>${escapeHTML(p.name)}</h3>
    <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
-   <p class="desc">${escapeHTML(p.version)} · ${p.ml} ml</p>
+   <p class="card-meta">${escapeHTML(p.version)} · ${p.ml} ml</p>
    ${infoMarkup(p.id)}
    <div class="price-row"><span class="price price-pending">Sob consulta</span></div>
    <button class="add" data-add-full="${p.id}">Adicionar ao carrinho</button>
@@ -209,16 +223,27 @@ function renderCart(){
  const allPriced=cart.length>0 && cart.every(x=>Number.isFinite(x.price));
  const total=cart.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
  const goal=80, discountRate=0.10, goalTotal=cart.reduce((s,x)=>s+(Number.isFinite(x.price)&&x.category==="Decant"?x.price*x.qty:0),0);
+ const discount=goalTotal>=goal?goalTotal*discountRate:0;
+ const totalAfterDiscount=total-discount;
  const progress=Math.min(100,(goalTotal/goal)*100), reached=goalTotal>=goal;
  $("goalFill").style.width=progress+"%"; $("goalCurrent").textContent=money(goalTotal);
  $("goalCopy").innerHTML=reached?`<strong>Meta atingida!</strong> Você desbloqueou 10% de desconto nos decants com preço definido. Desconto: ${money(goalTotal*discountRate)}.`:`Adicione mais ${money(goal-goalTotal)} em decants para atingir a meta de R$ 80,00 e ganhar 10% de desconto nos decants.`;
- $("cartTotal").textContent=allPriced?money(total):"A confirmar";
+ $("cartTotal").textContent=allPriced?money(totalAfterDiscount):(total>0?money(totalAfterDiscount)+" + frascos a confirmar":"A confirmar");
  if(!cart.length){$("cartItems").innerHTML='<div class="empty">Seu carrinho está vazio.<br>Escolha uma fragrância para começar.</div>';return}
  $("cartItems").innerHTML=cart.map(x=>`<div class="cart-item"><div><strong>${escapeHTML(x.name)}</strong><small>${escapeHTML(x.brand)} · ${x.category?escapeHTML(x.category)+" · ":""}${x.ml} ml · ${x.version?escapeHTML(x.version)+" · ":""}${Number.isFinite(x.price)?money(x.price)+" cada":"preço a confirmar"}</small><div class="item-controls"><button data-minus="${x.key}" aria-label="Diminuir quantidade">−</button><span>${x.qty}</span><button data-plus="${x.key}" aria-label="Aumentar quantidade">+</button></div></div><div style="text-align:right"><strong>${Number.isFinite(x.price)?money(x.price*x.qty):"A confirmar"}</strong><div class="item-controls"><button class="remove" data-remove="${x.key}">Remover</button></div></div></div>`).join("");
  document.querySelectorAll("[data-minus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.minus,-1)));
  document.querySelectorAll("[data-plus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.plus,1)));
  document.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>removeItem(b.dataset.remove)));
 }
+function setCatalogView(view,scroll=true){
+ const showFull=view==="full-size";
+ $("catalog").hidden=showFull;
+ $("full-size-catalog").hidden=!showFull;
+ $("tab-decants").setAttribute("aria-pressed",String(!showFull));
+ $("tab-full-size").setAttribute("aria-pressed",String(showFull));
+ if(scroll){const target=showFull?$("full-size-catalog"):$("catalog");target.scrollIntoView({behavior:"smooth",block:"start"});}
+}
+document.querySelectorAll("[data-catalog-view]").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();setCatalogView(el.dataset.catalogView,true);}));
 function openCart(){$("overlay").classList.add("open");document.body.style.overflow="hidden"}
 function closeCart(){$("overlay").classList.remove("open");document.body.style.overflow=""}
 function showToast(msg){$("toast").textContent=msg;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",2300)}
@@ -227,20 +252,20 @@ function checkout(){
  let number=STORE_WHATSAPP;
  if(!/^55\d{10,11}$/.test(number)){number=prompt("Digite o WhatsApp da loja com código do país e DDD, somente números (ex.: 5531999999999):")||"";number=number.replace(/\D/g,"")}
  if(!/^55\d{10,11}$/.test(number)){showToast("Número de WhatsApp inválido. Informe um número válido.");return}
- const allPriced=cart.every(x=>Number.isFinite(x.price));
- const lines=cart.map(x=>`• ${x.name} (${x.brand}) — ${x.category||"Produto"} · ${x.version?x.version+" · ":""}${x.ml} ml × ${x.qty}: ${Number.isFinite(x.price)?money(x.price*x.qty):"valor a confirmar"}`);
- const total=cart.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
- const pricedCount=cart.filter(x=>Number.isFinite(x.price)).length;
+ const lines=cart.map(x=>`• ${x.name} — ${x.ml} ml × ${x.qty}: ${Number.isFinite(x.price)?money(x.price*x.qty):"preço a confirmar"}`);
  const decantSubtotal=cart.reduce((s,x)=>s+(Number.isFinite(x.price)&&x.category==="Decant"?x.price*x.qty:0),0);
  const discount=decantSubtotal>=80?decantSubtotal*0.10:0;
- const totalLine=allPriced?("Subtotal: "+money(total)+"\nDesconto de 10% nos decants: "+money(discount)+"\nTotal: "+money(total-discount)):(pricedCount?("Subtotal dos itens com preço definido: "+money(total)+"\nDesconto de 10% nos decants (meta de R$ 80,00): "+money(discount)+"\nSubtotal após desconto, sem frascos inteiros: "+money(total-discount)+"; preço dos frascos inteiros a confirmar."):"Total do pedido: a confirmar após confirmar os preços dos frascos inteiros.");
- const message=`Olá! Gostaria de finalizar este pedido da SANTINO NOBRE:\n\n${lines.join("\n")}\n\n${totalLine}\n\nComo podemos combinar pagamento e entrega?`;
+ const fullSizePending=cart.some(x=>x.category==="Frasco inteiro");
+ const summary=["Subtotal dos decants: "+money(decantSubtotal),"Desconto nos decants: "+money(discount),"Subtotal dos decants com desconto: "+money(decantSubtotal-discount)];
+ if(fullSizePending)summary.push("Frascos inteiros: preço a confirmar");
+ summary.push("Frete e pagamento: a confirmar");
+ const message=`Olá! Quero fazer este pedido na SANTINO NOBRE:\n\n${lines.join("\n")}\n\n${summary.join("\n")}\n\nPodem me informar os próximos passos?`;
  window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
 }
 $("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
 $("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
 $("checkout").addEventListener("click",checkout);
-renderProducts();renderFullSizeProducts();renderCart();
+renderProducts();renderFullSizeProducts();renderCart();setCatalogView("decants",false);
 </script>
 </body>
 </html>
