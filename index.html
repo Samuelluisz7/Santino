@@ -192,7 +192,8 @@ function checkout(){
  const allPriced=cart.every(x=>Number.isFinite(x.price));
  const lines=cart.map(x=>`• ${x.name} (${x.brand}) — ${x.category||"Produto"} · ${x.version?x.version+" · ":""}${x.ml} ml × ${x.qty}: ${Number.isFinite(x.price)?money(x.price*x.qty):"valor a confirmar"}`);
  const total=cart.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
- const totalLine=allPriced?("Total: "+money(total)):"Total dos itens com preço definido: "+money(total)+"; valor dos frascos inteiros a confirmar.";
+ const pricedCount=cart.filter(x=>Number.isFinite(x.price)).length;
+ const totalLine=allPriced?("Total: "+money(total)):(pricedCount?("Subtotal dos itens com preço definido: "+money(total)+"; preço dos frascos inteiros a confirmar."):"Total do pedido: a confirmar após confirmar os preços dos frascos inteiros.");
  const message=`Olá! Gostaria de finalizar este pedido da SANTINO NOBRE:\n\n${lines.join("\n")}\n\n${totalLine}\n\nComo podemos combinar pagamento e entrega?`;
  window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
 }
