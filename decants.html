@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#11110f">
+<title>SANTINO NOBRE | Decants</title>
+<style>
+:root{--black:#11110f;--panel:#1a1916;--cream:#f3eadb;--beige:#c9b18b;--muted:#b9b0a2;--line:#39352f;--white:#fffaf2}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:var(--cream);font-family:Arial,Helvetica,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:5;background:rgba(17,17,15,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.nav{max-width:1120px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:Georgia,serif;letter-spacing:.18em;font-size:15px;color:var(--cream);text-transform:uppercase}.brand small{display:block;font-family:Arial,sans-serif;letter-spacing:.24em;font-size:9px;color:var(--beige);margin-top:5px}
+.cart-button,.btn{border:1px solid var(--beige);background:var(--beige);color:#171512;padding:11px 15px;border-radius:3px;font-weight:700}
+.cart-button{background:transparent;color:var(--cream);border-color:var(--line)}.cart-button span{display:inline-grid;place-items:center;background:var(--beige);color:#171512;border-radius:50%;width:21px;height:21px;margin-left:7px;font-size:12px}
+.hero{max-width:1120px;margin:auto;padding:30px 22px 26px;display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:center;background:radial-gradient(ellipse at 10% 0%,#27231d 0,transparent 58%)}
+.eyebrow{color:var(--beige);letter-spacing:.2em;text-transform:uppercase;font-size:11px;font-weight:bold}
+h1{font-family:Georgia,serif;font-size:clamp(34px,5vw,56px);line-height:1.04;font-weight:400;margin:12px 0}
+.hero p{color:var(--muted);line-height:1.6;max-width:520px;margin:10px 0}
+.hero-art{min-height:230px;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 45%,#4a3e2b 0,#28231c 34%,#171613 70%);display:grid;place-items:center;position:relative;overflow:hidden}
+.bottle{width:112px;height:180px;border:1px solid #d8c4a1;border-radius:13px 13px 23px 23px;background:linear-gradient(90deg,#29251e,#6d5b3d 45%,#28231d);box-shadow:0 22px 45px #0009;position:relative}
+.bottle:before{content:"";position:absolute;left:32px;top:-42px;width:46px;height:43px;background:#b8a17b;border:1px solid #dfc99f;border-radius:4px 4px 0 0}
+.bottle:after{content:"FRAGRANCE\A DISCOVERY";white-space:pre;position:absolute;left:10px;right:10px;top:67px;padding:13px 0;text-align:center;border-top:1px solid #c9b18b;border-bottom:1px solid #c9b18b;font-size:8px;line-height:1.8;letter-spacing:.12em;color:#f3eadb}
+.hero-art:after{content:"";position:absolute;width:260px;height:260px;border:1px solid #b9a17a33;border-radius:50%}
+.section{max-width:1120px;margin:auto;padding:8px 22px 56px;scroll-margin-top:92px}.section[hidden]{display:none!important}
+.catalog-switch{max-width:1120px;margin:0 auto 22px;padding:0 22px;display:flex;gap:8px;scroll-margin-top:92px}.catalog-tab{flex:1;max-width:240px;padding:13px 16px;border:1px solid var(--line);background:#171613;color:var(--muted);font-weight:700}.catalog-tab[aria-pressed="true"]{background:var(--beige);border-color:var(--beige);color:#171512}
+.trust-strip{max-width:1120px;margin:0 auto 26px;padding:0 22px;color:var(--muted);font-size:12px;letter-spacing:.02em;line-height:1.6}.trust-strip span{color:var(--beige)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:16px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:29px;margin:0 0 6px}.section-head p{margin:0;color:var(--muted);font-size:14px}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.product{border:1px solid var(--line);background:var(--panel);padding:13px;display:flex;flex-direction:column}
+.product-art{height:190px;display:grid;place-items:center;background:#f0e9de;margin-bottom:15px;position:relative;overflow:hidden;border:1px solid #39352f}.product-photo{width:100%;height:100%;object-fit:contain;background:transparent;padding:12px;mix-blend-mode:multiply}.photo-fallback{height:100%;width:100%;display:grid;place-items:center;background:linear-gradient(145deg,#29251f,#151412);position:absolute;inset:0}.vial{height:108px;width:31px;border:1px solid #d2bc92;border-radius:5px 5px 8px 8px;background:linear-gradient(90deg,#3b2d1c,#b49a6d 50%,#4d3b24);position:relative;box-shadow:0 12px 22px #0007}
+.vial:before{content:"";position:absolute;top:-19px;left:7px;width:15px;height:19px;background:#b7a17b;border:1px solid #d2bc92}
+.vial:after{content:"";position:absolute;top:38px;left:3px;right:3px;height:24px;border-top:1px solid #e2d0ad;border-bottom:1px solid #e2d0ad}
+.product h3{font-family:Georgia,serif;font-weight:400;font-size:21px;margin:0 0 7px}
+.product .desc{color:var(--muted);font-size:13px;line-height:1.5;min-height:39px;margin:0 0 13px}.card-meta{color:var(--muted);font-size:12px;line-height:1.5;margin:0 0 13px}
+.variants{display:flex;gap:7px;align-items:center;margin:0 0 13px;flex-wrap:wrap}
+.variants label{font-size:11px;color:var(--muted)}.variants select{background:#11110f;color:var(--cream);border:1px solid var(--line);padding:7px;width:100%;margin-top:5px}
+.price-row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;margin-bottom:12px}.price{font-size:20px;color:var(--cream)}.volume{color:var(--muted);font-size:11px}
+.info-details{margin:0 0 13px;border:1px solid var(--line);background:#151411}.info-details summary{list-style:none;cursor:pointer;padding:10px 11px;color:var(--beige);font-size:12px;font-weight:700}.info-details summary::-webkit-details-marker{display:none}.info-details summary:after{content:"+";float:right;font-size:15px}.info-details[open] summary:after{content:"−"}.info-content{padding:0 11px 12px;color:var(--muted);font-size:12px;line-height:1.55}.info-content p{margin:7px 0}.info-content strong{color:var(--cream);font-weight:600}.info-content a{color:var(--beige);text-decoration:underline}
+.faq-section{border-top:1px solid var(--line);padding-top:32px}.faq-list{max-width:850px;margin-top:18px;border-top:1px solid var(--line)}.faq-item{border-bottom:1px solid var(--line)}.faq-item summary{padding:16px 4px;cursor:pointer;list-style:none;font-size:14px;color:var(--cream)}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{content:"+";float:right;color:var(--beige);font-size:18px}.faq-item[open] summary:after{content:"−"}.faq-answer{color:var(--muted);font-size:13px;line-height:1.7;padding:0 4px 16px;max-width:760px}.faq-answer a{color:var(--beige)}
+.add{width:100%;padding:12px;border:1px solid var(--beige);background:transparent;color:var(--cream);font-weight:700;transition:.2s}.add:hover{background:var(--beige);color:var(--black)}
+footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);font-size:12px;text-align:center;line-height:1.7}
+.overlay{display:none;position:fixed;inset:0;background:#000b;z-index:20}.overlay.open{display:block}
+.drawer{position:absolute;right:0;top:0;height:100%;width:min(440px,100%);background:#171613;border-left:1px solid var(--line);padding:22px;display:flex;flex-direction:column}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:15px}
+.drawer h2{font-size:27px}.close{background:transparent;border:1px solid var(--line);color:var(--cream);padding:7px 11px}
+.cart-items{overflow:auto;flex:1;padding:12px 0}.empty{color:var(--muted);line-height:1.6;padding:25px 0}
+.cart-item{padding:13px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:8px}
+.cart-item strong{font-weight:500}.cart-item small{display:block;color:var(--muted);margin-top:5px}.item-controls{display:flex;gap:7px;align-items:center;margin-top:10px}.item-controls button{background:transparent;border:1px solid var(--line);color:var(--cream);padding:4px 9px}.remove{color:#d9bca0!important}
+.cart-total{border-top:1px solid var(--line);padding-top:15px}.goal-box{border:1px solid var(--line);padding:12px;margin:14px 0;background:#1a1916}.goal-copy{font-size:12px;line-height:1.5;color:var(--muted);margin:0 0 9px}.goal-copy strong{color:var(--cream)}.goal-track{height:7px;background:#39352f;border-radius:8px;overflow:hidden}.goal-fill{height:100%;width:0;background:var(--beige);transition:width .2s}.goal-meta{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--muted);margin-top:7px}.total-line{display:flex;justify-content:space-between;margin-bottom:15px;font-size:18px}.checkout{width:100%;padding:14px}.small-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--cream);color:#171512;padding:12px 18px;z-index:30;display:none;max-width:90%;font-size:13px}
+.catalog-nav{display:flex;align-items:center;gap:14px;margin-left:auto}.catalog-nav a{color:var(--muted);font-size:12px;text-decoration:none;white-space:nowrap}.catalog-nav a:hover{color:var(--beige)}
+.secondary-hero{background:transparent;color:var(--cream);margin-left:6px}
+.full-size-section{border-top:1px solid var(--line);padding-top:35px}.market-reference{font-size:12px;color:var(--muted);line-height:1.5;min-height:37px;margin:0 0 10px}.price-pending{font-size:16px!important;color:var(--beige)!important}
+@media(max-width:720px){.catalog-nav{order:3;width:100%;margin:4px 0 0;justify-content:flex-start}.nav{flex-wrap:wrap}.secondary-hero{margin-left:0}.catalog-switch{padding:0 15px}.trust-strip{padding:0 15px;margin-bottom:22px}.catalog-tab{max-width:none;padding:12px 7px;font-size:12px}}
+@media(max-width:720px){.hero{grid-template-columns:1fr;padding:24px 15px 22px;gap:18px}.hero-art{min-height:150px;max-height:170px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product{padding:9px}.product-art{height:132px}.product h3{font-size:18px}.product .desc{font-size:12px}.section-head{align-items:start;flex-direction:column}.nav{padding:13px 15px}.section{padding-left:15px;padding-right:15px}}
+@media(max-width:390px){.products{grid-template-columns:1fr}.product-art{height:190px}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+  <div class="brand" id="brand">SANTINO NOBRE<small>DECANTS & FRAGRÂNCIAS</small></div>
+  <nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a></nav>
+  <button class="cart-button" id="openCart" aria-label="Abrir carrinho">Carrinho <span id="cartCount">0</span></button>
+</div></header>
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Descubra. Experimente. Escolha.</div>
+      <h1>Sua próxima fragrância começa aqui.</h1>
+      <p>Experimente suas fragrâncias favoritas em 2 ml, 5 ml ou 10 ml. Escolha o volume, conheça as notas e monte seu pedido pelo WhatsApp.</p>
+      <a class="btn" href="#catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Ver decants</a> <a class="btn secondary-hero" href="frascos.html" style="display:inline-block;text-decoration:none;margin-top:10px">Frascos inteiros</a>
+    </div>
+    <div class="hero-art" aria-label="Ilustração decorativa de perfume"><div class="bottle"></div></div>
+  </section>
+  <section class="section" id="catalog">
+    <div class="section-head"><div><div class="eyebrow">A seleção</div><h2>Escolha sua fragrância</h2><p>Escolha o tamanho e adicione ao carrinho.</p></div></div>
+    <div class="products" id="products"></div>
+  </section>
+  <section class="section faq-section" id="faq">
+    <div class="section-head"><div><div class="eyebrow">Antes de pedir</div><h2>Dúvidas frequentes</h2><p>Informações essenciais para comprar com mais clareza.</p></div></div>
+    <div class="faq-list">
+      <details class="faq-item"><summary>O que é um decant?</summary><div class="faq-answer">É uma quantidade de perfume acondicionada em um recipiente menor, nos volumes de 2 ml, 5 ml ou 10 ml, para experimentar ou usar sem comprar o frasco inteiro.</div></details>
+      <details class="faq-item"><summary>Como o perfume é fracionado?</summary><div class="faq-answer">A fragrância é acondicionada em um recipiente menor, no volume selecionado. Se quiser detalhes sobre o processo ou a procedência de um perfume específico, consulte a loja pelo WhatsApp antes de fechar o pedido.</div></details>
+      <details class="faq-item"><summary>O recipiente do decant é o frasco original da marca?</summary><div class="faq-answer">Não. O perfume é vendido fracionado em um recipiente menor; a embalagem do decant não é a embalagem de fábrica da marca. Para esclarecer a procedência de uma fragrância específica, fale com a loja pelo <a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">WhatsApp</a> antes de concluir o pedido.</div></details>
+      <details class="faq-item"><summary>Como funcionam frete e prazo de entrega?</summary><div class="faq-answer">O frete e o prazo dependem do endereço e serão confirmados pelo WhatsApp antes da finalização do pedido.</div></details>
+      <details class="faq-item"><summary>Quais formas de pagamento são aceitas?</summary><div class="faq-answer">As formas de pagamento disponíveis serão informadas pelo atendimento no WhatsApp antes de confirmar a compra.</div></details>
+      <details class="faq-item"><summary>Os perfumes em frascos inteiros têm preço definido?</summary><div class="faq-answer">No momento, são exibidos como “Sob consulta”. Preço, disponibilidade, frete e prazo serão confirmados pelo WhatsApp.</div></details>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="brand">SANTINO NOBRE</div>
+  <p>Descubra sua próxima fragrância.</p>
+  <p>As marcas e fragrâncias pertencem aos respectivos titulares.</p>
+</footer>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Carrinho de compras">
+  <div class="drawer">
+    <div class="drawer-head"><h2>Seu carrinho</h2><button class="close" id="closeCart">Fechar ✕</button></div>
+    <div class="goal-box" aria-live="polite"><p class="goal-copy" id="goalCopy">Adicione decants ao carrinho para atingir R$ 80,00 e ganhar 10% de desconto nos decants.</p><div class="goal-track"><div class="goal-fill" id="goalFill"></div></div><div class="goal-meta"><span id="goalCurrent">R$ 0,00</span><span>Meta: R$ 80,00</span></div></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-total">
+      <div class="total-line"><span>Total do pedido</span><strong id="cartTotal">R$ 0,00</strong></div>
+      <button class="btn checkout" id="checkout">Finalizar pelo WhatsApp</button>
+      <div class="small-note">Você será direcionado ao WhatsApp para combinar pagamento e entrega.</div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+/* Preços de decants calculados a partir de referência do frasco de 100 ml + margem estimada e embalagem; confirme o custo real de compra. */
+const STORE_WHATSAPP = "5531996312579";
+const CURRENCY = new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});
+const PRODUCTS = [
+ {id:"kingdom",name:"The Kingdom",brand:"Lattafa",image:"https://static01.galaxus.com/productimages/5/4/2/7/9/5/2/8/0/1/7/1/6/9/6/8/9/0/019bd342-bc73-7aeb-8f11-39b1b21ce8c5_sea.jpeg",tag:"Importado",description:"Aromático e ambarado, com notas de lavanda, menta e baunilha.",volumes:[{ml:2,price:7.9},{ml:5,price:17.9},{ml:10,price:33.9}]},
+ {id:"212-vip-black",name:"212 VIP Black",brand:"Carolina Herrera",image:"https://f.fcdn.app/imgs/267ea9/www.sanroque.com.uy/sanruy/e03f/original/catalogo/115289_115289_2/2000-2000/perfume-carolina-herrera-212-vip-black-men-edp-100ml-perfume-carolina-herrera-212-vip-black-men-edp-100ml.jpg",tag:"Importado",description:"Absinto e lavanda sobre um fundo de baunilha e almíscar.",volumes:[{ml:2,price:15.9},{ml:5,price:37.9},{ml:10,price:74.9}]},
+ {id:"the-blend-bourbon",name:"The Blend Bourbon",brand:"O Boticário",image:"https://acdn-us.mitiendanube.com/stores/004/272/506/products/2vk5xdni-1-43274082dcfc0f627517374007289087-640-0.webp",tag:"Nacional",description:"Especiado e amadeirado, com um toque quente de bourbon.",volumes:[{ml:2,price:9.9},{ml:5,price:22.9},{ml:10,price:42.9}]},
+ {id:"asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",image:"https://acdn-us.mitiendanube.com/stores/003/862/651/products/asad-bourbon2-801e8a1f2a048ce97317510387425776-1024-1024.webp",tag:"Importado",description:"Especiado e adocicado, com ameixa, cacau e baunilha bourbon.",volumes:[{ml:2,price:7.9},{ml:5,price:16.9},{ml:10,price:32.9}]},
+ {id:"homem-sagaz",name:"Homem Sagaz",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600",tag:"Nacional",description:"Amadeirado e marcante, com perfil moderno e intenso. Uma opção para quem gosta de presença e elegância.",volumes:[{ml:2,price:5.9},{ml:5,price:11.9},{ml:10,price:22.9}]},
+ {id:"homem-dom",name:"Homem Dom",brand:"Natura",image:"https://production.na01.natura.com/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw035424b3/Produtos/PRODUTO/NATBRA-71770_1.jpg?q=80&sw=600",tag:"Nacional",description:"Amadeirado e especiado, com baunilha negra e madeiras.",volumes:[{ml:2,price:5.9},{ml:5,price:11.9},{ml:10,price:22.9}]},
+ {id:"homem-essence",name:"Homem Essence",brand:"Natura",image:"https://down-br.img.susercontent.com/file/br-11134201-7r98o-lwqhda3c55zt9f",tag:"Nacional",description:"Amadeirado e especiado, com bergamota, gengibre e cedro.",volumes:[{ml:2,price:7.9},{ml:5,price:16.9},{ml:10,price:31.9}]},
+ {id:"essencial-sentir",name:"Essencial Sentir",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-co-storefront-catalog/default/dw06d0c53c/NATCOL-179067_1.png",tag:"Nacional",description:"Amadeirado aromático, com sândalo e toque especiado.",volumes:[{ml:2,price:8.9},{ml:5,price:18.9},{ml:10,price:35.9}]},
+ {id:"fakhar-black",name:"Fakhar Black",brand:"Lattafa",image:"https://m.magazineluiza.com.br/a-static/420x420/perfume-arabe-fakhar-black-lattafa-masculino-original-100ml/glowgomake/0156/2810be863dd32d57db7241f9d98ef18c.jpeg",tag:"Importado",description:"Aromático e amadeirado, combinando frescor e notas ambaradas.",volumes:[{ml:2,price:5.9},{ml:5,price:12.9},{ml:10,price:23.9}]},
+ {id:"k-max",name:"K Max",brand:"Natura Kaiak",image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2ilre9m85au14",tag:"Nacional",description:"Aromático e amadeirado, com frescor cítrico e especiarias.",volumes:[{ml:2,price:7.9},{ml:5,price:16.9},{ml:10,price:30.9}]}
+];
+const PERFUME_INFO = {
+ "kingdom":{family:"Aromático, ambarado e adocicado",top:"Sálvia, lavanda e menta",heart:"Tabaco, baunilha e flor de laranjeira",base:"Benjoim, fava tonka e ládano",use:"Versátil; combina com encontros, saídas à noite e clima ameno.",source:"https://lattafa.com/product/kingdom-men/"},
+ "212-vip-black":{family:"Aromático, ambarado e amadeirado",top:"Absinto",heart:"Lavanda e couro preto",base:"Baunilha e almíscar",use:"Perfil intenso e sensual; melhor para festas, encontros e noite.",source:"https://www.carolinaherrera.com/br/pt/p-fragrance/212-vip-black?sku=000000000065224438"},
+ "the-blend-bourbon":{family:"Oriental especiado e ambarado",top:"Pimenta rosa e lavanda",heart:"Cravo, canela, pimenta-preta e noz-moscada",base:"Baunilha Bourbon e acordes ambarados",use:"Quente, marcante e adocicado; indicado para noites, encontros e clima fresco.",source:"https://www.boticario.com.br/produto/the-blend-bourbon-eau-de-parfum-100ml-v2"},
+ "asad-bourbon":{family:"Ambarado, especiado e adocicado",top:"Pimenta rosa, lavanda e ameixa Mirabelle",heart:"Cacau, davana e noz-moscada",base:"Vetiver, baunilha Bourbon e âmbar",use:"Doce e encorpado; funciona bem em festas, encontros e noites mais frescas.",source:"https://lattafa.com/product/asad-bourbon/"},
+ "homem-sagaz":{family:"Amadeirado e adocicado",top:"Mandarina verde, erva-cidreira, cipreste e sálvia",heart:"Pimenta-preta, noz-moscada e ameixa-preta",base:"Cedro, âmbar, sândalo, baunilha e fava tonka",use:"Marcante; boa escolha para sair e ocasiões especiais.",source:"https://www.natura.com.br/p/deo-parfum-natura-homem-sagaz-100ml/NATBRA-81951"},
+ "homem-dom":{family:"Adocicado, amadeirado e especiado",top:"Cardamomo, pimenta-preta e cypriol",heart:"Baunilha negra, tonka, acorde balsâmico e folhas de violeta",base:"Priprioca, guaiaco, sândalo, vetiver, ambroxan, cashmeran e musk",use:"Sofisticado e marcante; indicado para encontros, eventos e ocasiões especiais.",source:"https://www.natura.com.br/p/natura-homem-dom-deo-parfum-100-ml/NATBRA-71770"},
+ "homem-essence":{family:"Amadeirado e ambarado",top:"Bergamota, gengibre, grapefruit e limão",heart:"Pimenta-preta, violeta, cardamomo, canela e coentro",base:"Patchouli, âmbar, guaiaco, cashmeran e cedro",use:"Amadeirado especiado e elegante; indicado para sair e ocasiões especiais.",source:"https://www.natura.com.br/p/desodorante-perfume-natura-homem-essence-100-ml/NATBRA-59847"},
+ "essencial-sentir":{family:"Amadeirado aromático intenso",top:"Bergamota e piper",heart:"Lavanda",base:"Sândalo e patchouli",use:"Tem presença e frescor especiado; bom para compromissos longos, confraternizações e eventos noturnos.",source:"https://www.natura.com.br/blog/perfumaria/melhores-fragrancias-da-natura"},
+ "fakhar-black":{family:"Aromático, fresco e amadeirado",top:"Bergamota, maçã e gengibre",heart:"Lavanda, sálvia, bagas de zimbro e gerânio",base:"Fava tonka, âmbar, cedro e vetiver",use:"Versátil e moderno; pode acompanhar o dia a dia e também festas.",source:"https://lattafa.com/"},
+ "k-max":{family:"Aromático intenso e amadeirado",top:"Pimenta rosa, grapefruit, pimenta-preta, gengibre e acorde aquoso",heart:"Lavanda, zimbro, cardamomo, couro, olíbano e violeta",base:"Sândalo, cedro, musk, cashmeran, patchouli, vetiver e âmbar",use:"Intenso, mas com frescor cítrico; funciona no dia a dia e em ocasiões especiais.",source:"https://www.natura.com.br/p/k-max-masculino-100-ml/NATBRA-72468"},
+ "full-le-male":{family:"Âmbar e amadeirado",top:"Cardamomo",heart:"Lavanda e íris",base:"Baunilha",use:"Quente e elegante; especialmente indicado para noite, encontros e clima fresco.",source:"https://www.jeanpaulgaultier.com/"},
+ "full-afnan-9pm":{family:"Frutado e especiado",top:"Bergamota, lavandim, canela e maçã",heart:"Lírio-do-vale e flor de laranjeira",base:"Patchouli, âmbar, baunilha e fava tonka",use:"Adocicado e chamativo; favorece festas, encontros e uso noturno.",source:"https://afnan.com/products/9-pm"},
+ "full-asad-bourbon":{family:"Ambarado, especiado e adocicado",top:"Pimenta rosa, lavanda e ameixa Mirabelle",heart:"Cacau, davana e noz-moscada",base:"Vetiver, baunilha Bourbon e âmbar",use:"Encorpado e quente; bom para noites, festas e clima fresco.",source:"https://lattafa.com/product/asad-bourbon/"},
+ "full-asad":{family:"Ambarado e especiado",top:"Pimenta-preta, abacaxi e tabaco",heart:"Café, íris e patchouli",base:"Âmbar, baunilha, madeiras secas, benjoim e ládano",use:"Intenso e quente; melhor em noites, encontros e clima ameno.",source:"https://lattafa.com/product/asad/"},
+ "full-eros":{family:"Aromático fougère",top:"Limão, mandarina, menta e maçã",heart:"Gerânio, sálvia e acordes aromáticos",base:"Baunilha, cedro, vetiver, patchouli e fava tonka",use:"Fresco e doce, com projeção; bom para festas, encontros e uso versátil conforme a dose.",source:"https://www.versace.com/"},
+ "full-million":{family:"Fresco, especiado e amadeirado",top:"Tangerina vermelha, toranja e hortelã",heart:"Canela amadeirada e rosa",base:"Âmbar com nuances de couro, madeiras fumadas e patchouli",use:"Marcante e sensual; especialmente indicado para noite, festas e encontros.",source:"https://www.rabanne.com/br/pt/fragrance/p/1-million--000000000065189326"},
+ "full-sauvage":{family:"Aromático fougère",top:"Bergamota da Calábria",heart:"Pimenta e notas aromáticas",base:"Ambroxan e madeiras ambaradas",use:"Fresco e versátil; adequado ao dia a dia, encontros e ocasiões noturnas.",source:"https://www.dior.com/"},
+ "full-invictus":{family:"Amadeirado aquático",top:"Notas marinhas, toranja e mandarina",heart:"Folha de louro e jasmim",base:"Madeira guaiac, musgo de carvalho, patchouli e âmbar",use:"Fresco, esportivo e versátil; combina com calor, lazer e festas informais.",source:"https://www.rabanne.com/"},
+ "full-myslf":{family:"Amadeirado floral",top:"Bergamota da Calábria",heart:"Flor de laranjeira",base:"Madeiras e patchouli",use:"Limpo e moderno; versátil para trabalho, encontros e eventos.",source:"https://www.yslbeautyus.com/"}
+};
+function infoMarkup(id){
+ const i=PERFUME_INFO[id]; if(!i)return "";
+ return `<details class="info-details"><summary>Informações e notas</summary><div class="info-content">
+ <p><strong>Perfil olfativo:</strong> ${escapeHTML(i.family)}</p>
+ <p><strong>Notas de saída:</strong> ${escapeHTML(i.top)}</p>
+ <p><strong>Notas de coração:</strong> ${escapeHTML(i.heart)}</p>
+ <p><strong>Notas de fundo:</strong> ${escapeHTML(i.base)}</p>
+ <p><strong>Quando usar:</strong> ${escapeHTML(i.use)}</p>
+ <p><a href="${escapeHTML(i.source)}" target="_blank" rel="noopener noreferrer">Consultar fonte</a></p>
+ </div></details>`;
+}
+const FULL_SIZE_PRODUCTS = [
+ {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,version:"Eau de Parfum Intense",image:"https://arome.mx/cdn/shop/files/perfume-le-male-le-parfum-para-hombre-de-jean-paul-gaultier-arome-mexico-3_1200x1200.jpg?v=1725558080",description:"Eau de Parfum Intense de 125 ml, com assinatura amadeirada e âmbar."},
+ {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,version:"Eau de Parfum",image:"https://cdn.dooca.store/181275/products/frasco-afnan-9pm-100ml-edp-masculino-noturno-ambar-perfumes.jpg?v=1771204807",description:"Eau de Parfum de 100 ml. Ofertas públicas abaixo de R$ 500; confirme vendedor, frete e autenticidade."},
+ {id:"full-asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",ml:100,version:"Eau de Parfum",image:"https://media.cdn.kaufland.de/product-images/original/b4a7cd262b1b59538f425245be4fff95.jpg",description:"Eau de Parfum de 100 ml; variante distinta do Asad original."},
+ {id:"full-asad",name:"Asad tradicional",brand:"Lattafa",ml:100,version:"Eau de Parfum",image:"https://epocacosmeticos.vteximg.com.br/arquivos/ids/1310679-800-800/17603916694210.jpg?v=639001969767870000",description:"Eau de Parfum de 100 ml, versão original de Lattafa Asad."},
+ {id:"full-eros",name:"Eros",brand:"Versace",ml:100,version:"Eau de Toilette",image:"https://www.perfumenz.co.nz/cdn/shop/products/versace_eros_1200x1200.jpg?v=1531373446",description:"Frasco original de 100 ml. Preço de venda SANTINO ainda não definido."},
+ {id:"full-million",name:"1 Million",brand:"Rabanne",ml:100,version:"Eau de Toilette",image:"https://hogiesonline.co.uk/cdn/shop/files/opy3hsarjs2.png?v=1763026114&width=1946",description:"Frasco original de 100 ml. Confirmar preço e disponibilidade no fornecedor."},
+ {id:"full-sauvage",name:"Sauvage",brand:"Dior",ml:100,version:"Eau de Toilette",image:"https://www.sephora.com.mx/on/demandware.static/-/Sites-masterCatalog_Sephora/es_MX/dwdefc1b76/images/hi-res/eau-de-toilette-dior-dior-sauvage-eau-de-toilette-100ml3348901250146A.jpg",description:"Frasco original de 100 ml. Preço de venda SANTINO ainda não definido."},
+ {id:"full-invictus",name:"Invictus",brand:"Rabanne",ml:100,version:"Eau de Toilette",image:"https://media.ulta.com/i/ulta/2279388_alt01?fmt=auto&h=1600&w=1600",description:"Eau de Toilette de 100 ml. Faixa de referência de varejistas; confirme a versão e o valor final."},
+ {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,version:"Eau de Parfum",image:"https://www.adorebeauty.com.au/pim_media/000/437/935/Yves_Saint_Laurent_MYSLF_100ml.png?fmt=webp&h=386&w=386",description:"Eau de Parfum de 100 ml. Referência inicial; confirme o valor final e a disponibilidade."}
+];
+let cart = [];
+try { const savedCart = JSON.parse(localStorage.getItem("santino_nobre_cart") || "[]"); if (Array.isArray(savedCart)) cart = savedCart; } catch (e) { cart = []; }
+const $ = id => document.getElementById(id);
+function money(n){return CURRENCY.format(n)}
+function renderProducts(){
+ $("products").innerHTML = PRODUCTS.map(p=>`<article class="product">
+   <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
+   <h3>${escapeHTML(p.name)}</h3>
+   <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
+   ${infoMarkup(p.id)}
+   <div class="variants"><label style="width:100%">Tamanho
+     <select id="volume-${p.id}" aria-label="Volume de ${escapeHTML(p.name)}">${p.volumes.map((v,i)=>`<option value="${i}">${v.ml} ml</option>`).join("")}</select>
+   </label></div>
+   <div class="price-row"><span class="price" id="price-${p.id}">${money(p.volumes[0].price)}</span><span class="volume" id="selected-volume-${p.id}">${p.volumes[0].ml} ml</span></div>
+   <button class="add" data-add="${p.id}">Adicionar ao carrinho</button>
+ </article>`).join("");
+ PRODUCTS.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price);$("selected-volume-"+p.id).textContent=v.ml+" ml"})});
+ document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(b.dataset.add)));
+}
+function renderFullSizeProducts(){
+ $("fullSizeProducts").innerHTML = FULL_SIZE_PRODUCTS.map(p=>`<article class="product full-size-product">
+   <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
+   <h3>${escapeHTML(p.name)}</h3>
+   <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
+   <p class="card-meta">${escapeHTML(p.version)} · ${p.ml} ml</p>
+   ${infoMarkup(p.id)}
+   <div class="price-row"><span class="price price-pending">Sob consulta</span></div>
+   <button class="add" data-add-full="${p.id}">Adicionar ao carrinho</button>
+ </article>`).join("");
+ document.querySelectorAll("[data-add-full]").forEach(b=>b.addEventListener("click",()=>addFullSizeToCart(b.dataset.addFull)));
+}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function addToCart(id){
+ const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
+ const key=id+"-"+v.ml; const existing=cart.find(x=>x.key===key);
+ if(existing)existing.qty++;else cart.push({key,id,name:p.name,brand:p.brand,ml:v.ml,price:v.price,qty:1,category:"Decant"});
+ renderCart();showToast(p.name+" adicionado ao carrinho.");
+}
+function addFullSizeToCart(id){
+ const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id); if(!p)return;
+ const key=id+"-full"; const existing=cart.find(x=>x.key===key);
+ if(existing)existing.qty++;else cart.push({key,id,name:p.name,brand:p.brand,ml:p.ml,price:null,qty:1,category:"Frasco inteiro",version:p.version});
+ renderCart();showToast(p.name+" adicionado para consulta.");
+}
+function changeQty(key,delta){const item=cart.find(x=>x.key===key);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.key!==key);renderCart()}
+function removeItem(key){cart=cart.filter(x=>x.key!==key);renderCart()}
+function renderCart(){
+ try { localStorage.setItem("santino_nobre_cart", JSON.stringify(cart)); } catch (e) {}
+ $("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
+ const allPriced=cart.length>0 && cart.every(x=>Number.isFinite(x.price));
+ const total=cart.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
+ const goal=80, discountRate=0.10, goalTotal=cart.reduce((s,x)=>s+(Number.isFinite(x.price)&&x.category==="Decant"?x.price*x.qty:0),0);
+ const discount=goalTotal>=goal?goalTotal*discountRate:0;
+ const totalAfterDiscount=total-discount;
+ const progress=Math.min(100,(goalTotal/goal)*100), reached=goalTotal>=goal;
+ $("goalFill").style.width=progress+"%"; $("goalCurrent").textContent=money(goalTotal);
+ $("goalCopy").innerHTML=reached?`<strong>Meta atingida!</strong> Você desbloqueou 10% de desconto nos decants com preço definido. Desconto: ${money(goalTotal*discountRate)}.`:`Adicione mais ${money(goal-goalTotal)} em decants para atingir a meta de R$ 80,00 e ganhar 10% de desconto nos decants.`;
+ $("cartTotal").textContent=allPriced?money(totalAfterDiscount):(total>0?money(totalAfterDiscount)+" + frascos a confirmar":"A confirmar");
+ if(!cart.length){$("cartItems").innerHTML='<div class="empty">Seu carrinho está vazio.<br>Escolha uma fragrância para começar.</div>';return}
+ $("cartItems").innerHTML=cart.map(x=>`<div class="cart-item"><div><strong>${escapeHTML(x.name)}</strong><small>${escapeHTML(x.brand)} · ${x.category?escapeHTML(x.category)+" · ":""}${x.ml} ml · ${x.version?escapeHTML(x.version)+" · ":""}${Number.isFinite(x.price)?money(x.price)+" cada":"preço a confirmar"}</small><div class="item-controls"><button data-minus="${x.key}" aria-label="Diminuir quantidade">−</button><span>${x.qty}</span><button data-plus="${x.key}" aria-label="Aumentar quantidade">+</button></div></div><div style="text-align:right"><strong>${Number.isFinite(x.price)?money(x.price*x.qty):"A confirmar"}</strong><div class="item-controls"><button class="remove" data-remove="${x.key}">Remover</button></div></div></div>`).join("");
+ document.querySelectorAll("[data-minus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.minus,-1)));
+ document.querySelectorAll("[data-plus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.plus,1)));
+ document.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>removeItem(b.dataset.remove)));
+}
+function openCart(){$("overlay").classList.add("open");document.body.style.overflow="hidden"}
+function closeCart(){$("overlay").classList.remove("open");document.body.style.overflow=""}
+function showToast(msg){$("toast").textContent=msg;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",2300)}
+function checkout(){
+ if(!cart.length){showToast("Adicione ao menos um produto ao carrinho.");return}
+ let number=STORE_WHATSAPP;
+ if(!/^55\d{10,11}$/.test(number)){number=prompt("Digite o WhatsApp da loja com código do país e DDD, somente números (ex.: 5531999999999):")||"";number=number.replace(/\D/g,"")}
+ if(!/^55\d{10,11}$/.test(number)){showToast("Número de WhatsApp inválido. Informe um número válido.");return}
+ const lines=cart.map(x=>`• ${x.name} (${x.brand}) — ${x.ml} ml × ${x.qty}: ${Number.isFinite(x.price)?money(x.price*x.qty):"preço a confirmar"}`);
+ const decantSubtotal=cart.reduce((s,x)=>s+(Number.isFinite(x.price)&&x.category==="Decant"?x.price*x.qty:0),0);
+ const discount=decantSubtotal>=80?decantSubtotal*0.10:0;
+ const fullSizePending=cart.some(x=>x.category==="Frasco inteiro");
+ const summary=["Subtotal dos decants: "+money(decantSubtotal),"Desconto nos decants: "+money(discount),"Subtotal dos decants com desconto: "+money(decantSubtotal-discount)];
+ if(fullSizePending)summary.push("Frascos inteiros: preço a confirmar");
+ summary.push("Frete e pagamento: a confirmar");
+ const message=`Olá! Quero fazer este pedido na SANTINO NOBRE:\n\n${lines.join("\n")}\n\n${summary.join("\n")}\n\nPodem me informar os próximos passos?`;
+ window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
+}
+$("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
+$("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
+$("checkout").addEventListener("click",checkout);
+renderProducts();renderCart();
+</script>
+</body>
+</html>
