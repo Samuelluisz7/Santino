@@ -1,0 +1,7 @@
+SANTINO NOBRE — catálogo de decants
+
+Como testar: abra index.html em um navegador atualizado. As fotos são carregadas de páginas externas e precisam de internet.
+
+Funcionalidades: preços definidos para 2 ml, 5 ml e 10 ml; carrinho com controle de quantidade; pedido encaminhado ao WhatsApp 55 31 99631-2579 após clicar em “Finalizar pelo WhatsApp”. A mensagem inclui produtos, volumes, quantidades e total.
+
+Para publicar, envie o arquivo index.html para um serviço de hospedagem estática.
