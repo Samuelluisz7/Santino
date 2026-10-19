@@ -47,6 +47,10 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .cart-item strong{font-weight:500}.cart-item small{display:block;color:var(--muted);margin-top:5px}.item-controls{display:flex;gap:7px;align-items:center;margin-top:10px}.item-controls button{background:transparent;border:1px solid var(--line);color:var(--cream);padding:4px 9px}.remove{color:#d9bca0!important}
 .cart-total{border-top:1px solid var(--line);padding-top:15px}.total-line{display:flex;justify-content:space-between;margin-bottom:15px;font-size:18px}.checkout{width:100%;padding:14px}.small-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--cream);color:#171512;padding:12px 18px;z-index:30;display:none;max-width:90%;font-size:13px}
+.catalog-nav{display:flex;align-items:center;gap:14px;margin-left:auto}.catalog-nav a{color:var(--muted);font-size:12px;text-decoration:none;white-space:nowrap}.catalog-nav a:hover{color:var(--beige)}
+.secondary-hero{background:transparent;color:var(--cream);margin-left:6px}
+.full-size-section{border-top:1px solid var(--line);padding-top:35px}.market-reference{font-size:12px;color:var(--muted);line-height:1.5;min-height:37px;margin:0 0 10px}.price-pending{font-size:16px!important;color:var(--beige)!important}
+@media(max-width:720px){.catalog-nav{order:3;width:100%;margin:4px 0 0;justify-content:flex-start}.nav{flex-wrap:wrap}.secondary-hero{margin-left:0}}
 @media(max-width:720px){.hero{grid-template-columns:1fr;padding:24px 15px 22px;gap:18px}.hero-art{min-height:150px;max-height:170px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product{padding:9px}.product-art{height:132px}.product h3{font-size:18px}.product .desc{font-size:12px}.section-head{align-items:start;flex-direction:column}.nav{padding:13px 15px}.section{padding-left:15px;padding-right:15px}}
 @media(max-width:390px){.products{grid-template-columns:1fr}.product-art{height:190px}}
 </style>
@@ -54,6 +58,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 <body>
 <header><div class="nav">
   <div class="brand" id="brand">SANTINO NOBRE<small>DECANTS & FRAGRÂNCIAS</small></div>
+  <nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="#catalog">Decants</a><a href="#full-size-catalog">Frascos inteiros</a></nav>
   <button class="cart-button" id="openCart" aria-label="Abrir carrinho">Carrinho <span id="cartCount">0</span></button>
 </div></header>
 <main>
@@ -61,14 +66,18 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
     <div>
       <div class="eyebrow">Descubra. Experimente. Escolha.</div>
       <h1>Sua próxima fragrância começa aqui.</h1>
-      <p>Explore decants de 2 ml, 5 ml e 10 ml. Escolha suas fragrâncias, monte seu pedido e finalize pelo WhatsApp.</p>
-      <a class="btn" href="#catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Explorar fragrâncias</a>
+      <p>Explore decants de 2 ml, 5 ml e 10 ml ou conheça os perfumes em frascos inteiros. Monte seu pedido e finalize pelo WhatsApp.</p>
+      <a class="btn" href="#catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Explorar decants</a> <a class="btn secondary-hero" href="#full-size-catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Frascos inteiros</a>
     </div>
     <div class="hero-art" aria-label="Ilustração decorativa de perfume"><div class="bottle"></div></div>
   </section>
   <section class="section" id="catalog">
     <div class="section-head"><div><div class="eyebrow">A seleção</div><h2>Escolha sua fragrância</h2><p>Escolha o tamanho e adicione ao carrinho.</p></div></div>
     <div class="products" id="products"></div>
+  </section>
+  <section class="section full-size-section" id="full-size-catalog">
+    <div class="section-head"><div><div class="eyebrow">Fragrâncias em frasco original</div><h2>Frascos inteiros</h2><p>Preços de mercado são referências. O preço de venda e a disponibilidade da SANTINO precisam ser confirmados antes da compra.</p></div></div>
+    <div class="products" id="fullSizeProducts"></div>
   </section>
 </main>
 <footer>
@@ -104,6 +113,17 @@ const PRODUCTS = [
  {id:"fakhar-black",name:"Fakhar Black",brand:"Lattafa",image:"https://m.magazineluiza.com.br/a-static/420x420/perfume-arabe-fakhar-black-lattafa-masculino-original-100ml/glowgomake/0156/2810be863dd32d57db7241f9d98ef18c.jpeg",tag:"Importado",description:"Aromático e amadeirado, combinando frescor e notas ambaradas.",volumes:[{ml:2,price:10},{ml:5,price:19},{ml:10,price:34}]},
  {id:"k-max",name:"K Max",brand:"Natura Kaiak",image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2ilre9m85au14",tag:"Nacional",description:"Aromático e amadeirado, com frescor cítrico e especiarias.",volumes:[{ml:2,price:10},{ml:5,price:18},{ml:10,price:32}]}
 ];
+const FULL_SIZE_PRODUCTS = [
+ {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,version:"Eau de Parfum Intense",marketRange:"R$ 665–839",image:"https://arome.mx/cdn/shop/files/perfume-le-male-le-parfum-para-hombre-de-jean-paul-gaultier-arome-mexico-3_1200x1200.jpg?v=1725558080",description:"Frasco original de 125 ml. Preço de venda SANTINO ainda não definido."},
+ {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,version:"Eau de Parfum",marketRange:"R$ 216,81–349,90",image:"https://images.tcdn.com.br/img/img_prod/1387058/afnan_9pm_eau_de_parfum_100ml_1_20250806094327_a0fd637de4cf.jpeg",description:"Frasco original de 100 ml. Alternativa ao Sospiro Vibrato dentro do limite de R$ 500."},
+ {id:"full-asad-black",name:"Asad Black",brand:"Lattafa",ml:100,version:"Eau de Parfum — nome de mercado a confirmar",marketRange:"R$ 204–330 (provisório)",image:"https://a-static.mlcdn.com.br/800x800/perfume-asad-black-100ml-lattafa/storebox/ce767e0e6bf811f08ebc42010a480899/0e6675af5039b2313377c68723aee99d.jpeg",description:"Confirmar SKU/EAN: fontes de mercado podem usar Asad Black como apelido do Asad tradicional."},
+ {id:"full-asad",name:"Asad tradicional",brand:"Lattafa",ml:100,version:"Eau de Parfum",marketRange:"R$ 199,90–249,90",image:"https://epocacosmeticos.vteximg.com.br/arquivos/ids/1310679-800-800/17603916694210.jpg?v=639001969767870000",description:"Frasco original de 100 ml. Confirmar se a listagem separada de Asad Black representa outro SKU."},
+ {id:"full-eros",name:"Eros",brand:"Versace",ml:100,version:"Eau de Toilette",marketRange:"R$ 440,71–495,99",image:"https://bulldog.vn/uploads/tt_hinh/90-r740010-r100mls-rnul-20-eros-edt-100-ml-versace-online-store-0-0-jpg-20230928124005EBeB4zX6y5.jpg",description:"Frasco original de 100 ml. Preço de venda SANTINO ainda não definido."},
+ {id:"full-million",name:"1 Million",brand:"Rabanne",ml:100,version:"Eau de Toilette",marketRange:"R$ 400–453 (referência provisória)",image:"https://hogiesonline.co.uk/cdn/shop/files/opy3hsarjs2.png?v=1763026114&width=1946",description:"Frasco original de 100 ml. Confirmar preço e disponibilidade no fornecedor."},
+ {id:"full-sauvage",name:"Sauvage",brand:"Dior",ml:100,version:"Eau de Toilette",marketRange:"R$ 869–939",image:"https://www.sephora.com.mx/on/demandware.static/-/Sites-masterCatalog_Sephora/es_MX/dwdefc1b76/images/hi-res/eau-de-toilette-dior-dior-sauvage-eau-de-toilette-100ml3348901250146A.jpg",description:"Frasco original de 100 ml. Preço de venda SANTINO ainda não definido."},
+ {id:"full-invictus",name:"Invictus",brand:"Rabanne",ml:100,version:"Eau de Toilette",marketRange:"A partir de R$ 647 — confirmar volume",image:"https://product-data.raiadrogasil.io/images/5890913.webp",description:"A referência encontrada é preço inicial da linha; confirmar valor exato do EDT de 100 ml."},
+ {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,version:"Eau de Parfum",marketRange:"A partir de R$ 1.025",image:"https://www.adorebeauty.com.au/pim_media/000/437/935/Yves_Saint_Laurent_MYSLF_100ml.png?fmt=webp&h=386&w=386",description:"Frasco original de 100 ml. Referência de mercado inicial, não preço de venda da loja."}
+];
 let cart = [];
 const $ = id => document.getElementById(id);
 function money(n){return CURRENCY.format(n)}
@@ -122,12 +142,31 @@ function renderProducts(){
  PRODUCTS.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price);$("selected-volume-"+p.id).textContent=v.ml+" ml"})});
  document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(b.dataset.add)));
 }
+function renderFullSizeProducts(){
+ $("fullSizeProducts").innerHTML = FULL_SIZE_PRODUCTS.map(p=>`<article class="product full-size-product">
+   <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
+   <h3>${escapeHTML(p.name)}</h3>
+   <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
+   <p class="desc">${escapeHTML(p.version)} · ${p.ml} ml</p>
+   <p class="market-reference">Referência de mercado: ${escapeHTML(p.marketRange)}<br>Preço de venda SANTINO: a confirmar</p>
+   <p class="desc">${escapeHTML(p.description)}</p>
+   <div class="price-row"><span class="price price-pending">Consultar valor</span><span class="volume">${p.ml} ml</span></div>
+   <button class="add" data-add-full="${p.id}">Adicionar para consulta</button>
+ </article>`).join("");
+ document.querySelectorAll("[data-add-full]").forEach(b=>b.addEventListener("click",()=>addFullSizeToCart(b.dataset.addFull)));
+}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
  const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
  const key=id+"-"+v.ml; const existing=cart.find(x=>x.key===key);
- if(existing)existing.qty++;else cart.push({key,id,name:p.name,brand:p.brand,ml:v.ml,price:v.price,qty:1});
+ if(existing)existing.qty++;else cart.push({key,id,name:p.name,brand:p.brand,ml:v.ml,price:v.price,qty:1,category:"Decant"});
  renderCart();showToast(p.name+" adicionado ao carrinho.");
+}
+function addFullSizeToCart(id){
+ const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id); if(!p)return;
+ const key=id+"-full"; const existing=cart.find(x=>x.key===key);
+ if(existing)existing.qty++;else cart.push({key,id,name:p.name,brand:p.brand,ml:p.ml,price:null,qty:1,category:"Frasco inteiro",version:p.version});
+ renderCart();showToast(p.name+" adicionado para consulta.");
 }
 function changeQty(key,delta){const item=cart.find(x=>x.key===key);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.key!==key);renderCart()}
 function removeItem(key){cart=cart.filter(x=>x.key!==key);renderCart()}
@@ -137,7 +176,7 @@ function renderCart(){
  const total=cart.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
  $("cartTotal").textContent=allPriced?money(total):"A confirmar";
  if(!cart.length){$("cartItems").innerHTML='<div class="empty">Seu carrinho está vazio.<br>Escolha uma fragrância para começar.</div>';return}
- $("cartItems").innerHTML=cart.map(x=>`<div class="cart-item"><div><strong>${escapeHTML(x.name)}</strong><small>${escapeHTML(x.brand)} · ${x.ml} ml · ${Number.isFinite(x.price)?money(x.price)+" cada":"preço a confirmar"}</small><div class="item-controls"><button data-minus="${x.key}" aria-label="Diminuir quantidade">−</button><span>${x.qty}</span><button data-plus="${x.key}" aria-label="Aumentar quantidade">+</button></div></div><div style="text-align:right"><strong>${Number.isFinite(x.price)?money(x.price*x.qty):"A confirmar"}</strong><div class="item-controls"><button class="remove" data-remove="${x.key}">Remover</button></div></div></div>`).join("");
+ $("cartItems").innerHTML=cart.map(x=>`<div class="cart-item"><div><strong>${escapeHTML(x.name)}</strong><small>${escapeHTML(x.brand)} · ${x.category?escapeHTML(x.category)+" · ":""}${x.ml} ml · ${x.version?escapeHTML(x.version)+" · ":""}${Number.isFinite(x.price)?money(x.price)+" cada":"preço a confirmar"}</small><div class="item-controls"><button data-minus="${x.key}" aria-label="Diminuir quantidade">−</button><span>${x.qty}</span><button data-plus="${x.key}" aria-label="Aumentar quantidade">+</button></div></div><div style="text-align:right"><strong>${Number.isFinite(x.price)?money(x.price*x.qty):"A confirmar"}</strong><div class="item-controls"><button class="remove" data-remove="${x.key}">Remover</button></div></div></div>`).join("");
  document.querySelectorAll("[data-minus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.minus,-1)));
  document.querySelectorAll("[data-plus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.plus,1)));
  document.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>removeItem(b.dataset.remove)));
@@ -150,15 +189,17 @@ function checkout(){
  let number=STORE_WHATSAPP;
  if(!/^55\d{10,11}$/.test(number)){number=prompt("Digite o WhatsApp da loja com código do país e DDD, somente números (ex.: 5531999999999):")||"";number=number.replace(/\D/g,"")}
  if(!/^55\d{10,11}$/.test(number)){showToast("Número de WhatsApp inválido. Informe um número válido.");return}
- const lines=cart.map(x=>`• ${x.name} (${x.brand}) — ${x.ml} ml × ${x.qty}: ${money(x.price*x.qty)}`);
- const total=cart.reduce((s,x)=>s+x.price*x.qty,0);
- const message=`Olá! Gostaria de finalizar este pedido da SANTINO NOBRE:\n\n${lines.join("\n")}\n\nTotal: ${money(total)}\n\nComo podemos combinar pagamento e entrega?`;
+ const allPriced=cart.every(x=>Number.isFinite(x.price));
+ const lines=cart.map(x=>`• ${x.name} (${x.brand}) — ${x.category||"Produto"} · ${x.version?x.version+" · ":""}${x.ml} ml × ${x.qty}: ${Number.isFinite(x.price)?money(x.price*x.qty):"valor a confirmar"}`);
+ const total=cart.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
+ const totalLine=allPriced?("Total: "+money(total)):"Total dos itens com preço definido: "+money(total)+"; valor dos frascos inteiros a confirmar.";
+ const message=`Olá! Gostaria de finalizar este pedido da SANTINO NOBRE:\n\n${lines.join("\n")}\n\n${totalLine}\n\nComo podemos combinar pagamento e entrega?`;
  window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
 }
 $("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
 $("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
 $("checkout").addEventListener("click",checkout);
-renderProducts();renderCart();
+renderProducts();renderFullSizeProducts();renderCart();
 </script>
 </body>
 </html>
