@@ -129,7 +129,15 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
  .cart-link:after{content:"";position:absolute;left:16px;top:7px;width:8px;height:6px;border:1.5px solid var(--beige);border-bottom:0;border-radius:5px 5px 0 0}
  .cart-count{position:absolute!important;right:-6px!important;top:-7px!important;width:19px!important;height:19px!important;border:2px solid var(--black)!important;font-size:10px!important}
 }
-</style>
+
+/* Hotfix: carrinho visível e identificável em telas pequenas */
+@media(max-width:720px){
+ .header-main{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) 44px!important;gap:8px!important}
+ .header-main>.cart-link{grid-column:3!important;grid-row:1!important;display:flex!important;visibility:visible!important;opacity:1!important;position:relative!important;width:44px!important;min-width:44px!important;height:40px!important;min-height:40px!important;padding:0!important;background:#1b1915!important;border:1px solid #8b7554!important;border-radius:4px!important;color:var(--cream)!important;font-size:0!important;overflow:visible!important;z-index:6!important}
+ .header-main>.cart-link:before{content:"";position:absolute;left:13px;top:12px;width:15px;height:12px;border:1.6px solid var(--beige);border-radius:2px}
+ .header-main>.cart-link:after{content:"";position:absolute;left:16px;top:7px;width:9px;height:7px;border:1.6px solid var(--beige);border-bottom:0;border-radius:5px 5px 0 0}
+ .header-main>.cart-link .cart-count{position:absolute!important;right:-6px!important;top:-7px!important;display:grid!important;visibility:visible!important;opacity:1!important;place-items:center!important;width:20px!important;height:20px!important;border:2px solid var(--black)!important;background:var(--beige)!important;color:#171512!important;font-size:10px!important}
+}</style>
 </head>
 <body>
 <header class="site-header">
