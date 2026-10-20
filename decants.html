@@ -249,7 +249,18 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
  header>.nav>.cart-button:before{content:"";position:absolute;left:13px;top:12px;width:15px;height:12px;border:1.6px solid var(--beige);border-radius:2px}
  header>.nav>.cart-button:after{content:"";position:absolute;left:16px;top:7px;width:9px;height:7px;border:1.6px solid var(--beige);border-bottom:0;border-radius:5px 5px 0 0}
  header>.nav>.cart-button span{position:absolute!important;right:-6px!important;top:-7px!important;display:grid!important;visibility:visible!important;opacity:1!important;place-items:center!important;width:20px!important;height:20px!important;margin:0!important;border:2px solid var(--black)!important;background:var(--beige)!important;color:#171512!important;border-radius:50%!important;font-size:10px!important;line-height:1!important}
-}</style>
+}
+/* Ajustes de conversão: incentivo discreto e indicação compartilhável */
+.goal-box[hidden]{display:none!important}
+.goal-box{border-color:#4a4030;border-radius:5px}
+.goal-copy{font-size:13px;line-height:1.55}
+.referral-box{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;margin:0 0 14px;border:1px solid #353027;border-radius:5px;background:#151411}
+.referral-box strong{display:block;color:var(--cream);font-size:12px;font-weight:600}
+.referral-box p{margin:4px 0 0;color:var(--muted);font-size:11px;line-height:1.45}
+.share-referral{flex-shrink:0;min-height:40px;padding:9px 12px;border:1px solid #817052;border-radius:3px;background:transparent;color:var(--beige);font-size:12px;font-weight:600}
+.share-referral:hover{background:#282116}
+@media(max-width:400px){.referral-box{align-items:flex-start;flex-direction:column}.share-referral{width:100%}}
+</style>
 </head>
 <body>
 <header><div class="nav">
@@ -291,12 +302,13 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Carrinho de compras">
   <div class="drawer">
     <div class="drawer-head"><h2>Seu carrinho</h2><button class="close" id="closeCart">Fechar ✕</button></div>
-    <div class="goal-box" aria-live="polite"><p class="goal-copy" id="goalCopy">Adicione decants ao carrinho para atingir R$ 80,00 e ganhar 10% de desconto nos decants.</p><div class="goal-track"><div class="goal-fill" id="goalFill"></div></div><div class="goal-meta"><span id="goalCurrent">R$ 0,00</span><span>Meta: R$ 80,00</span></div></div>
+    <div class="goal-box" id="goalBox" aria-live="polite" hidden><p class="goal-copy" id="goalCopy">Faltam R$ 80,00 para liberar 10% de desconto.</p><div class="goal-track"><div class="goal-fill" id="goalFill"></div></div><div class="goal-meta"><span id="goalCurrent">R$ 0,00</span><span>Meta: R$ 80,00</span></div></div>
+    <div class="referral-box"><div><strong>Compartilhe com um amigo</strong><p>Vocês podem aproveitar R$ 20 de benefício cada um.</p></div><button class="share-referral" id="shareReferral" type="button">Compartilhar</button></div>
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-total">
       <div class="total-line"><span>Total do pedido</span><strong id="cartTotal">R$ 0,00</strong></div>
       <button class="btn checkout" id="checkout">Finalizar pelo WhatsApp</button>
-      <div class="small-note">Frete, prazo e pagamento serão confirmados no WhatsApp. Os 10% de desconto incidem apenas sobre decants em compras a partir de R$ 80.</div>
+      <div class="small-note">Disponibilidade e condições do pedido serão confirmadas no WhatsApp.</div>
     </div>
   </div>
 </div>
@@ -417,12 +429,13 @@ function renderCart(){
  $("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
  const allPriced=cart.length>0 && cart.every(x=>Number.isFinite(x.price));
  const total=cart.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
- const goal=80, discountRate=0.10, goalTotal=cart.reduce((s,x)=>s+(Number.isFinite(x.price)&&x.category==="Decant"?x.price*x.qty:0),0);
+ const goal=80, discountRate=0.10, hasEligibleItems=cart.some(x=>x.category==="Decant"&&Number.isFinite(x.price)), goalTotal=cart.reduce((s,x)=>s+(Number.isFinite(x.price)&&x.category==="Decant"?x.price*x.qty:0),0);
  const discount=goalTotal>=goal?goalTotal*discountRate:0;
  const totalAfterDiscount=total-discount;
  const progress=Math.min(100,(goalTotal/goal)*100), reached=goalTotal>=goal;
+ $("goalBox").hidden=!hasEligibleItems;
  $("goalFill").style.width=progress+"%"; $("goalCurrent").textContent=money(goalTotal);
- $("goalCopy").innerHTML=reached?`<strong>Meta atingida!</strong> Você desbloqueou 10% de desconto nos decants com preço definido. Desconto: ${money(goalTotal*discountRate)}.`:`Adicione mais ${money(goal-goalTotal)} em decants para atingir a meta de R$ 80,00 e ganhar 10% de desconto nos decants.`;
+ $("goalCopy").innerHTML=reached?"<strong>Desconto liberado.</strong> Você economiza "+money(discount)+" neste pedido.":"Faltam "+money(goal-goalTotal)+" para liberar 10% de desconto.";
  $("cartTotal").textContent=allPriced?money(totalAfterDiscount):(total>0?money(totalAfterDiscount)+" + frascos a confirmar":"A confirmar");
  if(!cart.length){$("cartItems").innerHTML='<div class="empty">Seu carrinho está vazio.<br>Escolha uma fragrância para começar.</div>';return}
  $("cartItems").innerHTML=cart.map(x=>`<div class="cart-item"><div><strong>${escapeHTML(x.name)}</strong><small>${escapeHTML(x.brand)} · ${x.category?escapeHTML(x.category)+" · ":""}${x.ml} ml · ${x.version?escapeHTML(x.version)+" · ":""}${Number.isFinite(x.price)?money(x.price)+" cada":"preço a confirmar"}</small><div class="item-controls"><button data-minus="${x.key}" aria-label="Diminuir quantidade">−</button><span>${x.qty}</span><button data-plus="${x.key}" aria-label="Aumentar quantidade">+</button></div></div><div style="text-align:right"><strong>${Number.isFinite(x.price)?money(x.price*x.qty):"A confirmar"}</strong><div class="item-controls"><button class="remove" data-remove="${x.key}">Remover</button></div></div></div>`).join("");
@@ -438,31 +451,43 @@ function checkout(){
  let number=STORE_WHATSAPP;
  if(!/^55\d{10,11}$/.test(number)){number=prompt("Digite o WhatsApp da loja com código do país e DDD, somente números (ex.: 5531999999999):")||"";number=number.replace(/\D/g,"")}
  if(!/^55\d{10,11}$/.test(number)){showToast("Número de WhatsApp inválido. Informe um número válido.");return}
- const decants=cart.filter(x=>x.category==="Decant");
+ const decants=cart.filter(x=>x.category==="Decant"&&Number.isFinite(x.price));
  const fullSizes=cart.filter(x=>x.category==="Frasco inteiro");
- const subtotal=decants.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
- const discount=subtotal>=80?subtotal*0.10:0;
- const lines=[];
- decants.forEach(x=>lines.push("• "+x.name+" "+x.ml+" ml ×"+x.qty+" — "+money(x.price*x.qty)));
- fullSizes.forEach(x=>lines.push("• "+x.name+" "+x.ml+" ml ×"+x.qty+" — sob consulta"));
+ const decantSubtotal=decants.reduce((s,x)=>s+x.price*x.qty,0);
+ const discount=decantSubtotal>=80?decantSubtotal*0.10:0;
+ const lines=cart.map(x=>"• "+x.name+" — "+x.ml+" ml ×"+x.qty+" — "+(Number.isFinite(x.price)?money(x.price*x.qty):"sob consulta"));
  const summary=[];
- if(decants.length)summary.push("Decants: "+money(subtotal)+(discount>0?" (−"+money(discount)+")":"")+" | Total: "+money(subtotal-discount));
- if(fullSizes.length)summary.push("Frascos inteiros: preço a confirmar");
- summary.push("Frete: a combinar");
+ if(decants.length&&fullSizes.length){
+   summary.push("Subtotal dos decants: "+money(decantSubtotal));
+   summary.push("Desconto: "+(discount>0?"−"+money(discount):"não aplicado"));
+   summary.push("Total parcial: "+money(decantSubtotal-discount));
+   summary.push("Frascos inteiros: preço a confirmar");
+ }else if(decants.length){
+   summary.push("Subtotal: "+money(decantSubtotal));
+   summary.push("Desconto: "+(discount>0?"−"+money(discount):"não aplicado"));
+   summary.push("Total: "+money(decantSubtotal-discount));
+ }else{
+   summary.push("Preço dos frascos inteiros: a confirmar");
+ }
  const message=[
- "Olá! Vim pelo site da SANTINO NOBRE e gostaria de confirmar este pedido:",
- "",
- lines.join("\n"),
- "",
- summary.join("\n"),
- "",
- "Pode confirmar disponibilidade e me passar os próximos passos?"
+   "Gostaria de confirmar este pedido:",
+   "",
+   lines.join("\n"),
+   "",
+   summary.join("\n"),
+   "",
+   "Pode confirmar a disponibilidade?"
  ].join("\n");
  window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
 }
 $("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
 $("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
 $("checkout").addEventListener("click",checkout);
+const referralButton=$("shareReferral");
+if(referralButton)referralButton.addEventListener("click",()=>{
+ const referralMessage="Estou te indicando a SANTINO NOBRE! A indicação oferece R$ 20 de benefício para nós dois. Quando falar com a loja, diga que veio por minha indicação e informe meu nome para ativarmos o benefício. Atendimento: https://wa.me/"+STORE_WHATSAPP;
+ window.open("https://wa.me/?text="+encodeURIComponent(referralMessage),"_blank","noopener,noreferrer");
+});
 renderProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
