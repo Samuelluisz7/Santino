@@ -174,6 +174,48 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .nav-search button{height:100%;min-width:39px;background:transparent;border:0;color:#c9b18b;font-size:24px;cursor:pointer}
 .nav-search input::placeholder{color:#938a7e}
 @media(max-width:720px){.nav-search{order:2;flex:1 1 125px;margin-left:auto;max-width:190px}.nav-search input{font-size:11px;padding-left:10px}.nav-search button{min-width:31px}.catalog-nav{order:3;width:100%;margin-left:0!important}}
+
+/* SANTINO — acabamento premium alinhado ao projeto visual */
+.redesigned-catalog-hero{background:linear-gradient(180deg,#11110f 0%,#1b1510 100%)!important;padding:32px 24px 20px!important}
+.redesigned-catalog-hero .eyebrow{letter-spacing:.18em}
+.redesigned-catalog-hero h1{font-size:clamp(40px,6vw,66px)!important;max-width:800px;margin:10px 0!important}
+.redesigned-catalog-hero p{max-width:650px!important;color:#c6bdb1!important}
+.full-size-section{padding-top:9px!important}
+.full-size-section .section-head{display:flex!important;align-items:end!important;justify-content:space-between!important;gap:20px!important;margin:0 0 19px!important}
+.full-size-head .collection-heading h2{font-size:clamp(27px,4vw,36px);margin:4px 0 5px}
+.full-size-head .collection-heading p{color:var(--muted);font-size:12px;margin:0}
+.collection-controls{display:flex;gap:9px;align-items:end;flex-wrap:wrap}
+.collection-controls label{display:block;color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.collection-controls select{display:block;min-width:148px;max-width:210px;margin-top:6px;padding:11px 30px 11px 12px;background:#171613;color:var(--cream);border:1px solid #3d372f;border-radius:4px;font-size:12px;letter-spacing:0;text-transform:none;min-height:42px}
+.full-size-section .products{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important}
+.full-size-section .product{background:linear-gradient(145deg,#201e19,#151411)!important;border:1px solid #37312a!important;border-radius:5px!important;padding:11px!important;overflow:hidden}
+.full-size-section .product-art{background:#eee5d7!important;border:0!important;border-radius:3px!important;height:230px!important;margin-bottom:11px!important}
+.full-size-section .product-photo{mix-blend-mode:multiply!important;object-fit:contain!important;object-position:center!important;padding:10px!important}
+.full-size-section .product-detail-link h3{font-size:19px!important;margin-bottom:5px!important}
+.full-size-section .product-brand{color:var(--muted);font-size:11px;margin:0 0 5px}
+.full-size-section .product .card-meta{font-size:11px!important;margin:0 0 10px}
+.full-size-section .price-row{margin:7px 0 10px}
+.full-size-section .price-pending{font-family:Georgia,serif;font-size:17px!important}
+.full-size-section .quantity-label{margin:0 0 10px}
+.full-size-section .quantity-label select{background:#11110f;color:var(--cream);border:1px solid #39352f;border-radius:3px;min-height:42px;margin-top:5px}
+.full-size-section .add{background:#c9b18b!important;color:#171512!important;border:1px solid #c9b18b!important;border-radius:4px!important;font-size:12px!important;min-height:45px}
+.faq-section{margin-top:22px}
+@media(max-width:720px){
+ .redesigned-catalog-hero{padding:26px 15px 15px!important}
+ .redesigned-catalog-hero h1{font-size:clamp(34px,8vw,47px)!important}
+ .full-size-section .section-head{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:13px!important}
+ .collection-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .collection-controls label{min-width:0}
+ .collection-controls select{width:100%;min-width:0;max-width:none;padding:10px 7px;font-size:11px}
+ .full-size-section .products{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+ .full-size-section .product{padding:8px!important}
+ .full-size-section .product-art{height:155px!important;margin-bottom:8px!important}
+ .full-size-section .product-detail-link h3{font-size:16px!important;line-height:1.23}
+ .full-size-section .product-brand{font-size:10px;margin-bottom:4px}
+ .full-size-section .product .card-meta{font-size:10px!important}
+ .full-size-section .price-pending{font-size:15px!important}
+ .full-size-section .add{font-size:10px!important;padding:9px 3px!important}
+}
 </style>
 </head>
 <body>
@@ -185,16 +227,22 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 <main>
   <section class="hero redesigned-catalog-hero">
     <div>
-      <div class="eyebrow">Descubra. Experimente. Escolha.</div>
-      <h1>Sua próxima fragrância começa aqui.</h1>
-      <p>Perfumes em estoque. Consulte o preço atualizado, o frete e o prazo de entrega pelo WhatsApp antes de confirmar seu pedido.</p>
+      <div class="eyebrow">A coleção SANTINO</div>
+      <h1>Frascos inteiros.</h1>
+      <p>Perfumes originais selecionados. Consulte preço e disponibilidade pelo WhatsApp.</p>
 
 
     </div>
     
   </section>
   <section class="section full-size-section" id="full-size-catalog">
-    <div class="section-head"><div><div class="eyebrow">Fragrâncias em frasco original</div><h2>Frascos inteiros</h2><p>Adicione os perfumes que deseja consultar. Preço final, disponibilidade, frete e prazo serão confirmados pelo WhatsApp.</p></div></div>
+    <div class="section-head full-size-head">
+      <div class="collection-heading"><div class="eyebrow">A seleção</div><h2>Explore os perfumes</h2><p>Preço, disponibilidade e entrega sob consulta.</p></div>
+      <div class="collection-controls">
+        <label for="fullSizeBrandFilter"><span>Marca</span><select id="fullSizeBrandFilter"><option value="">Todas as marcas</option></select></label>
+        <label for="fullSizeSort"><span>Ordenar por</span><select id="fullSizeSort"><option value="featured">Destaques</option><option value="name">Nome A–Z</option><option value="brand">Marca A–Z</option></select></label>
+      </div>
+    </div>
     <div class="products" id="fullSizeProducts"></div>
   </section>
   <section class="section faq-section" id="faq">
@@ -310,17 +358,32 @@ function renderProducts(){
  PRODUCTS.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price);$("selected-volume-"+p.id).textContent=v.ml+" ml";const button=document.querySelector('[data-add="'+p.id+'"]');if(button)button.textContent="Adicionar "+v.ml+" ml — "+money(v.price)})});
  document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(b.dataset.add)));
 }
+function setupFullSizeFilters(){
+ const brandSelect=$("fullSizeBrandFilter");
+ const sortSelect=$("fullSizeSort");
+ if(brandSelect){
+  const brands=[...new Set(FULL_SIZE_PRODUCTS.map(p=>p.brand))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
+  brandSelect.innerHTML='<option value="">Todas as marcas</option>'+brands.map(brand=>'<option value="'+escapeHTML(brand)+'">'+escapeHTML(brand)+'</option>').join("");
+  brandSelect.addEventListener("change",renderFullSizeProducts);
+ }
+ if(sortSelect)sortSelect.addEventListener("change",renderFullSizeProducts);
+}
 function renderFullSizeProducts(){
- $("fullSizeProducts").innerHTML = FULL_SIZE_PRODUCTS.map(p=>`<article class="product full-size-product">
+ const brand=$("fullSizeBrandFilter")?.value||"";
+ const sort=$("fullSizeSort")?.value||"featured";
+ let items=FULL_SIZE_PRODUCTS.filter(p=>!brand||p.brand===brand);
+ if(sort==="name")items.sort((a,b)=>a.name.localeCompare(b.name,"pt-BR"));
+ if(sort==="brand")items.sort((a,b)=>a.brand.localeCompare(b.brand,"pt-BR")||a.name.localeCompare(b.name,"pt-BR"));
+ $("fullSizeProducts").innerHTML = items.map(p=>`<article class="product full-size-product">
    <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
    <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
    <h3>${escapeHTML(p.name)}</h3>
-   <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
+   <div class="product-brand">${escapeHTML(p.brand)}</div>
    <p class="card-meta">${escapeHTML(p.version)} · ${p.ml} ml</p>
    </a>
    <div class="price-row"><span class="price price-pending">Sob consulta</span></div>
    <label class="quantity-label">Quantidade<select id="qty-${p.id}" aria-label="Quantidade de ${escapeHTML(p.name)}">${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}</select></label>
-   <button class="add" data-add-full="${p.id}">Adicionar ao carrinho</button>
+   <button class="add" data-add-full="${p.id}">Consultar no WhatsApp</button>
  </article>`).join("");
  document.querySelectorAll("[data-add-full]").forEach(b=>b.addEventListener("click",()=>addFullSizeToCart(b.dataset.addFull)));
 }
@@ -379,7 +442,7 @@ function checkout(){
 $("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
 $("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
 $("checkout").addEventListener("click",checkout);
-renderFullSizeProducts();renderCart();
+setupFullSizeFilters();renderFullSizeProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
 <script src="search.js" defer></script>
