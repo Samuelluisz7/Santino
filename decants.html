@@ -236,7 +236,12 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
  .nav .catalog-nav a{font-size:12px}
  .nav .cart-button{grid-column:3;grid-row:1;min-width:30px;width:30px;height:36px;min-height:36px;padding:0!important;font-size:0;border-color:transparent}
  .nav .cart-button span{width:22px;height:22px;margin:0;font-size:11px}
-}</style>
+}
+/* Ícone de busca discreto, sem glifo de fonte */
+.nav-search button{position:relative;font-size:0!important}
+.nav-search button:before{content:"";position:absolute;left:calc(50% - 7px);top:calc(50% - 7px);width:12px;height:12px;border:1.6px solid var(--beige,#c9b18b);border-radius:50%}
+.nav-search button:after{content:"";position:absolute;left:calc(50% + 4px);top:calc(50% + 4px);width:6px;height:1.6px;border-radius:2px;background:var(--beige,#c9b18b);transform:rotate(45deg);transform-origin:left center}
+</style>
 </head>
 <body>
 <header><div class="nav">
