@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#11110f">
-<title>SANTINO NOBRE | Decants</title>
+<title>SANTINO | Decants</title>
 <style>
 :root{--black:#11110f;--panel:#1a1916;--cream:#f3eadb;--beige:#c9b18b;--muted:#b9b0a2;--line:#39352f;--white:#fffaf2}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:var(--cream);font-family:Arial,Helvetica,sans-serif}
@@ -84,11 +84,44 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 }
 @media(max-width:350px){.products{grid-template-columns:1fr}.product-art{height:170px}}
 
+
+/* Refinamento mobile: imagem completa, alvo de toque maior e cabeçalho compacto */
+.hero-art{height:clamp(220px,28vw,310px);background:#0b0a08}
+.hero-art img{object-fit:contain !important;object-position:center center !important;background:#0b0a08}
+.product-art{height:220px}
+.product-photo{object-fit:contain !important;object-position:center center !important;padding:10px;background:transparent}
+.cart-button,.btn,.add{min-height:48px}
+.add{padding:13px 12px;font-size:14px;line-height:1.4}
+.catalog-nav a{font-size:14px}
+@media(max-width:720px){
+ .nav{padding:9px 13px 7px;gap:5px;align-items:center}
+ .brand{font-size:14px;letter-spacing:.16em}
+ .brand small{font-size:8px;letter-spacing:.16em;margin-top:3px}
+ .catalog-nav{margin:0;gap:12px}
+ .catalog-nav a{font-size:13px;padding:6px 0}
+ .cart-button{padding:9px 11px;font-size:13px;min-height:44px}
+ .hero{padding:15px 15px 13px;gap:10px}
+ .hero h1{font-size:clamp(28px,7vw,38px)}
+ .hero-art{height:clamp(185px,52vw,235px);min-height:0;max-height:none}
+ .hero-art img{object-fit:contain !important;object-position:center center !important}
+ .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .product{padding:9px}
+ .product-art{height:170px;margin-bottom:10px}
+ .product-photo{padding:7px;object-fit:contain !important}
+ .product h3{font-size:17px;line-height:1.25}
+ .variants select{min-height:44px;font-size:14px}
+ .add{padding:11px 7px;font-size:13px;min-height:48px}
+ .consult-price,.add-full-secondary{width:100%}
+ .info-details summary{font-size:13px;min-height:44px;display:flex;align-items:center;justify-content:space-between}
+ .footer-links{font-size:12px}
+}
+@media(max-width:350px){.products{grid-template-columns:1fr}.product-art{height:210px}}
+
 </style>
 </head>
 <body>
 <header><div class="nav">
-  <a class="brand brand-home" href="index.html">SANTINO NOBRE<small>DECANTS & FRAGRÂNCIAS</small></a>
+  <a class="brand brand-home" href="index.html">SANTINO<small>DECANTS & FRAGRÂNCIAS</small></a>
   <nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a></nav>
   <button class="cart-button" id="openCart" aria-label="Abrir carrinho">Carrinho <span id="cartCount">0</span></button>
 </div></header>
@@ -120,10 +153,10 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   </section>
 </main>
 <footer>
-  <div class="brand">SANTINO NOBRE</div>
+  <div class="brand">SANTINO</div>
   <p>Descubra sua próxima fragrância.</p>
   <p>As marcas e fragrâncias pertencem aos respectivos titulares.</p>
-  <nav class="footer-links" aria-label="Informações da loja"><a href="politicas.html">Políticas e condições de compra</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Quero%20solicitar%20informa%C3%A7%C3%B5es%20sobre%20o%20cupom%20de%20indica%C3%A7%C3%A3o%20de%20R%24%2020%20da%20SANTINO%20NOBRE." target="_blank" rel="noopener noreferrer">Cupom de indicação</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">Atendimento via WhatsApp</a></nav>
+  <nav class="footer-links" aria-label="Informações da loja"><a href="politicas.html">Políticas e condições de compra</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Quero%20solicitar%20informa%C3%A7%C3%B5es%20sobre%20o%20cupom%20de%20indica%C3%A7%C3%A3o%20de%20R%24%2020%20da%20SANTINO." target="_blank" rel="noopener noreferrer">Cupom de indicação</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">Atendimento via WhatsApp</a></nav>
 </footer>
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Carrinho de compras">
   <div class="drawer">
@@ -279,7 +312,7 @@ function checkout(){
  const summary=["Subtotal dos decants: "+money(decantSubtotal),"Desconto nos decants: "+money(discount),"Subtotal dos decants com desconto: "+money(decantSubtotal-discount)];
  if(fullSizePending)summary.push("Frascos inteiros: preço a confirmar");
  summary.push("Frete e pagamento: a confirmar");
- const message=`Olá! Quero fazer este pedido na SANTINO NOBRE:\n\n${lines.join("\n")}\n\n${summary.join("\n")}\n\nPodem me informar os próximos passos?`;
+ const message=`Olá! Quero fazer este pedido na SANTINO:\n\n${lines.join("\n")}\n\n${summary.join("\n")}\n\nPodem me informar os próximos passos?`;
  window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
 }
 $("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
