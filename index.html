@@ -137,6 +137,26 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
  .header-main>.cart-link:before{content:"";position:absolute;left:13px;top:12px;width:15px;height:12px;border:1.6px solid var(--beige);border-radius:2px}
  .header-main>.cart-link:after{content:"";position:absolute;left:16px;top:7px;width:9px;height:7px;border:1.6px solid var(--beige);border-bottom:0;border-radius:5px 5px 0 0}
  .header-main>.cart-link .cart-count{position:absolute!important;right:-6px!important;top:-7px!important;display:grid!important;visibility:visible!important;opacity:1!important;place-items:center!important;width:20px!important;height:20px!important;border:2px solid var(--black)!important;background:var(--beige)!important;color:#171512!important;font-size:10px!important}
+}
+/* Ajuste fino da hierarquia da página inicial sem trocar o banner original */
+.hero{padding-top:34px;background:linear-gradient(180deg,#11110f 0%,#17130f 100%)}
+.hero-copy{max-width:760px;margin-bottom:0}
+.hero-copy p{font-size:14px;line-height:1.55;max-width:540px}
+.hero-visual{max-height:540px}
+.hero-actions{max-width:650px;margin:5px 0 21px}
+.promo-grid{gap:10px;padding-bottom:25px}
+.promo-card{padding:14px 15px;background:#181613;border-color:#302a22}
+.promo-title{font-size:24px}
+.home-categories{padding-top:25px}
+@media(max-width:720px){
+ .hero{padding-top:24px}
+ .hero-copy p{font-size:13px}
+ .hero-visual{max-height:none}
+ .hero-actions{max-width:none;margin:4px 0 16px}
+ .promo-grid{padding-bottom:21px}
+ .promo-card{padding:12px 10px}
+ .promo-title{font-size:20px}
+ .home-categories{padding-top:21px}
 }</style>
 </head>
 <body>
