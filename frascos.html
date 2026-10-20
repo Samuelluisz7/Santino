@@ -144,32 +144,54 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .site-search button{min-height:46px;padding:10px 16px;white-space:nowrap}
 @media(max-width:720px){.site-search{margin:7px 0 5px;max-width:none}.site-search-row{gap:6px}.site-search input{font-size:14px}.site-search button{padding:10px 13px}}
 
+
+.redesigned-catalog-hero{display:block!important;padding:28px 22px 18px!important;max-width:1120px}
+.redesigned-catalog-hero h1{font-size:clamp(37px,5vw,56px)!important}
+.redesigned-catalog-hero p{font-size:14px!important;max-width:600px!important}
+.full-size-section{padding-top:5px!important}
+.full-size-section .section-head{display:none}
+.full-size-section .products{gap:14px!important}
+.full-size-section .product{background:linear-gradient(145deg,#211f1b,#151411)!important;border:1px solid #37312a!important;border-radius:5px!important;padding:11px!important;overflow:hidden}
+.full-size-section .product-art{background:radial-gradient(ellipse at 50% 40%,#342a20,#191714 75%)!important;border:0!important;height:230px!important;margin-bottom:10px!important}
+.full-size-section .product-photo{mix-blend-mode:normal!important;object-fit:contain!important;padding:12px!important}
+.full-size-section .product h3{font-size:19px!important;margin-bottom:5px!important}
+.full-size-section .product .desc{font-size:12px!important;min-height:0!important}
+.full-size-section .add{background:#c9b18b!important;color:#171512!important;border-radius:4px!important}
+@media(max-width:720px){
+.redesigned-catalog-hero{padding:24px 15px 14px!important}
+.full-size-section .products{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+.full-size-section .product{padding:8px!important}
+.full-size-section .product-art{height:160px!important}
+.full-size-section .product h3{font-size:16px!important}
+.full-size-section .product .desc{font-size:11px!important}
+.full-size-section .add{font-size:11px!important;padding:10px 4px!important}
+}
+
+/* Redesign SANTINO — layout premium responsivo */
+.nav{gap:14px!important}
+.nav-search{display:flex;align-items:center;min-width:0;flex:0 1 225px;height:39px;border:1px solid #3c362f;border-radius:30px;background:#181715;margin-left:auto}
+.nav-search input{min-width:0;width:100%;height:100%;background:transparent;border:0;outline:0;color:#f3eadb;font-size:12px;padding:0 0 0 13px}
+.nav-search button{height:100%;min-width:39px;background:transparent;border:0;color:#c9b18b;font-size:24px;cursor:pointer}
+.nav-search input::placeholder{color:#938a7e}
+@media(max-width:720px){.nav-search{order:2;flex:1 1 125px;margin-left:auto;max-width:190px}.nav-search input{font-size:11px;padding-left:10px}.nav-search button{min-width:31px}.catalog-nav{order:3;width:100%;margin-left:0!important}}
 </style>
 </head>
 <body>
 <header><div class="nav">
   <a class="brand brand-home" href="index.html">SANTINO<small>DECANTS & FRAGRÂNCIAS</small></a>
-  <nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a></nav>
+  <form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a></nav>
   <button class="cart-button" id="openCart" aria-label="Abrir carrinho">Carrinho <span id="cartCount">0</span></button>
 </div></header>
 <main>
-  <section class="hero">
+  <section class="hero redesigned-catalog-hero">
     <div>
       <div class="eyebrow">Descubra. Experimente. Escolha.</div>
       <h1>Sua próxima fragrância começa aqui.</h1>
       <p>Perfumes em estoque. Consulte o preço atualizado, o frete e o prazo de entrega pelo WhatsApp antes de confirmar seu pedido.</p>
 
-<form class="site-search" action="buscar.html" method="get" data-santino-search>
-  <label for="siteSearchInput">Buscar no catálogo</label>
-  <div class="site-search-row">
-    <input id="siteSearchInput" type="search" name="q" maxlength="100" placeholder="Ex.: Sauvage, Asad, Eros" autocomplete="off" required>
-    <button type="submit" class="btn">Buscar</button>
-  </div>
-</form>
 
-      <a class="btn" href="#full-size-catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Ver frascos inteiros</a> <a class="btn secondary-hero" href="decants.html" style="display:inline-block;text-decoration:none;margin-top:10px">Decants</a>
     </div>
-    <div class="hero-art"><img src="/Santino/file_00000000acc4820eaf3161e80d0986d8.png" alt="Perfume em frasco inteiro sem marca, vidro transparente e líquido âmbar sob iluminação dourada" fetchpriority="high" decoding="async"></div>
+    
   </section>
   <section class="section full-size-section" id="full-size-catalog">
     <div class="section-head"><div><div class="eyebrow">Fragrâncias em frasco original</div><h2>Frascos inteiros</h2><p>Adicione os perfumes que deseja consultar. Preço final, disponibilidade, frete e prazo serão confirmados pelo WhatsApp.</p></div></div>
