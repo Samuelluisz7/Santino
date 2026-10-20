@@ -115,6 +115,17 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .hero-banner{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:cover!important;object-position:center center!important;background:transparent!important}
 @media(max-width:720px){.hero-art{aspect-ratio:16/9;height:auto!important;min-height:0!important;max-height:none!important}.hero-banner{object-fit:cover!important;object-position:center center!important}}
 
+
+/* Busca global SANTINO */
+.site-search{margin:13px 0 10px;max-width:440px;width:100%;text-align:left}
+.site-search label{display:block;color:var(--beige);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.site-search-row{display:flex;gap:7px;margin-top:6px;width:100%}
+.site-search input{flex:1;min-width:0;width:100%;padding:11px 12px;min-height:46px;border:1px solid var(--line);border-radius:3px;background:#171613;color:var(--cream);outline:none}
+.site-search input:focus{border-color:var(--beige);box-shadow:0 0 0 2px #c9b18b22}
+.site-search input::placeholder{color:#888174}
+.site-search button{min-height:46px;padding:10px 16px;white-space:nowrap}
+@media(max-width:720px){.site-search{margin:7px 0 5px;max-width:none}.site-search-row{gap:6px}.site-search input{font-size:14px}.site-search button{padding:10px 13px}}
+
 </style>
 </head>
 <body>
@@ -128,6 +139,15 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
       <div class="eyebrow">SANTINO · DECANTS & FRAGRÂNCIAS</div>
       <h1>Encontre sua próxima fragrância.</h1>
       <p>Decants de 2, 5 e 10 ml ou perfumes em frascos inteiros.</p>
+
+<form class="site-search" action="buscar.html" method="get" data-santino-search>
+  <label for="siteSearchInput">Buscar no catálogo</label>
+  <div class="site-search-row">
+    <input id="siteSearchInput" type="search" name="q" maxlength="100" placeholder="Ex.: Sauvage, Asad, Eros" autocomplete="off" required>
+    <button type="submit" class="btn">Buscar</button>
+  </div>
+</form>
+
       <div class="hero-actions">
         <a class="hero-link primary" href="decants.html">Ver decants →</a>
         <a class="hero-link" href="frascos.html">Ver frascos →</a>
@@ -156,5 +176,6 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <p>As marcas e fragrâncias pertencem aos respectivos titulares.</p>
   <nav class="footer-links" aria-label="Informações da loja"><a href="politicas.html">Políticas e condições de compra</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Quero%20solicitar%20informa%C3%A7%C3%B5es%20sobre%20o%20cupom%20de%20indica%C3%A7%C3%A3o%20de%20R%24%2020%20da%20SANTINO." target="_blank" rel="noopener noreferrer">Cupom de indicação</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">Atendimento via WhatsApp</a></nav>
 </footer>
+<script src="search.js" defer></script>
 </body>
 </html>
