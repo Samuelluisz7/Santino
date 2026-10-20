@@ -403,7 +403,7 @@ function renderFullSizeProducts(){
    </a>
    <div class="price-row"><span class="price price-pending">Sob consulta</span></div>
    <label class="quantity-label">Quantidade<select id="qty-${p.id}" aria-label="Quantidade de ${escapeHTML(p.name)}">${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}</select></label>
-   <button class="add" data-add-full="${p.id}">Consultar no WhatsApp</button>
+   <button class="add" data-add-full="${p.id}">Adicionar ao carrinho</button>
  </article>`).join("");
  document.querySelectorAll("[data-add-full]").forEach(b=>b.addEventListener("click",()=>addFullSizeToCart(b.dataset.addFull)));
 }
