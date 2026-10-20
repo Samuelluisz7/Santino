@@ -58,13 +58,21 @@ footer{border-top:1px solid var(--line);padding:24px 15px;text-align:center;colo
  .results-head{align-items:flex-start;flex-direction:column;gap:5px}
 }
 @media(max-width:360px){.results{grid-template-columns:1fr}}
+
+/* Redesign SANTINO — layout premium responsivo */
+.nav{gap:14px!important}
+.nav-search{display:flex;align-items:center;min-width:0;flex:0 1 225px;height:39px;border:1px solid #3c362f;border-radius:30px;background:#181715;margin-left:auto}
+.nav-search input{min-width:0;width:100%;height:100%;background:transparent;border:0;outline:0;color:#f3eadb;font-size:12px;padding:0 0 0 13px}
+.nav-search button{height:100%;min-width:39px;background:transparent;border:0;color:#c9b18b;font-size:24px;cursor:pointer}
+.nav-search input::placeholder{color:#938a7e}
+@media(max-width:720px){.nav-search{order:2;flex:1 1 125px;margin-left:auto;max-width:190px}.nav-search input{font-size:11px;padding-left:10px}.nav-search button{min-width:31px}.catalog-nav{order:3;width:100%;margin-left:0!important}}
 </style>
 </head>
 <body>
 <header>
   <div class="nav">
     <a class="brand" href="index.html">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a>
-    <nav class="nav-links" aria-label="Navegação">
+    <form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="nav-links" aria-label="Navegação">
       <a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a>
     </nav>
   </div>
@@ -73,13 +81,6 @@ footer{border-top:1px solid var(--line);padding:24px 15px;text-align:center;colo
   <div class="eyebrow">Catálogo SANTINO</div>
   <h1>Encontre sua fragrância.</h1>
   <p class="intro">Pesquise pelo nome do perfume ou pela marca. A busca considera decants e frascos inteiros.</p>
-  <form class="site-search" action="buscar.html" method="get" data-santino-search>
-    <label for="siteSearchInput">Nome do perfume ou marca</label>
-    <div class="site-search-row">
-      <input id="siteSearchInput" type="search" name="q" maxlength="100" placeholder="Ex.: Sauvage, Asad, Versace" autocomplete="off" required>
-      <button type="submit" class="btn">Buscar</button>
-    </div>
-  </form>
   <section aria-labelledby="resultsTitle">
     <div class="results-head">
       <h2 id="resultsTitle">Resultados da busca</h2>
