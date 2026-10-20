@@ -120,6 +120,15 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
 .nav-search button{position:relative;font-size:0!important}
 .nav-search button:before{content:"";position:absolute;left:calc(50% - 7px);top:calc(50% - 7px);width:12px;height:12px;border:1.6px solid var(--beige,#c9b18b);border-radius:50%}
 .nav-search button:after{content:"";position:absolute;left:calc(50% + 4px);top:calc(50% + 4px);width:6px;height:1.6px;border-radius:2px;background:var(--beige,#c9b18b);transform:rotate(45deg);transform-origin:left center}
+
+/* Correção de visibilidade do carrinho no celular */
+@media(max-width:720px){
+ .header-main{grid-template-columns:minmax(108px,1fr) minmax(96px,1.1fr) 42px!important;gap:7px!important}
+ .cart-link{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;width:42px!important;min-width:42px!important;height:38px!important;min-height:38px!important;padding:0!important;border:1px solid #6b5b43!important;border-radius:4px!important;color:var(--cream)!important;font-size:0!important;overflow:visible!important}
+ .cart-link:before{content:"";position:absolute;left:13px;top:11px;width:14px;height:12px;border:1.5px solid var(--beige);border-radius:2px}
+ .cart-link:after{content:"";position:absolute;left:16px;top:7px;width:8px;height:6px;border:1.5px solid var(--beige);border-bottom:0;border-radius:5px 5px 0 0}
+ .cart-count{position:absolute!important;right:-6px!important;top:-7px!important;width:19px!important;height:19px!important;border:2px solid var(--black)!important;font-size:10px!important}
+}
 </style>
 </head>
 <body>
