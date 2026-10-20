@@ -436,16 +436,47 @@ function showToast(msg){$("toast").textContent=msg;$("toast").style.display="blo
 function checkout(){
  if(!cart.length){showToast("Adicione ao menos um produto ao carrinho.");return}
  let number=STORE_WHATSAPP;
- if(!/^55\d{10,11}$/.test(number)){number=prompt("Digite o WhatsApp da loja com código do país e DDD, somente números (ex.: 5531999999999):")||"";number=number.replace(/\D/g,"")}
- if(!/^55\d{10,11}$/.test(number)){showToast("Número de WhatsApp inválido. Informe um número válido.");return}
- const lines=cart.map(x=>`• ${x.name} (${x.brand}) — ${x.ml} ml × ${x.qty}: ${Number.isFinite(x.price)?money(x.price*x.qty):"preço a confirmar"}`);
- const decantSubtotal=cart.reduce((s,x)=>s+(Number.isFinite(x.price)&&x.category==="Decant"?x.price*x.qty:0),0);
+ if(!/^55\\d{10,11}$/.test(number)){number=prompt("Digite o WhatsApp da loja com código do país e DDD, somente números (ex.: 5531999999999):")||"";number=number.replace(/\\D/g,"")}
+ if(!/^55\\d{10,11}$/.test(number)){showToast("Número de WhatsApp inválido. Informe um número válido.");return}
+ const decants=cart.filter(x=>x.category==="Decant");
+ const fullSizes=cart.filter(x=>x.category==="Frasco inteiro");
+ const decantSubtotal=decants.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
  const discount=decantSubtotal>=80?decantSubtotal*0.10:0;
- const fullSizePending=cart.some(x=>x.category==="Frasco inteiro");
- const summary=["Subtotal dos decants: "+money(decantSubtotal),"Desconto nos decants: "+money(discount),"Subtotal dos decants com desconto: "+money(decantSubtotal-discount)];
- if(fullSizePending)summary.push("Frascos inteiros: preço a confirmar");
- summary.push("Frete e pagamento: a confirmar");
- const message=`Olá! Quero fazer este pedido na SANTINO:\n\n${lines.join("\n")}\n\n${summary.join("\n")}\n\nPodem me informar os próximos passos?`;
+ const decantTotal=decantSubtotal-discount;
+ const lines=[];
+ if(decants.length){
+   lines.push("*DECANTS SELECIONADOS*");
+   decants.forEach((x,i)=>lines.push((i+1)+". "+x.name+" — "+x.ml+" ml | Quantidade: "+x.qty+" | "+money(x.price*x.qty)));
+ }
+ if(fullSizes.length){
+   if(lines.length)lines.push("");
+   lines.push("*FRASCOS INTEIROS — CONSULTA DE DISPONIBILIDADE*");
+   fullSizes.forEach((x,i)=>lines.push((i+1)+". "+x.name+" ("+x.brand+") — "+(x.version?x.version+" · ":"")+x.ml+" ml | Quantidade: "+x.qty+" | Preço sob consulta"));
+ }
+ const summary=[];
+ if(decants.length){
+   summary.push("Subtotal dos decants: "+money(decantSubtotal));
+   summary.push("Desconto promocional (10% a partir de R$ 80 em decants): −"+money(discount));
+   summary.push("*Total dos decants: "+money(decantTotal)+"*");
+ }
+ if(fullSizes.length)summary.push("Frascos inteiros: valores e disponibilidade a confirmar");
+ summary.push("Entrega/frete: a combinar");
+ summary.push("Forma de pagamento: a combinar");
+ const message=[
+   "Olá, equipe SANTINO NOBRE! Gostaria de dar andamento ao meu pedido.",
+   "",
+   "Separei estas fragrâncias:",
+   "",
+   lines.join("\\n"),
+   "",
+   "*RESUMO DO PEDIDO*",
+   summary.join("\\n"),
+   "",
+   "Podem confirmar a disponibilidade dos itens e me orientar sobre o frete, o pagamento e a previsão de entrega?",
+   "",
+   "Obrigado(a)!",
+   "SANTINO NOBRE | Decants & Fragrâncias"
+ ].join("\\n");
  window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
 }
 $("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
