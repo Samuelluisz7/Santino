@@ -164,12 +164,25 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .site-search button{min-height:46px;padding:10px 16px;white-space:nowrap}
 @media(max-width:720px){.site-search{margin:7px 0 5px;max-width:none}.site-search-row{gap:6px}.site-search input{font-size:14px}.site-search button{padding:10px 13px}}
 
+
+.product{background:linear-gradient(145deg,#211f1b,#151411);border-color:#37312a;border-radius:5px}
+.product-art{background:radial-gradient(ellipse at 50% 40%,#342a20,#191714 75%)!important}
+.product-photo{mix-blend-mode:normal!important}
+@media(max-width:720px){.products{grid-template-columns:repeat(2,minmax(0,1fr))!important}.product-art{height:155px!important}}
+
+/* Redesign SANTINO — layout premium responsivo */
+.nav{gap:14px!important}
+.nav-search{display:flex;align-items:center;min-width:0;flex:0 1 225px;height:39px;border:1px solid #3c362f;border-radius:30px;background:#181715;margin-left:auto}
+.nav-search input{min-width:0;width:100%;height:100%;background:transparent;border:0;outline:0;color:#f3eadb;font-size:12px;padding:0 0 0 13px}
+.nav-search button{height:100%;min-width:39px;background:transparent;border:0;color:#c9b18b;font-size:24px;cursor:pointer}
+.nav-search input::placeholder{color:#938a7e}
+@media(max-width:720px){.nav-search{order:2;flex:1 1 125px;margin-left:auto;max-width:190px}.nav-search input{font-size:11px;padding-left:10px}.nav-search button{min-width:31px}.catalog-nav{order:3;width:100%;margin-left:0!important}}
 </style>
 </head>
 <body>
 <header><div class="nav">
   <a class="brand brand-home" href="index.html">SANTINO<small>DECANTS & FRAGRÂNCIAS</small></a>
-  <nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a></nav>
+  <form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a></nav>
   <button class="cart-button" id="openCart" aria-label="Abrir carrinho">Carrinho <span id="cartCount">0</span></button>
 </div></header>
 <main>
@@ -179,15 +192,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
       <h1>Sua próxima fragrância começa aqui.</h1>
       <p>Decants em estoque nos volumes de 2 ml, 5 ml e 10 ml. Em compras a partir de R$ 80 em decants, você recebe 10% de desconto sobre esses itens.</p>
 
-<form class="site-search" action="buscar.html" method="get" data-santino-search>
-  <label for="siteSearchInput">Buscar no catálogo</label>
-  <div class="site-search-row">
-    <input id="siteSearchInput" type="search" name="q" maxlength="100" placeholder="Ex.: Sauvage, Asad, Eros" autocomplete="off" required>
-    <button type="submit" class="btn">Buscar</button>
-  </div>
-</form>
-
-      <a class="btn" href="#catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Ver decants</a> <a class="btn secondary-hero" href="frascos.html" style="display:inline-block;text-decoration:none;margin-top:10px">Frascos inteiros</a>
+<a class="btn" href="#catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Ver decants</a> <a class="btn secondary-hero" href="frascos.html" style="display:inline-block;text-decoration:none;margin-top:10px">Frascos inteiros</a>
     </div>
     <div class="hero-art"><img src="/Santino/banner-decants.webp?v=4" alt="Decant de perfume com vidro transparente, líquido âmbar e iluminação dourada" fetchpriority="high" decoding="async"></div>
   </section>
