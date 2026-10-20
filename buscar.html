@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#11110f">
+<meta name="description" content="Busque perfumes e decants no catálogo SANTINO.">
+<title>SANTINO | Buscar fragrâncias</title>
+<style>
+:root{--black:#11110f;--panel:#1a1916;--cream:#f3eadb;--beige:#c9b18b;--muted:#b9b0a2;--line:#39352f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--black);color:var(--cream);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit}
+button,input{font:inherit}
+button{cursor:pointer}
+header{position:sticky;top:0;z-index:5;background:rgba(17,17,15,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.nav{max-width:1120px;margin:auto;padding:15px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-family:Georgia,serif;letter-spacing:.18em;font-size:15px;color:var(--cream);text-transform:uppercase;text-decoration:none}
+.brand small{display:block;font-family:Arial,sans-serif;letter-spacing:.24em;font-size:9px;color:var(--beige);margin-top:5px}
+.nav-links{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.nav-links a{color:var(--muted);font-size:13px;text-decoration:none}
+.nav-links a:hover{color:var(--beige)}
+main{max-width:1120px;margin:auto;padding:34px 22px 60px}
+.eyebrow{color:var(--beige);letter-spacing:.16em;text-transform:uppercase;font-size:11px;font-weight:bold}
+h1{font-family:Georgia,serif;font-size:clamp(32px,5vw,48px);font-weight:400;line-height:1.08;margin:10px 0}
+.intro{color:var(--muted);line-height:1.6;max-width:680px}
+.site-search{margin:22px 0 28px;max-width:650px;width:100%}
+.site-search label{display:block;color:var(--beige);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.site-search-row{display:flex;gap:8px;margin-top:7px;width:100%}
+.site-search input{flex:1;min-width:0;padding:13px 14px;min-height:48px;border:1px solid var(--line);border-radius:3px;background:#171613;color:var(--cream);outline:none}
+.site-search input:focus{border-color:var(--beige);box-shadow:0 0 0 2px #c9b18b22}
+.site-search input::placeholder{color:#888174}
+.btn{display:inline-flex;justify-content:center;align-items:center;padding:12px 17px;min-height:48px;border:1px solid var(--beige);border-radius:3px;background:var(--beige);color:#171512;font-weight:700;text-decoration:none}
+.btn:disabled{opacity:.7;cursor:wait}
+.results-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:28px 0 14px}
+h2{font-family:Georgia,serif;font-size:27px;font-weight:400;margin:0}
+.result-count{color:var(--muted);font-size:12px}
+.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.result-card{border:1px solid var(--line);background:linear-gradient(145deg,#201e19,#171613);padding:17px;display:flex;flex-direction:column;min-height:170px}
+.result-type{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--beige)}
+.result-card h3{font-family:Georgia,serif;font-weight:400;font-size:21px;margin:10px 0 4px}
+.result-brand{font-size:12px;color:var(--muted)}
+.result-card .btn{margin-top:auto;align-self:flex-start;font-size:12px;padding:9px 12px;min-height:40px}
+.empty-state{border:1px solid var(--line);padding:20px;color:var(--muted);line-height:1.6;background:#171613}
+.empty-state strong{color:var(--cream)}
+footer{border-top:1px solid var(--line);padding:24px 15px;text-align:center;color:var(--muted);font-size:12px;line-height:1.6}
+@media(max-width:720px){
+ .nav{padding:12px 15px;align-items:flex-start;gap:10px;flex-direction:column}
+ .nav-links{gap:14px}
+ main{padding:26px 15px 44px}
+ .site-search{margin:18px 0 24px}
+ .site-search-row{gap:6px}
+ .site-search input{font-size:14px;padding:11px}
+ .site-search .btn{padding:10px 13px}
+ .results{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .result-card{padding:12px;min-height:164px}
+ .result-card h3{font-size:18px}
+ .results-head{align-items:flex-start;flex-direction:column;gap:5px}
+}
+@media(max-width:360px){.results{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a>
+    <nav class="nav-links" aria-label="Navegação">
+      <a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="eyebrow">Catálogo SANTINO</div>
+  <h1>Encontre sua fragrância.</h1>
+  <p class="intro">Pesquise pelo nome do perfume ou pela marca. A busca considera decants e frascos inteiros.</p>
+  <form class="site-search" action="buscar.html" method="get" data-santino-search>
+    <label for="siteSearchInput">Nome do perfume ou marca</label>
+    <div class="site-search-row">
+      <input id="siteSearchInput" type="search" name="q" maxlength="100" placeholder="Ex.: Sauvage, Asad, Versace" autocomplete="off" required>
+      <button type="submit" class="btn">Buscar</button>
+    </div>
+  </form>
+  <section aria-labelledby="resultsTitle">
+    <div class="results-head">
+      <h2 id="resultsTitle">Resultados da busca</h2>
+      <span class="result-count" id="resultCount" aria-live="polite"></span>
+    </div>
+    <div class="results" id="searchResults" aria-live="polite"></div>
+  </section>
+</main>
+<footer>
+  <div>SANTINO · DECANTS &amp; FRAGRÂNCIAS</div>
+  <div>O registro de busca armazena apenas o termo pesquisado e a data, sem nome ou contato do visitante.</div>
+</footer>
+<script>
+(function(){
+  const products = [
+    {id:"kingdom",name:"The Kingdom",brand:"Lattafa",category:"Decant",terms:"kingdom the kingdom lattafa"},
+    {id:"212-vip-black",name:"212 VIP Black",brand:"Carolina Herrera",category:"Decant",terms:"212 vip black carolina herrera"},
+    {id:"the-blend-bourbon",name:"The Blend Bourbon",brand:"O Boticário",category:"Decant",terms:"the blend bourbon boticario"},
+    {id:"asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",category:"Decant",terms:"asad bourbon lattafa"},
+    {id:"homem-sagaz",name:"Homem Sagaz",brand:"Natura",category:"Decant",terms:"homem sagaz natura"},
+    {id:"homem-dom",name:"Homem Dom",brand:"Natura",category:"Decant",terms:"homem dom natura"},
+    {id:"homem-essence",name:"Homem Essence",brand:"Natura",category:"Decant",terms:"homem essence natura"},
+    {id:"essencial-sentir",name:"Essencial Sentir",brand:"Natura",category:"Decant",terms:"essencial sentir natura"},
+    {id:"fakhar-black",name:"Fakhar Black",brand:"Lattafa",category:"Decant",terms:"fakhar black lattafa"},
+    {id:"k-max",name:"K Max",brand:"Natura Kaiak",category:"Decant",terms:"k max kaiak natura"},
+    {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",category:"Frasco inteiro",terms:"le male le parfum jean paul gaultier jpg"},
+    {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",category:"Frasco inteiro",terms:"9pm afnan"},
+    {id:"full-asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",category:"Frasco inteiro",terms:"asad bourbon lattafa"},
+    {id:"full-asad",name:"Asad tradicional",brand:"Lattafa",category:"Frasco inteiro",terms:"asad tradicional lattafa"},
+    {id:"full-eros",name:"Eros",brand:"Versace",category:"Frasco inteiro",terms:"eros versace"},
+    {id:"full-million",name:"1 Million",brand:"Rabanne",category:"Frasco inteiro",terms:"1 million one million rabanne paco rabanne"},
+    {id:"full-sauvage",name:"Sauvage",brand:"Dior",category:"Frasco inteiro",terms:"sauvage dior"},
+    {id:"full-invictus",name:"Invictus",brand:"Rabanne",category:"Frasco inteiro",terms:"invictus rabanne paco rabanne"},
+    {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",category:"Frasco inteiro",terms:"myslf yves saint laurent ysl"}
+  ];
+
+  function normalize(value){
+    return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+  }
+  function escapeHTML(value){
+    return String(value).replace(/[&<>"']/g,function(char){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char];
+    });
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const query = String(params.get("q") || "").replace(/\s+/g," ").trim().slice(0,100);
+  const input = document.getElementById("siteSearchInput");
+  const results = document.getElementById("searchResults");
+  const count = document.getElementById("resultCount");
+  const title = document.getElementById("resultsTitle");
+  if (input) input.value = query;
+
+  if (!query) {
+    title.textContent = "Catálogo disponível";
+    count.textContent = products.length + " fragrâncias";
+    results.innerHTML = '<div class="empty-state" style="grid-column:1/-1">Digite um nome ou uma marca para encontrar fragrâncias no catálogo.</div>';
+    return;
+  }
+
+  const tokens = normalize(query).split(/\s+/).filter(Boolean);
+  const matches = products.filter(function(product){
+    const searchable = normalize(product.name + " " + product.brand + " " + product.category + " " + product.terms);
+    return tokens.every(function(token){return searchable.includes(token);});
+  });
+
+  title.textContent = 'Resultados para “' + query + '”';
+  count.textContent = matches.length + (matches.length === 1 ? " resultado" : " resultados");
+
+  if (!matches.length) {
+    results.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><strong>Nenhuma fragrância encontrada.</strong><br>Confira a escrita ou tente pesquisar apenas parte do nome ou a marca.</div>';
+    return;
+  }
+
+  results.innerHTML = matches.map(function(product){
+    return '<article class="result-card">' +
+      '<div class="result-type">' + escapeHTML(product.category) + '</div>' +
+      '<h3>' + escapeHTML(product.name) + '</h3>' +
+      '<div class="result-brand">' + escapeHTML(product.brand) + '</div>' +
+      '<a class="btn" href="produto.html?id=' + encodeURIComponent(product.id) + '">Ver fragrância</a>' +
+    '</article>';
+  }).join("");
+})();
+</script>
+<script src="search.js" defer></script>
+</body>
+</html>
