@@ -101,6 +101,13 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .hero-banner{display:block;width:100%;height:100%;object-fit:cover!important;object-position:center center!important;background:transparent!important}
 @media(max-width:720px){.hero-art{width:100%;height:auto!important;aspect-ratio:16/9;min-height:0!important;max-height:none!important}.hero-banner{object-fit:cover!important;object-position:center center!important}}
 
+
+/* Ajuste final dos banners: foto inteira à frente e fundo fotográfico ampliado atrás */
+.hero-art{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:16/9;height:auto!important;min-height:0!important;max-height:none!important;background:#090807}
+.hero-art::before{content:"";position:absolute;inset:-20px;z-index:0;background-image:url('/Santino/a_professional_studio_still_life_product_photograp.png?v=3');background-position:center;background-size:cover;background-repeat:no-repeat;filter:blur(18px) brightness(.52) saturate(.9);transform:scale(1.04)}
+.hero-banner{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain!important;object-position:center center!important;background:transparent!important}
+@media(max-width:720px){.hero-art{width:100%;height:auto!important;aspect-ratio:16/9;min-height:0!important;max-height:none!important}.hero-banner{object-fit:contain!important}}
+
 </style>
 </head>
 <body>
@@ -119,7 +126,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
         <a class="hero-link" href="frascos.html">Ver frascos →</a>
       </div>
     </div>
-    <div class="hero-art"><img class="hero-banner" src="/Santino/a_professional_studio_still_life_product_photograp.png" alt="Seleção de perfumes SANTINO" fetchpriority="high" decoding="async"></div>
+    <div class="hero-art"><img class="hero-banner" src="/Santino/a_professional_studio_still_life_product_photograp.png?v=3" alt="Seleção de perfumes SANTINO" fetchpriority="high" decoding="async"></div>
   </section>
   <section class="promo-grid" aria-label="Ofertas">
     <article class="promo-card">
