@@ -153,6 +153,17 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .hero-art img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:cover!important;object-position:center center!important;background:transparent!important}
 @media(max-width:720px){.hero-art{aspect-ratio:16/9;height:auto!important;min-height:0!important;max-height:none!important}.hero-art img{object-fit:cover!important;object-position:center center!important}}
 
+
+/* Busca global SANTINO */
+.site-search{margin:13px 0 10px;max-width:440px;width:100%;text-align:left}
+.site-search label{display:block;color:var(--beige);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.site-search-row{display:flex;gap:7px;margin-top:6px;width:100%}
+.site-search input{flex:1;min-width:0;width:100%;padding:11px 12px;min-height:46px;border:1px solid var(--line);border-radius:3px;background:#171613;color:var(--cream);outline:none}
+.site-search input:focus{border-color:var(--beige);box-shadow:0 0 0 2px #c9b18b22}
+.site-search input::placeholder{color:#888174}
+.site-search button{min-height:46px;padding:10px 16px;white-space:nowrap}
+@media(max-width:720px){.site-search{margin:7px 0 5px;max-width:none}.site-search-row{gap:6px}.site-search input{font-size:14px}.site-search button{padding:10px 13px}}
+
 </style>
 </head>
 <body>
@@ -167,6 +178,15 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
       <div class="eyebrow">Descubra. Experimente. Escolha.</div>
       <h1>Sua próxima fragrância começa aqui.</h1>
       <p>Decants em estoque nos volumes de 2 ml, 5 ml e 10 ml. Em compras a partir de R$ 80 em decants, você recebe 10% de desconto sobre esses itens.</p>
+
+<form class="site-search" action="buscar.html" method="get" data-santino-search>
+  <label for="siteSearchInput">Buscar no catálogo</label>
+  <div class="site-search-row">
+    <input id="siteSearchInput" type="search" name="q" maxlength="100" placeholder="Ex.: Sauvage, Asad, Eros" autocomplete="off" required>
+    <button type="submit" class="btn">Buscar</button>
+  </div>
+</form>
+
       <a class="btn" href="#catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Ver decants</a> <a class="btn secondary-hero" href="frascos.html" style="display:inline-block;text-decoration:none;margin-top:10px">Frascos inteiros</a>
     </div>
     <div class="hero-art"><img src="/Santino/banner-decants.webp?v=4" alt="Decant de perfume com vidro transparente, líquido âmbar e iluminação dourada" fetchpriority="high" decoding="async"></div>
@@ -360,5 +380,6 @@ $("checkout").addEventListener("click",checkout);
 renderProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
+<script src="search.js" defer></script>
 </body>
 </html>
