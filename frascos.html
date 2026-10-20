@@ -316,7 +316,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <div class="drawer">
     <div class="drawer-head"><h2>Seu carrinho</h2><button class="close" id="closeCart">Fechar ✕</button></div>
     <div class="goal-box" id="goalBox" aria-live="polite" hidden><p class="goal-copy" id="goalCopy">Faltam R$ 80,00 para liberar 10% de desconto.</p><div class="goal-track"><div class="goal-fill" id="goalFill"></div></div><div class="goal-meta"><span id="goalCurrent">R$ 0,00</span><span>Meta: R$ 80,00</span></div></div>
-    <div class="referral-box"><div><strong>Compartilhe com um amigo</strong><p>Vocês podem aproveitar R$ 20 de benefício cada um.</p></div><button class="share-referral" id="shareReferral" type="button">Compartilhar</button></div>
+    <div class="referral-box"><div><strong>Indique e ganhe R$ 20</strong><p>Receba R$ 20 em crédito após seu amigo concluir a primeira compra e a loja confirmar o pedido.</p></div><button class="share-referral" id="shareReferral" type="button">Compartilhar</button></div>
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-total">
       <div class="total-line"><span>Total do pedido</span><strong id="cartTotal">R$ 0,00</strong></div>
@@ -513,7 +513,7 @@ $("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()
 $("checkout").addEventListener("click",checkout);
 const referralButton=$("shareReferral");
 if(referralButton)referralButton.addEventListener("click",()=>{
- const referralMessage="Estou te indicando a SANTINO NOBRE! A indicação oferece R$ 20 de benefício para nós dois. Quando falar com a loja, diga que veio por minha indicação e informe meu nome para ativarmos o benefício. Atendimento: https://wa.me/"+STORE_WHATSAPP;
+ const referralMessage="Estou te indicando a SANTINO NOBRE! Se você concluir sua primeira compra, posso receber R$ 20 em crédito na loja. Ao falar com a SANTINO, avise que veio por minha indicação e informe meu nome. Atendimento: https://wa.me/"+STORE_WHATSAPP;
  window.open("https://wa.me/?text="+encodeURIComponent(referralMessage),"_blank","noopener,noreferrer");
 });
 setupFullSizeFilters();renderFullSizeProducts();renderCart();
