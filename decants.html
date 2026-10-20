@@ -440,42 +440,23 @@ function checkout(){
  if(!/^55\d{10,11}$/.test(number)){showToast("Número de WhatsApp inválido. Informe um número válido.");return}
  const decants=cart.filter(x=>x.category==="Decant");
  const fullSizes=cart.filter(x=>x.category==="Frasco inteiro");
- const decantSubtotal=decants.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
- const discount=decantSubtotal>=80?decantSubtotal*0.10:0;
- const decantTotal=decantSubtotal-discount;
+ const subtotal=decants.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
+ const discount=subtotal>=80?subtotal*0.10:0;
  const lines=[];
- if(decants.length){
-   lines.push("*DECANTS SELECIONADOS*");
-   decants.forEach((x,i)=>lines.push((i+1)+". "+x.name+" — "+x.ml+" ml | Quantidade: "+x.qty+" | "+money(x.price*x.qty)));
- }
- if(fullSizes.length){
-   if(lines.length)lines.push("");
-   lines.push("*FRASCOS INTEIROS — CONSULTA DE DISPONIBILIDADE*");
-   fullSizes.forEach((x,i)=>lines.push((i+1)+". "+x.name+" ("+x.brand+") — "+(x.version?x.version+" · ":"")+x.ml+" ml | Quantidade: "+x.qty+" | Preço sob consulta"));
- }
+ decants.forEach(x=>lines.push("• "+x.name+" "+x.ml+" ml ×"+x.qty+" — "+money(x.price*x.qty)));
+ fullSizes.forEach(x=>lines.push("• "+x.name+" "+x.ml+" ml ×"+x.qty+" — sob consulta"));
  const summary=[];
- if(decants.length){
-   summary.push("Subtotal dos decants: "+money(decantSubtotal));
-   summary.push("Desconto promocional (10% a partir de R$ 80 em decants): −"+money(discount));
-   summary.push("*Total dos decants: "+money(decantTotal)+"*");
- }
- if(fullSizes.length)summary.push("Frascos inteiros: valores e disponibilidade a confirmar");
- summary.push("Entrega/frete: a combinar");
- summary.push("Forma de pagamento: a combinar");
+ if(decants.length)summary.push("Decants: "+money(subtotal)+(discount>0?" (−"+money(discount)+")":"")+" | Total: "+money(subtotal-discount));
+ if(fullSizes.length)summary.push("Frascos inteiros: preço a confirmar");
+ summary.push("Frete: a combinar");
  const message=[
-   "Olá, equipe SANTINO NOBRE! Gostaria de dar andamento ao meu pedido.",
-   "",
-   "Separei estas fragrâncias:",
-   "",
-   lines.join("\n"),
-   "",
-   "*RESUMO DO PEDIDO*",
-   summary.join("\n"),
-   "",
-   "Podem confirmar a disponibilidade dos itens e me orientar sobre o frete, o pagamento e a previsão de entrega?",
-   "",
-   "Obrigado(a)!",
-   "SANTINO NOBRE | Decants & Fragrâncias"
+ "Olá! Vim pelo site da SANTINO NOBRE e gostaria de confirmar este pedido:",
+ "",
+ lines.join("\n"),
+ "",
+ summary.join("\n"),
+ "",
+ "Pode confirmar disponibilidade e me passar os próximos passos?"
  ].join("\n");
  window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
 }
