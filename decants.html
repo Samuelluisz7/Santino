@@ -117,6 +117,22 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 }
 @media(max-width:350px){.products{grid-template-columns:1fr}.product-art{height:210px}}
 
+
+.product-detail-link{display:block;color:inherit;text-decoration:none;border-radius:3px}
+.product-detail-link:focus-visible{outline:2px solid var(--beige);outline-offset:3px}
+.product-detail-link:hover h3{color:var(--beige)}
+.product-detail-link .product-art{cursor:pointer}
+.quantity-label{display:block;min-width:78px;font-size:12px;color:var(--muted)}
+.quantity-label select{background:#11110f;color:var(--cream);border:1px solid var(--line);padding:9px;width:100%;margin-top:5px;min-height:44px}
+.variants{gap:9px;align-items:end}.product-art{background:#eee5d7}.product-photo{object-fit:contain!important;object-position:center!important;mix-blend-mode:normal!important}
+@media(max-width:720px){
+ .product-detail-link .product-art{height:155px;margin-bottom:10px}
+ .product-detail-link h3{font-size:17px;line-height:1.25;margin:0 0 5px}
+ .product-detail-link .product-brand{font-size:12px!important;display:block;margin:0 0 8px!important}
+ .variants select{min-height:44px;font-size:13px}.quantity-label{min-width:70px}.add{font-size:13px;min-height:48px;padding:12px 8px}
+}
+@media(max-width:350px){.product-detail-link .product-art{height:180px}}
+
 </style>
 </head>
 <body>
@@ -236,12 +252,15 @@ const $ = id => document.getElementById(id);
 function money(n){return CURRENCY.format(n)}
 function renderProducts(){
  $("products").innerHTML = PRODUCTS.map(p=>`<article class="product">
+   <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
    <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
    <h3>${escapeHTML(p.name)}</h3>
    <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
-   ${infoMarkup(p.id)}
-   <div class="variants"><label style="width:100%">Tamanho
+   </a>
+   <div class="variants"><label style="flex:1">Volume
      <select id="volume-${p.id}" aria-label="Volume de ${escapeHTML(p.name)}">${p.volumes.map((v,i)=>`<option value="${i}">${v.ml} ml</option>`).join("")}</select>
+   </label><label class="quantity-label">Qtd.
+     <select id="qty-${p.id}" aria-label="Quantidade de ${escapeHTML(p.name)}">${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}</select>
    </label></div>
    <div class="price-row"><span class="price" id="price-${p.id}">${money(p.volumes[0].price)}</span><span class="volume" id="selected-volume-${p.id}">${p.volumes[0].ml} ml</span></div>
    <button class="add" data-add="${p.id}">Adicionar ${p.volumes[0].ml} ml — ${money(p.volumes[0].price)}</button>
@@ -251,24 +270,24 @@ function renderProducts(){
 }
 function renderFullSizeProducts(){
  $("fullSizeProducts").innerHTML = FULL_SIZE_PRODUCTS.map(p=>`<article class="product full-size-product">
+   <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
    <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
    <h3>${escapeHTML(p.name)}</h3>
    <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
    <p class="card-meta">${escapeHTML(p.version)} · ${p.ml} ml</p>
-   ${infoMarkup(p.id)}
+   </a>
    <div class="price-row"><span class="price price-pending">Sob consulta</span></div>
-   <button class="add consult-price" data-consult-full="${p.id}">Consultar preço no WhatsApp</button>
-   <button class="add add-full-secondary" data-add-full="${p.id}">Adicionar ao pedido</button>
+   <label class="quantity-label">Quantidade<select id="qty-${p.id}" aria-label="Quantidade de ${escapeHTML(p.name)}">${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}</select></label>
+   <button class="add" data-add-full="${p.id}">Adicionar ao carrinho</button>
  </article>`).join("");
  document.querySelectorAll("[data-add-full]").forEach(b=>b.addEventListener("click",()=>addFullSizeToCart(b.dataset.addFull)));
- document.querySelectorAll("[data-consult-full]").forEach(b=>b.addEventListener("click",()=>consultFullSize(b.dataset.consultFull)));
 }
 function consultFullSize(id){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message=`Olá! Quero consultar o preço atualizado e a disponibilidade de ${p.name} (${p.brand}), ${p.version}, ${p.ml} ml. Podem informar também o frete e o prazo para meu CEP?`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
  const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
- const key=id+"-"+v.ml; const existing=cart.find(x=>x.key===key);
- if(existing)existing.qty++;else cart.push({key,id,name:p.name,brand:p.brand,ml:v.ml,price:v.price,qty:1,category:"Decant"});
+ const key=id+"-"+v.ml; const requested=Math.max(1,Math.min(10,Number($("qty-"+id)?.value)||1)); const existing=cart.find(x=>x.key===key);
+ if(existing)existing.qty+=requested;else cart.push({key,id,name:p.name,brand:p.brand,ml:v.ml,price:v.price,qty:requested,category:"Decant"});
  renderCart();showToast(p.name+" adicionado ao carrinho.");
 }
 function addFullSizeToCart(id){
@@ -319,6 +338,7 @@ $("openCart").addEventListener("click",openCart);$("closeCart").addEventListener
 $("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
 $("checkout").addEventListener("click",checkout);
 renderProducts();renderCart();
+if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
 </body>
 </html>
