@@ -133,6 +133,12 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 }
 @media(max-width:350px){.product-detail-link .product-art{height:180px}}
 
+
+/* Imagem de destaque dos decants em 16:9, sem barras laterais ou faixas pretas */
+.hero-art{width:100%;height:auto!important;aspect-ratio:16/9;min-height:0!important;max-height:none!important;background:#090807}
+.hero-art img{display:block;width:100%;height:100%;object-fit:cover!important;object-position:center center!important;background:transparent!important}
+@media(max-width:720px){.hero-art{width:100%;height:auto!important;aspect-ratio:16/9;min-height:0!important;max-height:none!important}.hero-art img{object-fit:cover!important;object-position:center center!important}}
+
 </style>
 </head>
 <body>
