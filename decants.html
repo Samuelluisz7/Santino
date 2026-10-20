@@ -55,6 +55,35 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 @media(max-width:720px){.catalog-nav{order:3;width:100%;margin:4px 0 0;justify-content:flex-start}.nav{flex-wrap:wrap}.secondary-hero{margin-left:0}.catalog-switch{padding:0 15px}.trust-strip{padding:0 15px;margin-bottom:22px}.catalog-tab{max-width:none;padding:12px 7px;font-size:12px}}
 @media(max-width:720px){.hero{grid-template-columns:1fr;padding:24px 15px 22px;gap:18px}.hero-art{min-height:150px;max-height:170px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product{padding:9px}.product-art{height:132px}.product h3{font-size:18px}.product .desc{font-size:12px}.section-head{align-items:start;flex-direction:column}.nav{padding:13px 15px}.section{padding-left:15px;padding-right:15px}}
 @media(max-width:390px){.products{grid-template-columns:1fr}.product-art{height:190px}}
+
+/* Ajustes de leitura, carregamento e conversão */
+.hero-art{background:radial-gradient(ellipse at 50% 30%,#302719 0,#14110c 65%,#090807 100%)}
+.hero-art img{background:transparent;min-width:0}
+.product-art{background:linear-gradient(145deg,#f0e9de,#e3d6c3)}
+.info-content{font-size:13px;line-height:1.65}
+.footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:12px}
+.footer-links a{color:var(--beige);text-decoration:none}.footer-links a:hover{text-decoration:underline}
+.consult-price{background:var(--beige);color:var(--black);margin-bottom:7px}
+.add-full-secondary{font-size:12px;padding:9px 7px;border-color:#61533d}
+@media(max-width:720px){
+ .hero{grid-template-columns:1fr;padding:14px 15px 13px;gap:10px}
+ .hero h1{font-size:clamp(28px,7vw,38px);margin:8px 0}
+ .hero p{font-size:13px;line-height:1.5;margin:7px 0}
+ .hero-art{height:124px;min-height:0;max-height:none}
+ .hero-art img{object-position:center 48%}
+ .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .product{padding:9px}.product-art{height:125px;margin-bottom:10px}
+ .product h3{font-size:17px;line-height:1.22}
+ .product .desc,.card-meta{font-size:12px;line-height:1.5}
+ .price{font-size:18px}.variants label{font-size:12px}
+ .variants select{padding:9px;font-size:13px}
+ .add{padding:10px 7px;font-size:12px;line-height:1.35;min-height:42px}
+ .info-details summary{font-size:12px;padding:10px}
+ .info-content{font-size:12px;line-height:1.55}
+ .section{padding-bottom:40px}.footer-links{font-size:11px;gap:6px}
+}
+@media(max-width:350px){.products{grid-template-columns:1fr}.product-art{height:170px}}
+
 </style>
 </head>
 <body>
@@ -68,13 +97,13 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
     <div>
       <div class="eyebrow">Descubra. Experimente. Escolha.</div>
       <h1>Sua próxima fragrância começa aqui.</h1>
-      <p>Experimente suas fragrâncias favoritas em 2 ml, 5 ml ou 10 ml. Escolha o volume, conheça as notas e monte seu pedido pelo WhatsApp.</p>
+      <p>Decants em estoque nos volumes de 2 ml, 5 ml e 10 ml. Em compras a partir de R$ 80 em decants, você recebe 10% de desconto sobre esses itens.</p>
       <a class="btn" href="#catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Ver decants</a> <a class="btn secondary-hero" href="frascos.html" style="display:inline-block;text-decoration:none;margin-top:10px">Frascos inteiros</a>
     </div>
-    <div class="hero-art"><img src="/Santino/file_000000006324820e912ec860d4c753e8.png" alt="Decant de perfume com vidro transparente, líquido âmbar e iluminação dourada" fetchpriority="high"></div>
+    <div class="hero-art"><img src="/Santino/file_000000006324820e912ec860d4c753e8.png" alt="Decant de perfume com vidro transparente, líquido âmbar e iluminação dourada" fetchpriority="high" decoding="async"></div>
   </section>
   <section class="section" id="catalog">
-    <div class="section-head"><div><div class="eyebrow">A seleção</div><h2>Escolha sua fragrância</h2><p>Escolha o tamanho e adicione ao carrinho.</p></div></div>
+    <div class="section-head"><div><div class="eyebrow">A seleção</div><h2>Escolha sua fragrância</h2><p>Escolha o volume e confira o preço. O desconto de 10% é aplicado a partir de R$ 80 em decants e não é cumulativo com o cupom de indicação.</p></div></div>
     <div class="products" id="products"></div>
   </section>
   <section class="section faq-section" id="faq">
@@ -83,6 +112,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
       <details class="faq-item"><summary>O que é um decant?</summary><div class="faq-answer">É uma quantidade de perfume acondicionada em um recipiente menor, nos volumes de 2 ml, 5 ml ou 10 ml, para experimentar ou usar sem comprar o frasco inteiro.</div></details>
       <details class="faq-item"><summary>Como o perfume é fracionado?</summary><div class="faq-answer">A fragrância é acondicionada em um recipiente menor, no volume selecionado. Se quiser detalhes sobre o processo ou a procedência de um perfume específico, consulte a loja pelo WhatsApp antes de fechar o pedido.</div></details>
       <details class="faq-item"><summary>O recipiente do decant é o frasco original da marca?</summary><div class="faq-answer">Não. O perfume é vendido fracionado em um recipiente menor; a embalagem do decant não é a embalagem de fábrica da marca. Para esclarecer a procedência de uma fragrância específica, fale com a loja pelo <a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">WhatsApp</a> antes de concluir o pedido.</div></details>
+      <details class="faq-item"><summary>Os perfumes estão em estoque?</summary><div class="faq-answer">A loja informa que os produtos deste catálogo estão em estoque. A disponibilidade da versão selecionada será confirmada no atendimento antes do pagamento.</div></details>
       <details class="faq-item"><summary>Como funcionam frete e prazo de entrega?</summary><div class="faq-answer">O frete e o prazo dependem do endereço e serão confirmados pelo WhatsApp antes da finalização do pedido.</div></details>
       <details class="faq-item"><summary>Quais formas de pagamento são aceitas?</summary><div class="faq-answer">As formas de pagamento disponíveis serão informadas pelo atendimento no WhatsApp antes de confirmar a compra.</div></details>
       <details class="faq-item"><summary>Os perfumes em frascos inteiros têm preço definido?</summary><div class="faq-answer">No momento, são exibidos como “Sob consulta”. Preço, disponibilidade, frete e prazo serão confirmados pelo WhatsApp.</div></details>
@@ -93,6 +123,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <div class="brand">SANTINO NOBRE</div>
   <p>Descubra sua próxima fragrância.</p>
   <p>As marcas e fragrâncias pertencem aos respectivos titulares.</p>
+  <nav class="footer-links" aria-label="Informações da loja"><a href="politicas.html">Políticas e condições de compra</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Quero%20solicitar%20informa%C3%A7%C3%B5es%20sobre%20o%20cupom%20de%20indica%C3%A7%C3%A3o%20de%20R%24%2020%20da%20SANTINO%20NOBRE." target="_blank" rel="noopener noreferrer">Cupom de indicação</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">Atendimento via WhatsApp</a></nav>
 </footer>
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Carrinho de compras">
   <div class="drawer">
@@ -102,7 +133,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
     <div class="cart-total">
       <div class="total-line"><span>Total do pedido</span><strong id="cartTotal">R$ 0,00</strong></div>
       <button class="btn checkout" id="checkout">Finalizar pelo WhatsApp</button>
-      <div class="small-note">Você será direcionado ao WhatsApp para combinar pagamento e entrega.</div>
+      <div class="small-note">Frete, prazo e pagamento serão confirmados no WhatsApp. Os 10% de desconto incidem apenas sobre decants em compras a partir de R$ 80.</div>
     </div>
   </div>
 </div>
@@ -172,7 +203,7 @@ const $ = id => document.getElementById(id);
 function money(n){return CURRENCY.format(n)}
 function renderProducts(){
  $("products").innerHTML = PRODUCTS.map(p=>`<article class="product">
-   <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
+   <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
    <h3>${escapeHTML(p.name)}</h3>
    <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
    ${infoMarkup(p.id)}
@@ -180,23 +211,26 @@ function renderProducts(){
      <select id="volume-${p.id}" aria-label="Volume de ${escapeHTML(p.name)}">${p.volumes.map((v,i)=>`<option value="${i}">${v.ml} ml</option>`).join("")}</select>
    </label></div>
    <div class="price-row"><span class="price" id="price-${p.id}">${money(p.volumes[0].price)}</span><span class="volume" id="selected-volume-${p.id}">${p.volumes[0].ml} ml</span></div>
-   <button class="add" data-add="${p.id}">Adicionar ao carrinho</button>
+   <button class="add" data-add="${p.id}">Adicionar ${p.volumes[0].ml} ml — ${money(p.volumes[0].price)}</button>
  </article>`).join("");
- PRODUCTS.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price);$("selected-volume-"+p.id).textContent=v.ml+" ml"})});
+ PRODUCTS.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price);$("selected-volume-"+p.id).textContent=v.ml+" ml";const button=document.querySelector('[data-add="'+p.id+'"]');if(button)button.textContent="Adicionar "+v.ml+" ml — "+money(v.price)})});
  document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(b.dataset.add)));
 }
 function renderFullSizeProducts(){
  $("fullSizeProducts").innerHTML = FULL_SIZE_PRODUCTS.map(p=>`<article class="product full-size-product">
-   <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
+   <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
    <h3>${escapeHTML(p.name)}</h3>
    <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
    <p class="card-meta">${escapeHTML(p.version)} · ${p.ml} ml</p>
    ${infoMarkup(p.id)}
    <div class="price-row"><span class="price price-pending">Sob consulta</span></div>
-   <button class="add" data-add-full="${p.id}">Adicionar ao carrinho</button>
+   <button class="add consult-price" data-consult-full="${p.id}">Consultar preço no WhatsApp</button>
+   <button class="add add-full-secondary" data-add-full="${p.id}">Adicionar ao pedido</button>
  </article>`).join("");
  document.querySelectorAll("[data-add-full]").forEach(b=>b.addEventListener("click",()=>addFullSizeToCart(b.dataset.addFull)));
+ document.querySelectorAll("[data-consult-full]").forEach(b=>b.addEventListener("click",()=>consultFullSize(b.dataset.consultFull)));
 }
+function consultFullSize(id){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message=`Olá! Quero consultar o preço atualizado e a disponibilidade de ${p.name} (${p.brand}), ${p.version}, ${p.ml} ml. Podem informar também o frete e o prazo para meu CEP?`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
  const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
