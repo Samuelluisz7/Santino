@@ -87,6 +87,61 @@ footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var
  header>.nav>.cart-link:before{content:"";position:absolute;left:13px;top:12px;width:15px;height:12px;border:1.6px solid var(--beige);border-radius:2px}
  header>.nav>.cart-link:after{content:"";position:absolute;left:16px;top:7px;width:9px;height:7px;border:1.6px solid var(--beige);border-bottom:0;border-radius:5px 5px 0 0}
  header>.nav>.cart-link .cart-count{position:absolute!important;right:-6px!important;top:-7px!important;display:grid!important;visibility:visible!important;opacity:1!important;place-items:center!important;width:20px!important;height:20px!important;border:2px solid var(--black)!important;background:var(--beige)!important;color:#171512!important;font-size:10px!important}
+}
+/* Página de fragrância: informação visual, contexto de uso e compra compacta */
+.usage-highlights{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:13px 0 16px}
+.usage-chip{min-width:0;padding:10px 11px;border:1px solid #393229;border-radius:4px;background:#171512}
+.usage-chip span{display:block;margin-bottom:4px;color:var(--beige);font-size:9px;letter-spacing:.13em;text-transform:uppercase;font-weight:700}
+.usage-chip strong{display:block;color:var(--cream);font-size:12px;font-weight:500;line-height:1.45}
+.stock-note{font-size:11px!important;line-height:1.5!important;color:var(--muted)!important}
+.content-heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:16px}
+.content-heading h2{margin:4px 0 5px}
+.content-heading p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+.note-infographic{display:grid;grid-template-columns:minmax(140px,.38fr) minmax(0,1fr);overflow:hidden;border:1px solid #393229;border-radius:5px;background:linear-gradient(135deg,#1d1a15,#11110f)}
+.note-visual-bottle{display:flex;align-items:center;justify-content:center;min-height:290px;padding:15px;background:radial-gradient(ellipse at center,#30271b 0%,#171410 67%,#11110f 100%);border-right:1px solid #393229}
+.note-visual-bottle img{display:block;width:100%;max-width:205px;height:270px;object-fit:contain;object-position:center}
+.note-bottle-fallback{color:var(--muted);font-family:Georgia,serif;font-size:17px;text-align:center;line-height:1.3}
+.note-visual-details{min-width:0;padding:19px}
+.note-graphic-head{margin-bottom:13px}
+.note-graphic-head .eyebrow{font-size:9px}
+.note-graphic-head h3{margin:5px 0 0;font-family:Georgia,serif;font-size:clamp(20px,3vw,29px);font-weight:400;line-height:1.12}
+.note-accords{display:flex;flex-direction:column;gap:5px;margin-bottom:16px}
+.accord-row{position:relative;min-height:29px;display:flex;align-items:center;overflow:hidden;border-radius:3px;background:#211d17}
+.accord-fill{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,#63452c,#b89a6a);opacity:.84}
+.accord-label{position:relative;z-index:1;padding:5px 10px;color:#f4ead9;font-size:11px;line-height:1.25;font-weight:500}
+.note-pyramid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.note-stage{min-width:0;padding:10px 9px;border-top:2px solid #8d7047;background:#191713}
+.note-stage:nth-child(2){border-top-color:#bba27a}
+.note-stage:nth-child(3){border-top-color:#6d5033}
+.note-stage strong{display:block;margin-bottom:5px;color:var(--beige);font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.note-stage p{margin:0;color:#d8cfc1;font-size:11px;line-height:1.5;overflow-wrap:anywhere}
+.note-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.note-fact{padding:11px 12px;border:1px solid #393229;border-radius:4px}
+.note-fact strong{display:block;margin-bottom:5px;color:var(--beige);font-size:10px;letter-spacing:.09em;text-transform:uppercase}
+.note-fact span{color:var(--muted);font-size:12px;line-height:1.5}
+@media(max-width:720px){
+ .usage-highlights{gap:7px;margin:10px 0 13px}
+ .usage-chip{padding:9px}.usage-chip strong{font-size:11px}
+ .content-heading{align-items:start;flex-direction:column;gap:6px}
+ .note-infographic{grid-template-columns:100px minmax(0,1fr)}
+ .note-visual-bottle{min-height:0;padding:8px}
+ .note-visual-bottle img{height:220px}
+ .note-visual-details{padding:12px 10px}
+ .note-graphic-head{margin-bottom:10px}
+ .note-graphic-head h3{font-size:21px}
+ .accord-row{min-height:27px}
+ .accord-label{font-size:10px;padding:5px 7px}
+ .note-pyramid{grid-template-columns:1fr;gap:5px}
+ .note-stage{padding:8px}
+ .note-stage p{font-size:11px}
+ .note-facts{grid-template-columns:1fr}
+}
+@media(max-width:390px){
+ .note-infographic{grid-template-columns:82px minmax(0,1fr)}
+ .note-visual-bottle img{height:215px}
+ .note-visual-details{padding:10px 8px}
+ .note-graphic-head h3{font-size:18px}
+ .accord-label{font-size:9px}
 }</style>
 </head>
 <body>
@@ -94,9 +149,28 @@ footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var
 <main><div class="breadcrumbs"><a id="backCatalog" href="decants.html">← Voltar ao catálogo</a> / <span id="crumbName">Perfume</span></div>
 
 <section class="product-layout"><div class="gallery"><div class="gallery-main"><img id="mainImage" alt=""><div class="gallery-fallback" id="galleryFallback">Imagem indisponível</div></div><div class="gallery-thumbs" id="galleryThumbs" aria-label="Mais fotos do perfume"></div></div>
-<div class="summary"><div class="eyebrow" id="categoryLabel">Fragrância</div><h1 id="productName">Carregando perfume…</h1><div class="brand-line" id="productBrand"></div><div class="product-meta" id="productMeta"></div><p class="description" id="productDescription"></p><div class="price" id="productPrice"></div>
-<div class="purchase-controls"><div class="control" id="volumeControl"><label for="volumeSelect">Volume do decant</label><select id="volumeSelect"></select></div><div class="control"><label for="quantitySelect">Quantidade</label><select id="quantitySelect"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div></div><button class="add-button" id="addButton">Adicionar ao carrinho</button><p class="stock-note" id="stockNote">Frete, prazo e pagamento serão confirmados antes da conclusão do pedido.</p></div></section>
-<section class="content-section" id="olfactorySection"><h2>Notas e perfil olfativo</h2><div class="note-grid"><div class="note-card"><strong>Família olfativa</strong><span id="familyText"></span></div><div class="note-card"><strong>Notas de saída</strong><span id="topText"></span></div><div class="note-card"><strong>Notas de coração</strong><span id="heartText"></span></div></div><div class="detail-grid" style="margin-top:10px"><div class="detail-item"><strong>Notas de fundo</strong><span id="baseText"></span></div><div class="detail-item"><strong>Quando usar</strong><span id="useText"></span></div></div><a class="source-link" id="sourceLink" href="#" target="_blank" rel="noopener noreferrer">Consultar fonte das informações olfativas</a></section>
+<div class="summary"><div class="eyebrow" id="categoryLabel">Fragrância</div><h1 id="productName">Carregando perfume…</h1><div class="brand-line" id="productBrand"></div><div class="product-meta" id="productMeta"></div><p class="description" id="productDescription"></p><div class="usage-highlights" id="usageHighlights"><div class="usage-chip"><span>Ocasião</span><strong id="occasionText">Uso versátil</strong></div><div class="usage-chip"><span>Clima</span><strong id="climateText">Depende da preferência</strong></div></div><div class="price" id="productPrice"></div>
+<div class="purchase-controls"><div class="control" id="volumeControl"><label for="volumeSelect">Volume do decant</label><select id="volumeSelect"></select></div><div class="control"><label for="quantitySelect">Quantidade</label><select id="quantitySelect"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div></div><button class="add-button" id="addButton">Adicionar ao carrinho</button><p class="stock-note" id="stockNote">Disponibilidade e condições do pedido serão confirmadas no WhatsApp.</p></div></section>
+<section class="content-section" id="olfactorySection">
+ <div class="content-heading"><div><div class="eyebrow">A composição</div><h2>Notas da fragrância</h2><p>Veja os acordes em destaque e como a fragrância se desenvolve na pele.</p></div></div>
+ <div class="note-infographic">
+  <div class="note-visual-bottle"><img id="noteBottleImage" alt="" loading="lazy" decoding="async"><div class="note-bottle-fallback" id="noteBottleFallback" hidden>SANTINO<br>FRAGRÂNCIAS</div></div>
+  <div class="note-visual-details">
+   <div class="note-graphic-head"><div class="eyebrow" id="familyText"></div><h3 id="noteGraphName">Fragrância</h3></div>
+   <div class="note-accords" id="accordBars" aria-label="Acordes em destaque"></div>
+   <div class="note-pyramid">
+    <div class="note-stage"><strong>Saída</strong><p id="topText"></p></div>
+    <div class="note-stage"><strong>Coração</strong><p id="heartText"></p></div>
+    <div class="note-stage"><strong>Fundo</strong><p id="baseText"></p></div>
+   </div>
+  </div>
+ </div>
+ <div class="note-facts">
+  <div class="note-fact"><strong>Quando usar</strong><span id="useText"></span></div>
+  <div class="note-fact"><strong>Perfil olfativo</strong><span id="familyDetailText"></span></div>
+ </div>
+ <a class="source-link" id="sourceLink" href="#" target="_blank" rel="noopener noreferrer">Consultar fonte das informações olfativas</a>
+</section>
 <section class="content-section"><h2>Sobre esta fragrância</h2><p class="description" id="longDescription"></p></section></main>
 <div class="toast" id="toast" role="status"></div><footer>SANTINO · Decants &amp; Fragrâncias · <a href="politicas.html" style="color:var(--beige)">Políticas de compra</a></footer>
 <script>
@@ -135,6 +209,29 @@ const PERFUME_INFO = {
  "full-invictus":{family:"Amadeirado aquático",top:"Notas marinhas, toranja e mandarina",heart:"Folha de louro e jasmim",base:"Madeira guaiac, musgo de carvalho, patchouli e âmbar",use:"Fresco, esportivo e versátil; combina com calor, lazer e festas informais.",source:"https://www.rabanne.com/"},
  "full-myslf":{family:"Amadeirado floral",top:"Bergamota da Calábria",heart:"Flor de laranjeira",base:"Madeiras e patchouli",use:"Limpo e moderno; versátil para trabalho, encontros e eventos.",source:"https://www.yslbeautyus.com/"}
 };
+
+const PRODUCT_STORIES={
+ "kingdom":{intro:"Aromático, ambarado e adocicado: abre com frescor herbal e evolui para um fundo quente e envolvente.",occasion:"Rotina, encontros e saídas à noite",climate:"Temperaturas amenas",story:"The Kingdom equilibra notas aromáticas com uma base adocicada e ambarada. É uma escolha para quem procura presença sem abrir mão de um começo fresco.",accords:["Baunilha","Tabaco","Aromático","Lavanda","Ambarado","Especiado","Menta"]},
+ "212-vip-black":{intro:"Uma fragrância escura e sensual, com contraste aromático e um fundo macio de baunilha e almíscar.",occasion:"Encontros, festas e noite",climate:"Ameno ou frio",story:"O absinto dá uma abertura distinta; o coração de couro e a base adocicada deixam o conjunto mais noturno. A aplicação moderada ajuda a adaptar a fragrância ao ambiente.",accords:["Baunilha","Couro","Absinto","Ambarado","Aromático","Amadeirado"]},
+ "the-blend-bourbon":{intro:"Especiado, encorpado e quente, com facetas de bourbon que deixam a fragrância sofisticada.",occasion:"Jantares, encontros e eventos",climate:"Ameno ou frio",story:"A combinação de especiarias, madeiras e baunilha Bourbon cria um perfil expressivo, mais indicado para momentos em que você deseja uma assinatura marcante.",accords:["Baunilha Bourbon","Canela","Cravo","Especiado","Amadeirado","Ambarado","Quente"]},
+ "asad-bourbon":{intro:"Doce e especiado, combina lavanda e ameixa com nuances de cacau e baunilha Bourbon.",occasion:"Encontros e saídas noturnas",climate:"Ameno ou frio",story:"As notas de ameixa e cacau dão profundidade ao lado adocicado, enquanto as especiarias ajudam a equilibrar o conjunto. É uma opção de presença mais quente para noite e clima fresco.",accords:["Baunilha","Cacau","Doce","Lavanda","Especiado","Aromático","Âmbar"]},
+ "homem-sagaz":{intro:"Amadeirado e adocicado, com saída verde e especiada e um fundo quente.",occasion:"Trabalho, encontros e eventos",climate:"Ameno ou noites frescas",story:"Mandarina verde e ervas trazem uma abertura vibrante; madeiras, âmbar e notas doces sustentam a fragrância. Use a dose conforme a proximidade e o ambiente.",accords:["Mandarina","Ameixa","Amadeirado","Especiado","Verde","Âmbar","Doce"]},
+ "homem-dom":{intro:"Um perfil amadeirado, especiado e cremoso, marcado por baunilha negra e madeiras.",occasion:"Encontros e ocasiões especiais",climate:"Ameno ou frio",story:"A baunilha negra e a tonka dão um lado mais envolvente, enquanto as madeiras deixam a composição mais séria e elegante. Funciona bem em ocasiões em que você quer uma fragrância marcante.",accords:["Baunilha negra","Tonka","Amadeirado","Doce","Especiado","Balsâmico"]},
+ "homem-essence":{intro:"Amadeirado e ambarado, com abertura cítrica e especiarias que dão energia ao conjunto.",occasion:"Rotina, trabalho e encontros",climate:"Versátil; dose menor no calor",story:"Bergamota e gengibre trazem frescor inicial; o coração especiado e a base de madeiras entregam um perfil masculino e alinhado. Ajuste a quantidade ao clima e ao espaço.",accords:["Bergamota","Gengibre","Cedro","Cítrico","Especiado","Amadeirado","Âmbar"]},
+ "essencial-sentir":{intro:"Amadeirado aromático, com frescor cítrico e uma base de madeiras mais intensa.",occasion:"Trabalho, compromissos e eventos",climate:"Ameno ou noites frescas",story:"A lavanda traz uma faceta aromática familiar, enquanto o sândalo e o patchouli aprofundam o perfil. A impressão é mais estruturada, adequada a quem gosta de fragrâncias com presença.",accords:["Bergamota","Lavanda","Sândalo","Aromático","Amadeirado","Intenso"]},
+ "fakhar-black":{intro:"Fresco, aromático e amadeirado, com maçã e bergamota na abertura e um fundo limpo.",occasion:"Dia a dia, lazer e encontros",climate:"Versátil; especialmente bom no calor moderado",story:"A abertura frutada e cítrica torna o perfume fácil de usar; lavanda e notas amadeiradas dão estrutura sem deixar o conjunto excessivamente pesado. Uma opção para diferentes momentos do dia.",accords:["Maçã","Bergamota","Lavanda","Fresco","Aromático","Amadeirado","Âmbar"]},
+ "k-max":{intro:"Aromático e amadeirado, cruza cítricos e gengibre com nuances aquosas e especiadas.",occasion:"Rotina, lazer e compromissos",climate:"Calor e temperaturas amenas",story:"A saída cítrica e aquosa dá uma impressão mais fresca, enquanto as especiarias e as madeiras trazem intensidade. É uma opção prática para uso frequente, sem ficar restrito à noite.",accords:["Grapefruit","Gengibre","Lavanda","Aquático","Aromático","Amadeirado","Especiado"]},
+ "full-le-male":{intro:"Elegante e quente, combina o frescor da lavanda com especiarias, íris e baunilha.",occasion:"Encontros, jantares e noite",climate:"Ameno ou frio",story:"O cardamomo abre a composição; lavanda e íris trazem um lado aromático e sofisticado, enquanto a baunilha finaliza com calor. É uma assinatura mais adequada a noites e momentos especiais.",accords:["Cardamomo","Lavanda","Íris","Baunilha","Âmbar","Amadeirado"]},
+ "full-afnan-9pm":{intro:"Doce, frutado e especiado, com maçã e canela sobre uma base quente de baunilha e âmbar.",occasion:"Festas, encontros e noite",climate:"Ameno ou frio",story:"A abertura frutada chama atenção; as notas florais no coração suavizam a transição para a base adocicada e ambarada. É mais indicado para quem gosta de fragrâncias perceptíveis, especialmente à noite.",accords:["Maçã","Canela","Baunilha","Doce","Frutado","Âmbar","Especiado"]},
+ "full-asad-bourbon":{intro:"Doce e especiado, combina lavanda e ameixa com nuances de cacau e baunilha Bourbon.",occasion:"Encontros e saídas noturnas",climate:"Ameno ou frio",story:"As notas de ameixa e cacau dão profundidade ao lado adocicado, enquanto as especiarias ajudam a equilibrar o conjunto. É uma opção de presença mais quente para noite e clima fresco.",accords:["Baunilha","Cacau","Doce","Lavanda","Especiado","Aromático","Âmbar"]},
+ "full-asad":{intro:"Intenso e especiado, mistura pimenta e tabaco a nuances escuras, quentes e ambaradas.",occasion:"Noite, encontros e ocasiões especiais",climate:"Ameno ou frio",story:"O contraste entre especiarias, facetas de tabaco e uma base ambarada dá ao Asad tradicional uma presença mais densa. Prefira usar com moderação em ambientes fechados e em dias quentes.",accords:["Pimenta","Tabaco","Café","Baunilha","Âmbar","Especiado","Intenso"]},
+ "full-eros":{intro:"Fresco e doce ao mesmo tempo, reúne cítricos, menta e maçã sobre uma base cremosa de baunilha.",occasion:"Encontros, festas e saídas",climate:"Versátil; modere no calor",story:"A abertura cítrica e mentolada passa uma sensação vibrante, enquanto a baunilha e as madeiras acrescentam profundidade. Pode acompanhar o dia e a noite, ajustando a aplicação à temperatura.",accords:["Limão","Menta","Maçã","Baunilha","Fresco","Doce","Aromático"]},
+ "full-million":{intro:"Doce, especiado e marcante, com cítricos na abertura e um fundo quente ambarado e amadeirado.",occasion:"Festas, encontros e noite",climate:"Ameno ou frio",story:"As facetas cítricas abrem espaço para especiarias e madeiras mais quentes. É uma fragrância de presença, especialmente adequada a situações sociais e saídas noturnas.",accords:["Mandarina","Canela","Âmbar","Madeiras","Especiado","Doce"]},
+ "full-sauvage":{intro:"Fresco e aromático, com bergamota e pimenta sobre uma base amadeirada e ambarada.",occasion:"Dia a dia, trabalho e encontros",climate:"Versátil; especialmente confortável no calor",story:"A bergamota traz uma abertura cítrica luminosa; as facetas aromáticas e ambaradas mantêm o perfume com presença ao longo do uso. A versatilidade depende da quantidade aplicada e da versão.",accords:["Bergamota","Pimenta","Fresco","Aromático","Ambarado","Amadeirado"]},
+ "full-invictus":{intro:"Fresco, aquático e esportivo, com notas cítricas e marinhas equilibradas por madeiras.",occasion:"Dia a dia, lazer e encontros casuais",climate:"Calor e temperaturas amenas",story:"A impressão marinha e cítrica dá energia à abertura, enquanto as notas amadeiradas e ambaradas mantêm a composição estruturada. Uma opção casual para quem prefere perfumes frescos.",accords:["Toranja","Notas marinhas","Aquático","Fresco","Âmbar","Amadeirado"]},
+ "full-myslf":{intro:"Limpo, moderno e amadeirado-floral, com bergamota e flor de laranjeira.",occasion:"Trabalho, rotina e encontros",climate:"Versátil durante o ano",story:"A bergamota dá um início fresco e luminoso; a flor de laranjeira traz um coração floral, e as madeiras finalizam com um acabamento contemporâneo. Funciona em contextos formais e casuais.",accords:["Bergamota","Flor de laranjeira","Floral","Madeiras","Fresco","Limpo"]}
+};
+
 const FULL_SIZE_PRODUCTS = [
  {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,version:"Eau de Parfum Intense",image:"https://arome.mx/cdn/shop/files/perfume-le-male-le-parfum-para-hombre-de-jean-paul-gaultier-arome-mexico-3_1200x1200.jpg?v=1725558080",description:"Eau de Parfum Intense de 125 ml, com assinatura amadeirada e âmbar."},
  {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,version:"Eau de Parfum",image:"https://cdn.dooca.store/181275/products/frasco-afnan-9pm-100ml-edp-masculino-noturno-ambar-perfumes.jpg?v=1771204807",description:"Eau de Parfum de 100 ml. Ofertas públicas abaixo de R$ 500; confirme vendedor, frete e autenticidade."},
@@ -148,12 +245,13 @@ const FULL_SIZE_PRODUCTS = [
 ];
 const EXTRA_GALLERY={"212-vip-black":["https://assets.woolworthsstatic.co.za/212-VIP-Men-Black-Eau-de-Parfum-100ML-503939736-full1.jpg?V=JHJe&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvYWx0ZXJuYXRlLzIwMjUtMDQtMTAvNTAzOTM5NzM2XzEwME1MX2Z1bGwxLmpwZyJ9&q=75"],"homem-dom":["https://fimgs.net/mdimg/perfume-thumbs/375x500.56083.jpg"],"the-blend-bourbon":["https://dcdn-us.mitiendanube.com/stores/002/832/629/products/download-79-e03a5186e1269c5b6b17128697086555-1024-1024.webp"],"asad-bourbon":["https://tiendalafe.com/cdn/shop/files/Disenosintitulo-2025-02-21T163922.609.png?v=1740177572"],"homem-sagaz":["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw38d49568/produto-joia/background/mobile/81951.jpg?q=80&sw=150"],"homem-essence":["https://down-br.img.susercontent.com/file/br-11134201-22120-h6ohnz4dmkkv7b"],"essencial-sentir":["https://static.wixstatic.com/media/e23ec5_24d54e3e370443b3b652ef03e1e08c91~mv2.jpg/v1/fill/w_980%2Ch_950%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/e23ec5_24d54e3e370443b3b652ef03e1e08c91~mv2.jpg"],"fakhar-black":["https://http2.mlstatic.com/D_NQ_NP_931646-MLA100154339260_122025-O.webp"],"k-max":["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw21a455c7/produto-joia/background/mobile/72468.jpg"],"full-le-male":["https://enigma.md/upload/iblock/dfb/6njnw37o873p7wd45ftgqrj0725s5k6d.jpg"],"full-afnan-9pm":["https://bulldog.vn/uploads/sanpham/03-9pm-1000x-jpeg-20230827104142WA1HaqVHBJ.jpeg"],"full-asad-bourbon":["https://tiendalafe.com/cdn/shop/files/Disenosintitulo-2025-02-21T163922.609.png?v=1740177572"],"full-asad":["https://down-br.img.susercontent.com/file/br-11134207-7r98o-m1srez49ieuie0"],"full-eros":["https://www.tjhughes.co.uk/cdn/shop/files/5783205--Versace-Eros-Eau-de-Toilette-100ml-10001940--Lifestyle-2000-x-2000_2b0e0e5c-5547-40c5-8ccd-410f45cf68bf_1024x.jpg?v=1781522021"],"full-million":["https://www.profumeriamarino.it/components/com_virtuemart/shop_image/product/c0ca5082ef3f6a8176937df40f63cc26.jpg"],"full-sauvage":["https://apothecary.rs/17902-large_default/dior-sauvage-eau-de-toilette-100ml.jpg"],"full-invictus":["https://product-data.raiadrogasil.io/images/5890913.webp"],"full-myslf":["https://silkperfumes.cl/cdn/shop/files/ysl-myself-edp-100-ml-recargable-Silk-Perfumes.png?v=1750262770&width=1500"]};
 const params=new URLSearchParams(window.location.search),requestedId=params.get("id")||"";
+const story=PRODUCT_STORIES[requestedId]||null;
 const product=PRODUCTS.find(x=>x.id===requestedId)||FULL_SIZE_PRODUCTS.find(x=>x.id===requestedId),isFull=Boolean(product&&product.id.startsWith("full-")),info=PERFUME_INFO[requestedId]||null,$=id=>document.getElementById(id);
 let gallery=[],currentVolume=product&&!isFull?product.volumes[0]:null;
 if(!product){document.querySelector("main").innerHTML='<section class="summary"><h1>Perfume não encontrado</h1><p>Volte ao catálogo para escolher uma fragrância.</p><a class="cart-link" href="decants.html">Voltar ao catálogo</a></section>'}
 else{
 document.title="SANTINO | "+product.name;$("crumbName").textContent=product.name;$("productName").textContent=product.name;$("productBrand").textContent=product.brand;$("categoryLabel").textContent=isFull?"Frasco inteiro":"Decant · "+product.tag;
-$("productMeta").textContent=isFull?(product.version+" · "+product.ml+" ml"):"Escolha o volume do seu decant";$("productDescription").textContent=product.description||"Uma fragrância para conhecer em detalhes.";$("longDescription").textContent=product.description||"Explore o perfil olfativo desta fragrância e escolha o volume desejado.";
+$("productMeta").textContent=isFull?(product.version+" · "+product.ml+" ml"):"Escolha o volume do seu decant";$("productDescription").textContent=story?story.intro:(product.description||"Uma fragrância para conhecer em detalhes.");$("longDescription").textContent=story?story.story:(product.description||"Explore o perfil olfativo desta fragrância e escolha o volume desejado.");if(story){$("occasionText").textContent=story.occasion;$("climateText").textContent=story.climate;}
 $("backCatalog").href=isFull?"frascos.html#full-size-catalog":"decants.html#catalog";$("cartLink").href=(isFull?"frascos.html":"decants.html")+"?openCart=1";
 if(isFull){$("volumeControl").style.display="none";$("productPrice").textContent="Preço sob consulta";$("productPrice").classList.add("pending")}
 else{$("volumeSelect").innerHTML=product.volumes.map((v,i)=>'<option value="'+i+'">'+v.ml+' ml</option>').join("");updatePrice();$("volumeSelect").addEventListener("change",()=>{currentVolume=product.volumes[Number($("volumeSelect").value)];updatePrice()})}
@@ -161,7 +259,24 @@ const extras=EXTRA_GALLERY[requestedId]||[];gallery=[product.image].concat(extra
 if(gallery.length){$("mainImage").src=gallery[0];$("mainImage").alt=product.name+" — foto 1";$("galleryThumbs").innerHTML=gallery.map((src,i)=>'<button class="thumb" type="button" data-gallery-index="'+i+'" aria-label="Ver foto '+(i+1)+'" aria-pressed="'+(i===0?'true':'false')+'"><img src="'+escapeHTML(src)+'" alt="" loading="lazy"></button>').join("");document.querySelectorAll("[data-gallery-index]").forEach(button=>button.addEventListener("click",()=>selectGallery(Number(button.dataset.galleryIndex))))}
 else{$("mainImage").style.display="none";$("galleryFallback").style.display="grid"}
 $("mainImage").addEventListener("error",()=>{$("mainImage").style.display="none";$("galleryFallback").style.display="grid"});$("mainImage").addEventListener("click",()=>{if($("mainImage").src)window.open($("mainImage").src,"_blank","noopener,noreferrer")});
-if(info){$("familyText").textContent=info.family;$("topText").textContent=info.top;$("heartText").textContent=info.heart;$("baseText").textContent=info.base;$("useText").textContent=info.use;$("sourceLink").href=info.source}else{$("olfactorySection").style.display="none"}
+if(info){
+ $("familyText").textContent=info.family;
+ $("familyDetailText").textContent=info.family;
+ $("topText").textContent=info.top;
+ $("heartText").textContent=info.heart;
+ $("baseText").textContent=info.base;
+ $("useText").textContent=story?story.occasion+". "+info.use:info.use;
+ $("sourceLink").href=info.source;
+ $("noteGraphName").textContent=product.name;
+ $("noteBottleImage").src=product.image||"";
+ $("noteBottleImage").alt="Frasco de "+product.name;
+ $("noteBottleImage").addEventListener("error",()=>{$("noteBottleImage").hidden=true;$("noteBottleFallback").hidden=false;});
+ const accords=(story&&story.accords&&story.accords.length)?story.accords:[info.top,info.heart,info.base];
+ $("accordBars").innerHTML=accords.slice(0,8).map((label,index)=>{
+   const width=Math.max(55,100-(index%4)*9);
+   return '<div class="accord-row"><div class="accord-fill" style="width:'+width+'%"></div><span class="accord-label">'+escapeHTML(label)+'</span></div>';
+ }).join("");
+}else{$("olfactorySection").style.display="none";$("usageHighlights").style.display="none"}
 const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?"Adicionar ao carrinho":"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
 }
 function selectGallery(index){if(!gallery[index])return;$("mainImage").style.display="block";$("galleryFallback").style.display="none";$("mainImage").src=gallery[index];$("mainImage").alt=product.name+" — foto "+(index+1);document.querySelectorAll("[data-gallery-index]").forEach(button=>button.setAttribute("aria-pressed",String(Number(button.dataset.galleryIndex)===index)));}
