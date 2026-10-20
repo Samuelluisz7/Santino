@@ -277,7 +277,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
     </div>
   </section>
   <section class="section" id="catalog">
-    <div class="section-head"><div><div class="eyebrow">Explore a coleção</div><h2>Escolha sua fragrância</h2><p>Volumes de 2, 5 e 10 ml. Ganhe 10% OFF a partir de R$ 80 em decants.</p></div></div>
+    <div class="section-head"><div><div class="eyebrow">Explore a coleção</div><h2>Escolha sua fragrância</h2><p>Volumes de 2, 5 e 10 ml. Ganhe 10% OFF em pedidos elegíveis a partir de R$ 80.</p></div></div>
     <div class="products" id="products"></div>
   </section>
   <section class="section faq-section" id="faq">
@@ -408,7 +408,7 @@ function renderFullSizeProducts(){
  </article>`).join("");
  document.querySelectorAll("[data-add-full]").forEach(b=>b.addEventListener("click",()=>addFullSizeToCart(b.dataset.addFull)));
 }
-function consultFullSize(id){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message=`Olá! Quero consultar o preço atualizado e a disponibilidade de ${p.name} (${p.brand}), ${p.version}, ${p.ml} ml. Podem informar também o frete e o prazo para meu CEP?`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
+function consultFullSize(id){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message=`Olá! Quero consultar o preço atualizado e a disponibilidade de ${p.name} (${p.brand}), ${p.version}, ${p.ml} ml. Podem confirmar a disponibilidade e explicar as opções de entrega caso eu queira receber em casa?`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
  const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
