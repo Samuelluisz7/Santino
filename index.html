@@ -108,6 +108,13 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .hero-banner{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain!important;object-position:center center!important;background:transparent!important}
 @media(max-width:720px){.hero-art{width:100%;height:auto!important;aspect-ratio:16/9;min-height:0!important;max-height:none!important}.hero-banner{object-fit:contain!important}}
 
+
+/* Banner horizontal real: imagem 16:9 sem laterais artificiais */
+.hero-art{position:relative;isolation:isolate;overflow:hidden;width:100%;height:auto!important;aspect-ratio:16/9;min-height:0!important;max-height:none!important;background:#090807}
+.hero-art::before{display:none!important;content:none!important}
+.hero-banner{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:cover!important;object-position:center center!important;background:transparent!important}
+@media(max-width:720px){.hero-art{aspect-ratio:16/9;height:auto!important;min-height:0!important;max-height:none!important}.hero-banner{object-fit:cover!important;object-position:center center!important}}
+
 </style>
 </head>
 <body>
@@ -126,7 +133,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
         <a class="hero-link" href="frascos.html">Ver frascos →</a>
       </div>
     </div>
-    <div class="hero-art"><img class="hero-banner" src="/Santino/a_professional_studio_still_life_product_photograp.png?v=3" alt="Seleção de perfumes SANTINO" fetchpriority="high" decoding="async"></div>
+    <div class="hero-art"><img class="hero-banner" src="/Santino/banner-home.webp?v=4" alt="Seleção de perfumes SANTINO" fetchpriority="high" decoding="async"></div>
   </section>
   <section class="promo-grid" aria-label="Ofertas">
     <article class="promo-card">
