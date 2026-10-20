@@ -34,11 +34,31 @@ h1,h2{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(30px,4vw,46px
 .source-link{display:inline-block;margin-top:15px;color:var(--beige);font-size:12px}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);max-width:calc(100% - 30px);background:var(--cream);color:#171512;padding:12px 16px;z-index:20;display:none;font-size:13px}
 footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var(--muted);font-size:12px}
 @media(max-width:720px){.nav{padding:10px 13px;gap:8px}.brand{font-size:14px;letter-spacing:.16em}.brand small{font-size:8px}.nav-links{gap:10px}.nav-links a{font-size:12px}.cart-link{padding:8px 10px;min-height:44px;font-size:12px}main{padding:17px 14px 40px}.breadcrumbs{margin-bottom:12px}.product-layout{grid-template-columns:1fr;gap:13px}.gallery-main{min-height:300px}.gallery-main img,.gallery-fallback{height:300px}.gallery-main img{padding:12px}.gallery-thumbs{gap:8px}.thumb{flex-basis:66px;width:66px;height:66px}.summary{padding:16px}h1{font-size:32px}.description{font-size:13px;margin:12px 0 15px}.purchase-controls{grid-template-columns:1fr 100px;margin:14px 0 10px}.price{font-size:23px}.content-section{margin-top:25px;padding-top:22px}.content-section h2{font-size:24px}.note-grid{grid-template-columns:1fr;gap:8px}.note-card{padding:13px}.detail-grid{grid-template-columns:1fr;gap:8px}.add-button{min-height:52px}}
+
+/* Busca global SANTINO */
+.site-search{margin:13px 0 10px;max-width:440px;width:100%;text-align:left}
+.site-search label{display:block;color:var(--beige);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.site-search-row{display:flex;gap:7px;margin-top:6px;width:100%}
+.site-search input{flex:1;min-width:0;width:100%;padding:11px 12px;min-height:46px;border:1px solid var(--line);border-radius:3px;background:#171613;color:var(--cream);outline:none}
+.site-search input:focus{border-color:var(--beige);box-shadow:0 0 0 2px #c9b18b22}
+.site-search input::placeholder{color:#888174}
+.site-search button{min-height:46px;padding:10px 16px;white-space:nowrap}
+@media(max-width:720px){.site-search{margin:7px 0 5px;max-width:none}.site-search-row{gap:6px}.site-search input{font-size:14px}.site-search button{padding:10px 13px}}
+
 </style>
 </head>
 <body>
 <header><div class="nav"><a href="index.html" class="brand" style="text-decoration:none">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a><nav class="nav-links" aria-label="Navegação"><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a></nav><a class="cart-link" id="cartLink" href="decants.html?openCart=1">Carrinho <span class="cart-count" id="cartCount">0</span></a></div></header>
 <main><div class="breadcrumbs"><a id="backCatalog" href="decants.html">← Voltar ao catálogo</a> / <span id="crumbName">Perfume</span></div>
+
+<form class="site-search" action="buscar.html" method="get" data-santino-search>
+  <label for="siteSearchInput">Buscar no catálogo</label>
+  <div class="site-search-row">
+    <input id="siteSearchInput" type="search" name="q" maxlength="100" placeholder="Ex.: Sauvage, Asad, Eros" autocomplete="off" required>
+    <button type="submit" class="btn">Buscar</button>
+  </div>
+</form>
+
 <section class="product-layout"><div class="gallery"><div class="gallery-main"><img id="mainImage" alt=""><div class="gallery-fallback" id="galleryFallback">Imagem indisponível</div></div><div class="gallery-thumbs" id="galleryThumbs" aria-label="Mais fotos do perfume"></div></div>
 <div class="summary"><div class="eyebrow" id="categoryLabel">Fragrância</div><h1 id="productName">Carregando perfume…</h1><div class="brand-line" id="productBrand"></div><div class="product-meta" id="productMeta"></div><p class="description" id="productDescription"></p><div class="price" id="productPrice"></div>
 <div class="purchase-controls"><div class="control" id="volumeControl"><label for="volumeSelect">Volume do decant</label><select id="volumeSelect"></select></div><div class="control"><label for="quantitySelect">Quantidade</label><select id="quantitySelect"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div></div><button class="add-button" id="addButton">Adicionar ao carrinho</button><p class="stock-note" id="stockNote">Frete, prazo e pagamento serão confirmados antes da conclusão do pedido.</p></div></section>
@@ -117,4 +137,5 @@ function addToCart(){if(!product)return;const amount=Math.max(1,Math.min(10,Numb
 if(item)item.qty=(Number(item.qty)||0)+amount;else cart.push({key,id:product.id,name:product.name,brand:product.brand,ml,price,qty:amount,category:isFull?"Frasco inteiro":"Decant",...(isFull?{version:product.version}:{})});
 try{localStorage.setItem("santino_nobre_cart",JSON.stringify(cart))}catch(e){}$("cartCount").textContent=cart.reduce((sum,x)=>sum+(Number(x.qty)||0),0);$("toast").textContent=amount+" unidade(s) de "+product.name+" adicionada(s) ao carrinho.";$("toast").style.display="block";
 const button=$("addButton"),original=isFull?"Adicionar ao carrinho":"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);button.textContent="Adicionado ao carrinho ✓";setTimeout(()=>{button.textContent=original;$("toast").style.display="none"},2000)}
-</script></body></html>
+</script><script src="search.js" defer></script>
+</body></html>
