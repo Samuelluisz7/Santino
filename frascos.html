@@ -133,6 +133,17 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 }
 @media(max-width:350px){.product-detail-link .product-art{height:180px}}
 
+
+/* Busca global SANTINO */
+.site-search{margin:13px 0 10px;max-width:440px;width:100%;text-align:left}
+.site-search label{display:block;color:var(--beige);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.site-search-row{display:flex;gap:7px;margin-top:6px;width:100%}
+.site-search input{flex:1;min-width:0;width:100%;padding:11px 12px;min-height:46px;border:1px solid var(--line);border-radius:3px;background:#171613;color:var(--cream);outline:none}
+.site-search input:focus{border-color:var(--beige);box-shadow:0 0 0 2px #c9b18b22}
+.site-search input::placeholder{color:#888174}
+.site-search button{min-height:46px;padding:10px 16px;white-space:nowrap}
+@media(max-width:720px){.site-search{margin:7px 0 5px;max-width:none}.site-search-row{gap:6px}.site-search input{font-size:14px}.site-search button{padding:10px 13px}}
+
 </style>
 </head>
 <body>
@@ -147,6 +158,15 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
       <div class="eyebrow">Descubra. Experimente. Escolha.</div>
       <h1>Sua próxima fragrância começa aqui.</h1>
       <p>Perfumes em estoque. Consulte o preço atualizado, o frete e o prazo de entrega pelo WhatsApp antes de confirmar seu pedido.</p>
+
+<form class="site-search" action="buscar.html" method="get" data-santino-search>
+  <label for="siteSearchInput">Buscar no catálogo</label>
+  <div class="site-search-row">
+    <input id="siteSearchInput" type="search" name="q" maxlength="100" placeholder="Ex.: Sauvage, Asad, Eros" autocomplete="off" required>
+    <button type="submit" class="btn">Buscar</button>
+  </div>
+</form>
+
       <a class="btn" href="#full-size-catalog" style="display:inline-block;text-decoration:none;margin-top:10px">Ver frascos inteiros</a> <a class="btn secondary-hero" href="decants.html" style="display:inline-block;text-decoration:none;margin-top:10px">Decants</a>
     </div>
     <div class="hero-art"><img src="/Santino/file_00000000acc4820eaf3161e80d0986d8.png" alt="Perfume em frasco inteiro sem marca, vidro transparente e líquido âmbar sob iluminação dourada" fetchpriority="high" decoding="async"></div>
@@ -340,5 +360,6 @@ $("checkout").addEventListener("click",checkout);
 renderFullSizeProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
+<script src="search.js" defer></script>
 </body>
 </html>
