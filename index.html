@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#11110f">
-<title>SANTINO NOBRE | Decants e frascos inteiros</title>
+<title>SANTINO | Decants e frascos inteiros</title>
 <style>
 :root{--black:#11110f;--panel:#1a1916;--cream:#f3eadb;--beige:#c9b18b;--muted:#b9b0a2;--line:#39352f;--white:#fffaf2}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:var(--cream);font-family:Arial,Helvetica,sans-serif}
@@ -66,17 +66,46 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 
 .category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:900px}.category-choice{display:flex;flex-direction:column;min-height:235px;padding:25px;border:1px solid var(--line);background:linear-gradient(145deg,#25221c,#171613);color:var(--cream);text-decoration:none;transition:border-color .2s,transform .2s}.category-choice:hover{border-color:var(--beige);transform:translateY(-2px)}.category-choice h3{font-family:Georgia,serif;font-size:30px;font-weight:400;margin:13px 0 9px}.category-choice p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}.category-cta{margin-top:auto;padding-top:22px;color:var(--beige);font-weight:700;font-size:13px}.home-faq{border-top:1px solid var(--line);padding-top:32px}
 @media(max-width:720px){.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.category-choice{min-height:0;padding:12px}.category-choice h3{font-size:18px}.category-choice p{font-size:11px;line-height:1.45}.category-cta{padding-top:12px;font-size:11px}.footer-links{font-size:11px;gap:6px}.promo-action{width:100%;justify-content:center}}
+
+/* Refinamento mobile solicitado: identidade, botões e enquadramento */
+.brand{font-size:16px;letter-spacing:.2em}
+.hero-link{padding:13px 17px;font-size:14px;min-height:48px;justify-content:center}
+.hero-art{height:clamp(200px,27vw,285px)}
+.hero-banner{object-fit:contain;object-position:center center;background:#090807}
+.category-choice{min-height:175px}
+.cart-button,.btn{min-height:48px}
+@media(max-width:720px){
+ .nav{padding:10px 15px 8px;gap:7px}
+ .brand{font-size:14px;letter-spacing:.16em}
+ .brand small{font-size:8px;margin-top:3px;letter-spacing:.17em}
+ .catalog-nav{margin:0;gap:12px}
+ .catalog-nav a{font-size:13px;padding:7px 0}
+ .hero{padding:15px;gap:11px}
+ .hero-copy h1{font-size:clamp(28px,7vw,36px)}
+ .hero-copy p{font-size:13px;line-height:1.5}
+ .hero-art{height:clamp(175px,47vw,225px)}
+ .hero-banner{object-fit:contain;object-position:center center}
+ .hero-link{font-size:14px;min-height:48px;padding:12px 14px;flex:1}
+ .promo-card p{font-size:12px}
+ .promo-card .promo-note{font-size:10px}
+ .category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .category-choice{min-height:140px;padding:13px}
+ .category-choice h3{font-size:19px}
+ .category-choice p{font-size:12px;line-height:1.5}
+ .category-cta{font-size:12px;padding-top:12px}
+}
+
 </style>
 </head>
 <body>
 <header><div class="nav">
-  <div class="brand">SANTINO NOBRE<small>DECANTS & FRAGRÂNCIAS</small></div>
+  <div class="brand">SANTINO<small>DECANTS & FRAGRÂNCIAS</small></div>
   <nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a></nav>
 </div></header>
 <main>
   <section class="hero" aria-label="Apresentação da loja">
     <div class="hero-copy">
-      <div class="eyebrow">SANTINO NOBRE · DECANTS & FRAGRÂNCIAS</div>
+      <div class="eyebrow">SANTINO · DECANTS & FRAGRÂNCIAS</div>
       <h1>Encontre sua próxima fragrância.</h1>
       <p>Decants de 2, 5 e 10 ml ou perfumes em frascos inteiros.</p>
       <div class="hero-actions">
@@ -84,7 +113,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
         <a class="hero-link" href="frascos.html">Ver frascos →</a>
       </div>
     </div>
-    <div class="hero-art"><img class="hero-banner" src="/Santino/a_professional_studio_still_life_product_photograp.png" alt="Seleção de perfumes SANTINO NOBRE" fetchpriority="high" decoding="async"></div>
+    <div class="hero-art"><img class="hero-banner" src="/Santino/a_professional_studio_still_life_product_photograp.png" alt="Seleção de perfumes SANTINO" fetchpriority="high" decoding="async"></div>
   </section>
   <section class="promo-grid" aria-label="Ofertas">
     <article class="promo-card">
@@ -97,7 +126,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
       <h2 class="promo-title">Ganhe R$ 20</h2>
       <p>Indique um amigo e receba R$ 20 de desconto na próxima compra, com valor mínimo de R$ 80.</p>
       <span class="promo-note">Após a compra do amigo ser confirmada. Não cumulativo com o desconto de 10% nos decants.</span>
-      <a class="hero-link primary promo-action" href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Quero%20solicitar%20informa%C3%A7%C3%B5es%20sobre%20o%20cupom%20de%20indica%C3%A7%C3%A3o%20de%20R%24%2020%20da%20SANTINO%20NOBRE." target="_blank" rel="noopener noreferrer">Solicitar cupom pelo WhatsApp →</a>
+      <a class="hero-link primary promo-action" href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Quero%20solicitar%20informa%C3%A7%C3%B5es%20sobre%20o%20cupom%20de%20indica%C3%A7%C3%A3o%20de%20R%24%2020%20da%20SANTINO." target="_blank" rel="noopener noreferrer">Solicitar cupom pelo WhatsApp →</a>
     </article>
   </section>
   <section class="home-categories" aria-label="Catálogos">
@@ -120,10 +149,10 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   </section>
 </main>
 <footer>
-  <div class="brand">SANTINO NOBRE</div>
+  <div class="brand">SANTINO</div>
   <p>Descubra sua próxima fragrância.</p>
   <p>As marcas e fragrâncias pertencem aos respectivos titulares.</p>
-  <nav class="footer-links" aria-label="Informações da loja"><a href="politicas.html">Políticas e condições de compra</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Quero%20solicitar%20informa%C3%A7%C3%B5es%20sobre%20o%20cupom%20de%20indica%C3%A7%C3%A3o%20de%20R%24%2020%20da%20SANTINO%20NOBRE." target="_blank" rel="noopener noreferrer">Cupom de indicação</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">Atendimento via WhatsApp</a></nav>
+  <nav class="footer-links" aria-label="Informações da loja"><a href="politicas.html">Políticas e condições de compra</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Quero%20solicitar%20informa%C3%A7%C3%B5es%20sobre%20o%20cupom%20de%20indica%C3%A7%C3%A3o%20de%20R%24%2020%20da%20SANTINO." target="_blank" rel="noopener noreferrer">Cupom de indicação</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">Atendimento via WhatsApp</a></nav>
 </footer>
 </body>
 </html>
