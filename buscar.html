@@ -66,6 +66,22 @@ footer{border-top:1px solid var(--line);padding:24px 15px;text-align:center;colo
 .nav-search button{height:100%;min-width:39px;background:transparent;border:0;color:#c9b18b;font-size:24px;cursor:pointer}
 .nav-search input::placeholder{color:#938a7e}
 @media(max-width:720px){.nav-search{order:2;flex:1 1 125px;margin-left:auto;max-width:190px}.nav-search input{font-size:11px;padding-left:10px}.nav-search button{min-width:31px}.catalog-nav{order:3;width:100%;margin-left:0!important}}
+
+/* Cabeçalho SANTINO consistente entre as páginas */
+.nav{display:grid!important;grid-template-columns:minmax(145px,1fr) minmax(180px,250px) auto;align-items:center!important;gap:16px!important}
+.nav-links{display:flex;align-items:center;gap:16px}
+.nav-links a{color:var(--muted);font-size:12px;text-decoration:none}
+.nav-links a:hover{color:var(--beige)}
+@media(max-width:720px){
+ .nav{display:grid!important;grid-template-columns:minmax(112px,1fr) minmax(108px,150px)!important;gap:8px!important;padding:13px 13px 10px!important;align-items:center!important}
+ .nav .brand{font-size:17px;letter-spacing:.13em}
+ .nav .brand small{font-size:7px;letter-spacing:.15em;margin-top:5px}
+ .nav-search{grid-column:2;grid-row:1;width:100%;min-width:0;max-width:none!important;height:36px!important;margin:0!important}
+ .nav-search input{font-size:11px!important;padding-left:9px!important}
+ .nav-search button{width:29px!important;min-width:29px!important;font-size:18px!important}
+ .nav-links{grid-column:1/-1;grid-row:2;gap:17px!important}
+ .nav-links a{font-size:12px}
+}
 </style>
 </head>
 <body>
