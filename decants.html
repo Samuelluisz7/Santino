@@ -280,13 +280,13 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
     </div>
   </section>
   <section class="section" id="catalog">
-    <div class="section-head"><div><div class="eyebrow">Explore a coleção</div><h2>Escolha sua fragrância</h2><p>2, 5 ou 10 ml · 10% OFF automático em pedidos de decants a partir de R$ 80 · Entrega local em Viçosa combinada pelo WhatsApp.</p></div></div>
+    <div class="section-head"><div><div class="eyebrow">Explore a coleção</div><h2>Escolha sua fragrância</h2><p>5 ou 10 ml · 10% OFF automático em pedidos de decants a partir de R$ 80 · Entrega local em Viçosa combinada pelo WhatsApp.</p></div></div>
     <div class="products" id="products"></div>
   </section>
   <section class="section faq-section" id="faq">
     <div class="section-head"><div><div class="eyebrow">Antes de pedir</div><h2>Dúvidas frequentes</h2><p>Informações essenciais para comprar com mais clareza.</p></div></div>
     <div class="faq-list">
-      <details class="faq-item"><summary>O que é um decant?</summary><div class="faq-answer">É uma quantidade de perfume acondicionada em um recipiente menor, nos volumes de 2 ml, 5 ml ou 10 ml, para experimentar ou usar sem comprar o frasco inteiro.</div></details>
+      <details class="faq-item"><summary>O que é um decant?</summary><div class="faq-answer">É uma quantidade de perfume acondicionada em um recipiente menor, nos volumes de 5 ml ou 10 ml, para experimentar ou usar sem comprar o frasco inteiro.</div></details>
       <details class="faq-item"><summary>Como o perfume é fracionado?</summary><div class="faq-answer">O decant é uma porção da fragrância transferida para um recipiente menor no volume escolhido. O recipiente não é a embalagem de fábrica da marca. Antes de comprar, você pode pedir à loja informações sobre a origem da fragrância, o processo de envase e o tipo de atomizador usado.</div></details>
       <details class="faq-item"><summary>O recipiente do decant é o frasco original da marca?</summary><div class="faq-answer">Não. O perfume é vendido fracionado em um recipiente menor; a embalagem do decant não é a embalagem de fábrica da marca. Para esclarecer a procedência de uma fragrância específica, fale com a loja pelo <a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">WhatsApp</a> antes de concluir o pedido.</div></details>
       <details class="faq-item"><summary>Como confirmo a procedência?</summary><div class="faq-answer">Antes de pagar, solicite pelo WhatsApp informações sobre a procedência da fragrância e esclareça qualquer dúvida sobre o decant. A loja deve confirmar o produto, o volume, o valor total e a disponibilidade no atendimento.</div></details>
@@ -320,7 +320,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 /* Preços de decants calculados a partir de referência do frasco de 100 ml + margem estimada e embalagem; confirme o custo real de compra. */
 const STORE_WHATSAPP = "5531996312579";
 const CURRENCY = new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});
-/* Regra comercial SANTINO: oferecer decant de 2 ml somente quando o custo de compra do perfume superar R$ 6,00/ml. Com os custos de referência atualmente registrados (frascos de 100 ml), nenhum perfume atinge esse limite; por isso, a opção de 2 ml fica removida até atualização dos custos. */
+/* Os volumes de decant comercializados atualmente são 5 ml e 10 ml. */
 const PRODUCTS = [
  {id:"kingdom",name:"The Kingdom",brand:"Lattafa",image:"https://static01.galaxus.com/productimages/5/4/2/7/9/5/2/8/0/1/7/1/6/9/6/8/9/0/019bd342-bc73-7aeb-8f11-39b1b21ce8c5_sea.jpeg",tag:"Importado",description:"Aromático e ambarado, com notas de lavanda, menta e baunilha.",volumes:[{ml:5,price:17.9},{ml:10,price:33.9}]},
  {id:"212-vip-black",name:"212 VIP Black",brand:"Carolina Herrera",image:"https://f.fcdn.app/imgs/267ea9/www.sanroque.com.uy/sanruy/e03f/original/catalogo/115289_115289_2/2000-2000/perfume-carolina-herrera-212-vip-black-men-edp-100ml-perfume-carolina-herrera-212-vip-black-men-edp-100ml.jpg",tag:"Importado",description:"Absinto e lavanda sobre um fundo de baunilha e almíscar.",volumes:[{ml:5,price:37.9},{ml:10,price:74.9}]},
@@ -362,8 +362,7 @@ function infoMarkup(id){
  <p><strong>Notas de coração:</strong> ${escapeHTML(i.heart)}</p>
  <p><strong>Notas de fundo:</strong> ${escapeHTML(i.base)}</p>
  <p><strong>Quando usar:</strong> ${escapeHTML(i.use)}</p>
- <p><a href="${escapeHTML(i.source)}" target="_blank" rel="noopener noreferrer">Consultar fonte</a></p>
- </div></details>`;
+</div></details>`;
 }
 const FULL_SIZE_PRODUCTS = [
  {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,version:"Eau de Parfum Intense",image:"https://arome.mx/cdn/shop/files/perfume-le-male-le-parfum-para-hombre-de-jean-paul-gaultier-arome-mexico-3_1200x1200.jpg?v=1725558080",description:"Eau de Parfum Intense de 125 ml, com assinatura amadeirada e âmbar."},
