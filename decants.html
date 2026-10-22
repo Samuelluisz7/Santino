@@ -269,6 +269,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .product .add:hover{background:#dbc6a4!important;border-color:#dbc6a4!important}
 @media(max-width:720px){.product .add{min-height:54px!important;font-size:12px!important;padding:12px 7px!important}.catalog-nav{gap:14px!important}.catalog-nav a{font-size:12px!important}}
 </style>
+  <link rel="stylesheet" href="santino-ui.css">
 </head>
 <body>
 <header><div class="nav">
@@ -339,15 +340,15 @@ const PRODUCTS = [
  {id:"k-max",name:"K Max",brand:"Natura Kaiak",image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2ilre9m85au14",tag:"Nacional",description:"Aromático e amadeirado, com frescor cítrico e especiarias.",volumes:[{ml:5,price:16.9},{ml:10,price:30.9}]}
 ];
 const FULL_SIZE_PRODUCTS = [
- {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,version:"Eau de Parfum Intense",image:"https://arome.mx/cdn/shop/files/perfume-le-male-le-parfum-para-hombre-de-jean-paul-gaultier-arome-mexico-3_1200x1200.jpg?v=1725558080",description:"Eau de Parfum Intense de 125 ml, com assinatura amadeirada e âmbar."},
- {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,version:"Eau de Parfum",image:"https://cdn.dooca.store/181275/products/frasco-afnan-9pm-100ml-edp-masculino-noturno-ambar-perfumes.jpg?v=1771204807",description:"Eau de Parfum de 100 ml. Ofertas públicas abaixo de R$ 500; confirme vendedor, frete e autenticidade."},
- {id:"full-asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",ml:100,version:"Eau de Parfum",image:"https://media.cdn.kaufland.de/product-images/original/b4a7cd262b1b59538f425245be4fff95.jpg",description:"Eau de Parfum de 100 ml; variante distinta do Asad original."},
- {id:"full-asad",name:"Asad tradicional",brand:"Lattafa",ml:100,version:"Eau de Parfum",image:"https://epocacosmeticos.vteximg.com.br/arquivos/ids/1310679-800-800/17603916694210.jpg?v=639001969767870000",description:"Eau de Parfum de 100 ml, versão original de Lattafa Asad."},
- {id:"full-eros",name:"Eros",brand:"Versace",ml:100,version:"Eau de Toilette",image:"https://www.perfumenz.co.nz/cdn/shop/products/versace_eros_1200x1200.jpg?v=1531373446",description:"Frasco original de 100 ml. Preço de venda SANTINO ainda não definido."},
- {id:"full-million",name:"1 Million",brand:"Rabanne",ml:100,version:"Eau de Toilette",image:"https://hogiesonline.co.uk/cdn/shop/files/opy3hsarjs2.png?v=1763026114&width=1946",description:"Frasco original de 100 ml. Confirmar preço e disponibilidade no fornecedor."},
- {id:"full-sauvage",name:"Sauvage",brand:"Dior",ml:100,version:"Eau de Toilette",image:"https://www.sephora.com.mx/on/demandware.static/-/Sites-masterCatalog_Sephora/es_MX/dwdefc1b76/images/hi-res/eau-de-toilette-dior-dior-sauvage-eau-de-toilette-100ml3348901250146A.jpg",description:"Frasco original de 100 ml. Preço de venda SANTINO ainda não definido."},
- {id:"full-invictus",name:"Invictus",brand:"Rabanne",ml:100,version:"Eau de Toilette",image:"https://media.ulta.com/i/ulta/2279388_alt01?fmt=auto&h=1600&w=1600",description:"Eau de Toilette de 100 ml. Faixa de referência de varejistas; confirme a versão e o valor final."},
- {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,version:"Eau de Parfum",image:"https://www.adorebeauty.com.au/pim_media/000/437/935/Yves_Saint_Laurent_MYSLF_100ml.png?fmt=webp&h=386&w=386",description:"Eau de Parfum de 100 ml. Referência inicial; confirme o valor final e a disponibilidade."}
+ {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,version:"Eau de Parfum Intense",description:"Eau de Parfum Intense de 125 ml, com assinatura amadeirada e âmbar."},
+ {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,version:"Eau de Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",ml:100,version:"Eau de Parfum",description:"Eau de Parfum de 100 ml; variante distinta do Asad original."},
+ {id:"full-asad",name:"Asad tradicional",brand:"Lattafa",ml:100,version:"Eau de Parfum",description:"Eau de Parfum de 100 ml, versão original de Lattafa Asad."},
+ {id:"full-eros",name:"Eros",brand:"Versace",ml:100,version:"Eau de Toilette",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-million",name:"1 Million",brand:"Rabanne",ml:100,version:"Eau de Toilette",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-sauvage",name:"Sauvage",brand:"Dior",ml:100,version:"Eau de Toilette",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-invictus",name:"Invictus",brand:"Rabanne",ml:100,version:"Eau de Toilette",description:"Eau de Toilette de 100 ml. Faixa de referência de varejistas; confirme a versão e o valor final."},
+ {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,version:"Eau de Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."}
 ];
 let cart = [];
 try { const savedCart = JSON.parse(localStorage.getItem("santino_nobre_cart") || "[]"); if (Array.isArray(savedCart)) cart = savedCart; } catch (e) { cart = []; }
@@ -363,7 +364,7 @@ function renderProducts(){
    <a class="details-link" href="produto.html?id=${encodeURIComponent(p.id)}">Notas e detalhes <span aria-hidden="true">→</span></a>
    <div class="variants"><label style="flex:1">Volume
      <select id="volume-${p.id}" aria-label="Volume de ${escapeHTML(p.name)}">${p.volumes.map((v,i)=>`<option value="${i}">${v.ml} ml</option>`).join("")}</select>
-   </label><label class="quantity-label">Qtd.
+   </label><label class="quantity-label">Quantidade
      <select id="qty-${p.id}" aria-label="Quantidade de ${escapeHTML(p.name)}">${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}</select>
    </label></div>
    <div class="price-row"><span class="price" id="price-${p.id}">${money(p.volumes[0].price)}</span><span class="volume" id="selected-volume-${p.id}">${p.volumes[0].ml} ml</span></div>
@@ -375,18 +376,16 @@ function renderProducts(){
 function renderFullSizeProducts(){
  $("fullSizeProducts").innerHTML = FULL_SIZE_PRODUCTS.map(p=>`<article class="product full-size-product">
    <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
-   <div class="product-art">${p.image?`<img class="product-photo" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
-   <h3>${escapeHTML(p.name)}</h3>
-   <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
-   <p class="card-meta">${escapeHTML(p.version)} · ${p.ml} ml</p>
+     <div class="full-size-mark" aria-hidden="true"><strong>S</strong><span>Frasco inteiro</span></div>
+     <h3>${escapeHTML(p.name)}</h3>
+     <div class="product-brand">${escapeHTML(p.brand)}</div>
+     <p class="card-meta">${escapeHTML(p.version)} · ${p.ml} ml</p>
    </a>
-   <div class="price-row"><span class="price price-pending">Sob consulta</span></div>
    <label class="quantity-label">Quantidade<select id="qty-${p.id}" aria-label="Quantidade de ${escapeHTML(p.name)}">${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}</select></label>
-   <button class="add" data-add-full="${p.id}">Adicionar ao carrinho</button>
+   <button class="add" data-add-full="${p.id}">Adicionar à consulta</button>
  </article>`).join("");
  document.querySelectorAll("[data-add-full]").forEach(b=>b.addEventListener("click",()=>addFullSizeToCart(b.dataset.addFull)));
-}
-function consultFullSize(id){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message=`Olá! Quero consultar o preço atualizado e a disponibilidade de ${p.name} (${p.brand}), ${p.version}, ${p.ml} ml. Podem confirmar a disponibilidade e explicar as opções de entrega caso eu queira receber em casa?`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
+}function consultFullSize(id){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message=`Olá! Quero consultar o preço atualizado e a disponibilidade de ${p.name} (${p.brand}), ${p.version}, ${p.ml} ml. Podem confirmar a disponibilidade e explicar as opções de entrega caso eu queira receber em casa?`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
  const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
@@ -465,34 +464,6 @@ renderProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
 <script src="search.js" defer></script>
-
-<style>
-.hero .eyebrow{display:none}
-.section-head .eyebrow{display:none}
-.collection-heading>.eyebrow{display:none}
-#selected-volume-placeholder{display:none}
-</style>
-
-<style>
-/* Ajustes de interface: menos repetição e hierarquia mais natural */
-.catalog-nav a[aria-current="page"], .nav-links a[aria-current="page"]{color:var(--cream);font-weight:600}
-.catalog-nav a[aria-current="page"]:after{background:var(--beige)}
-.volume{display:none!important}
-.quantity-label{font-size:12px!important}
-</style>
-<script>
-(function(){
-  const current=(location.pathname.split('/').pop()||'index.html').split('?')[0];
-  document.querySelectorAll('.catalog-nav a, .nav-links a').forEach(a=>{
-    const href=(a.getAttribute('href')||'').split('?')[0];
-    if(['index.html','decants.html','frascos.html','kits.html'].includes(href)){
-      if(href===current){a.setAttribute('aria-current','page');}
-      else{a.removeAttribute('aria-current');}
-    }
-  });
-  document.querySelectorAll('.quantity-label').forEach(el=>{
-    el.childNodes.forEach(n=>{if(n.nodeType===Node.TEXT_NODE && n.textContent.trim()==='Qtd.') n.textContent='Quantidade';});
-  });
-})();
-</script></body>
+<script src="santino-ui.js" defer></script>
+</body>
 </html>
