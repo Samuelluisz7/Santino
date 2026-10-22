@@ -366,7 +366,7 @@ const FULL_SIZE_PRODUCTS = [
  {id:"full-eros",name:"Eros",brand:"Versace",ml:100,version:"Eau de Toilette",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
  {id:"full-million",name:"1 Million",brand:"Rabanne",ml:100,version:"Eau de Toilette",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
  {id:"full-sauvage",name:"Sauvage",brand:"Dior",ml:100,version:"Eau de Toilette",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
- {id:"full-invictus",name:"Invictus",brand:"Rabanne",ml:100,version:"Eau de Toilette",description:"Eau de Toilette de 100 ml. Faixa de referência de varejistas; confirme a versão e o valor final."},
+ {id:"full-invictus",name:"Invictus",brand:"Rabanne",ml:100,version:"Eau de Toilette",description:"Eau de Toilette de 100 ml. Consulte a SANTINO para informações sobre esta versão."},
  {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,version:"Eau de Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."}
 ];
 let cart = [];
@@ -382,7 +382,7 @@ function renderProducts(){
    </a>
    <div class="variants"><label style="flex:1">Volume
      <select id="volume-${p.id}" aria-label="Volume de ${escapeHTML(p.name)}">${p.volumes.map((v,i)=>`<option value="${i}">${v.ml} ml</option>`).join("")}</select>
-   </label><label class="quantity-label">Qtd.
+   </label><label class="quantity-label">Quantidade
      <select id="qty-${p.id}" aria-label="Quantidade de ${escapeHTML(p.name)}">${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}</select>
    </label></div>
    <div class="price-row"><span class="price" id="price-${p.id}">${money(p.volumes[0].price)}</span><span class="volume" id="selected-volume-${p.id}">${p.volumes[0].ml} ml</span></div>
