@@ -143,5 +143,33 @@ render();renderCartCount();
 if(window.location.hash){const target=document.getElementById(decodeURIComponent(window.location.hash.slice(1)));if(target)target.scrollIntoView({behavior:"smooth",block:"start"})}
 })();
 </script>
-</body>
+
+<style>
+/* O nome do kit já identifica a combinação; a tag ao lado só o repete */
+.kit-pill{display:none!important}
+.kit-top{margin-bottom:12px}
+</style>
+
+<style>
+/* Ajustes de interface: menos repetição e hierarquia mais natural */
+.catalog-nav a[aria-current="page"], .nav-links a[aria-current="page"]{color:var(--cream);font-weight:600}
+.catalog-nav a[aria-current="page"]:after{background:var(--beige)}
+.volume{display:none!important}
+.quantity-label{font-size:12px!important}
+</style>
+<script>
+(function(){
+  const current=(location.pathname.split('/').pop()||'index.html').split('?')[0];
+  document.querySelectorAll('.catalog-nav a, .nav-links a').forEach(a=>{
+    const href=(a.getAttribute('href')||'').split('?')[0];
+    if(['index.html','decants.html','frascos.html','kits.html'].includes(href)){
+      if(href===current){a.setAttribute('aria-current','page');}
+      else{a.removeAttribute('aria-current');}
+    }
+  });
+  document.querySelectorAll('.quantity-label').forEach(el=>{
+    el.childNodes.forEach(n=>{if(n.nodeType===Node.TEXT_NODE && n.textContent.trim()==='Qtd.') n.textContent='Quantidade';});
+  });
+})();
+</script></body>
 </html>
