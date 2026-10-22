@@ -1,215 +1,3 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#11110f">
-<meta name="description" content="Detalhes, fotos, notas e características das fragrâncias da Santino.">
-<title>SANTINO | Detalhes do perfume</title>
-<style>
-:root{--black:#11110f;--panel:#1a1916;--cream:#f3eadb;--beige:#c9b18b;--muted:#b9b0a2;--line:#39352f}
-*{box-sizing:border-box}body{margin:0;background:var(--black);color:var(--cream);font-family:Arial,Helvetica,sans-serif}a{color:inherit}button,select{font:inherit}button{cursor:pointer}
-header{position:sticky;top:0;z-index:5;background:rgba(17,17,15,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
-.nav{max-width:1120px;margin:auto;padding:13px 20px;display:flex;align-items:center;gap:18px;justify-content:space-between;flex-wrap:wrap}
-.brand{font-family:Georgia,serif;letter-spacing:.18em;font-size:15px;text-transform:uppercase}.brand small{display:block;font:9px Arial,sans-serif;letter-spacing:.22em;color:var(--beige);margin-top:4px}
-.nav-links{display:flex;gap:15px;align-items:center;flex-wrap:wrap}.nav-links a{font-size:13px;color:var(--muted);text-decoration:none}
-.cart-link,.add-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:1px solid var(--beige);padding:12px 15px;min-height:48px;border-radius:3px;font-weight:700}
-.cart-link{background:transparent;color:var(--cream);border-color:var(--line)}.cart-count{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--beige);color:#11110f;font-size:12px}
-main{max-width:1120px;margin:auto;padding:24px 22px 56px}.breadcrumbs{font-size:12px;color:var(--muted);margin-bottom:18px}.breadcrumbs a{color:var(--beige);text-decoration:none}
-.product-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:34px;align-items:start}
-.gallery-main{background:#ede4d7;border:1px solid var(--line);display:grid;place-items:center;min-height:430px;border-radius:3px;overflow:hidden;position:relative}
-.gallery-main img{width:100%;height:430px;object-fit:contain;padding:18px;display:block;cursor:zoom-in}
-.gallery-fallback{display:none;place-items:center;height:430px;color:#42372c;font-size:13px}
-.gallery-thumbs{display:flex;gap:10px;overflow-x:auto;padding:10px 0 4px}
-.thumb{flex:0 0 78px;width:78px;height:78px;border:1px solid var(--line);background:#eee5d7;border-radius:3px;padding:4px}.thumb[aria-pressed="true"]{border:2px solid var(--beige)}.thumb img{width:100%;height:100%;object-fit:contain}
-.summary{border:1px solid var(--line);background:linear-gradient(145deg,#1d1b17,#151411);padding:23px}.eyebrow{font-size:11px;color:var(--beige);letter-spacing:.16em;text-transform:uppercase;font-weight:700}
-h1,h2{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(30px,4vw,46px);line-height:1.08;margin:9px 0}.brand-line{color:var(--beige);font-size:14px;margin-bottom:7px}
-.product-meta{color:var(--muted);font-size:13px;margin-bottom:17px}.description{font-size:14px;line-height:1.7;color:var(--muted);margin:16px 0 20px}
-.price{font-size:25px;margin:12px 0;color:var(--cream)}.price.pending{font-size:20px;color:var(--beige)}
-.purchase-controls{display:grid;grid-template-columns:1fr 120px;gap:10px;margin:18px 0 12px}.control label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.control select{width:100%;height:48px;background:#11110f;color:var(--cream);border:1px solid #61533d;padding:0 10px;border-radius:3px}
-.add-button{width:100%;background:var(--beige);color:#171512;border:1px solid var(--beige);font-size:14px}.stock-note{font-size:12px;line-height:1.5;color:var(--muted);margin:13px 0 0}
-.content-section{margin-top:32px;border-top:1px solid var(--line);padding-top:27px}.content-section h2{font-size:27px;margin:0 0 16px}
-.note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.note-card{background:var(--panel);border:1px solid var(--line);padding:15px}.note-card strong{display:block;color:var(--beige);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}.note-card span{font-size:14px;line-height:1.5}
-.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.detail-item{border:1px solid var(--line);padding:14px;background:#151411}.detail-item strong{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}.detail-item span{font-size:14px;line-height:1.5}
-.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);max-width:calc(100% - 30px);background:var(--cream);color:#171512;padding:12px 16px;z-index:20;display:none;font-size:13px}
-footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var(--muted);font-size:12px}
-@media(max-width:720px){.nav{padding:10px 13px;gap:8px}.brand{font-size:14px;letter-spacing:.16em}.brand small{font-size:8px}.nav-links{gap:10px}.nav-links a{font-size:12px}.cart-link{padding:8px 10px;min-height:44px;font-size:12px}main{padding:17px 14px 40px}.breadcrumbs{margin-bottom:12px}.product-layout{grid-template-columns:1fr;gap:13px}.gallery-main{min-height:300px}.gallery-main img,.gallery-fallback{height:300px}.gallery-main img{padding:12px}.gallery-thumbs{gap:8px}.thumb{flex-basis:66px;width:66px;height:66px}.summary{padding:16px}h1{font-size:32px}.description{font-size:13px;margin:12px 0 15px}.purchase-controls{grid-template-columns:1fr 100px;margin:14px 0 10px}.price{font-size:23px}.content-section{margin-top:25px;padding-top:22px}.content-section h2{font-size:24px}.note-grid{grid-template-columns:1fr;gap:8px}.note-card{padding:13px}.detail-grid{grid-template-columns:1fr;gap:8px}.add-button{min-height:52px}}
-
-/* Busca global SANTINO */
-.site-search{margin:13px 0 10px;max-width:440px;width:100%;text-align:left}
-.site-search label{display:block;color:var(--beige);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.site-search-row{display:flex;gap:7px;margin-top:6px;width:100%}
-.site-search input{flex:1;min-width:0;width:100%;padding:11px 12px;min-height:46px;border:1px solid var(--line);border-radius:3px;background:#171613;color:var(--cream);outline:none}
-.site-search input:focus{border-color:var(--beige);box-shadow:0 0 0 2px #c9b18b22}
-.site-search input::placeholder{color:#888174}
-.site-search button{min-height:46px;padding:10px 16px;white-space:nowrap}
-@media(max-width:720px){.site-search{margin:7px 0 5px;max-width:none}.site-search-row{gap:6px}.site-search input{font-size:14px}.site-search button{padding:10px 13px}}
-
-
-/* Redesign SANTINO — layout premium responsivo */
-.nav{gap:14px!important}
-.nav-search{display:flex;align-items:center;min-width:0;flex:0 1 225px;height:39px;border:1px solid #3c362f;border-radius:30px;background:#181715;margin-left:auto}
-.nav-search input{min-width:0;width:100%;height:100%;background:transparent;border:0;outline:0;color:#f3eadb;font-size:12px;padding:0 0 0 13px}
-.nav-search button{height:100%;min-width:39px;background:transparent;border:0;color:#c9b18b;font-size:24px;cursor:pointer}
-.nav-search input::placeholder{color:#938a7e}
-@media(max-width:720px){.nav-search{order:2;flex:1 1 125px;margin-left:auto;max-width:190px}.nav-search input{font-size:11px;padding-left:10px}.nav-search button{min-width:31px}.catalog-nav{order:3;width:100%;margin-left:0!important}}
-
-/* Cabeçalho SANTINO consistente entre as páginas */
-.nav{display:grid!important;grid-template-columns:minmax(145px,1fr) minmax(180px,240px) auto auto;align-items:center!important;gap:14px!important}
-.brand{white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:16px}
-.nav-links a{color:var(--muted);font-size:12px;text-decoration:none}
-.nav-links a:hover{color:var(--beige)}
-.cart-link{display:flex;align-items:center;justify-content:center;gap:7px;border:1px solid #38332b;border-radius:4px;padding:8px 10px;min-height:39px;white-space:nowrap;text-decoration:none}
-.cart-count{display:inline-grid;place-items:center;width:23px;height:23px;border-radius:50%;background:var(--beige);color:#171512;font-size:11px;font-weight:700}
-@media(max-width:720px){
- .nav{grid-template-columns:minmax(112px,1fr) minmax(108px,150px) 32px!important;gap:7px!important;padding:13px 13px 9px!important}
- .nav .brand{font-size:17px;letter-spacing:.13em}
- .nav .brand small{font-size:7px;letter-spacing:.15em;margin-top:5px}
- .nav-search{grid-column:2;grid-row:1;max-width:none!important;min-width:0!important;width:100%;height:36px!important;margin:0!important}
- .nav-search input{font-size:11px!important;padding-left:9px!important}
- .nav-search button{width:29px!important;min-width:29px!important;font-size:18px!important}
- .nav-links{grid-column:1/3;grid-row:2;gap:16px!important;padding:2px 0 0}
- .nav-links a{font-size:12px}
- .cart-link{grid-column:3;grid-row:1;min-width:30px;width:30px;height:36px;padding:0;border-color:transparent;font-size:0}
- .cart-count{width:22px;height:22px;font-size:11px}
-}
-
-/* Ícone de busca discreto, sem glifo de fonte */
-.nav-search button{position:relative;font-size:0!important}
-.nav-search button:before{content:"";position:absolute;left:calc(50% - 7px);top:calc(50% - 7px);width:12px;height:12px;border:1.6px solid var(--beige,#c9b18b);border-radius:50%}
-.nav-search button:after{content:"";position:absolute;left:calc(50% + 4px);top:calc(50% + 4px);width:6px;height:1.6px;border-radius:2px;background:var(--beige,#c9b18b);transform:rotate(45deg);transform-origin:left center}
-
-/* Hotfix: carrinho sempre visível no cabeçalho mobile */
-@media(max-width:720px){
- header>.nav{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 44px!important;align-items:center!important}
- header>.nav>.cart-link{grid-column:3!important;grid-row:1!important;display:flex!important;visibility:visible!important;opacity:1!important;position:relative!important;align-self:center!important;width:44px!important;min-width:44px!important;height:40px!important;min-height:40px!important;padding:0!important;background:#1b1915!important;border:1px solid #8b7554!important;border-radius:4px!important;color:var(--cream)!important;font-size:0!important;overflow:visible!important;z-index:6!important}
- header>.nav>.cart-link:before{content:"";position:absolute;left:13px;top:12px;width:15px;height:12px;border:1.6px solid var(--beige);border-radius:2px}
- header>.nav>.cart-link:after{content:"";position:absolute;left:16px;top:7px;width:9px;height:7px;border:1.6px solid var(--beige);border-bottom:0;border-radius:5px 5px 0 0}
- header>.nav>.cart-link .cart-count{position:absolute!important;right:-6px!important;top:-7px!important;display:grid!important;visibility:visible!important;opacity:1!important;place-items:center!important;width:20px!important;height:20px!important;border:2px solid var(--black)!important;background:var(--beige)!important;color:#171512!important;font-size:10px!important}
-}
-/* Página de fragrância: informação visual, contexto de uso e compra compacta */
-.usage-highlights{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:13px 0 16px}
-.usage-chip{min-width:0;padding:10px 11px;border:1px solid #393229;border-radius:4px;background:#171512}
-.usage-chip span{display:block;margin-bottom:4px;color:var(--beige);font-size:9px;letter-spacing:.13em;text-transform:uppercase;font-weight:700}
-.usage-chip strong{display:block;color:var(--cream);font-size:12px;font-weight:500;line-height:1.45}
-.stock-note{font-size:11px!important;line-height:1.5!important;color:var(--muted)!important}
-.content-heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:16px}
-.content-heading h2{margin:4px 0 5px}
-.content-heading p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
-.note-infographic{display:grid;grid-template-columns:minmax(140px,.38fr) minmax(0,1fr);overflow:hidden;border:1px solid #393229;border-radius:5px;background:linear-gradient(135deg,#1d1a15,#11110f)}
-.note-visual-bottle{display:flex;align-items:center;justify-content:center;min-height:290px;padding:15px;background:radial-gradient(ellipse at center,#30271b 0%,#171410 67%,#11110f 100%);border-right:1px solid #393229}
-.note-visual-bottle img{display:block;width:100%;max-width:205px;height:270px;object-fit:contain;object-position:center}
-.note-bottle-fallback{color:var(--muted);font-family:Georgia,serif;font-size:17px;text-align:center;line-height:1.3}
-.note-visual-details{min-width:0;padding:19px}
-.note-graphic-head{margin-bottom:13px}
-.note-graphic-head .eyebrow{font-size:9px;letter-spacing:.08em;line-height:1.45;text-transform:none}
-.note-graphic-head h3{margin:5px 0 0;font-family:Georgia,serif;font-size:clamp(20px,3vw,29px);font-weight:400;line-height:1.12}
-.note-accords{display:flex;flex-direction:column;gap:5px;margin-bottom:16px}
-.accord-row{position:relative;min-height:29px;display:flex;align-items:center;overflow:hidden;border-radius:3px;background:#211d17}
-.accord-fill{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,#63452c,#b89a6a);opacity:.84}
-.accord-label{position:relative;z-index:1;padding:5px 10px;color:#f4ead9;font-size:11px;line-height:1.25;font-weight:500}
-.note-pyramid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
-.note-stage{min-width:0;padding:10px 9px;border-top:2px solid #8d7047;background:#191713}
-.note-stage:nth-child(2){border-top-color:#bba27a}
-.note-stage:nth-child(3){border-top-color:#6d5033}
-.note-stage strong{display:block;margin-bottom:5px;color:var(--beige);font-size:9px;letter-spacing:.12em;text-transform:uppercase}
-.note-stage p{margin:0;color:#d8cfc1;font-size:11px;line-height:1.5;overflow-wrap:anywhere}
-.note-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.note-fact{padding:11px 12px;border:1px solid #393229;border-radius:4px}
-.note-fact strong{display:block;margin-bottom:5px;color:var(--beige);font-size:10px;letter-spacing:.09em;text-transform:uppercase}
-.note-fact span{color:var(--muted);font-size:12px;line-height:1.5}
-@media(max-width:720px){
- .usage-highlights{gap:7px;margin:10px 0 13px}
- .usage-chip{padding:9px}.usage-chip strong{font-size:11px}
- .content-heading{align-items:start;flex-direction:column;gap:6px}
- .note-infographic{grid-template-columns:100px minmax(0,1fr)}
- .note-visual-bottle{min-height:0;padding:8px}
- .note-visual-bottle img{height:220px}
- .note-visual-details{padding:12px 10px}
- .note-graphic-head{margin-bottom:10px}
- .note-graphic-head h3{font-size:21px}
- .accord-row{min-height:27px}
- .accord-label{font-size:10px;padding:5px 7px}
- .note-pyramid{grid-template-columns:1fr;gap:5px}
- .note-stage{padding:8px}
- .note-stage p{font-size:11px}
- .note-facts{grid-template-columns:1fr}
-}
-@media(max-width:390px){
- .note-infographic{grid-template-columns:82px minmax(0,1fr)}
- .note-visual-bottle img{height:215px}
- .note-visual-details{padding:10px 8px}
- .note-graphic-head h3{font-size:18px}
- .accord-label{font-size:9px}
-}
-/* Detalhes olfativos ficam abaixo da área de compra; acordes em etiquetas, sem barras arbitrárias */
-.usage-highlights{display:none!important}
-.note-facts{grid-template-columns:repeat(3,minmax(0,1fr))!important}
-.note-accords{display:flex!important;flex-direction:column!important;flex-wrap:nowrap;gap:5px!important;margin-bottom:16px}
-.accord-tag{display:inline-flex;align-items:center;min-height:29px;padding:6px 10px;border:1px solid #4a4030;border-radius:3px;background:#211d17;color:#e9dece;font-size:11px;line-height:1.25}
-.note-pyramid{display:flex!important;flex-direction:column;align-items:center;gap:6px!important;margin:12px auto 0;width:100%;max-width:620px}.note-pyramid .note-stage{width:100%;text-align:center;border-top:2px solid #8d7047;border-left:1px solid #393229;border-right:1px solid #393229;padding:10px 12px}.note-pyramid .note-stage:nth-child(1){width:60%;border-radius:4px 4px 0 0}.note-pyramid .note-stage:nth-child(2){width:80%;border-top-color:#bba27a}.note-pyramid .note-stage:nth-child(3){width:100%;border-top-color:#6d5033;border-bottom:1px solid #393229;border-radius:0 0 4px 4px}.note-pyramid .note-stage strong{font-size:10px;letter-spacing:.14em}.note-pyramid .note-stage p{margin:0;font-size:12px!important;line-height:1.55!important}.note-pyramid .note-stage:nth-child(1){background:linear-gradient(90deg,#191713,#242017,#191713)}.note-pyramid .note-stage:nth-child(2){background:linear-gradient(90deg,#191713,#211d17,#191713)}.note-pyramid .note-stage:nth-child(3){background:linear-gradient(90deg,#191713,#2a2118,#191713)}
-.note-stage p{font-size:12px!important;line-height:1.55!important}
-.note-facts{margin-top:14px}
-.nav-links a[href="kits.html"]{color:var(--beige);font-weight:700}
-@media(max-width:720px){.note-facts{grid-template-columns:1fr!important}.accord-tag{font-size:10px}.note-visual-details{padding:12px 10px}.nav-links{gap:12px!important;flex-wrap:wrap}.nav-links a{font-size:12px!important}}
-
-.authenticity-note{display:inline-flex;align-items:center;gap:7px;margin:0 0 6px;padding:6px 9px;border:1px solid #4a4030;border-radius:3px;background:#171512;color:#c9b18b;font-size:11px;line-height:1.35}.gallery-caption{margin:7px 0 0;color:var(--muted);font-size:11px;line-height:1.45}
-.gallery-thumbs .thumb{flex:0 0 76px;width:76px;height:76px}
-.gallery-thumbs .thumb img{width:100%;height:100%;object-fit:contain}
-@media(max-width:720px){.authenticity-note{font-size:10px}.gallery-caption{font-size:10px}.gallery-thumbs .thumb{flex-basis:68px;width:68px;height:68px}}
-</style>
-  <link rel="stylesheet" href="santino-ui.css">
-</head>
-<body>
-<header><div class="nav"><a href="index.html" class="brand" style="text-decoration:none">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a><form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="nav-links" aria-label="Navegação"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a><a href="kits.html">Kits</a></nav><a class="cart-link" id="cartLink" href="decants.html?openCart=1">Carrinho <span class="cart-count" id="cartCount">0</span></a></div></header>
-<main><div class="breadcrumbs"><a id="backCatalog" href="decants.html">← Voltar ao catálogo</a> / <span id="crumbName">Perfume</span></div>
-
-<section class="product-layout"><div class="gallery"><div class="gallery-main"><img id="mainImage" alt="" decoding="async"><div class="gallery-fallback" id="galleryFallback">Imagem indisponível</div></div><div class="gallery-thumbs" id="galleryThumbs" aria-label="Mais fotos do perfume"></div><p class="gallery-caption" id="galleryCaption">Foto do frasco do perfume</p></div>
-<div class="summary"><div class="eyebrow" id="categoryLabel">Fragrância</div><h1 id="productName">Carregando perfume…</h1><div class="brand-line" id="productBrand"></div><div class="product-meta" id="productMeta"></div><p class="description" id="productDescription"></p><p class="authenticity-note" id="authenticityNote">Fragrância original · selo de originalidade SANTINO</p>
-<div class="detail-highlights" aria-label="Resumo da fragrância">
-  <div class="detail-highlight"><span>Perfil olfativo</span><strong id="highlightFamily"></strong></div>
-  <div class="detail-highlight"><span>Quando usar</span><strong id="highlightOccasion"></strong></div>
-  <div class="detail-highlight"><span>Clima</span><strong id="highlightClimate"></strong></div>
-</div><div class="price" id="productPrice"></div>
-<div class="purchase-controls"><div class="control" id="volumeControl"><label for="volumeSelect">Volume do decant</label><select id="volumeSelect"></select></div><div class="control"><label for="quantitySelect">Quantidade</label><select id="quantitySelect"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div></div><button class="add-button" id="addButton">Adicionar ao carrinho</button><p class="stock-note" id="stockNote">Confira o volume e a quantidade antes de adicionar. A disponibilidade será confirmada pelo WhatsApp. Confira o total e a entrega antes de pagar.</p></div></section>
-<section class="content-section" id="olfactorySection">
- <div class="content-heading"><div><div class="eyebrow">A composição</div><h2>Notas da fragrância</h2><p><strong>Pirâmide olfativa.</strong> A saída reúne as primeiras notas percebidas; o coração mostra como a fragrância evolui; o fundo reúne as notas que tendem a permanecer por mais tempo. A ordem abaixo segue a ficha publicada para cada perfume.</p></div></div>
- <div class="note-infographic">
-  <div class="note-visual-bottle"><img id="noteBottleImage" alt="" loading="lazy" decoding="async"><div class="note-bottle-fallback" id="noteBottleFallback" hidden>SANTINO<br>FRAGRÂNCIAS</div></div>
-  <div class="note-visual-details">
-   <div class="note-graphic-head"><div class="eyebrow" id="familyText"></div><h3 id="noteGraphName">Fragrância</h3></div>
-   <p class="accord-title">Acordes em destaque</p>
-   <div class="note-accords" id="accordBars" aria-label="Acordes em destaque"></div>
-   <div class="note-pyramid">
-    <div class="note-stage"><strong>Saída</strong><p id="topText"></p></div>
-    <div class="note-stage"><strong>Coração</strong><p id="heartText"></p></div>
-    <div class="note-stage"><strong>Fundo</strong><p id="baseText"></p></div>
-   </div>
-  </div>
- </div>
- <div class="note-facts">
-  <div class="note-fact"><strong>Quando usar</strong><span id="occasionText"></span></div>
-  <div class="note-fact"><strong>Clima e aplicação</strong><span id="climateText"></span></div>
-  <div class="note-fact"><strong>Perfil olfativo</strong><span id="familyDetailText"></span></div>
- </div>
-</section>
-<section class="content-section"><h2>Sobre esta fragrância</h2><p class="description" id="longDescription"></p></section></main>
-<div class="toast" id="toast" role="status"></div><footer>SANTINO · Decants &amp; Fragrâncias · <a href="politicas.html" style="color:var(--beige)">Políticas de compra</a></footer>
-<script>
-const CURRENCY=new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});function money(value){return CURRENCY.format(value)}function escapeHTML(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-const PRODUCTS = [
- {id:"kingdom",name:"The Kingdom",brand:"Lattafa",image:"https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&width=1946",tag:"Importado",description:"Aromático e ambarado, com notas de lavanda, menta e baunilha.",volumes:[{ml:5,price:17.9},{ml:10,price:33.9}]},
- {id:"212-vip-black",name:"212 VIP Black",brand:"Carolina Herrera",image:"https://cdn.salla.sa/DGdDlG/c8ab83f8-76ec-45e6-a9e9-3c35260c28b9-1000x1000-z7c64TKXbUSTNjJpzdzsZ6frKO0DM0gAjXPF22wN.jpg",tag:"Importado",description:"Absinto e lavanda sobre um fundo de baunilha e almíscar.",volumes:[{ml:5,price:37.9},{ml:10,price:74.9}]},
- {id:"the-blend-bourbon",name:"The Blend Bourbon",brand:"O Boticário",image:"https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_1800%2Cc_limit/e_trim/v1/imagens/product/B77489/c97c55ee-65fe-4339-9a99-1363b969701b-the-blend-bourbon-eau-de-parfum-100ml.png",tag:"Nacional",description:"Especiado e amadeirado, com um toque quente de bourbon.",volumes:[{ml:5,price:22.9},{ml:10,price:42.9}]},
- {id:"asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",image:"https://scentira.in/cdn/shop/files/LATTAFAAl_Asad_Bourbon_1_34bc0e05-10ec-4d25-9df5-34b68222f16c.png?v=1756889307&width=5000",tag:"Importado",description:"Especiado e adocicado, com ameixa, cacau e baunilha bourbon.",volumes:[{ml:5,price:16.9},{ml:10,price:32.9}]},
- {id:"homem-sagaz",name:"Homem Sagaz",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600",tag:"Nacional",description:"Amadeirado e marcante, com perfil moderno e intenso. Uma opção para quem gosta de presença e elegância.",volumes:[{ml:5,price:11.9},{ml:10,price:22.9}]},
- {id:"homem-dom",name:"Homem Dom",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw035424b3/Produtos/PRODUTO/NATBRA-71770_1.jpg?q=80&sw=600",tag:"Nacional",description:"Amadeirado e especiado, com baunilha negra e madeiras.",volumes:[{ml:5,price:11.9},{ml:10,price:22.9}]},
- {id:"homem-essence",name:"Homem Essence",brand:"Natura",image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7nxx22lbghu32",tag:"Nacional",description:"Amadeirado e especiado, com bergamota, gengibre e cedro.",volumes:[{ml:5,price:16.9},{ml:10,price:31.9}]},
- {id:"essencial-sentir",name:"Essencial Sentir",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-co-storefront-catalog/default/dw06d0c53c/NATCOL-179067_1.png",tag:"Nacional",description:"Amadeirado aromático, com sândalo e toque especiado.",volumes:[{ml:5,price:18.9},{ml:10,price:35.9}]},
- {id:"fakhar-black",name:"Fakhar Black",brand:"Lattafa",image:"https://www.lattafa-usa.com/cdn/shop/files/1_aa0a5a38-775b-4814-a909-837c1d360d9c.png?v=1747500778&width=1946",tag:"Importado",description:"Aromático e amadeirado, combinando frescor e notas ambaradas.",volumes:[{ml:5,price:12.9},{ml:10,price:23.9}]},
- {id:"k-max",name:"Kaiak K Max",brand:"Natura Kaiak",image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrfytr3bsff18e",tag:"Nacional",description:"Aromático e amadeirado, com frescor cítrico e especiarias.",volumes:[{ml:5,price:16.9},{ml:10,price:30.9}]}
-];
 const PERFUME_INFO = {
  "kingdom":{family:"Aromático ambarado",top:"Lavanda, menta e sálvia",heart:"Baunilha, tabaco e flor de laranjeira",base:"Fava tonka, benjoim e ládano"},
  "212-vip-black":{family:"Aromático ambarado amadeirado",top:"Absinto, anis e erva-doce",heart:"Lavanda",base:"Almíscar e casca de baunilha negra"},
@@ -217,10 +5,10 @@ const PERFUME_INFO = {
  "asad-bourbon":{family:"Ambarado especiado adocicado",top:"Pimenta rosa, lavanda e ameixa Mirabelle",heart:"Cacau, davana e noz-moscada",base:"Vetiver, baunilha Bourbon e âmbar"},
  "homem-sagaz":{family:"Amadeirado com faceta adocicada",top:"Mandarina verde, erva-cidreira, cipreste e sálvia",heart:"Pimenta-preta, noz-moscada e ameixa-preta",base:"Cedro, acorde âmbar, sândalo, baunilha e fava tonka"},
  "homem-dom":{family:"Adocicado amadeirado",top:"Cardamomo, pimenta-preta e cypriol",heart:"Absoluto de baunilha negra, tonka, acorde balsâmico e folhas de violeta",base:"Priprioca, guaiaco, sândalo, vetiver, ambroxan, cashmeran e musk"},
- "homem-essence": ["https://latinashop.pe/cdn/shop/files/NATPER-59848_2.jpg?v=1735845996&width=1445", "https://production.na01.natura.com/on/demandware.static/-/Sites-natura-ar-storefront-catalog/default/dw70a44ead/PRODUTOS/NATARG-59848_2.jpg"],
- "essencial-sentir": [],
+ "homem-essence": {family:"Amadeirado especiado ambarado",top:"Bergamota, gengibre, grapefruit e limão",heart:"Pimenta-preta, violeta, cardamomo, canela e coriandro",base:"Patchouli, âmbar, Iso E Super, madeira guaiaco, cashmeran e cedro"},
+ "essencial-sentir": {family:"Amadeirado intenso",top:"Frescor aromático e especiarias",heart:"Sândalo e piper",base:"Madeiras ambaradas"},
  "fakhar-black":{family:"Fougère amadeirado aromático",top:"Maçã, bergamota e gengibre",heart:"Lavanda, sálvia, bagas de zimbro e gerânio",base:"Fava tonka, cedro, madeira de âmbar e vetiver"},
- "k-max": ["https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2ilre9m85au14", "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lr3vn51eolrv12"],
+ "k-max": {family:"Aromático amadeirado",top:"Pimenta rosa, grapefruit, pimenta-preta e gengibre",heart:"Lavanda, zimbro, cardamomo, couro e olíbano",base:"Sândalo, cedro, musk, patchouli, vetiver e âmbar"},
  "full-le-male":{family:"Âmbar amadeirado",top:"Cardamomo",heart:"Lavanda e íris",base:"Baunilha"},
  "full-afnan-9pm":{family:"Frutado especiado adocicado",top:"Bergamota, lavandim, canela e maçã",heart:"Lírio-do-vale e flor de laranjeira",base:"Patchouli, âmbar, baunilha e fava tonka"},
  "full-asad-bourbon":{family:"Ambarado especiado adocicado",top:"Pimenta rosa, lavanda e ameixa Mirabelle",heart:"Cacau, davana e noz-moscada",base:"Vetiver, baunilha Bourbon e âmbar"},
@@ -238,10 +26,10 @@ const PRODUCT_STORIES={
  "asad-bourbon":{intro:"Pimenta rosa, lavanda e ameixa abrem um perfil doce e especiado, com cacau e baunilha Bourbon no corpo.",occasion:"Encontros, festas e saídas noturnas; bom para quem gosta de doces mais densos.",climate:"Ameno ou frio. Em dias quentes, aplique menos.",story:"A ameixa Mirabelle traz uma faceta frutada à abertura aromática. Cacau e especiarias reforçam a profundidade, enquanto a baunilha Bourbon e o âmbar fecham a composição.",accords:["Ameixa","Cacau","Baunilha Bourbon","Especiado","Âmbar"]},
  "homem-sagaz":{intro:"Mandarina verde e ervas dão uma abertura viva, seguida por especiarias, ameixa-preta e madeiras adocicadas.",occasion:"Trabalho, compromissos sociais e encontros em que você quer algo amadeirado com uma saída verde.",climate:"Ameno ou dias quentes com aplicação moderada.",story:"O frescor verde de mandarina, erva-cidreira e sálvia contrasta com pimenta e noz-moscada. Cedro, sândalo e baunilha deixam o final mais macio e adocicado.",accords:["Verde","Mandarina","Ervas","Especiado","Madeiras"]},
  "homem-dom":{intro:"Cardamomo e pimenta abrem uma fragrância adocicada, com baunilha negra, tonka e madeiras densas.",occasion:"Encontros, eventos e ocasiões especiais; escolha para uma presença mais elegante e envolvente.",climate:"Mais confortável em noites amenas ou frias; no calor, reduza a aplicação.",story:"O início é seco e especiado. O coração de baunilha negra, tonka e notas balsâmicas traz cremosidade; priprioca, sândalo, vetiver e madeiras sustentam o fundo.",accords:["Cardamomo","Baunilha negra","Tonka","Balsâmico","Madeiras"]},
- "homem-essence": ["https://latinashop.pe/cdn/shop/files/NATPER-59848_2.jpg?v=1735845996&width=1445", "https://production.na01.natura.com/on/demandware.static/-/Sites-natura-ar-storefront-catalog/default/dw70a44ead/PRODUTOS/NATARG-59848_2.jpg"],
- "essencial-sentir": [],
+ "homem-essence": {intro:"Bergamota, gengibre, grapefruit e limão abrem a fragrância; especiarias e madeiras dão profundidade.",occasion:"Saídas, ocasiões especiais e encontros.",climate:"Clima ameno ou frio; no calor, aplique moderadamente.",story:"O frescor cítrico abre caminho para um coração especiado de pimenta-preta, violeta, cardamomo, canela e coriandro. Patchouli, âmbar, guaiaco, cashmeran e cedro formam a base.",accords:["Cítrico","Especiado","Amadeirado","Âmbar","Cedro"]},
+ "essencial-sentir": {intro:"Um perfil amadeirado intenso combina sândalo e piper com frescor marcante.",occasion:"Encontros e ocasiões especiais.",climate:"Versátil em clima ameno; no calor, prefira aplicação moderada.",story:"Essencial Sentir Masculino combina o caráter amadeirado do sândalo com a faceta especiada de piper, mantendo um frescor marcante.",accords:["Amadeirado","Sândalo","Especiado","Fresco"]},
  "fakhar-black":{intro:"Maçã, bergamota e gengibre trazem frescor; lavanda e sálvia conduzem a uma base amadeirada com tonka.",occasion:"Uso diário, trabalho, encontros casuais e festas informais; opção coringa para variar pouco a rotina.",climate:"Versátil, especialmente durante o dia e em clima quente ou ameno.",story:"A saída frutada e cítrica é clara e fácil de reconhecer. O coração aromático de lavanda, sálvia e zimbro dá estrutura; cedro, âmbar e vetiver deixam o fim mais seco.",accords:["Maçã","Bergamota","Gengibre","Lavanda","Madeiras"]},
- "k-max": ["https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2ilre9m85au14", "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lr3vn51eolrv12"],
+ "k-max": {intro:"Grapefruit e gengibre trazem frescor, seguidos por especiarias, lavanda e madeiras.",occasion:"Saídas, lazer e ocasiões especiais.",climate:"Funciona bem em clima ameno; no calor, reduza a aplicação.",story:"Pimenta rosa, grapefruit, pimenta-preta e gengibre abrem a composição. Lavanda, zimbro e cardamomo desenvolvem o coração; sândalo, cedro, musk, patchouli, vetiver e âmbar sustentam a base.",accords:["Grapefruit","Gengibre","Lavanda","Couro","Madeiras"]},
  "full-le-male":{intro:"Cardamomo na abertura, lavanda e íris no coração, com baunilha no fundo: quente e elegante.",occasion:"Jantares, encontros e eventos à noite; combina com uma apresentação mais alinhada.",climate:"Ameno ou frio. No calor, prefira aplicação discreta.",story:"O cardamomo abre com um toque especiado. Lavanda e íris trazem elegância aromática, e a baunilha cria um fundo quente e persistente.",accords:["Cardamomo","Lavanda","Íris","Baunilha"]},
  "full-afnan-9pm":{intro:"Maçã e canela dão um começo frutado-especiado; baunilha, âmbar e tonka aquecem o fundo.",occasion:"Festas, encontros e saídas noturnas; especialmente para quem gosta de perfumes doces e perceptíveis.",climate:"Noites amenas ou frias. No calor ou em espaços fechados, aplique menos.",story:"A abertura frutada e especiada é seguida por flor de laranjeira e lírio-do-vale. Patchouli, âmbar, baunilha e tonka completam um perfil doce e noturno.",accords:["Maçã","Canela","Flor de laranjeira","Baunilha","Tonka"]},
  "full-asad-bourbon":{intro:"Pimenta rosa, lavanda e ameixa se unem a cacau, davana e baunilha Bourbon num perfil quente.",occasion:"Encontros, festas e saídas noturnas; ideal para quem gosta de fragrância doce com especiarias.",climate:"Ameno ou frio; no calor, reduza a quantidade.",story:"A ameixa Mirabelle suaviza o começo especiado. O coração de cacau e noz-moscada aprofunda o lado gourmand, com vetiver, baunilha Bourbon e âmbar no final.",accords:["Ameixa","Cacau","Noz-moscada","Baunilha Bourbon"]},
@@ -258,10 +46,10 @@ const FULL_SIZE_PRODUCTS = [
   {id:"full-the-blend-bourbon",name:"The Blend Bourbon",brand:"O Boticário",ml:100,image:"https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_1800%2Cc_limit/e_trim/v1/imagens/product/B77489/c97c55ee-65fe-4339-9a99-1363b969701b-the-blend-bourbon-eau-de-parfum-100ml.png",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
   {id:"full-homem-sagaz",name:"Homem Sagaz",brand:"Natura",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
   {id:"full-homem-dom",name:"Homem Dom",brand:"Natura",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw035424b3/Produtos/PRODUTO/NATBRA-71770_1.jpg?q=80&sw=600",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
-  {id:"full-homem-essence",name:"Homem Essence",brand:"Natura",ml:100,image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7nxx22lbghu32",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
-  {id:"full-essencial-sentir",name:"Essencial Sentir",brand:"Natura",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-co-storefront-catalog/default/dw06d0c53c/NATCOL-179067_1.png",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-homem-essence",name:"Homem Essence",brand:"Natura",ml:100,image:"https://down-br.img.susercontent.com/file/br-11134201-7r98o-lwqhda3c55zt9f",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-essencial-sentir",name:"Essencial Sentir",brand:"Natura",ml:100,image:"https://static.wixstatic.com/media/e23ec5_24d54e3e370443b3b652ef03e1e08c91~mv2.jpg/v1/fill/w_980%2Ch_950%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/e23ec5_24d54e3e370443b3b652ef03e1e08c91~mv2.jpg",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
   {id:"full-fakhar-black",name:"Fakhar Black",brand:"Lattafa",ml:100,image:"https://www.lattafa-usa.com/cdn/shop/files/1_aa0a5a38-775b-4814-a909-837c1d360d9c.png?v=1747500778&width=1946",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
-  {id:"full-k-max",name:"Kaiak K Max",brand:"Natura Kaiak",ml:100,image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrfytr3bsff18e",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-k-max",name:"Kaiak K Max",brand:"Natura Kaiak",ml:100,image:"https://down-br.img.susercontent.com/file/599403c6b7d347c3c3cf0fa172973439",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
 
  {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,image:"https://scale.coolshop-cdn.com/product-media.coolshop-cdn.com/23UC4G/f178d6ad2668454da17223e593c9cbd7.jpg/f/jean-paul-gaultier-le-male-le-parfum-125-ml.jpg",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
  {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,image:"https://emiratesfragrance.com/cdn/shop/files/afnan-9-pm-eau-de-parfum-for-men-1.jpg?v=1726044462&width=2048",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
@@ -280,10 +68,10 @@ const EXTRA_GALLERY={
  "asad-bourbon":["https://tiendalafe.com/cdn/shop/files/Disenosintitulo-2025-02-21T163922.609.png?v=1740177572","https://images.tcdn.com.br/img/img_prod/1142879/perfume_rabe_asad_bourbon_lattafa_eau_de_parfum_ma_5_20260615125833_c0f7f1237677.jpg","https://www.urbanoud.co.uk/cdn/shop/files/long-lasting-lattafa-eau-de-parfum.webp?v=1756592529"],
  "homem-sagaz":["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw38d49568/produto-joia/background/mobile/81951.jpg?q=80&sw=150","https://down-br.img.susercontent.com/file/br-11134207-7r98o-lnyr24fiws7ga","https://acdn-us.mitiendanube.com/stores/006/410/677/products/97a684f8af9c93ac5b29888b04758614-dfef4cc8d1dd544d6317834577537758-1024-1024.webp"],
  "homem-dom":["https://fimgs.net/mdimg/perfume-thumbs/375x500.56083.jpg","https://down-br.img.susercontent.com/file/d0c28b71f06110500c350510c96a8e37","https://http2.mlstatic.com/D_NQ_NP_853231-MLU73835388578_012024-O.webp"],
- "homem-essence": ["https://latinashop.pe/cdn/shop/files/NATPER-59848_2.jpg?v=1735845996&width=1445", "https://production.na01.natura.com/on/demandware.static/-/Sites-natura-ar-storefront-catalog/default/dw70a44ead/PRODUTOS/NATARG-59848_2.jpg"],
- "essencial-sentir": [],
+ "homem-essence":["https://down-br.img.susercontent.com/file/sg-11134201-7rdxu-mcpz9juwh6na71"],
+ "essencial-sentir":["https://down-br.img.susercontent.com/file/sg-11134201-7rent-m2vexcnjlj4694"],
  "fakhar-black":["https://http2.mlstatic.com/D_NQ_NP_931646-MLA100154339260_122025-O.webp","https://m.media-amazon.com/images/I/61HYqbZm5xL._SL1500_.jpg"],
- "k-max": ["https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2ilre9m85au14", "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lr3vn51eolrv12"],
+ "k-max":["https://down-br.img.susercontent.com/file/577a6f4f1ad56a693b60232d6b87457c"],
  "full-le-male":["https://enigma.md/upload/iblock/dfb/6njnw37o873p7wd45ftgqrj0725s5k6d.jpg","https://media.douglas.es/medias/LWQlIZ614222-1-global.jpg?context=bWFzdGVyfGltYWdlc3wxODQwNzd8aW1hZ2UvanBlZ3xhRFF4TDJnNE5TOHpNVGMzTXpNek5qa3lPREk0Tmk5Tmk5TVYxRnNTVm8yTVRReU1qSmZNVjluYkc5aVlXd3VhbkJufDhjYTZmM2I3M2UxNmZhODdiMWZjNzk4MzkxYzE0NGQ3ODk1YWQ0YzM3YjNmMmI2YjViNTZiMzM0NzMwNWMzNGQ&grid=true"],
  "full-afnan-9pm":["https://bulldog.vn/uploads/sanpham/03-9pm-1000x-jpeg-20230827104142WA1HaqVHBJ.jpeg","https://www.eepees.in/cdn/shop/files/Afnan_9PM_perfume_ideal_for_night_wear_dates_parties_and_winter_season.png?v=1775044568&width=3840","https://theboroughcollection.com/cdn/shop/files/AfnanMen_s9PM.png?v=1780105049&width=1254"],
  "full-asad":["https://down-br.img.susercontent.com/file/br-11134207-7r98o-m1srez49ieuie0","https://m.media-amazon.com/images/I/71obuzjGgtL._SL1500_.jpg"],
@@ -298,7 +86,7 @@ const INGREDIENT_IMAGE_URLS=new Set([
  "https://boticoeur.com/cdn/shop/products/Capturadeecra2023-02-28_as11.16.49.png?v=1677583102",
  "https://images.tcdn.com.br/img/img_prod/1142879/perfume_rabe_asad_bourbon_lattafa_eau_de_parfum_ma_5_20260615125833_c0f7f1237677.jpg",
  "https://down-br.img.susercontent.com/file/d0c28b71f06110500c350510c96a8e37",
- "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7nxx22lbghu32",
+ "https://down-br.img.susercontent.com/file/br-11134201-7r98o-lwqhda3c55zt9f",
  "https://http2.mlstatic.com/D_NQ_NP_830972-MLA107708823716_032026-O.webp",
  "https://www.eepees.in/cdn/shop/files/Afnan_9PM_perfume_ideal_for_night_wear_dates_parties_and_winter_season.png?v=1775044568&width=3840",
  "https://m.media-amazon.com/images/I/71obuzjGgtL._SL1500_.jpg",
@@ -312,7 +100,7 @@ const INGREDIENT_IMAGE_URLS=new Set([
 "https://www.urbanoud.co.uk/cdn/shop/files/long-lasting-lattafa-eau-de-parfum.webp?v=1756592529",
 "https://acdn-us.mitiendanube.com/stores/006/410/677/products/97a684f8af9c93ac5b29888b04758614-dfef4cc8d1dd544d6317834577537758-1024-1024.webp",
 "https://http2.mlstatic.com/D_NQ_NP_853231-MLU73835388578_012024-O.webp",
-"https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7nxx22lbghu32",
+"https://down-br.img.susercontent.com/file/br-11134201-7r98o-lwqhda3c55zt9f",
 "https://theboroughcollection.com/cdn/shop/files/AfnanMen_s9PM.png?v=1780105049&width=1254",
 "https://fourthsense.co/wp-content/uploads/2023/10/dior-sauvage-notes-pyramid.jpeg" ].forEach(url=>INGREDIENT_IMAGE_URLS.add(url));
 const params=new URLSearchParams(window.location.search),requestedId=params.get("id")||"";
@@ -358,9 +146,12 @@ if(info){
  $("heartText").textContent=info.heart;
  $("baseText").textContent=info.base;
  $("noteGraphName").textContent=product.name;
- $("noteBottleImage").src=product.image||"";
- $("noteBottleImage").alt="Frasco de "+product.name;
- $("noteBottleImage").addEventListener("error",()=>{$("noteBottleImage").hidden=true;$("noteBottleFallback").hidden=false;});
+ const noteBottle=$("noteBottleImage");
+ noteBottle.alt="Frasco de "+product.name;
+ const noteFallback=()=>{noteBottle.hidden=true;$("noteBottleFallback").hidden=false;};
+ noteBottle.addEventListener("error",noteFallback);
+ noteBottle.src=product.image||"";
+ if(noteBottle.complete&&noteBottle.naturalWidth===0)noteFallback();
  const accords=(story&&story.accords&&story.accords.length)?story.accords:[info.top,info.heart,info.base];
  $("accordBars").innerHTML=accords.slice(0,7).map((label,index)=>'<div class="accord-row"><span class="accord-fill" style="width:'+Math.max(58,100-index*7)+'%"></span><span class="accord-label">'+escapeHTML(label)+'</span></div>').join("");
 }else{$("olfactorySection").style.display="none"}
