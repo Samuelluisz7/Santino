@@ -25,6 +25,18 @@
     }
   });
 
+  try {
+    const stored = JSON.parse(window.localStorage.getItem("santino_nobre_cart") || "[]");
+    const count = Array.isArray(stored) ? stored.reduce(function (sum, item) {
+      return sum + (Number(item && item.qty) || 0);
+    }, 0) : 0;
+    document.querySelectorAll("#homeCartCount, #cartCount, #searchCartCount, #policyCartCount").forEach(function (counter) {
+      counter.textContent = String(count);
+    });
+  } catch (error) {
+    /* A loja continua navegável se o armazenamento estiver indisponível. */
+  }
+
   document.querySelectorAll('label.quantity-label').forEach(function (label) {
     label.childNodes.forEach(function (node) {
       if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() === "Qtd.") {
