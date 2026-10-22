@@ -333,7 +333,7 @@ gallery=[...new Set([product.image,...extraGallery.filter(src=>!INGREDIENT_IMAGE
 if(gallery.length){
  $("mainImage").alt=product.name+" — frasco";$("mainImage").referrerPolicy="no-referrer";
  $("galleryCaption").textContent=gallery.length>1?"Toque nas miniaturas para ver outras fotos.":"Foto do frasco do perfume";
- $("galleryThumbs").innerHTML=gallery.length>1?gallery.map((src,index)=>'<button type="button" class="thumb" data-gallery-index="'+index+'" aria-pressed="'+(index===0?'true':'false')+'" aria-label="Ver foto '+(index+1)+'"><img src="'+escapeHTML(src)+'" alt="" undefined').join(""):"";
+ $("galleryThumbs").innerHTML=gallery.length>1?gallery.map((src,index)=>'<button type="button" class="thumb" data-gallery-index="'+index+'" aria-pressed="'+(index===0?'true':'false')+'" aria-label="Ver foto '+(index+1)+'"><img src="'+escapeHTML(src)+'" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button>').join(""):"";
  $("galleryThumbs").querySelectorAll("[data-gallery-index]").forEach(button=>button.addEventListener("click",()=>selectGallery(Number(button.dataset.galleryIndex))));
  $("galleryThumbs").querySelectorAll(".thumb img").forEach(img=>img.addEventListener("error",()=>{if(img.parentElement)img.parentElement.hidden=true;}));
  $("mainImage").addEventListener("error",function(){
