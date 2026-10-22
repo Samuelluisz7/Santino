@@ -34,33 +34,25 @@
     const destination = new URL(form.getAttribute("action") || "buscar.html", window.location.href);
     destination.searchParams.set("q", term);
 
+    // A navegação não deve esperar pelo serviço de métricas.
+    window.location.assign(destination.href);
+
+    // Registrar o termo em segundo plano, sem travar o resultado da busca.
     try {
-      const controller = new AbortController();
-      const timeoutId = window.setTimeout(() => controller.abort(), 2500);
-
-      try {
-        const response = await fetch(SUPABASE_URL + "/rest/v1/pesquisas_santino", {
-          method: "POST",
-          headers: {
-            "apikey": SUPABASE_PUBLISHABLE_KEY,
-            "Content-Type": "application/json",
-            "Prefer": "return=minimal"
-          },
-          body: JSON.stringify({ termo: term }),
-          signal: controller.signal,
-          keepalive: true
-        });
-
-        if (!response.ok) {
-          console.warn("SANTINO: a pesquisa foi exibida, mas não foi registrada no Supabase. HTTP", response.status);
-        }
-      } catch (error) {
-        console.warn("SANTINO: não foi possível registrar a pesquisa; a navegação continuará.", error);
-      } finally {
-        window.clearTimeout(timeoutId);
-      }
-    } finally {
-      window.location.assign(destination.href);
+      fetch(SUPABASE_URL + "/rest/v1/pesquisas_santino", {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_PUBLISHABLE_KEY,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify({ termo: term }),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn("SANTINO: não foi possível registrar a pesquisa.", error);
+      });
+    } catch (error) {
+      console.warn("SANTINO: não foi possível iniciar o registro da pesquisa.", error);
     }
   });
 })();
