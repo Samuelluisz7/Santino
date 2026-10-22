@@ -267,22 +267,105 @@ button:disabled {
   margin-top: 14px;
 }
 
-body.full-size-mode .gallery,
-body.full-size-mode .note-visual-bottle,
 body.full-size-mode #productPrice {
   display: none !important;
 }
 
 body.full-size-mode .product-layout {
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr);
 }
 
 body.full-size-mode .summary {
-  max-width: 760px;
+  max-width: none;
 }
 
 body.full-size-mode .note-infographic {
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(140px, .38fr) minmax(0, 1fr);
+}
+
+.detail-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 16px 0 18px;
+}
+
+.detail-highlight {
+  min-width: 0;
+  padding: 10px 11px;
+  border: 1px solid var(--line);
+  background: #171613;
+  border-radius: 3px;
+}
+
+.detail-highlight span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--beige);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.detail-highlight strong {
+  display: block;
+  color: var(--cream);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.accord-row:nth-child(2) .accord-fill {
+  background: linear-gradient(90deg, #4b4030, #9c8660);
+}
+.accord-row:nth-child(3) .accord-fill {
+  background: linear-gradient(90deg, #62402e, #b17b54);
+}
+.accord-row:nth-child(4) .accord-fill {
+  background: linear-gradient(90deg, #41412f, #92915b);
+}
+.accord-row:nth-child(5) .accord-fill {
+  background: linear-gradient(90deg, #3c403b, #83907b);
+}
+.accord-row:nth-child(6) .accord-fill {
+  background: linear-gradient(90deg, #514033, #a98762);
+}
+
+@media (max-width: 760px) {
+  body.full-size-mode .product-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.full-size-mode .gallery-main,
+  body.full-size-mode .gallery-main img,
+  body.full-size-mode .gallery-fallback {
+    min-height: 0;
+    height: min(86vw, 360px);
+  }
+
+  body.full-size-mode .note-infographic {
+    grid-template-columns: minmax(94px, 32%) minmax(0, 1fr);
+  }
+
+  .detail-highlights {
+    gap: 6px;
+  }
+
+  .detail-highlight {
+    padding: 9px 8px;
+  }
+
+  .detail-highlight strong {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 390px) {
+  body.full-size-mode .note-infographic {
+    grid-template-columns: minmax(82px, 30%) minmax(0, 1fr);
+  }
 }
 
 body.full-size-mode .stock-note {
