@@ -364,6 +364,26 @@ const PRODUCT_STORIES={
  "full-invictus":{intro:"Toranja fresca e acorde marinho levam a madeiras e âmbar-cinzento; leve e esportivo no perfil.",occasion:"Dia a dia, trabalho, treino depois do banho e lazer casual.",climate:"Calor e clima ameno; opção mais direta para o dia do que para uma noite formal.",story:"A toranja abre com um frescor cítrico. O acorde marinho deixa uma sensação salgada e limpa, enquanto guaiaco, patchouli e âmbar-cinzento dão uma base amadeirada.",accords:["Toranja","Marinho","Fresco","Guaiaco","Patchouli"]},
  "full-myslf":{intro:"Acorde fresco de bergamota, flor de laranjeira e madeiras quentes formam um amadeirado floral moderno.",occasion:"Trabalho, reuniões, encontros e eventos em que você quer um aroma limpo e bem acabado.",climate:"Versátil ao longo do ano; funciona bem de dia e à noite sem parecer muito esportivo.",story:"A bergamota abre de forma fresca. O coração de flor de laranjeira é mais floral e limpo, e madeiras quentes com patchouli e Ambrofix sustentam o final.",accords:["Bergamota","Flor de laranjeira","Floral","Patchouli","Madeiras"]}
 };
+const PRODUCT_ACCORDS = {
+ "kingdom":["Baunilha","Aromático","Doce","Âmbar","Lavanda","Verde","Fresco especiado","Tabaco","Herbal","Balsâmico"],
+ "212-vip-black":["Aromático","Baunilha","Picante suave","Lavanda","Anis","Almiscarado","Atalcado","Amargo","Doce","Fresco especiado"],
+ "the-blend-bourbon":["Especiado quente","Amadeirado","Fresco especiado","Doce","Baunilha","Canela","Atalcado","Picante suave","Aromático","Âmbar"],
+ "asad-bourbon":["Baunilha","Cacau","Doce","Lavanda","Fresco especiado","Especiado quente","Âmbar","Aromático","Atalcado","Picante suave"],
+ "homem-sagaz":["Fresco especiado","Frutado","Amadeirado","Âmbar","Doce","Baunilha","Aromático","Atalcado","Cítrico","Especiado quente"],
+ "homem-dom":["Baunilha","Amadeirado","Aromático","Especiado quente","Âmbar","Atalcado","Balsâmico","Almiscarado","Doce","Terroso"],
+ "homem-essence":["Amadeirado","Âmbar","Cítrico","Fresco especiado","Especiado quente","Almiscarado","Aromático","Atalcado"],
+ "essencial-sentir":["Amadeirado","Cítrico","Patchouli","Fresco especiado","Lavanda","Aromático","Especiado quente","Atalcado","Balsâmico","Terroso"],
+ "fakhar-black":["Aromático","Fresco especiado","Amadeirado","Frutado","Fresco","Cítrico","Lavanda","Verde","Herbal","Âmbar"],
+ "k-max":["Fresco especiado","Aromático","Amadeirado","Fresco","Cítrico","Verde","Especiado quente","Âmbar","Aquático","Atalcado"],
+ "le-male":["Âmbar","Baunilha","Aromático","Especiado quente","Lavanda","Atalcado","Íris","Amadeirado","Balsâmico","Doce"],
+ "afnan-9pm":["Doce","Baunilha","Frutado","Âmbar","Canela","Especiado quente","Lavanda","Aromático","Cítrico","Amadeirado"],
+ "asad":["Âmbar","Baunilha","Especiado quente","Amadeirado","Café","Tabaco","Balsâmico","Doce","Atalcado","Aromático"],
+ "eros":["Verde","Maçã","Aromático","Baunilha","Cítrico","Fresco especiado","Âmbar","Amadeirado","Doce","Almiscarado"],
+ "million":["Especiado quente","Canela","Citrinos","Âmbar","Amadeirado","Couro","Rosa","Animálico","Verde","Patchouli"],
+ "sauvage":["Cítrico","Âmbar","Fresco especiado","Aromático","Amadeirado","Fresco","Herbal","Almiscarado","Balsâmico","Picante suave"],
+ "invictus":["Fresco especiado","Amadeirado","Cítrico","Aquático","Âmbar","Aromático","Salgado","Marinho","Floral branco","Fresco"],
+ "myslf":["Cítrico","Amadeirado","Floral branco","Fresco especiado","Âmbar","Aromático","Especiado quente","Atalcado","Patchouli","Balsâmico"]
+};
 const FULL_SIZE_PRODUCTS = [
   {id:"full-kingdom",name:"The Kingdom",brand:"Lattafa",ml:100,image:"https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&width=1946",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
   {id:"full-212-vip-black",name:"212 VIP Black",brand:"Carolina Herrera",ml:100,image:"https://cdn.salla.sa/DGdDlG/c8ab83f8-76ec-45e6-a9e9-3c35260c28b9-1000x1000-z7c64TKXbUSTNjJpzdzsZ6frKO0DM0gAjXPF22wN.jpg",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
@@ -439,6 +459,35 @@ const ENGLISH_INFOGRAPHIC_URLS=new Set([
  "https://www.theboroughcollection.com/cdn/shop/files/AfnanMen_s9PM.png?v=1780105049&width=1254"
 ]);
 
+const ACCORD_COLOR_RULES = [
+ [/fresco especiado|especiado fresco/i,"#87c7ac"],
+ [/especiado quente|warm spicy/i,"#ed9774"],
+ [/picante suave|soft spicy/i,"#e9b59d"],
+ [/c[ií]trico|citrinos|citrus/i,"#f0d264"],
+ [/arom[aá]tico|aromatic/i,"#91cabc"],
+ [/amadeirado|woody/i,"#c4a28a"],
+ [/doce|sweet|gourmand/i,"#f1dfa0"],
+ [/baunilha|vanilla/i,"#f5e3ac"],
+ [/cacau|cocoa/i,"#c28769"],
+ [/a[mâ]bar|amber/i,"#eab063"],
+ [/frutado|fruity|ma[cç][aã]/i,"#e9a0b0"],
+ [/verde|herbal|green/i,"#a7c68a"],
+ [/atalcado|powdery/i,"#d5c2e8"],
+ [/almiscarado|alm[ií]scarado|musk/i,"#c6cad0"],
+ [/bals[aâ]mico|balsamic/i,"#d5b98b"],
+ [/terroso|earthy|patchouli/i,"#a69a78"],
+ [/aqu[aá]tico|marinho|salgado|marine|salty/i,"#8dc6d4"],
+ [/lavanda|lavender/i,"#b4a0eb"],
+ [/tabaco|tobacco/i,"#c5a17a"],
+ [/canela|cinnamon/i,"#ce8269"],
+ [/rosa|rose/i,"#e4a0b0"],
+ [/couro|leather/i,"#bf9273"],
+ [/absinto|anis|erva-doce|fennel/i,"#b3cf91"],
+ [/amargo|bitter/i,"#a6ab9b"],
+ [/anim[aá]lico|animalic/i,"#ad9b8f"],
+ [/floral branco|white floral/i,"#ead9d3"],
+ [/patchouli/i,"#b8a77f"]
+];
 const NOTE_COLOR_RULES = [
  [/flor de laranjeira|orange blossom/i,"#ead9ad"],
  [/pimenta\s*rosa|pink pepper/i,"#e77d86"],
@@ -489,7 +538,7 @@ const NOTE_COLOR_RULES = [
  [/fresco|fresh|aqu[aá]tico|marinho|salino/i,"#78bbc4"],
  [/arom[aá]tico|herbal|frescor|fresco|especiarias/i,"#9ba5a4"]
 ];
-function noteColor(label){const value=String(label||"");const rule=NOTE_COLOR_RULES.find(([pattern])=>pattern.test(value));return rule?rule[1]:"#a0a0a0";}
+function noteColor(label){const value=String(label||"");const accord=ACCORD_COLOR_RULES.find(([pattern])=>pattern.test(value));if(accord)return accord[1];const rule=NOTE_COLOR_RULES.find(([pattern])=>pattern.test(value));return rule?rule[1]:"#a0a0a0";}
 function splitNoteList(value){return String(value||"").replace(/\s+e\s+(?=[^,]+$)/i,", ").split(/[,;•]/).map(note=>note.trim().replace(/^e\s+/i,"")).filter(Boolean);}
 function renderIngredientNotes(targetId,value){const target=document.getElementById(targetId);if(!target)return;const notes=splitNoteList(value);target.innerHTML=notes.map(note=>'<span class="note-word" style="--note-color:'+noteColor(note)+'"><span class="note-dot" aria-hidden="true"></span>'+escapeHTML(note)+'</span>').join('<span class="note-separator" aria-hidden="true">·</span>');}
 
@@ -542,8 +591,8 @@ if(info){
  noteBottle.addEventListener("error",noteFallback);
  noteBottle.src=product.image||"";
  if(noteBottle.complete&&noteBottle.naturalWidth===0)noteFallback();
- const accords=(story&&story.accords&&story.accords.length)?story.accords:[info.top,info.heart,info.base];
- $("accordBars").innerHTML=accords.slice(0,7).map((label,index)=>'<div class="accord-row" style="--bar-color:'+noteColor(label)+';--bar-width:'+Math.max(54,100-index*8)+'%"><span class="accord-bar-label">'+escapeHTML(label)+'</span></div>').join("");
+ const accords=PRODUCT_ACCORDS[product.id.replace(/^full-/,"")]||(story&&story.accords&&story.accords.length?story.accords:[info.top,info.heart,info.base]);
+ $("accordBars").innerHTML=accords.slice(0,10).map((label,index)=>'<div class="accord-row" style="--bar-color:'+noteColor(label)+';--bar-width:'+Math.max(52,100-index*5)+'%"><span class="accord-bar-label">'+escapeHTML(label)+'</span></div>').join("");
 }else{$("olfactorySection").style.display="none"}
 const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?"Consultar pelo WhatsApp":"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
 }
