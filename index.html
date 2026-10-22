@@ -183,6 +183,7 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
 .home-kit-card b{position:absolute;right:11px;bottom:9px;color:var(--beige);font-size:15px;font-weight:400}
 @media(max-width:720px){.home-kits{padding:17px 15px 18px}.home-kits-head{align-items:start;gap:8px}.home-kits-head h2{font-size:25px}.home-kits-head p{font-size:11px}.home-kits-all{font-size:11px;padding-top:8px}.home-kit-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.home-kit-card{min-height:106px;padding:11px}.home-kit-card strong{font-size:18px}.home-kit-card p{font-size:10px}}
 </style>
+  <link rel="stylesheet" href="santino-ui.css">
 </head>
 <body>
 <header class="site-header">
@@ -229,7 +230,7 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
       <div>
         <div class="promo-label">Indicação</div>
         <h2 class="promo-title">R$ 20 em crédito</h2>
-        <p>Você e o amigo indicado precisam concluir uma compra de pelo menos R$ 100 cada, confirmada pela SANTINO. Depois disso, você recebe R$ 20 em crédito.</p>
+        <p>Após você e a pessoa indicada concluírem compras de R$ 100 ou mais cada, confirmadas pela SANTINO, você recebe R$ 20 em crédito.</p>
         <a href="https://wa.me/?text=Estou%20te%20indicando%20a%20SANTINO!%20Para%20eu%20receber%20R%24%2020%20em%20cr%C3%A9dito%2C%20voc%C3%AA%20e%20eu%20precisamos%20concluir%20uma%20compra%20de%20pelo%20menos%20R%24%20100%20cada%2C%20confirmada%20pela%20loja.%20Ao%20falar%20com%20a%20SANTINO%2C%20informe%20meu%20nome%20para%20registrar%20a%20indica%C3%A7%C3%A3o%3A%20https%3A%2F%2Fwa.me%2F5531996312579" target="_blank" rel="noopener noreferrer">Compartilhar indicação</a>
       </div>
     </article>
@@ -273,41 +274,6 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
 })();
 </script>
 <script src="search.js" defer></script>
-
-<style>
-/* A indicação é secundária em relação à descoberta dos produtos */
-.promo-grid .promo-card:nth-child(2){padding:13px 16px}
-.promo-grid .promo-card:nth-child(2) .promo-title{font-size:22px}
-.promo-grid .promo-card:nth-child(2) .promo-symbol{width:32px;height:32px;font-size:18px}\n.home-categories + .promo-card{width:calc(100% - 48px);max-width:1084px;margin:0 auto 28px}\n@media(max-width:720px){.home-categories + .promo-card{width:calc(100% - 30px);margin-bottom:22px}}
-</style>
-<script>
-(function(){
- const promos=document.querySelector('.promo-grid');
- const categories=document.querySelector('.home-categories');
- if(promos&&categories){const referral=promos.children[1];if(referral)categories.insertAdjacentElement('afterend',referral);}
-})();
-</script>
-
-<style>
-/* Ajustes de interface: menos repetição e hierarquia mais natural */
-.catalog-nav a[aria-current="page"], .nav-links a[aria-current="page"]{color:var(--cream);font-weight:600}
-.catalog-nav a[aria-current="page"]:after{background:var(--beige)}
-.volume{display:none!important}
-.quantity-label{font-size:12px!important}
-</style>
-<script>
-(function(){
-  const current=(location.pathname.split('/').pop()||'index.html').split('?')[0];
-  document.querySelectorAll('.catalog-nav a, .nav-links a').forEach(a=>{
-    const href=(a.getAttribute('href')||'').split('?')[0];
-    if(['index.html','decants.html','frascos.html','kits.html'].includes(href)){
-      if(href===current){a.setAttribute('aria-current','page');}
-      else{a.removeAttribute('aria-current');}
-    }
-  });
-  document.querySelectorAll('.quantity-label').forEach(el=>{
-    el.childNodes.forEach(n=>{if(n.nodeType===Node.TEXT_NODE && n.textContent.trim()==='Qtd.') n.textContent='Quantidade';});
-  });
-})();
-</script></body>
+<script src="santino-ui.js" defer></script>
+</body>
 </html>
