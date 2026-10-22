@@ -167,6 +167,21 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
 .hero-link:not(.primary){background:#211c16!important;border:1px solid #b49a72!important;color:var(--cream)!important}
 .hero-link:not(.primary):hover{background:#30271b!important;border-color:var(--beige)!important}
 @media(max-width:720px){.catalog-nav{gap:14px!important}.catalog-nav a{font-size:12px!important}.hero-actions{gap:9px!important;margin-top:10px!important;margin-bottom:21px!important}.hero-link{min-height:58px!important;padding:13px 8px!important;font-size:13px!important;line-height:1.3!important}.hero-link span{font-size:17px}}
+
+/* Janela compacta de kits: atalhos por ocasião sem competir com os catálogos */
+.home-kits{max-width:1132px;margin:0 auto;padding:22px 24px 23px;border-bottom:1px solid #2e2922}
+.home-kits-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:13px}
+.home-kits-head h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(25px,3.3vw,34px);line-height:1.1;margin:5px 0}
+.home-kits-head p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+.home-kits-all{flex-shrink:0;color:var(--beige);font-size:12px;font-weight:700;text-decoration:none;padding:8px 0}
+.home-kit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.home-kit-card{position:relative;display:flex;flex-direction:column;min-width:0;min-height:112px;padding:13px;border:1px solid #393229;border-radius:4px;background:linear-gradient(135deg,#1d1a15,#141310);text-decoration:none;transition:border-color .18s,background .18s}
+.home-kit-card:hover{border-color:#8a7250;background:#211c16}
+.home-kit-card>span{color:var(--beige);font-size:9px;letter-spacing:.12em;line-height:1.45;font-weight:700}
+.home-kit-card strong{margin-top:8px;font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.12;font-weight:400}
+.home-kit-card p{margin:6px 15px 0 0;color:var(--muted);font-size:11px;line-height:1.45}
+.home-kit-card b{position:absolute;right:11px;bottom:9px;color:var(--beige);font-size:15px;font-weight:400}
+@media(max-width:720px){.home-kits{padding:17px 15px 18px}.home-kits-head{align-items:start;gap:8px}.home-kits-head h2{font-size:25px}.home-kits-head p{font-size:11px}.home-kits-all{font-size:11px;padding-top:8px}.home-kit-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.home-kit-card{min-height:106px;padding:11px}.home-kit-card strong{font-size:18px}.home-kit-card p{font-size:10px}}
 </style>
 </head>
 <body>
@@ -218,6 +233,18 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
         <a href="https://wa.me/?text=Estou%20te%20indicando%20a%20SANTINO!%20Se%20voc%C3%AA%20concluir%20sua%20primeira%20compra%2C%20posso%20receber%20R%24%2020%20em%20cr%C3%A9dito.%20Ao%20falar%20com%20a%20loja%2C%20informe%20meu%20nome%20para%20registrar%20a%20indica%C3%A7%C3%A3o%3A%20https%3A%2F%2Fwa.me%2F5531996312579" target="_blank" rel="noopener noreferrer">Compartilhar indicação</a>
       </div>
     </article>
+  </section>
+  <section class="home-kits" aria-labelledby="homeKitsHeading">
+    <div class="home-kits-head">
+      <div><div class="eyebrow">Escolha pela ocasião</div><h2 id="homeKitsHeading">Combinações recomendadas</h2><p>Quatro caminhos rápidos para descobrir seu próximo perfume.</p></div>
+      <a href="kits.html" class="home-kits-all">Ver todos os kits <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="home-kit-grid">
+      <a class="home-kit-card" href="kits.html"><span>01 · DIA A DIA</span><strong>Versátil</strong><p>Perfis que acompanham a rotina.</p><b aria-hidden="true">↗</b></a>
+      <a class="home-kit-card" href="kits.html"><span>02 · NOITE</span><strong>Noite &amp; encontros</strong><p>Mais quente e envolvente.</p><b aria-hidden="true">↗</b></a>
+      <a class="home-kit-card" href="kits.html"><span>03 · FESTA</span><strong>Festa</strong><p>Perfumes com mais presença.</p><b aria-hidden="true">↗</b></a>
+      <a class="home-kit-card" href="kits.html"><span>04 · CALOR</span><strong>Verão</strong><p>Cítricos, frescor e perfil aromático.</p><b aria-hidden="true">↗</b></a>
+    </div>
   </section>
   <section class="service-strip" aria-label="Informações essenciais de compra">
     <div><strong>DECANTS DE 5 E 10 ML</strong><span>Escolha o volume no catálogo</span></div>
