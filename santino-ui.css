@@ -105,6 +105,37 @@ header nav a[aria-current="page"] {
   min-width: 0;
 }
 
+.cart-link, .cart-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--cream);
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.cart-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border-radius: 50%;
+  background: var(--beige);
+  color: #171512;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.product .price-row .volume { display: none; }
+
 .nav-search input, .page-search input, input[type="search"],
 select, .quantity-label select, .variants select {
   color: var(--cream);
