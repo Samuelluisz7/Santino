@@ -236,7 +236,26 @@ body.full-size-mode .stock-note {
 }
 
 footer {
+  border-top: 1px solid var(--line);
   border-color: var(--line);
+  color: var(--muted);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 25px clamp(16px, 3vw, 28px) 32px;
+}
+
+footer p {
+  margin: .45rem 0;
+}
+
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-top: 12px;
 }
 
 .footer-links a {
