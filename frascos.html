@@ -497,5 +497,34 @@ setupFullSizeFilters();renderFullSizeProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
 <script src="search.js" defer></script>
-</body>
+
+<style>
+.hero .eyebrow{display:none}
+.section-head .eyebrow{display:none}
+.collection-heading>.eyebrow{display:none}
+#selected-volume-placeholder{display:none}
+</style>
+
+<style>
+/* Ajustes de interface: menos repetição e hierarquia mais natural */
+.catalog-nav a[aria-current="page"], .nav-links a[aria-current="page"]{color:var(--cream);font-weight:600}
+.catalog-nav a[aria-current="page"]:after{background:var(--beige)}
+.volume{display:none!important}
+.quantity-label{font-size:12px!important}
+</style>
+<script>
+(function(){
+  const current=(location.pathname.split('/').pop()||'index.html').split('?')[0];
+  document.querySelectorAll('.catalog-nav a, .nav-links a').forEach(a=>{
+    const href=(a.getAttribute('href')||'').split('?')[0];
+    if(['index.html','decants.html','frascos.html','kits.html'].includes(href)){
+      if(href===current){a.setAttribute('aria-current','page');}
+      else{a.removeAttribute('aria-current');}
+    }
+  });
+  document.querySelectorAll('.quantity-label').forEach(el=>{
+    el.childNodes.forEach(n=>{if(n.nodeType===Node.TEXT_NODE && n.textContent.trim()==='Qtd.') n.textContent='Quantidade';});
+  });
+})();
+</script></body>
 </html>
