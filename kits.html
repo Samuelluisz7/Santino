@@ -18,7 +18,7 @@ main{max-width:1120px;margin:auto;padding:34px 22px 56px}.eyebrow{font-size:10px
 h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:400}h1{max-width:780px;margin:10px 0;font-size:clamp(36px,6vw,62px);line-height:1.02;letter-spacing:-.025em}
 .intro{max-width:660px;margin:0 0 28px;color:#c6bdb1;font-size:14px;line-height:1.65}
 .kit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
-.kit-card{display:flex;flex-direction:column;min-width:0;padding:19px;border:1px solid #39352f;border-radius:5px;background:linear-gradient(145deg,#211f1b,#151411)}
+.kit-card{scroll-margin-top:100px;display:flex;flex-direction:column;min-width:0;padding:19px;border:1px solid #39352f;border-radius:5px;background:linear-gradient(145deg,#211f1b,#151411)}
 .kit-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:9px}.kit-label{color:var(--beige);font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:700}.kit-number{font-family:Georgia,serif;color:#8c785a;font-size:22px}
 .kit-card h2{font-size:29px;line-height:1.1;margin:0 0 8px}.kit-desc{font-size:13px;line-height:1.6;color:var(--muted);margin:0 0 15px;min-height:43px}
 .kit-items{display:grid;gap:0;border-top:1px solid #39352f;margin-bottom:15px}.kit-item{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #39352f;font-size:13px}.kit-item span:last-child{color:var(--muted);text-align:right;white-space:nowrap}
@@ -94,6 +94,7 @@ function addKit(id){
 function readCartCount(){return readCart().reduce((sum,item)=>sum+(Number(item.qty)||0),0)}
 document.getElementById("cartCount").textContent=String(readCartCount());
 render();
+if(window.location.hash){const target=document.getElementById(decodeURIComponent(window.location.hash.slice(1)));if(target)target.scrollIntoView();}
 })();
 </script>
 </body>
