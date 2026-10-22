@@ -52,6 +52,7 @@ main{padding:24px 14px 42px}.intro{font-size:13px;margin-bottom:21px}.kit-grid{g
 <body>
 <header><div class="nav">
 <a class="brand" href="index.html">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a>
+<form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" autocomplete="off" required><button type="submit" aria-label="Pesquisar">⌕</button></form>
 <nav class="nav-links" aria-label="Navegação principal"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a><a href="kits.html" aria-current="page">Kits</a></nav>
 <a href="decants.html?openCart=1" class="cart-link" aria-label="Abrir carrinho">Carrinho <span class="cart-count" id="cartCount">0</span></a>
 </div></header>
@@ -115,7 +116,7 @@ function render(){
  '<p class="kit-desc">'+kit.desc+'</p><div class="kit-product-list">'+kit.items.map(([id,tag])=>{const p=products[id];return '<div class="kit-product">'+
  '<div class="kit-product-img"><img src="'+escapeHTML(p.image)+'" alt="Frasco de '+escapeHTML(p.name)+'" loading="lazy" onerror="this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;block&quot;"><span class="img-fallback">SANTINO</span></div>'+
  '<div class="kit-product-main"><div class="kit-product-head"><div><h3>'+escapeHTML(p.name)+'</h3><div class="kit-brand">'+escapeHTML(p.brand)+'</div></div><span class="use-pill">'+escapeHTML(tag)+'</span></div><div class="kit-note-short">'+escapeHTML(p.short)+'</div>'+
- '<div class="kit-controls"><label for="ml-'+kit.id+'-'+id+'">Volume<select id="ml-'+kit.id+'-'+id+'"><option value="5">5 ml</option><option value="10">10 ml</option></select></label><label for="qty-'+kit.id+'-'+id+'">Unidades<select id="qty-'+kit.id+'-'+id+'">'+Array.from({length:5},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join("")+'</select></label><div class="kit-line-total" id="line-'+kit.id+'-'+id+'">'+money(p.prices[5])+'</div></div>'+
+ '<div class="kit-controls"><label for="ml-'+kit.id+'-'+id+'">Volume<select id="ml-'+kit.id+'-'+id+'"><option value="5">5 ml</option><option value="10">10 ml</option></select></label><label for="qty-'+kit.id+'-'+id+'">Quantidade<select id="qty-'+kit.id+'-'+id+'">'+Array.from({length:5},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join("")+'</select></label><div class="kit-line-total" id="line-'+kit.id+'-'+id+'">'+money(p.prices[5])+'</div></div>'+
  '</div></div>'}).join("")+'</div>'+
  '<div class="kit-bottom"><div><div class="kit-total-label">Total do combo</div><span class="kit-price" id="price-'+kit.id+'">'+money(kit.items.reduce((sum,[id])=>sum+products[id].prices[5],0))+'</span></div><button type="button" class="kit-add" data-add-kit="'+kit.id+'">Adicionar combo ao carrinho</button></div>'+
  '<p class="kit-note">O volume e a quantidade são definidos separadamente em cada perfume. Total antes de eventual desconto automático.</p></article>').join("");
