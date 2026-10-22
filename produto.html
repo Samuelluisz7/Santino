@@ -159,9 +159,10 @@ footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var
 .gallery-thumbs .thumb img{width:100%;height:100%;object-fit:contain}
 @media(max-width:720px){.authenticity-note{font-size:10px}.gallery-caption{font-size:10px}.gallery-thumbs .thumb{flex-basis:68px;width:68px;height:68px}}
 </style>
+  <link rel="stylesheet" href="santino-ui.css">
 </head>
 <body>
-<header><div class="nav"><a href="index.html" class="brand" style="text-decoration:none">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a><form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="nav-links" aria-label="Navegação"><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a><a href="kits.html">Kits</a></nav><a class="cart-link" id="cartLink" href="decants.html?openCart=1">Carrinho <span class="cart-count" id="cartCount">0</span></a></div></header>
+<header><div class="nav"><a href="index.html" class="brand" style="text-decoration:none">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a><form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="nav-links" aria-label="Navegação"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a><a href="kits.html">Kits</a></nav><a class="cart-link" id="cartLink" href="decants.html?openCart=1">Carrinho <span class="cart-count" id="cartCount">0</span></a></div></header>
 <main><div class="breadcrumbs"><a id="backCatalog" href="decants.html">← Voltar ao catálogo</a> / <span id="crumbName">Perfume</span></div>
 
 <section class="product-layout"><div class="gallery"><div class="gallery-main"><img id="mainImage" alt="" decoding="async"><div class="gallery-fallback" id="galleryFallback">Imagem indisponível</div></div><div class="gallery-thumbs" id="galleryThumbs" aria-label="Mais fotos do perfume"></div><p class="gallery-caption" id="galleryCaption">Foto do frasco do perfume</p></div>
@@ -246,25 +247,25 @@ const PRODUCT_STORIES={
  "full-myslf":{intro:"Acorde fresco de bergamota, flor de laranjeira e madeiras quentes formam um amadeirado floral moderno.",occasion:"Trabalho, reuniões, encontros e eventos em que você quer um aroma limpo e bem acabado.",climate:"Versátil ao longo do ano; funciona bem de dia e à noite sem parecer muito esportivo.",story:"A bergamota abre de forma fresca. O coração de flor de laranjeira é mais floral e limpo, e madeiras quentes com patchouli e Ambrofix sustentam o final.",accords:["Bergamota","Flor de laranjeira","Floral","Patchouli","Madeiras"]}
 };
 const FULL_SIZE_PRODUCTS = [
-  {id:"full-kingdom",name:"The Kingdom",brand:"Lattafa",ml:100,version:"Eau de Parfum",image:"https://static01.galaxus.com/productimages/5/4/2/7/9/5/2/8/0/1/7/1/6/9/6/8/9/0/019bd342-bc73-7aeb-8f11-39b1b21ce8c5_sea.jpeg",description:"Eau de Parfum de 100 ml. Preço e disponibilidade sob consulta."},
-  {id:"full-212-vip-black",name:"212 VIP Black",brand:"Carolina Herrera",ml:100,version:"Eau de Parfum",image:"https://f.fcdn.app/imgs/267ea9/www.sanroque.com.uy/sanruy/e03f/original/catalogo/115289_115289_2/2000-2000/perfume-carolina-herrera-212-vip-black-men-edp-100ml-perfume-carolina-herrera-212-vip-black-men-edp-100ml.jpg",description:"Eau de Parfum de 100 ml. Preço e disponibilidade sob consulta."},
-  {id:"full-the-blend-bourbon",name:"The Blend Bourbon",brand:"O Boticário",ml:100,version:"Eau de Parfum",image:"https://acdn-us.mitiendanube.com/stores/004/272/506/products/2vk5xdni-1-43274082dcfc0f627517374007289087-640-0.webp",description:"Eau de Parfum de 100 ml. Preço e disponibilidade sob consulta."},
-  {id:"full-homem-sagaz",name:"Homem Sagaz",brand:"Natura",ml:100,version:"Deo Parfum",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600",description:"Deo Parfum de 100 ml. Preço e disponibilidade sob consulta."},
-  {id:"full-homem-dom",name:"Homem Dom",brand:"Natura",ml:100,version:"Deo Parfum",image:"https://production.na01.natura.com/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw035424b3/Produtos/PRODUTO/NATBRA-71770_1.jpg?q=80&sw=600",description:"Deo Parfum de 100 ml. Preço e disponibilidade sob consulta."},
-  {id:"full-homem-essence",name:"Homem Essence",brand:"Natura",ml:100,version:"Deo Parfum",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-co-storefront-catalog/default/dw3140eb1d/producto-joia/mobile/59848.jpg",description:"Deo Parfum de 100 ml. Preço e disponibilidade sob consulta."},
-  {id:"full-essencial-sentir",name:"Essencial Sentir",brand:"Natura",ml:100,version:"Deo Parfum",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-co-storefront-catalog/default/dw06d0c53c/NATCOL-179067_1.png",description:"Deo Parfum de 100 ml. Preço e disponibilidade sob consulta."},
-  {id:"full-fakhar-black",name:"Fakhar Black",brand:"Lattafa",ml:100,version:"Eau de Parfum",image:"https://m.magazineluiza.com.br/a-static/420x420/perfume-arabe-fakhar-black-lattafa-masculino-original-100ml/glowgomake/0156/2810be863dd32d57db7241f9d98ef18c.jpeg",description:"Eau de Parfum de 100 ml. Preço e disponibilidade sob consulta."},
-  {id:"full-k-max",name:"K Max",brand:"Natura Kaiak",ml:100,version:"Deo Parfum",image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2ilre9m85au14",description:"Frasco de 100 ml. Preço e disponibilidade sob consulta."},
+  {id:"full-kingdom",name:"The Kingdom",brand:"Lattafa",ml:100,version:"Eau de Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-212-vip-black",name:"212 VIP Black",brand:"Carolina Herrera",ml:100,version:"Eau de Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-the-blend-bourbon",name:"The Blend Bourbon",brand:"O Boticário",ml:100,version:"Eau de Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-homem-sagaz",name:"Homem Sagaz",brand:"Natura",ml:100,version:"Deo Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-homem-dom",name:"Homem Dom",brand:"Natura",ml:100,version:"Deo Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-homem-essence",name:"Homem Essence",brand:"Natura",ml:100,version:"Deo Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-essencial-sentir",name:"Essencial Sentir",brand:"Natura",ml:100,version:"Deo Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-fakhar-black",name:"Fakhar Black",brand:"Lattafa",ml:100,version:"Eau de Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-k-max",name:"K Max",brand:"Natura Kaiak",ml:100,version:"Deo Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
 
- {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,version:"Eau de Parfum Intense",image:"https://arome.mx/cdn/shop/files/perfume-le-male-le-parfum-para-hombre-de-jean-paul-gaultier-arome-mexico-3_1200x1200.jpg?v=1725558080",description:"Eau de Parfum Intense de 125 ml, com assinatura amadeirada e âmbar."},
- {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,version:"Eau de Parfum",image:"https://cdn.dooca.store/181275/products/frasco-afnan-9pm-100ml-edp-masculino-noturno-ambar-perfumes.jpg?v=1771204807",description:"Eau de Parfum de 100 ml. Ofertas públicas abaixo de R$ 500; confirme vendedor, frete e autenticidade."},
- {id:"full-asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",ml:100,version:"Eau de Parfum",image:"https://media.cdn.kaufland.de/product-images/original/b4a7cd262b1b59538f425245be4fff95.jpg",description:"Eau de Parfum de 100 ml; variante distinta do Asad original."},
- {id:"full-asad",name:"Asad tradicional",brand:"Lattafa",ml:100,version:"Eau de Parfum",image:"https://epocacosmeticos.vteximg.com.br/arquivos/ids/1310679-800-800/17603916694210.jpg?v=639001969767870000",description:"Eau de Parfum de 100 ml, versão original de Lattafa Asad."},
- {id:"full-eros",name:"Eros",brand:"Versace",ml:100,version:"Eau de Toilette",image:"https://www.perfumenz.co.nz/cdn/shop/products/versace_eros_1200x1200.jpg?v=1531373446",description:"Frasco original de 100 ml. Preço de venda SANTINO ainda não definido."},
- {id:"full-million",name:"1 Million",brand:"Rabanne",ml:100,version:"Eau de Toilette",image:"https://hogiesonline.co.uk/cdn/shop/files/opy3hsarjs2.png?v=1763026114&width=1946",description:"Frasco original de 100 ml. Confirmar preço e disponibilidade no fornecedor."},
- {id:"full-sauvage",name:"Sauvage",brand:"Dior",ml:100,version:"Eau de Toilette",image:"https://www.sephora.com.mx/on/demandware.static/-/Sites-masterCatalog_Sephora/es_MX/dwdefc1b76/images/hi-res/eau-de-toilette-dior-dior-sauvage-eau-de-toilette-100ml3348901250146A.jpg",description:"Frasco original de 100 ml. Preço de venda SANTINO ainda não definido."},
- {id:"full-invictus",name:"Invictus",brand:"Rabanne",ml:100,version:"Eau de Toilette",image:"https://media.ulta.com/i/ulta/2279388_alt01?fmt=auto&h=1600&w=1600",description:"Eau de Toilette de 100 ml. Faixa de referência de varejistas; confirme a versão e o valor final."},
- {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,version:"Eau de Parfum",image:"https://www.adorebeauty.com.au/pim_media/000/437/935/Yves_Saint_Laurent_MYSLF_100ml.png?fmt=webp&h=386&w=386",description:"Eau de Parfum de 100 ml. Referência inicial; confirme o valor final e a disponibilidade."}
+ {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,version:"Eau de Parfum Intense",description:"Eau de Parfum Intense de 125 ml, com assinatura amadeirada e âmbar."},
+ {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,version:"Eau de Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",ml:100,version:"Eau de Parfum",description:"Eau de Parfum de 100 ml; variante distinta do Asad original."},
+ {id:"full-asad",name:"Asad tradicional",brand:"Lattafa",ml:100,version:"Eau de Parfum",description:"Eau de Parfum de 100 ml, versão original de Lattafa Asad."},
+ {id:"full-eros",name:"Eros",brand:"Versace",ml:100,version:"Eau de Toilette",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-million",name:"1 Million",brand:"Rabanne",ml:100,version:"Eau de Toilette",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-sauvage",name:"Sauvage",brand:"Dior",ml:100,version:"Eau de Toilette",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-invictus",name:"Invictus",brand:"Rabanne",ml:100,version:"Eau de Toilette",description:"Eau de Toilette de 100 ml. Faixa de referência de varejistas; confirme a versão e o valor final."},
+ {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,version:"Eau de Parfum",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."}
 ];
 const EXTRA_GALLERY={
  "kingdom":["https://www.aarfragrances.com/public/uploads/all/YPCYqPbgpC36orvvIaKBPfqbt9m7q4EGNGzYQLdb.jpg"],
@@ -317,9 +318,9 @@ else{
 document.title="SANTINO | "+product.name;$("crumbName").textContent=product.name;$("productName").textContent=product.name;$("productBrand").textContent=product.brand;$("categoryLabel").textContent=isFull?"Frasco inteiro":"Decant · "+product.tag;
 $("productMeta").textContent=isFull?(product.version+" · "+product.ml+" ml"):"Escolha o volume do seu decant";$("productDescription").textContent=story?story.intro:(product.description||"Uma fragrância para conhecer em detalhes.");$("longDescription").textContent=story?story.story:(product.description||"Explore o perfil olfativo desta fragrância e escolha o volume desejado.");if(story){$("occasionText").textContent=story.occasion;$("climateText").textContent=story.climate;}$("authenticityNote").textContent=isFull?"Frasco original · selo de originalidade SANTINO":"Fragrância original · decant com selo de originalidade SANTINO";
 $("backCatalog").href=isFull?"frascos.html#full-size-catalog":"decants.html#catalog";$("cartLink").href=(isFull?"frascos.html":"decants.html")+"?openCart=1";
-if(isFull){$("volumeControl").style.display="none";$("quantitySelect").parentElement.style.display="none";$("productPrice").textContent="Preço e disponibilidade sob consulta";$("productPrice").classList.add("pending");$("stockNote").textContent="Consulte preço e disponibilidade e combine a entrega local em Viçosa pelo WhatsApp antes de pagar."}
+if(isFull){document.body.classList.add("full-size-mode");$("volumeControl").style.display="none";$("quantitySelect").parentElement.style.display="none";$("productPrice").textContent="";$("productPrice").classList.remove("pending");$("stockNote").textContent="Para informações sobre esta fragrância e condições de compra, fale com a SANTINO pelo WhatsApp. A entrega local em Viçosa é combinada no atendimento."}
 else{$("volumeSelect").innerHTML=product.volumes.map((v,i)=>'<option value="'+i+'">'+v.ml+' ml</option>').join("");updatePrice();$("volumeSelect").addEventListener("change",()=>{currentVolume=product.volumes[Number($("volumeSelect").value)];updatePrice()})}
-const extras=EXTRA_GALLERY[requestedId]||EXTRA_GALLERY[requestedId.replace(/^full-/,"")]||[];gallery=[product.image].concat(extras).filter((value,index,array)=>Boolean(value)&&array.indexOf(value)===index&&!INGREDIENT_IMAGE_URLS.has(value));
+const extras=EXTRA_GALLERY[requestedId]||EXTRA_GALLERY[requestedId.replace(/^full-/,"")]||[];gallery=isFull?[]:[product.image].concat(extras).filter((value,index,array)=>Boolean(value)&&array.indexOf(value)===index&&!INGREDIENT_IMAGE_URLS.has(value));
 if(gallery.length){
  $("mainImage").src=gallery[0];$("mainImage").alt=product.name+" — frasco";
  $("galleryCaption").textContent=gallery.length>1?"Deslize pelas miniaturas para ver outras fotos e imagens de notas.":"Foto do frasco do perfume";
@@ -346,40 +347,13 @@ if(info){
  const accords=(story&&story.accords&&story.accords.length)?story.accords:[info.top,info.heart,info.base];
  $("accordBars").innerHTML=accords.slice(0,8).map(label=>'<span class="accord-tag">'+escapeHTML(label)+'</span>').join("");
 }else{$("olfactorySection").style.display="none"}
-const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?"Consultar preço pelo WhatsApp":"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
+const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?"Consultar pelo WhatsApp":"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
 }
 function selectGallery(index){if(!gallery[index])return;$("mainImage").style.display="block";$("galleryFallback").style.display="none";$("mainImage").src=gallery[index];$("mainImage").alt=product.name+" — foto "+(index+1);$("galleryCaption").textContent=index===0?"Frasco do perfume":(INGREDIENT_IMAGE_URLS.has(gallery[index])?"Imagem de notas ou ingredientes da fragrância":"Foto complementar do perfume");document.querySelectorAll("[data-gallery-index]").forEach(button=>button.setAttribute("aria-pressed",String(Number(button.dataset.galleryIndex)===index)));}
 function updatePrice(){if(!currentVolume)return;$("productPrice").textContent=money(currentVolume.price);$("productPrice").classList.remove("pending");$("addButton").textContent="Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price)}
 function readCart(){try{const value=JSON.parse(localStorage.getItem("santino_nobre_cart")||"[]");return Array.isArray(value)?value:[]}catch(e){return []}}
-function addToCart(){if(!product)return;if(isFull){const message="Olá! Estou em Viçosa e gostaria de consultar o preço e a disponibilidade de "+product.name+" ("+product.brand+"), "+product.version+", "+product.ml+" ml. Também quero combinar a entrega local.";window.open("https://wa.me/5531996312579?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");return;}const amount=Math.max(1,Math.min(10,Number($("quantitySelect").value)||1)),ml=currentVolume.ml,price=currentVolume.price,key=product.id+"-"+ml,cart=readCart(),item=cart.find(x=>x.key===key);if(item)item.qty=(Number(item.qty)||0)+amount;else cart.push({key,id:product.id,name:product.name,brand:product.brand,ml,price,qty:amount,category:"Decant"});try{localStorage.setItem("santino_nobre_cart",JSON.stringify(cart))}catch(e){}$("cartCount").textContent=cart.reduce((sum,x)=>sum+(Number(x.qty)||0),0);$("toast").textContent=amount+" unidade(s) de "+product.name+" adicionada(s) ao carrinho.";$("toast").style.display="block";const button=$("addButton"),original="Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);button.textContent="Adicionado ao carrinho ✓";setTimeout(()=>{button.textContent=original;$("toast").style.display="none"},2000)}
+function addToCart(){if(!product)return;if(isFull){const message="Olá! Tenho interesse no frasco inteiro de "+product.name+" ("+product.brand+"), "+product.version+", "+product.ml+" ml. Pode me passar as informações para compra? Também quero combinar a entrega local em Viçosa.";window.open("https://wa.me/5531996312579?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");return;}const amount=Math.max(1,Math.min(10,Number($("quantitySelect").value)||1)),ml=currentVolume.ml,price=currentVolume.price,key=product.id+"-"+ml,cart=readCart(),item=cart.find(x=>x.key===key);if(item)item.qty=(Number(item.qty)||0)+amount;else cart.push({key,id:product.id,name:product.name,brand:product.brand,ml,price,qty:amount,category:"Decant"});try{localStorage.setItem("santino_nobre_cart",JSON.stringify(cart))}catch(e){}$("cartCount").textContent=cart.reduce((sum,x)=>sum+(Number(x.qty)||0),0);$("toast").textContent=amount+" unidade(s) de "+product.name+" adicionada(s) ao carrinho.";$("toast").style.display="block";const button=$("addButton"),original="Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);button.textContent="Adicionado ao carrinho ✓";setTimeout(()=>{button.textContent=original;$("toast").style.display="none"},2000)}
 </script><script src="search.js" defer></script>
-
-<style>
-/* A galeria não precisa de legenda genérica nem de uma segunda lista de acordes */
-.gallery-caption{display:none!important}
-.note-accords{display:none!important}
-.note-graphic-head .eyebrow{display:none!important}
-</style>
-
-<style>
-/* Ajustes de interface: menos repetição e hierarquia mais natural */
-.catalog-nav a[aria-current="page"], .nav-links a[aria-current="page"]{color:var(--cream);font-weight:600}
-.catalog-nav a[aria-current="page"]:after{background:var(--beige)}
-.volume{display:none!important}
-.quantity-label{font-size:12px!important}
-</style>
-<script>
-(function(){
-  const current=(location.pathname.split('/').pop()||'index.html').split('?')[0];
-  document.querySelectorAll('.catalog-nav a, .nav-links a').forEach(a=>{
-    const href=(a.getAttribute('href')||'').split('?')[0];
-    if(['index.html','decants.html','frascos.html','kits.html'].includes(href)){
-      if(href===current){a.setAttribute('aria-current','page');}
-      else{a.removeAttribute('aria-current');}
-    }
-  });
-  document.querySelectorAll('.quantity-label').forEach(el=>{
-    el.childNodes.forEach(n=>{if(n.nodeType===Node.TEXT_NODE && n.textContent.trim()==='Qtd.') n.textContent='Quantidade';});
-  });
-})();
-</script></body></html>
+<script src="santino-ui.js" defer></script>
+</body>
+</html>
