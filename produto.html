@@ -167,7 +167,7 @@ footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var
 #olfactorySection .content-heading p{color:#a7a7a7;font-size:12px;line-height:1.65;max-width:780px}
 #olfactorySection .note-infographic{grid-template-columns:minmax(190px,.4fr) minmax(0,1fr);background:#050505!important;border:1px solid #292929;border-radius:2px;box-shadow:none}
 #olfactorySection .note-visual-bottle{background:#050505!important;border-right:1px solid #292929;min-height:330px;padding:16px}
-#olfactorySection .note-visual-bottle img{display:block;width:100%;max-width:245px;height:310px;object-fit:contain;object-position:center}
+#olfactorySection .note-visual-bottle img{display:block;width:100%;max-width:245px;height:310px;object-fit:contain;object-position:center;filter:url(#santino-packshot-cutout)}
 #olfactorySection .note-bottle-fallback{color:#c9c9c9}
 #olfactorySection .note-visual-details{background:#050505;padding:22px;min-width:0}
 #olfactorySection .note-graphic-head{margin-bottom:16px}
@@ -250,6 +250,13 @@ footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var
  </div>
 </section>
 <section class="content-section"><h2>Sobre esta fragrância</h2><p class="description" id="longDescription"></p></section></main>
+<svg aria-hidden="true" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+ <filter id="santino-packshot-cutout" color-interpolation-filters="sRGB">
+  <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -1.25 -1.25 -1.25 0 3.75" result="lightnessKey"/>
+  <feComponentTransfer in="lightnessKey" result="cleanKey"><feFuncA type="table" tableValues="0 0 0 0.01 0.06 0.25 0.75 1"/></feComponentTransfer>
+  <feComposite in="SourceGraphic" in2="cleanKey" operator="in"/>
+ </filter>
+</svg>
 <div class="toast" id="toast" role="status"></div><footer>SANTINO · Decants &amp; Fragrâncias · <a href="politicas.html" style="color:var(--beige)">Políticas de compra</a></footer>
 <script>
 const CURRENCY=new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});function money(value){return CURRENCY.format(value)}function escapeHTML(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
