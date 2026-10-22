@@ -264,6 +264,9 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .share-referral{flex-shrink:0;min-height:40px;padding:9px 12px;border:1px solid #817052;border-radius:3px;background:transparent;color:var(--beige);font-size:12px;font-weight:600}
 .share-referral:hover{background:#282116}
 @media(max-width:400px){.referral-box{align-items:flex-start;flex-direction:column}.share-referral{width:100%}}
+
+/* Consulta direta para frascos sem preço público */
+.full-size-product .price-row{margin-bottom:12px!important}.full-size-product .add{width:100%;line-height:1.35;background:var(--beige)!important;color:#171512!important}@media(max-width:720px){.full-size-product .add{font-size:11px!important;padding:10px 6px!important}}
 </style>
 </head>
 <body>
@@ -296,14 +299,9 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <section class="section faq-section" id="faq">
     <div class="section-head"><div><div class="eyebrow">Antes de pedir</div><h2>Dúvidas frequentes</h2><p>Informações essenciais para comprar com mais clareza.</p></div></div>
     <div class="faq-list">
-      <details class="faq-item"><summary>O que é um decant?</summary><div class="faq-answer">É uma quantidade de perfume acondicionada em um recipiente menor, nos volumes de 2 ml, 5 ml ou 10 ml, para experimentar ou usar sem comprar o frasco inteiro.</div></details>
-      <details class="faq-item"><summary>Como o perfume é fracionado?</summary><div class="faq-answer">O decant é uma porção da fragrância transferida para um recipiente menor no volume escolhido. O recipiente não é a embalagem de fábrica da marca. Antes de comprar, você pode pedir à loja informações sobre a origem da fragrância, o processo de envase e o tipo de atomizador usado.</div></details>
-      <details class="faq-item"><summary>O recipiente do decant é o frasco original da marca?</summary><div class="faq-answer">Não. O perfume é vendido fracionado em um recipiente menor; a embalagem do decant não é a embalagem de fábrica da marca. Para esclarecer a procedência de uma fragrância específica, fale com a loja pelo <a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">WhatsApp</a> antes de concluir o pedido.</div></details>
-      <details class="faq-item"><summary>Como confirmo a procedência?</summary><div class="faq-answer">Antes de pagar, solicite pelo WhatsApp informações sobre a procedência da fragrância e esclareça qualquer dúvida sobre o decant. A loja deve confirmar o produto, o volume, o valor total e a disponibilidade no atendimento.</div></details>
-      <details class="faq-item"><summary>Os perfumes estão em estoque?</summary><div class="faq-answer">A disponibilidade da versão selecionada será reconfirmada no atendimento antes do pagamento.</div></details>
-      <details class="faq-item"><summary>Como funcionam frete e prazo de entrega?</summary><div class="faq-answer">O frete e o prazo dependem do endereço e serão confirmados pelo WhatsApp antes da finalização do pedido.</div></details>
-      <details class="faq-item"><summary>Quais formas de pagamento são aceitas?</summary><div class="faq-answer">As formas de pagamento disponíveis serão informadas pelo atendimento no WhatsApp antes de confirmar a compra.</div></details>
-      <details class="faq-item"><summary>Os perfumes em frascos inteiros têm preço definido?</summary><div class="faq-answer">No momento, são exibidos como “Sob consulta”. Preço, disponibilidade, frete e prazo serão confirmados pelo WhatsApp.</div></details>
+      <details class="faq-item"><summary>Como consulto o preço?</summary><div class="faq-answer">Use o botão do perfume desejado. O atendimento confirma o preço vigente e a disponibilidade pelo WhatsApp.</div></details>
+      <details class="faq-item"><summary>Como funciona a entrega em Viçosa?</summary><div class="faq-answer">A entrega local e os detalhes de recebimento são combinados pelo WhatsApp antes de confirmar o pedido.</div></details>
+      <details class="faq-item"><summary>Quando devo pagar?</summary><div class="faq-answer">Confirme o produto, o preço total e a forma de entrega com a loja antes de realizar o pagamento.</div></details>
     </div>
   </section>
 </main>
@@ -317,8 +315,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <div class="drawer">
     <div class="drawer-head"><h2>Seu carrinho</h2><button class="close" id="closeCart">Fechar ✕</button></div>
     <div class="goal-box" id="goalBox" aria-live="polite" hidden><p class="goal-copy" id="goalCopy">Faltam R$ 80,00 para liberar 10% de desconto.</p><div class="goal-track"><div class="goal-fill" id="goalFill"></div></div><div class="goal-meta"><span id="goalCurrent">R$ 0,00</span><span>Meta: R$ 80,00</span></div></div>
-    <div class="referral-box"><div><strong>Indique e ganhe R$ 20</strong><p>Receba R$ 20 em crédito após seu amigo concluir a primeira compra e a loja confirmar o pedido.</p></div><button class="share-referral" id="shareReferral" type="button">Compartilhar</button></div>
-    <div class="cart-items" id="cartItems"></div>
+     <div class="cart-items" id="cartItems"></div>
     <div class="cart-total">
       <div class="total-line"><span>Total do pedido</span><strong id="cartTotal">R$ 0,00</strong></div>
       <button class="btn checkout" id="checkout">Confirmar pedido pelo WhatsApp</button>
@@ -442,12 +439,11 @@ function renderFullSizeProducts(){
    <p class="card-meta">${escapeHTML(p.version)} · ${p.ml} ml</p>
    </a>
    <div class="price-row"><span class="price price-pending">Sob consulta</span></div>
-   <label class="quantity-label">Quantidade<select id="qty-${p.id}" aria-label="Quantidade de ${escapeHTML(p.name)}">${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}</select></label>
-   <button class="add" data-add-full="${p.id}">Adicionar ao carrinho</button>
+   <button class="add" data-consult-full="${p.id}">Consultar preço pelo WhatsApp</button>
  </article>`).join("");
- document.querySelectorAll("[data-add-full]").forEach(b=>b.addEventListener("click",()=>addFullSizeToCart(b.dataset.addFull)));
+ document.querySelectorAll("[data-consult-full]").forEach(b=>b.addEventListener("click",()=>consultFullSize(b.dataset.consultFull)));
 }
-function consultFullSize(id){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message=`Olá! Quero consultar o preço atualizado e a disponibilidade de ${p.name} (${p.brand}), ${p.version}, ${p.ml} ml. Podem confirmar a disponibilidade e explicar as opções de entrega caso eu queira receber em casa?`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
+function consultFullSize(id){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message=`Olá! Estou em Viçosa e gostaria de consultar o preço e a disponibilidade de ${p.name} (${p.brand}), ${p.version}, ${p.ml} ml. Também quero combinar a entrega local.`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
  const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
@@ -522,11 +518,6 @@ function checkout(){
 $("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
 $("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
 $("checkout").addEventListener("click",checkout);
-const referralButton=$("shareReferral");
-if(referralButton)referralButton.addEventListener("click",()=>{
- const referralMessage="Estou te indicando a SANTINO NOBRE! Se você concluir sua primeira compra, posso receber R$ 20 em crédito na loja. Ao falar com a SANTINO, avise que veio por minha indicação e informe meu nome. Atendimento: https://wa.me/"+STORE_WHATSAPP;
- window.open("https://wa.me/?text="+encodeURIComponent(referralMessage),"_blank","noopener,noreferrer");
-});
 setupFullSizeFilters();renderFullSizeProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
