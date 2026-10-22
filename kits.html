@@ -33,10 +33,10 @@ h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}h1{max-widt
 .kit-brand{color:var(--muted);font-size:10px;line-height:1.4}
 .use-pill{flex-shrink:0;display:inline-block;padding:4px 7px;border:1px solid #4b4030;border-radius:999px;color:var(--beige);background:#211d17;font-size:9px;line-height:1.15;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .kit-note-short{color:#bfb5a6;font-size:10px;line-height:1.35;margin-top:5px}
-.kit-controls{display:grid;grid-template-columns:minmax(80px,1fr) minmax(75px,.85fr) auto;align-items:end;gap:8px;margin-top:9px}
+.kit-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);align-items:end;gap:8px;margin-top:9px}
 .kit-controls label{display:block;color:var(--muted);font-size:10px;line-height:1.3}
 .kit-controls select{display:block;width:100%;min-width:0;min-height:36px;margin-top:4px;border:1px solid #5a4d39;border-radius:3px;background:#11110f;color:var(--cream);padding:6px;font-size:12px}
-.kit-line-total{min-width:58px;text-align:right;color:var(--cream);font-size:12px;line-height:1.35;padding-bottom:8px;white-space:nowrap}
+.kit-line-total{display:none}
 .kit-bottom{display:flex;align-items:end;justify-content:space-between;gap:12px;padding-top:15px;margin-top:14px;border-top:1px solid var(--line)}
 .kit-total-label{color:var(--muted);font-size:10px;letter-spacing:.1em;text-transform:uppercase}.kit-price{display:block;margin-top:4px;font-size:26px;line-height:1.05;color:var(--cream)}
 .kit-add{min-height:54px;padding:12px 14px;border:1px solid var(--beige);border-radius:4px;background:var(--beige);color:#171512;font-weight:700;font-size:12px;line-height:1.3}.kit-add:hover{background:#dbc6a4;border-color:#dbc6a4}
@@ -44,7 +44,7 @@ h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}h1{max-widt
 .bottom-note{margin-top:25px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:12px;line-height:1.65}.bottom-note strong{color:var(--cream)}
 footer{border-top:1px solid var(--line);padding:23px 20px;text-align:center;color:var(--muted);font-size:12px}.footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:10px}.footer-links a{color:var(--beige);text-decoration:none}
 @media(max-width:780px){.nav{padding:10px 13px;gap:9px}.brand{font-size:14px;letter-spacing:.15em}.brand small{font-size:8px}.nav-links{order:3;width:100%;gap:14px}.nav-links a{font-size:12px}.cart-link{margin-left:auto;min-height:40px;font-size:0;padding:0;width:42px;position:relative}.cart-link:before{content:"";position:absolute;width:13px;height:11px;left:13px;top:12px;border:1.4px solid var(--beige);border-radius:2px}.cart-link:after{content:"";position:absolute;width:7px;height:5px;left:16px;top:7px;border:1.4px solid var(--beige);border-bottom:0;border-radius:4px 4px 0 0}.cart-count{position:absolute;right:-6px;top:-7px;width:19px;height:19px;border:2px solid var(--black);font-size:10px}
-main{padding:24px 14px 42px}.intro{font-size:13px;margin-bottom:21px}.kit-grid{grid-template-columns:1fr;gap:11px}.kit-card{padding:13px}.kit-card h2{font-size:27px}.kit-desc{min-height:0;margin-bottom:12px}.kit-product{grid-template-columns:60px minmax(0,1fr);gap:9px;padding:8px}.kit-product-img{width:60px;height:69px}.kit-controls{grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:7px}.kit-controls select{font-size:11px;padding:5px}.kit-line-total{grid-column:1/-1;text-align:left;font-size:11px;min-width:0;padding-bottom:0;white-space:normal}.kit-bottom{gap:8px}.kit-price{font-size:24px}.kit-add{min-height:53px;padding:11px 10px;font-size:11px;max-width:58%}}
+main{padding:24px 14px 42px}.intro{font-size:13px;margin-bottom:21px}.kit-grid{grid-template-columns:1fr;gap:11px}.kit-card{padding:13px}.kit-card h2{font-size:27px}.kit-desc{min-height:0;margin-bottom:12px}.kit-product{grid-template-columns:60px minmax(0,1fr);gap:9px;padding:8px}.kit-product-img{width:60px;height:69px}.kit-controls{grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:7px}.kit-controls select{font-size:11px;padding:5px}.kit-line-total{display:none}.kit-bottom{gap:8px}.kit-price{font-size:24px}.kit-add{min-height:53px;padding:11px 10px;font-size:11px;max-width:58%}}
 @media(max-width:355px){.kit-product{grid-template-columns:51px minmax(0,1fr);gap:7px}.kit-product-img{width:51px;height:61px}.kit-product-head{display:block}.use-pill{margin-top:4px}.kit-controls{grid-template-columns:1fr 1fr}.kit-line-total{grid-column:1/-1;text-align:left;padding-bottom:0}.kit-bottom{align-items:stretch;flex-direction:column}.kit-add{max-width:none;width:100%}}
 </style>
   <link rel="stylesheet" href="santino-ui.css">
@@ -59,7 +59,7 @@ main{padding:24px 14px 42px}.intro{font-size:13px;margin-bottom:21px}.kit-grid{g
 <main>
 <div class="eyebrow">Combinações SANTINO</div>
 <h1>Kits para cada momento.</h1>
-<p class="intro">Veja a combinação, escolha o volume de cada perfume individualmente e aumente a quantidade de unidades como preferir. As imagens ajudam a reconhecer os frascos; as notas e a recomendação de uso estão resumidas em cada item.</p>
+<p class="intro">Escolha pelo momento: cada kit reúne três fragrâncias com propostas complementares. Ajuste o volume e a quantidade de cada uma; o valor total muda automaticamente.</p>
 <section class="kit-grid" id="kitGrid" aria-label="Combos de decants recomendados"></section>
 <p class="bottom-note"><strong>Como funciona:</strong> você pode escolher 5 ml ou 10 ml e de 1 a 5 unidades de cada perfume. O valor do combo é atualizado na hora. As fragrâncias são originais e os produtos acompanham selo de originalidade SANTINO. O desconto de 10% é aplicado automaticamente quando o subtotal elegível de decants chega a R$ 80. Aceitamos Pix e dinheiro. A disponibilidade e a entrega local em Viçosa são confirmadas antes do pagamento.</p>
 </main>
@@ -81,19 +81,19 @@ const products={
  "homem-essence":{name:"Homem Essence",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600",short:"Bergamota, gengibre, especiarias e cedro.",prices:{5:16.9,10:31.9}},
  "essencial-sentir":{name:"Essencial Sentir",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw62148647/Produtos/NATBRA-167755_1.jpg?q=80&sw=600",short:"Bergamota, lavanda e madeiras.",prices:{5:18.9,10:35.9}},
  "fakhar-black":{name:"Fakhar Black",brand:"Lattafa",image:"https://www.lattafa-usa.com/cdn/shop/files/1_aa0a5a38-775b-4814-a909-837c1d360d9c.png?v=1747500778&width=1946",short:"Maçã, bergamota e lavanda.",prices:{5:12.9,10:23.9}},
- "k-max":{name:"Kaiak K Max",brand:"Natura Kaiak",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600",short:"Grapefruit, gengibre e madeiras.",prices:{5:16.9,10:30.9}}
+ "k-max":{name:"Natura Kaiak K Max",brand:"Natura Kaiak",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600",short:"Frescor aromático com um fundo amadeirado.",prices:{5:16.9,10:30.9}}
 };
 const KIT_IMAGE_FALLBACKS = {
  "homem-essence": ["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw03464062/Produtos/NATBRA-59847_2.jpg?q=80&sw=600"],
  "k-max": ["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw7d5b57a1/Produtos/NATBRA-72468_3.jpg?q=80&sw=600"]
 };
 const kits=[
- {id:"dia-a-dia",label:"ROTINA",title:"Dia a dia",desc:"Trio versátil para acompanhar a rotina com frescor, presença e facilidade de uso.",items:[["essencial-sentir","ROTINA"],["k-max","FRESCO"],["fakhar-black","AROMÁTICO"]]},
- {id:"festa",label:"FESTAS",title:"Festa",desc:"Três fragrâncias com presença para ocasiões sociais e momentos em que você quer ser notado.",items:[["212-vip-black","NOITE"],["homem-sagaz","AROMÁTICO"],["kingdom","INTENSO"]]},
- {id:"encontro",label:"ENCONTROS",title:"Encontro",desc:"Uma combinação envolvente, elegante e marcante para encontros e ocasiões a dois.",items:[["homem-dom","ENVOLVENTE"],["the-blend-bourbon","ESPECIADO"],["kingdom","MARCANTE"]]},
- {id:"noturno",label:"NOITE",title:"Noturno",desc:"Perfis mais densos e quentes para noites, jantares e ocasiões especiais.",items:[["asad-bourbon","QUENTE"],["212-vip-black","SEDUÇÃO"],["the-blend-bourbon","AMBARADO"]]},
- {id:"versatil",label:"VERSATILIDADE",title:"Versátil",desc:"Um trio equilibrado para alternar entre compromissos, trabalho e lazer.",items:[["homem-sagaz","DIÁRIO"],["k-max","FRESCO"],["homem-essence","AMADEIRADO"]]},
- {id:"essencial",label:"ESSENCIAIS",title:"Essencial",desc:"Três opções para montar uma coleção inicial com personalidade e variedade.",items:[["asad-bourbon","INTENSO"],["essencial-sentir","ELEGANTE"],["homem-sagaz","VERSÁTIL"]]}
+ {id:"dia-a-dia",label:"ROTINA",title:"Dia a dia",desc:"Três opções fáceis de encaixar na rotina, do trabalho aos compromissos do dia.",items:[["essencial-sentir","ROTINA"],["k-max","FRESCO"],["fakhar-black","AROMÁTICO"]]},
+ {id:"festa",label:"FESTAS",title:"Festa",desc:"Uma seleção com presença para festas, encontros com amigos e saídas à noite.",items:[["212-vip-black","NOITE"],["homem-sagaz","AROMÁTICO"],["kingdom","INTENSO"]]},
+ {id:"encontro",label:"ENCONTROS",title:"Encontro",desc:"Perfis envolventes para um encontro ou um programa a dois.",items:[["homem-dom","ENVOLVENTE"],["the-blend-bourbon","ESPECIADO"],["kingdom","MARCANTE"]]},
+ {id:"noturno",label:"NOITE",title:"Noturno",desc:"Uma seleção mais intensa para jantares, noites frias e ocasiões especiais.",items:[["asad-bourbon","QUENTE"],["212-vip-black","SEDUÇÃO"],["the-blend-bourbon","AMBARADO"]]},
+ {id:"versatil",label:"VERSATILIDADE",title:"Versátil",desc:"Uma seleção equilibrada para alternar entre compromissos, trabalho e lazer.",items:[["homem-sagaz","DIÁRIO"],["k-max","FRESCO"],["homem-essence","AMADEIRADO"]]},
+ {id:"essencial",label:"ESSENCIAIS",title:"Essencial",desc:"Uma seleção inicial com variedade de perfis para descobrir suas preferências.",items:[["asad-bourbon","INTENSO"],["essencial-sentir","ELEGANTE"],["homem-sagaz","VERSÁTIL"]]}
 ];
 const defaultSelection={};
 function money(value){return currency.format(value)}
@@ -120,10 +120,10 @@ function render(){
  '<p class="kit-desc">'+kit.desc+'</p><div class="kit-product-list">'+kit.items.map(([id,tag])=>{const p=products[id];return '<div class="kit-product">'+
  '<div class="kit-product-img"><img data-product-id="'+escapeHTML(id)+'" src="'+escapeHTML(p.image)+'" alt="Frasco de '+escapeHTML(p.name)+'" loading="lazy" decoding="async"><span class="img-fallback">SANTINO</span></div>'+
  '<div class="kit-product-main"><div class="kit-product-head"><div><h3>'+escapeHTML(p.name)+'</h3><div class="kit-brand">'+escapeHTML(p.brand)+'</div></div><span class="use-pill">'+escapeHTML(tag)+'</span></div><div class="kit-note-short">'+escapeHTML(p.short)+'</div>'+
- '<div class="kit-controls"><label for="ml-'+kit.id+'-'+id+'">Volume<select id="ml-'+kit.id+'-'+id+'"><option value="5">5 ml</option><option value="10">10 ml</option></select></label><label for="qty-'+kit.id+'-'+id+'">Quantidade<select id="qty-'+kit.id+'-'+id+'">'+Array.from({length:5},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join("")+'</select></label><div class="kit-line-total" id="line-'+kit.id+'-'+id+'">'+money(p.prices[5])+'</div></div>'+
+ '<div class="kit-controls"><label for="ml-'+kit.id+'-'+id+'">Volume<select id="ml-'+kit.id+'-'+id+'"><option value="5">5 ml</option><option value="10">10 ml</option></select></label><label for="qty-'+kit.id+'-'+id+'">Quantidade<select id="qty-'+kit.id+'-'+id+'">'+Array.from({length:5},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join("")+'</select></label></div>'+
  '</div></div>'}).join("")+'</div>'+
- '<div class="kit-bottom"><div><div class="kit-total-label">Total do combo</div><span class="kit-price" id="price-'+kit.id+'">'+money(kit.items.reduce((sum,[id])=>sum+products[id].prices[5],0))+'</span></div><button type="button" class="kit-add" data-add-kit="'+kit.id+'">Adicionar combo ao carrinho</button></div>'+
- '<p class="kit-note">O volume e a quantidade são definidos separadamente em cada perfume. Total antes de eventual desconto automático.</p></article>').join("");
+ '<div class="kit-bottom"><div><div class="kit-total-label">Valor da seleção</div><span class="kit-price" id="price-'+kit.id+'">'+money(kit.items.reduce((sum,[id])=>sum+products[id].prices[5],0))+'</span></div><button type="button" class="kit-add" data-add-kit="'+kit.id+'">Adicionar combo ao carrinho</button></div>'+
+ '<p class="kit-note">Personalize os volumes e quantidades. O valor exibido é a soma da seleção, antes de eventual desconto automático.</p></article>').join("");
 
  document.querySelectorAll(".kit-product-img img[data-product-id]").forEach(img=>{
   if(img.dataset.fallbackBound==="1")return;
