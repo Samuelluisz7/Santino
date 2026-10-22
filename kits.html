@@ -71,7 +71,7 @@ const kits=[
 ];
 function total(kit,ml){return kit.items.reduce((sum,id)=>sum+products[id].prices[ml],0)}
 function render(){
- document.getElementById("kitGrid").innerHTML=kits.map((kit,index)=>'<article class="kit-card" data-kit="'+kit.id+'">'+
+ document.getElementById("kitGrid").innerHTML=kits.map((kit,index)=>'<article class="kit-card" id="kit-'+kit.id+'" data-kit="'+kit.id+'">'+
  '<div class="kit-top"><div class="kit-label">'+kit.label+'</div><div class="kit-number">0'+(index+1)+'</div></div>'+
  '<h2>'+kit.title+'</h2><p class="kit-desc">'+kit.desc+'</p><div class="kit-items">'+kit.items.map(id=>'<div class="kit-item"><span>'+products[id].name+'</span><span>'+products[id].brand+'</span></div>').join("")+'</div>'+
  '<div class="kit-controls"><label for="volume-'+kit.id+'">Volume de cada decant<select id="volume-'+kit.id+'"><option value="5">5 ml</option><option value="10">10 ml</option></select></label><div class="kit-total">Total do combo<span class="kit-price" id="price-'+kit.id+'">'+currency.format(total(kit,5))+'</span></div></div>'+
