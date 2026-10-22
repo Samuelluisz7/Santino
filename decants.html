@@ -260,6 +260,9 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .share-referral{flex-shrink:0;min-height:40px;padding:9px 12px;border:1px solid #817052;border-radius:3px;background:transparent;color:var(--beige);font-size:12px;font-weight:600}
 .share-referral:hover{background:#282116}
 @media(max-width:400px){.referral-box{align-items:flex-start;flex-direction:column}.share-referral{width:100%}}
+
+/* Cartões objetivos; detalhes ampliados na página de cada perfume */
+.details-link{display:inline-flex;align-items:center;gap:5px;width:max-content;max-width:100%;margin:0 0 12px;color:var(--beige);font-size:11px;line-height:1.4;text-decoration:none}.details-link:hover{text-decoration:underline}.details-link:focus-visible{outline:2px solid var(--beige);outline-offset:3px}#catalog .section-head p{max-width:760px}@media(max-width:720px){.details-link{font-size:10px;margin-bottom:9px}.hero p{max-width:620px}}
 </style>
 </head>
 <body>
@@ -273,11 +276,11 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
     <div>
       <div class="eyebrow">A seleção SANTINO</div>
       <h1>Decants.</h1>
-      <p>Experimente fragrâncias em 2, 5 ou 10 ml.</p>
+      <p>Conheça a fragrância em um volume menor antes de escolher o frasco inteiro.</p>
     </div>
   </section>
   <section class="section" id="catalog">
-    <div class="section-head"><div><div class="eyebrow">Explore a coleção</div><h2>Escolha sua fragrância</h2><p>Volumes de 2, 5 e 10 ml. Ganhe 10% OFF em pedidos elegíveis a partir de R$ 80.</p></div></div>
+    <div class="section-head"><div><div class="eyebrow">Explore a coleção</div><h2>Escolha sua fragrância</h2><p>2, 5 ou 10 ml · 10% OFF automático em pedidos de decants a partir de R$ 80 · Entrega local em Viçosa combinada pelo WhatsApp.</p></div></div>
     <div class="products" id="products"></div>
   </section>
   <section class="section faq-section" id="faq">
@@ -298,14 +301,13 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <div class="brand">SANTINO</div>
   <p>Descubra sua próxima fragrância.</p>
   <p>As marcas e fragrâncias pertencem aos respectivos titulares.</p>
-  <nav class="footer-links" aria-label="Informações da loja"><a href="politicas.html">Políticas e condições de compra</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Quero%20solicitar%20informa%C3%A7%C3%B5es%20sobre%20o%20cupom%20de%20indica%C3%A7%C3%A3o%20de%20R%24%2020%20da%20SANTINO." target="_blank" rel="noopener noreferrer">Cupom de indicação</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">Atendimento via WhatsApp</a></nav>
+  <nav class="footer-links" aria-label="Informações da loja"><a href="politicas.html">Políticas e condições de compra</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">Atendimento via WhatsApp</a></nav>
 </footer>
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Carrinho de compras">
   <div class="drawer">
     <div class="drawer-head"><h2>Seu carrinho</h2><button class="close" id="closeCart">Fechar ✕</button></div>
     <div class="goal-box" id="goalBox" aria-live="polite" hidden><p class="goal-copy" id="goalCopy">Faltam R$ 80,00 para liberar 10% de desconto.</p><div class="goal-track"><div class="goal-fill" id="goalFill"></div></div><div class="goal-meta"><span id="goalCurrent">R$ 0,00</span><span>Meta: R$ 80,00</span></div></div>
-    <div class="referral-box"><div><strong>Indique e ganhe R$ 20</strong><p>Receba R$ 20 em crédito após seu amigo concluir a primeira compra e a loja confirmar o pedido.</p></div><button class="share-referral" id="shareReferral" type="button">Compartilhar</button></div>
-    <div class="cart-items" id="cartItems"></div>
+     <div class="cart-items" id="cartItems"></div>
     <div class="cart-total">
       <div class="total-line"><span>Total do pedido</span><strong id="cartTotal">R$ 0,00</strong></div>
       <button class="btn checkout" id="checkout">Confirmar pedido pelo WhatsApp</button>
@@ -318,7 +320,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 /* Preços de decants calculados a partir de referência do frasco de 100 ml + margem estimada e embalagem; confirme o custo real de compra. */
 const STORE_WHATSAPP = "5531996312579";
 const CURRENCY = new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});
-/* Regra comercial SANTINO NOBRE: oferecer decant de 2 ml somente quando o custo de compra do perfume superar R$ 6,00/ml. Com os custos de referência atualmente registrados (frascos de 100 ml), nenhum perfume atinge esse limite; por isso, a opção de 2 ml fica removida até atualização dos custos. */
+/* Regra comercial SANTINO: oferecer decant de 2 ml somente quando o custo de compra do perfume superar R$ 6,00/ml. Com os custos de referência atualmente registrados (frascos de 100 ml), nenhum perfume atinge esse limite; por isso, a opção de 2 ml fica removida até atualização dos custos. */
 const PRODUCTS = [
  {id:"kingdom",name:"The Kingdom",brand:"Lattafa",image:"https://static01.galaxus.com/productimages/5/4/2/7/9/5/2/8/0/1/7/1/6/9/6/8/9/0/019bd342-bc73-7aeb-8f11-39b1b21ce8c5_sea.jpeg",tag:"Importado",description:"Aromático e ambarado, com notas de lavanda, menta e baunilha.",volumes:[{ml:5,price:17.9},{ml:10,price:33.9}]},
  {id:"212-vip-black",name:"212 VIP Black",brand:"Carolina Herrera",image:"https://f.fcdn.app/imgs/267ea9/www.sanroque.com.uy/sanruy/e03f/original/catalogo/115289_115289_2/2000-2000/perfume-carolina-herrera-212-vip-black-men-edp-100ml-perfume-carolina-herrera-212-vip-black-men-edp-100ml.jpg",tag:"Importado",description:"Absinto e lavanda sobre um fundo de baunilha e almíscar.",volumes:[{ml:5,price:37.9},{ml:10,price:74.9}]},
@@ -385,6 +387,7 @@ function renderProducts(){
    <h3>${escapeHTML(p.name)}</h3>
    <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
    </a>
+   <a class="details-link" href="produto.html?id=${encodeURIComponent(p.id)}">Notas e detalhes <span aria-hidden="true">→</span></a>
    <div class="variants"><label style="flex:1">Volume
      <select id="volume-${p.id}" aria-label="Volume de ${escapeHTML(p.name)}">${p.volumes.map((v,i)=>`<option value="${i}">${v.ml} ml</option>`).join("")}</select>
    </label><label class="quantity-label">Qtd.
@@ -485,11 +488,6 @@ function checkout(){
 $("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
 $("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
 $("checkout").addEventListener("click",checkout);
-const referralButton=$("shareReferral");
-if(referralButton)referralButton.addEventListener("click",()=>{
- const referralMessage="Estou te indicando a SANTINO NOBRE! Se você concluir sua primeira compra, posso receber R$ 20 em crédito na loja. Ao falar com a SANTINO, avise que veio por minha indicação e informe meu nome. Atendimento: https://wa.me/"+STORE_WHATSAPP;
- window.open("https://wa.me/?text="+encodeURIComponent(referralMessage),"_blank","noopener,noreferrer");
-});
 renderProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
