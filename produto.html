@@ -213,6 +213,56 @@ footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var
  #olfactorySection .note-chip{font-size:9px;padding:5px 6px}
  #olfactorySection .note-stage-notes{gap:4px}
 }
+
+/* Correção editorial: acordes em faixas horizontais, com notas simples e cores próprias */
+#olfactorySection{background:#050505!important;color:#ededed!important;border-top:1px solid #292929!important;padding:25px 0 8px!important;margin-top:30px!important}
+#olfactorySection .content-heading{margin-bottom:18px!important}
+#olfactorySection .content-heading h2{color:#f2f2f2!important}
+#olfactorySection .content-heading p{color:#aaa!important;line-height:1.6!important;max-width:790px}
+#olfactorySection .eyebrow{color:#aaa!important}
+#olfactorySection .note-infographic{display:grid!important;grid-template-columns:minmax(145px,.34fr) minmax(0,1fr)!important;gap:0!important;background:#050505!important;border:1px solid #292929!important;border-radius:0!important;box-shadow:none!important;overflow:hidden}
+#olfactorySection .note-visual-bottle{min-width:0;min-height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0!important;background:#050505!important;border-right:1px solid #292929!important}
+#olfactorySection .note-visual-bottle img{width:100%!important;max-width:245px!important;height:340px!important;object-fit:contain!important;filter:url(#santino-packshot-cutout)!important;transform:scale(2.05)!important;transform-origin:center center}
+#olfactorySection .note-bottle-fallback{color:#aaa!important;font:17px/1.4 Georgia,serif}
+#olfactorySection .note-visual-details{min-width:0;padding:19px 20px 17px!important;background:#050505!important}
+#olfactorySection .note-graphic-head{margin:0 0 14px!important}
+#olfactorySection .note-graphic-head .eyebrow{font-size:10px!important;letter-spacing:.08em!important}
+#olfactorySection .note-graphic-head h3{margin:5px 0 0!important;color:#f3f3f3!important;font:400 clamp(23px,3vw,31px)/1.13 Georgia,serif!important}
+#olfactorySection .accord-title{margin:0 0 9px!important;color:#a4a4a4!important;font-size:10px!important;letter-spacing:.14em!important;text-transform:uppercase!important}
+#olfactorySection .note-accords{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:4px!important;margin:0 0 15px!important}
+#olfactorySection .accord-row{position:relative!important;display:flex!important;align-items:center!important;min-width:112px!important;width:var(--bar-width,100%)!important;min-height:27px!important;margin:0!important;padding:5px 9px!important;overflow:hidden!important;border:0!important;border-radius:0 2px 2px 0!important;background:var(--bar-color,#a0a0a0)!important;color:#171717!important;box-shadow:none!important}
+#olfactorySection .accord-bar-label{position:relative!important;z-index:1!important;display:block!important;font:600 11px/1.3 Arial,Helvetica,sans-serif!important;letter-spacing:.005em!important;color:#171717!important;overflow-wrap:anywhere}
+#olfactorySection .note-composition{display:flex!important;flex-direction:column!important;gap:0!important;margin-top:14px!important;border-top:1px solid #282828!important}
+#olfactorySection .composition-row{display:grid!important;grid-template-columns:68px minmax(0,1fr)!important;gap:8px!important;align-items:start!important;padding:9px 0!important;border-bottom:1px solid #222!important;background:transparent!important;width:100%!important;text-align:left!important}
+#olfactorySection .composition-row>strong{margin:2px 0 0!important;color:#aaa!important;font:700 9px/1.4 Arial,Helvetica,sans-serif!important;letter-spacing:.12em!important;text-transform:uppercase!important}
+#olfactorySection .note-words{display:flex!important;align-items:center!important;flex-wrap:wrap!important;gap:4px 6px!important;min-width:0!important}
+#olfactorySection .note-word{display:inline-flex!important;align-items:center!important;gap:5px!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:color-mix(in srgb,var(--note-color,#d0d0d0) 74%,#f1f1f1)!important;font:400 11px/1.55 Arial,Helvetica,sans-serif!important}
+#olfactorySection .note-dot{display:inline-block!important;flex:0 0 6px!important;width:6px!important;height:6px!important;border-radius:50%!important;background:var(--note-color,#aaa)!important}
+#olfactorySection .note-separator{color:#666!important;font-size:10px!important}
+#olfactorySection .note-facts{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:9px!important;margin-top:11px!important}
+#olfactorySection .note-fact{padding:11px!important;background:#050505!important;border:1px solid #292929!important;border-radius:0!important}
+#olfactorySection .note-fact strong{color:#aaa!important;font-size:9px!important;letter-spacing:.12em!important}
+#olfactorySection .note-fact span{color:#c6c6c6!important;font-size:11px!important;line-height:1.55!important}
+@media(max-width:720px){
+ #olfactorySection{padding-top:21px!important}
+ #olfactorySection .note-infographic{grid-template-columns:minmax(125px,.34fr) minmax(0,1fr)!important}
+ #olfactorySection .note-visual-bottle img{height:320px!important;max-width:245px!important;transform:scale(2.05)!important}
+ #olfactorySection .note-visual-details{padding:14px 12px 13px!important}
+ #olfactorySection .note-graphic-head h3{font-size:22px!important}
+ #olfactorySection .accord-row{min-height:24px!important;padding:4px 7px!important}
+ #olfactorySection .accord-bar-label{font-size:10px!important}
+ #olfactorySection .composition-row{grid-template-columns:57px minmax(0,1fr)!important;gap:6px!important;padding:8px 0!important}
+ #olfactorySection .note-word{font-size:10px!important}
+ #olfactorySection .note-facts{grid-template-columns:1fr!important}
+}
+@media(max-width:390px){
+ #olfactorySection .note-infographic{grid-template-columns:minmax(92px,.32fr) minmax(0,1fr)!important}
+ #olfactorySection .note-visual-bottle img{height:285px!important;transform:scale(1.8)!important}
+ #olfactorySection .note-visual-details{padding:12px 9px!important}
+ #olfactorySection .note-graphic-head h3{font-size:19px!important}
+ #olfactorySection .composition-row{grid-template-columns:49px minmax(0,1fr)!important;gap:5px!important}
+ #olfactorySection .accord-bar-label{font-size:9px!important}
+}
 </style>
   <link rel="stylesheet" href="santino-ui.css">
 </head>
@@ -236,10 +286,10 @@ footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var
    <div class="note-graphic-head"><div class="eyebrow" id="familyText"></div><h3 id="noteGraphName">Fragrância</h3></div>
    <p class="accord-title">Acordes em destaque</p>
    <div class="note-accords" id="accordBars" aria-label="Acordes em destaque"></div>
-   <div class="note-pyramid" aria-label="Pirâmide olfativa">
-    <div class="note-stage"><strong>Saída</strong><div class="note-stage-notes" id="topNotes"></div></div>
-    <div class="note-stage"><strong>Coração</strong><div class="note-stage-notes" id="heartNotes"></div></div>
-    <div class="note-stage"><strong>Fundo</strong><div class="note-stage-notes" id="baseNotes"></div></div>
+   <div class="note-composition" aria-label="Notas de saída, coração e fundo">
+    <div class="composition-row"><strong>Saída</strong><div class="note-words" id="topNotes"></div></div>
+    <div class="composition-row"><strong>Coração</strong><div class="note-words" id="heartNotes"></div></div>
+    <div class="composition-row"><strong>Fundo</strong><div class="note-words" id="baseNotes"></div></div>
    </div>
   </div>
  </div>
@@ -336,21 +386,21 @@ const FULL_SIZE_PRODUCTS = [
  {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,image:"https://www.houseoffraser.co.uk/images/imgzoom/75/75510669_xxl.jpg",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."}
 ];
 const EXTRA_GALLERY={
- "kingdom":["https://www.aarfragrances.com/public/uploads/all/YPCYqPbgpC36orvvIaKBPfqbt9m7q4EGNGzYQLdb.jpg"],
+ "kingdom":["https://fragarabic.com/cdn/shop/files/The_Kingdom_Lattafa_Eau_de_Parfum_Para_Hombre_con_fondo_7d886a12-0083-4be8-9d99-6596620cec36.webp?v=1767169721&width=2000"],
  "212-vip-black":["https://assets.woolworthsstatic.co.za/212-VIP-Men-Black-Eau-de-Parfum-100ML-503939736-full1.jpg?V=JHJe&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvYWx0ZXJuYXRlLzIwMjUtMDQtMTAvNTAzOTM5NzM2XzEwME1MX2Z1bGwxLmpwZyJ9&q=75"],
- "the-blend-bourbon":["https://dcdn-us.mitiendanube.com/stores/002/832/629/products/download-79-e03a5186e1269c5b6b17128697086555-1024-1024.webp","https://boticoeur.com/cdn/shop/products/Capturadeecra2023-02-28_as11.16.49.png?v=1677583102","https://down-br.img.susercontent.com/file/br-11134207-7r98o-m351wv8g2od187"],
- "asad-bourbon":["https://tiendalafe.com/cdn/shop/files/Disenosintitulo-2025-02-21T163922.609.png?v=1740177572","https://images.tcdn.com.br/img/img_prod/1142879/perfume_rabe_asad_bourbon_lattafa_eau_de_parfum_ma_5_20260615125833_c0f7f1237677.jpg","https://www.urbanoud.co.uk/cdn/shop/files/long-lasting-lattafa-eau-de-parfum.webp?v=1756592529"],
- "homem-sagaz":["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw38d49568/produto-joia/background/mobile/81951.jpg?q=80&sw=150","https://down-br.img.susercontent.com/file/br-11134207-7r98o-lnyr24fiws7ga","https://acdn-us.mitiendanube.com/stores/006/410/677/products/97a684f8af9c93ac5b29888b04758614-dfef4cc8d1dd544d6317834577537758-1024-1024.webp"],
- "homem-dom":["https://fimgs.net/mdimg/perfume-thumbs/375x500.56083.jpg","https://down-br.img.susercontent.com/file/d0c28b71f06110500c350510c96a8e37","https://http2.mlstatic.com/D_NQ_NP_853231-MLU73835388578_012024-O.webp"],
+ "the-blend-bourbon":["https://dcdn-us.mitiendanube.com/stores/002/832/629/products/download-79-e03a5186e1269c5b6b17128697086555-1024-1024.webp","https://boticoeur.com/cdn/shop/products/Capturadeecra2023-02-28_as11.16.49.png?v=1677583102"],
+ "asad-bourbon":["https://tiendalafe.com/cdn/shop/files/Disenosintitulo-2025-02-21T163922.609.png?v=1740177572","https://images.tcdn.com.br/img/img_prod/1142879/perfume_rabe_asad_bourbon_lattafa_eau_de_parfum_ma_5_20260615125833_c0f7f1237677.jpg","https://palette21.com/cdn/shop/files/lattafa-asad-bourbon-perfume-vanilla-rum-notes.webp?v=1770489501"],
+ "homem-sagaz":["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw38d49568/produto-joia/background/mobile/81951.jpg?q=80&sw=150","https://down-br.img.susercontent.com/file/br-11134201-23010-skeky61fssmv94","https://acdn-us.mitiendanube.com/stores/006/410/677/products/97a684f8af9c93ac5b29888b04758614-dfef4cc8d1dd544d6317834577537758-1024-1024.webp","https://down-br.img.susercontent.com/file/br-11134207-7r98o-lys67y60wq3p25"],
+ "homem-dom":["https://fimgs.net/mdimg/perfume-thumbs/375x500.56083.jpg","https://down-br.img.susercontent.com/file/d0c28b71f06110500c350510c96a8e37","https://http2.mlstatic.com/D_NQ_NP_2X_820398-MLB46097031343_052021-F.jpg"],
  "homem-essence": ["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw03464062/Produtos/NATBRA-59847_2.jpg?q=80&sw=600","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600"],
  "essencial-sentir": ["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw7c3715ed/Produtos/NATBRA-167755_2.jpg?q=80&sw=600","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw62148647/Produtos/NATBRA-167755_1.jpg?q=80&sw=600","https://media.falabella.com/falabellaCO/149584000_01/w%3D1500%2Ch%3D1500%2Cfit%3Dcover"],
- "fakhar-black":["https://http2.mlstatic.com/D_NQ_NP_931646-MLA100154339260_122025-O.webp","https://m.media-amazon.com/images/I/61HYqbZm5xL._SL1500_.jpg"],
+ "fakhar-black":["https://www.lattafa-usa.com/cdn/shop/files/2_1b8e4113-2278-4e6a-b5d7-1c814516d8bc.png?v=1747500778&width=1946","https://http2.mlstatic.com/D_NQ_NP_931646-MLA100154339260_122025-O.webp"],
  "k-max": ["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw7d5b57a1/Produtos/NATBRA-72468_3.jpg?q=80&sw=600","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600","https://down-br.img.susercontent.com/file/br-11134207-7r98o-m648zwi3xigi78"],
  "full-le-male":["https://enigma.md/upload/iblock/dfb/6njnw37o873p7wd45ftgqrj0725s5k6d.jpg","https://media.douglas.es/medias/LWQlIZ614222-1-global.jpg?context=bWFzdGVyfGltYWdlc3wxODQwNzd8aW1hZ2UvanBlZ3xhRFF4TDJnNE5TOHpNVGMzTXpNek5qa3lPREk0Tmk5Tmk5TVYxRnNTVm8yTVRReU1qSmZNVjluYkc5aVlXd3VhbkJufDhjYTZmM2I3M2UxNmZhODdiMWZjNzk4MzkxYzE0NGQ3ODk1YWQ0YzM3YjNmMmI2YjViNTZiMzM0NzMwNWMzNGQ&grid=true"],
- "full-afnan-9pm":["https://bulldog.vn/uploads/sanpham/03-9pm-1000x-jpeg-20230827104142WA1HaqVHBJ.jpeg","https://www.eepees.in/cdn/shop/files/Afnan_9PM_perfume_ideal_for_night_wear_dates_parties_and_winter_season.png?v=1775044568&width=3840","https://theboroughcollection.com/cdn/shop/files/AfnanMen_s9PM.png?v=1780105049&width=1254"],
+ "full-afnan-9pm":["https://bulldog.vn/uploads/sanpham/03-9pm-1000x-jpeg-20230827104142WA1HaqVHBJ.jpeg","https://www.eepees.in/cdn/shop/files/Afnan_9PM_perfume_ideal_for_night_wear_dates_parties_and_winter_season.png?v=1775044568&width=3840","https://theboroughcollection.com/cdn/shop/files/AfnanMen_s9PM.png?v=1780105049&width=1254","https://rgoleacucdhljffopkku.supabase.co/storage/v1/object/public/perfume-images/afnan-9pm.webp"],
  "full-asad":["https://down-br.img.susercontent.com/file/br-11134207-7r98o-m1srez49ieuie0","https://m.media-amazon.com/images/I/71obuzjGgtL._SL1500_.jpg"],
  "full-eros":["https://www.tjhughes.co.uk/cdn/shop/files/5783205--Versace-Eros-Eau-de-Toilette-100ml-10001940--Lifestyle-2000-x-2000_2b0e0e5c-5547-40c5-8ccd-410f45cf68bf_1024x.jpg?v=1781522021","https://impohogarcr.com/wp-content/uploads/2023/08/8011003809219_3.jpg"],
- "full-million":["https://www.profumeriamarino.it/components/com_virtuemart/shop_image/product/c0ca5082ef3f6a8176937df40f63cc26.jpg","https://southeastfragrance.com/cdn/shop/files/1_million_notes.png?v=1789668042&width=500"],
+ "full-million":["https://www.profumeriamarino.it/components/com_virtuemart/shop_image/product/c0ca5082ef3f6a8176937df40f63cc26.jpg","https://southeastfragrance.com/cdn/shop/files/1_million_notes.png?v=1789668042&width=500","https://images.tcdn.com.br/img/img_prod/1255365/perfume_one_million_paco_rabanne_eau_de_toilette_decant_231_4_7e55ead64fd6bec64b23210caecfc7b3.jpg"],
  "full-sauvage":["https://apothecary.rs/17902-large_default/dior-sauvage-eau-de-toilette-100ml.jpg","https://www.sephora.it/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw6523475d/images/hi-res/alternates/PID_alternate2/PID_alternate2_226/P2266017_2.jpg","https://fourthsense.co/wp-content/uploads/2023/10/dior-sauvage-notes-pyramid.jpeg"],
  "full-invictus":["https://product-data.raiadrogasil.io/images/5890913.webp","https://images.matas.dk/trs/wNaN/encode/3349668515660_2_20250919095300.jpg"],
  "full-myslf":["https://silkperfumes.cl/cdn/shop/files/ysl-myself-edp-100-ml-recargable-Silk-Perfumes.png?v=1750262770&width=1500","https://www.incenza.com/93656-thickbox_default/myslf-eau-de-parfum-flacon-recharge.jpg"]
@@ -375,6 +425,19 @@ const INGREDIENT_IMAGE_URLS=new Set([
 "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600",
 "https://theboroughcollection.com/cdn/shop/files/AfnanMen_s9PM.png?v=1780105049&width=1254",
 "https://fourthsense.co/wp-content/uploads/2023/10/dior-sauvage-notes-pyramid.jpeg" ].forEach(url=>INGREDIENT_IMAGE_URLS.add(url));
+const ENGLISH_INFOGRAPHIC_URLS=new Set([
+ "https://www.aarfragrances.com/public/uploads/all/YPCYqPbgpC36orvvIaKBPfqbt9m7q4EGNGzYQLdb.jpg",
+ "https://m.media-amazon.com/images/I/61HYqbZm5xL._SL1500_.jpg",
+ "https://www.urbanoud.co.uk/cdn/shop/files/long-lasting-lattafa-eau-de-parfum.webp?v=1756592529",
+ "https://www.eepees.in/cdn/shop/files/Afnan_9PM_perfume_ideal_for_night_wear_dates_parties_and_winter_season.png?v=1775044568&width=3840",
+ "https://m.media-amazon.com/images/I/71obuzjGgtL._SL1500_.jpg",
+ "https://impohogarcr.com/wp-content/uploads/2023/08/8011003809219_3.jpg",
+ "https://southeastfragrance.com/cdn/shop/files/1_million_notes.png?v=1789668042&width=500",
+ "https://www.sephora.it/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw6523475d/images/hi-res/alternates/PID_alternate2/PID_alternate2_226/P2266017_2.sephora.it",
+ "https://fourthsense.co/wp-content/uploads/2023/10/dior-sauvage-notes-pyramid.jpeg",
+ "https://www.incenza.com/93656-thickbox_default/myslf-eau-de-parfum-flacon-recharge.jpg",
+ "https://www.theboroughcollection.com/cdn/shop/files/AfnanMen_s9PM.png?v=1780105049&width=1254"
+]);
 
 const NOTE_COLOR_RULES = [
  [/flor de laranjeira|orange blossom/i,"#ead9ad"],
@@ -416,11 +479,19 @@ const NOTE_COLOR_RULES = [
  [/ol[ií]bano|incenso|frankincense/i,"#c8b080"],
  [/aqu[aá]tico|marinho|salgado|marine|salino/i,"#6d9fb5"],
  [/cr[eè]me br[uû]l[eé]e|caramelo|caramel|bourbon/i,"#c89154"],
+ [/doce|gourmand|cremoso|cream/i,"#e9d180"],
+ [/frutado|fruity|frutas|fruta/i,"#e58ca0"],
+ [/especiado|spicy|picante/i,"#df8b67"],
+ [/floral|florais/i,"#c5a1df"],
+ [/amadeirado|woody/i,"#b79a80"],
+ [/atalcado|powdery/i,"#d1c0dc"],
+ [/verde|green/i,"#91bf83"],
+ [/fresco|fresh|aqu[aá]tico|marinho|salino/i,"#78bbc4"],
  [/arom[aá]tico|herbal|frescor|fresco|especiarias/i,"#9ba5a4"]
 ];
 function noteColor(label){const value=String(label||"");const rule=NOTE_COLOR_RULES.find(([pattern])=>pattern.test(value));return rule?rule[1]:"#a0a0a0";}
 function splitNoteList(value){return String(value||"").replace(/\s+e\s+(?=[^,]+$)/i,", ").split(/[,;•]/).map(note=>note.trim().replace(/^e\s+/i,"")).filter(Boolean);}
-function renderIngredientNotes(targetId,value){const target=document.getElementById(targetId);if(!target)return;const notes=splitNoteList(value);target.innerHTML=notes.map(note=>'<span class="note-chip" style="--note-color:'+noteColor(note)+'"><span class="note-swatch" aria-hidden="true"></span><span>'+escapeHTML(note)+'</span></span>').join("");const stage=target.closest(".note-stage");if(stage)stage.style.setProperty("--stage-color",noteColor(notes[0]||""));}
+function renderIngredientNotes(targetId,value){const target=document.getElementById(targetId);if(!target)return;const notes=splitNoteList(value);target.innerHTML=notes.map(note=>'<span class="note-word" style="--note-color:'+noteColor(note)+'"><span class="note-dot" aria-hidden="true"></span>'+escapeHTML(note)+'</span>').join('<span class="note-separator" aria-hidden="true">·</span>');}
 
 const params=new URLSearchParams(window.location.search),requestedId=params.get("id")||"";
 const story=PRODUCT_STORIES[requestedId]||PRODUCT_STORIES[requestedId.replace(/^full-/,"")]||null;
@@ -438,7 +509,7 @@ if(isFull){document.body.classList.add("full-size-mode");$("volumeControl").styl
 else{$("volumeSelect").innerHTML=product.volumes.map((v,i)=>'<option value="'+i+'">'+v.ml+' ml</option>').join("");updatePrice();$("volumeSelect").addEventListener("change",()=>{currentVolume=product.volumes[Number($("volumeSelect").value)];updatePrice()})}
 const baseGalleryId=product.id.replace(/^full-/,"");
 const extraGallery=EXTRA_GALLERY[product.id]||EXTRA_GALLERY[baseGalleryId]||[];
-gallery=[...new Set([product.image,...extraGallery.filter(src=>!INGREDIENT_IMAGE_URLS.has(src))].filter(Boolean))];
+gallery=[...new Set([product.image,...extraGallery.filter(src=>!ENGLISH_INFOGRAPHIC_URLS.has(src))].filter(Boolean))];
 if(gallery.length){
  $("mainImage").alt=product.name+" — frasco";$("mainImage").referrerPolicy="no-referrer";
  $("galleryCaption").textContent=gallery.length>1?"Toque nas miniaturas para ver outras fotos.":"Foto do frasco do perfume";
@@ -472,7 +543,7 @@ if(info){
  noteBottle.src=product.image||"";
  if(noteBottle.complete&&noteBottle.naturalWidth===0)noteFallback();
  const accords=(story&&story.accords&&story.accords.length)?story.accords:[info.top,info.heart,info.base];
- $("accordBars").innerHTML=accords.slice(0,7).map(label=>'<span class="accord-tag" style="--note-color:'+noteColor(label)+'"><span class="note-swatch" aria-hidden="true"></span><span>'+escapeHTML(label)+'</span></span>').join("");
+ $("accordBars").innerHTML=accords.slice(0,7).map((label,index)=>'<div class="accord-row" style="--bar-color:'+noteColor(label)+';--bar-width:'+Math.max(54,100-index*8)+'%"><span class="accord-bar-label">'+escapeHTML(label)+'</span></div>').join("");
 }else{$("olfactorySection").style.display="none"}
 const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?"Consultar pelo WhatsApp":"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
 }
