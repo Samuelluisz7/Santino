@@ -680,3 +680,26 @@ body.full-size-mode .note-visual-bottle img {
   object-fit: contain !important;
   object-position: center center !important;
 }
+
+
+/* Fallback visível se uma fonte externa de imagem falhar. */
+.full-size-product .photo-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #eee5d7;
+}
+
+.full-size-product .photo-fallback .vial {
+  width: 26%;
+  height: 56%;
+  border: 1px solid #b8a487;
+  border-radius: 10px 10px 6px 6px;
+  background: linear-gradient(90deg, #2a2926, #5a5042 48%, #292824);
+  box-shadow: 0 7px 15px rgba(0,0,0,.12);
+}
+
+.full-size-product .product-art {
+  position: relative;
+}
