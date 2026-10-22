@@ -319,7 +319,7 @@ $("productMeta").textContent=isFull?(product.version+" · "+product.ml+" ml"):"E
 $("backCatalog").href=isFull?"frascos.html#full-size-catalog":"decants.html#catalog";$("cartLink").href=(isFull?"frascos.html":"decants.html")+"?openCart=1";
 if(isFull){$("volumeControl").style.display="none";$("quantitySelect").parentElement.style.display="none";$("productPrice").textContent="Preço e disponibilidade sob consulta";$("productPrice").classList.add("pending");$("stockNote").textContent="Consulte preço e disponibilidade e combine a entrega local em Viçosa pelo WhatsApp antes de pagar."}
 else{$("volumeSelect").innerHTML=product.volumes.map((v,i)=>'<option value="'+i+'">'+v.ml+' ml</option>').join("");updatePrice();$("volumeSelect").addEventListener("change",()=>{currentVolume=product.volumes[Number($("volumeSelect").value)];updatePrice()})}
-const extras=EXTRA_GALLERY[requestedId]||EXTRA_GALLERY[requestedId.replace(/^full-/,"")]||[];gallery=[product.image].concat(extras).filter((value,index,array)=>Boolean(value)&&array.indexOf(value)===index);
+const extras=EXTRA_GALLERY[requestedId]||EXTRA_GALLERY[requestedId.replace(/^full-/,"")]||[];gallery=[product.image].concat(extras).filter((value,index,array)=>Boolean(value)&&array.indexOf(value)===index&&!INGREDIENT_IMAGE_URLS.has(value));
 if(gallery.length){
  $("mainImage").src=gallery[0];$("mainImage").alt=product.name+" — frasco";
  $("galleryCaption").textContent=gallery.length>1?"Deslize pelas miniaturas para ver outras fotos e imagens de notas.":"Foto do frasco do perfume";
