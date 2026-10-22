@@ -654,3 +654,29 @@ body:not(.full-size-mode) .product-art .photo-fallback {
 .gallery-thumbs:empty {
   display: none;
 }
+
+
+/* Normalização óptica: o frasco ocupa uma área consistente, independente da imagem-fonte. */
+.full-size-product .product-photo {
+  width: 84% !important;
+  height: 84% !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  mix-blend-mode: multiply;
+}
+
+body.full-size-mode .gallery-main img {
+  width: 86% !important;
+  height: 86% !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+body.full-size-mode .note-visual-bottle img {
+  width: 86% !important;
+  max-width: 190px;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
