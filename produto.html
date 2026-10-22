@@ -146,7 +146,7 @@ footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var
 /* Detalhes olfativos ficam abaixo da área de compra; acordes em etiquetas, sem barras arbitrárias */
 .usage-highlights{display:none!important}
 .note-facts{grid-template-columns:repeat(3,minmax(0,1fr))!important}
-.note-accords{display:flex!important;flex-direction:row!important;flex-wrap:wrap;gap:7px!important;margin-bottom:16px}
+.note-accords{display:flex!important;flex-direction:column!important;flex-wrap:nowrap;gap:5px!important;margin-bottom:16px}
 .accord-tag{display:inline-flex;align-items:center;min-height:29px;padding:6px 10px;border:1px solid #4a4030;border-radius:3px;background:#211d17;color:#e9dece;font-size:11px;line-height:1.25}
 .note-pyramid{display:flex!important;flex-direction:column;align-items:center;gap:6px!important;margin:12px auto 0;width:100%;max-width:620px}.note-pyramid .note-stage{width:100%;text-align:center;border-top:2px solid #8d7047;border-left:1px solid #393229;border-right:1px solid #393229;padding:10px 12px}.note-pyramid .note-stage:nth-child(1){width:60%;border-radius:4px 4px 0 0}.note-pyramid .note-stage:nth-child(2){width:80%;border-top-color:#bba27a}.note-pyramid .note-stage:nth-child(3){width:100%;border-top-color:#6d5033;border-bottom:1px solid #393229;border-radius:0 0 4px 4px}.note-pyramid .note-stage strong{font-size:10px;letter-spacing:.14em}.note-pyramid .note-stage p{margin:0;font-size:12px!important;line-height:1.55!important}.note-pyramid .note-stage:nth-child(1){background:linear-gradient(90deg,#191713,#242017,#191713)}.note-pyramid .note-stage:nth-child(2){background:linear-gradient(90deg,#191713,#211d17,#191713)}.note-pyramid .note-stage:nth-child(3){background:linear-gradient(90deg,#191713,#2a2118,#191713)}
 .note-stage p{font-size:12px!important;line-height:1.55!important}
@@ -166,7 +166,12 @@ footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var
 <main><div class="breadcrumbs"><a id="backCatalog" href="decants.html">← Voltar ao catálogo</a> / <span id="crumbName">Perfume</span></div>
 
 <section class="product-layout"><div class="gallery"><div class="gallery-main"><img id="mainImage" alt="" decoding="async"><div class="gallery-fallback" id="galleryFallback">Imagem indisponível</div></div><div class="gallery-thumbs" id="galleryThumbs" aria-label="Mais fotos do perfume"></div><p class="gallery-caption" id="galleryCaption">Foto do frasco do perfume</p></div>
-<div class="summary"><div class="eyebrow" id="categoryLabel">Fragrância</div><h1 id="productName">Carregando perfume…</h1><div class="brand-line" id="productBrand"></div><div class="product-meta" id="productMeta"></div><p class="description" id="productDescription"></p><p class="authenticity-note" id="authenticityNote">Fragrância original · selo de originalidade SANTINO</p><div class="price" id="productPrice"></div>
+<div class="summary"><div class="eyebrow" id="categoryLabel">Fragrância</div><h1 id="productName">Carregando perfume…</h1><div class="brand-line" id="productBrand"></div><div class="product-meta" id="productMeta"></div><p class="description" id="productDescription"></p><p class="authenticity-note" id="authenticityNote">Fragrância original · selo de originalidade SANTINO</p>
+<div class="detail-highlights" aria-label="Resumo da fragrância">
+  <div class="detail-highlight"><span>Perfil olfativo</span><strong id="highlightFamily"></strong></div>
+  <div class="detail-highlight"><span>Quando usar</span><strong id="highlightOccasion"></strong></div>
+  <div class="detail-highlight"><span>Clima</span><strong id="highlightClimate"></strong></div>
+</div><div class="price" id="productPrice"></div>
 <div class="purchase-controls"><div class="control" id="volumeControl"><label for="volumeSelect">Volume do decant</label><select id="volumeSelect"></select></div><div class="control"><label for="quantitySelect">Quantidade</label><select id="quantitySelect"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div></div><button class="add-button" id="addButton">Adicionar ao carrinho</button><p class="stock-note" id="stockNote">Confira o volume e a quantidade antes de adicionar. A disponibilidade será confirmada pelo WhatsApp. Confira o total e a entrega antes de pagar.</p></div></section>
 <section class="content-section" id="olfactorySection">
  <div class="content-heading"><div><div class="eyebrow">A composição</div><h2>Notas da fragrância</h2><p><strong>Pirâmide olfativa.</strong> A saída reúne as primeiras notas percebidas; o coração mostra como a fragrância evolui; o fundo reúne as notas que tendem a permanecer por mais tempo. A ordem abaixo segue a ficha publicada para cada perfume.</p></div></div>
@@ -317,10 +322,13 @@ if(!product){document.querySelector("main").innerHTML='<section class="summary">
 else{
 document.title="SANTINO | "+product.name;$("crumbName").textContent=product.name;$("productName").textContent=product.name;$("productBrand").textContent=product.brand;$("categoryLabel").textContent=isFull?"Frasco inteiro":"Decant · "+product.tag;
 $("productMeta").textContent=isFull?(product.version+" · "+product.ml+" ml"):"Escolha o volume do seu decant";$("productDescription").textContent=story?story.intro:(product.description||"Uma fragrância para conhecer em detalhes.");$("longDescription").textContent=story?story.story:(product.description||"Explore o perfil olfativo desta fragrância e escolha o volume desejado.");if(story){$("occasionText").textContent=story.occasion;$("climateText").textContent=story.climate;}$("authenticityNote").textContent=isFull?"Frasco original · selo de originalidade SANTINO":"Fragrância original · decant com selo de originalidade SANTINO";
+$("highlightFamily").textContent=info?info.family:"Perfil olfativo";
+$("highlightOccasion").textContent=story?story.occasion:"Consulte a SANTINO";
+$("highlightClimate").textContent=story?story.climate:"Consulte a SANTINO";
 $("backCatalog").href=isFull?"frascos.html#full-size-catalog":"decants.html#catalog";$("cartLink").href=(isFull?"frascos.html":"decants.html")+"?openCart=1";
 if(isFull){document.body.classList.add("full-size-mode");$("volumeControl").style.display="none";$("quantitySelect").parentElement.style.display="none";$("productPrice").textContent="";$("productPrice").classList.remove("pending");$("stockNote").textContent="Para informações sobre esta fragrância e condições de compra, fale com a SANTINO pelo WhatsApp. A entrega local em Viçosa é combinada no atendimento."}
 else{$("volumeSelect").innerHTML=product.volumes.map((v,i)=>'<option value="'+i+'">'+v.ml+' ml</option>').join("");updatePrice();$("volumeSelect").addEventListener("change",()=>{currentVolume=product.volumes[Number($("volumeSelect").value)];updatePrice()})}
-const extras=EXTRA_GALLERY[requestedId]||EXTRA_GALLERY[requestedId.replace(/^full-/,"")]||[];gallery=isFull?[]:[product.image].concat(extras).filter((value,index,array)=>Boolean(value)&&array.indexOf(value)===index&&!INGREDIENT_IMAGE_URLS.has(value));
+const extras=EXTRA_GALLERY[requestedId]||EXTRA_GALLERY[requestedId.replace(/^full-/,"")]||[];gallery=[product.image].concat(extras).filter((value,index,array)=>Boolean(value)&&array.indexOf(value)===index&&!INGREDIENT_IMAGE_URLS.has(value));
 if(gallery.length){
  $("mainImage").src=gallery[0];$("mainImage").alt=product.name+" — frasco";
  $("galleryCaption").textContent=gallery.length>1?"Deslize pelas miniaturas para ver outras fotos e imagens de notas.":"Foto do frasco do perfume";
@@ -341,13 +349,11 @@ if(info){
  $("heartText").textContent=info.heart;
  $("baseText").textContent=info.base;
  $("noteGraphName").textContent=product.name;
- if(!isFull){
-  $("noteBottleImage").src=product.image||"";
-  $("noteBottleImage").alt="Frasco de "+product.name;
-  $("noteBottleImage").addEventListener("error",()=>{$("noteBottleImage").hidden=true;$("noteBottleFallback").hidden=false;});
- }
+ $("noteBottleImage").src=product.image||"";
+ $("noteBottleImage").alt="Frasco de "+product.name;
+ $("noteBottleImage").addEventListener("error",()=>{$("noteBottleImage").hidden=true;$("noteBottleFallback").hidden=false;});
  const accords=(story&&story.accords&&story.accords.length)?story.accords:[info.top,info.heart,info.base];
- $("accordBars").innerHTML=accords.slice(0,8).map(label=>'<span class="accord-tag">'+escapeHTML(label)+'</span>').join("");
+ $("accordBars").innerHTML=accords.slice(0,7).map((label,index)=>'<div class="accord-row"><span class="accord-fill" style="width:'+Math.max(58,100-index*7)+'%"></span><span class="accord-label">'+escapeHTML(label)+'</span></div>').join("");
 }else{$("olfactorySection").style.display="none"}
 const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?"Consultar pelo WhatsApp":"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
 }
