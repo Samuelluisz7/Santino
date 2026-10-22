@@ -375,18 +375,28 @@ function renderProducts(){
  document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(b.dataset.add)));
 }
 function renderFullSizeProducts(){
- $("fullSizeProducts").innerHTML = FULL_SIZE_PRODUCTS.map(p=>`<article class="product full-size-product">
-   <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
-     <div class="full-size-mark" aria-hidden="true"><strong>S</strong><span>Frasco inteiro</span></div>
-     <h3>${escapeHTML(p.name)}</h3>
-     <div class="product-brand">${escapeHTML(p.brand)}</div>
-     <p class="card-meta">${escapeHTML(p.version)} · ${p.ml} ml</p>
-   </a>
-   <label class="quantity-label">Quantidade<select id="qty-${p.id}" aria-label="Quantidade de ${escapeHTML(p.name)}">${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}</select></label>
-   <button class="add" data-add-full="${p.id}">Adicionar à consulta</button>
- </article>`).join("");
- document.querySelectorAll("[data-add-full]").forEach(b=>b.addEventListener("click",()=>addFullSizeToCart(b.dataset.addFull)));
-}function consultFullSize(id){
+ const items = FULL_SIZE_PRODUCTS.slice();
+ $("fullSizeProducts").innerHTML = items.map(p =>
+   '<article class="product full-size-product">' +
+   '<a class="product-detail-link" href="produto.html?id=' + encodeURIComponent(p.id) + '" aria-label="Ver detalhes de ' + escapeHTML(p.name) + '">' +
+     '<div class="product-art">' +
+       (p.image ? '<img class="product-photo" src="' + escapeHTML(p.image) + '" alt="Frasco de ' + escapeHTML(p.name) + '" loading="lazy" decoding="async">' : '') +
+       '<div class="photo-fallback" style="' + (p.image ? 'display:none;' : '') + '"><div class="vial"></div></div>' +
+     '</div>' +
+     '<h3>' + escapeHTML(p.name) + '</h3>' +
+     '<div class="product-brand">' + escapeHTML(p.brand) + '</div>' +
+     '<p class="card-meta">' + escapeHTML(p.version) + ' · ' + p.ml + ' ml</p>' +
+   '</a>' +
+   '<button class="add" type="button" data-consult-full="' + p.id + '">Consultar pelo WhatsApp</button>' +
+   '</article>'
+ ).join("");
+ document.querySelectorAll(".full-size-product .product-photo").forEach(img => img.addEventListener("error", function(){
+   this.style.display = "none";
+   if (this.nextElementSibling) this.nextElementSibling.style.display = "grid";
+ }));
+ document.querySelectorAll("[data-consult-full]").forEach(button => button.addEventListener("click", () => consultFullSize(button.dataset.consultFull)));
+}
+function consultFullSize(id){
  const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);
  if(!p)return;
  const message="Olá! Gostaria de consultar o frasco inteiro de "+p.name+".";
