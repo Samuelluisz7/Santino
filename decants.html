@@ -385,7 +385,7 @@ function renderFullSizeProducts(){
    <button class="add" data-add-full="${p.id}">Adicionar à consulta</button>
  </article>`).join("");
  document.querySelectorAll("[data-add-full]").forEach(b=>b.addEventListener("click",()=>addFullSizeToCart(b.dataset.addFull)));
-}function consultFullSize(id){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message=`Olá! Quero consultar o preço atualizado e a disponibilidade de ${p.name} (${p.brand}), ${p.version}, ${p.ml} ml. Podem confirmar a disponibilidade e explicar as opções de entrega caso eu queira receber em casa?`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
+}function consultFullSize(id){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message=`Olá! Tenho interesse no frasco inteiro de ${p.name} (${p.brand}), ${p.version}, ${p.ml} ml. Pode me passar as informações para compra? Também quero combinar a entrega local em Viçosa.`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
  const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
