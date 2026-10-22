@@ -179,6 +179,7 @@ footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var
   <div class="note-visual-bottle"><img id="noteBottleImage" alt="" loading="lazy" decoding="async"><div class="note-bottle-fallback" id="noteBottleFallback" hidden>SANTINO<br>FRAGRÂNCIAS</div></div>
   <div class="note-visual-details">
    <div class="note-graphic-head"><div class="eyebrow" id="familyText"></div><h3 id="noteGraphName">Fragrância</h3></div>
+   <p class="accord-title">Acordes em destaque</p>
    <div class="note-accords" id="accordBars" aria-label="Acordes em destaque"></div>
    <div class="note-pyramid">
     <div class="note-stage"><strong>Saída</strong><p id="topText"></p></div>
@@ -328,11 +329,11 @@ $("highlightClimate").textContent=story?story.climate:"Consulte a SANTINO";
 $("backCatalog").href=isFull?"frascos.html#full-size-catalog":"decants.html#catalog";$("cartLink").href=(isFull?"frascos.html":"decants.html")+"?openCart=1";
 if(isFull){document.body.classList.add("full-size-mode");$("volumeControl").style.display="none";$("quantitySelect").parentElement.style.display="none";$("productPrice").textContent="";$("productPrice").classList.remove("pending");$("stockNote").textContent="Para informações sobre esta fragrância e condições de compra, fale com a SANTINO pelo WhatsApp. A entrega local em Viçosa é combinada no atendimento."}
 else{$("volumeSelect").innerHTML=product.volumes.map((v,i)=>'<option value="'+i+'">'+v.ml+' ml</option>').join("");updatePrice();$("volumeSelect").addEventListener("change",()=>{currentVolume=product.volumes[Number($("volumeSelect").value)];updatePrice()})}
-const extras=EXTRA_GALLERY[requestedId]||EXTRA_GALLERY[requestedId.replace(/^full-/,"")]||[];gallery=[product.image].concat(extras).filter((value,index,array)=>Boolean(value)&&array.indexOf(value)===index&&!INGREDIENT_IMAGE_URLS.has(value));
+gallery=product.image?[product.image]:[];
 if(gallery.length){
  $("mainImage").src=gallery[0];$("mainImage").alt=product.name+" — frasco";
  $("galleryCaption").textContent=gallery.length>1?"Deslize pelas miniaturas para ver outras fotos e imagens de notas.":"Foto do frasco do perfume";
- $("galleryThumbs").innerHTML=gallery.map((src,i)=>'<button class="thumb" type="button" data-gallery-index="'+i+'" aria-label="'+(i===0?"Ver frasco de ":"Ver foto complementar de ")+escapeHTML(product.name)+'" aria-pressed="'+(i===0?'true':'false')+'"><img src="'+escapeHTML(src)+'" alt="" loading="lazy" onerror="this.parentElement.remove()"></button>').join("");
+ $("galleryThumbs").innerHTML="";
  document.querySelectorAll("[data-gallery-index]").forEach(button=>button.addEventListener("click",()=>selectGallery(Number(button.dataset.galleryIndex))));
 }else{$("mainImage").style.display="none";$("galleryFallback").style.display="grid";$("galleryCaption").textContent="Foto indisponível";}
 $("mainImage").addEventListener("error",()=>{
