@@ -595,3 +595,62 @@ body:not(.full-size-mode) .product-art .photo-fallback {
     padding: 7px;
   }
 }
+
+
+/* Ficha olfativa: painel editorial claro inspirado em fichas de perfumaria. */
+.note-infographic {
+  background: #eee5d7;
+  border-color: #cfc0aa;
+}
+
+.note-visual-bottle {
+  background: #eee5d7;
+  border-right-color: #d5c6b0;
+}
+
+.note-visual-details {
+  color: #241d15;
+}
+
+.note-graphic-head h3 {
+  color: #211a14;
+}
+
+.accord-title {
+  margin: 0 0 8px;
+  color: #6b4b2e;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.accord-row {
+  background: #ddd0bc;
+}
+
+.accord-label {
+  color: #211a14;
+}
+
+.note-stage,
+.note-stage:nth-child(2),
+.note-stage:nth-child(3) {
+  background: #e2d6c4;
+}
+
+.note-stage strong {
+  color: #6b4b2e;
+}
+
+.note-stage p {
+  color: #40362a;
+}
+
+.note-facts .note-fact {
+  background: #171613;
+}
+
+.gallery-thumbs:empty {
+  display: none;
+}
