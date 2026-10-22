@@ -103,6 +103,37 @@ header nav a[aria-current="page"] {
 
 .nav-search {
   min-width: 0;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  flex: 1 1 180px;
+  max-width: 280px;
+  overflow: hidden;
+  border: 1px solid #3d372f;
+  border-radius: 999px;
+  background: #191816;
+}
+
+.nav-search input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 0 0 0 14px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--cream);
+  font-size: 12px;
+}
+
+.nav-search button {
+  width: 42px;
+  min-width: 42px;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--beige);
+  font-size: 20px;
 }
 
 .cart-link, .cart-button {
@@ -325,6 +356,13 @@ footer .footer-links {
   .nav {
     padding: 13px 16px;
     gap: 12px;
+  }
+
+  .nav:not(.header-main) .nav-search {
+    order: 4;
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: none;
   }
 
   .catalog-nav {
