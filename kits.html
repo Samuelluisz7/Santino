@@ -78,10 +78,14 @@ const products={
  "asad-bourbon":{name:"Asad Bourbon",brand:"Lattafa",image:"https://scentira.in/cdn/shop/files/LATTAFAAl_Asad_Bourbon_1_34bc0e05-10ec-4d25-9df5-34b68222f16c.png?v=1756889307&width=5000",short:"Ameixa, cacau e baunilha Bourbon.",prices:{5:16.9,10:32.9}},
  "homem-sagaz":{name:"Homem Sagaz",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600",short:"Mandarina verde, ervas e madeiras.",prices:{5:11.9,10:22.9}},
  "homem-dom":{name:"Homem Dom",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw035424b3/Produtos/PRODUTO/NATBRA-71770_1.jpg?q=80&sw=600",short:"Baunilha negra, especiarias e madeiras.",prices:{5:11.9,10:22.9}},
- "homem-essence":{name:"Homem Essence",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dwb372f997/Produtos/PRODUTO/NATBRA-59847_1.jpg?q=80&sw=600",short:"Bergamota, gengibre, especiarias e cedro.",prices:{5:16.9,10:31.9}},
+ "homem-essence":{name:"Homem Essence",brand:"Natura",image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7nxx22lbghu32",short:"Bergamota, gengibre, especiarias e cedro.",prices:{5:16.9,10:31.9}},
  "essencial-sentir":{name:"Essencial Sentir",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-co-storefront-catalog/default/dw06d0c53c/NATCOL-179067_1.png",short:"Bergamota, lavanda e madeiras.",prices:{5:18.9,10:35.9}},
  "fakhar-black":{name:"Fakhar Black",brand:"Lattafa",image:"https://www.lattafa-usa.com/cdn/shop/files/1_aa0a5a38-775b-4814-a909-837c1d360d9c.png?v=1747500778&width=1946",short:"Maçã, bergamota e lavanda.",prices:{5:12.9,10:23.9}},
- "k-max":{name:"Kaiak K Max",brand:"Natura Kaiak",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw9b260517/Produtos/PRODUTO/NATBRA-72468_1.jpg?q=80&sw=600",short:"Grapefruit, gengibre e madeiras.",prices:{5:16.9,10:30.9}}
+ "k-max":{name:"Kaiak K Max",brand:"Natura Kaiak",image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrfytr3bsff18e",short:"Grapefruit, gengibre e madeiras.",prices:{5:16.9,10:30.9}}
+};
+const KIT_IMAGE_FALLBACKS = {
+ "homem-essence": ["https://latinashop.pe/cdn/shop/files/NATPER-59848_2.jpg?v=1735845996&width=1445", "https://production.na01.natura.com/on/demandware.static/-/Sites-natura-ar-storefront-catalog/default/dw70a44ead/PRODUTOS/NATARG-59848_2.jpg"],
+ "k-max": ["https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2ilre9m85au14", "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lr3vn51eolrv12"]
 };
 const kits=[
  {id:"dia-a-dia",label:"ROTINA",title:"Dia a dia",desc:"Trio versátil para acompanhar a rotina com frescor, presença e facilidade de uso.",items:[["essencial-sentir","ROTINA"],["k-max","FRESCO"],["fakhar-black","AROMÁTICO"]]},
@@ -114,12 +118,27 @@ function render(){
  document.getElementById("kitGrid").innerHTML=kits.map((kit,index)=>'<article class="kit-card" id="kit-'+kit.id+'" data-kit="'+kit.id+'">'+
  '<div class="kit-top"><div><div class="kit-label">KIT 0'+(index+1)+'</div><div class="kit-title-row"><h2>'+kit.title+'</h2><span class="kit-pill">'+kit.label+'</span></div></div></div>'+
  '<p class="kit-desc">'+kit.desc+'</p><div class="kit-product-list">'+kit.items.map(([id,tag])=>{const p=products[id];return '<div class="kit-product">'+
- '<div class="kit-product-img"><img src="'+escapeHTML(p.image)+'" alt="Frasco de '+escapeHTML(p.name)+'" loading="lazy" onerror="this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;block&quot;"><span class="img-fallback">SANTINO</span></div>'+
+ '<div class="kit-product-img"><img data-product-id="'+escapeHTML(id)+'" src="'+escapeHTML(p.image)+'" alt="Frasco de '+escapeHTML(p.name)+'" loading="lazy" decoding="async"><span class="img-fallback">SANTINO</span></div>'+
  '<div class="kit-product-main"><div class="kit-product-head"><div><h3>'+escapeHTML(p.name)+'</h3><div class="kit-brand">'+escapeHTML(p.brand)+'</div></div><span class="use-pill">'+escapeHTML(tag)+'</span></div><div class="kit-note-short">'+escapeHTML(p.short)+'</div>'+
  '<div class="kit-controls"><label for="ml-'+kit.id+'-'+id+'">Volume<select id="ml-'+kit.id+'-'+id+'"><option value="5">5 ml</option><option value="10">10 ml</option></select></label><label for="qty-'+kit.id+'-'+id+'">Quantidade<select id="qty-'+kit.id+'-'+id+'">'+Array.from({length:5},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join("")+'</select></label><div class="kit-line-total" id="line-'+kit.id+'-'+id+'">'+money(p.prices[5])+'</div></div>'+
  '</div></div>'}).join("")+'</div>'+
  '<div class="kit-bottom"><div><div class="kit-total-label">Total do combo</div><span class="kit-price" id="price-'+kit.id+'">'+money(kit.items.reduce((sum,[id])=>sum+products[id].prices[5],0))+'</span></div><button type="button" class="kit-add" data-add-kit="'+kit.id+'">Adicionar combo ao carrinho</button></div>'+
  '<p class="kit-note">O volume e a quantidade são definidos separadamente em cada perfume. Total antes de eventual desconto automático.</p></article>').join("");
+
+ document.querySelectorAll(".kit-product-img img[data-product-id]").forEach(img=>{
+  let tries=0;
+  img.addEventListener("error",function(){
+   const alternatives=KIT_IMAGE_FALLBACKS[this.dataset.productId]||[];
+   if(tries<alternatives.length){this.src=alternatives[tries++];return;}
+   this.style.display="none";
+   if(this.nextElementSibling)this.nextElementSibling.style.display="block";
+  });
+  img.addEventListener("load",function(){
+   this.style.display="block";
+   if(this.nextElementSibling)this.nextElementSibling.style.display="none";
+  });
+ });
+
  kits.forEach(kit=>kit.items.forEach(([id])=>{
   document.getElementById("ml-"+kit.id+"-"+id).addEventListener("change",()=>refreshKit(kit));
   document.getElementById("qty-"+kit.id+"-"+id).addEventListener("change",()=>refreshKit(kit));
