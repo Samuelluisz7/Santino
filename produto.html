@@ -353,4 +353,33 @@ function updatePrice(){if(!currentVolume)return;$("productPrice").textContent=mo
 function readCart(){try{const value=JSON.parse(localStorage.getItem("santino_nobre_cart")||"[]");return Array.isArray(value)?value:[]}catch(e){return []}}
 function addToCart(){if(!product)return;if(isFull){const message="Olá! Estou em Viçosa e gostaria de consultar o preço e a disponibilidade de "+product.name+" ("+product.brand+"), "+product.version+", "+product.ml+" ml. Também quero combinar a entrega local.";window.open("https://wa.me/5531996312579?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");return;}const amount=Math.max(1,Math.min(10,Number($("quantitySelect").value)||1)),ml=currentVolume.ml,price=currentVolume.price,key=product.id+"-"+ml,cart=readCart(),item=cart.find(x=>x.key===key);if(item)item.qty=(Number(item.qty)||0)+amount;else cart.push({key,id:product.id,name:product.name,brand:product.brand,ml,price,qty:amount,category:"Decant"});try{localStorage.setItem("santino_nobre_cart",JSON.stringify(cart))}catch(e){}$("cartCount").textContent=cart.reduce((sum,x)=>sum+(Number(x.qty)||0),0);$("toast").textContent=amount+" unidade(s) de "+product.name+" adicionada(s) ao carrinho.";$("toast").style.display="block";const button=$("addButton"),original="Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);button.textContent="Adicionado ao carrinho ✓";setTimeout(()=>{button.textContent=original;$("toast").style.display="none"},2000)}
 </script><script src="search.js" defer></script>
-</body></html>
+
+<style>
+/* A galeria não precisa de legenda genérica nem de uma segunda lista de acordes */
+.gallery-caption{display:none!important}
+.note-accords{display:none!important}
+.note-graphic-head .eyebrow{display:none!important}
+</style>
+
+<style>
+/* Ajustes de interface: menos repetição e hierarquia mais natural */
+.catalog-nav a[aria-current="page"], .nav-links a[aria-current="page"]{color:var(--cream);font-weight:600}
+.catalog-nav a[aria-current="page"]:after{background:var(--beige)}
+.volume{display:none!important}
+.quantity-label{font-size:12px!important}
+</style>
+<script>
+(function(){
+  const current=(location.pathname.split('/').pop()||'index.html').split('?')[0];
+  document.querySelectorAll('.catalog-nav a, .nav-links a').forEach(a=>{
+    const href=(a.getAttribute('href')||'').split('?')[0];
+    if(['index.html','decants.html','frascos.html','kits.html'].includes(href)){
+      if(href===current){a.setAttribute('aria-current','page');}
+      else{a.removeAttribute('aria-current');}
+    }
+  });
+  document.querySelectorAll('.quantity-label').forEach(el=>{
+    el.childNodes.forEach(n=>{if(n.nodeType===Node.TEXT_NODE && n.textContent.trim()==='Qtd.') n.textContent='Quantidade';});
+  });
+})();
+</script></body></html>
