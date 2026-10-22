@@ -389,7 +389,7 @@ function renderFullSizeProducts(){
 }function consultFullSize(id){
  const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);
  if(!p)return;
- const message="Olá! Gostaria de consultar o frasco inteiro de "+p.name+", "+p.ml+" ml.";
+ const message="Olá! Gostaria de consultar o frasco inteiro de "+p.name+".";
  window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
 }function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
