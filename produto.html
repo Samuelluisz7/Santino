@@ -293,7 +293,7 @@ if(info){
  $("noteBottleImage").addEventListener("error",()=>{$("noteBottleImage").hidden=true;$("noteBottleFallback").hidden=false;});
  const accords=(story&&story.accords&&story.accords.length)?story.accords:[info.top,info.heart,info.base];
  $("accordBars").innerHTML=accords.slice(0,8).map(label=>'<span class="accord-tag">'+escapeHTML(label)+'</span>').join("");
-}else{$("olfactorySection").style.display="none";$("usageHighlights").style.display="none"}
+}else{$("olfactorySection").style.display="none"}
 const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?"Consultar preço pelo WhatsApp":"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
 }
 function selectGallery(index){if(!gallery[index])return;$("mainImage").style.display="block";$("galleryFallback").style.display="none";$("mainImage").src=gallery[index];$("mainImage").alt=product.name+" — foto "+(index+1);document.querySelectorAll("[data-gallery-index]").forEach(button=>button.setAttribute("aria-pressed",String(Number(button.dataset.galleryIndex)===index)));}
