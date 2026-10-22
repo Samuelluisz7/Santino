@@ -309,7 +309,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
       <details class="faq-item"><summary>Como consulto o preço?</summary><div class="faq-answer">Cada frasco inteiro tem um botão de consulta. A mensagem identifica o perfume e o volume, e o valor é informado diretamente pelo WhatsApp.</div></details>
       <details class="faq-item"><summary>Quais formas de pagamento são aceitas?</summary><div class="faq-answer">Aceitamos Pix e dinheiro. Confirme o valor final e o momento do pagamento antes de concluir o pedido.</div></details>
       <details class="faq-item"><summary>Como funciona a entrega em Viçosa?</summary><div class="faq-answer">A entrega local é combinada antes da compra. O ponto de encontro ou endereço, eventual taxa e horário são confirmados no atendimento.</div></details>
-      <details class="faq-item"><summary>Quando o pedido fica confirmado?</summary><div class="faq-answer">Depois que a disponibilidade, o preço total, a forma de pagamento e a entrega forem confirmados. Não faça o pagamento antes dessa confirmação.</div></details>
+      <details class="faq-item"><summary>Quando o pedido fica confirmado?</summary><div class="faq-answer">Depois que a SANTINO confirmar os dados do produto, o valor total, a forma de pagamento e a entrega. Não faça o pagamento antes dessa confirmação.</div></details>
     </div>
   </section>
 </main>
@@ -327,7 +327,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
     <div class="cart-total">
       <div class="total-line"><span>Total do pedido</span><strong id="cartTotal">R$ 0,00</strong></div>
       <button class="btn checkout" id="checkout">Confirmar pedido pelo WhatsApp</button>
-      <div class="small-note">Você revisa a mensagem antes de enviá-la. O pedido só é confirmado após a loja validar disponibilidade, total e entrega. Não faça pagamento antes dessa confirmação.</div>
+      <div class="small-note">Você revisa a mensagem antes de enviá-la. O pedido só é confirmado após a loja validar os dados do produto, o total e a entrega. Não faça pagamento antes dessa confirmação.</div>
     </div>
   </div>
 </div>
@@ -417,7 +417,8 @@ function renderFullSizeProducts(){
    <button class="add" data-consult-full="${p.id}">Consultar pelo WhatsApp</button>
  </article>`).join("");
  document.querySelectorAll("[data-consult-full]").forEach(b=>b.addEventListener("click",()=>consultFullSize(b.dataset.consultFull)));
-}function consultFullSize(id){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message=`Olá! Tenho interesse no frasco inteiro de ${p.name} (${p.brand}), ${p.version}, ${p.ml} ml. Pode me passar as informações para compra? Também quero combinar a entrega local em Viçosa.`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");} (${p.brand}), ${p.version}, ${p.ml} ml. Também quero combinar a entrega local.`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
+}
+function consultFullSize(id){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message=`Olá! Tenho interesse no frasco inteiro de ${p.name} (${p.brand}), ${p.version}, ${p.ml} ml. Pode me passar as informações para compra? Também quero combinar a entrega local em Viçosa.`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");} (${p.brand}), ${p.version}, ${p.ml} ml. Também quero combinar a entrega local.`;window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
  const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
