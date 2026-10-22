@@ -341,9 +341,11 @@ if(info){
  $("heartText").textContent=info.heart;
  $("baseText").textContent=info.base;
  $("noteGraphName").textContent=product.name;
- $("noteBottleImage").src=product.image||"";
- $("noteBottleImage").alt="Frasco de "+product.name;
- $("noteBottleImage").addEventListener("error",()=>{$("noteBottleImage").hidden=true;$("noteBottleFallback").hidden=false;});
+ if(!isFull){
+  $("noteBottleImage").src=product.image||"";
+  $("noteBottleImage").alt="Frasco de "+product.name;
+  $("noteBottleImage").addEventListener("error",()=>{$("noteBottleImage").hidden=true;$("noteBottleFallback").hidden=false;});
+ }
  const accords=(story&&story.accords&&story.accords.length)?story.accords:[info.top,info.heart,info.base];
  $("accordBars").innerHTML=accords.slice(0,8).map(label=>'<span class="accord-tag">'+escapeHTML(label)+'</span>').join("");
 }else{$("olfactorySection").style.display="none"}
