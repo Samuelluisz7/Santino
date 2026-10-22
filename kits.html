@@ -47,6 +47,7 @@ footer{border-top:1px solid var(--line);padding:23px 20px;text-align:center;colo
 main{padding:24px 14px 42px}.intro{font-size:13px;margin-bottom:21px}.kit-grid{grid-template-columns:1fr;gap:11px}.kit-card{padding:13px}.kit-card h2{font-size:27px}.kit-desc{min-height:0;margin-bottom:12px}.kit-product{grid-template-columns:60px minmax(0,1fr);gap:9px;padding:8px}.kit-product-img{width:60px;height:69px}.kit-controls{grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:7px}.kit-controls select{font-size:11px;padding:5px}.kit-line-total{grid-column:1/-1;text-align:left;font-size:11px;min-width:0;padding-bottom:0;white-space:normal}.kit-bottom{gap:8px}.kit-price{font-size:24px}.kit-add{min-height:53px;padding:11px 10px;font-size:11px;max-width:58%}}
 @media(max-width:355px){.kit-product{grid-template-columns:51px minmax(0,1fr);gap:7px}.kit-product-img{width:51px;height:61px}.kit-product-head{display:block}.use-pill{margin-top:4px}.kit-controls{grid-template-columns:1fr 1fr}.kit-line-total{grid-column:1/-1;text-align:left;padding-bottom:0}.kit-bottom{align-items:stretch;flex-direction:column}.kit-add{max-width:none;width:100%}}
 </style>
+  <link rel="stylesheet" href="santino-ui.css">
 </head>
 <body>
 <header><div class="nav">
@@ -143,33 +144,6 @@ render();renderCartCount();
 if(window.location.hash){const target=document.getElementById(decodeURIComponent(window.location.hash.slice(1)));if(target)target.scrollIntoView({behavior:"smooth",block:"start"})}
 })();
 </script>
-
-<style>
-/* O nome do kit já identifica a combinação; a tag ao lado só o repete */
-.kit-pill{display:none!important}
-.kit-top{margin-bottom:12px}
-</style>
-
-<style>
-/* Ajustes de interface: menos repetição e hierarquia mais natural */
-.catalog-nav a[aria-current="page"], .nav-links a[aria-current="page"]{color:var(--cream);font-weight:600}
-.catalog-nav a[aria-current="page"]:after{background:var(--beige)}
-.volume{display:none!important}
-.quantity-label{font-size:12px!important}
-</style>
-<script>
-(function(){
-  const current=(location.pathname.split('/').pop()||'index.html').split('?')[0];
-  document.querySelectorAll('.catalog-nav a, .nav-links a').forEach(a=>{
-    const href=(a.getAttribute('href')||'').split('?')[0];
-    if(['index.html','decants.html','frascos.html','kits.html'].includes(href)){
-      if(href===current){a.setAttribute('aria-current','page');}
-      else{a.removeAttribute('aria-current');}
-    }
-  });
-  document.querySelectorAll('.quantity-label').forEach(el=>{
-    el.childNodes.forEach(n=>{if(n.nodeType===Node.TEXT_NODE && n.textContent.trim()==='Qtd.') n.textContent='Quantidade';});
-  });
-})();
-</script></body>
+<script src="santino-ui.js" defer></script>
+</body>
 </html>
