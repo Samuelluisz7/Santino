@@ -269,6 +269,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .product .add{min-height:55px!important;font-size:13px!important;font-weight:700!important;letter-spacing:.01em!important;padding:13px 10px!important;border-radius:4px!important;background:var(--beige)!important;color:#171512!important}
 .product .add:hover{background:#dbc6a4!important;border-color:#dbc6a4!important}
 @media(max-width:720px){.product .add{min-height:54px!important;font-size:12px!important;padding:12px 7px!important}.catalog-nav{gap:14px!important}.catalog-nav a{font-size:12px!important}}
+.origin-filter{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:0 0 18px}.origin-filter-label{font-size:10px;color:var(--muted);letter-spacing:.13em;text-transform:uppercase;margin-right:4px}.origin-filter button{border:1px solid #39352f;background:#171613;color:var(--muted);border-radius:3px;padding:9px 13px;font-size:12px;transition:background .15s,border-color .15s,color .15s}.origin-filter button[aria-pressed="true"]{background:var(--beige);border-color:var(--beige);color:#171512;font-weight:700}.product-brandline{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:-2px 0 8px}.product-brand-name{color:var(--beige);font-size:11px}.product-origin-tag{display:inline-flex;align-items:center;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--beige);border:1px solid #5b4d38;padding:3px 6px;border-radius:2px;align-self:flex-start}
 </style>
   <link rel="stylesheet" href="santino-ui.css">
 </head>
@@ -288,6 +289,12 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   </section>
   <section class="section" id="catalog">
     <div class="section-head"><div><div class="eyebrow">Explore a coleção</div><h2>Escolha sua fragrância</h2><p>5 ou 10 ml · 10% OFF automático em pedidos de decants a partir de R$ 80 · Entrega local em Viçosa combinada pelo WhatsApp.</p></div></div>
+    <div class="origin-filter" role="group" aria-label="Filtrar decants por origem">
+      <span class="origin-filter-label">Origem</span>
+      <button type="button" data-origin-filter="Todos" aria-pressed="true">Todos</button>
+      <button type="button" data-origin-filter="Nacional" aria-pressed="false">Nacionais</button>
+      <button type="button" data-origin-filter="Importado" aria-pressed="false">Importados</button>
+    </div>
     <div class="products" id="products"></div>
   </section>
   <section class="section faq-section" id="faq">
@@ -339,7 +346,7 @@ const PRODUCTS = [
  {id:"essencial-sentir",name:"Essencial Sentir",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw62148647/Produtos/NATBRA-167755_1.jpg?q=80&sw=600",tag:"Nacional",description:"Amadeirado aromático, com sândalo e toque especiado.",volumes:[{ml:5,price:18.9},{ml:10,price:35.9}]},
  {id:"fakhar-black",name:"Fakhar Black",brand:"Lattafa",image:"https://www.lattafa-usa.com/cdn/shop/files/1_aa0a5a38-775b-4814-a909-837c1d360d9c.png?v=1747500778&width=1946",tag:"Importado",description:"Aromático e amadeirado, combinando frescor e notas ambaradas.",volumes:[{ml:5,price:12.9},{ml:10,price:23.9}]},
  {id:"k-max",name:"Natura Kaiak K Max",brand:"Natura Kaiak",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600",tag:"Nacional",description:"Aromático e amadeirado, com frescor cítrico e especiarias.",volumes:[{ml:5,price:16.9},{ml:10,price:30.9}]},
- {id:"nautica-voyage",name:"Nautica Voyage",brand:"Nautica",image:"https://amobeleza.vtexassets.com/arquivos/ids/338641/15282_0.jpg?v=639124732241930000",tag:"Importado",description:"Fresco aquático e verde, com maçã verde, folhas verdes, lótus e mimosa, sobre um fundo almiscarado e amadeirado.",volumes:[{ml:5,price:11.9},{ml:10,price:19.9}]}
+ {id:"nautica-voyage",name:"Nautica Voyage",brand:"Nautica",image:"https://amobeleza.vtexassets.com/arquivos/ids/338641/15282_0.jpg?v=639124732241930000",tag:"Importado",description:"Fresco aquático e verde, com maçã verde, folhas verdes, lótus e mimosa, sobre um fundo almiscarado e amadeirado.",volumes:[{ml:5,price:14.9},{ml:10,price:27.9}]}
 ];
 const FULL_SIZE_PRODUCTS = [
  {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,image:"https://scale.coolshop-cdn.com/product-media.coolshop-cdn.com/23UC4G/f178d6ad2668454da17223e593c9cbd7.jpg/f/jean-paul-gaultier-le-male-le-parfum-125-ml.jpg",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
@@ -400,12 +407,13 @@ function bindProductImageFallbacks(root) {
 try { const savedCart = JSON.parse(localStorage.getItem("santino_nobre_cart") || "[]"); if (Array.isArray(savedCart)) cart = savedCart; } catch (e) { cart = []; }
 const $ = id => document.getElementById(id);
 function money(n){return CURRENCY.format(n)}
-function renderProducts(){
- $("products").innerHTML = PRODUCTS.map(p=>`<article class="product">
+let activeOriginFilter = ""; function renderProducts(){
+ const filteredProducts = PRODUCTS.filter(p => !activeOriginFilter || p.tag === activeOriginFilter);
+ $("products").innerHTML = filteredProducts.map(p=>`<article class="product">
    <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
    <div class="product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
    <h3>${escapeHTML(p.name)}</h3>
-   <div style="color:var(--beige);font-size:11px;margin:-2px 0 8px">${escapeHTML(p.brand)}</div>
+   <div class="product-brandline"><span class="product-brand-name">${escapeHTML(p.brand)}</span><span class="product-origin-tag">${escapeHTML(p.tag||"")}</span></div>
    </a>
    <a class="details-link" href="produto.html?id=${encodeURIComponent(p.id)}">Notas e detalhes <span aria-hidden="true">→</span></a>
    <div class="variants"><label style="flex:1">Volume
@@ -417,7 +425,7 @@ function renderProducts(){
    <button class="add" data-add="${p.id}">Adicionar ${p.volumes[0].ml} ml — ${money(p.volumes[0].price)}</button>
  </article>`).join("");
  bindProductImageFallbacks($("products"));
- PRODUCTS.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price);$("selected-volume-"+p.id).textContent=v.ml+" ml";const button=document.querySelector('[data-add="'+p.id+'"]');if(button)button.textContent="Adicionar "+v.ml+" ml — "+money(v.price)})});
+ filteredProducts.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price);$("selected-volume-"+p.id).textContent=v.ml+" ml";const button=document.querySelector('[data-add="'+p.id+'"]');if(button)button.textContent="Adicionar "+v.ml+" ml — "+money(v.price)})});
  document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(b.dataset.add)));
 }
 function renderFullSizeProducts(){
@@ -518,7 +526,7 @@ function checkout(){
 $("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
 $("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
 $("checkout").addEventListener("click",checkout);
-renderProducts();renderCart();
+document.querySelectorAll("[data-origin-filter]").forEach(button=>button.addEventListener("click",()=>{activeOriginFilter=button.dataset.originFilter==="Todos"?"":button.dataset.originFilter;document.querySelectorAll("[data-origin-filter]").forEach(item=>item.setAttribute("aria-pressed",String((item.dataset.originFilter==="Todos"?"":item.dataset.originFilter)===activeOriginFilter)));renderProducts()})); renderProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
 <script src="search.js" defer></script>
