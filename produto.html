@@ -286,6 +286,144 @@ footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var
 #olfactorySection.quasar-ice-notes-active .note-fact{background:#050505!important;border-color:#292929!important}
 #olfactorySection.quasar-ice-notes-active .note-fact strong{color:#a8c4cc!important}
 #olfactorySection.quasar-ice-notes-active .note-fact span{color:#c4d0d3!important}
+
+/* SANTINO — acabamento final: preto contínuo, packshot em quadrado claro e acordes cromáticos */
+#olfactorySection,
+body.quasar-ice-notes #olfactorySection,
+#olfactorySection.quasar-ice-notes-active{
+  background:#050505!important;
+  color:#f1eee8!important;
+  border-top:1px solid #292929!important;
+}
+#olfactorySection .content-heading h2{color:#f1eee8!important}
+#olfactorySection .content-heading p{color:#aaa49b!important}
+#olfactorySection .note-infographic,
+body.quasar-ice-notes #olfactorySection .note-infographic{
+  display:grid!important;
+  grid-template-columns:180px minmax(0,1fr)!important;
+  gap:0!important;
+  background:#050505!important;
+  color:#f1eee8!important;
+  border:1px solid #292929!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  overflow:hidden;
+}
+#olfactorySection .note-visual-bottle,
+body.quasar-ice-notes #olfactorySection .note-visual-bottle{
+  min-width:0!important;
+  min-height:0!important;
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  padding:15px 12px!important;
+  background:#050505!important;
+  border-right:1px solid #292929!important;
+}
+#olfactorySection .note-visual-bottle img,
+body.quasar-ice-notes #olfactorySection .note-visual-bottle img{
+  display:block!important;
+  width:100%!important;
+  max-width:156px!important;
+  height:auto!important;
+  aspect-ratio:1/1!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  padding:7px!important;
+  background:#f7f7f4!important;
+  border:0!important;
+  border-radius:0!important;
+  filter:none!important;
+  transform:none!important;
+  mix-blend-mode:normal!important;
+  box-shadow:none!important;
+}
+#olfactorySection .note-visual-details,
+body.quasar-ice-notes #olfactorySection .note-visual-details{
+  min-width:0!important;
+  padding:19px 18px 16px!important;
+  background:#050505!important;
+  color:#f1eee8!important;
+}
+#olfactorySection .note-graphic-head h3{color:#f1eee8!important}
+#olfactorySection .note-graphic-head .eyebrow,
+#olfactorySection .accord-title{color:#aaa49b!important}
+#olfactorySection .note-accords{
+  display:flex!important;
+  flex-direction:row!important;
+  flex-wrap:wrap!important;
+  align-items:flex-start!important;
+  gap:6px!important;
+  margin:0 0 14px!important;
+}
+#olfactorySection .accord-row{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  width:auto!important;
+  min-width:0!important;
+  min-height:29px!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:6px 9px!important;
+  border:1px solid color-mix(in srgb,var(--bar-color,#a0a0a0) 48%,#292929)!important;
+  border-radius:2px!important;
+  background:color-mix(in srgb,var(--bar-color,#a0a0a0) 15%,#090909)!important;
+  color:var(--bar-color,#c5c5c5)!important;
+  box-shadow:none!important;
+}
+#olfactorySection .accord-bar-dot{
+  flex:0 0 7px!important;
+  width:7px!important;
+  height:7px!important;
+  border-radius:50%!important;
+  background:var(--bar-color,#a0a0a0)!important;
+}
+#olfactorySection .accord-bar-label{
+  display:block!important;
+  color:color-mix(in srgb,var(--bar-color,#a0a0a0) 82%,#f3f0e9)!important;
+  font:500 11px/1.3 Arial,Helvetica,sans-serif!important;
+  overflow-wrap:anywhere!important;
+}
+#olfactorySection .note-composition{margin-top:13px!important;border-top:1px solid #292929!important}
+#olfactorySection .composition-row{border-bottom:1px solid #222!important;background:transparent!important}
+#olfactorySection .composition-row>strong{color:#aaa49b!important}
+#olfactorySection .note-word{color:color-mix(in srgb,var(--note-color,#d0d0d0) 78%,#f2eee7)!important}
+#olfactorySection .note-fact{background:#050505!important;border:1px solid #292929!important;border-radius:0!important}
+#olfactorySection .note-fact strong{color:#aaa49b!important}
+#olfactorySection .note-fact span{color:#c6c0b7!important}
+body.quasar-ice-notes #olfactorySection .note-visual-bottle{background:#050505!important}
+body.quasar-ice-notes #olfactorySection .note-infographic{background:#050505!important;color:#f1eee8!important;border-color:#29373b!important}
+body.quasar-ice-notes #olfactorySection .note-graphic-head h3{color:#f1eee8!important}
+@media(max-width:720px){
+  #olfactorySection .note-infographic,
+  body.quasar-ice-notes #olfactorySection .note-infographic{
+    grid-template-columns:132px minmax(0,1fr)!important;
+  }
+  #olfactorySection .note-visual-bottle,
+  body.quasar-ice-notes #olfactorySection .note-visual-bottle{padding:12px 9px!important}
+  #olfactorySection .note-visual-bottle img,
+  body.quasar-ice-notes #olfactorySection .note-visual-bottle img{max-width:114px!important;padding:5px!important}
+  #olfactorySection .note-visual-details,
+  body.quasar-ice-notes #olfactorySection .note-visual-details{padding:14px 11px 12px!important}
+  #olfactorySection .note-graphic-head h3{font-size:21px!important}
+  #olfactorySection .accord-bar-label{font-size:10px!important}
+  #olfactorySection .note-facts{grid-template-columns:1fr!important}
+}
+@media(max-width:390px){
+  #olfactorySection .note-infographic,
+  body.quasar-ice-notes #olfactorySection .note-infographic{
+    grid-template-columns:108px minmax(0,1fr)!important;
+  }
+  #olfactorySection .note-visual-bottle,
+  body.quasar-ice-notes #olfactorySection .note-visual-bottle{padding:10px 7px!important}
+  #olfactorySection .note-visual-bottle img,
+  body.quasar-ice-notes #olfactorySection .note-visual-bottle img{max-width:94px!important;padding:4px!important}
+  #olfactorySection .note-visual-details,
+  body.quasar-ice-notes #olfactorySection .note-visual-details{padding:12px 8px!important}
+  #olfactorySection .note-graphic-head h3{font-size:19px!important}
+}
+
 </style>
   <link rel="stylesheet" href="santino-ui.css">
 </head>
@@ -663,7 +801,7 @@ if(info){
  noteBottle.src=product.image||"";
  if(noteBottle.complete&&noteBottle.naturalWidth===0)noteFallback();
  const accords=PRODUCT_ACCORDS[product.id.replace(/^full-/,"")]||(story&&story.accords&&story.accords.length?story.accords:[info.top,info.heart,info.base]);
- $("accordBars").innerHTML=accords.slice(0,10).map((label,index)=>'<div class="accord-row" style="--bar-color:'+noteColor(label)+';--bar-width:'+Math.max(52,100-index*5)+'%"><span class="accord-bar-label">'+escapeHTML(label)+'</span></div>').join("");
+ $("accordBars").innerHTML=accords.slice(0,10).map(label=>'<div class="accord-row" style="--bar-color:'+noteColor(label)+'"><span class="accord-bar-dot" aria-hidden="true"></span><span class="accord-bar-label">'+escapeHTML(label)+'</span></div>').join("");
 }else{$("olfactorySection").style.display="none"}
 const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?"Consultar pelo WhatsApp":"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
 }
