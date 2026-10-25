@@ -422,17 +422,16 @@ let activeOriginFilter = ""; function renderProducts(){
    <h3>${escapeHTML(p.name)}</h3>
    <div class="product-brandline"><span class="product-brand-name">${escapeHTML(p.brand)}</span><span class="product-origin-tag">${escapeHTML(p.tag||"")}</span></div>
    </a>
-   <a class="details-link" href="produto.html?id=${encodeURIComponent(p.id)}">Notas e detalhes <span aria-hidden="true">→</span></a>
    <div class="variants"><label style="flex:1">Volume
      <select id="volume-${p.id}" aria-label="Volume de ${escapeHTML(p.name)}">${p.volumes.map((v,i)=>`<option value="${i}">${v.ml} ml</option>`).join("")}</select>
    </label><label class="quantity-label">Quantidade
      <select id="qty-${p.id}" aria-label="Quantidade de ${escapeHTML(p.name)}">${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}</select>
    </label></div>
-   <div class="price-row"><span class="price" id="price-${p.id}">${money(p.volumes[0].price)}</span><span class="volume" id="selected-volume-${p.id}">${p.volumes[0].ml} ml</span></div>
-   <button class="add" data-add="${p.id}">Adicionar ${p.volumes[0].ml} ml — ${money(p.volumes[0].price)}</button>
+   <div class="price-row"><span class="price" id="price-${p.id}">${money(p.volumes[0].price)}</span></div>
+   <button class="add" data-add="${p.id}">Adicionar ao carrinho</button>
  </article>`).join("");
  bindProductImageFallbacks($("products"));
- filteredProducts.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price);$("selected-volume-"+p.id).textContent=v.ml+" ml";const button=document.querySelector('[data-add="'+p.id+'"]');if(button)button.textContent="Adicionar "+v.ml+" ml — "+money(v.price)})});
+ filteredProducts.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price)})});
  document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(b.dataset.add)));
 }
 function renderFullSizeProducts(){
