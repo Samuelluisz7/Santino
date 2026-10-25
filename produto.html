@@ -701,6 +701,87 @@ body.quasar-ice-notes #olfactorySection .note-fact span{color:#c4d0d3!important}
   body.quasar-ice-notes #olfactorySection .note-word{font-size:10px!important}
 }
 
+
+/* Restaura o modelo olfativo original SANTINO: barras horizontais + notas em linhas */
+#olfactorySection .note-infographic{
+  grid-template-columns:minmax(130px,.34fr) minmax(0,1fr)!important;
+  background:#050505!important;border:1px solid #292929!important;border-radius:0!important;
+}
+#olfactorySection .note-visual-bottle{background:#050505!important;align-items:center!important;justify-content:center!important}
+#olfactorySection .note-visual-bottle img{
+  width:100%!important;max-width:230px!important;height:300px!important;max-height:none!important;
+  aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important;
+  padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;
+  box-shadow:none!important;filter:none!important;transform:none!important;mix-blend-mode:normal!important;
+}
+#olfactorySection .note-accords{
+  display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:stretch!important;
+  gap:5px!important;margin:0 0 14px!important;
+}
+#olfactorySection .note-accords .accord-row{
+  display:flex!important;position:relative!important;align-items:center!important;gap:7px!important;
+  width:var(--bar-width,100%)!important;min-width:0!important;max-width:100%!important;
+  min-height:29px!important;margin:0!important;padding:0 10px!important;overflow:hidden!important;
+  border:0!important;border-radius:1px!important;background:var(--bar-color,#8dc6d4)!important;
+  box-shadow:none!important;color:#171717!important;
+}
+#olfactorySection .note-accords .accord-bar-dot{display:none!important}
+#olfactorySection .note-accords .accord-bar-label{
+  display:block!important;position:relative!important;padding:5px 0!important;
+  color:#171717!important;font:600 11px/1.3 Arial,Helvetica,sans-serif!important;overflow-wrap:anywhere!important;
+}
+#olfactorySection .note-pyramid{
+  display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;
+  width:100%!important;max-width:none!important;margin:12px 0 0!important;padding:0!important;
+  border-top:1px solid #292929!important;background:transparent!important;
+}
+#olfactorySection .note-pyramid .note-stage,
+body.quasar-ice-notes #olfactorySection .note-pyramid .note-stage{
+  display:grid!important;grid-template-columns:78px minmax(0,1fr)!important;align-items:start!important;
+  gap:8px!important;width:100%!important;min-width:0!important;margin:0!important;padding:11px 0!important;
+  text-align:left!important;background:transparent!important;border:0!important;border-bottom:1px solid #292929!important;
+  border-radius:0!important;box-shadow:none!important;
+}
+#olfactorySection .note-pyramid .note-stage strong,
+body.quasar-ice-notes #olfactorySection .note-pyramid .note-stage strong{
+  display:block!important;margin:2px 0 0!important;color:var(--stage-color,#a8a8a8)!important;
+  font-size:10px!important;letter-spacing:.12em!important;line-height:1.4!important;text-align:left!important;
+}
+#olfactorySection .note-pyramid .note-stage:nth-child(1){--stage-color:#e7c44f!important}
+#olfactorySection .note-pyramid .note-stage:nth-child(2){--stage-color:#8dc6d4!important}
+#olfactorySection .note-pyramid .note-stage:nth-child(3){--stage-color:#c4a28a!important}
+#olfactorySection .note-stage-notes{
+  display:flex!important;flex-wrap:wrap!important;justify-content:flex-start!important;align-items:center!important;
+  gap:5px 8px!important;min-width:0!important;
+}
+#olfactorySection .note-chip,
+body.quasar-ice-notes #olfactorySection .note-chip{
+  display:inline-flex!important;align-items:center!important;gap:5px!important;max-width:100%!important;
+  margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
+  background:transparent!important;color:color-mix(in srgb,var(--note-color,#c8c8c8) 76%,#f4f4f4)!important;
+  font:400 11px/1.55 Arial,Helvetica,sans-serif!important;text-align:left!important;overflow-wrap:anywhere!important;
+}
+#olfactorySection .note-chip .note-swatch{width:8px!important;height:8px!important;flex:0 0 8px!important}
+#olfactorySection .note-facts{grid-template-columns:1fr!important}
+@media(max-width:720px){
+ #olfactorySection .note-infographic{grid-template-columns:minmax(118px,.34fr) minmax(0,1fr)!important}
+ #olfactorySection .note-visual-bottle img{max-width:150px!important;height:260px!important}
+ #olfactorySection .note-visual-details{padding:14px 10px!important}
+ #olfactorySection .note-graphic-head h3{font-size:21px!important}
+ #olfactorySection .note-pyramid .note-stage{grid-template-columns:62px minmax(0,1fr)!important;gap:6px!important;padding:10px 0!important}
+ #olfactorySection .note-accords .accord-row{min-height:27px!important;padding:0 8px!important}
+ #olfactorySection .note-accords .accord-bar-label{font-size:10px!important}
+ #olfactorySection .note-chip{font-size:10px!important}
+}
+@media(max-width:390px){
+ #olfactorySection .note-infographic{grid-template-columns:minmax(105px,.32fr) minmax(0,1fr)!important}
+ #olfactorySection .note-visual-bottle img{height:235px!important}
+ #olfactorySection .note-visual-details{padding:12px 8px!important}
+ #olfactorySection .note-graphic-head h3{font-size:18px!important}
+ #olfactorySection .note-pyramid .note-stage{grid-template-columns:55px minmax(0,1fr)!important;gap:5px!important}
+ #olfactorySection .note-chip{font-size:9px!important}
+}
+
 </style>
   <link rel="stylesheet" href="santino-ui.css">
 
@@ -1177,7 +1258,7 @@ const product=PRODUCTS.find(x=>x.id===requestedId)||FULL_SIZE_PRODUCTS.find(x=>x
 let gallery=[],failedGallerySources=new Set(),currentVolume=product&&!isFull?product.volumes[0]:null;
 if(!product){document.querySelector("main").innerHTML='<section class="summary"><h1>Perfume não encontrado</h1><p>Volte ao catálogo para escolher uma fragrância.</p><a class="cart-link" href="decants.html">Voltar ao catálogo</a></section>'}
 else{
-const isQuasarIce=product.id.replace(/^full-/,"")==="quasar-ice";document.body.classList.toggle("quasar-ice-notes",isQuasarIce);const olfactorySection=$("olfactorySection");if(olfactorySection){olfactorySection.classList.toggle("quasar-ice-notes-active",isQuasarIce);if(isQuasarIce){olfactorySection.style.setProperty("background","#050505","important");olfactorySection.style.setProperty("color","#f2f2f2","important");const iceStyles=[[".content-heading h2","color","#f2f2f2"],[".content-heading p","color","#a7b9bf"],[".note-infographic","background","#050505"],[".note-infographic","border-color","#29373b"],[".note-visual-bottle","background","linear-gradient(145deg,#eef7fa,#dcecf1)"],[".note-visual-details","background","#050505"],[".note-graphic-head h3","color","#f1f1f1"],[".accord-title","color","#a8c4cc"],[".note-composition","border-top-color","#292929"],[".composition-row","border-bottom-color","#292929"],[".composition-row>strong","color","#a8c4cc"],[".note-pyramid .note-stage","background","#0b1113"],[".note-pyramid .note-stage p","color","#d5e0e3"],[".note-chip","background","#111b1f"],[".note-chip","color","#e3edf0"],[".note-fact","background","#050505"],[".note-fact","border-color","#292929"],[".note-fact strong","color","#a8c4cc"],[".note-fact span","color","#c4d0d3"]];iceStyles.forEach(([selector,property,value])=>olfactorySection.querySelectorAll(selector).forEach(el=>el.style.setProperty(property,value,"important")));}}
+const isQuasarIce=product.id.replace(/^full-/,"")==="quasar-ice";document.body.classList.toggle("quasar-ice-notes",isQuasarIce);const olfactorySection=$("olfactorySection");if(olfactorySection){olfactorySection.classList.toggle("quasar-ice-notes-active",isQuasarIce);if(isQuasarIce){olfactorySection.style.setProperty("background","#050505","important");olfactorySection.style.setProperty("color","#f2f2f2","important");const iceStyles=[[".content-heading h2","color","#f2f2f2"],[".content-heading p","color","#a7b9bf"],[".note-infographic","background","#050505"],[".note-infographic","border-color","#29373b"],[".note-visual-bottle","background","linear-gradient(145deg,#eef7fa,#dcecf1)"],[".note-visual-details","background","#050505"],[".note-graphic-head h3","color","#f1f1f1"],[".accord-title","color","#a8c4cc"],[".note-composition","border-top-color","#292929"],[".composition-row","border-bottom-color","#292929"],[".composition-row>strong","color","#a8c4cc"],[".note-pyramid .note-stage p","color","#d5e0e3"],[".note-fact","background","#050505"],[".note-fact","border-color","#292929"],[".note-fact strong","color","#a8c4cc"],[".note-fact span","color","#c4d0d3"]];iceStyles.forEach(([selector,property,value])=>olfactorySection.querySelectorAll(selector).forEach(el=>el.style.setProperty(property,value,"important")));}}
 document.title="SANTINO | "+product.name;$("crumbName").textContent=product.name;$("productName").textContent=product.name;$("productBrand").textContent=product.brand;$("categoryLabel").textContent=isFull?"Frasco inteiro":"Decant · "+product.tag;
 $("productMeta").textContent=isFull?(product.ml+" ml"):"Escolha o volume do seu decant";$("productDescription").textContent=story?story.intro:(product.description||"Uma fragrância para conhecer em detalhes.");$("longDescription").textContent=story?story.story:(product.description||"Explore o perfil olfativo desta fragrância e escolha o volume desejado.");if(story){$("occasionText").textContent=story.occasion;$("climateText").textContent=story.climate;}$("authenticityNote").textContent=isFull?"Frasco original · selo de originalidade SANTINO":"Fragrância original · decant com selo de originalidade SANTINO";
 $("highlightFamily").textContent=info?info.family:"Perfil olfativo";
