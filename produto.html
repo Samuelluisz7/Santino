@@ -782,6 +782,45 @@ body.quasar-ice-notes #olfactorySection .note-chip{
  #olfactorySection .note-chip{font-size:9px!important}
 }
 
+
+/* Componentes reais da pirâmide: restauração das linhas e cores dos ingredientes */
+#olfactorySection .note-composition{
+ display:flex!important;flex-direction:column!important;align-items:stretch!important;
+ gap:0!important;margin:15px 0 0!important;padding:0!important;border-top:1px solid #292929!important;
+}
+#olfactorySection .note-composition .composition-row,
+body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
+ display:grid!important;grid-template-columns:78px minmax(0,1fr)!important;align-items:start!important;
+ gap:8px!important;width:100%!important;min-width:0!important;margin:0!important;
+ padding:12px 0!important;border:0!important;border-bottom:1px solid #292929!important;
+ border-radius:0!important;background:transparent!important;box-shadow:none!important;text-align:left!important;
+}
+#olfactorySection .note-composition .composition-row>strong{
+ margin:2px 0 0!important;font-size:10px!important;letter-spacing:.12em!important;
+ color:#aaa!important;text-align:left!important;
+}
+#olfactorySection .note-composition .note-words{
+ display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-start!important;
+ gap:5px 8px!important;width:100%!important;min-width:0!important;text-align:left!important;
+}
+#olfactorySection .note-composition .note-word{
+ display:inline-flex!important;align-items:center!important;gap:5px!important;
+ color:var(--note-color,#bbb)!important;font:400 11px/1.6 Arial,Helvetica,sans-serif!important;
+ background:transparent!important;
+}
+#olfactorySection .note-composition .note-dot{
+ display:inline-block!important;flex:0 0 8px!important;width:8px!important;height:8px!important;
+ border-radius:50%!important;background:var(--note-color,#bbb)!important;
+}
+#olfactorySection .note-composition .note-separator{color:#656565!important}
+@media(max-width:720px){
+ #olfactorySection .note-composition .composition-row{grid-template-columns:62px minmax(0,1fr)!important;gap:6px!important;padding:10px 0!important}
+ #olfactorySection .note-composition .note-word{font-size:10px!important}
+}
+@media(max-width:390px){
+ #olfactorySection .note-composition .composition-row{grid-template-columns:55px minmax(0,1fr)!important;gap:5px!important}
+ #olfactorySection .note-composition .note-word{font-size:9px!important}
+}
 </style>
   <link rel="stylesheet" href="santino-ui.css">
 
@@ -1303,7 +1342,7 @@ if(info){
  noteBottle.src=product.image||"";
  if(noteBottle.complete&&noteBottle.naturalWidth===0)noteFallback();
  const accords=PRODUCT_ACCORDS[product.id.replace(/^full-/,"")]||(story&&story.accords&&story.accords.length?story.accords:[info.top,info.heart,info.base]);
- $("accordBars").innerHTML=accords.slice(0,10).map(label=>'<div class="accord-row" style="--bar-color:'+noteColor(label)+'"><span class="accord-bar-dot" aria-hidden="true"></span><span class="accord-bar-label">'+escapeHTML(label)+'</span></div>').join("");
+ $("accordBars").innerHTML=accords.slice(0,10).map((label,index)=>'<div class="accord-row" style="--bar-width:'+(100-index*4.5)+'%;--bar-color:'+noteColor(label)+'"><span class="accord-bar-dot" aria-hidden="true"></span><span class="accord-bar-label">'+escapeHTML(label)+'</span></div>').join("");
 }else{$("olfactorySection").style.display="none"}
 const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?"Consultar pelo WhatsApp":"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
 }
