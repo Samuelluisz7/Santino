@@ -424,6 +424,115 @@ body.quasar-ice-notes #olfactorySection .note-graphic-head h3{color:#f1eee8!impo
   #olfactorySection .note-graphic-head h3{font-size:19px!important}
 }
 
+
+/* Ajuste de hierarquia olfativa: pirâmide visível e frasco mais presente */
+#olfactorySection .note-composition{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  gap:7px!important;
+  padding-top:15px!important;
+  border-top:1px solid #292929!important;
+}
+#olfactorySection .composition-row{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  min-width:0!important;
+  padding:11px 10px!important;
+  margin:0!important;
+  border:1px solid #2a2926!important;
+  border-top:2px solid var(--pyramid-color,#8f8f8f)!important;
+  border-radius:1px!important;
+  text-align:center!important;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--pyramid-color,#8f8f8f) 8%,#0a0a0a),#050505)!important;
+}
+#olfactorySection .composition-row:nth-child(1){
+  width:74%!important;
+  --pyramid-color:#e7c44f;
+}
+#olfactorySection .composition-row:nth-child(2){
+  width:87%!important;
+  --pyramid-color:#78bbc4;
+}
+#olfactorySection .composition-row:nth-child(3){
+  width:100%!important;
+  --pyramid-color:#a27a59;
+}
+#olfactorySection .composition-row>strong{
+  display:block!important;
+  margin:0!important;
+  color:var(--pyramid-color,#aaa)!important;
+  font-size:10px!important;
+  letter-spacing:.15em!important;
+  text-align:center!important;
+}
+#olfactorySection .note-words{
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  flex-wrap:wrap!important;
+  gap:4px 6px!important;
+  width:100%!important;
+  text-align:center!important;
+}
+#olfactorySection .note-word{
+  font-size:11px!important;
+  line-height:1.55!important;
+}
+#olfactorySection .note-separator{color:#6a655c!important}
+#olfactorySection .note-visual-bottle{
+  overflow:hidden!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+}
+#olfactorySection .note-visual-bottle img{
+  width:100%!important;
+  max-width:100%!important;
+  aspect-ratio:1/1!important;
+  height:auto!important;
+  object-fit:contain!important;
+  padding:5px!important;
+  background:#f7f7f4!important;
+  transform:scale(1.08)!important;
+  transform-origin:center center!important;
+  filter:none!important;
+}
+@media(max-width:720px){
+  #olfactorySection .note-infographic,
+  body.quasar-ice-notes #olfactorySection .note-infographic{
+    grid-template-columns:150px minmax(0,1fr)!important;
+  }
+  #olfactorySection .note-visual-bottle{
+    padding:11px 8px!important;
+  }
+  #olfactorySection .note-visual-bottle img{
+    width:100%!important;
+    max-width:134px!important;
+    transform:scale(1.06)!important;
+  }
+  #olfactorySection .note-visual-details{
+    padding:14px 11px 13px!important;
+  }
+  #olfactorySection .composition-row:nth-child(1){width:82%!important}
+  #olfactorySection .composition-row:nth-child(2){width:91%!important}
+  #olfactorySection .composition-row{padding:9px 7px!important}
+}
+@media(max-width:390px){
+  #olfactorySection .note-infographic,
+  body.quasar-ice-notes #olfactorySection .note-infographic{
+    grid-template-columns:124px minmax(0,1fr)!important;
+  }
+  #olfactorySection .note-visual-bottle{padding:9px 6px!important}
+  #olfactorySection .note-visual-bottle img{max-width:112px!important}
+  #olfactorySection .note-graphic-head h3{font-size:18px!important}
+  #olfactorySection .composition-row:nth-child(1){width:88%!important}
+  #olfactorySection .composition-row:nth-child(2){width:94%!important}
+  #olfactorySection .note-word{font-size:10px!important}
+}
+
 </style>
   <link rel="stylesheet" href="santino-ui.css">
 
@@ -584,7 +693,7 @@ body.quasar-ice-notes #olfactorySection .note-graphic-head h3{color:#f1eee8!impo
 </div><div class="price" id="productPrice"></div>
 <div class="purchase-controls"><div class="control" id="volumeControl"><label for="volumeSelect">Volume do decant</label><select id="volumeSelect"></select></div><div class="control"><label for="quantitySelect">Quantidade</label><select id="quantitySelect"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div></div><button class="add-button" id="addButton">Adicionar ao carrinho</button><p class="stock-note" id="stockNote">Confira o volume e a quantidade antes de adicionar. A disponibilidade será confirmada pelo WhatsApp. Confira o total e a entrega antes de pagar.</p></div></section>
 <section class="content-section" id="olfactorySection">
- <div class="content-heading"><div><div class="eyebrow">A composição</div><h2>Notas da fragrância</h2><p><strong>Acordes em destaque.</strong> As faixas coloridas resumem o perfil da fragrância; abaixo, as notas estão organizadas em saída, coração e fundo. As cores ajudam a distinguir ingredientes e acordes. O comprimento das faixas é visual, não representa porcentagem da fórmula.</p></div></div>
+ <div class="content-heading"><div><div class="eyebrow">A composição</div><h2>Notas da fragrância</h2><p><strong>Acordes em destaque.</strong> As etiquetas coloridas resumem o perfil da fragrância; abaixo, a pirâmide organiza as notas em saída, coração e fundo. As cores ajudam a distinguir ingredientes e acordes.</p></div></div>
  <div class="note-infographic">
   <div class="note-visual-bottle"><img id="noteBottleImage" alt="" loading="lazy" decoding="async"><div class="note-bottle-fallback" id="noteBottleFallback" hidden>SANTINO<br>FRAGRÂNCIAS</div></div>
   <div class="note-visual-details">
