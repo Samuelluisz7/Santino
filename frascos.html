@@ -276,6 +276,27 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .origin-filter{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:0 0 18px}.origin-filter-label{font-size:10px;color:var(--muted);letter-spacing:.13em;text-transform:uppercase;margin-right:4px}.origin-filter button{border:1px solid #39352f;background:#171613;color:var(--muted);border-radius:3px;padding:9px 13px;font-size:12px;transition:background .15s,border-color .15s,color .15s}.origin-filter button[aria-pressed="true"]{background:var(--beige);border-color:var(--beige);color:#171512;font-weight:700}.full-size-origin-filter{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0}.full-size-origin-filter .origin-filter-label{width:100%;margin:0 0 1px}.product-origin-tag{display:inline-flex;align-items:center;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--beige);border:1px solid #5b4d38;padding:3px 6px;border-radius:2px;align-self:flex-start;margin:4px 0 6px}
 .full-size-price{margin:8px 0 12px;color:var(--cream);font-size:20px;font-weight:600}
 @media(max-width:720px){.full-size-price{font-size:17px;margin:7px 0 10px}}
+
+/* Fotos comparativas Touti: produto vendido sempre separado da referência olfativa */
+.full-size-product .product-art.product-comparison{height:auto!important;min-height:220px!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:1px!important;padding:0!important;background:#c9b18b!important;border:1px solid #544733!important;overflow:hidden!important}
+.product-comparison .comparison-side{min-width:0;display:flex;flex-direction:column;align-items:stretch;background:#eee8de}
+.product-comparison .comparison-photo{height:166px;display:grid;place-items:center;padding:8px;background:linear-gradient(145deg,#f7f4ef,#e6ded2);overflow:hidden}
+.product-comparison .comparison-photo img{width:100%;height:100%;max-height:150px;object-fit:contain;display:block}
+.product-comparison .comparison-photo .comparison-missing{display:none;color:#766d60;font:10px/1.4 Arial,sans-serif;text-align:center}
+.product-comparison .comparison-photo img[hidden]+.comparison-missing{display:block}
+.product-comparison .comparison-label{padding:8px 6px 3px;color:#5d4c34;font:700 9px/1.2 Arial,sans-serif;letter-spacing:.08em;text-align:center;text-transform:uppercase}
+.product-comparison .comparison-name{min-height:29px;padding:3px 6px 8px;color:#28231c;font:11px/1.35 Arial,sans-serif;text-align:center}
+.product-comparison .comparison-name small{display:block;color:#786f63;font-size:9px}
+.full-size-product .comparison-disclaimer{margin:0 0 9px;color:#c6bdb1;font-size:10px;line-height:1.45}
+@media(max-width:720px){
+ .full-size-product .product-art.product-comparison{min-height:0!important}
+ .product-comparison .comparison-photo{height:124px;padding:6px}
+ .product-comparison .comparison-photo img{max-height:112px}
+ .product-comparison .comparison-label{font-size:8px;padding:7px 3px 3px;letter-spacing:.04em}
+ .product-comparison .comparison-name{font-size:9px;min-height:33px;padding:2px 3px 7px}
+ .product-comparison .comparison-name small{font-size:8px}
+}
+
 </style>
   <link rel="stylesheet" href="santino-ui.css">
 </head>
@@ -363,12 +384,12 @@ const PRODUCTS = [
   {id:"eudora-h-acqua",name:"Eudora H Acqua",brand:"Eudora H",image:"https://carrefourbr.vtexassets.com/arquivos/ids/135847808/e50e11a539fe43b882dbb643abc964e4.jpg?v=638384985975970000",tag:"Nacional",description:"Fougère aquático com cítricos gelados, pera e noz-moscada, notas oceânicas e aromáticas e fundo de sândalo, musgo, musk e âmbar.",volumes:[{ml:5,price:9.9},{ml:10,price:17.9}]}
 ];
 const FULL_SIZE_PRODUCTS = [
-  {id:"full-touti-vip-12",name:"VIP 12 · Boss Bottled",brand:"Touti · 50 ml",ml:50,price:55,image:"https://cdn.vnda.com.br/dolcevitaperfumes/2022/01/13/17_1_6_687_BossBottledHugoBossPerfumeMasculinoEaudeToilette50ml.jpg?v=1642104481",description:"Perfume Touti VIP 12, inspirado em Boss Bottled de Hugo Boss. Família amadeirada especiada. Imagem ilustrativa da fragrância de referência."},
-  {id:"full-touti-vip-46",name:"VIP 46 · 212 VIP Black",brand:"Touti · 50 ml",ml:50,price:55,image:"https://f.fcdn.app/imgs/267ea9/www.sanroque.com.uy/sanruy/e03f/original/catalogo/115289_115289_2/2000-2000/perfume-carolina-herrera-212-vip-black-men-edp-100ml-perfume-carolina-herrera-212-vip-black-men-edp-100ml.jpg",description:"Perfume Touti VIP 46, inspirado em 212 VIP Black de Carolina Herrera. Família aromática fougère. Imagem ilustrativa da fragrância de referência."},
-  {id:"full-touti-vip-50",name:"VIP 50 · Bleu de Chanel",brand:"Touti · 50 ml",ml:50,price:55,image:"https://9f8e62d4.delivery.rocketcdn.me/wp-content/uploads/2023/07/bleu-de-chanel.jpg",description:"Perfume Touti VIP 50, inspirado em Bleu de Chanel. Família amadeirada aromática. Imagem ilustrativa da fragrância de referência."},
-  {id:"full-touti-vip-52",name:"VIP 52 · One Million Privé",brand:"Touti · 50 ml",ml:50,price:55,image:"https://e7cbb2c9-bb84-4880-8504-79f06f158221.svc.edge.scw.cloud/product/19130/detailsc.jpg",description:"Perfume Touti VIP 52, inspirado em One Million Privé de Paco Rabanne. Família oriental amadeirada, com canela, tabaco e mirra. Imagem ilustrativa da fragrância de referência."},
-  {id:"full-touti-vip-80",name:"VIP 80 · Y Eau de Parfum",brand:"Touti · 50 ml",ml:50,price:55,image:"https://beautyhouse.com/cdn/shop/files/01bdmtewnr.jpg?v=1760981447&width=1492",description:"Perfume Touti VIP 80, inspirado em Y Eau de Parfum de Yves Saint Laurent. Família aromática. Imagem ilustrativa da fragrância de referência."},
-  {id:"full-touti-fit-caribe",name:"FIT Caribe · Polo Ultra Blue",brand:"Touti · 50 ml",ml:50,price:55,image:"https://images.tcdn.com.br/img/img_prod/1144493/perfume_polo_ultra_blue_ralph_lauren_eau_de_toilette_masculino_4631_1_406d4d38ef38a973edfe0fc8af436757.jpg",description:"Perfume Touti FIT Caribe, inspirado em Polo Ultra Blue de Ralph Lauren. Perfil fresco aquático. Imagem ilustrativa da fragrância de referência."},
+  {id:"full-touti-vip-12",name:"VIP 12 · Boss Bottled",brand:"Touti · 50 ml",ml:50,price:55,image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu9nuwstd4rk7a",toutiImage:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu9nuwstd4rk7a",referenceImage:"https://fragrancelord.com/cdn/shop/files/2_2_f04e5c3a-2239-429f-ac6b-751492da4203_large.png?v=1726907239",referenceName:"Boss Bottled · Hugo Boss",toutiCaption:"Touti VIP 12 · frasco e caixa",description:"O produto vendido é o perfume Touti VIP 12, 50 ml. Boss Bottled é apenas a referência olfativa e não está incluído."},
+  {id:"full-touti-vip-46",name:"VIP 46 · 212 VIP Black",brand:"Touti · 50 ml",ml:50,price:55,image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvhzvrznhtwg3e",toutiImage:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvhzvrznhtwg3e",referenceImage:"https://f.fcdn.app/imgs/267ea9/www.sanroque.com.uy/sanruy/e03f/original/catalogo/115289_115289_2/2000-2000/perfume-carolina-herrera-212-vip-black-men-edp-100ml-perfume-carolina-herrera-212-vip-black-men-edp-100ml.jpg",referenceName:"212 VIP Black · Carolina Herrera",toutiCaption:"Touti VIP 46 · frasco e caixa",description:"O produto vendido é o perfume Touti VIP 46, 50 ml. 212 VIP Black é apenas a referência olfativa e não está incluído."},
+  {id:"full-touti-vip-50",name:"VIP 50 · Bleu de Chanel",brand:"Touti · 50 ml",ml:50,price:55,image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eelxoihe9",toutiImage:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eelxoihe9",referenceImage:"https://cdn.basler-beauty.de/out/pictures/generated/product/1/980_980_100/2554585-CHANEL-BLEU-DE-CHANEL-EAU-DE-PARFUM-ZERSTAEUBER-100-ml.58eb8140.jpg",referenceName:"Bleu de Chanel · Chanel",toutiCaption:"Touti VIP 50 · frasco 50 ml",description:"O produto vendido é o perfume Touti VIP 50, 50 ml. Bleu de Chanel é apenas a referência olfativa e não está incluído."},
+  {id:"full-touti-vip-52",name:"VIP 52 · One Million",brand:"Touti · 50 ml",ml:50,price:55,image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvhxs3jke5r48d",toutiImage:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvhxs3jke5r48d",referenceImage:"https://images.matas.dk/encode/3349666007921.jpg",referenceName:"One Million · Rabanne",toutiCaption:"Touti VIP 52 · frasco e caixa",description:"O produto vendido é o perfume Touti VIP 52, 50 ml. One Million é apenas a referência olfativa e não está incluído."},
+  {id:"full-touti-vip-80",name:"VIP 80 · Y Eau de Parfum",brand:"Touti · 50 ml",ml:50,price:55,image:"https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",toutiImage:"https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",referenceImage:"https://beautyhouse.com/cdn/shop/files/01bdmtewnr.jpg?v=1760981447&width=1492",referenceName:"Y Eau de Parfum · Yves Saint Laurent",toutiCaption:"Frasco padrão da linha VIP Touti · 50 ml",description:"O produto vendido é o perfume Touti VIP 80, 50 ml. A foto mostra o frasco padrão da linha VIP; Y Eau de Parfum é apenas a referência olfativa e não está incluído."},
+  {id:"full-touti-fit-caribe",name:"FIT Caribe · Acqua di Giò Profondo",brand:"Touti · 50 ml",ml:50,price:55,image:"https://down-br.img.susercontent.com/file/sg-11134201-7rbkn-llw9seqvwa09e4",toutiImage:"https://down-br.img.susercontent.com/file/sg-11134201-7rbkn-llw9seqvwa09e4",referenceImage:"https://primadonabeauty.com/cdn/shop/files/acqua-di-gio-profondo-edp-m-gior.jpg?v=1739471232",referenceName:"Acqua di Giò Profondo · Giorgio Armani",toutiCaption:"Touti FIT Caribe · frasco",description:"O produto vendido é o perfume Touti FIT Caribe, 50 ml. Acqua di Giò Profondo é apenas a referência olfativa e não está incluído."},
   {id:"full-kingdom",name:"The Kingdom",brand:"Lattafa",ml:100,image:"https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&width=1946",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
   {id:"full-212-vip-black",name:"212 VIP Black",brand:"Carolina Herrera",ml:100,image:"https://cdn.salla.sa/DGdDlG/c8ab83f8-76ec-45e6-a9e9-3c35260c28b9-1000x1000-z7c64TKXbUSTNjJpzdzsZ6frKO0DM0gAjXPF22wN.jpg",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
   {id:"full-the-blend-bourbon",name:"The Blend Bourbon",brand:"O Boticário",ml:100,image:"https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_1800%2Cc_limit/e_trim/v1/imagens/product/B77489/c97c55ee-65fe-4339-9a99-1363b969701b-the-blend-bourbon-eau-de-parfum-100ml.png",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
@@ -480,10 +501,15 @@ function renderFullSizeProducts(){
  $("fullSizeProducts").innerHTML = items.map(p =>
    '<article class="product full-size-product">' +
    '<a class="product-detail-link" href="produto.html?id=' + encodeURIComponent(p.id) + '" aria-label="Ver detalhes de ' + escapeHTML(p.name) + '">' +
-     '<div class="product-art">' +
-       (p.image ? '<img class="product-photo" data-product-id="' + escapeHTML(p.id) + '" src="' + escapeHTML(p.image) + '" alt="Frasco de ' + escapeHTML(p.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer">' : '') +
-       '<div class="photo-fallback" style="' + (p.image ? 'display:none;' : '') + '"><div class="vial"></div></div>' +
-     '</div>' +
+     (p.toutiImage && p.referenceImage
+       ? '<div class="product-art product-comparison">' +
+          '<div class="comparison-side"><div class="comparison-label">Produto vendido</div><div class="comparison-photo"><img data-pair-photo src="' + escapeHTML(p.toutiImage) + '" alt="' + escapeHTML(p.name) + ' — frasco Touti anunciado" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto do produto indisponível</span></div><div class="comparison-name">' + escapeHTML(p.toutiCaption || p.name) + '</div></div>' +
+          '<div class="comparison-side"><div class="comparison-label">Referência olfativa</div><div class="comparison-photo"><img data-pair-photo src="' + escapeHTML(p.referenceImage) + '" alt="' + escapeHTML(p.referenceName) + ' — referência olfativa, não incluída na venda" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto da referência indisponível</span></div><div class="comparison-name">' + escapeHTML(p.referenceName) + '<small>Não incluído na venda</small></div></div>' +
+         '</div>'
+       : '<div class="product-art">' +
+          (p.image ? '<img class="product-photo" data-product-id="' + escapeHTML(p.id) + '" src="' + escapeHTML(p.image) + '" alt="Frasco de ' + escapeHTML(p.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer">' : '') +
+          '<div class="photo-fallback" style="' + (p.image ? 'display:none;' : '') + '"><div class="vial"></div></div>' +
+         '</div>') +
      '<h3>' + escapeHTML(p.name) + '</h3>' +
      '<div class="product-brand">' + escapeHTML(p.brand) + '</div>' +
      '<span class="product-origin-tag">' + getProductOrigin(p) + '</span>' +
@@ -496,6 +522,7 @@ function renderFullSizeProducts(){
    '</article>'
  ).join("");
  bindProductImageFallbacks($("fullSizeProducts"));
+ $("fullSizeProducts").querySelectorAll("[data-pair-photo]").forEach(img=>img.addEventListener("error",()=>{img.hidden=true;}));
  document.querySelectorAll("[data-consult-full]").forEach(button => button.addEventListener("click", () => consultFullSize(button.dataset.consultFull)));
  document.querySelectorAll("[data-add-full]").forEach(button => button.addEventListener("click", () => addFullSizeToCart(button.dataset.addFull)));
 }
