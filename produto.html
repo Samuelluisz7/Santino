@@ -1118,7 +1118,7 @@ const FULL_SIZE_PRODUCTS = [
   {id:"full-homem-essence",name:"Homem Essence",brand:"Natura",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
   {id:"full-essencial-sentir",name:"Essencial Sentir",brand:"Natura",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw62148647/Produtos/NATBRA-167755_1.jpg?q=80&sw=600",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
   {id:"full-fakhar-black",name:"Fakhar Black",brand:"Lattafa",ml:100,image:"https://www.lattafa-usa.com/cdn/shop/files/1_aa0a5a38-775b-4814-a909-837c1d360d9c.png?v=1747500778&width=1946",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
-  {id:"full-k-max",name:"Natura Kaiak K Max",brand:"Natura Kaiak",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-k-max",name:"Natura K Max",brand:"Natura",ml:100,price:180,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600",description:"Natura K Max em frasco de 100 ml."},
 
  {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,image:"https://scale.coolshop-cdn.com/product-media.coolshop-cdn.com/23UC4G/f178d6ad2668454da17223e593c9cbd7.jpg/f/jean-paul-gaultier-le-male-le-parfum-125-ml.jpg",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
  {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,image:"https://emiratesfragrance.com/cdn/shop/files/afnan-9-pm-eau-de-parfum-for-men-1.jpg?v=1726044462&width=2048",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
@@ -1129,7 +1129,7 @@ const FULL_SIZE_PRODUCTS = [
  {id:"full-sauvage",name:"Sauvage",brand:"Dior",ml:100,image:"https://www.sephora.com.mx/on/demandware.static/-/Sites-masterCatalog_Sephora/es_MX/dwdefc1b76/images/hi-res/eau-de-toilette-dior-dior-sauvage-eau-de-toilette-100ml3348901250146A.jpg",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
  {id:"full-invictus",name:"Invictus",brand:"Rabanne",ml:100,image:"https://medias.lookatme.com.ph/publishing/LOOKPH-70030889-front-zoom.jpg?version=1767696583",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
  {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,image:"https://www.houseoffraser.co.uk/images/imgzoom/75/75510669_xxl.jpg",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
- {id:"full-nautica-voyage",name:"Nautica Voyage",brand:"Nautica",ml:100,image:"https://amobeleza.vtexassets.com/arquivos/ids/338641/15282_0.jpg?v=639124732241930000",description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-nautica-voyage",name:"Nautica Voyage",brand:"Nautica",ml:100,price:100,image:"https://amobeleza.vtexassets.com/arquivos/ids/338641/15282_0.jpg?v=639124732241930000",description:"Nautica Voyage em frasco de 100 ml."},
  {id:"full-clash",name:"Clash",brand:"O Boticário",ml:100,image:"https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Abest/v1/imagens/product/B50677/cae5b3cb-4709-4ad6-abac-8c54b813587e-bot-50677-clash-desodorante-colonia-frontal-01.jpg?v=20261024",description:"Desodorante colônia masculino de perfil fougère aquoso. Consulte a SANTINO para disponibilidade e condições."},
  {id:"full-cebolinha",name:"Cebolinha",brand:"Jequiti · Turma da Mônica",ml:50,image:"https://http2.mlstatic.com/D_Q_NP_2X_990616-MLB92509253839_092025-E.webp",description:"Colônia masculina fougère refrescante da Turma da Mônica, em frasco de 50 ml. Consulte a SANTINO para disponibilidade e condições."},
  {id:"full-quasar-ice",name:"Quasar Ice",brand:"O Boticário",ml:100,image:"https://down-br.img.susercontent.com/file/b7e357f69053ee8fed9a7156dc053519",description:"Desodorante colônia masculino de perfil fougère aldeídico e frescor gelado. Consulte a SANTINO para disponibilidade e condições."},
@@ -1304,7 +1304,16 @@ $("highlightFamily").textContent=info?info.family:"Perfil olfativo";
 $("highlightOccasion").textContent=story?story.occasion:"Consulte a SANTINO";
 $("highlightClimate").textContent=story?story.climate:"Consulte a SANTINO";
 $("backCatalog").href=isFull?"frascos.html#full-size-catalog":"decants.html#catalog";$("cartLink").href=(isFull?"frascos.html":"decants.html")+"?openCart=1";
-if(isFull){document.body.classList.add("full-size-mode");$("volumeControl").style.display="none";$("quantitySelect").parentElement.style.display="none";$("productPrice").textContent="";$("productPrice").classList.remove("pending");$("stockNote").textContent="Para informações sobre esta fragrância e condições de compra, fale com a SANTINO pelo WhatsApp. A entrega local em Viçosa é combinada no atendimento."}
+if(isFull){
+ document.body.classList.add("full-size-mode");
+ $("volumeControl").style.display="none";
+ $("quantitySelect").parentElement.style.display="none";
+ $("productPrice").textContent=Number.isFinite(product.price)?money(product.price):"";
+ $("productPrice").classList.toggle("pending",!Number.isFinite(product.price));
+ $("stockNote").textContent=Number.isFinite(product.price)
+  ?"Preço anunciado para o frasco de "+product.ml+" ml. A entrega local em Viçosa é combinada no atendimento."
+  :"Para informações sobre esta fragrância e condições de compra, fale com a SANTINO pelo WhatsApp. A entrega local em Viçosa é combinada no atendimento.";
+}
 else{$("volumeSelect").innerHTML=product.volumes.map((v,i)=>'<option value="'+i+'">'+v.ml+' ml</option>').join("");updatePrice();$("volumeSelect").addEventListener("change",()=>{currentVolume=product.volumes[Number($("volumeSelect").value)];updatePrice()})}
 const baseGalleryId=product.id.replace(/^full-/,"");
 const extraGallery=EXTRA_GALLERY[product.id]||EXTRA_GALLERY[baseGalleryId]||[];
@@ -1344,12 +1353,43 @@ if(info){
  const accords=PRODUCT_ACCORDS[product.id.replace(/^full-/,"")]||(story&&story.accords&&story.accords.length?story.accords:[info.top,info.heart,info.base]);
  $("accordBars").innerHTML=accords.slice(0,10).map((label,index)=>'<div class="accord-row" style="--bar-width:'+(100-index*4.5)+'%;--bar-color:'+noteColor(label)+'"><span class="accord-bar-dot" aria-hidden="true"></span><span class="accord-bar-label">'+escapeHTML(label)+'</span></div>').join("");
 }else{$("olfactorySection").style.display="none"}
-const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?"Consultar pelo WhatsApp":"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
+const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?(Number.isFinite(product.price)?"Adicionar ao carrinho — "+money(product.price):"Consultar pelo WhatsApp"):"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
 }
 function selectGallery(index){if(!gallery[index])return;$("mainImage").style.display="block";$("galleryFallback").style.display="none";$("mainImage").src=gallery[index];$("mainImage").alt=product.name+" — foto "+(index+1);$("galleryCaption").textContent=index===0?"Frasco do perfume":(INGREDIENT_IMAGE_URLS.has(gallery[index])?"Imagem de notas ou ingredientes da fragrância":"Foto complementar do perfume");document.querySelectorAll("[data-gallery-index]").forEach(button=>button.setAttribute("aria-pressed",String(Number(button.dataset.galleryIndex)===index)));}
 function updatePrice(){if(!currentVolume)return;$("productPrice").textContent=money(currentVolume.price);$("productPrice").classList.remove("pending");$("addButton").textContent="Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price)}
 function readCart(){try{const value=JSON.parse(localStorage.getItem("santino_nobre_cart")||"[]");return Array.isArray(value)?value:[]}catch(e){return []}}
-function addToCart(){if(!product)return;if(isFull){const message="Olá! Gostaria de consultar o frasco inteiro de "+product.name+".";window.open("https://wa.me/5531996312579?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");return;}const amount=Math.max(1,Math.min(10,Number($("quantitySelect").value)||1)),ml=currentVolume.ml,price=currentVolume.price,key=product.id+"-"+ml,cart=readCart(),item=cart.find(x=>x.key===key);if(item)item.qty=(Number(item.qty)||0)+amount;else cart.push({key,id:product.id,name:product.name,brand:product.brand,ml,price,qty:amount,category:"Decant"});try{localStorage.setItem("santino_nobre_cart",JSON.stringify(cart))}catch(e){}$("cartCount").textContent=cart.reduce((sum,x)=>sum+(Number(x.qty)||0),0);$("toast").textContent=amount+" unidade(s) de "+product.name+" adicionada(s) ao carrinho.";$("toast").style.display="block";const button=$("addButton"),original="Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);button.textContent="Adicionado ao carrinho ✓";setTimeout(()=>{button.textContent=original;$("toast").style.display="none"},2000)}
+function addToCart(){
+ if(!product)return;
+ const cart=readCart();
+ if(isFull){
+  if(!Number.isFinite(product.price)){
+   const message="Olá! Gostaria de consultar o frasco inteiro de "+product.name+".";
+   window.open("https://wa.me/5531996312579?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
+   return;
+  }
+  const key=product.id+"-full",item=cart.find(x=>x.key===key);
+  if(item)item.qty=(Number(item.qty)||0)+1;
+  else cart.push({key,id:product.id,name:product.name,brand:product.brand,ml:product.ml,price:product.price,qty:1,category:"Frasco inteiro"});
+  try{localStorage.setItem("santino_nobre_cart",JSON.stringify(cart))}catch(e){}
+  $("cartCount").textContent=cart.reduce((sum,x)=>sum+(Number(x.qty)||0),0);
+  $("toast").textContent=product.name+" adicionado ao carrinho.";
+  $("toast").style.display="block";
+  const button=$("addButton"),original="Adicionar ao carrinho — "+money(product.price);
+  button.textContent="Adicionado ao carrinho ✓";
+  setTimeout(()=>{button.textContent=original;$("toast").style.display="none"},2000);
+  return;
+ }
+ const amount=Math.max(1,Math.min(10,Number($("quantitySelect").value)||1)),ml=currentVolume.ml,price=currentVolume.price,key=product.id+"-"+ml,item=cart.find(x=>x.key===key);
+ if(item)item.qty=(Number(item.qty)||0)+amount;
+ else cart.push({key,id:product.id,name:product.name,brand:product.brand,ml,price,qty:amount,category:"Decant"});
+ try{localStorage.setItem("santino_nobre_cart",JSON.stringify(cart))}catch(e){}
+ $("cartCount").textContent=cart.reduce((sum,x)=>sum+(Number(x.qty)||0),0);
+ $("toast").textContent=amount+" unidade(s) de "+product.name+" adicionada(s) ao carrinho.";
+ $("toast").style.display="block";
+ const button=$("addButton"),original="Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);
+ button.textContent="Adicionado ao carrinho ✓";
+ setTimeout(()=>{button.textContent=original;$("toast").style.display="none"},2000);
+}
 </script><script src="search.js" defer></script>
 <script src="santino-ui.js" defer></script>
 </body>
