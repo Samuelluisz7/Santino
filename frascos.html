@@ -274,7 +274,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .product .add:hover{background:#dbc6a4!important;border-color:#dbc6a4!important}
 @media(max-width:720px){.product .add{min-height:54px!important;font-size:12px!important;padding:12px 7px!important}.catalog-nav{gap:14px!important}.catalog-nav a{font-size:12px!important}}
 .origin-filter{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:0 0 18px}.origin-filter-label{font-size:10px;color:var(--muted);letter-spacing:.13em;text-transform:uppercase;margin-right:4px}.origin-filter button{border:1px solid #39352f;background:#171613;color:var(--muted);border-radius:3px;padding:9px 13px;font-size:12px;transition:background .15s,border-color .15s,color .15s}.origin-filter button[aria-pressed="true"]{background:var(--beige);border-color:var(--beige);color:#171512;font-weight:700}.full-size-origin-filter{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0}.full-size-origin-filter .origin-filter-label{width:100%;margin:0 0 1px}.product-origin-tag{display:inline-flex;align-items:center;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--beige);border:1px solid #5b4d38;padding:3px 6px;border-radius:2px;align-self:flex-start;margin:4px 0 6px}
-.full-size-price{margin:8px 0 12px;color:var(--cream);font-size:20px;font-weight:600}
+.full-size-price{margin:8px 0 12px;color:var(--cream);font-size:20px;font-weight:600}.full-volume-label{display:block;margin:8px 0;color:var(--muted);font-size:11px}.full-volume-select{display:block;width:100%;margin-top:5px;min-height:42px;padding:9px 10px;background:#171613;color:var(--cream);border:1px solid #5b4d38;border-radius:3px;font-size:13px}
 @media(max-width:720px){.full-size-price{font-size:17px;margin:7px 0 10px}}
 
 /* Fotos comparativas Touti: produto vendido sempre separado da referência olfativa */
@@ -391,7 +391,7 @@ const FULL_SIZE_PRODUCTS = [
   {id:"full-touti-vip-80",name:"VIP 80 · Y Eau de Parfum",brand:"Touti · 50 ml",ml:50,price:55,image:"https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",toutiImage:"https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",referenceImage:"https://beautyhouse.com/cdn/shop/files/01bdmtewnr.jpg?v=1760981447&width=1492",referenceName:"Y Eau de Parfum · Yves Saint Laurent",toutiCaption:"Frasco padrão da linha VIP Touti · 50 ml",description:"O produto vendido é o perfume Touti VIP 80, 50 ml. A foto mostra o frasco padrão da linha VIP; Y Eau de Parfum é apenas a referência olfativa e não está incluído."},
   {id:"full-touti-fit-caribe",name:"FIT Caribe · Polo Ultra Blue",brand:"Touti · 50 ml",ml:50,price:55,image:"https://down-br.img.susercontent.com/file/sg-11134201-7rbkn-llw9seqvwa09e4",toutiImage:"https://down-br.img.susercontent.com/file/sg-11134201-7rbkn-llw9seqvwa09e4",referenceImage:"https://images.tcdn.com.br/img/img_prod/1144493/perfume_polo_ultra_blue_ralph_lauren_eau_de_toilette_masculino_4631_1_406d4d38ef38a973edfe0fc8af436757.jpg",referenceName:"Polo Ultra Blue · Ralph Lauren",toutiCaption:"Touti FIT Caribe · frasco",description:"O produto vendido é o perfume Touti FIT Caribe, 50 ml. Polo Ultra Blue é apenas a referência olfativa e não está incluído."},
   {id:"full-kingdom",name:"The Kingdom",brand:"Lattafa",ml:100,image:"https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&width=1946",price:199,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
-  {id:"full-212-vip-black",name:"212 VIP Black",brand:"Carolina Herrera",ml:100,image:"https://cdn.salla.sa/DGdDlG/c8ab83f8-76ec-45e6-a9e9-3c35260c28b9-1000x1000-z7c64TKXbUSTNjJpzdzsZ6frKO0DM0gAjXPF22wN.jpg",price:499,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+  {id:"full-212-vip-black",name:"212 VIP Black",brand:"Carolina Herrera",ml:100,volumes:[{ml:50,price:null},{ml:100,price:499},{ml:200,price:null}],image:"https://cdn.salla.sa/DGdDlG/c8ab83f8-76ec-45e6-a9e9-3c35260c28b9-1000x1000-z7c64TKXbUSTNjJpzdzsZ6frKO0DM0gAjXPF22wN.jpg",price:499,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
   {id:"full-the-blend-bourbon",name:"The Blend Bourbon",brand:"O Boticário",ml:100,image:"https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_1800%2Cc_limit/e_trim/v1/imagens/product/B77489/c97c55ee-65fe-4339-9a99-1363b969701b-the-blend-bourbon-eau-de-parfum-100ml.png",price:349,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
   {id:"full-homem-sagaz",name:"Homem Sagaz",brand:"Natura",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600",price:159,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
   {id:"full-homem-dom",name:"Homem Dom",brand:"Natura",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw035424b3/Produtos/PRODUTO/NATBRA-71770_1.jpg?q=80&sw=600",price:169,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
@@ -400,15 +400,15 @@ const FULL_SIZE_PRODUCTS = [
   {id:"full-fakhar-black",name:"Fakhar Black",brand:"Lattafa",ml:100,image:"https://www.lattafa-usa.com/cdn/shop/files/1_aa0a5a38-775b-4814-a909-837c1d360d9c.png?v=1747500778&width=1946",price:219,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
   {id:"full-k-max",name:"Natura K Max",brand:"Natura",ml:100,price:180,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600",description:"Natura K Max em frasco de 100 ml."},
 
- {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,image:"https://scale.coolshop-cdn.com/product-media.coolshop-cdn.com/23UC4G/f178d6ad2668454da17223e593c9cbd7.jpg/f/jean-paul-gaultier-le-male-le-parfum-125-ml.jpg",price:799,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",ml:125,volumes:[{ml:75,price:null},{ml:125,price:799},{ml:200,price:null}],image:"https://scale.coolshop-cdn.com/product-media.coolshop-cdn.com/23UC4G/f178d6ad2668454da17223e593c9cbd7.jpg/f/jean-paul-gaultier-le-male-le-parfum-125-ml.jpg",price:799,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
  {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",ml:100,image:"https://emiratesfragrance.com/cdn/shop/files/afnan-9-pm-eau-de-parfum-for-men-1.jpg?v=1726044462&width=2048",price:229,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
  {id:"full-asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",ml:100,image:"https://scentira.in/cdn/shop/files/LATTAFAAl_Asad_Bourbon_1_34bc0e05-10ec-4d25-9df5-34b68222f16c.png?v=1756889307&width=5000",price:259,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
  {id:"full-asad",name:"Asad",brand:"Lattafa",ml:100,image:"https://www.opulensi.com/cdn/shop/files/AsadMain.jpg?v=1683748573&width=1445",price:159,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
- {id:"full-eros",name:"Eros",brand:"Versace",ml:100,image:"https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw8b197414/original/90_R740010-R100MLS_RNUL_20_Eros~EDT~100~ml-Accessories-Versace-online-store_3_1.jpg?q=85&strip=true&sw=850",price:499,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
- {id:"full-million",name:"1 Million",brand:"Rabanne",ml:100,image:"https://media.ulta.com/i/ulta/2276633?fmt=auto&h=1080&w=1080",price:599,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
- {id:"full-sauvage",name:"Sauvage",brand:"Dior",ml:100,image:"https://www.sephora.com.mx/on/demandware.static/-/Sites-masterCatalog_Sephora/es_MX/dwdefc1b76/images/hi-res/eau-de-toilette-dior-dior-sauvage-eau-de-toilette-100ml3348901250146A.jpg",price:749,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-eros",name:"Eros",brand:"Versace",ml:100,volumes:[{ml:50,price:null},{ml:100,price:499},{ml:200,price:null}],image:"https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw8b197414/original/90_R740010-R100MLS_RNUL_20_Eros~EDT~100~ml-Accessories-Versace-online-store_3_1.jpg?q=85&strip=true&sw=850",price:499,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-million",name:"1 Million",brand:"Rabanne",ml:100,volumes:[{ml:30,price:null},{ml:50,price:null},{ml:100,price:599},{ml:200,price:null}],image:"https://media.ulta.com/i/ulta/2276633?fmt=auto&h=1080&w=1080",price:599,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-sauvage",name:"Sauvage",brand:"Dior",ml:100,volumes:[{ml:30,price:null},{ml:60,price:null},{ml:100,price:749},{ml:200,price:null}],image:"https://www.sephora.com.mx/on/demandware.static/-/Sites-masterCatalog_Sephora/es_MX/dwdefc1b76/images/hi-res/eau-de-toilette-dior-dior-sauvage-eau-de-toilette-100ml3348901250146A.jpg",price:749,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
  {id:"full-invictus",name:"Invictus",brand:"Rabanne",ml:100,image:"https://medias.lookatme.com.ph/publishing/LOOKPH-70030889-front-zoom.jpg?version=1767696583",price:449,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
- {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,image:"https://www.houseoffraser.co.uk/images/imgzoom/75/75510669_xxl.jpg",price:629,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
+ {id:"full-myslf",name:"MYSLF",brand:"Yves Saint Laurent",ml:100,volumes:[{ml:40,price:null},{ml:60,price:null},{ml:100,price:629},{ml:150,price:null}],image:"https://www.houseoffraser.co.uk/images/imgzoom/75/75510669_xxl.jpg",price:629,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
  {id:"full-nautica-voyage",name:"Nautica Voyage",brand:"Nautica",ml:100,price:100,image:"https://amobeleza.vtexassets.com/arquivos/ids/338641/15282_0.jpg?v=639124732241930000",description:"Nautica Voyage em frasco de 100 ml."},
  {id:"full-clash",name:"Clash",brand:"O Boticário",ml:100,image:"https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Abest/v1/imagens/product/B50677/cae5b3cb-4709-4ad6-abac-8c54b813587e-bot-50677-clash-desodorante-colonia-frontal-01.jpg?v=20261024",price:149,description:"Desodorante colônia masculino de perfil fougère aquoso. Consulte a SANTINO para disponibilidade e condições."},
  {id:"full-cebolinha",name:"Cebolinha",brand:"Jequiti · Turma da Mônica",ml:50,image:"https://http2.mlstatic.com/D_Q_NP_2X_990616-MLB92509253839_092025-E.webp",price:49,description:"Colônia masculina fougère refrescante da Turma da Mônica, em frasco de 50 ml. Consulte a SANTINO para disponibilidade e condições."},
@@ -513,25 +513,23 @@ function renderFullSizeProducts(){
      '<h3>' + escapeHTML(p.name) + '</h3>' +
      '<div class="product-brand">' + escapeHTML(p.brand) + '</div>' +
      '<span class="product-origin-tag">' + getProductOrigin(p) + '</span>' +
-     '<p class="card-meta">' + p.ml + ' ml</p>' +
-     (Number.isFinite(p.price) ? '<p class="price full-size-price">' + money(p.price) + '</p>' : '') +
+     (Array.isArray(p.volumes)&&p.volumes.length
+       ? '<label class="full-volume-label">Volume<select class="full-volume-select" data-full-volume="' + p.id + '" aria-label="Escolher volume de ' + escapeHTML(p.name) + '">' + p.volumes.map((v,i)=>'<option value="' + i + '">' + v.ml + ' ml' + (Number.isFinite(v.price)?' — '+money(v.price):' — consultar') + '</option>').join('') + '</select></label>'
+       : '<p class="card-meta">' + p.ml + ' ml</p>') +
+     '<p class="price full-size-price" data-full-price="' + p.id + '">' + (Number.isFinite(p.volumes?.[0]?.price ?? p.price)?money(p.volumes?.[0]?.price ?? p.price):'Consulte o preço') + '</p>' +
    '</a>' +
-   (Number.isFinite(p.price)
-     ? '<button class="add" type="button" data-add-full="' + p.id + '">Adicionar ao carrinho — ' + money(p.price) + '</button>'
-     : '<button class="add" type="button" data-consult-full="' + p.id + '">Consultar pelo WhatsApp</button>') +
+   '<button class="add" type="button" data-add-full="' + p.id + '">' + (Number.isFinite(p.volumes?.[0]?.price ?? p.price)?'Adicionar ao carrinho — '+money(p.volumes?.[0]?.price ?? p.price):'Consultar pelo WhatsApp') + '</button>' +
    '</article>'
  ).join("");
  bindProductImageFallbacks($("fullSizeProducts"));
  $("fullSizeProducts").querySelectorAll("[data-pair-photo]").forEach(img=>img.addEventListener("error",()=>{img.hidden=true;}));
- document.querySelectorAll("[data-consult-full]").forEach(button => button.addEventListener("click", () => consultFullSize(button.dataset.consultFull)));
+ $("fullSizeProducts").querySelectorAll("[data-full-volume]").forEach(select=>select.addEventListener("change",()=>updateFullSizeSelection(select.dataset.fullVolume,Number(select.value))));
  document.querySelectorAll("[data-add-full]").forEach(button => button.addEventListener("click", () => addFullSizeToCart(button.dataset.addFull)));
 }
-function consultFullSize(id){
- const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);
- if(!p)return;
- const message="Olá! Gostaria de consultar o frasco inteiro de "+p.name+".";
- window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
-}function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function getFullSizeVolume(p,index){return Array.isArray(p.volumes)&&p.volumes.length?p.volumes[index]||p.volumes[0]:{ml:p.ml,price:Number.isFinite(p.price)?p.price:null};}
+function updateFullSizeSelection(id,index){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const v=getFullSizeVolume(p,index),price=document.querySelector('[data-full-price="'+id+'"]'),button=document.querySelector('[data-add-full="'+id+'"]');if(price)price.textContent=Number.isFinite(v.price)?money(v.price):"Consulte o preço";if(button)button.textContent=Number.isFinite(v.price)?"Adicionar ao carrinho — "+money(v.price):"Consultar pelo WhatsApp";}
+function consultFullSize(id,ml){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message="Olá! Gostaria de consultar "+p.name+" na apresentação de "+ml+" ml.";window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
  const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
  const key=id+"-"+v.ml; const existing=cart.find(x=>x.key===key);
@@ -539,10 +537,12 @@ function addToCart(id){
  renderCart();showToast(p.name+" adicionado ao carrinho.");
 }
 function addFullSizeToCart(id){
- const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id); if(!p)return;
- const key=id+"-full"; const requested=Math.max(1,Math.min(10,Number($("qty-"+id)?.value)||1)); const existing=cart.find(x=>x.key===key);
- if(existing)existing.qty+=requested;else cart.push({key,id,name:p.name,brand:p.brand,ml:p.ml,price:Number.isFinite(p.price)?p.price:null,qty:requested,category:"Frasco inteiro"});
- renderCart();showToast(p.name+" adicionado para consulta.");
+ const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;
+ const select=document.querySelector('[data-full-volume="'+id+'"]'),v=getFullSizeVolume(p,Number(select?.value)||0);
+ if(!Number.isFinite(v.price)){consultFullSize(id,v.ml);return;}
+ const key=id+"-full-"+v.ml,existing=cart.find(x=>x.key===key);
+ if(existing)existing.qty++;else cart.push({key,id,name:p.name,brand:p.brand,ml:v.ml,price:v.price,qty:1,category:"Frasco inteiro"});
+ renderCart();showToast(p.name+" · "+v.ml+" ml adicionado ao carrinho.");
 }
 function changeQty(key,delta){const item=cart.find(x=>x.key===key);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.key!==key);renderCart()}
 function removeItem(key){cart=cart.filter(x=>x.key!==key);renderCart()}
