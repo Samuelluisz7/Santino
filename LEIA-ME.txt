@@ -3,7 +3,7 @@ SANTINO NOBRE — catálogo de decants e frascos inteiros
 Como testar: abra index.html em um navegador atualizado. As fotos dos perfumes são carregadas de páginas externas e precisam de internet; se alguma imagem não carregar, o cartão mostra uma ilustração substituta.
 
 Catálogo:
-- Decants: preços definidos para 2 ml, 5 ml e 10 ml.
+- Decants: preços definidos para 5 ml e 10 ml.
 - Frascos inteiros: nove produtos em seção própria, com navegação no topo e carrinho compartilhado. Como custos, preço de venda e estoque da SANTINO ainda não foram confirmados, a página orienta o cliente a consultar valores e disponibilidade pelo WhatsApp. As referências públicas de mercado ficam na planilha financeira e não são exibidas como preço de venda.
 
 Carrinho e finalização:
@@ -12,4 +12,4 @@ Carrinho e finalização:
 - A mensagem descreve categoria, marca, produto, volume, quantidade e informa quando o preço ainda precisa ser confirmado.
 - Se houver frascos inteiros sem preço definido, o carrinho não apresenta um total fictício.
 
-Para publicar: envie o arquivo index.html para o serviço de hospedagem estática utilizado pela SANTINO. Esta alteração no repositório não publica automaticamente o site em uma hospedagem externa.
+Para publicar: envie o arquivo index.html para o serviço de hospedagem estática utilizado pela SANTINO. O workflow do GitHub Pages publica automaticamente a branch main em https://samuelluisz7.github.io/Santino/.

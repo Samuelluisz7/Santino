@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://samuelluisz7.github.io/Santino/sitemap.xml

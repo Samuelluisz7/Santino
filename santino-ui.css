@@ -703,3 +703,106 @@ body.full-size-mode .note-visual-bottle img {
 .full-size-product .product-art {
   position: relative;
 }
+
+
+/* SANTINO LUXE — acabamento transversal */
+:root {
+  --gold: #d8bf95;
+  --gold-soft: #a99473;
+  --ink: #0b0b0a;
+  --surface: #181714;
+  --surface-raised: #211f1a;
+  --line-soft: rgba(216,191,149,.24);
+  --shadow-luxe: 0 18px 50px rgba(0,0,0,.28);
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% -10%, rgba(201,177,139,.10), transparent 34rem),
+    var(--black);
+}
+
+header, .site-header {
+  background: rgba(11,11,10,.90);
+  border-bottom-color: var(--line-soft);
+  box-shadow: 0 8px 30px rgba(0,0,0,.16);
+}
+
+.brand, .brand-home .brand {
+  letter-spacing: .22em;
+  font-weight: 600;
+}
+
+.brand small { color: var(--gold); }
+
+.hero, .redesigned-catalog-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero::before, .redesigned-catalog-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(115deg, rgba(216,191,149,.08), transparent 42%);
+}
+
+.hero h1, h1 {
+  letter-spacing: -.04em;
+}
+
+.hero p, .trust-strip, .section-head p { color: #c2b8aa; }
+
+.product, .kit-card, .result-card, .policy, .promo-card {
+  background: linear-gradient(155deg, rgba(33,31,26,.96), rgba(23,22,19,.96));
+  border-color: var(--line-soft);
+  box-shadow: 0 8px 25px rgba(0,0,0,.10);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.product:hover, .kit-card:hover, .result-card:hover, .promo-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(216,191,149,.54);
+  box-shadow: var(--shadow-luxe);
+}
+
+.product-art, .product-photo, .hero-art { border-color: rgba(216,191,149,.22); }
+
+.btn, .add, .kit-add, .add-button, .hero-link, .consult-price {
+  background: linear-gradient(135deg, var(--gold), #b99b6b);
+  border-color: var(--gold);
+  color: #15130f;
+  box-shadow: 0 5px 15px rgba(201,177,139,.12);
+}
+
+.btn:hover, .add:hover, .kit-add:hover, .add-button:hover, .hero-link:hover, .consult-price:hover {
+  background: linear-gradient(135deg, #f0dcaf, var(--gold));
+  color: #11110f;
+  transform: translateY(-1px);
+}
+
+.cart-link, .cart-button { border-color: var(--line-soft); }
+.cart-link:hover, .cart-button:hover { border-color: var(--gold); }
+
+.catalog-nav a[aria-current="page"], .nav-links a[aria-current="page"] {
+  color: var(--gold) !important;
+}
+
+footer { background: #0d0d0c; border-top-color: var(--line-soft); }
+footer a, .footer-links a { color: var(--gold); }
+
+/* Evita imagens quebradas quando o site muda de domínio ou hospedagem. */
+.hero-banner, .hero-art img { max-width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+@media (max-width: 720px) {
+  .product:hover, .kit-card:hover, .result-card:hover, .promo-card:hover { transform: none; box-shadow: none; }
+  .hero h1 { max-width: 13ch; }
+  .section-head { gap: 8px; }
+  .cart-link, .cart-button, .btn, .add, .kit-add, .add-button { min-height: 48px; }
+}
