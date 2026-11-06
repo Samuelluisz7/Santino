@@ -73,7 +73,6 @@ const CART_KEY="santino_nobre_cart";
 const currency=new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});
 const products={
  "kingdom":{name:"The Kingdom",brand:"Lattafa",image:"https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&width=1946",short:"Lavanda, menta e fundo ambarado.",prices:{5:18.9,10:35.9}},
- "212-vip-black":{name:"212 VIP Black",brand:"Carolina Herrera",image:"https://cdn.salla.sa/DGdDlG/c8ab83f8-76ec-45e6-a9e9-3c35260c28b9-1000x1000-z7c64TKXbUSTNjJpzdzsZ6frKO0DM0gAjXPF22wN.jpg",short:"Absinto, lavanda e baunilha escura.",prices:{5:37.9,10:74.9}},
  "the-blend-bourbon":{name:"The Blend Bourbon",brand:"O Boticário",image:"https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_1800%2Cc_limit/e_trim/v1/imagens/product/B77489/c97c55ee-65fe-4339-9a99-1363b969701b-the-blend-bourbon-eau-de-parfum-100ml.png",short:"Especiarias, madeiras e baunilha Bourbon.",prices:{5:22.9,10:42.9}},
  "asad-bourbon":{name:"Asad Bourbon",brand:"Lattafa",image:"https://scentira.in/cdn/shop/files/LATTAFAAl_Asad_Bourbon_1_34bc0e05-10ec-4d25-9df5-34b68222f16c.png?v=1756889307&width=5000",short:"Ameixa, cacau e baunilha Bourbon.",prices:{5:17.9,10:33.9}},
  "homem-sagaz":{name:"Homem Sagaz",brand:"Natura",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600",short:"Mandarina verde, ervas e madeiras.",prices:{5:12.9,10:24.9}},
@@ -94,12 +93,12 @@ const KIT_IMAGE_FALLBACKS = {
 const kits=[
  {id:"calor-aquatico",label:"CALOR · DIA",title:"Frescor aquático",desc:"Três leituras de frescor — verde, oceânica e gelada — para dias quentes sem repetir exatamente o mesmo perfil.",items:[["nautica-voyage","VERDE AQUÁTICO"],["eudora-h-acqua","OCEÂNICO"],["quasar-ice","GELADO"]]},
  {id:"trabalho",label:"TRABALHO · ROTINA",title:"Presença discreta",desc:"Perfis limpos e alinhados para trabalho, estudo e compromissos diurnos, sem pesar a mão.",items:[["homem-sagaz","VERDE AMADEIRADO"],["homem-essence","ESPECIADO"],["essencial-sentir","ELEGANTE"]]},
- {id:"noite-marcante",label:"NOITE · FRIO",title:"Noite marcante",desc:"Três caminhos de presença: baunilha escura, doçura especiada e madeira quente.",items:[["212-vip-black","BAUNILHADO"],["asad-bourbon","DOCE ESPECIADO"],["the-blend-bourbon","MADEIRAS QUENTES"]]},
+ {id:"noite-marcante",label:"NOITE · FRIO",title:"Noite marcante",desc:"Três caminhos de presença: baunilha escura, doçura especiada e madeira quente.",items:[["asad-bourbon","DOCE ESPECIADO"],["the-blend-bourbon","MADEIRAS QUENTES"]]},
  {id:"assinatura",label:"ASSINATURA",title:"Aromático com personalidade",desc:"Uma seleção para quem quer sair do óbvio: lavanda aromática, frescor verde e um fundo ambarado envolvente.",items:[["fakhar-black","AROMÁTICO"],["kingdom","AMBARADO"],["homem-dom","MADEIRAS CREMOSAS"]]},
  {id:"contrastes",label:"CONTRASTES",title:"Fresco, verde e doce",desc:"Da maçã aquática ao amadeirado verde e ao gourmand especiado: três perfis bem diferentes para comparar na pele.",items:[["nautica-voyage","AQUÁTICO"],["homem-sagaz","VERDE"],["asad-bourbon","GOURMAND"]]},
  {id:"nacionais",label:"BRASILEIROS",title:"Nacionais em contraste",desc:"Três propostas nacionais distintas: ervas frescas, cítricos oceânicos e um perfil mais escuro de madeiras.",items:[["clash","AROMÁTICO FRESCO"],["eudora-h-acqua","CÍTRICO AQUÁTICO"],["homem-dom","AMBARADO"]]},
  {id:"descoberta",label:"EXPLORAÇÃO",title:"Descoberta SANTINO",desc:"Um mini-roteiro de experimentação: frescor gelado, especiarias amadeiradas e elegância seca.",items:[["quasar-ice","GELADO"],["the-blend-bourbon","ESPECIADO"],["essencial-sentir","AMADEIRADO"]]},
- {id:"dia-para-noite",label:"DIA → NOITE",title:"Do casual à noite",desc:"Comece com algo cítrico e energético, passe pelo aromático moderno e termine com um perfume de noite.",items:[["k-max","CÍTRICO"],["fakhar-black","AROMÁTICO"],["212-vip-black","NOTURNO"]]}
+ {id:"dia-para-noite",label:"DIA → NOITE",title:"Do casual à noite",desc:"Comece com algo cítrico e energético, passe pelo aromático moderno e termine com um perfume de noite.",items:[["k-max","CÍTRICO"],["fakhar-black","AROMÁTICO"]]}
 ];
 const defaultSelection={};
 function money(value){return currency.format(value)}
