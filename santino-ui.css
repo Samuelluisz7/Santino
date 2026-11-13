@@ -840,6 +840,17 @@ footer a, .footer-links a { color: var(--gold); }
   font-size: 19px;
   line-height: 1;
 }
+.santino-whatsapp-float .whatsapp-mark {
+  width: 30px;
+  height: 30px;
+  background: #25D366;
+  color: #fff;
+}
+.santino-whatsapp-float .whatsapp-mark svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
 .santino-whatsapp-float:hover {
   transform: translateY(-2px);
   background: var(--gold, #d8bf95);
