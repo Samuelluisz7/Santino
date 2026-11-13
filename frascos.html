@@ -510,7 +510,7 @@ function renderFullSizeProducts(){
  if (sort === "brand") items.sort((a,b) => a.brand.localeCompare(b.brand,"pt-BR") || a.name.localeCompare(b.name,"pt-BR"));
  $("fullSizeProducts").innerHTML = items.map(p =>
    '<article class="product full-size-product">' +
-   '<a class="product-detail-link" href="produto.html?v=20261113-7&id=' + encodeURIComponent(p.id) + '" aria-label="Ver detalhes de ' + escapeHTML(p.name) + '">' +
+   '<a class="product-detail-link" href="produto.html?v=20261113-8&id=' + encodeURIComponent(p.id) + '" aria-label="Ver detalhes de ' + escapeHTML(p.name) + '">' +
      (p.toutiImage && p.referenceImage
        ? '<div class="product-art product-comparison">' +
           '<div class="comparison-side"><div class="comparison-label">Produto vendido</div><div class="comparison-photo"><img data-pair-photo src="' + escapeHTML(p.toutiImage) + '" alt="' + escapeHTML(p.name) + ' — frasco Touti anunciado" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto do produto indisponível</span></div><div class="comparison-name">' + escapeHTML(p.toutiCaption || p.name) + '</div></div>' +
