@@ -10,16 +10,19 @@ Atualizado em 14/11/2026.
 - [x] Auditoria somente de leitura do projeto Supabase acessível nesta sessão.
 - [x] Confirmado que a conexão atual expõe santino-commerce (ufopdavfklzqfsqkhhxe), que o usuário marcou como projeto acidental e proibiu usar ou excluir.
 - [x] Confirmado que essa conexão retorna zero tabelas, migrations e Edge Functions; isso não é o estado do projeto Santino Nobre.
+- [x] Project Ref optloyhbkkrptuwsizrc confirmado pela integração Supabase Preview do GitHub na PR #2, consistente com o endpoint de buscas no código. O check do GitHub liga ao painel de integrações desse projeto.
+- [x] Confirmado que a criação de branches Supabase de preview por PR está desativada; nenhum preview de banco foi criado.
 - [x] Workflow do Pages exclui supabase/ do artefato público.
 - [x] Criados testes automáticos do empacotamento para impedir vazamento de supabase/, docs, scripts, testes e arquivos ocultos.
 - [x] Criado scanner de texto para detectar padrões conhecidos de chaves privadas e credenciais de pagamento.
 - [x] Workflow executa validações em pull requests e na branch main; somente main/manual publica no Pages.
 - [x] Testes locais: 3 aprovados; montagem real do site copiou 22 itens públicos e omitiu supabase/.
+- [x] PR draft #2 criada; validação GitHub Actions aprovada e publicação do GitHub Pages ignorada para PR. O Netlify também criou um deploy preview automático, sem alterações nos arquivos do site.
 
 ## Em andamento
 
-- [ ] Confirmar o project ref exato de Santino Nobre e obter conexão administrativa com esse projeto.
-- [ ] Confirmar que a integração GitHub do Supabase aponta para Santino Nobre e para a branch esperada.
+- [ ] Reconectar o painel administrativo/MCP do Supabase ao ref optloyhbkkrptuwsizrc. A lista de projetos desta sessão ainda só mostra santino-commerce; a tela do Supabase exige login do usuário.
+- [ ] Confirmar no painel o nome Santino Nobre e qual branch a integração GitHub sincroniza.
 - [ ] Inspecionar apenas por leitura schema, RLS, políticas e histórico de pesquisas_santino no projeto correto.
 
 ## Próximas etapas após confirmação

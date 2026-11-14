@@ -14,10 +14,11 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 ## Identidade do projeto Supabase
 
 - O usuário identifica o projeto de produção como Santino Nobre e exige preservar a tabela pesquisas_santino e todos os seus registros.
-- O código existente aponta o registro de buscas para o ref optloyhbkkrptuwsizrc. Este é um candidato derivado do endpoint do site, ainda sem confirmação no painel de administração.
+- O Project Ref optloyhbkkrptuwsizrc está confirmado pelo endpoint de buscas do site e pelo check Supabase Preview da PR #2, que aponta para as configurações de integração desse mesmo projeto. Isso confirma a conexão GitHub do repositório com esse ref. O nome exibido no painel não pôde ser conferido nesta sessão; “Santino Nobre” é a identificação informada pelo usuário.
 - A conexão Supabase disponível nesta sessão expõe apenas o projeto santino-commerce, ref ufopdavfklzqfsqkhhxe. O usuário confirmou que esse projeto vazio foi criado por engano e não deve ser usado nem excluído.
 - A auditoria dessa conexão encontrou zero tabelas, migrations e Edge Functions. Isso não descreve o estado de Santino Nobre.
-- Nenhuma migration foi aplicada. A conexão administrativa ao projeto Santino Nobre e o project ref precisam ser confirmados antes de qualquer sincronização.
+- O check Supabase Preview informa que a criação automática de branches de preview por PR está desativada. A validação do repositório ainda passou; não houve preview de banco.
+- Nenhuma migration foi aplicada. A conexão administrativa ao projeto ainda precisa estar disponível e ser conferida antes de qualquer inspeção do schema ou sincronização.
 
 ## Arquitetura proposta
 
