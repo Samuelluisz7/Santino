@@ -8,11 +8,12 @@ const REPOSITORY_ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
 );
-const SKIPPED_DIRECTORIES = new Set([".git", "tests", "site"]);
+const SKIPPED_DIRECTORIES = new Set([".git", "site"]);
 const TEXT_EXTENSIONS = new Set([
   ".css",
   ".html",
   ".js",
+  ".mjs",
   ".json",
   ".md",
   ".sql",
@@ -52,14 +53,15 @@ async function collectTextFiles(directory) {
     }
 
     if (!entry.isFile() || !isTextFile(entry.name)) continue;
-    if (entry.name === path.basename(fileURLToPath(import.meta.url))) continue;
-    files.push(path.join(directory, entry.name));
+    const file = path.join(directory, entry.name);
+    if (path.resolve(file) === fileURLToPath(import.meta.url)) continue;
+    files.push(file);
   }
 
   return files;
 }
 
-test("repository text files contain no recognizable private keys", async () => {
+test("repository text files contain no recognizable secrets", async () => {
   const files = await collectTextFiles(REPOSITORY_ROOT);
   const findings = [];
 
@@ -72,3 +74,4 @@ test("repository text files contain no recognizable private keys", async () => {
 
   assert.deepEqual([...new Set(findings)], []);
 });
+
