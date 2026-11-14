@@ -25,12 +25,19 @@ jobs:
         uses: actions/checkout@v4
       - name: Configurar Pages
         uses: actions/configure-pages@v5
-      - name: Preparar site estático
-        run: touch .nojekyll
+      - name: Preparar os arquivos públicos do site
+        run: |
+          mkdir -p site
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name '.*' \
+            ! -name 'supabase' \
+            ! -name 'site' \
+            -exec cp -R {} site/ \;
+          touch site/.nojekyll
       - name: Empacotar site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: site
       - name: Publicar no GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
