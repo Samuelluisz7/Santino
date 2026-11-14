@@ -18,7 +18,7 @@ Atualizado em 14/11/2026.
 - [x] Criado scanner de texto para detectar padrões conhecidos de chaves privadas e credenciais de pagamento.
 - [x] Workflow executa validações em pull requests e na branch main; somente main/manual publica no Pages.
 - [x] Testes locais: 4 aprovados; a montagem do repositório real inclui as páginas e omite CATALOGO.md, LEIA-ME.txt e supabase/.
-- [x] PR draft #2 criada; a validação GitHub Actions passou e o deploy do GitHub Pages foi ignorado para PR. O Netlify criou um deploy preview automático; o check informa zero páginas geradas e quatro assets alterados.
+- [x] PR draft #2 criada; a validação GitHub Actions passou e o deploy do GitHub Pages foi ignorado para PR. O Netlify criou um deploy preview privado, que exige uma conta convidada; o check mais recente informa zero páginas geradas.
 
 ## Em andamento
 
