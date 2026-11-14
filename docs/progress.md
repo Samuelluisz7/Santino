@@ -6,18 +6,19 @@ Atualizado em 14/11/2026.
 
 - [x] Auditoria da estrutura do repositório e do fluxo do GitHub Pages.
 - [x] Identificação da integração existente de buscas em search.js.
+- [x] Verificação dos limites de dados dinâmicos: o termo de busca é exibido como texto; a renderização do carrinho usa alguns campos não escapados de localStorage em innerHTML.
 - [x] Identificação de referência Supabase Storage usada por uma imagem de produto.
 - [x] Auditoria somente de leitura do projeto Supabase acessível nesta sessão.
 - [x] Confirmado que a conexão atual expõe santino-commerce (ufopdavfklzqfsqkhhxe), que o usuário marcou como projeto acidental e proibiu usar ou excluir.
 - [x] Confirmado que essa conexão retorna zero tabelas, migrations e Edge Functions; isso não é o estado do projeto Santino Nobre.
 - [x] Project Ref optloyhbkkrptuwsizrc confirmado pela integração Supabase Preview do GitHub na PR #2, consistente com o endpoint de buscas no código. O check do GitHub liga ao painel de integrações desse projeto.
 - [x] Confirmado que a criação de branches Supabase de preview por PR está desativada; nenhum preview de banco foi criado.
-- [x] Workflow do Pages exclui supabase/ do artefato público.
-- [x] Criados testes automáticos do empacotamento para impedir vazamento de supabase/, docs, scripts, testes e arquivos ocultos.
+- [x] Workflow do Pages publica somente formatos estáticos permitidos e robots.txt; exclui supabase/, documentação, arquivos ocultos e pastas de desenvolvimento.
+- [x] Criados testes automáticos do empacotamento, incluindo o repositório real, para impedir vazamento de supabase/, CATALOGO.md, LEIA-ME.txt e arquivos privados.
 - [x] Criado scanner de texto para detectar padrões conhecidos de chaves privadas e credenciais de pagamento.
 - [x] Workflow executa validações em pull requests e na branch main; somente main/manual publica no Pages.
-- [x] Testes locais: 3 aprovados; montagem real do site copiou 22 itens públicos e omitiu supabase/.
-- [x] PR draft #2 criada; validação GitHub Actions aprovada e publicação do GitHub Pages ignorada para PR. O Netlify também criou um deploy preview automático, sem alterações nos arquivos do site.
+- [x] Testes locais: 4 aprovados; a montagem do repositório real inclui as páginas e omite CATALOGO.md, LEIA-ME.txt e supabase/.
+- [x] PR draft #2 criada; a primeira validação GitHub Actions passou e o deploy do GitHub Pages foi ignorado para PR. O Netlify também criou um deploy preview automático, sem alterações nos arquivos do site.
 
 ## Em andamento
 
@@ -43,6 +44,6 @@ Atualizado em 14/11/2026.
 
 ## Ambiente local
 
-- Git e Node.js estão disponíveis.
-- Supabase CLI e Docker não estão instalados; portanto, a validação local do schema ainda não foi executada.
+- Git e Node.js estão disponíveis; npm, Supabase CLI e Docker não estão disponíveis.
+- A validação local do schema ainda não foi executada.
 - A validação Node do empacotamento é independente do banco.

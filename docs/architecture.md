@@ -9,7 +9,7 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 - Os dados comerciais aparecem em mais de uma página. A sincronização dos dados entre páginas permanece necessária até que haja uma fonte central validada.
 - A busca grava o termo digitado no endpoint REST de pesquisas_santino usando uma chave publicável no navegador. A tabela e suas políticas precisam ser inspecionadas no projeto correto antes de qualquer alteração.
 - produto.html contém uma URL de imagem pública de Supabase Storage que aponta para um segundo project ref.
-- O workflow do Pages exclui supabase/ do site público. Este trabalho acrescenta testes automáticos para essa fronteira.
+- O artefato do Pages agora aceita apenas formatos de site e `robots.txt`, omitindo `supabase/`, documentação e pastas de desenvolvimento. O empacotador anterior copiava `CATALOGO.md` e `LEIA-ME.txt` junto com todos os arquivos visíveis da raiz.
 
 ## Identidade do projeto Supabase
 
@@ -54,7 +54,7 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 - O GitHub Pages publica somente o conteúdo do site. Pastas de desenvolvimento e supabase/ ficam fora do artefato.
 - O usuário informa que a integração GitHub do Supabase está conectada. Antes do primeiro merge de migration, confirmar qual repositório/branch e projeto ela sincroniza.
 - Cada alteração de schema deve ser aditiva e revisada. Não usar reset remoto nem modificar pesquisas_santino.
-- O workflow executa testes Node sem dependências externas para validar a separação entre arquivos públicos e privados.
+- O workflow executa testes Node sem dependências externas e monta o artefato a partir de uma lista de formatos estáticos permitidos; um teste também valida o repositório real.
 - A validação local de migrations com Supabase CLI/Docker ainda não está disponível neste ambiente; instalar/usar essas ferramentas e executar uma validação local ficará para depois da confirmação do projeto.
 
 ## Riscos de segurança observados
@@ -63,4 +63,6 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 - O código registra termos de busca diretamente em um endpoint público. Termos livres podem conter dados pessoais; são limitados a 100 caracteres, mas a política de retenção e o acesso de leitura da tabela não foram confirmados.
 - O texto de busca também aparece na URL da navegação. Evitar registrar dados pessoais e não expor esse histórico em logs ou análises desnecessárias.
 - O carrinho é editável pelo usuário. O servidor deve recalcular preços, descontos e estoque antes de aceitar qualquer pedido.
+- A montagem do carrinho usa `innerHTML` com alguns campos de `localStorage` sem escapar (`key`, `ml` e `qty`). O fluxo normal preenche esses campos com dados estáticos do catálogo, mas o armazenamento do navegador é mutável; validar cada valor e usar APIs de DOM/texto antes de renderizá-lo como markup.
+- O workflow anterior incluía `CATALOGO.md` e `LEIA-ME.txt` no artefato do Pages. A nova lista permitida os exclui, sem mudar as páginas ou os dados comerciais.
 - As referências Supabase encontradas no site não coincidem com o projeto santino-commerce visível na conexão administrativa atual.
