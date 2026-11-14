@@ -6,7 +6,7 @@ Atualizado em 14/11/2026.
 
 - [x] Auditoria da estrutura do repositório e do fluxo do GitHub Pages.
 - [x] Identificação da integração existente de buscas em search.js.
-- [x] Verificação dos limites de dados dinâmicos: o termo de busca é exibido como texto; a renderização do carrinho usa alguns campos não escapados de localStorage em innerHTML.
+- [x] Verificação e correção dos limites de dados dinâmicos: o termo de busca é exibido como texto; campos do carrinho vindos de localStorage agora são escapados antes de entrar no markup.
 - [x] Identificação de referência Supabase Storage usada por uma imagem de produto.
 - [x] Auditoria somente de leitura do projeto Supabase acessível nesta sessão.
 - [x] Confirmado que a conexão atual expõe santino-commerce (ufopdavfklzqfsqkhhxe), que o usuário marcou como projeto acidental e proibiu usar ou excluir.
@@ -17,8 +17,8 @@ Atualizado em 14/11/2026.
 - [x] Criados testes automáticos do empacotamento, incluindo o repositório real, para impedir vazamento de supabase/, CATALOGO.md, LEIA-ME.txt e arquivos privados.
 - [x] Criado scanner de texto para detectar padrões conhecidos de chaves privadas e credenciais de pagamento.
 - [x] Workflow executa validações em pull requests e na branch main; somente main/manual publica no Pages.
-- [x] Testes locais: 4 aprovados; a montagem do repositório real inclui as páginas e omite CATALOGO.md, LEIA-ME.txt e supabase/.
-- [x] PR draft #2 criada; a validação GitHub Actions passou e o deploy do GitHub Pages foi ignorado para PR. O Netlify criou um deploy preview privado, que exige uma conta convidada; o check mais recente informa zero páginas geradas.
+- [x] Testes locais: 6 aprovados, cobrindo o empacotamento do repositório real e o escape de campos do carrinho.
+- [x] PR draft #2 criada; a validação GitHub Actions já passou em revisões anteriores e o deploy do GitHub Pages foi ignorado. O Netlify criou um deploy preview privado, restrito a contas convidadas.
 
 ## Em andamento
 
@@ -47,4 +47,3 @@ Atualizado em 14/11/2026.
 - Git e Node.js estão disponíveis; npm, Supabase CLI e Docker não estão disponíveis.
 - A validação local do schema ainda não foi executada.
 - A validação Node do empacotamento é independente do banco.
-

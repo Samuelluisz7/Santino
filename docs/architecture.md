@@ -63,6 +63,6 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 - O código registra termos de busca diretamente em um endpoint público. Termos livres podem conter dados pessoais; são limitados a 100 caracteres, mas a política de retenção e o acesso de leitura da tabela não foram confirmados.
 - O texto de busca também aparece na URL da navegação. Evitar registrar dados pessoais e não expor esse histórico em logs ou análises desnecessárias.
 - O carrinho é editável pelo usuário. O servidor deve recalcular preços, descontos e estoque antes de aceitar qualquer pedido.
-- A montagem do carrinho usa `innerHTML` com alguns campos de `localStorage` sem escapar (`key`, `ml` e `qty`). O fluxo normal preenche esses campos com dados estáticos do catálogo, mas o armazenamento do navegador é mutável; validar cada valor e usar APIs de DOM/texto antes de renderizá-lo como markup.
+- O armazenamento do carrinho pode ser alterado no navegador. Esta PR escapa `key`, `ml` e `qty` antes de inseri-los no markup; os valores comerciais continuam não confiáveis e deverão ser recalculados pelo servidor ao criar pedidos.
 - O workflow anterior incluía `CATALOGO.md` e `LEIA-ME.txt` no artefato do Pages. A nova lista permitida os exclui, sem mudar as páginas ou os dados comerciais.
 - As referências Supabase encontradas no site não coincidem com o projeto santino-commerce visível na conexão administrativa atual.
