@@ -63,6 +63,10 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 
 ### Criação de pedidos e pagamentos
 
+- A migration `20261115150000_order_foundation.sql` criou `orders` e `order_items` com snapshots do produto, apresentação, preço unitário e quantidade. Os totais são calculados no banco.
+- A migration `20261115151000_order_rls_deny.sql` adicionou políticas explícitas que negam todas as operações de `anon` e `authenticated`; somente o papel server-side recebe grants.
+- O checkout público continua no WhatsApp e não grava pedidos no banco até existir uma função server-side que valide catálogo ativo, preço e quantidade em uma operação atômica.
+
 - Implementar a criação de pedidos através de uma Edge Function que valide produtos, variantes, disponibilidade, quantidades e preços no servidor.
 - Negar escrita pública direta nas tabelas de pedidos. A função deverá validar entrada, aplicar limites contra abuso e criar os snapshots do pedido.
 - Usar estados de pedido sem liquidação financeira, com atendimento manual/WhatsApp enquanto não houver provedor de pagamento aprovado.
