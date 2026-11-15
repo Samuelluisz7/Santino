@@ -24,7 +24,7 @@ Atualizado em 14/11/2026 (America/Sao_Paulo).
 - [x] Criado scanner de texto para detectar padrões conhecidos de chaves privadas e credenciais de pagamento.
 - [x] Workflow executa validações em pull requests e na branch main; somente main/manual publica no Pages.
 - [x] Testes locais: 6 aprovados, cobrindo o empacotamento do repositório real e o escape de campos do carrinho.
-- [x] PR draft #2 criada; 6 testes passam localmente e a validação GitHub Actions passou para o commit atual. O deploy do GitHub Pages foi ignorado. O preview do Netlify é privado; o check desta revisão mostra as páginas decants.html e frascos.html e três assets alterados.
+- [x] PR draft #2 criada; o GitHub Actions run #49 para o commit `deeebb06417ff5057559181c79479d3c9626933a` passou. A validação executou 9 testes Node, montou o artefato Pages, aplicou a baseline somente a um Postgres descartável do CI e aprovou os 21 testes pgTAP. O deploy do Pages foi ignorado.
 - [x] CLI Supabase 3.1.0 obtida da release oficial em pasta temporária; SHA-256 conferido com o digest da release. Nenhuma instalação global foi feita.
 - [x] `supabase init` criou a configuração local. A Data API não expõe tabelas novas automaticamente no ambiente local e seeds estão desativados para evitar importações não aprovadas.
 - [x] Gerada via CLI a migration `20261115013651_baseline_pesquisas_santino.sql`, idempotente para a tabela existente, com a política de inserção auditada e sem operações de remoção de dados.
@@ -34,12 +34,11 @@ Atualizado em 14/11/2026 (America/Sao_Paulo).
 
 ## Em andamento
 
-- [ ] Executar e revisar o novo workflow de migrations no GitHub Actions; a validação real em PostgreSQL ainda não rodou neste Windows porque Docker não está disponível.
 - [ ] Confirmar no painel do Supabase o repositório/branch de implantação antes de qualquer merge que dispare sincronização. O usuário informa `Samuelluisz7/Santino` / `main`; previews por PR continuam desativados.
 
 ## Próximas etapas
 
-- [ ] Não mesclar/aplicar a baseline enquanto não houver uma revisão explícita do resultado do teste no Postgres local do CI.
+- [ ] Manter a PR em rascunho até a configuração da integração Supabase/GitHub estar conferida; não aplicar migrations remotamente sem autorização explícita.
 - [ ] Criar estruturas novas para catálogo, variantes, pedidos e itens, sem importar nem alterar dados comerciais até validar o mapeamento.
 - [ ] Implementar criação de pedidos server-side com RLS e Edge Function, mantendo pagamentos reais desativados.
 - [ ] Integrar testes de banco e fluxos de pedido antes de considerar cada recurso concluído.
@@ -56,6 +55,6 @@ Atualizado em 14/11/2026 (America/Sao_Paulo).
 ## Ambiente local
 
 - Git e Node.js estão disponíveis; npm e Docker não estão disponíveis. A CLI Supabase 3.1.0 foi executada de uma pasta temporária com `SUPABASE_HOME` isolado.
-- A validação Node passou (7 testes). A execução real de migrations aguarda o workflow GitHub Actions com Postgres descartável.
+- A validação Node passou localmente com 9 testes. O GitHub Actions run #49 também passou com 9 testes Node e 21 testes pgTAP em um Postgres descartável; o Postgres remoto não foi alterado.
 - O checkout local não está linkado à produção e nenhuma credencial de banco foi armazenada no repositório.
 
