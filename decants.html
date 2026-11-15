@@ -271,7 +271,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 @media(max-width:720px){.product .add{min-height:54px!important;font-size:12px!important;padding:12px 7px!important}.catalog-nav{gap:14px!important}.catalog-nav a{font-size:12px!important}}
 .origin-filter{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:0 0 18px}.origin-filter-label{font-size:10px;color:var(--muted);letter-spacing:.13em;text-transform:uppercase;margin-right:4px}.origin-filter button{border:1px solid #39352f;background:#171613;color:var(--muted);border-radius:3px;padding:9px 13px;font-size:12px;transition:background .15s,border-color .15s,color .15s}.origin-filter button[aria-pressed="true"]{background:var(--beige);border-color:var(--beige);color:#171512;font-weight:700}.product-brandline{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:-2px 0 8px}.product-brand-name{color:var(--beige);font-size:11px}.product-origin-tag{display:inline-flex;align-items:center;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--beige);border:1px solid #5b4d38;padding:3px 6px;border-radius:2px;align-self:flex-start}
 </style>
-  <link rel="stylesheet" href="santino-ui.css">
+  <link rel="stylesheet" href="santino-ui.css?v=20261115-3">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/decants.html">
@@ -551,7 +551,7 @@ $("checkout").addEventListener("click",checkout);
 document.querySelectorAll("[data-origin-filter]").forEach(button=>button.addEventListener("click",()=>{activeOriginFilter=button.dataset.originFilter==="Todos"?"":button.dataset.originFilter;document.querySelectorAll("[data-origin-filter]").forEach(item=>item.setAttribute("aria-pressed",String((item.dataset.originFilter==="Todos"?"":item.dataset.originFilter)===activeOriginFilter)));renderProducts()})); renderProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
-<script src="search.js" defer></script>
-<script src="santino-ui.js" defer></script>
+<script src="search.js?v=20261115-3" defer></script>
+<script src="santino-ui.js?v=20261115-3" defer></script>
 </body>
 </html>
