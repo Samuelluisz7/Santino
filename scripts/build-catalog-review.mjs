@@ -12,13 +12,13 @@ const REVIEW_FIELDS = ["name", "brand", "description"];
 
 function parseRows(source, fileName) {
   return source
-    .split(/\\r?\\n/)
-    .filter((line) => /\\{id:"/.test(line))
+    .split(/\r?\n/)
+    .filter((line) => /\{id:"/.test(line))
     .map((line) => {
       const json = line
         .trim()
         .replace(/,$/, "")
-        .replace(/([{,]\\s*)([A-Za-z_$][\\w$]*):/g, '$1"$2":');
+        .replace(/([{,]\s*)([A-Za-z_$][\w$]*):/g, '$1"$2":');
       try {
         return JSON.parse(json);
       } catch {
