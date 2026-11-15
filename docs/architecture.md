@@ -11,6 +11,13 @@ Auditoria inicial: 14/11/2026. Este documento registra o estado observado e a ar
 - `produto.html` contém uma URL pública de Supabase Storage que aponta para outro project ref.
 - O artefato do Pages agora aceita apenas formatos estáticos e `robots.txt`, omitindo `supabase/`, documentação e pastas de desenvolvimento. O empacotador anterior copiava `CATALOGO.md` e `LEIA-ME.txt` junto com os arquivos visíveis da raiz.
 
+## Modelo atual do catálogo
+
+- `decants.html` e `kits.html` repetem a identidade de fragrâncias (ID, nome, marca, imagem e descrição curta) e definem preços por volume; a lista de detalhes em `produto.html` mantém outra representação dos mesmos produtos.
+- `frascos.html` e `produto.html` representam apresentações de frasco por volume e preço; o detalhe suporta uma ou várias apresentações e preço sob consulta.
+- `kits.html` define kits como grupos de IDs de produtos, sem preço fixo próprio. A pessoa escolhe volume de 5 ou 10 ml e quantidade de 1 a 5 para cada componente; o total é a soma das variantes escolhidas.
+- O modelo futuro precisa manter produtos canônicos, variantes vendáveis, definições/componentes de kit e snapshots de cada variante e quantidade no pedido. Nenhum registro comercial foi importado ou alterado nesta etapa.
+
 ## Identidade e auditoria do Supabase
 
 - O Supabase MCP confirmou o projeto **Santino Nobre**, ref `optloyhbkkrptuwsizrc`, na organização Santino, região `us-east-1`, status `ACTIVE_HEALTHY`, PostgreSQL 17.
