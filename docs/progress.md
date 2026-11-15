@@ -7,9 +7,9 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 - O projeto Supabase correto está acessível nesta sessão: **Santino Nobre**, ref `optloyhbkkrptuwsizrc`, status saudável. A tabela legada `public.pesquisas_santino` segue presente e com RLS; seus dados não foram alterados.
 - A listagem remota atual de migrations continua vazia (`[]`). Nenhuma migration foi aplicada. O projeto vazio `santino-commerce` não foi usado nem alterado.
 - O site público está em https://samuelluisz7.github.io/Santino/ e a revisão visual mais recente foi publicada após o workflow de validação da branch `main`.
-- Correção de cache dos arquivos CSS/JavaScript em validação: as sete páginas agora solicitam versões identificadas dos assets locais; um novo teste protege esse comportamento.
+- Correção de cache dos arquivos CSS/JavaScript publicada: as sete páginas solicitam versões identificadas dos assets locais (`?v=20261115-3`); o teste de proteção passou no workflow do Pages.
 - A página apresenta a vitrine de quatro itens reais logo após os caminhos compactos por categoria; mantém preços e imagens do catálogo e a explicação das regras aprovadas de cashback.
-- A validação dessa revisão aprovou 22 testes Node e 77 verificações pgTAP em Postgres descartável.
+- A validação da revisão de cache aprovou 23 testes Node; migrations e pgTAP passaram em Postgres descartável no GitHub Actions.
 
 ## Auditoria e segurança concluídas
 
