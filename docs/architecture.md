@@ -15,9 +15,9 @@ Auditoria inicial: 14/11/2026. Este documento registra o estado observado e a ar
 
 - O Supabase MCP confirmou o projeto **Santino Nobre**, ref `optloyhbkkrptuwsizrc`, na organização Santino, região `us-east-1`, status `ACTIVE_HEALTHY`, PostgreSQL 17.
 - O projeto acidental `santino-commerce`, ref `ufopdavfklzqfsqkhhxe`, continua fora de uso e não foi alterado nem excluído.
-- A auditoria encontrou a tabela `public.pesquisas_santino`, com RLS ativado e chave primária `id bigint GENERATED ALWAYS AS IDENTITY`. As demais colunas são `termo text` e `pesquisado_em timestamptz DEFAULT now()`.
-- Uma contagem agregada confirmou **6 registros**. Nenhum termo armazenado foi lido.
-- Existe uma política permissiva para `anon INSERT`; ela só permite termos com tamanho após `trim` entre 1 e 100 caracteres. A auditoria de privilégios não encontrou acesso de leitura, atualização ou exclusão para `anon` ou `authenticated`.
+- A auditoria encontrou a tabela `public.pesquisas_santino`, pertencente a `postgres`, com RLS ativado e `FORCE ROW LEVEL SECURITY` desativado. Colunas: `id bigint GENERATED ALWAYS AS IDENTITY NOT NULL`, `termo text NOT NULL` e `pesquisado_em timestamptz NOT NULL DEFAULT now()`. A única restrição e índice são a chave primária em `id`; não há triggers próprios nem outras restrições.
+- O resumo da tabela estimou 0 linhas, mas um `COUNT(*)` somente de leitura confirmou **6 registros**. Nenhum termo armazenado foi lido.
+- Existe uma política permissiva para `anon INSERT`; ela só permite termos com tamanho após `trim` entre 1 e 100 caracteres. A auditoria não encontrou leitura, atualização ou exclusão para `anon`/`authenticated`, nem privilégios diretos para `service_role`.
 - O histórico do Supabase não contém migrations, embora a tabela exista. O repositório contém somente `supabase/README.md`, sem migrations versionadas; a origem do schema ainda não está registrada.
 - Não há Edge Functions nem funções de aplicação no schema `public`. Os advisors de segurança, desempenho e saúde não retornaram avisos.
 - A configuração de preview do Supabase no GitHub aponta para o ref correto, mas a criação automática de branches de preview está desativada.
