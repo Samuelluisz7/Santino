@@ -5,7 +5,7 @@ Atualizado em 15/11/2026 (America/Sao_Paulo), após verificação do deploy de p
 ## Situação atual
 
 - O projeto Supabase correto está acessível nesta sessão: **Santino Nobre**, ref `optloyhbkkrptuwsizrc`, status saudável. A tabela legada `public.pesquisas_santino` segue presente e com RLS; seus dados não foram alterados.
-- O deploy de produção do projeto **Santino Nobre** está ativo. A listagem remota confirma as quatro migrations da `main`; o projeto vazio `santino-commerce` não foi usado nem alterado.
+- O deploy de produção do projeto **Santino Nobre** está ativo. A listagem remota confirma as cinco migrations da `main`; o projeto vazio `santino-commerce` não foi usado nem alterado.
 - O site público está em https://samuelluisz7.github.io/Santino/ e a revisão visual mais recente foi publicada após o workflow de validação da branch `main`.
 - Correção de cache dos arquivos CSS/JavaScript publicada: as sete páginas solicitam versões identificadas dos assets locais (`?v=20261115-3`); o teste de proteção passou no workflow do Pages.
 - A página apresenta a vitrine de quatro itens reais logo após os caminhos compactos por categoria; mantém preços e imagens do catálogo e a explicação das regras aprovadas de cashback.
@@ -29,7 +29,8 @@ Atualizado em 15/11/2026 (America/Sao_Paulo), após verificação do deploy de p
 - [x] Criada `20261115024051_catalog_core.sql`, com catálogo, variantes, kits e componentes vazios e inativos por padrão.
 - [x] Criada `20261115033710_olfactory_profiles.sql`, sem dados semeados, para representar a pirâmide olfativa já mantida na página de detalhes.
 - [x] Criada `20261115131834_product_variant_images.sql`, com `product_variants.image_url` opcional e limite de 2048 caracteres; sem backfill.
-- [x] As quatro migrations da `main` foram aplicadas ao projeto correto após a ativação do deploy: baseline legada, catálogo, perfis olfativos e imagem por variante. O schema remoto foi conferido; RLS está ativo nas tabelas e as tabelas novas permanecem vazias.
+- [x] Criada `20261115145000_staged_catalog_import.sql`, com 51 produtos e 116 variantes copiadas das fontes atuais, todos inativos; os três IDs com conflitos ficaram fora.
+- [x] As quatro migrations da `main` foram aplicadas ao projeto correto após a ativação do deploy: baseline legada, catálogo, perfis olfativos e imagem por variante. O schema remoto foi conferido; RLS está ativo nas tabelas e as tabelas novas contêm 51 produtos e 116 apresentações em modo inativo; nenhum deles é exibido no site.
 - [x] Testes pgTAP cobrem a baseline, o RLS e grants do catálogo e o acesso aos perfis olfativos.
 - O workflow executa a validação conjunta das migrations em Postgres descartável do CI; Docker não está disponível neste Windows para repetir o replay localmente.
 - [x] Deploy automático `main` → Santino Nobre ativado pelo usuário e confirmado pela listagem remota de migrations.
@@ -41,7 +42,7 @@ Atualizado em 15/11/2026 (America/Sao_Paulo), após verificação do deploy de p
 - O `apply_migration` do Supabase MCP não aceita a versão original do arquivo e registra um timestamp próprio. Não o usar para aplicar migrations do repositório, pois criaria entradas remotas sem correspondência exata no histórico Git.
 - Caminho recomendado pela documentação do Supabase: ativar `Deploy to production` na integração GitHub do projeto e selecionar `main`, ou usar `supabase db push --linked` com CLI autenticada.
 - A configuração `Deploy to production` foi ativada pelo usuário e o deploy foi confirmado no projeto correto. A CLI v3.1.0 foi usada em pasta temporária apenas para gerar o nome oficial da migration; não houve login nem comando remoto.
-- Próximo passo: importar o catálogo somente após resolver divergências identificadas; manter os registros novos inativos até validação.
+- Próximo passo: revisar os 51 produtos importados em modo inativo e resolver os três IDs pendentes antes de ativar qualquer registro no site.
 
 ## Cashback aprovado e estado de implementação
 
@@ -78,6 +79,6 @@ Atualizado em 15/11/2026 (America/Sao_Paulo), após verificação do deploy de p
 ## Restrições preservadas
 
 - Não foi criado nem excluído projeto Supabase.
-- Nenhuma migration remota foi aplicada; `pesquisas_santino` e seus registros foram preservados.
+- A tabela `pesquisas_santino` e seus registros foram preservados; as novas linhas de catálogo permanecem inativas.
 - Nenhuma chave secreta foi colocada no frontend ou no repositório.
 - Pagamentos reais continuam desligados.
