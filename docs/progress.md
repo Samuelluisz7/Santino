@@ -44,7 +44,7 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 
 ## Validação e próximos incrementos
 
-- [x] Testes Node locais: 20 aprovados, cobrindo build do Pages, links, consistência de catálogo/preços, interação com carrinho, termos do cashback e proteção contra credenciais.
+- [x] Testes Node locais: 21 aprovados, cobrindo build do Pages, links, consistência de catálogo/preços, interação com carrinho, termos do cashback, proteção contra credenciais e contagem dos planos pgTAP.
 - O workflow valida Pull Requests, recria as migrations apenas em banco descartável e só executa o deploy do Pages após validação na branch `main`.
 - Nenhum script do workflow recebe credenciais de produção nem usa conexão `--remote` para migrations.
 - [ ] Projetar o ledger de cashback e o fluxo de pedidos server-side antes de conectar qualquer função comercial ao banco.

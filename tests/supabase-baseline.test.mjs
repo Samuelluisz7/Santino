@@ -94,3 +94,16 @@ test("Pages workflow validates migrations only against a local database", async 
   assert.match(workflow, /hashFiles\('supabase\/migrations\/\*\*\/\*\.sql'\)/);
   assert.doesNotMatch(workflow, /--remote|supabase db push|SUPABASE_ACCESS_TOKEN/i);
 });
+
+test("pgTAP plans match the assertions declared in every SQL test file", async () => {
+  const testDirectory = path.join(REPOSITORY_ROOT, "supabase", "tests");
+  const sqlFiles = (await readdir(testDirectory)).filter((name) => name.endsWith(".test.sql"));
+
+  for (const name of sqlFiles) {
+    const sql = await readFile(path.join(testDirectory, name), "utf8");
+    const plan = sql.match(/^\s*select\s+plan\((\d+)\)\s*;/im);
+    const assertions = [...sql.matchAll(/^\s*select\s+(?:ok|is|isnt|throws_ok|lives_ok)\s*\(/gim)].length;
+    assert.ok(plan, `${name} declares a pgTAP plan`);
+    assert.equal(Number(plan[1]), assertions, `${name} plan matches its pgTAP assertions`);
+  }
+});

@@ -1,6 +1,6 @@
 begin;
 
-select plan(21);
+select plan(22);
 
 insert into public.products (slug, name, brand, is_active)
 values

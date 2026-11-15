@@ -5,8 +5,10 @@ select plan(34);
 insert into public.products (slug, name, brand, is_active)
 values
   ('test-active-product', 'Active test product', 'Test', true),
-  ('test-inactive-product', 'Inactive test product', 'Test', false),
-  ('test-default-inactive-product', 'Default inactive test product', 'Test');
+  ('test-inactive-product', 'Inactive test product', 'Test', false);
+
+insert into public.products (slug, name, brand)
+values ('test-default-inactive-product', 'Default inactive test product', 'Test');
 
 insert into public.product_variants (
   product_id,
