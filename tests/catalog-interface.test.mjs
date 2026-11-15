@@ -41,3 +41,16 @@ test("shared perfume details retain the olfactory pyramid", async () => {
   assert.match(html, /id="baseNotes"/);
   assert.match(html, /aria-label="Notas de saída, coração e fundo"/);
 });
+
+test("shared perfume details provide a responsive mobile purchase bar", async () => {
+  const html = await readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8");
+  const styles = await readFile(path.join(REPOSITORY_ROOT, "sticky-purchase.css"), "utf8");
+
+  assert.match(html, /class="perfume-detail-page"/);
+  assert.match(html, /id="stickyPurchaseBar"[^>]*role="region"[^>]*aria-label="Compra rápida"[^>]*aria-hidden="true"/);
+  assert.match(html, /id="stickyAddButton"/);
+  assert.match(html, /SantinoStickyPurchase\.init/);
+  assert.match(html, /stickyPurchase\?\.refresh\(\)/);
+  assert.match(styles, /#stickyPurchaseBar\.is-visible/);
+  assert.match(styles, /@media \(max-width: 760px\)/);
+});
