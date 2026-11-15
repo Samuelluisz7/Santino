@@ -4,10 +4,11 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 
 ## Situação atual
 
-- O projeto Supabase correto está acessível nesta sessão: **Santino Nobre**, ref `optloyhbkkrptuwsizrc`, status saudável. A tabela `public.pesquisas_santino` segue presente e com RLS. A leitura agregada anterior confirmou 6 registros; nenhum termo foi lido.
+- O projeto Supabase correto está acessível nesta sessão: **Santino Nobre**, ref `optloyhbkkrptuwsizrc`, status saudável. A tabela legada `public.pesquisas_santino` segue presente e com RLS; seus dados não foram alterados.
 - A listagem remota atual de migrations continua vazia (`[]`). Nenhuma migration foi aplicada. O projeto vazio `santino-commerce` não foi usado nem alterado.
-- O site público continua no GitHub Pages: https://samuelluisz7.github.io/Santino/. A versão da página inicial desta entrega está no PR #3; ela só será publicada após merge em `main` e sucesso do workflow de Pages.
-- A nova página inicial apresenta quatro itens reais do catálogo, caminhos por categoria, oferta existente, kits com destinos corretos e explicação do cashback. A validação mais recente do PR aprovou 21 testes Node e 77 verificações pgTAP em banco descartável.
+- O site público está em https://samuelluisz7.github.io/Santino/ e a revisão visual mais recente foi publicada após o workflow de validação da branch `main`.
+- A página apresenta a vitrine de quatro itens reais logo após os caminhos compactos por categoria; mantém preços e imagens do catálogo e a explicação das regras aprovadas de cashback.
+- A validação dessa revisão aprovou 22 testes Node e 77 verificações pgTAP em Postgres descartável.
 
 ## Auditoria e segurança concluídas
 
@@ -44,11 +45,15 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 
 ## Validação e próximos incrementos
 
-- [x] Testes Node locais: 21 aprovados, cobrindo build do Pages, links, consistência de catálogo/preços, interação com carrinho, termos do cashback, proteção contra credenciais e contagem dos planos pgTAP.
+- [x] GitHub Actions: 22 testes Node aprovados, cobrindo build do Pages, links, consistência de catálogo/preços, interação com carrinho, ordem visual da página inicial, regras de cashback, proteção contra credenciais e planos pgTAP.
 - O workflow valida Pull Requests, recria as migrations apenas em banco descartável e só executa o deploy do Pages após validação na branch `main`.
 - Nenhum script do workflow recebe credenciais de produção nem usa conexão `--remote` para migrations.
 - [ ] Projetar o ledger de cashback e o fluxo de pedidos server-side antes de conectar qualquer função comercial ao banco.
 - [ ] Manter pagamentos reais desligados e não ativar sincronização automática de migrations com produção.
+
+## Próximos passos da experiência
+
+- Newsletter/cadastro de e-mail segue pendente porque ainda não há serviço ou fluxo aprovado para receber inscrições.
 
 ## Restrições preservadas
 
