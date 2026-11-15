@@ -14,6 +14,9 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 
 ## Auditoria e segurança concluídas
 
+- A auditoria de catálogo agora compara automaticamente decants, frascos inteiros e detalhes; o resultado e as divergências de imagem, identidade e descrição estão documentados em `docs/catalog-reconciliation.md`.
+- O modelo SQL atual ainda não armazena imagem por variante; essa extensão deverá ser criada como migration versionada antes de importar os produtos. Nenhum dado comercial foi alterado.
+
 - [x] Mapeadas páginas, catálogo, variantes, kits, busca, carrinho e montagem estática do GitHub Pages.
 - [x] Confirmada a tabela antiga `public.pesquisas_santino`, sua política de inserção anônima e a preservação dos registros existentes.
 - [x] O frontend continua sem criar pedidos no banco ou iniciar pagamentos reais. O checkout atual revisa e encaminha o pedido pelo WhatsApp.

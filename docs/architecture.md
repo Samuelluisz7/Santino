@@ -18,6 +18,13 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 - `kits.html` define kits como grupos de IDs de produtos, sem preço fixo próprio. A pessoa escolhe volume de 5 ou 10 ml e quantidade de 1 a 5 para cada componente; o total é a soma das variantes escolhidas.
 - O modelo futuro precisa manter produtos canônicos, variantes vendáveis, definições/componentes de kit e snapshots de cada variante e quantidade no pedido. Nenhum registro comercial foi importado ou alterado nesta etapa.
 
+## Reconciliação das fontes antes da importação
+
+- A auditoria automatizada das três listas encontrou 32 decants, 49 frascos, 27 IDs compartilhados e 54 produtos únicos; todos os 54 têm detalhe na página compartilhada e não há IDs duplicados dentro de cada lista.
+- As fontes divergem em 5 imagens, 1 identidade (nome/marca) e 2 descrições para IDs compartilhados. O relatório em `docs/catalog-reconciliation.md` lista somente os IDs e os campos, sem copiar preços, URLs de imagem ou textos.
+- A migration atual guarda `image_url` em `products`, mas não em `product_variants`. Como os mesmos IDs têm imagens diferentes entre as duas apresentações, uma futura importação deve preservar a imagem opcional na variante e usar a imagem do produto como fallback.
+- As diferenças de nome/marca e descrição permanecem sem resolução. Nenhum registro do catálogo foi alterado nem importado ao banco.
+
 ## Cashback e fidelização
 
 - Regras comerciais confirmadas: cashback de 5% sobre o valor efetivamente pago pelos produtos após descontos, liberado após confirmação do pagamento, válido por 90 dias, acumulável com promoções de produtos e utilizável em até 100% do valor dos produtos. O frete é pago separadamente e o crédito não pode ser convertido em dinheiro. A regra vale para decants, frascos inteiros, kits e produtos futuros.
