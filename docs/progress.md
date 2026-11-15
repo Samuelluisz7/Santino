@@ -8,9 +8,9 @@ Atualizado em 14/11/2026.
 - [x] Identificação da integração existente de buscas em `search.js`.
 - [x] Proteção de campos do carrinho vindos de localStorage antes de inseri-los no markup.
 - [x] Confirmação, via Supabase MCP, do projeto Santino Nobre: ref `optloyhbkkrptuwsizrc`, organização Santino, região `us-east-1`, status saudável.
-- [x] Auditoria somente de leitura da tabela `public.pesquisas_santino`: colunas, chave primária e RLS confirmados.
-- [x] Contagem agregada confirmou 6 registros preservados; nenhum termo de busca foi lido.
-- [x] Política pública encontrada: `anon INSERT` para termos após `trim` com 1–100 caracteres. Leitura, atualização e exclusão não estão concedidas a `anon` ou `authenticated`.
+- [x] Auditoria somente de leitura da tabela `public.pesquisas_santino`: colunas não nulas, identidade, chave primária, índice, restrições, triggers, RLS e proprietário confirmados.
+- [x] O resumo da tabela estimou 0 linhas; a contagem SQL somente de leitura confirmou 6 registros preservados. Nenhum termo foi lido.
+- [x] Política pública encontrada: `anon INSERT` para termos após `trim` com 1–100 caracteres. Sem leitura, atualização ou exclusão para `anon`/`authenticated`; sem privilégios diretos para `service_role`.
 - [x] Histórico de migrations do projeto vazio; `supabase/` no repositório contém apenas `README.md`.
 - [x] Nenhuma Edge Function ou função de aplicação no schema `public`.
 - [x] Advisors de segurança, desempenho e saúde sem avisos.
