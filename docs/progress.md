@@ -30,6 +30,7 @@ Atualizado em 15/11/2026 (America/Sao_Paulo), após verificação do deploy de p
 - [x] Criada `20261115033710_olfactory_profiles.sql`, sem dados semeados, para representar a pirâmide olfativa já mantida na página de detalhes.
 - [x] Criada `20261115131834_product_variant_images.sql`, com `product_variants.image_url` opcional e limite de 2048 caracteres; sem backfill.
 - [x] Criada `20261115145000_staged_catalog_import.sql`, com 51 produtos e 116 variantes copiadas das fontes atuais, todos inativos; os três IDs com conflitos ficaram fora.
+- [x] Criada `20261115150000_order_foundation.sql`, com pedidos e itens em tabelas protegidas por RLS; os snapshots ficam disponíveis apenas para operação server-side.
 - [x] As quatro migrations da `main` foram aplicadas ao projeto correto após a ativação do deploy: baseline legada, catálogo, perfis olfativos e imagem por variante. O schema remoto foi conferido; RLS está ativo nas tabelas e as tabelas novas contêm 51 produtos e 116 apresentações em modo inativo; nenhum deles é exibido no site.
 - [x] Testes pgTAP cobrem a baseline, o RLS e grants do catálogo e o acesso aos perfis olfativos.
 - O workflow executa a validação conjunta das migrations em Postgres descartável do CI; Docker não está disponível neste Windows para repetir o replay localmente.
