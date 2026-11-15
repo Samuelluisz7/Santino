@@ -24,7 +24,7 @@ Atualizado em 14/11/2026.
 
 - [ ] Confirmar no painel do Supabase qual repositório e branch a integração GitHub sincroniza; o preview automático por PR está desativado.
 - [ ] Registrar o schema existente como baseline versionada, preservando a tabela e os 6 registros. O histórico remoto está vazio e ainda não há migration local.
-- [ ] Preparar o ambiente de validação: Git e Node estão disponíveis; Supabase CLI e Docker ainda não estão instalados.
+- [ ] Preparar o ambiente de validação: Git e Node estão disponíveis; Supabase CLI, npm e Docker não estão instalados, então migrations ainda não podem ser geradas e validadas pelo fluxo local.
 
 ## Próximas etapas
 
