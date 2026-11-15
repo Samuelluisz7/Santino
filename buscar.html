@@ -103,7 +103,7 @@ footer{border-top:1px solid var(--line);padding:24px 15px;text-align:center;colo
 .brand::before{content:"S";position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:30px;border:1px solid var(--beige);border-radius:50%;display:grid;place-items:center;color:var(--beige);font:700 16px/1 Georgia,"Times New Roman",serif;letter-spacing:0}
 @media(max-width:720px){.brand{padding-left:36px;min-height:28px}.brand::before{width:26px;height:26px;font-size:14px}}
 </style>
-  <link rel="stylesheet" href="santino-ui.css?v=20261115-3">
+  <link rel="stylesheet" href="santino-ui.css?v=20261115-4">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/buscar.html">
@@ -183,8 +183,73 @@ footer{border-top:1px solid var(--line);padding:24px 15px;text-align:center;colo
     {id:"full-cebolinha",name:"Cebolinha",brand:"Jequiti · Turma da Mônica",category:"Frasco inteiro",terms:"cebolinha jequiti turma da monica 50 ml"},
     {id:"full-quasar-ice",name:"Quasar Ice",brand:"O Boticário",category:"Frasco inteiro",terms:"quasar ice boticario o boticario 100 ml"},
     {id:"eudora-h-acqua",name:"Eudora H Acqua",brand:"Eudora H",category:"Decant",terms:"eudora h acqua aqua masculino perfume colônia"},
-    {id:"full-eudora-h-acqua",name:"Eudora H Acqua",brand:"Eudora H",category:"Frasco inteiro",terms:"eudora h acqua aqua masculino perfume colônia 100 ml"}
+    {id:"full-eudora-h-acqua",name:"Eudora H Acqua",brand:"Eudora H",category:"Frasco inteiro",terms:"eudora h acqua aqua masculino perfume colônia 100 ml"},
+    {id:"full-quasar-blue",name:"Quasar Blue",brand:"O Boticário",category:"Frasco inteiro",terms:"quasar blue boticario o boticario"},
+    {id:"full-egeo-bomb-black",name:"Egeo Bomb Black",brand:"O Boticário",category:"Frasco inteiro",terms:"egeo bomb black boticario o boticario"},
+    {id:"full-kaiak-extremo",name:"Kaiak Extremo",brand:"Natura Kaiak",category:"Frasco inteiro",terms:"kaiak extremo natura kaiak"},
+    {id:"full-club-6-voyage",name:"Club 6 Voyage",brand:"Eudora",category:"Frasco inteiro",terms:"club 6 voyage eudora"},
+    {id:"full-club-de-nuit-intense-man",name:"Club de Nuit Intense Man",brand:"Armaf",category:"Frasco inteiro",terms:"club de nuit intense man armaf"},
+    {id:"full-khamrah",name:"Khamrah",brand:"Lattafa",category:"Frasco inteiro",terms:"khamrah lattafa"},
+    {id:"full-malbec-gold",name:"Malbec Gold",brand:"O Boticário",category:"Frasco inteiro",terms:"malbec gold boticario o boticario"}
   ];
+
+  const IMAGE_BY_PRODUCT_ID = {
+  "kingdom": "https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&width=1946",
+  "the-blend-bourbon": "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_1800%2Cc_limit/e_trim/v1/imagens/product/B77489/c97c55ee-65fe-4339-9a99-1363b969701b-the-blend-bourbon-eau-de-parfum-100ml.png",
+  "asad-bourbon": "https://scentira.in/cdn/shop/files/LATTAFAAl_Asad_Bourbon_1_34bc0e05-10ec-4d25-9df5-34b68222f16c.png?v=1756889307&width=5000",
+  "homem-sagaz": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600",
+  "homem-dom": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw035424b3/Produtos/PRODUTO/NATBRA-71770_1.jpg?q=80&sw=600",
+  "homem-essence": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600",
+  "essencial-sentir": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw62148647/Produtos/NATBRA-167755_1.jpg?q=80&sw=600",
+  "fakhar-black": "https://www.lattafa-usa.com/cdn/shop/files/1_aa0a5a38-775b-4814-a909-837c1d360d9c.png?v=1747500778&width=1946",
+  "k-max": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600",
+  "nautica-voyage": "https://amobeleza.vtexassets.com/arquivos/ids/338641/15282_0.jpg?v=639124732241930000",
+  "clash": "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Abest/v1/imagens/product/B50677/cae5b3cb-4709-4ad6-abac-8c54b813587e-bot-50677-clash-desodorante-colonia-frontal-01.jpg?v=20261024",
+  "quasar-ice": "https://down-br.img.susercontent.com/file/b7e357f69053ee8fed9a7156dc053519",
+  "eudora-h-acqua": "https://carrefourbr.vtexassets.com/arquivos/ids/135847808/e50e11a539fe43b882dbb643abc964e4.jpg?v=638384985975970000",
+  "touti-vip-12": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu9nuwstd4rk7a",
+  "touti-vip-50": "https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",
+  "touti-vip-52": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvhxs3jke5r48d",
+  "touti-vip-80": "https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",
+  "touti-fit-caribe": "https://down-br.img.susercontent.com/file/sg-11134201-7rbkn-llw9seqvwa09e4",
+  "full-touti-vip-12": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu9nuwstd4rk7a",
+  "full-touti-vip-46": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvhzvrznhtwg3e",
+  "full-touti-vip-50": "https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",
+  "full-touti-vip-52": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvhxs3jke5r48d",
+  "full-touti-vip-80": "https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",
+  "full-touti-fit-caribe": "https://down-br.img.susercontent.com/file/sg-11134201-7rbkn-llw9seqvwa09e4",
+  "full-kingdom": "https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&width=1946",
+  "full-212-vip-black": "https://cdn.salla.sa/DGdDlG/c8ab83f8-76ec-45e6-a9e9-3c35260c28b9-1000x1000-z7c64TKXbUSTNjJpzdzsZ6frKO0DM0gAjXPF22wN.jpg",
+  "full-the-blend-bourbon": "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_1800%2Cc_limit/e_trim/v1/imagens/product/B77489/c97c55ee-65fe-4339-9a99-1363b969701b-the-blend-bourbon-eau-de-parfum-100ml.png",
+  "full-homem-sagaz": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600",
+  "full-homem-dom": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw035424b3/Produtos/PRODUTO/NATBRA-71770_1.jpg?q=80&sw=600",
+  "full-homem-essence": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600",
+  "full-essencial-sentir": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw62148647/Produtos/NATBRA-167755_1.jpg?q=80&sw=600",
+  "full-fakhar-black": "https://www.lattafa-usa.com/cdn/shop/files/1_aa0a5a38-775b-4814-a909-837c1d360d9c.png?v=1747500778&width=1946",
+  "full-k-max": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600",
+  "full-le-male": "https://scale.coolshop-cdn.com/product-media.coolshop-cdn.com/23UC4G/f178d6ad2668454da17223e593c9cbd7.jpg/f/jean-paul-gaultier-le-male-le-parfum-125-ml.jpg",
+  "full-afnan-9pm": "https://emiratesfragrance.com/cdn/shop/files/afnan-9-pm-eau-de-parfum-for-men-1.jpg?v=1726044462&width=2048",
+  "full-asad-bourbon": "https://scentira.in/cdn/shop/files/LATTAFAAl_Asad_Bourbon_1_34bc0e05-10ec-4d25-9df5-34b68222f16c.png?v=1756889307&width=5000",
+  "full-asad": "https://www.opulensi.com/cdn/shop/files/AsadMain.jpg?v=1683748573&width=1445",
+  "full-eros": "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw8b197414/original/90_R740010-R100MLS_RNUL_20_Eros~EDT~100~ml-Accessories-Versace-online-store_3_1.jpg?q=85&strip=true&sw=850",
+  "full-million": "https://media.ulta.com/i/ulta/2276633?fmt=auto&h=1080&w=1080",
+  "full-sauvage": "https://www.sephora.com.mx/on/demandware.static/-/Sites-masterCatalog_Sephora/es_MX/dwdefc1b76/images/hi-res/eau-de-toilette-dior-dior-sauvage-eau-de-toilette-100ml3348901250146A.jpg",
+  "full-invictus": "https://medias.lookatme.com.ph/publishing/LOOKPH-70030889-front-zoom.jpg?version=1767696583",
+  "full-myslf": "https://www.houseoffraser.co.uk/images/imgzoom/75/75510669_xxl.jpg",
+  "full-nautica-voyage": "https://amobeleza.vtexassets.com/arquivos/ids/338641/15282_0.jpg?v=639124732241930000",
+  "full-clash": "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Abest/v1/imagens/product/B50677/cae5b3cb-4709-4ad6-abac-8c54b813587e-bot-50677-clash-desodorante-colonia-frontal-01.jpg?v=20261024",
+  "full-cebolinha": "https://http2.mlstatic.com/D_Q_NP_2X_990616-MLB92509253839_092025-E.webp",
+  "full-quasar-ice": "https://down-br.img.susercontent.com/file/b7e357f69053ee8fed9a7156dc053519",
+  "full-eudora-h-acqua": "https://carrefourbr.vtexassets.com/arquivos/ids/135847808/e50e11a539fe43b882dbb643abc964e4.jpg?v=638384985975970000",
+  "full-club-de-nuit-intense-man": "https://www.kruidvat.nl/medias/sys_master/prd-images/h00/h12/45665477656606/temp-prd-front-6363663-1_600x600/temp-prd-front-6363663-1-600x600.jpg",
+  "full-malbec-gold": "https://carrefourbr.vtexassets.com/arquivos/ids/189467637/image-0.jpg?v=638793147047800000",
+  "full-khamrah": "https://i8.amplience.net/i/manor/10003592325_01",
+  "full-kaiak-extremo": "https://down-br.img.susercontent.com/file/br-11134207-7qukw-li8dv4iehsov76",
+  "full-quasar-blue": "https://paradea.it/cdn/shop/files/o-boticario-quasar-blue-eau-de-toilette-100ml-o-boticario-38217504.jpg?v=1751143053&width=1946",
+  "full-club-6-voyage": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqq15dhj1kw327",
+  "full-egeo-bomb-black": "https://http2.mlstatic.com/D_NQ_NP_821590-MLB99367857758_112025-O.webp"
+};
+  products.forEach(function(product){ product.image=IMAGE_BY_PRODUCT_ID[product.id]||""; });
 
   function normalize(value){
     return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
@@ -225,13 +290,25 @@ footer{border-top:1px solid var(--line);padding:24px 15px;text-align:center;colo
   }
 
   results.innerHTML = matches.map(function(product){
+    const detailUrl = "produto.html?id=" + encodeURIComponent(product.id);
+    const imageFrame = product.image
+      ? '<span class="result-image"><img data-search-image src="' + escapeHTML(product.image) + '" alt="Frasco de ' + escapeHTML(product.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="result-image-fallback" aria-hidden="true">SANTINO</span></span>'
+      : '<span class="result-image is-missing"><span class="result-image-fallback" aria-hidden="true">SANTINO</span></span>';
     return '<article class="result-card">' +
+      '<a class="result-image-link" href="' + detailUrl + '" aria-label="Ver detalhes de ' + escapeHTML(product.name) + '">' + imageFrame + '</a>' +
       '<div class="result-type">' + escapeHTML(product.category) + '</div>' +
       '<h3>' + escapeHTML(product.name) + '</h3>' +
       '<div class="result-brand">' + escapeHTML(product.brand) + '</div>' +
-      '<a class="btn" href="produto.html?id=' + encodeURIComponent(product.id) + '">Ver fragrância</a>' +
+      '<a class="btn" href="' + detailUrl + '">Ver fragrância</a>' +
     '</article>';
   }).join("");
+  results.querySelectorAll("[data-search-image]").forEach(function(image){
+    image.addEventListener("error", function(){
+      const frame = image.closest(".result-image");
+      if(frame) frame.classList.add("is-missing");
+      image.hidden = true;
+    }, {once:true});
+  });
 })();
 </script>
 <script src="search.js?v=20261115-3" defer></script>

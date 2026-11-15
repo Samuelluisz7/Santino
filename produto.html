@@ -848,7 +848,7 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
 .brand::before{content:"S";position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:30px;border:1px solid var(--beige);border-radius:50%;display:grid;place-items:center;color:var(--beige);font:700 16px/1 Georgia,"Times New Roman",serif;letter-spacing:0}
 @media(max-width:720px){.brand{padding-left:36px;min-height:28px}.brand::before{width:26px;height:26px;font-size:14px}}
 </style>
-  <link rel="stylesheet" href="santino-ui.css?v=20261115-3">
+  <link rel="stylesheet" href="santino-ui.css?v=20261115-4">
 
 <style id="santino-pyramid-finish">
 /* Acabamento final SANTINO: packshot maior + pirâmide olfativa legível */
@@ -1477,7 +1477,6 @@ const stickyPurchase=window.SantinoStickyPurchase.init({
 });
 $("volumeSelect").addEventListener("change",()=>stickyPurchase?.refresh());
 $("quantitySelect").addEventListener("change",()=>stickyPurchase?.refresh());
-}
 }
 function selectGallery(index){if(!gallery[index])return;$("mainImage").style.display="block";$("galleryFallback").style.display="none";$("mainImage").src=gallery[index];$("mainImage").alt=product.name+" — foto "+(index+1);$("galleryCaption").textContent=index===0?"Frasco do perfume":(INGREDIENT_IMAGE_URLS.has(gallery[index])?"Imagem de notas ou ingredientes da fragrância":"Foto complementar do perfume");document.querySelectorAll("[data-gallery-index]").forEach(button=>button.setAttribute("aria-pressed",String(Number(button.dataset.galleryIndex)===index)));}
 function updatePrice(){if(!currentVolume)return;$("productPrice").textContent=money(currentVolume.price);$("productPrice").classList.remove("pending");$("addButton").textContent="Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price)}

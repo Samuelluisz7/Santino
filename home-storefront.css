@@ -592,3 +592,111 @@ body.home-page footer {
     animation-iteration-count: 1 !important;
   }
 }
+
+
+/* Home: mesma moldura de produto das demais páginas; foto inteira, sem corte. */
+body.home-page .home-product-image {
+  aspect-ratio: 4 / 3 !important;
+  border: 1px solid #d8cbb8 !important;
+  border-radius: 4px !important;
+  background: #eee7dc !important;
+}
+body.home-page .home-product-image img {
+  object-fit: contain !important;
+  object-position: center center !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Oferta de boas-vindas da página inicial. */
+.welcome-offer[hidden] { display: none !important; }
+.welcome-offer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.welcome-offer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .78);
+  backdrop-filter: blur(4px);
+}
+.welcome-offer-card {
+  position: relative;
+  width: min(100%, 450px);
+  padding: 32px 28px 28px;
+  border: 1px solid #8d7551;
+  border-radius: 6px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(198, 163, 105, .16), transparent 53%), linear-gradient(145deg, #211d17, #11110f 75%);
+  color: #f3eadb;
+  text-align: center;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .52);
+}
+.welcome-offer-close {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid #524637;
+  border-radius: 50%;
+  background: transparent;
+  color: #f3eadb;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+}
+.welcome-offer-eyebrow {
+  margin: 0 0 9px;
+  color: #c9b18b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.welcome-offer-card h2 {
+  margin: 0 0 12px;
+  font: 400 clamp(28px, 6vw, 36px)/1.12 Georgia, "Times New Roman", serif;
+}
+.welcome-offer-card p {
+  color: #d1c7b8;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.welcome-offer-card #welcomeOfferMessage {
+  max-width: 350px;
+  margin: 0 auto 7px;
+  color: #f3eadb;
+  font-size: 15px;
+}
+.welcome-offer-terms {
+  margin: 0 0 18px;
+  color: #aea392 !important;
+  font-size: 11px !important;
+}
+.welcome-offer-cta {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border: 1px solid #c9b18b;
+  border-radius: 4px;
+  background: #c9b18b;
+  color: #171512;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.welcome-offer-cta:hover { background: #dbc6a4; }
+.welcome-offer-open { overflow: hidden; }
+@media (max-width: 520px) {
+  .welcome-offer { padding: 16px; }
+  .welcome-offer-card { padding: 30px 20px 22px; }
+  .welcome-offer-card #welcomeOfferMessage { font-size: 14px; }
+  .welcome-offer-cta { width: 100%; }
+}

@@ -188,8 +188,8 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
 .brand::before{content:"S";position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:30px;border:1px solid var(--beige);border-radius:50%;display:grid;place-items:center;color:var(--beige);font:700 16px/1 Georgia,"Times New Roman",serif;letter-spacing:0}
 @media(max-width:720px){.brand{padding-left:36px;min-height:28px}.brand::before{width:26px;height:26px;font-size:14px}}
 </style>
-  <link rel="stylesheet" href="santino-ui.css?v=20261115-3">
-  <link rel="stylesheet" href="home-storefront.css?v=20261115-3">
+  <link rel="stylesheet" href="santino-ui.css?v=20261115-4">
+  <link rel="stylesheet" href="home-storefront.css?v=20261115-4">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/">
@@ -353,5 +353,78 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
 </script>
 <script src="search.js?v=20261115-3" defer></script>
 <script src="santino-ui.js?v=20261115-3" defer></script>
+<div class="welcome-offer" id="welcomeOffer" role="dialog" aria-modal="true" aria-labelledby="welcomeOfferHeading" aria-describedby="welcomeOfferMessage" hidden>
+  <div class="welcome-offer-backdrop" data-welcome-close></div>
+  <section class="welcome-offer-card" role="document">
+    <button type="button" class="welcome-offer-close" data-welcome-close aria-label="Fechar oferta">×</button>
+    <p class="welcome-offer-eyebrow">Boas-vindas à SANTINO</p>
+    <h2 id="welcomeOfferHeading">Bem-vindo(a) à SANTINO!</h2>
+    <p id="welcomeOfferMessage">Monte R$ 80 em decants e ganhe 10% de desconto automático no carrinho.</p>
+    <p class="welcome-offer-terms">O desconto é aplicado à soma dos decants; frascos inteiros não participam.</p>
+    <a class="welcome-offer-cta" href="decants.html">Explorar decants</a>
+  </section>
+</div>
+<script>
+(function(){
+  "use strict";
+  var offer = document.getElementById("welcomeOffer");
+  if (!offer) return;
+  var closeButtons = offer.querySelectorAll("[data-welcome-close]");
+  var closeButton = offer.querySelector(".welcome-offer-close");
+  var action = offer.querySelector(".welcome-offer-cta");
+  var storageKey = "santino_welcome_offer_seen";
+  var lastFocus = null;
+  function seen(){
+    try { return window.sessionStorage.getItem(storageKey) === "1"; }
+    catch (error) { return false; }
+  }
+  function markSeen(){
+    try { window.sessionStorage.setItem(storageKey, "1"); }
+    catch (error) {}
+  }
+  function closeOffer(){
+    if (offer.hidden) return;
+    offer.hidden = true;
+    document.body.classList.remove("welcome-offer-open");
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+  }
+  if (!seen()) {
+    window.setTimeout(function(){
+      if (seen()) return;
+      lastFocus = document.activeElement;
+      markSeen();
+      offer.hidden = false;
+      document.body.classList.add("welcome-offer-open");
+      if (closeButton) closeButton.focus();
+    }, 2000);
+  }
+  closeButtons.forEach(function(button){
+    button.addEventListener("click", closeOffer);
+  });
+  offer.addEventListener("click", function(event){
+    if (event.target === offer) closeOffer();
+  });
+  document.addEventListener("keydown", function(event){
+    if (offer.hidden) return;
+    if (event.key === "Escape") {
+      closeOffer();
+      return;
+    }
+    if (event.key === "Tab") {
+      var focusable = [closeButton, action].filter(Boolean);
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+})();
+</script>
 </body>
 </html>

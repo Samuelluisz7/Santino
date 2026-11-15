@@ -1180,3 +1180,120 @@ body.home-page .home-product-card { border-radius: 4px; }
   body.home-page .home-category-heading h2 { font-size: 23px; }
   body.home-page .home-pathway-grid { grid-auto-columns: 86%; }
 }
+
+
+/* Padrão de fotos de perfumes: moldura clara e frasco completo em todas as páginas. */
+:root {
+  --santino-perfume-image-bg: #eee7dc;
+  --santino-perfume-image-border: #d8cbb8;
+}
+.products .product-art:not(.product-comparison),
+.full-size-section .products .product-art:not(.product-comparison),
+body.home-page .home-product-image,
+.results .result-image,
+.kit-product-img,
+.gallery-main {
+  border: 1px solid var(--santino-perfume-image-border) !important;
+  border-radius: 4px !important;
+  background: var(--santino-perfume-image-bg) !important;
+}
+.products .product-art:not(.product-comparison),
+.full-size-section .products .product-art:not(.product-comparison) {
+  display: grid !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 4 / 3 !important;
+  place-items: center !important;
+  overflow: hidden !important;
+}
+.products .product-photo,
+.full-size-section .product-photo,
+body.home-page .home-product-image img,
+.kit-product-img img,
+.gallery-main img,
+.gallery-thumbs .thumb img,
+.comparison-gallery img,
+.product-comparison .comparison-photo img,
+.note-visual-bottle img,
+.results .result-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: transparent !important;
+  mix-blend-mode: normal !important;
+}
+.products .product-photo,
+.full-size-section .product-photo,
+body.home-page .home-product-image img,
+.kit-product-img img,
+.gallery-main img,
+.results .result-image img {
+  padding: 10px !important;
+}
+.gallery-main {
+  display: grid !important;
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 4 / 3;
+  place-items: center;
+  overflow: hidden;
+}
+.gallery-main img {
+  cursor: zoom-in;
+}
+.gallery-thumbs .thumb {
+  border-color: var(--santino-perfume-image-border) !important;
+  background: var(--santino-perfume-image-bg) !important;
+}
+.product-comparison .comparison-side,
+.comparison-gallery figure,
+.comparison-gallery .comparison-gallery-photo,
+.product-comparison .comparison-photo {
+  background: var(--santino-perfume-image-bg) !important;
+}
+.results .result-image {
+  position: relative;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  place-items: center;
+  overflow: hidden;
+}
+.results .result-image-link {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+.results .result-image img {
+  position: absolute;
+  inset: 0;
+}
+.results .result-image-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  color: #514333;
+  font: 12px Georgia, "Times New Roman", serif;
+  letter-spacing: .22em;
+}
+.results .result-image.is-missing .result-image-fallback {
+  display: grid;
+}
+.results .result-image.is-missing img {
+  display: none;
+}
+.results .result-card h3 {
+  margin-top: 8px;
+}
+@media (max-width: 720px) {
+  .gallery-main {
+    aspect-ratio: 4 / 3;
+  }
+}
