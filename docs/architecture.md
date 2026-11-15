@@ -40,6 +40,7 @@ Auditoria inicial: 14/11/2026. Este documento registra o estado observado e a ar
 ### Banco e acesso
 
 - Manter migrations versionadas em `supabase/migrations` e fora do artefato público do Pages.
+- Para tabelas novas, conceder em cada migration somente os privilégios necessários e conferir a exposição na Data API separadamente do RLS; a existência de policy não concede acesso ao endpoint.
 - Preparar e revisar uma baseline do schema remoto antes de propor a primeira migration. Não recriar, truncar ou modificar `pesquisas_santino` nem seus 6 registros.
 - Criar estruturas novas e aditivas para catálogo, variantes, pedidos e itens de pedido. Cada item de pedido deverá guardar snapshots dos dados e preços aceitos no momento da criação. Não importar o catálogo atual até validar o mapeamento.
 - Permitir leitura pública somente dos campos comerciais aprovados dos produtos ativos. Custos e informações administrativas devem permanecer fora da resposta pública.
