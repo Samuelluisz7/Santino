@@ -1,6 +1,6 @@
 begin;
 
-select plan(34);
+select plan(37);
 
 insert into public.products (slug, name, brand, is_active)
 values
@@ -17,14 +17,15 @@ insert into public.product_variants (
   volume_ml,
   price_cents,
   price_on_request,
-  is_active
+  is_active,
+  image_url
 )
 values
-  ((select id from public.products where slug = 'test-active-product'), 'decant', '5 ml', 5, 1890, false, true),
-  ((select id from public.products where slug = 'test-active-product'), 'decant', '10 ml', 10, 3590, false, true),
-  ((select id from public.products where slug = 'test-active-product'), 'bottle', 'Price on request', 50, null, true, true),
-  ((select id from public.products where slug = 'test-active-product'), 'decant', 'Inactive variant', 20, 5000, false, false),
-  ((select id from public.products where slug = 'test-inactive-product'), 'decant', 'Hidden parent variant', 5, 1000, false, true);
+  ((select id from public.products where slug = 'test-active-product'), 'decant', '5 ml', 5, 1890, false, true, 'https://example.test/test-active-decant.webp'),
+  ((select id from public.products where slug = 'test-active-product'), 'decant', '10 ml', 10, 3590, false, true, null),
+  ((select id from public.products where slug = 'test-active-product'), 'bottle', 'Price on request', 50, null, true, true, null),
+  ((select id from public.products where slug = 'test-active-product'), 'decant', 'Inactive variant', 20, 5000, false, false, null),
+  ((select id from public.products where slug = 'test-inactive-product'), 'decant', 'Hidden parent variant', 5, 1000, false, true, null);
 
 insert into public.kits (slug, name, is_active)
 values
@@ -81,6 +82,24 @@ select ok(
 select ok(
   to_regclass('public.kit_component_variants') is not null,
   'kit component variants table exists'
+);
+
+select has_column(
+  'public',
+  'product_variants',
+  'image_url',
+  'product variants can store a presentation-specific image'
+);
+select is(
+  (select image_url from public.product_variants where display_label = '5 ml'),
+  'https://example.test/test-active-decant.webp',
+  'presentation-specific image URLs are stored'
+);
+select throws_ok(
+  'update public.product_variants set image_url = repeat(''x'', 2049) where display_label = ''5 ml''',
+  '23514',
+  null,
+  'variant image URLs are limited to 2048 characters'
 );
 
 select ok((select relrowsecurity from pg_class where oid = 'public.products'::regclass), 'products has RLS enabled');

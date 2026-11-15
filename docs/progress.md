@@ -28,6 +28,7 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 - [x] Criada a baseline `20261115013651_baseline_pesquisas_santino.sql`, sem truncar, recriar ou remover `pesquisas_santino`.
 - [x] Criada `20261115024051_catalog_core.sql`, com catálogo, variantes, kits e componentes vazios e inativos por padrão.
 - [x] Criada `20261115033710_olfactory_profiles.sql`, sem dados semeados, para representar a pirâmide olfativa já mantida na página de detalhes.
+- Adicionada em branch a migration aditiva `20261115131834_product_variant_images.sql`: imagem opcional por variante, sem alterar dados nem usar backfill. O PR está validando essa alteração apenas em Postgres descartável; nenhuma migration foi aplicada ao Supabase real.
 - [x] Testes pgTAP cobrem a baseline, o RLS e grants do catálogo e o acesso aos perfis olfativos.
 - O workflow executa a validação conjunta das migrations em Postgres descartável do CI; Docker não está disponível neste Windows para repetir o replay localmente.
 - [ ] Só depois de revisar os resultados e receber autorização explícita, considerar aplicação no projeto remoto. O trabalho atual não aplica migrations.

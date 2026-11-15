@@ -22,7 +22,7 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 
 - A auditoria automatizada das três listas encontrou 32 decants, 49 frascos, 27 IDs compartilhados e 54 produtos únicos; todos os 54 têm detalhe na página compartilhada e não há IDs duplicados dentro de cada lista.
 - As fontes divergem em 5 imagens, 1 identidade (nome/marca) e 2 descrições para IDs compartilhados. O relatório em `docs/catalog-reconciliation.md` lista somente os IDs e os campos, sem copiar preços, URLs de imagem ou textos.
-- A migration atual guarda `image_url` em `products`, mas não em `product_variants`. Como os mesmos IDs têm imagens diferentes entre as duas apresentações, uma futura importação deve preservar a imagem opcional na variante e usar a imagem do produto como fallback.
+- A migration `20261115131834_product_variant_images.sql` acrescenta `image_url` opcional a `product_variants`, sem backfill, para preservar imagens específicas de decants/frascos. Quando o campo da variante estiver vazio, a camada de catálogo poderá usar `products.image_url` como fallback.
 - As diferenças de nome/marca e descrição permanecem sem resolução. Nenhum registro do catálogo foi alterado nem importado ao banco.
 
 ## Cashback e fidelização

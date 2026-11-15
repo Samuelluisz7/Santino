@@ -102,7 +102,7 @@ test("pgTAP plans match the assertions declared in every SQL test file", async (
   for (const name of sqlFiles) {
     const sql = await readFile(path.join(testDirectory, name), "utf8");
     const plan = sql.match(/^\s*select\s+plan\((\d+)\)\s*;/im);
-    const assertions = [...sql.matchAll(/^\s*select\s+(?:ok|is|isnt|throws_ok|lives_ok)\s*\(/gim)].length;
+    const assertions = [...sql.matchAll(/^\s*select\s+(?:ok|is|isnt|has_column|throws_ok|lives_ok)\s*\(/gim)].length;
     assert.ok(plan, `${name} declares a pgTAP plan`);
     assert.equal(Number(plan[1]), assertions, `${name} plan matches its pgTAP assertions`);
   }
