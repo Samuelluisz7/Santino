@@ -16,14 +16,15 @@ insert into public.product_variants (
   display_label,
   volume_ml,
   price_cents,
+  price_on_request,
   is_active
 )
 values
-  ((select id from public.products where slug = 'test-active-product'), 'decant', '5 ml', 5, 1890, true),
-  ((select id from public.products where slug = 'test-active-product'), 'decant', '10 ml', 10, 3590, true),
-  ((select id from public.products where slug = 'test-active-product'), 'bottle', 'Price on request', 50, null, true),
-  ((select id from public.products where slug = 'test-active-product'), 'decant', 'Inactive variant', 20, 5000, false),
-  ((select id from public.products where slug = 'test-inactive-product'), 'decant', 'Hidden parent variant', 5, 1000, true);
+  ((select id from public.products where slug = 'test-active-product'), 'decant', '5 ml', 5, 1890, false, true),
+  ((select id from public.products where slug = 'test-active-product'), 'decant', '10 ml', 10, 3590, false, true),
+  ((select id from public.products where slug = 'test-active-product'), 'bottle', 'Price on request', 50, null, true, true),
+  ((select id from public.products where slug = 'test-active-product'), 'decant', 'Inactive variant', 20, 5000, false, false),
+  ((select id from public.products where slug = 'test-inactive-product'), 'decant', 'Hidden parent variant', 5, 1000, false, true);
 
 insert into public.kits (slug, name, is_active)
 values
@@ -232,3 +233,4 @@ reset role;
 
 select * from finish();
 rollback;
+
