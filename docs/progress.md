@@ -22,7 +22,7 @@ Atualizado em 14/11/2026.
 
 ## Em andamento
 
-- [ ] Reconectar o painel administrativo/MCP do Supabase ao ref optloyhbkkrptuwsizrc. A lista de projetos desta sessão ainda só mostra santino-commerce; a tela do Supabase exige login do usuário.
+- [ ] Reconectar o MCP do Supabase ao ref optloyhbkkrptuwsizrc. O login no navegador foi concluído, mas não atualizou a conexão do MCP: a lista ainda mostra somente santino-commerce e consultas ao ref correto retornam falta de permissão.
 - [ ] Confirmar no painel o nome Santino Nobre e qual branch a integração GitHub sincroniza.
 - [ ] Inspecionar apenas por leitura schema, RLS, políticas e histórico de pesquisas_santino no projeto correto.
 
