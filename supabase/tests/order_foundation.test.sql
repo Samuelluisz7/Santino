@@ -1,6 +1,6 @@
 begin;
 
-select plan(12);
+select plan(10);
 
 select ok(to_regclass('public.orders') is not null, 'orders table exists');
 select ok(to_regclass('public.order_items') is not null, 'order items table exists');
