@@ -83,7 +83,7 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 - O GitHub Pages publica `https://samuelluisz7.github.io/Santino/`. A versão publicada é atualizada pela branch `main` somente após a validação do workflow de Pages; mudanças de schema continuam sem deploy automático para o Supabase.
 - Cada alteração de schema deve ser aditiva e revisada. A baseline local de `pesquisas_santino` é idempotente para o estado auditado; não usar reset remoto nem alterar os seis registros.
 - O workflow executa testes Node sem dependências externas e monta o artefato a partir de uma lista de formatos estáticos permitidos; um teste também valida o repositório real.
-- A CLI 3.1.0 foi obtida em pasta temporária e usada para inicializar a pasta e gerar a baseline; o digest oficial da release foi verificado. Docker não está disponível no Windows. O replay da baseline e os 21 testes pgTAP passaram no Postgres descartável do GitHub Actions run #50; a migration continua sem aplicação remota.
+- A CLI 3.1.0 foi obtida em pasta temporária e usada para inicializar a pasta e gerar a baseline; o digest oficial da release foi verificado. Docker não está disponível no Windows. O GitHub Actions run #43677256372 validou as três migrations em Postgres descartável e aprovou 77 verificações pgTAP; nenhuma migration foi aplicada remotamente.
 
 ## Riscos de segurança observados
 
