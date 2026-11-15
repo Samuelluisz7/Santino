@@ -556,7 +556,7 @@ $("checkout").addEventListener("click",checkout);
 document.querySelectorAll("[data-origin-filter]").forEach(button=>button.addEventListener("click",()=>{activeOriginFilter=button.dataset.originFilter==="Todos"?"":button.dataset.originFilter;document.querySelectorAll("[data-origin-filter]").forEach(item=>item.setAttribute("aria-pressed",String((item.dataset.originFilter==="Todos"?"":item.dataset.originFilter)===activeOriginFilter)));renderProducts()})); renderProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
-<script src="search.js?v=20261115-3" defer></script>
-<script src="santino-ui.js?v=20261115-3" defer></script>
+<script src="search.js?v=20261115-4" defer></script>
+<script src="santino-ui.js?v=20261115-4" defer></script>
 </body>
 </html>
