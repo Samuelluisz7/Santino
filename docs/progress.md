@@ -6,8 +6,8 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 
 - O projeto Supabase correto está acessível nesta sessão: **Santino Nobre**, ref `optloyhbkkrptuwsizrc`, status saudável. A tabela `public.pesquisas_santino` segue presente e com RLS. A leitura agregada anterior confirmou 6 registros; nenhum termo foi lido.
 - A listagem remota atual de migrations continua vazia (`[]`). Nenhuma migration foi aplicada. O projeto vazio `santino-commerce` não foi usado nem alterado.
-- O site anterior está publicado no GitHub Pages: https://samuelluisz7.github.io/Santino/. A publicação mais recente confirmada nesta trilha é o commit `2893edb6230242c70d3e6625ed7bc4f8036e7cea`; o workflow de Pages #54 passou.
-- A página inicial foi reorganizada com vitrine de quatro itens reais do catálogo, caminhos por categoria, oferta existente, kits com destinos corretos e explicação do cashback. Os 20 testes Node locais passam; a publicação no GitHub Pages é controlada pelo workflow da branch `main`.
+- O site público continua no GitHub Pages: https://samuelluisz7.github.io/Santino/. A versão da página inicial desta entrega está no PR #3; ela só será publicada após merge em `main` e sucesso do workflow de Pages.
+- A nova página inicial apresenta quatro itens reais do catálogo, caminhos por categoria, oferta existente, kits com destinos corretos e explicação do cashback. A validação mais recente do PR aprovou 21 testes Node e 77 verificações pgTAP em banco descartável.
 
 ## Auditoria e segurança concluídas
 
