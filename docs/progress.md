@@ -27,6 +27,15 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 - O workflow executa a validação conjunta das migrations em Postgres descartável do CI; Docker não está disponível neste Windows para repetir o replay localmente.
 - [ ] Só depois de revisar os resultados e receber autorização explícita, considerar aplicação no projeto remoto. O trabalho atual não aplica migrations.
 
+## Sincronização do schema Supabase
+
+- A branch `main` contém três migrations versionadas para a baseline da tabela legada, catálogo e perfis olfativos. A listagem atual do Supabase continua vazia; o banco remoto ainda possui apenas a tabela de pesquisas já existente.
+- O workflow do GitHub valida as migrations em Postgres descartável; ele não possui conexão com o banco de produção.
+- O `apply_migration` do Supabase MCP não aceita a versão original do arquivo e registra um timestamp próprio. Não o usar para aplicar migrations do repositório, pois criaria entradas remotas sem correspondência exata no histórico Git.
+- Caminho recomendado pela documentação do Supabase: ativar `Deploy to production` na integração GitHub do projeto e selecionar `main`, ou usar `supabase db push --linked` com CLI autenticada.
+- A última configuração de integração verificada registrava `Deploy to production` desligado. O CLI local não está instalado nem autenticado nesta sessão, portanto nenhuma migration foi aplicada remotamente.
+- Próximo passo de sincronização: confirmar/ativar a opção de deploy automático na integração já conectada; depois validar no Supabase que as três versões aparecem no histórico e que o schema permanece aditivo.
+
 ## Cashback aprovado e estado de implementação
 
 - Regras alinhadas: 5% sobre o valor pago pelos produtos após descontos; crédito liberado após confirmação do pagamento; validade de 90 dias; acumulável com promoções de produtos; utilização de até 100% do valor dos produtos; frete separado; sem conversão em dinheiro; aplicável a decants, frascos inteiros, kits e produtos futuros.
