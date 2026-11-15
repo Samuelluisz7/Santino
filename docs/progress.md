@@ -15,7 +15,7 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 ## Auditoria e segurança concluídas
 
 - A auditoria de catálogo agora compara automaticamente decants, frascos inteiros e detalhes; o resultado e as divergências de imagem, identidade e descrição estão documentados em `docs/catalog-reconciliation.md`.
-- O modelo SQL atual ainda não armazena imagem por variante; essa extensão deverá ser criada como migration versionada antes de importar os produtos. Nenhum dado comercial foi alterado.
+- A migration `20261115131834_product_variant_images.sql` acrescenta imagem opcional por variante; não há backfill nem dados comerciais incluídos.
 
 - [x] Mapeadas páginas, catálogo, variantes, kits, busca, carrinho e montagem estática do GitHub Pages.
 - [x] Confirmada a tabela antiga `public.pesquisas_santino`, sua política de inserção anônima e a preservação dos registros existentes.
@@ -28,18 +28,19 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 - [x] Criada a baseline `20261115013651_baseline_pesquisas_santino.sql`, sem truncar, recriar ou remover `pesquisas_santino`.
 - [x] Criada `20261115024051_catalog_core.sql`, com catálogo, variantes, kits e componentes vazios e inativos por padrão.
 - [x] Criada `20261115033710_olfactory_profiles.sql`, sem dados semeados, para representar a pirâmide olfativa já mantida na página de detalhes.
-- Adicionada em branch a migration aditiva `20261115131834_product_variant_images.sql`: imagem opcional por variante, sem alterar dados nem usar backfill. O PR está validando essa alteração apenas em Postgres descartável; nenhuma migration foi aplicada ao Supabase real.
+- [x] Criada `20261115131834_product_variant_images.sql`, com `product_variants.image_url` opcional e limite de 2048 caracteres; sem backfill.
+- [x] A migration aditiva `20261115131834_product_variant_images.sql` entrou na `main` via PR #9; foi validada em Postgres descartável junto com 26 testes Node e 80 testes pgTAP. Nenhuma migration foi aplicada ao Supabase real.
 - [x] Testes pgTAP cobrem a baseline, o RLS e grants do catálogo e o acesso aos perfis olfativos.
 - O workflow executa a validação conjunta das migrations em Postgres descartável do CI; Docker não está disponível neste Windows para repetir o replay localmente.
 - [ ] Só depois de revisar os resultados e receber autorização explícita, considerar aplicação no projeto remoto. O trabalho atual não aplica migrations.
 
 ## Sincronização do schema Supabase
 
-- A branch `main` contém três migrations versionadas para a baseline da tabela legada, catálogo e perfis olfativos. A listagem atual do Supabase continua vazia; o banco remoto ainda possui apenas a tabela de pesquisas já existente.
+- A branch `main` contém quatro migrations versionadas para a baseline legada, catálogo, perfis olfativos e imagens por variante. A listagem remota continua vazia; o banco ainda possui apenas `public.pesquisas_santino`.
 - O workflow do GitHub valida as migrations em Postgres descartável; ele não possui conexão com o banco de produção.
 - O `apply_migration` do Supabase MCP não aceita a versão original do arquivo e registra um timestamp próprio. Não o usar para aplicar migrations do repositório, pois criaria entradas remotas sem correspondência exata no histórico Git.
 - Caminho recomendado pela documentação do Supabase: ativar `Deploy to production` na integração GitHub do projeto e selecionar `main`, ou usar `supabase db push --linked` com CLI autenticada.
-- A última configuração de integração verificada registrava `Deploy to production` desligado. O CLI local não está instalado nem autenticado nesta sessão, portanto nenhuma migration foi aplicada remotamente.
+- A configuração de integração registrada neste relatório mantém `Deploy to production` desligado. A CLI v3.1.0 foi usada em pasta temporária apenas para gerar o nome oficial da migration; não houve login nem comando remoto.
 - Próximo passo de sincronização: confirmar/ativar a opção de deploy automático na integração já conectada; depois validar no Supabase que as três versões aparecem no histórico e que o schema permanece aditivo.
 
 ## Cashback aprovado e estado de implementação
