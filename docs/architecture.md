@@ -27,7 +27,7 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 - Existe uma política permissiva para `anon INSERT`; ela só permite termos com tamanho após `trim` entre 1 e 100 caracteres. `anon` não tem leitura, atualização ou exclusão; `authenticated` não tem grants diretos. `service_role` tem TRUNCATE/REFERENCES/TRIGGER diretos, sem grants diretos de DML.
 - No início da auditoria, o histórico remoto do Supabase estava vazio e o repositório tinha somente `supabase/README.md`. Depois da reconexão, foi criada localmente uma migration baseline da tabela existente; o histórico remoto continua sem alterações.
 - Não há Edge Functions nem funções de aplicação no schema `public`. Os advisors de segurança, desempenho e saúde não retornaram avisos.
-- A configuração de preview do Supabase no GitHub aponta para o ref correto, mas a criação automática de branches de preview está desativada.
+- O painel do projeto confirma a integração GitHub com `Samuelluisz7/Santino` e diretório de trabalho `.`. `Deploy to production` e a criação automática de branches estão desligados; o campo de branch de produção fica desabilitado, portanto a branch de sincronização não está configurada nem pode ser confirmada enquanto o deploy está off.
 
 ## Arquitetura proposta
 
@@ -64,15 +64,15 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 - `supabase/config.toml` foi gerado pela CLI 3.1.0; `project_id = "santino-local"` é apenas o identificador local e o checkout não está linkado ao projeto remoto. No ambiente local, novas tabelas não são expostas automaticamente pela Data API e a execução de seeds está desligada; migrations precisam conceder acesso explicitamente.
 - `supabase/migrations/20261115013651_baseline_pesquisas_santino.sql` registra o schema legado sem apagar, recriar ou ler os seis registros. A tabela é criada somente se estiver ausente; RLS e a permissão atual de `anon INSERT` ficam declaradas. A policy `Permitir registrar pesquisas` é criada apenas quando não existe.
 - A migration foi gerada com `supabase migration new`; ela ainda não foi aplicada ao projeto remoto. O acesso correto está confirmado, mas o PR continua em rascunho e o projeto não cria branches de preview para PRs.
-- O workflow de Pages `.github/workflows/pages.yml` inicia Postgres local descartável quando há migrations, reseta somente esse banco e executa `supabase test db` antes do restante da validação e do deploy. Os 21 testes pgTAP cobrem schema, RLS, privilégios e a validação dos termos; os inserts de teste são revertidos pela transação. O workflow não recebe credenciais de produção nem usa `--remote`. O GitHub Actions run #49 passou: os 21 testes foram aprovados no Postgres descartável do CI; nenhum teste ou migration foi executado no banco remoto.
+- O workflow de Pages `.github/workflows/pages.yml` inicia Postgres local descartável quando há migrations, reseta somente esse banco e executa `supabase test db` antes do restante da validação e do deploy. Os 21 testes pgTAP cobrem schema, RLS, privilégios e a validação dos termos; os inserts de teste são revertidos pela transação. O workflow não recebe credenciais de produção nem usa `--remote`. O GitHub Actions run #50 passou: os 21 testes foram aprovados no Postgres descartável do CI; nenhum teste ou migration foi executado no banco remoto.
 
 ## Implantação e validações
 
 - O GitHub Pages publica somente o conteúdo do site. Pastas de desenvolvimento e supabase/ ficam fora do artefato.
-- O usuário informa que a integração GitHub do Supabase está conectada. Antes do primeiro merge de migration, confirmar qual repositório/branch e projeto ela sincroniza.
+- A integração GitHub está conectada a `Samuelluisz7/Santino`, com diretório `.`. A branch `main` aparece como branch atual de produção do projeto, mas o deploy de produção está desligado e o campo de branch GitHub fica desabilitado; não há sincronização automática de migrations configurada nesta etapa.
 - Cada alteração de schema deve ser aditiva e revisada. A baseline local de `pesquisas_santino` é idempotente para o estado auditado; não usar reset remoto nem alterar os seis registros.
 - O workflow executa testes Node sem dependências externas e monta o artefato a partir de uma lista de formatos estáticos permitidos; um teste também valida o repositório real.
-- A CLI 3.1.0 foi obtida em pasta temporária e usada para inicializar a pasta e gerar a baseline; o digest oficial da release foi verificado. Docker não está disponível no Windows. O replay da baseline e os 21 testes pgTAP passaram no Postgres descartável do GitHub Actions run #49; a migration continua sem aplicação remota.
+- A CLI 3.1.0 foi obtida em pasta temporária e usada para inicializar a pasta e gerar a baseline; o digest oficial da release foi verificado. Docker não está disponível no Windows. O replay da baseline e os 21 testes pgTAP passaram no Postgres descartável do GitHub Actions run #50; a migration continua sem aplicação remota.
 
 ## Riscos de segurança observados
 

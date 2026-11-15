@@ -18,13 +18,13 @@ Atualizado em 14/11/2026 (America/Sao_Paulo).
 - [x] Nenhuma Edge Function ou função de aplicação no schema public.
 - [x] Advisors de segurança, desempenho e saúde sem avisos.
 - [x] Confirmado que o projeto acidental santino-commerce não foi usado nem alterado.
-- [x] Confirmado que a criação de branches Supabase de preview por PR está desativada; nenhum preview de banco foi criado.
+- [x] No painel do projeto, confirmei a conexão GitHub com `Samuelluisz7/Santino` e diretório `.`. `Deploy to production` está desligado, o campo de branch de produção está desabilitado e a criação automática de branches está desligada; nenhum deploy ou preview foi ativado.
 - [x] Workflow do Pages publica somente formatos estáticos permitidos e robots.txt; exclui supabase/, documentação, arquivos ocultos e pastas de desenvolvimento.
 - [x] Criados testes automáticos do empacotamento, incluindo o repositório real, para impedir vazamento de supabase/, CATALOGO.md, LEIA-ME.txt e arquivos privados.
 - [x] Criado scanner de texto para detectar padrões conhecidos de chaves privadas e credenciais de pagamento.
 - [x] Workflow executa validações em pull requests e na branch main; somente main/manual publica no Pages.
 - [x] Testes locais: 6 aprovados, cobrindo o empacotamento do repositório real e o escape de campos do carrinho.
-- [x] PR draft #2 criada; o GitHub Actions run #49 para o commit `deeebb06417ff5057559181c79479d3c9626933a` passou. A validação executou 9 testes Node, montou o artefato Pages, aplicou a baseline somente a um Postgres descartável do CI e aprovou os 21 testes pgTAP. O deploy do Pages foi ignorado.
+- [x] PR draft #2 criada; o GitHub Actions run #50 para o commit `51ca31e553ca5a9af2f426356c54ac792a17c5ea` passou. A validação executou 9 testes Node, montou o artefato Pages, aplicou a baseline somente a um Postgres descartável do CI e aprovou os 21 testes pgTAP. O deploy do Pages foi ignorado.
 - [x] CLI Supabase 3.1.0 obtida da release oficial em pasta temporária; SHA-256 conferido com o digest da release. Nenhuma instalação global foi feita.
 - [x] `supabase init` criou a configuração local. A Data API não expõe tabelas novas automaticamente no ambiente local e seeds estão desativados para evitar importações não aprovadas.
 - [x] Gerada via CLI a migration `20261115013651_baseline_pesquisas_santino.sql`, idempotente para a tabela existente, com a política de inserção auditada e sem operações de remoção de dados.
@@ -34,11 +34,11 @@ Atualizado em 14/11/2026 (America/Sao_Paulo).
 
 ## Em andamento
 
-- [ ] Confirmar no painel do Supabase o repositório/branch de implantação antes de qualquer merge que dispare sincronização. O usuário informa `Samuelluisz7/Santino` / `main`; previews por PR continuam desativados.
+- [ ] Depois da revisão, decidir se e qual branch GitHub deverá ser usada para deploy automático do Supabase. A opção está desligada e o campo de branch não está editável; não habilitar nem aplicar migrations remotas nesta etapa.
 
 ## Próximas etapas
 
-- [ ] Manter a PR em rascunho até a configuração da integração Supabase/GitHub estar conferida; não aplicar migrations remotamente sem autorização explícita.
+- [ ] Manter a PR em rascunho e o deploy automático do Supabase desligado; não aplicar migrations remotamente sem autorização explícita.
 - [ ] Criar estruturas novas para catálogo, variantes, pedidos e itens, sem importar nem alterar dados comerciais até validar o mapeamento.
 - [ ] Implementar criação de pedidos server-side com RLS e Edge Function, mantendo pagamentos reais desativados.
 - [ ] Integrar testes de banco e fluxos de pedido antes de considerar cada recurso concluído.
@@ -55,6 +55,6 @@ Atualizado em 14/11/2026 (America/Sao_Paulo).
 ## Ambiente local
 
 - Git e Node.js estão disponíveis; npm e Docker não estão disponíveis. A CLI Supabase 3.1.0 foi executada de uma pasta temporária com `SUPABASE_HOME` isolado.
-- A validação Node passou localmente com 9 testes. O GitHub Actions run #49 também passou com 9 testes Node e 21 testes pgTAP em um Postgres descartável; o Postgres remoto não foi alterado.
+- A validação Node passou localmente com 9 testes. O GitHub Actions run #50 também passou com 9 testes Node e 21 testes pgTAP em um Postgres descartável; o Postgres remoto não foi alterado.
 - O checkout local não está linkado à produção e nenhuma credencial de banco foi armazenada no repositório.
 
