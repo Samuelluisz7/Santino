@@ -96,11 +96,7 @@ select is(
   'presentation-specific image URLs are stored'
 );
 select throws_ok(
-  $
-    update public.product_variants
-    set image_url = repeat('x', 2049)
-    where display_label = '5 ml'
-  $,
+  'update public.product_variants set image_url = repeat(''x'', 2049) where display_label = ''5 ml''',
   '23514',
   null,
   'variant image URLs are limited to 2048 characters'
