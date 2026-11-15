@@ -91,12 +91,12 @@ select has_column(
   'product variants can store a presentation-specific image'
 );
 select is(
-  (select image_url from public.product_variants where display_label = '5 ml'),
+  (select variant.image_url from public.product_variants as variant join public.products as product on product.id = variant.product_id where variant.display_label = '5 ml' and product.slug = 'test-active-product'),
   'https://example.test/test-active-decant.webp',
   'presentation-specific image URLs are stored'
 );
 select throws_ok(
-  'update public.product_variants set image_url = repeat(''x'', 2049) where display_label = ''5 ml''',
+  'update public.product_variants set image_url = repeat(''x'', 2049) where display_label = ''5 ml'' and product_id = (select id from public.products where slug = ''test-active-product'')',
   '23514',
   null,
   'variant image URLs are limited to 2048 characters'
