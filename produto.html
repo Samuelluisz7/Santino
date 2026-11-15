@@ -989,6 +989,7 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
 }
 </style>
 
+  <link rel="stylesheet" href="sticky-purchase.css?v=20261115-3">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/produto.html">
   <meta name="robots" content="index,follow">
@@ -1000,7 +1001,7 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
   <meta property="og:image" content="https://samuelluisz7.github.io/Santino/banner-home-original.webp">
   <meta name="twitter:card" content="summary_large_image">
 </head>
-<body>
+<body class="perfume-detail-page">
 <header><div class="nav"><a href="index.html" class="brand" style="text-decoration:none">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a><form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="nav-links" aria-label="Navegação"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a><a href="kits.html">Kits</a></nav><a class="cart-link" id="cartLink" href="decants.html?openCart=1">Carrinho <span class="cart-count" id="cartCount">0</span></a></div></header>
 <main><div class="breadcrumbs"><a id="backCatalog" href="decants.html">← Voltar ao catálogo</a> / <span id="crumbName">Perfume</span></div>
 
@@ -1012,6 +1013,13 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
   <div class="detail-highlight"><span>Clima</span><strong id="highlightClimate"></strong></div>
 </div><div class="price" id="productPrice"></div>
 <div class="purchase-controls"><div class="control" id="volumeControl"><label for="volumeSelect">Volume do decant</label><select id="volumeSelect"></select></div><div class="control"><label for="quantitySelect">Quantidade</label><select id="quantitySelect"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div></div><button class="add-button" id="addButton">Adicionar ao carrinho</button><p class="stock-note" id="stockNote">Confira o volume e a quantidade antes de adicionar. A disponibilidade será confirmada pelo WhatsApp. Confira o total e a entrega antes de pagar.</p></div></section>
+<div class="sticky-purchase" id="stickyPurchaseBar" role="region" aria-label="Compra rápida" aria-hidden="true">
+  <div class="sticky-purchase-copy">
+    <strong class="sticky-purchase-name" id="stickyProductName"></strong>
+    <span class="sticky-purchase-choice" id="stickyPurchaseChoice"></span>
+  </div>
+  <button class="sticky-purchase-button" id="stickyAddButton" type="button">Adicionar</button>
+</div>
 <section class="content-section" id="olfactorySection">
  <div class="content-heading"><div><div class="eyebrow">A composição</div><h2>Notas da fragrância</h2><p><strong>Acordes em destaque.</strong> As etiquetas coloridas resumem o perfil da fragrância; abaixo, a pirâmide organiza as notas em saída, coração e fundo. As cores ajudam a distinguir ingredientes e acordes.</p></div></div>
  <div class="note-infographic">
@@ -1042,6 +1050,7 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
  </filter>
 </svg>
 <div class="toast" id="toast" role="status"></div><footer>SANTINO · Decants &amp; Fragrâncias · <a href="politicas.html" style="color:var(--beige)">Políticas de compra</a></footer>
+<script src="sticky-purchase.js?v=20261115-3"></script>
 <script>
 const CURRENCY=new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});function money(value){return CURRENCY.format(value)}function escapeHTML(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 const PRODUCTS = [
@@ -1442,6 +1451,28 @@ if(info){
  $("accordBars").innerHTML=accords.slice(0,10).map((label,index)=>'<div class="accord-row" style="--bar-width:'+(100-index*4.5)+'%;--bar-color:'+noteColor(label)+'"><span class="accord-bar-dot" aria-hidden="true"></span><span class="accord-bar-label">'+escapeHTML(label)+'</span></div>').join("");
 }else{$("olfactorySection").style.display="none"}
 const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?(Number.isFinite(product.price)?"Adicionar ao carrinho — "+money(product.price):"Consultar pelo WhatsApp"):"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
+const stickyPurchase=window.SantinoStickyPurchase.init({
+ bar:$("stickyPurchaseBar"),
+ button:$("stickyAddButton"),
+ sourceButton:$("addButton"),
+ nameTarget:$("stickyProductName"),
+ summaryTarget:$("stickyPurchaseChoice"),
+ getSelection:()=>{
+  const volume=isFull?(currentVolume?.ml??product.ml):currentVolume?.ml;
+  const price=isFull?(currentVolume?.price??product.price):currentVolume?.price;
+  return {
+   name:product.name,
+   volume,
+   quantity:isFull?1:(Number($("quantitySelect").value)||1),
+   price,
+   consultation:isFull&&!Number.isFinite(price)
+  };
+ },
+ formatPrice:money
+});
+$("volumeSelect").addEventListener("change",()=>stickyPurchase?.refresh());
+$("quantitySelect").addEventListener("change",()=>stickyPurchase?.refresh());
+}
 }
 function selectGallery(index){if(!gallery[index])return;$("mainImage").style.display="block";$("galleryFallback").style.display="none";$("mainImage").src=gallery[index];$("mainImage").alt=product.name+" — foto "+(index+1);$("galleryCaption").textContent=index===0?"Frasco do perfume":(INGREDIENT_IMAGE_URLS.has(gallery[index])?"Imagem de notas ou ingredientes da fragrância":"Foto complementar do perfume");document.querySelectorAll("[data-gallery-index]").forEach(button=>button.setAttribute("aria-pressed",String(Number(button.dataset.galleryIndex)===index)));}
 function updatePrice(){if(!currentVolume)return;$("productPrice").textContent=money(currentVolume.price);$("productPrice").classList.remove("pending");$("addButton").textContent="Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price)}
