@@ -196,7 +196,7 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
   <meta property="og:image" content="https://samuelluisz7.github.io/Santino/banner-home-original.webp">
   <meta name="twitter:card" content="summary_large_image">
 </head>
-<body>
+<body class="home-page">
 <header class="site-header">
   <div class="header-main">
     <a class="brand" href="index.html">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a>
@@ -213,21 +213,55 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
   </nav>
 </header>
 <main>
-  <section class="hero" aria-label="Apresentação da SANTINO">
+  <section class="hero home-hero" aria-labelledby="homeHeading">
     <div class="hero-copy">
       <div class="eyebrow">Descubra. Experimente. Escolha.</div>
-      <h1>Encontre uma fragrância para cada momento.</h1>
-      <p>Conheça fragrâncias selecionadas, experimente em decants de 5 ou 10 ml e escolha a sua com mais segurança.</p>
+      <h1 id="homeHeading">Seu próximo perfume começa com uma descoberta.</h1>
+      <p>Explore a coleção, compare a pirâmide olfativa e experimente em decants de 5 ou 10 ml antes de escolher um frasco inteiro.</p>
+      <a class="home-offer-link" href="#promocoes">10% OFF em decants a partir de R$ 80 <span aria-hidden="true">→</span></a>
+      <a class="home-help-link" href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20SANTINO%20e%20gostaria%20de%20ajuda%20para%20escolher%20uma%20fragr%C3%A2ncia." target="_blank" rel="noopener noreferrer">Prefere ajuda? Fale com a SANTINO pelo WhatsApp</a>
     </div>
     <div class="hero-visual">
       <img class="hero-banner" src="banner-home-original.webp?v=1" alt="Coleção de perfumes SANTINO alinhados em uma composição horizontal" fetchpriority="high" decoding="async">
     </div>
     <div class="hero-actions">
-      <a class="hero-link primary" href="decants.html">Explorar decants <span aria-hidden="true">→</span></a>
-      <a class="hero-link" href="frascos.html">Ver frascos inteiros <span aria-hidden="true">→</span></a>
+      <a class="hero-link primary" href="decants.html">Escolher um decant <span aria-hidden="true">→</span></a>
+      <a class="hero-link" href="kits.html">Explorar os kits <span aria-hidden="true">→</span></a>
     </div>
   </section>
-  <section class="promo-grid" aria-label="Descontos SANTINO">
+  <section class="service-strip" aria-label="Informações essenciais de compra">
+    <div><strong>DECANTS DE 5 E 10 ML</strong><span>Escolha o volume no catálogo</span></div>
+    <div><strong>FRAGRÂNCIAS ORIGINAIS</strong><span>Procedência informada com clareza</span></div>
+    <div><strong>PIX OU DINHEIRO</strong><span>Formas de pagamento aceitas</span></div>
+    <div><strong>ENTREGA LOCAL EM VIÇOSA</strong><span>Combine os detalhes com a loja</span></div>
+  </section>
+  <section class="home-pathways" aria-labelledby="homePathwaysHeading">
+    <div class="home-section-heading">
+      <div><div class="eyebrow">Explore a SANTINO</div><h2 id="homePathwaysHeading">Por onde você quer começar?</h2></div>
+      <p>Veja as fragrâncias, escolha o volume e monte seu pedido.</p>
+    </div>
+    <div class="home-pathway-grid">
+      <a class="home-pathway" href="decants.html">
+        <span class="home-pathway-kicker">EXPERIMENTE PRIMEIRO</span>
+        <strong>Decants</strong>
+        <p>Conheça a fragrância em 5 ou 10 ml antes de escolher um frasco inteiro.</p>
+        <span class="home-pathway-action">Ver decants <b aria-hidden="true">→</b></span>
+      </a>
+      <a class="home-pathway" href="kits.html">
+        <span class="home-pathway-kicker">ESCOLHA PELA OCASIÃO</span>
+        <strong>Kits</strong>
+        <p>Explore combinações para rotina, festa, encontro e noite.</p>
+        <span class="home-pathway-action">Encontrar um kit <b aria-hidden="true">→</b></span>
+      </a>
+      <a class="home-pathway" href="frascos.html">
+        <span class="home-pathway-kicker">ENCONTRE SUA PRÓXIMA ASSINATURA</span>
+        <strong>Frascos inteiros</strong>
+        <p>Veja a seleção de perfumes em frasco inteiro e consulte as opções.</p>
+        <span class="home-pathway-action">Ver frascos <b aria-hidden="true">→</b></span>
+      </a>
+    </div>
+  </section>
+  <section class="promo-grid" id="promocoes" aria-label="Descontos SANTINO">
     <article class="promo-card">
       <div class="promo-symbol" aria-hidden="true">%</div>
       <div>
@@ -258,12 +292,6 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
       <a class="home-kit-card" href="kits.html#kit-noturno"><span>04 · NOITE</span><strong>Noturno</strong><p>Perfis intensos para noites e ocasiões especiais.</p><b aria-hidden="true">↗</b></a>
     </div>
   </section>
-  <section class="service-strip" aria-label="Informações essenciais de compra">
-    <div><strong>DECANTS DE 5 E 10 ML</strong><span>Escolha o volume no catálogo</span></div>
-    <div><strong>FRAGRÂNCIAS ORIGINAIS</strong><span>Procedência informada com clareza</span></div>
-    <div><strong>PIX OU DINHEIRO</strong><span>Formas de pagamento aceitas</span></div>
-    <div><strong>ENTREGA LOCAL EM VIÇOSA</strong><span>Combine os detalhes com a loja</span></div>
-  </section>
 <footer>
   <div class="footer-brand">SANTINO</div>
   <p>Descubra sua próxima fragrância.</p>
@@ -288,3 +316,4 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
 <script src="santino-ui.js" defer></script>
 </body>
 </html>
+

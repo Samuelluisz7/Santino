@@ -3,19 +3,55 @@ name: Publicar SANTINO no GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+      - name: Configurar Node para validações
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validar empacotamento do site
+        run: node --test tests/*.test.mjs
+
+      - name: Configurar Supabase CLI para migrations
+        if: ${{ hashFiles('supabase/migrations/**/*.sql') != '' }}
+        uses: supabase/setup-cli@v3
+        with:
+          version: "3.1.0"
+      - name: Iniciar Postgres local descartável
+        if: ${{ hashFiles('supabase/migrations/**/*.sql') != '' }}
+        run: supabase db start
+      - name: Aplicar migrations somente no Postgres local
+        if: ${{ hashFiles('supabase/migrations/**/*.sql') != '' }}
+        run: supabase db reset --no-seed
+      - name: Executar testes SQL com pgTAP
+        if: ${{ hashFiles('supabase/migrations/**/*.sql') != '' }}
+        run: supabase test db
+
+      - name: Montar artefato temporário
+        run: node scripts/build-pages.mjs "$RUNNER_TEMP/santino-validation-site"
+
   deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: validate
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -23,17 +59,14 @@ jobs:
     steps:
       - name: Baixar o repositório
         uses: actions/checkout@v4
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
       - name: Configurar Pages
         uses: actions/configure-pages@v5
       - name: Preparar os arquivos públicos do site
-        run: |
-          mkdir -p site
-          find . -mindepth 1 -maxdepth 1 \
-            ! -name '.*' \
-            ! -name 'supabase' \
-            ! -name 'site' \
-            -exec cp -R {} site/ \;
-          touch site/.nojekyll
+        run: node scripts/build-pages.mjs site
       - name: Empacotar site
         uses: actions/upload-pages-artifact@v3
         with:
@@ -41,3 +74,4 @@ jobs:
       - name: Publicar no GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
