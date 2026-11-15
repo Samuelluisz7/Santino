@@ -5,7 +5,7 @@ Atualizado em 15/11/2026 (America/Sao_Paulo), após verificação do deploy de p
 ## Situação atual
 
 - O projeto Supabase correto está acessível nesta sessão: **Santino Nobre**, ref `optloyhbkkrptuwsizrc`, status saudável. A tabela legada `public.pesquisas_santino` segue presente e com RLS; seus dados não foram alterados.
-- O deploy de produção do projeto **Santino Nobre** está ativo. A listagem remota confirma as cinco migrations da `main`; o projeto vazio `santino-commerce` não foi usado nem alterado.
+- O deploy de produção do projeto **Santino Nobre** está ativo. A listagem remota confirma as sete migrations da `main`; o projeto vazio `santino-commerce` não foi usado nem alterado.
 - O site público está em https://samuelluisz7.github.io/Santino/ e a revisão visual mais recente foi publicada após o workflow de validação da branch `main`.
 - Correção de cache dos arquivos CSS/JavaScript publicada: as sete páginas solicitam versões identificadas dos assets locais (`?v=20261115-3`); o teste de proteção passou no workflow do Pages.
 - A página apresenta a vitrine de quatro itens reais logo após os caminhos compactos por categoria; mantém preços e imagens do catálogo e a explicação das regras aprovadas de cashback.
@@ -31,6 +31,7 @@ Atualizado em 15/11/2026 (America/Sao_Paulo), após verificação do deploy de p
 - [x] Criada `20261115131834_product_variant_images.sql`, com `product_variants.image_url` opcional e limite de 2048 caracteres; sem backfill.
 - [x] Criada `20261115145000_staged_catalog_import.sql`, com 51 produtos e 116 variantes copiadas das fontes atuais, todos inativos; os três IDs com conflitos ficaram fora.
 - [x] Criada `20261115150000_order_foundation.sql`, com pedidos e itens em tabelas protegidas por RLS; os snapshots ficam disponíveis apenas para operação server-side.
+- [x] Criada `20261115151000_order_rls_deny.sql`, com políticas explícitas que bloqueiam anon/authenticated; o advisor de segurança ficou sem avisos.
 - [x] As quatro migrations da `main` foram aplicadas ao projeto correto após a ativação do deploy: baseline legada, catálogo, perfis olfativos e imagem por variante. O schema remoto foi conferido; RLS está ativo nas tabelas e as tabelas novas contêm 51 produtos e 116 apresentações em modo inativo; nenhum deles é exibido no site.
 - [x] Testes pgTAP cobrem a baseline, o RLS e grants do catálogo e o acesso aos perfis olfativos.
 - O workflow executa a validação conjunta das migrations em Postgres descartável do CI; Docker não está disponível neste Windows para repetir o replay localmente.
