@@ -6,10 +6,11 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const [home, featured, styles, decants, kits, policies] = await Promise.all([
+const [home, featured, styles, storefront, decants, kits, policies] = await Promise.all([
   readFile(path.join(ROOT, "index.html"), "utf8"),
   readFile(path.join(ROOT, "home-featured.js"), "utf8"),
   readFile(path.join(ROOT, "santino-ui.css"), "utf8"),
+  readFile(path.join(ROOT, "home-storefront.css"), "utf8"),
   readFile(path.join(ROOT, "decants.html"), "utf8"),
   readFile(path.join(ROOT, "kits.html"), "utf8"),
   readFile(path.join(ROOT, "politicas.html"), "utf8"),
@@ -198,4 +199,14 @@ test("homepage places purchase assurances before featured products and offers", 
   assert.match(home, /href="kits\.html"[\s\S]*?<strong>Kits<\/strong>/);
   assert.match(styles, /min-height: 420px/);
   assert.match(styles, /grid-auto-columns: minmax\(190px, 77%\)/);
+});
+
+
+test("homepage loads the redesigned storefront presentation", () => {
+  assert.ok(home.includes("home-storefront.css?v=20261115-3"));
+  assert.ok(storefront.includes("min-height: clamp(540px, 55vw, 710px)"));
+  assert.ok(storefront.includes("grid-template-columns: repeat(3, minmax(0, 1fr))"));
+  assert.ok(storefront.includes("aspect-ratio: 1 / 1"));
+  assert.ok(storefront.includes("@media (max-width: 720px)"));
+  assert.ok(storefront.includes("@media (prefers-reduced-motion: reduce)"));
 });
