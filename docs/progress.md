@@ -7,6 +7,7 @@ Atualizado em 14/11/2026.
 - [x] Auditoria da estrutura do repositório e do fluxo do GitHub Pages.
 - [x] Identificação da integração existente de buscas em `search.js`.
 - [x] Proteção de campos do carrinho vindos de localStorage antes de inseri-los no markup.
+- [x] Mapeamento da estrutura atual de produtos, apresentações e composição configurável dos kits, sem alterar dados do catálogo.
 - [x] Confirmação, via Supabase MCP, do projeto Santino Nobre: ref `optloyhbkkrptuwsizrc`, organização Santino, região `us-east-1`, status saudável.
 - [x] Auditoria somente de leitura da tabela `public.pesquisas_santino`: colunas não nulas, identidade, chave primária, índice, restrições, triggers, RLS e proprietário confirmados.
 - [x] O resumo da tabela estimou 0 linhas; a contagem SQL somente de leitura confirmou 6 registros preservados. Nenhum termo foi lido.
