@@ -1,6 +1,6 @@
 # Progresso da integração SANTINO
 
-Atualizado em 14/11/2026 (America/Sao_Paulo).
+Atualizado em 15/11/2026 (America/Sao_Paulo).
 
 ## Concluído
 
@@ -24,7 +24,7 @@ Atualizado em 14/11/2026 (America/Sao_Paulo).
 - [x] Criado scanner de texto para detectar padrões conhecidos de chaves privadas e credenciais de pagamento.
 - [x] Workflow executa validações em pull requests e na branch main; somente main/manual publica no Pages.
 - [x] Testes locais: 6 aprovados, cobrindo o empacotamento do repositório real e o escape de campos do carrinho.
-- [x] PR draft #2 criada; o GitHub Actions run #50 para o commit `51ca31e553ca5a9af2f426356c54ac792a17c5ea` passou. A validação executou 9 testes Node, montou o artefato Pages, aplicou a baseline somente a um Postgres descartável do CI e aprovou os 21 testes pgTAP. O deploy do Pages foi ignorado.
+- [x] PR draft #2 criada; o GitHub Actions run #51 para o commit `699125954382284374cea6d379cae3db32d68a94` passou. A validação executou 9 testes Node, montou o artefato Pages, aplicou a baseline somente a um Postgres descartável do CI e aprovou os 21 testes pgTAP. O deploy do Pages foi ignorado.
 - [x] CLI Supabase 3.1.0 obtida da release oficial em pasta temporária; SHA-256 conferido com o digest da release. Nenhuma instalação global foi feita.
 - [x] `supabase init` criou a configuração local. A Data API não expõe tabelas novas automaticamente no ambiente local e seeds estão desativados para evitar importações não aprovadas.
 - [x] Gerada via CLI a migration `20261115013651_baseline_pesquisas_santino.sql`, idempotente para a tabela existente, com a política de inserção auditada e sem operações de remoção de dados.
@@ -33,6 +33,8 @@ Atualizado em 14/11/2026 (America/Sao_Paulo).
 - [x] Testes Node após a baseline: 9 aprovados, incluindo a proteção estática da migration/configuração e o artefato do Pages.
 
 ## Em andamento
+
+- [ ] Validar no GitHub Actions a reformulação visual da página inicial e dos cartões de perfumes; 13 testes Node passaram localmente, incluindo imagem 4:3 uniforme e preservação da pirâmide olfativa.
 
 - [ ] Depois da revisão, decidir se e qual branch GitHub deverá ser usada para deploy automático do Supabase. A opção está desligada e o campo de branch não está editável; não habilitar nem aplicar migrations remotas nesta etapa.
 
@@ -55,6 +57,6 @@ Atualizado em 14/11/2026 (America/Sao_Paulo).
 ## Ambiente local
 
 - Git e Node.js estão disponíveis; npm e Docker não estão disponíveis. A CLI Supabase 3.1.0 foi executada de uma pasta temporária com `SUPABASE_HOME` isolado.
-- A validação Node passou localmente com 9 testes. O GitHub Actions run #50 também passou com 9 testes Node e 21 testes pgTAP em um Postgres descartável; o Postgres remoto não foi alterado.
+- A validação Node passou localmente com 13 testes. O último GitHub Actions concluído (run #51) passou com 9 testes Node e 21 testes pgTAP em um Postgres descartável; esta reformulação aguarda o próximo run. O Postgres remoto não foi alterado.
 - O checkout local não está linkado à produção e nenhuma credencial de banco foi armazenada no repositório.
 
