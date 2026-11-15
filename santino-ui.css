@@ -962,3 +962,108 @@ body.home-page .home-pathway-action b { color: var(--beige); font-size: 18px; fo
   body.home-page .home-hero .hero-actions { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* Vitrine da página inicial: seleção real do catálogo, sem indicadores de popularidade. */
+body.home-page .catalog-nav a[href="#cashback-santino"] { color: var(--gold); }
+body.home-page .home-featured {
+  max-width: 1176px;
+  margin: 0 auto;
+  padding: 8px 24px 37px;
+}
+body.home-page .home-featured .home-section-heading { align-items: end; }
+body.home-page .home-featured-intro { display: flex; align-items: end; gap: 20px; }
+body.home-page .home-featured-intro p { max-width: 250px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+body.home-page .home-featured-intro a { flex: 0 0 auto; color: var(--gold); font-size: 11px; font-weight: 700; text-decoration: none; }
+body.home-page .home-featured-intro a:hover { text-decoration: underline; text-underline-offset: 4px; }
+body.home-page .home-product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 11px; }
+body.home-page .home-product-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #34302a;
+  border-radius: 5px;
+  background: #151411;
+  transition: border-color .18s ease, transform .18s ease;
+}
+body.home-page .home-product-card:hover { transform: translateY(-2px); border-color: #786347; }
+body.home-page .home-product-detail { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; color: inherit; text-decoration: none; }
+body.home-page .home-product-image {
+  position: relative;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #d8cbb8;
+  border-radius: 3px;
+  background: #eee7dc;
+}
+body.home-page .home-product-image img { display: block; width: 100%; height: 100%; padding: 10px; object-fit: contain; object-position: center; mix-blend-mode: multiply; }
+body.home-page .home-product-fallback { color: #514333; font: 12px Georgia, "Times New Roman", serif; letter-spacing: .22em; }
+body.home-page .home-product-detail > strong { min-height: 2.5em; margin: 10px 1px 1px; font-family: Georgia, "Times New Roman", serif; font-size: 17px; font-weight: 400; line-height: 1.2; }
+body.home-page .home-product-brand { margin: 0 1px 7px; color: var(--muted); font-size: 10px; line-height: 1.4; }
+body.home-page .home-product-controls { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 6px; margin: auto 0 9px; }
+body.home-page .home-product-controls label { display: grid; gap: 4px; color: var(--muted); font-size: 9px; }
+body.home-page .home-product-controls select { width: 100%; min-height: 38px; padding: 5px 7px; border: 1px solid #514633; border-radius: 3px; background: #1b1915; color: var(--cream); font-size: 11px; }
+body.home-page .home-product-price { padding-bottom: 10px; color: var(--cream); font-size: 12px; white-space: nowrap; }
+body.home-page .home-product-add { min-height: 43px; padding: 8px 6px; border: 1px solid var(--gold); border-radius: 3px; background: var(--gold); color: #171512; font-size: 10px; font-weight: 700; cursor: pointer; }
+body.home-page .home-product-add:hover { background: #e1cba6; }
+body.home-page .home-featured-status { min-height: 1.4em; margin: 10px 0 0; color: var(--gold); font-size: 11px; }
+
+/* Cashback com regras aprovadas e comunicação clara sobre a consulta online ainda pendente. */
+body.home-page .home-cashback {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap: 35px;
+  max-width: 1128px;
+  margin: 0 auto 28px;
+  padding: 25px 28px;
+  border: 1px solid #514633;
+  border-radius: 5px;
+  background: linear-gradient(105deg, #211c15 0%, #171512 58%, #131210 100%);
+}
+body.home-page .cashback-copy h2 { max-width: 390px; margin: 8px 0 10px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 3.4vw, 39px); font-weight: 400; line-height: 1.08; }
+body.home-page .cashback-lead { max-width: 430px; margin: 0; color: #d0c5b5; font-size: 13px; line-height: 1.6; }
+body.home-page .cashback-lead strong { color: var(--gold); font-weight: 700; }
+body.home-page .cashback-action { display: inline-flex; align-items: center; gap: 12px; margin-top: 18px; padding: 11px 14px; border: 1px solid #8c7450; border-radius: 3px; color: var(--cream); font-size: 11px; font-weight: 700; text-decoration: none; }
+body.home-page .cashback-action span { color: var(--gold); font-size: 17px; }
+body.home-page .cashback-action:hover { background: #2a241a; border-color: var(--gold); }
+body.home-page .cashback-details { align-self: center; }
+body.home-page .cashback-details > div { display: flex; align-items: baseline; gap: 12px; padding-bottom: 11px; border-bottom: 1px solid #463c2e; }
+body.home-page .cashback-details > div strong { color: var(--gold); font-family: Georgia, "Times New Roman", serif; font-size: 34px; font-weight: 400; }
+body.home-page .cashback-details > div span { color: #d0c5b5; font-size: 11px; }
+body.home-page .cashback-details ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 17px; margin: 13px 0; padding: 0; list-style: none; }
+body.home-page .cashback-details li { position: relative; padding-left: 15px; color: #d0c5b5; font-size: 10px; line-height: 1.5; }
+body.home-page .cashback-details li::before { content: ""; position: absolute; top: .52em; left: 0; width: 6px; height: 6px; border: 1px solid var(--gold); border-radius: 50%; }
+body.home-page .cashback-details > p { margin: 0; color: #a99e8e; font-size: 9px; line-height: 1.5; }
+
+@media (max-width: 720px) {
+  body.home-page .catalog-nav { overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+  body.home-page .catalog-nav::-webkit-scrollbar { display: none; }
+  body.home-page .catalog-nav a { flex: 0 0 auto; }
+  body.home-page .home-featured { padding: 1px 15px 25px; }
+  body.home-page .home-featured .home-section-heading { gap: 8px; }
+  body.home-page .home-featured-intro { width: 100%; align-items: center; justify-content: space-between; gap: 12px; }
+  body.home-page .home-featured-intro p { max-width: 220px; font-size: 10px; }
+  body.home-page .home-featured-intro a { font-size: 10px; }
+  body.home-page .home-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  body.home-page .home-product-card { padding: 8px; }
+  body.home-page .home-product-image img { padding: 7px; }
+  body.home-page .home-product-detail > strong { margin-top: 8px; font-size: 15px; }
+  body.home-page .home-product-controls { gap: 4px; }
+  body.home-page .home-product-controls select { min-height: 36px; font-size: 10px; }
+  body.home-page .home-product-price { font-size: 11px; }
+  body.home-page .home-product-add { min-height: 42px; font-size: 10px; }
+  body.home-page .home-cashback { grid-template-columns: minmax(0, 1fr); gap: 18px; margin: 0 15px 22px; padding: 19px 16px; }
+  body.home-page .cashback-copy h2 { max-width: 360px; font-size: 29px; }
+  body.home-page .cashback-lead { font-size: 12px; }
+  body.home-page .cashback-details ul { gap: 9px 12px; }
+}
+@media (max-width: 380px) {
+  body.home-page .home-featured-intro { align-items: start; flex-direction: column; gap: 7px; }
+  body.home-page .home-product-card { padding: 7px; }
+  body.home-page .home-product-detail > strong { font-size: 14px; }
+  body.home-page .home-product-controls { grid-template-columns: minmax(0, 1fr); align-items: stretch; }
+  body.home-page .home-product-price { padding: 0; }
+  body.home-page .cashback-details ul { grid-template-columns: minmax(0, 1fr); }
+}

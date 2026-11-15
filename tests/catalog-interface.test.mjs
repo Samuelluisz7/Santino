@@ -14,8 +14,9 @@ test("home page presents direct, distinct paths into the catalog", async () => {
 
   assert.match(html, /<body class="home-page">/);
   assert.match(html, /id="homeHeading"/);
-  assert.match(html, /href="decants\.html"[^>]*>Escolher um decant/);
-  assert.match(html, /href="kits\.html"[^>]*>Explorar os kits/);
+  assert.match(html, /href="decants\.html"[^>]*>Conhecer os decants/);
+  assert.match(html, /href="frascos\.html"[^>]*>Ver frascos inteiros/);
+  assert.match(html, /href="kits\.html"[^>]*>Kits/);
   assert.match(html, /class="home-pathways"/);
   assert.match(html, /class="home-offer-link" href="#promocoes"/);
   assert.match(html, /class="home-help-link" href="https:\/\/wa\.me\/5531996312579/);
@@ -40,4 +41,3 @@ test("shared perfume details retain the olfactory pyramid", async () => {
   assert.match(html, /id="baseNotes"/);
   assert.match(html, /aria-label="Notas de saída, coração e fundo"/);
 });
-

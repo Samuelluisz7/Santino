@@ -210,6 +210,7 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
     <a href="index.html" aria-current="page">Início</a>
     <a href="decants.html">Decants</a>
     <a href="frascos.html">Frascos inteiros</a><a href="kits.html">Kits</a>
+    <a href="#cashback-santino">Cashback</a>
   </nav>
 </header>
 <main>
@@ -225,8 +226,8 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
       <img class="hero-banner" src="banner-home-original.webp?v=1" alt="Coleção de perfumes SANTINO alinhados em uma composição horizontal" fetchpriority="high" decoding="async">
     </div>
     <div class="hero-actions">
-      <a class="hero-link primary" href="decants.html">Escolher um decant <span aria-hidden="true">→</span></a>
-      <a class="hero-link" href="kits.html">Explorar os kits <span aria-hidden="true">→</span></a>
+      <a class="hero-link primary" href="decants.html">Conhecer os decants <span aria-hidden="true">→</span></a>
+      <a class="hero-link" href="frascos.html">Ver frascos inteiros <span aria-hidden="true">→</span></a>
     </div>
   </section>
   <section class="service-strip" aria-label="Informações essenciais de compra">
@@ -261,6 +262,21 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
       </a>
     </div>
   </section>
+  <section class="home-featured" aria-labelledby="homeFeaturedHeading">
+    <div class="home-section-heading">
+      <div><div class="eyebrow">Uma primeira descoberta</div><h2 id="homeFeaturedHeading">Perfumes para conhecer primeiro</h2></div>
+      <div class="home-featured-intro"><p>Escolha 5 ou 10 ml, explore a pirâmide olfativa e experimente na pele.</p><a href="decants.html">Ver todo o catálogo <span aria-hidden="true">→</span></a></div>
+    </div>
+    <div class="home-product-grid" id="homeFeaturedGrid" aria-label="Seleção de perfumes SANTINO"></div>
+    <p class="home-featured-status" id="homeFeaturedStatus" role="status" aria-live="polite"></p>
+  </section>
+  <script type="application/json" id="homeFeaturedProducts">[
+    {"id":"kingdom","name":"The Kingdom","brand":"Lattafa","image":"https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&width=1946","prices":{"5":18.9,"10":35.9}},
+    {"id":"the-blend-bourbon","name":"The Blend Bourbon","brand":"O Boticário","image":"https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_1800%2Cc_limit/e_trim/v1/imagens/product/B77489/c97c55ee-65fe-4339-9a99-1363b969701b-the-blend-bourbon-eau-de-parfum-100ml.png","prices":{"5":22.9,"10":42.9}},
+    {"id":"asad-bourbon","name":"Asad Bourbon","brand":"Lattafa","image":"https://scentira.in/cdn/shop/files/LATTAFAAl_Asad_Bourbon_1_34bc0e05-10ec-4d25-9df5-34b68222f16c.png?v=1756889307&width=5000","prices":{"5":17.9,"10":33.9}},
+    {"id":"homem-sagaz","name":"Homem Sagaz","brand":"Natura","image":"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600","prices":{"5":12.9,"10":24.9}}
+  ]</script>
+  <script src="home-featured.js" defer></script>
   <section class="promo-grid" id="promocoes" aria-label="Descontos SANTINO">
     <article class="promo-card">
       <div class="promo-symbol" aria-hidden="true">%</div>
@@ -280,16 +296,34 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
       </div>
     </article>
   </section>
+  <section class="home-cashback" id="cashback-santino" aria-labelledby="cashbackHeading">
+    <div class="cashback-copy">
+      <div class="eyebrow">Fidelidade SANTINO</div>
+      <h2 id="cashbackHeading">Seu próximo perfume pode render crédito.</h2>
+      <p class="cashback-lead">Receba <strong>5% do valor pago pelos produtos</strong> em cashback para usar em uma próxima compra.</p>
+      <a class="cashback-action" href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20como%20funciona%20o%20cashback%20SANTINO." target="_blank" rel="noopener noreferrer">Conversar sobre cashback <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="cashback-details">
+      <div><strong>5%</strong><span>sobre o valor dos produtos após descontos</span></div>
+      <ul>
+        <li>Crédito liberado após a confirmação do pagamento.</li>
+        <li>Válido por 90 dias e acumulável com descontos e promoções de produtos.</li>
+        <li>Use até 100% do valor dos produtos; o frete é pago à parte.</li>
+        <li>Crédito sem conversão em dinheiro.</li>
+      </ul>
+      <p>Não há consulta de saldo ou aplicação automática no site ainda. Fale com a SANTINO para saber como consultar e usar seu crédito.</p>
+    </div>
+  </section>
   <section class="home-kits" aria-labelledby="homeKitsHeading">
     <div class="home-kits-head">
       <div><div class="eyebrow">Escolha pela ocasião</div><h2 id="homeKitsHeading">Combinações recomendadas</h2><p>Combinações pensadas para diferentes ocasiões, sem precisar escolher perfume por perfume.</p></div>
       <a href="kits.html" class="home-kits-all">Ver todos os kits <span aria-hidden="true">→</span></a>
     </div>
     <div class="home-kit-grid">
-      <a class="home-kit-card" href="kits.html#kit-dia-a-dia"><span>01 · ROTINA</span><strong>Dia a dia</strong><p>Opções versáteis para acompanhar o dia a dia.</p><b aria-hidden="true">↗</b></a>
-      <a class="home-kit-card" href="kits.html#kit-festa"><span>02 · OCASIÃO</span><strong>Festa</strong><p>Uma seleção com presença para festas e saídas à noite.</p><b aria-hidden="true">↗</b></a>
-      <a class="home-kit-card" href="kits.html#kit-encontro"><span>03 · ENCONTRO</span><strong>Encontro</strong><p>Perfis envolventes para momentos a dois.</p><b aria-hidden="true">↗</b></a>
-      <a class="home-kit-card" href="kits.html#kit-noturno"><span>04 · NOITE</span><strong>Noturno</strong><p>Perfis intensos para noites e ocasiões especiais.</p><b aria-hidden="true">↗</b></a>
+      <a class="home-kit-card" href="kits.html#kit-calor-aquatico"><span>CALOR · DIA</span><strong>Frescor aquático</strong><p>Três leituras de frescor para os dias quentes.</p><b aria-hidden="true">↗</b></a>
+      <a class="home-kit-card" href="kits.html#kit-trabalho"><span>TRABALHO · ROTINA</span><strong>Presença discreta</strong><p>Perfis limpos para acompanhar a rotina.</p><b aria-hidden="true">↗</b></a>
+      <a class="home-kit-card" href="kits.html#kit-noite-marcante"><span>NOITE · FRIO</span><strong>Noite marcante</strong><p>Baunilha escura, doçura especiada e madeira quente.</p><b aria-hidden="true">↗</b></a>
+      <a class="home-kit-card" href="kits.html#kit-descoberta"><span>EXPLORAÇÃO</span><strong>Descoberta SANTINO</strong><p>Um mini roteiro para comparar diferentes perfis.</p><b aria-hidden="true">↗</b></a>
     </div>
   </section>
 <footer>
@@ -316,4 +350,3 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
 <script src="santino-ui.js" defer></script>
 </body>
 </html>
-
