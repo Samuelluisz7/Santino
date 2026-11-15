@@ -51,6 +51,7 @@ test("shared perfume details provide a responsive mobile purchase bar", async ()
   assert.match(html, /id="stickyAddButton"/);
   assert.match(html, /SantinoStickyPurchase\.init/);
   assert.match(html, /stickyPurchase\?\.refresh\(\)/);
+  assert.ok(html.includes("const price=isFull?(currentVolume?currentVolume.price:product.price):currentVolume?.price"));
   assert.match(styles, /#stickyPurchaseBar\.is-visible/);
   assert.match(styles, /@media \(max-width: 760px\)/);
 });
