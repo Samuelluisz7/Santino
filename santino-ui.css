@@ -1297,3 +1297,304 @@ body.home-page .home-product-image img,
     aspect-ratio: 4 / 3;
   }
 }
+
+
+/* SANTINO store refresh — cohesive catalog, search, kit and perfume detail cards */
+body:not(.home-page) > header,
+body:not(.home-page) .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 70;
+  border-bottom: 1px solid rgba(201, 177, 139, .2);
+  background: rgba(13, 12, 10, .95);
+  backdrop-filter: blur(16px);
+}
+body:not(.home-page) .header-main,
+body:not(.home-page) .nav {
+  max-width: 1240px;
+  padding-top: 13px;
+  padding-bottom: 10px;
+}
+body:not(.home-page) .catalog-nav {
+  max-width: 1240px;
+  gap: 22px;
+}
+body:not(.home-page) .catalog-nav a {
+  padding: 8px 0;
+  color: #d7cbb9;
+  font-size: 12px;
+  transition: color .18s ease;
+}
+body:not(.home-page) .catalog-nav a:hover,
+body:not(.home-page) .catalog-nav a[aria-current="page"] {
+  color: #f4e9d7;
+}
+body:not(.home-page) main > .hero {
+  width: min(100% - 36px, 1240px);
+  max-width: 1240px;
+  min-height: 260px;
+  margin: 22px auto 24px;
+  padding: clamp(30px, 5vw, 58px) clamp(24px, 5vw, 62px);
+  overflow: hidden;
+  border: 1px solid #44382a;
+  border-radius: 12px;
+  background:
+    radial-gradient(ellipse at 90% 20%, rgba(194, 155, 96, .2), transparent 33%),
+    linear-gradient(120deg, #171410, #0d0c0a 68%, #1d1710);
+}
+body:not(.home-page) main > .hero h1 {
+  max-width: 760px;
+  color: #f6eddf;
+  font-size: clamp(40px, 6vw, 68px);
+  line-height: .99;
+  letter-spacing: -.04em;
+}
+body:not(.home-page) main > .hero p {
+  max-width: 620px;
+  color: #c8bcaa;
+  font-size: 14px;
+  line-height: 1.75;
+}
+body:not(.home-page):not(.perfume-detail-page) main > h1 {
+  color: #f5ecde;
+  font: 400 clamp(37px, 5vw, 60px)/1.02 Georgia, "Times New Roman", serif;
+  letter-spacing: -.035em;
+}
+body:not(.home-page):not(.perfume-detail-page) main > .intro {
+  max-width: 740px;
+  margin: 12px 0 24px;
+  color: #c5baaa;
+  font-size: 14px;
+  line-height: 1.75;
+}
+body:not(.home-page) .section,
+body:not(.home-page) .full-size-section {
+  width: min(100% - 36px, 1240px);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 28px 0 52px;
+}
+body:not(.home-page) .section-head {
+  margin-bottom: 21px;
+}
+body:not(.home-page) .section-head h2 {
+  color: #f2e9dc;
+  font-size: clamp(27px, 3vw, 37px);
+}
+body:not(.home-page) .section-head p {
+  color: #bdb2a2;
+  font-size: 13px;
+  line-height: 1.65;
+}
+body:not(.home-page) .origin-filter,
+body:not(.home-page) .collection-controls {
+  padding: 12px;
+  border: 1px solid #393127;
+  border-radius: 8px;
+  background: #15130f;
+}
+body:not(.home-page) .origin-filter button[aria-pressed="true"],
+body:not(.home-page) [data-full-origin-filter][aria-pressed="true"] {
+  border-color: #d0b17c;
+  background: #d0b17c;
+  color: #1a150e;
+}
+body:not(.home-page) .products .product,
+body:not(.home-page) .kit-card,
+body:not(.home-page) .result-card {
+  border: 1px solid #393127;
+  border-radius: 9px;
+  background: linear-gradient(155deg, #1b1915, #11100e 78%);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .2);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+body:not(.home-page) .products .product:hover,
+body:not(.home-page) .kit-card:hover,
+body:not(.home-page) .result-card:hover {
+  transform: translateY(-3px);
+  border-color: #8d744f;
+  box-shadow: 0 17px 32px rgba(0, 0, 0, .3);
+}
+body:not(.home-page) .products .product-art:not(.product-comparison),
+body:not(.home-page) .full-size-section .products .product-art:not(.product-comparison) {
+  aspect-ratio: 4 / 3 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  border: 1px solid #d2c3ac !important;
+  border-radius: 6px !important;
+  background: #eee7dc !important;
+}
+body:not(.home-page) .products .product-photo,
+body:not(.home-page) .full-size-section .product-photo,
+body:not(.home-page) .kit-product-img img,
+body:not(.home-page) .gallery-main img,
+body:not(.home-page) .gallery-thumbs .thumb img,
+body:not(.home-page) .results .result-image img {
+  object-fit: contain !important;
+  object-position: center center !important;
+  mix-blend-mode: normal !important;
+}
+body:not(.home-page) .products .product-detail-link h3,
+body:not(.home-page) .products .product h3 {
+  color: #f3eadb;
+  font: 400 19px/1.25 Georgia, "Times New Roman", serif;
+}
+body:not(.home-page) .products .product-brand,
+body:not(.home-page) .products .product-brand-name,
+body:not(.home-page) .products .product-origin-tag {
+  color: #c2b49d;
+}
+body:not(.home-page) .products .product .add,
+body:not(.home-page) .products .product .btn,
+body:not(.home-page) .kit-add,
+body:not(.home-page) .page-search-row .btn {
+  min-height: 46px;
+  border: 1px solid #d0b17c;
+  border-radius: 4px;
+  background: #d0b17c;
+  color: #18140e;
+  font-weight: 700;
+  transition: filter .18s ease, transform .18s ease;
+}
+body:not(.home-page) .products .product .add:hover,
+body:not(.home-page) .kit-add:hover,
+body:not(.home-page) .page-search-row .btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+body:not(.home-page) .gallery-main {
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  border: 1px solid #d2c3ac;
+  border-radius: 10px;
+  background: #eee7dc;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .28);
+}
+body.perfume-detail-page .product-layout {
+  width: min(100% - 36px, 1240px);
+  max-width: 1240px;
+  margin: 22px auto 44px;
+  padding: 22px;
+  gap: clamp(22px, 4vw, 48px);
+  border: 1px solid #393127;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #191713, #0e0d0b);
+}
+body.perfume-detail-page .summary {
+  padding: clamp(18px, 3vw, 32px);
+  border: 1px solid #332d24;
+  border-radius: 9px;
+  background: rgba(8, 8, 7, .36);
+}
+body.perfume-detail-page .summary h1 {
+  color: #f4eadb;
+  font: 400 clamp(36px, 4vw, 52px)/1.02 Georgia, "Times New Roman", serif;
+  letter-spacing: -.035em;
+}
+body.perfume-detail-page .summary .description,
+body.perfume-detail-page .summary .stock-note {
+  color: #c1b7a8;
+  line-height: 1.7;
+}
+body.perfume-detail-page .detail-highlight {
+  border: 1px solid #40372b;
+  border-radius: 5px;
+  background: #15130f;
+}
+body.perfume-detail-page .add-button,
+body.perfume-detail-page .sticky-purchase-button {
+  border: 1px solid #d0b17c;
+  border-radius: 4px;
+  background: #d0b17c;
+  color: #18140e;
+  font-weight: 700;
+}
+body.perfume-detail-page .content-section {
+  width: min(100% - 36px, 1240px);
+  max-width: 1240px;
+  margin: 0 auto 38px;
+  padding: clamp(20px, 4vw, 42px);
+  border: 1px solid #342e25;
+  border-radius: 12px;
+  background: #11100e;
+}
+body:not(.home-page) .page-search {
+  max-width: 760px;
+  margin: 24px 0 38px;
+  padding: 16px;
+  border: 1px solid #3c3328;
+  border-radius: 9px;
+  background: #161410;
+}
+body:not(.home-page) .page-search input,
+body:not(.home-page) .collection-controls select {
+  border-color: #514431;
+  border-radius: 4px;
+  background: #0d0c0a;
+}
+body:not(.home-page) .results {
+  gap: 14px;
+}
+body:not(.home-page) .results .result-card {
+  min-height: 0;
+  padding: 13px;
+}
+body:not(.home-page) .results .result-image {
+  border: 1px solid #d2c3ac;
+  border-radius: 6px;
+  background: #eee7dc;
+}
+body:not(.home-page) .results .result-image img {
+  padding: 10px;
+}
+body:not(.home-page) .faq-section {
+  border-top: 1px solid #393127;
+}
+body:not(.home-page) .faq-item {
+  border-color: #393127;
+}
+body:not(.home-page) .faq-item summary {
+  color: #efe5d5;
+}
+body:not(.home-page) .faq-answer,
+body:not(.home-page) .bottom-note {
+  color: #c3b7a6;
+  line-height: 1.7;
+}
+@media (max-width: 720px) {
+  body:not(.home-page) main > .hero {
+    width: min(100% - 24px, 1240px);
+    min-height: 220px;
+    margin: 12px auto 18px;
+    padding: 28px 18px;
+    border-radius: 9px;
+  }
+  body:not(.home-page) .section,
+  body:not(.home-page) .full-size-section,
+  body.perfume-detail-page .content-section {
+    width: min(100% - 24px, 1240px);
+    padding: 20px 0 34px;
+  }
+  body.perfume-detail-page .product-layout {
+    width: min(100% - 24px, 1240px);
+    margin: 12px auto 30px;
+    padding: 12px;
+    border-radius: 9px;
+  }
+  body.perfume-detail-page .summary {
+    padding: 17px 13px;
+  }
+  body:not(.home-page) .products .product:hover,
+  body:not(.home-page) .kit-card:hover,
+  body:not(.home-page) .result-card:hover {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body:not(.home-page) *,
+  body:not(.home-page) *::before,
+  body:not(.home-page) *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
