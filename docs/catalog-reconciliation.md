@@ -24,7 +24,7 @@ A auditoria registra IDs e campos divergentes, sem copiar URLs, preços ou texto
 
 ## Consequência para o modelo do banco
 
-A migration atual coloca `image_url` em `products`, enquanto uma mesma identidade de catálogo pode ter imagens distintas entre decant e frasco inteiro. Para importar sem descartar uma fonte, o modelo deve aceitar uma imagem opcional em `product_variants`, com fallback para a imagem do produto quando a variante não tiver uma própria.
+A migration `20261115131834_product_variant_images.sql` acrescenta `product_variants.image_url` como campo opcional, sem backfill, para preservar imagens distintas entre decant e frasco inteiro. O dado compartilhado segue em `products.image_url`; quando a variante não tiver imagem própria, o importador poderá usá-lo como fallback. A migration está versionada no repositório, mas ainda não foi aplicada ao projeto remoto.
 
 A diferença de identidade em `k-max` e as duas diferenças de descrição precisam de revisão antes de importar os registros. Nenhum produto foi semeado nem modificado para esta auditoria.
 
