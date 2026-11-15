@@ -1458,8 +1458,8 @@ const stickyPurchase=window.SantinoStickyPurchase.init({
  nameTarget:$("stickyProductName"),
  summaryTarget:$("stickyPurchaseChoice"),
  getSelection:()=>{
-  const volume=isFull?(currentVolume?.ml??product.ml):currentVolume?.ml;
-  const price=isFull?(currentVolume?.price??product.price):currentVolume?.price;
+  const volume=isFull?(currentVolume?currentVolume.ml:product.ml):currentVolume?.ml;
+  const price=isFull?(currentVolume?currentVolume.price:product.price):currentVolume?.price;
   return {
    name:product.name,
    volume,
