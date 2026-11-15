@@ -26,6 +26,22 @@ jobs:
           node-version: 22
       - name: Validar empacotamento do site
         run: node --test tests/*.test.mjs
+
+      - name: Configurar Supabase CLI para migrations
+        if: ${{ hashFiles('supabase/migrations/**/*.sql') != '' }}
+        uses: supabase/setup-cli@v3
+        with:
+          version: "3.1.0"
+      - name: Iniciar Postgres local descartável
+        if: ${{ hashFiles('supabase/migrations/**/*.sql') != '' }}
+        run: supabase db start
+      - name: Aplicar migrations somente no Postgres local
+        if: ${{ hashFiles('supabase/migrations/**/*.sql') != '' }}
+        run: supabase db reset --no-seed
+      - name: Executar testes SQL com pgTAP
+        if: ${{ hashFiles('supabase/migrations/**/*.sql') != '' }}
+        run: supabase test db
+
       - name: Montar artefato temporário
         run: node scripts/build-pages.mjs "$RUNNER_TEMP/santino-validation-site"
 
@@ -58,3 +74,4 @@ jobs:
       - name: Publicar no GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
