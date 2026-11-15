@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const ASSET_VERSION = "20261115-3";
+const ASSET_VERSION = "20261115-4";
 
 test("all local styles and scripts use the current cache version", async () => {
   const pages = (await readdir(ROOT)).filter((file) => file.toLowerCase().endsWith(".html"));
