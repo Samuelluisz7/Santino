@@ -31,7 +31,7 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 - O Supabase MCP confirmou o projeto **Santino Nobre**, ref `optloyhbkkrptuwsizrc`, na organização Santino, região `us-east-1`, status `ACTIVE_HEALTHY`, PostgreSQL 17.
 - O projeto acidental `santino-commerce`, ref `ufopdavfklzqfsqkhhxe`, continua fora de uso e não foi alterado nem excluído.
 - A auditoria encontrou a tabela `public.pesquisas_santino`, pertencente a `postgres`, com RLS ativado e `FORCE ROW LEVEL SECURITY` desativado. Colunas: `id bigint GENERATED ALWAYS AS IDENTITY NOT NULL`, `termo text NOT NULL` e `pesquisado_em timestamptz NOT NULL DEFAULT now()`. A única restrição e índice são a chave primária em `id`; não há triggers próprios nem outras restrições.
-- O resumo da tabela estimou 0 linhas, mas um `COUNT(*)` somente de leitura confirmou **6 registros**. Nenhum termo armazenado foi lido.
+- A tabela contém dados legados; nenhum termo foi lido e nenhum dado foi alterado durante a auditoria.
 - Existe uma política permissiva para `anon INSERT`; ela só permite termos com tamanho após `trim` entre 1 e 100 caracteres. `anon` não tem leitura, atualização ou exclusão; `authenticated` não tem grants diretos. `service_role` tem TRUNCATE/REFERENCES/TRIGGER diretos, sem grants diretos de DML.
 - No início da auditoria, o histórico remoto do Supabase estava vazio e o repositório tinha somente `supabase/README.md`. Após a reconexão, foram criadas localmente uma baseline aditiva para a tabela existente, uma fundação vazia do catálogo e o perfil olfativo; nenhuma delas foi aplicada remotamente.
 - Não há Edge Functions nem funções de aplicação no schema `public`. Os advisors de segurança, desempenho e saúde não retornaram avisos.
@@ -49,7 +49,7 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 
 - Manter migrations versionadas em supabase/migrations e protegidas pelo workflow para que nunca façam parte do artefato público do Pages.
 - Para tabelas novas, conceder em cada migration somente os privilégios necessários e conferir a exposição na Data API separadamente do RLS; a existência de policy não concede acesso ao endpoint.
-- Preparar e revisar uma baseline do schema remoto antes de propor a primeira migration. Não recriar, truncar ou modificar `pesquisas_santino` nem seus 6 registros.
+- Preparar e revisar a baseline do schema remoto antes de propor migrations. Não recriar, truncar ou modificar `public.pesquisas_santino`.
 - Criar estruturas novas e aditivas para catálogo, variantes, pedidos e itens de pedido. Cada item de pedido deverá guardar snapshots dos dados e preços aceitos no momento da criação. O catálogo atual não será importado até o mapeamento dos registros estar validado.
 - Permitir leitura pública somente dos campos comerciais aprovados dos produtos ativos. Custos e informações administrativas devem permanecer fora da resposta pública.
 - Manter a tabela de pesquisas limitada à inserção anônima já existente, sem leitura pública. Avaliar limites contra abuso e retenção antes de ampliar essa entrada.
