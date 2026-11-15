@@ -50,6 +50,10 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 
 ## Reformulação da página inicial
 
+- 15/11/2026: revisão visual ampla publicada no commit `00f6d324` ([PR #8](https://github.com/Samuelluisz7/Santino/pull/8)). O banner principal agora ocupa a largura da tela; decants, frascos e kits aparecem em cartões de compra; a vitrine usa molduras quadradas e botões mais destacados. Layout adaptado para celular.
+- A revisão preservou produtos, nomes, marcas, imagens, preços, descontos e regras comerciais.
+- Validação da revisão: 26 testes Node e 77 verificações pgTAP aprovados no CI; a publicação no GitHub Pages concluiu com sucesso no workflow 417. Nenhuma migration foi aplicada ao Supabase.
+
 - Estrutura baseada na referência enviada: hero, caminhos por categoria, produtos em destaque, promoção, fidelidade, kits e rodapé.
 - Os quatro produtos destacados usam os nomes, marcas, imagens e preços que já constam em `decants.html`; a seleção não é chamada de “mais vendidos”.
 - O botão de cada produto permite selecionar 5 ou 10 ml e adiciona ao `santino_nobre_cart` no mesmo formato usado pelo catálogo.
