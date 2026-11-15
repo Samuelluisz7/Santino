@@ -1,11 +1,11 @@
 # Progresso da integração SANTINO
 
-Atualizado em 15/11/2026 (America/Sao_Paulo).
+Atualizado em 15/11/2026 (America/Sao_Paulo), após verificação do deploy de produção.
 
 ## Situação atual
 
 - O projeto Supabase correto está acessível nesta sessão: **Santino Nobre**, ref `optloyhbkkrptuwsizrc`, status saudável. A tabela legada `public.pesquisas_santino` segue presente e com RLS; seus dados não foram alterados.
-- A listagem remota atual de migrations continua vazia (`[]`). Nenhuma migration foi aplicada. O projeto vazio `santino-commerce` não foi usado nem alterado.
+- O deploy de produção do projeto **Santino Nobre** está ativo. A listagem remota confirma as quatro migrations da `main`; o projeto vazio `santino-commerce` não foi usado nem alterado.
 - O site público está em https://samuelluisz7.github.io/Santino/ e a revisão visual mais recente foi publicada após o workflow de validação da branch `main`.
 - Correção de cache dos arquivos CSS/JavaScript publicada: as sete páginas solicitam versões identificadas dos assets locais (`?v=20261115-3`); o teste de proteção passou no workflow do Pages.
 - A página apresenta a vitrine de quatro itens reais logo após os caminhos compactos por categoria; mantém preços e imagens do catálogo e a explicação das regras aprovadas de cashback.
@@ -29,19 +29,19 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 - [x] Criada `20261115024051_catalog_core.sql`, com catálogo, variantes, kits e componentes vazios e inativos por padrão.
 - [x] Criada `20261115033710_olfactory_profiles.sql`, sem dados semeados, para representar a pirâmide olfativa já mantida na página de detalhes.
 - [x] Criada `20261115131834_product_variant_images.sql`, com `product_variants.image_url` opcional e limite de 2048 caracteres; sem backfill.
-- [x] A migration aditiva `20261115131834_product_variant_images.sql` entrou na `main` via PR #9; foi validada em Postgres descartável junto com 26 testes Node e 80 testes pgTAP. Nenhuma migration foi aplicada ao Supabase real.
+- [x] As quatro migrations da `main` foram aplicadas ao projeto correto após a ativação do deploy: baseline legada, catálogo, perfis olfativos e imagem por variante. O schema remoto foi conferido; RLS está ativo nas tabelas e as tabelas novas permanecem vazias.
 - [x] Testes pgTAP cobrem a baseline, o RLS e grants do catálogo e o acesso aos perfis olfativos.
 - O workflow executa a validação conjunta das migrations em Postgres descartável do CI; Docker não está disponível neste Windows para repetir o replay localmente.
-- [ ] Só depois de revisar os resultados e receber autorização explícita, considerar aplicação no projeto remoto. O trabalho atual não aplica migrations.
+- [x] Deploy automático `main` → Santino Nobre ativado pelo usuário e confirmado pela listagem remota de migrations.
 
 ## Sincronização do schema Supabase
 
-- A branch `main` contém quatro migrations versionadas para a baseline legada, catálogo, perfis olfativos e imagens por variante. A listagem remota continua vazia; o banco ainda possui apenas `public.pesquisas_santino`.
+- A `main` contém quatro migrations versionadas e todas aparecem no histórico remoto. O banco mantém `public.pesquisas_santino` e inclui as novas tabelas de catálogo, ainda sem produtos carregados.
 - O workflow do GitHub valida as migrations em Postgres descartável; ele não possui conexão com o banco de produção.
 - O `apply_migration` do Supabase MCP não aceita a versão original do arquivo e registra um timestamp próprio. Não o usar para aplicar migrations do repositório, pois criaria entradas remotas sem correspondência exata no histórico Git.
 - Caminho recomendado pela documentação do Supabase: ativar `Deploy to production` na integração GitHub do projeto e selecionar `main`, ou usar `supabase db push --linked` com CLI autenticada.
-- A configuração de integração registrada neste relatório mantém `Deploy to production` desligado. A CLI v3.1.0 foi usada em pasta temporária apenas para gerar o nome oficial da migration; não houve login nem comando remoto.
-- Próximo passo de sincronização: confirmar/ativar a opção de deploy automático na integração já conectada; depois validar no Supabase que as três versões aparecem no histórico e que o schema permanece aditivo.
+- A configuração `Deploy to production` foi ativada pelo usuário e o deploy foi confirmado no projeto correto. A CLI v3.1.0 foi usada em pasta temporária apenas para gerar o nome oficial da migration; não houve login nem comando remoto.
+- Próximo passo: importar o catálogo somente após resolver divergências identificadas; manter os registros novos inativos até validação.
 
 ## Cashback aprovado e estado de implementação
 
@@ -69,7 +69,7 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 - O workflow valida Pull Requests, recria as migrations apenas em banco descartável e só executa o deploy do Pages após validação na branch `main`.
 - Nenhum script do workflow recebe credenciais de produção nem usa conexão `--remote` para migrations.
 - [ ] Projetar o ledger de cashback e o fluxo de pedidos server-side antes de conectar qualquer função comercial ao banco.
-- [ ] Manter pagamentos reais desligados e não ativar sincronização automática de migrations com produção.
+- [x] Pagamentos reais permanecem desligados. O deploy de migrations está ativo; qualquer migration futura deve passar pelo CI antes de chegar à `main`.
 
 ## Próximos passos da experiência
 
