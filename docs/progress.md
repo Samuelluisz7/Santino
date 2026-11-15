@@ -9,6 +9,7 @@ Atualizado em 15/11/2026 (America/Sao_Paulo).
 - O site público está em https://samuelluisz7.github.io/Santino/ e a revisão visual mais recente foi publicada após o workflow de validação da branch `main`.
 - Correção de cache dos arquivos CSS/JavaScript publicada: as sete páginas solicitam versões identificadas dos assets locais (`?v=20261115-3`); o teste de proteção passou no workflow do Pages.
 - A página apresenta a vitrine de quatro itens reais logo após os caminhos compactos por categoria; mantém preços e imagens do catálogo e a explicação das regras aprovadas de cashback.
+- Revisão visual em validação: as informações de procedência, pagamento e entrega agora aparecem entre os caminhos por categoria e a vitrine de produtos.
 - A validação da revisão de cache aprovou 23 testes Node; migrations e pgTAP passaram em Postgres descartável no GitHub Actions.
 
 ## Auditoria e segurança concluídas
