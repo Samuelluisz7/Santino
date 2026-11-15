@@ -183,3 +183,19 @@ test("homepage follows the reference structure without unverified popularity cla
   assert.match(styles, /@media \(max-width: 720px\)/);
   assert.match(styles, /prefers-reduced-motion/);
 });
+test("homepage shows category routes and products before secondary information", () => {
+  const hero = home.indexOf('<section class="hero home-hero"');
+  const categories = home.indexOf('<section class="home-pathways"');
+  const products = home.indexOf('<section class="home-featured"');
+  const trust = home.indexOf('<section class="service-strip"');
+  const offers = home.indexOf('<section class="promo-grid"');
+  assert.ok(hero >= 0 && hero < categories);
+  assert.ok(categories < products && products < trust && trust < offers);
+  assert.match(home, /Descubra seu próximo perfume, começando pelo decant\./);
+  assert.match(home, /<nav class="home-pathway-grid" aria-label="Comprar por categoria">/);
+  assert.match(home, /href="decants\.html"[\s\S]*?<strong>Decants<\/strong>/);
+  assert.match(home, /href="frascos\.html"[\s\S]*?<strong>Frascos inteiros<\/strong>/);
+  assert.match(home, /href="kits\.html"[\s\S]*?<strong>Kits<\/strong>/);
+  assert.match(styles, /min-height: 420px/);
+  assert.match(styles, /grid-auto-columns: minmax\(190px, 77%\)/);
+});
