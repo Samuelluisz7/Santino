@@ -22,7 +22,7 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 
 - A auditoria automatizada das três listas encontrou 32 decants, 49 frascos, 27 IDs compartilhados e 54 produtos únicos; todos os 54 têm detalhe na página compartilhada e não há IDs duplicados dentro de cada lista.
 - As fontes divergem em 5 imagens, 1 identidade (nome/marca) e 2 descrições para IDs compartilhados. O relatório em `docs/catalog-reconciliation.md` lista somente os IDs e os campos, sem copiar preços, URLs de imagem ou textos.
-- A migration `20261115131834_product_variant_images.sql` acrescenta `image_url` opcional a `product_variants`, sem backfill, para preservar imagens específicas de decants/frascos. Quando o campo da variante estiver vazio, a camada de catálogo poderá usar `products.image_url` como fallback.
+- A migration `20261115131834_product_variant_images.sql` acrescenta `image_url` opcional a `product_variants`; a migration seguinte preserva imagens específicas e importa somente registros sem conflitos textuais, sempre inativos. Quando o campo da variante estiver vazio, a camada de catálogo poderá usar `products.image_url` como fallback.
 - As diferenças de nome/marca e descrição permanecem sem resolução. Nenhum registro do catálogo foi alterado nem importado ao banco.
 
 ## Cashback e fidelização
@@ -80,13 +80,13 @@ Auditoria inicial: 14/11/2026. Este documento descreve o estado observado e a ar
 - `supabase/migrations/20261115013651_baseline_pesquisas_santino.sql` registra o schema legado sem apagar, recriar ou ler os seis registros. A tabela é criada somente se estiver ausente; RLS e a permissão atual de `anon INSERT` ficam declaradas. A policy `Permitir registrar pesquisas` é criada apenas quando não existe.
 - `supabase/migrations/20261115024051_catalog_core.sql` cria tabelas vazias e aditivas para produtos, variantes, kits e componentes; as linhas públicas começam inativas e as escritas permanecem restritas ao servidor.
 - `supabase/migrations/20261115033710_olfactory_profiles.sql` cria uma tabela opcional um-para-um para a pirâmide e o texto olfativo que já aparecem em `produto.html`, sem copiar nem inventar conteúdo comercial.
-- O acesso ao projeto correto está confirmado e a listagem remota atual ainda retorna `migrations: []`. Nenhuma dessas migrations foi aplicada ao Supabase de produção. A validação conjunta ocorre em Pull Request, sempre num Postgres descartável do CI.
+- O acesso ao projeto correto está confirmado; as cinco migrations foram validadas no CI e aplicadas pelo deploy de produção. A carga de catálogo continua inativa até revisão.
 - O workflow de Pages `.github/workflows/pages.yml` inicia Postgres local descartável quando há migrations, reseta somente esse banco e executa `supabase test db` antes da publicação. O workflow não recebe credenciais de produção nem usa `--remote`.
 
 ## Implantação e validações
 
 - O GitHub Pages publica somente o conteúdo do site. Pastas de desenvolvimento e supabase/ ficam fora do artefato.
-- A integração do Supabase mostra o repositório `Samuelluisz7/Santino`; ainda assim, o histórico remoto de migrations permanece vazio. O deploy automático de schema do Supabase não foi habilitado.
+- A integração do Supabase mostra o repositório `Samuelluisz7/Santino`; o deploy automático está habilitado e o histórico remoto contém as cinco migrations versionadas.
 - O GitHub Pages publica `https://samuelluisz7.github.io/Santino/`. A versão publicada é atualizada pela branch `main` somente após a validação do workflow de Pages; mudanças de schema continuam sem deploy automático para o Supabase.
 - Cada alteração de schema deve ser aditiva e revisada. A baseline local de `pesquisas_santino` é idempotente para o estado auditado; não usar reset remoto nem alterar os seis registros.
 - O workflow executa testes Node sem dependências externas e monta o artefato a partir de uma lista de formatos estáticos permitidos; um teste também valida o repositório real.
