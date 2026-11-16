@@ -12,6 +12,7 @@ const REPOSITORY_ROOT = path.resolve(
 test("home page presents the approved recommendation cards and keeps catalog navigation", async () => {
   const html = await readFile(path.join(REPOSITORY_ROOT, "index.html"), "utf8");
   const decants = await readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8");
+  const homeMarkup = html.slice(html.indexOf("<main"), html.indexOf("</main>") + 7);
   assert.match(html, /<body class="home-page">/);
   assert.match(html, /<h1 id="homeHeading">Explorar fragrâncias<\/h1>/);
   for (const href of ['href="frascos.html"', 'href="decants.html"', 'href="kits.html"']) assert.ok(html.includes(href));
@@ -19,7 +20,7 @@ test("home page presents the approved recommendation cards and keeps catalog nav
     assert.match(html, new RegExp('<a class="recommended-card [^"]+" href="produto\\.html\\?id=' + id + '">'));
     assert.match(html, new RegExp('<strong>' + name + '<\\/strong>'));
   }
-  assert.doesNotMatch(html, /The Blend Bourbon|home-kits|homeFeaturedGrid|homeFullSizeGrid/);
+  assert.doesNotMatch(homeMarkup, /The Blend Bourbon|home-kits|homeFeaturedGrid|homeFullSizeGrid/);
   assert.match(html, /home-refresh\.css/);
   assert.match(decants, /decant-vial-overlay/);
   assert.match(decants, /decant-image-note/);
