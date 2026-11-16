@@ -1773,3 +1773,13 @@ body:not(.home-page) .bottom-note {
  .cart-item-side{max-width:78px}
  .cart-item-side>strong{font-size:11px}
 }
+
+
+/* Carrinho vazio: oculta resumo sem itens e centraliza os atalhos de compra. */
+.santino-global-cart-footer[hidden]{display:none!important}
+.santino-global-cart-items:has(.santino-global-cart-empty){display:flex;align-items:center;justify-content:center;padding:20px 0}
+.santino-global-cart-empty{width:100%;min-height:0;padding:30px 12px}
+.santino-global-cart-empty-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:20px}
+.santino-global-cart-empty-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 14px;border:1px solid #806c4d;color:#f3eadb;text-decoration:none;font-size:11px;font-weight:700}
+.santino-global-cart-empty-actions a:first-child{background:#c9b18b;border-color:#c9b18b;color:#171512}
+.santino-global-cart-empty-actions a:hover{background:#dfcba9;border-color:#dfcba9;color:#171512}
