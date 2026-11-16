@@ -440,10 +440,11 @@ let activeOriginFilter = ""; function renderProducts(){
  const filteredProducts = PRODUCTS.filter(p => !activeOriginFilter || p.tag === activeOriginFilter);
  $("products").innerHTML = filteredProducts.map(p=>`<article class="product">
    <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
-   <div class="product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Frasco de ${escapeHTML(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div></div>
+   <div class="product-art decant-product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Imagem ilustrativa do perfume original ${escapeHTML(p.name)}; o produto vendido é o decant em mini frasco SANTINO" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div><img class="decant-vial-overlay" src="decant-vials.svg" alt="Mini frascos de decant SANTINO de 5 e 10 ml" loading="lazy" decoding="async"><span class="decant-photo-badge">PRODUTO VENDIDO · DECANT</span></div>
    <h3>${escapeHTML(p.name)}</h3>
    <div class="product-brandline"><span class="product-brand-name">${escapeHTML(p.brand)}</span><span class="product-origin-tag">${escapeHTML(p.tag||"")}</span></div>
    </a>
+   <p class="decant-image-note">Imagem do perfume de referência. Você recebe o decant em mini frasco SANTINO.</p>
    <div class="variants"><label style="flex:1">Volume
      <select id="volume-${p.id}" aria-label="Volume de ${escapeHTML(p.name)}">${p.volumes.map((v,i)=>`<option value="${i}">${v.ml} ml</option>`).join("")}</select>
    </label><label class="quantity-label">Quantidade
