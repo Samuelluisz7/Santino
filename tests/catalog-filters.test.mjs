@@ -21,7 +21,10 @@ test("both catalogs expose one collapsed Filtros control", async () => {
     assert.match(html, /Preço máximo/);
     assert.match(html, /Limpar filtros/);
     assert.doesNotMatch(html, /Mais recentes/);
-    assert.match(html, /catalog-filters\.css\?v=20261116-5/);
+    const nav = html.match(/<nav class="catalog-nav"[^>]*>[\\s\\S]*?<\\/nav>/)?.[0] || "";
+    assert.ok(nav.indexOf("href=\"frascos.html\"") < nav.indexOf("href=\"decants.html\""));
+    assert.match(html, /addEventListener\\("input",render(?:Products|FullSizeProducts)\\)/);
+    assert.match(html, /catalog-filters\.css\?v=20261116-6/);
   }
   const styles = await readFile(path.join(ROOT, "catalog-filters.css"), "utf8");
   assert.match(styles, /\.catalog-filter-panel\.is-open/);
