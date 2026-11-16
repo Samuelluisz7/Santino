@@ -18,7 +18,9 @@ test("homepage uses top navigation and one explore section without duplicated ca
   assert.match(home, /<nav class="catalog-nav" aria-label="Categorias do catálogo">/);
   for (const href of ['href="frascos.html"', 'href="decants.html"', 'href="kits.html"']) assert.ok(home.includes(href));
   assert.match(home, /<h1 id="homeHeading">Explorar fragrâncias<\/h1>/);
-  assert.doesNotMatch(homeMarkup, /home-pathway-grid|home-full-size-grid|homeFeaturedGrid|homeFullSizeGrid|home-kits/);
+  assert.doesNotMatch(homeMarkup, /home-pathway-grid|home-full-size-grid|homeFullSizeGrid|home-kits/);
+  assert.match(homeMarkup, /class="home-full-bottle-hero"/);
+  assert.match(homeMarkup, /id="homeFeaturedGrid"/);
   assert.doesNotMatch(home, /<a href="#cashback-santino">Cashback<\/a>/);
 });
 
@@ -48,7 +50,7 @@ test("homepage displays exactly the approved four asymmetric recommendations", a
 });
 
 test("decant promotion explains the approved cumulative 10% rule", () => {
-  assert.match(home, /10% de desconto em decants/);
+  assert.match(home, /10% OFF em decants/);
   assert.match(home, /A partir de R\$ 80 em decants, o desconto é calculado sobre todo o subtotal elegível/);
   assert.match(decants, /goalTotal\*discountRate/);
   assert.match(decants, /goalTotal>=goal/);
