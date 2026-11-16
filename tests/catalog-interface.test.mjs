@@ -9,17 +9,25 @@ const REPOSITORY_ROOT = path.resolve(
   "..",
 );
 
-test("home page presents direct, distinct paths into the catalog", async () => {
+test("home page presents frascos inteiros before decants and keeps their paths distinct", async () => {
   const html = await readFile(path.join(REPOSITORY_ROOT, "index.html"), "utf8");
+  const fullSizeScript = await readFile(path.join(REPOSITORY_ROOT, "home-full-size.js"), "utf8");
+  const decants = await readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8");
 
   assert.match(html, /<body class="home-page">/);
   assert.match(html, /id="homeHeading"/);
-  assert.match(html, /href="decants\.html"[^>]*>Conhecer os decants/);
-  assert.match(html, /href="frascos\.html"[^>]*>Ver frascos inteiros/);
-  assert.match(html, /href="kits\.html"[^>]*>Kits/);
-  assert.match(html, /class="home-pathways"/);
-  assert.match(html, /class="home-offer-link" href="#promocoes"/);
-  assert.match(html, /class="home-help-link" href="https:\/\/wa\.me\/5531996312579/);
+  assert.match(html, /id="homeFullSizeGrid"/);
+  assert.match(html, /home-full-size\.js/);
+  assert.match(html, /id="homeFeaturedGrid"/);
+  assert.match(html, /href="frascos\.html"/);
+  assert.match(html, /href="decants\.html"/);
+  assert.match(html, /href="kits\.html"/);
+  assert.ok(html.indexOf('id="homeFullSizeGrid"') < html.indexOf('id="homeFeaturedGrid"'));
+  assert.match(fullSizeScript, /category: "Frasco inteiro"/);
+  assert.match(fullSizeScript, /-full-/);
+  assert.match(decants, /decant-vial-overlay/);
+  assert.match(decants, /decant-image-note/);
+  assert.doesNotMatch(html, /home-offer-link/);
 });
 
 test("all catalog cards use the same image frame without cropping product photos", async () => {
