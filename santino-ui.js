@@ -142,6 +142,8 @@
     const discount = decantSubtotal >= 80 ? decantSubtotal * 0.10 : 0;
     const total = knownSubtotal - discount;
     const goal = globalCartRoot.querySelector("#santinoGlobalCartGoal");
+    const footer = globalCartRoot.querySelector(".santino-global-cart-footer");
+    footer.hidden = items.length === 0;
     goal.hidden = !items.some(function (item) { return item.category === "Decant" && typeof item.price === "number" && Number.isFinite(item.price); });
     if (!goal.hidden) {
       globalCartRoot.querySelector("#santinoGlobalCartGoalCopy").textContent = discount > 0
@@ -159,7 +161,7 @@
     pending.textContent = pendingItems ? pendingItems + " item(ns) aguardam confirmação de preço." : "";
     const list = globalCartRoot.querySelector("#santinoGlobalCartItems");
     if (!items.length) {
-      list.innerHTML = '<div class="santino-global-cart-empty"><span aria-hidden="true">✦</span><strong>Seu carrinho está vazio.</strong><p>Explore as fragrâncias e escolha por onde começar.</p></div>';
+      list.innerHTML = '<div class="santino-global-cart-empty"><span aria-hidden="true">✦</span><strong>Seu carrinho está vazio.</strong><p>Escolha uma fragrância para começar sua compra.</p><div class="santino-global-cart-empty-actions"><a href="frascos.html">Ver frascos inteiros</a><a href="decants.html">Explorar decants</a></div></div>';
       return;
     }
     list.innerHTML = items.map(function (item) {
