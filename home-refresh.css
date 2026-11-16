@@ -448,3 +448,10 @@
   .recommended-image img{padding:6px}
   .recommended-card strong{font-size:18px}
 }
+
+
+/* Home mobile: reduz a altura do banner fotográfico de frascos sem remover a imagem nem inverter a ordem das vitrines. */
+@media(max-width:520px){
+  .home-full-bottle-hero{margin-top:16px!important}
+  .home-full-bottle-hero img{aspect-ratio:16/8.2!important;max-height:185px!important;object-fit:cover!important;object-position:center 52%!important}
+}
