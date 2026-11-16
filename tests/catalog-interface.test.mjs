@@ -22,7 +22,7 @@ test("home page presents the approved recommendation cards and keeps catalog nav
   }
   assert.doesNotMatch(homeMarkup, /The Blend Bourbon|home-kits|homeFullSizeGrid/);
   assert.match(html, /recommended-card-nautica/);
-  assert.match(html, /<strong>Nautica Voyage<\\/strong>/);
+  assert.ok(html.includes("<strong>Nautica Voyage</strong>"));
   assert.match(html, /home-refresh\.css/);
   assert.match(decants, /decant-vial-overlay/);
   assert.match(decants, /decant-image-note/);
