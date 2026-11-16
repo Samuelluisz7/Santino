@@ -11,6 +11,9 @@ test("both catalogs expose one collapsed Filtros control", async () => {
     const html = await readFile(path.join(ROOT, page), "utf8");
     assert.match(html, /class="catalog-filter-toggle"[^>]*>Filtros/);
     assert.match(html, /class="catalog-filter-panel"[^>]*hidden/);
+    assert.match(html, /catalog-brand-trigger/);
+    assert.match(html, /catalog-brand-options/);
+    assert.match(html, /role="listbox"/);
     assert.match(html, /Todas as marcas/);
     assert.match(html, /Mais relevantes/);
     assert.match(html, /Menor preço/);
@@ -27,11 +30,13 @@ test("both catalogs expose one collapsed Filtros control", async () => {
     assert.ok(nav.indexOf('href="frascos.html"') < nav.indexOf('href="decants.html"'));
     assert.ok(nav.indexOf("href=\"frascos.html\"") < nav.indexOf("href=\"decants.html\""));
     assert.ok(html.includes('addEventListener("input",renderProducts)') || html.includes('addEventListener("input",renderFullSizeProducts)'));
-    assert.match(html, /catalog-filters\.css\?v=20261116-6/);
+    assert.match(html, /catalog-filters\.css\?v=20261116-7/);
   }
   const styles = await readFile(path.join(ROOT, "catalog-filters.css"), "utf8");
   assert.match(styles, /\.catalog-filter-panel\.is-open/);
   assert.match(styles, /body\.catalog-filters-open::before/);
+  assert.match(styles, /\.catalog-brand-trigger/);
+  assert.match(styles, /\.catalog-brand-option\.is-selected/);
 });
 
 test("Natura and Natura Kaiak are grouped under Natura while line identity remains visible", async () => {
@@ -55,4 +60,11 @@ test("price ordering is ascending or descending without changing the default rec
     assert.ok(html.includes('sort==="price-desc"'));
     assert.ok(html.includes('value="featured">Mais relevantes / mais vendidos'));
   }
+});
+
+test("product performance facts hide completely when their values are unavailable", async () => {
+ const html = await readFile(path.join(ROOT, "produto.html"), "utf8");
+ assert.match(html, /fact\.hidden=!value\|\|!value\.textContent\.trim\(\)/);
+ assert.match(html, /if\(noteFacts\)noteFacts\.hidden=!noteFacts\.querySelector/);
+ assert.doesNotMatch(html, /id="longevityText">Não há avaliação confiável cadastrada/);
 });
