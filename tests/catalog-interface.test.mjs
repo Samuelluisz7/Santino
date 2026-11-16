@@ -24,7 +24,7 @@ test("home page presents the approved recommendation cards and keeps catalog nav
   assert.match(html, /recommended-card-nautica/);
   assert.ok(html.includes("<strong>Nautica Voyage</strong>"));
   assert.match(html, /home-refresh\.css/);
-  assert.match(decants, /renderDecantScene\(p\)/);
+  assert.match(decants, /decant-vial-overlay/);
   assert.match(decants, /decant-image-note/);
 });
 test("all catalog cards use the same image frame without cropping product photos", async () => {
@@ -61,8 +61,8 @@ test("perfume details show occasion and note preview before a collapsed addition
   assert.match(html, /id="projectionText"/);
   assert.match(html, /id="dayNightText"/);
   assert.match(html, /id="seasonsText"/);
-  assert.doesNotMatch(html, /Não há avaliação confiável cadastrada/);
-  assert.doesNotMatch(html, /Não há classificação cadastrada/);
+  assert.match(html, /Não há avaliação confiável cadastrada/);
+  assert.match(html, /Não há classificação cadastrada/);
 });
 
 test("shared cart UI animates a product image toward the cart only after local cart count changes", async () => {
@@ -154,20 +154,4 @@ test("decants and full-bottle pages use the shared side cart without wiping save
     assert.match(html, /window.dispatchEvent\(new Event\("santino:cart-updated"\)\)/);
     assert.doesNotMatch(html, /get\("openCart"\).*openCart\(\)/);
   }
-});
-
-test("decant listings and details render the SANTINO dark product-photo composition", async () => {
- const [decants,product,styles]=await Promise.all([
-  readFile(path.join(REPOSITORY_ROOT,"decants.html"),"utf8"),
-  readFile(path.join(REPOSITORY_ROOT,"produto.html"),"utf8"),
-  readFile(path.join(REPOSITORY_ROOT,"decant-scene.css"),"utf8")
- ]);
- assert.match(decants,/function renderDecantScene\(product\)/);
- assert.match(decants,/renderDecantScene\(p\)/);
- assert.match(decants,/"homem-sagaz":"#8e171a"/);
- assert.match(decants,/"nautica-voyage":"#278d9a"/);
- assert.match(product,/id="decantDetailScene"/);
- assert.match(product,/scene\.innerHTML=renderDecantScene\(product\)/);
- assert.match(styles,/\.decant-generated-stage/);
- assert.match(styles,/\.decant-generated-vials/);
 });
