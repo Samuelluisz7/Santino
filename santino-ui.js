@@ -40,6 +40,91 @@
   }
   updateCartCounters();
 
+
+  function readCartCount() {
+    try {
+      const items = JSON.parse(window.localStorage.getItem("santino_nobre_cart") || "[]");
+      return Array.isArray(items) ? items.reduce(function (sum, item) {
+        return sum + (Number(item && item.qty) || 0);
+      }, 0) : 0;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function productImageFor(button) {
+    const card = button.closest(".product, .home-product-card, .kit-card, article");
+    const cardImage = card && card.querySelector(".product-art img.product-photo:not([hidden]), .product-art img:not([hidden])");
+    if (cardImage && (cardImage.currentSrc || cardImage.src)) return cardImage.currentSrc || cardImage.src;
+    const detailImage = document.querySelector("#mainImage");
+    if (detailImage && (detailImage.currentSrc || detailImage.src)) return detailImage.currentSrc || detailImage.src;
+    return "";
+  }
+
+  function animateProductToCart(imageUrl, clickedButton) {
+    const cartTarget = document.querySelector(".cart-link, .cart-button");
+    if (!cartTarget || !imageUrl) return;
+
+    const imageElement = document.createElement("img");
+    imageElement.src = imageUrl;
+    imageElement.alt = "";
+    imageElement.draggable = false;
+
+    const bubble = document.createElement("span");
+    bubble.className = "santino-cart-flight";
+    bubble.setAttribute("aria-hidden", "true");
+    bubble.appendChild(imageElement);
+
+    const targetRect = cartTarget.getBoundingClientRect();
+    const card = clickedButton && clickedButton.closest ? clickedButton.closest(".product, article") : null;
+    const visual = card && card.querySelector(".product-art");
+    const sourceRect = visual ? visual.getBoundingClientRect() : clickedButton?.getBoundingClientRect?.();
+    const startX = sourceRect ? sourceRect.left + sourceRect.width / 2 : window.innerWidth / 2;
+    const startY = sourceRect ? sourceRect.top + sourceRect.height / 2 : window.innerHeight / 2;
+    const endX = targetRect.left + targetRect.width / 2;
+    const endY = targetRect.top + targetRect.height / 2;
+    const dx = endX - startX;
+    const dy = endY - startY;
+
+    bubble.style.left = (startX - 27) + "px";
+    bubble.style.top = (startY - 27) + "px";
+    document.body.appendChild(bubble);
+
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const reduced = bubble.animate(
+        [{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(.65)" }],
+        { duration: 180, easing: "ease-out" }
+      );
+      reduced.onfinish = function () { bubble.remove(); };
+      return;
+    }
+
+    const animation = bubble.animate([
+      { opacity: 1, transform: "translate3d(0,0,0) scale(1)", offset: 0 },
+      { opacity: 1, transform: "translate3d(" + (dx * .48) + "px," + (dy * .35 - 54) + "px,0) scale(.76)", offset: .48 },
+      { opacity: .12, transform: "translate3d(" + dx + "px," + dy + "px,0) scale(.12)", offset: 1 }
+    ], { duration: 720, easing: "cubic-bezier(.2,.7,.2,1)" });
+    animation.onfinish = function () {
+      bubble.remove();
+      cartTarget.classList.remove("santino-cart-pulse");
+      void cartTarget.offsetWidth;
+      cartTarget.classList.add("santino-cart-pulse");
+    };
+  }
+
+  /* A animação só ocorre quando o armazenamento confirma que o item entrou no carrinho. */
+  document.addEventListener("click", function (event) {
+    const button = event.target.closest("#addButton, [data-add], [data-add-full]");
+    if (!button || button.disabled) return;
+    const before = readCartCount();
+    const imageUrl = productImageFor(button);
+    if (before === null || !imageUrl) return;
+    window.setTimeout(function () {
+      const after = readCartCount();
+      if (after !== null && after > before) animateProductToCart(imageUrl, button);
+    }, 30);
+  }, true);
+
   document.querySelectorAll('label.quantity-label').forEach(function (label) {
     label.childNodes.forEach(function (node) {
       if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() === "Qtd.") {
