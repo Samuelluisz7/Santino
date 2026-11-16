@@ -685,3 +685,195 @@ body:not(.home-page) .faq-answer {
   body.home-page .home-pathways,
   body.home-page .home-featured { padding-inline: 15px; }
 }
+
+
+/* SANTINO — escopo global escuro: nenhum painel claro nas páginas internas. */
+html, body { background: #080808 !important; color: #eeeae2 !important; }
+body:not(.home-page) main {
+  background: #080808 !important;
+  color: #eeeae2 !important;
+}
+body:not(.home-page) main > .hero,
+body:not(.home-page) main > .section,
+body:not(.home-page) main > .section:not(.faq-section),
+body:not(.home-page) main > .full-size-section,
+body:not(.home-page) main > .kit-grid,
+body:not(.home-page) main > .page-search,
+body:not(.home-page) .section,
+body:not(.home-page) .full-size-section,
+body:not(.home-page) .kit-grid,
+body:not(.home-page) .page-search {
+  background-color: #101010 !important;
+  background-image: none !important;
+  color: #eeeae2 !important;
+  border-color: #292929 !important;
+  box-shadow: none !important;
+}
+body:not(.home-page) main > .hero {
+  background:
+    linear-gradient(90deg, rgba(8,8,8,.96), rgba(8,8,8,.72) 53%, rgba(8,8,8,.35)),
+    url("banner-home-original.webp") center / cover no-repeat !important;
+}
+body:not(.home-page) main > .hero h1,
+body:not(.home-page) main > .hero p,
+body:not(.home-page) main > .hero .eyebrow,
+body:not(.home-page) .section-head h2,
+body:not(.home-page) .section-head p,
+body:not(.home-page) .full-size-section .section-head h2,
+body:not(.home-page) .full-size-section .section-head p,
+body:not(.home-page) .collection-heading h2,
+body:not(.home-page) .collection-heading p,
+body:not(.home-page) .intro {
+  color: #eeeae2 !important;
+}
+body:not(.home-page) .origin-filter,
+body:not(.home-page) .collection-controls {
+  background: #151515 !important;
+  color: #eeeae2 !important;
+  border-color: #302d28 !important;
+}
+body:not(.home-page) .origin-filter-label,
+body:not(.home-page) .collection-controls label,
+body:not(.home-page) .collection-controls label span {
+  color: #aaa49a !important;
+}
+body:not(.home-page) .origin-filter button,
+body:not(.home-page) .collection-controls select,
+body:not(.home-page) .page-search input {
+  background: #0c0c0c !important;
+  color: #eeeae2 !important;
+  border-color: #3a352d !important;
+}
+body:not(.home-page) .origin-filter button[aria-pressed="true"],
+body:not(.home-page) [data-full-origin-filter][aria-pressed="true"] {
+  background: #b89a68 !important;
+  color: #111 !important;
+  border-color: #b89a68 !important;
+}
+body:not(.home-page) .products .product,
+body:not(.home-page) .kit-card,
+body:not(.home-page) .results .result-card {
+  background: #151515 !important;
+  color: #eeeae2 !important;
+  border: 1px solid #302d28 !important;
+  box-shadow: 0 8px 22px rgba(0,0,0,.24) !important;
+}
+body:not(.home-page) .products .product:hover,
+body:not(.home-page) .kit-card:hover,
+body:not(.home-page) .results .result-card:hover {
+  background: #191816 !important;
+  border-color: rgba(184,154,104,.55) !important;
+}
+body:not(.home-page) .products .product-art,
+body:not(.home-page) .full-size-section .products .product-art {
+  position: relative;
+  background: #111 !important;
+  border-color: #302d28 !important;
+  border-radius: 4px !important;
+}
+body:not(.home-page) .products .product-photo,
+body:not(.home-page) .full-size-section .product-photo,
+body:not(.home-page) .results .result-image img,
+body:not(.home-page) .kit-product-img img {
+  object-fit: contain !important;
+  object-position: center !important;
+  mix-blend-mode: normal !important;
+}
+body:not(.home-page) .products .product h3,
+body:not(.home-page) .products .product-detail-link h3,
+body:not(.home-page) .kit-card h3,
+body:not(.home-page) .results .result-card h3,
+body:not(.home-page) .products .price,
+body:not(.home-page) .results .result-card {
+  color: #eeeae2 !important;
+}
+body:not(.home-page) .products .product-brandline,
+body:not(.home-page) .products .product-brand-name,
+body:not(.home-page) .products .product-origin-tag,
+body:not(.home-page) .card-meta,
+body:not(.home-page) .faq-answer,
+body:not(.home-page) .bottom-note {
+  color: #aaa49a !important;
+}
+body:not(.home-page) .products .product .add,
+body:not(.home-page) .products .product .btn,
+body:not(.home-page) .kit-add,
+body:not(.home-page) .page-search-row .btn,
+body:not(.home-page) .results .result-card .btn {
+  background: #b89a68 !important;
+  border-color: #b89a68 !important;
+  color: #111 !important;
+}
+body:not(.home-page) .faq-section,
+body:not(.home-page) .faq-list,
+body:not(.home-page) .faq-item {
+  border-color: #302d28 !important;
+}
+body:not(.home-page) .faq-section .section-head h2,
+body:not(.home-page) .faq-item summary { color: #eeeae2 !important; }
+body:not(.home-page) .policy,
+body:not(.home-page) .policy:nth-of-type(odd),
+body:not(.home-page) .policy:nth-of-type(even) {
+  background: #121212 !important;
+  color: #eeeae2 !important;
+  border-color: #302d28 !important;
+}
+body:not(.home-page) .policy h2,
+body:not(.home-page) .policy p,
+body:not(.home-page) .policy strong,
+body:not(.home-page) .policy a { color: #d5d0c7 !important; }
+body.perfume-detail-page .product-layout,
+body.perfume-detail-page .summary,
+body.perfume-detail-page .content-section,
+body.perfume-detail-page .content-section:nth-of-type(2),
+body.perfume-detail-page .content-section:nth-of-type(3) {
+  background: #111 !important;
+  color: #eeeae2 !important;
+  border-color: #302d28 !important;
+}
+body.perfume-detail-page .content-section h2,
+body.perfume-detail-page .content-section h3,
+body.perfume-detail-page .content-section p { color: #d5d0c7 !important; }
+
+/* Transparência visual dos decants: frasco miniatura sobre a foto de referência. */
+.decant-product-art .decant-vial-overlay {
+  position: absolute;
+  z-index: 4;
+  right: 2%;
+  bottom: -2%;
+  width: 38%;
+  height: 64%;
+  padding: 0 !important;
+  object-fit: contain !important;
+  object-position: center bottom !important;
+  background: transparent !important;
+  mix-blend-mode: normal !important;
+  filter: drop-shadow(0 5px 7px rgba(0,0,0,.65));
+  pointer-events: none;
+}
+.decant-product-art .decant-photo-badge {
+  position: absolute;
+  z-index: 5;
+  top: 7px;
+  left: 7px;
+  max-width: calc(100% - 14px);
+  padding: 5px 6px;
+  border: 1px solid rgba(184,154,104,.62);
+  border-radius: 2px;
+  background: rgba(7,7,7,.88);
+  color: #dec79d;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+.decant-image-note {
+  margin: -4px 0 12px;
+  color: #aaa49a !important;
+  font-size: 9px;
+  line-height: 1.4;
+}
+@media (max-width: 720px) {
+  .decant-product-art .decant-vial-overlay { width: 40%; height: 61%; }
+  .decant-product-art .decant-photo-badge { top: 5px; left: 5px; font-size: 6px; }
+  .decant-image-note { min-height: 25px; font-size: 8px; }
+}
