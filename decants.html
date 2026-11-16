@@ -290,6 +290,14 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <meta property="og:url" content="https://samuelluisz7.github.io/Santino/decants.html">
   <meta property="og:image" content="https://samuelluisz7.github.io/Santino/banner-home-original.webp">
   <meta name="twitter:card" content="summary_large_image">
+
+<style id="santino-decant-photo-refresh">
+/* Fotos dos decants: destaque para o perfume de referência, sem ilustrações de mini frascos. */
+.decant-product-art{background:radial-gradient(ellipse at 50% 38%,#30271b 0%,#17130e 48%,#080808 100%)!important;border-color:#4b3b26!important}
+.decant-product-art .product-photo{padding:12px!important;object-fit:contain!important;mix-blend-mode:multiply!important;background:transparent!important}
+.decant-product-art .photo-fallback{background:radial-gradient(ellipse at 50% 40%,#30271b 0%,#17130e 55%,#080808 100%)!important}
+.photo-fallback-label{color:#d2b889;font:12px Georgia,serif;letter-spacing:.22em}
+</style>
 </head>
 <body>
 <header><div class="nav">
@@ -532,7 +540,7 @@ function renderProducts(){
  if(!filteredProducts.length){$("products").innerHTML='<p class="catalog-empty-state">Nenhuma fragrância corresponde aos filtros selecionados.</p>';return;}
  $("products").innerHTML = filteredProducts.map(p=>`<article class="product">
    <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
-   <div class="product-art decant-product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Imagem ilustrativa do perfume original ${escapeHTML(p.name)}; o produto vendido é o decant em mini frasco SANTINO" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div><img class="decant-vial-overlay" src="decant-vials.svg?v=20261116-1" alt="Mini frascos de decant SANTINO de 5 e 10 ml" loading="lazy" decoding="async"><span class="decant-photo-badge">PRODUTO VENDIDO · DECANT</span></div>
+   <div class="product-art decant-product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Perfume ${escapeHTML(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><span class="photo-fallback-label">SANTINO</span></div></div>
    <h3>${escapeHTML(p.name)}</h3>
    <div class="product-brandline"><span class="product-brand-name">${escapeHTML(getBrandDisplay(p))}</span><span class="product-origin-tag">${escapeHTML(p.tag||"")}</span></div>
    </a>
