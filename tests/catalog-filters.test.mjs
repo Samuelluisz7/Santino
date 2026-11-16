@@ -30,7 +30,7 @@ test("both catalogs expose one collapsed Filtros control", async () => {
     assert.ok(nav.indexOf('href="frascos.html"') < nav.indexOf('href="decants.html"'));
     assert.ok(nav.indexOf("href=\"frascos.html\"") < nav.indexOf("href=\"decants.html\""));
     assert.ok(html.includes('addEventListener("input",renderProducts)') || html.includes('addEventListener("input",renderFullSizeProducts)'));
-    assert.match(html, /catalog-filters\.css\?v=20261116-7/);
+    assert.match(html, /catalog-filters\.css\?v=20261116-8/);
   }
   const styles = await readFile(path.join(ROOT, "catalog-filters.css"), "utf8");
   assert.match(styles, /\.catalog-filter-panel\.is-open/);
