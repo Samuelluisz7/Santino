@@ -1495,8 +1495,8 @@ const isQuasarIce=product.id.replace(/^full-/,"")==="quasar-ice";document.body.c
 document.title="SANTINO | "+product.name;$("crumbName").textContent=product.name;$("productName").textContent=product.name;$("productBrand").textContent=product.brand;$("categoryLabel").textContent=isFull?"Frasco inteiro":"Decant · "+product.tag;
 $("productMeta").textContent=isFull?(product.ml+" ml"):"Escolha o volume do seu decant";$("productDescription").textContent=story?story.intro:(product.description||"Uma fragrância para conhecer em detalhes.");$("longDescription").textContent=story?story.story:(product.description||"Explore o perfil olfativo desta fragrância e escolha o volume desejado.");if(story){
  $("climateText").textContent=story.climate;
- $("dayNightText").textContent=/noite|jantar|festa|noturn/i.test(story.occasion)?"Preferência noturna":/dia|diurno|rotina|trabalho|aulas/i.test(story.occasion)?"Uso diurno e/ou rotina":"Não informado com segurança";
- $("seasonsText").textContent=/frio|inverno/i.test(story.climate)?"Mais indicado para clima ameno ou frio":/calor|quente/i.test(story.climate)?"Mais indicado para clima quente ou ameno":"Não informado com segurança";
+ $("dayNightText").textContent="Não há classificação cadastrada.";
+ $("seasonsText").textContent="Não há classificação cadastrada.";
 }$("authenticityNote").textContent=product.toutiImage?"Produto vendido: Touti original · 50 ml. A fragrância de grife é apenas referência e não está incluída.":(isFull?"Frasco original · selo de originalidade SANTINO":"Fragrância original · decant com selo de originalidade SANTINO");
 $("highlightOccasion").textContent=story?story.occasion:"Ocasião não cadastrada";
 const previewStages=$("notePreviewStages");
