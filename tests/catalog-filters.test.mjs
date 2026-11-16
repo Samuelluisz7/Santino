@@ -16,8 +16,16 @@ test("both catalogs expose one collapsed Filtros control", async () => {
     assert.match(html, /Menor preço/);
     assert.match(html, /Maior preço/);
     assert.match(html, /aria-expanded="false"/);
+    assert.match(html, /role="dialog" aria-modal="true"/);
+    assert.match(html, /Preço mínimo/);
+    assert.match(html, /Preço máximo/);
+    assert.match(html, /Limpar filtros/);
+    assert.doesNotMatch(html, /Mais recentes/);
     assert.match(html, /catalog-filters\.css\?v=20261116-5/);
   }
+  const styles = await readFile(path.join(ROOT, "catalog-filters.css"), "utf8");
+  assert.match(styles, /\.catalog-filter-panel\.is-open/);
+  assert.match(styles, /body\.catalog-filters-open::before/);
 });
 
 test("Natura and Natura Kaiak are grouped under Natura while line identity remains visible", async () => {
@@ -39,6 +47,6 @@ test("price ordering is ascending or descending without changing the default rec
   for (const html of [full, decants]) {
     assert.ok(html.includes('sort==="price-asc"'));
     assert.ok(html.includes('sort==="price-desc"'));
-    assert.ok(html.includes('value="featured">Mais relevantes'));
+    assert.ok(html.includes('value="featured">Mais relevantes / mais vendidos'));
   }
 });
