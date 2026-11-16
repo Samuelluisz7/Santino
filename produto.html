@@ -847,6 +847,63 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
 .brand{position:relative;padding-left:42px;min-height:32px;display:inline-flex;flex-direction:column;justify-content:center}
 .brand::before{content:"S";position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:30px;border:1px solid var(--beige);border-radius:50%;display:grid;place-items:center;color:var(--beige);font:700 16px/1 Georgia,"Times New Roman",serif;letter-spacing:0}
 @media(max-width:720px){.brand{padding-left:36px;min-height:28px}.brand::before{width:26px;height:26px;font-size:14px}}
+/* Notas olfativas em miniaturas circulares inspiradas na leitura da Fragrantica */
+#olfactorySection .note-composition{display:flex!important;flex-direction:column!important;gap:0!important}
+#olfactorySection .composition-row{
+ display:grid!important;grid-template-columns:1fr!important;align-items:start!important;
+ gap:9px!important;width:100%!important;padding:12px 0!important;
+ border:0!important;border-bottom:1px solid #292929!important;
+ background:transparent!important;text-align:left!important;
+}
+#olfactorySection .composition-row>strong{
+ display:block!important;margin:0!important;color:#c9b18b!important;
+ font-size:10px!important;letter-spacing:.12em!important;text-transform:uppercase!important;
+}
+#olfactorySection .composition-row .note-words{
+ display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;
+ justify-content:start!important;align-items:start!important;gap:11px 7px!important;
+ width:100%!important;min-width:0!important;
+}
+#olfactorySection .note-word{
+ display:flex!important;flex-direction:column!important;align-items:center!important;
+ justify-content:flex-start!important;gap:5px!important;min-width:0!important;
+ padding:0!important;border:0!important;background:transparent!important;
+ color:#e9e2d7!important;font:400 10px/1.25 Arial,Helvetica,sans-serif!important;
+ text-align:center!important;white-space:normal!important;
+}
+#olfactorySection .note-image-shell{
+ position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;
+ width:48px!important;height:48px!important;overflow:hidden!important;flex:0 0 48px!important;
+ border:1px solid color-mix(in srgb,var(--note-color,#a99a80) 55%,#3a342b)!important;
+ border-radius:50%!important;background:#171511!important;text-decoration:none!important;
+}
+#olfactorySection .note-photo{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;border-radius:50%!important}
+#olfactorySection .note-photo-fallback{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ width:100%!important;height:100%!important;border-radius:50%!important;
+ background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--note-color,#a99a80) 34%,#1a1712),#11100e 75%)!important;
+ color:color-mix(in srgb,var(--note-color,#a99a80) 80%,#f3eadb)!important;
+ font:400 17px/1 Georgia,"Times New Roman",serif!important;
+}
+#olfactorySection .note-name{display:block!important;max-width:100%!important;overflow-wrap:anywhere!important;color:#ddd5c9!important;font-size:9px!important;line-height:1.25!important}
+#olfactorySection .note-image-credits{margin-top:10px!important;color:#8e877b!important;font-size:9px!important}
+#olfactorySection .note-image-credits>summary{cursor:pointer;color:#a79a85!important}
+#olfactorySection .note-image-credits ul{margin:7px 0 0;padding-left:15px!important;display:grid;gap:4px}
+#olfactorySection .note-image-credits a{color:#d2bc94!important;text-decoration:underline!important;text-underline-offset:2px}
+@media(max-width:720px){
+ #olfactorySection .composition-row .note-words{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:10px 5px!important}
+ #olfactorySection .note-image-shell{width:42px!important;height:42px!important;flex-basis:42px!important}
+ #olfactorySection .note-name{font-size:9px!important}
+}
+@media(max-width:380px){
+ #olfactorySection .composition-row .note-words{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+
+/* Fichas sem fonte confirmada permanecem visíveis, sem completar dados por suposição. */
+.note-reference-notice{margin:0 0 10px;padding:8px 10px;border-left:2px solid #8d7047;background:#15130f;color:#b8ab96;font-size:10px;line-height:1.5}
+.note-data-pending{margin:10px 0 0;padding:12px;border:1px dashed #68543a;background:#15130f;color:#c5b79e;font-size:11px;line-height:1.55}
+.detail-note-pending-inline{grid-column:1/-1;margin:2px 0;color:#a99b84;font-size:10px;line-height:1.45}
+
 </style>
   <link rel="stylesheet" href="santino-ui.css?v=20261116-1">
 
@@ -1138,12 +1195,15 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
     <div class="note-visual-bottle"><img id="noteBottleImage" alt="" loading="lazy" decoding="async"><div class="note-bottle-fallback" id="noteBottleFallback" hidden>SANTINO<br>FRAGRÂNCIAS</div></div>
     <div class="note-visual-details">
      <div class="note-graphic-head"><div class="eyebrow" id="familyText"></div><h3 id="noteGraphName">Fragrância</h3></div>
-     <p class="accord-title">Principais acordes</p>
+     <p class="note-reference-notice" id="noteReferenceNotice" hidden></p>
+     <p class="accord-title" id="accordTitle">Principais acordes</p>
      <div class="note-accords" id="accordBars" aria-label="Acordes em destaque"></div>
+     <p class="note-data-pending" id="noteDataPending" hidden>Esta ficha olfativa está em validação. Não publicamos notas ou acordes sem confirmação da referência e de dados confiáveis.</p>
      <div class="note-composition" aria-label="Notas de saída, coração e fundo">
       <div class="composition-row"><strong>Saída</strong><div class="note-words" id="topNotes"></div></div>
       <div class="composition-row"><strong>Coração</strong><div class="note-words" id="heartNotes"></div></div>
       <div class="composition-row"><strong>Fundo</strong><div class="note-words" id="baseNotes"></div></div>
+      <details class="note-image-credits" id="noteImageCredits" hidden><summary>Créditos das imagens dos ingredientes</summary></details>
      </div>
     </div>
    </div>
@@ -1223,6 +1283,40 @@ const PERFUME_INFO = {
  "club-6-voyage":{family:"Oriental amadeirado",top:"Bergamota, pimenta-preta e noz-moscada",heart:"Artemísia, canela de Madagascar, alecrim e acorde Maridaje",base:"Patchouli, cedro, sândalo, musk, âmbar e caramelo"},
  "egeo-bomb-black":{family:"Fougère gourmand",top:"Artemísia, hortelã, limão, folhas verdes, bergamota e maçã",heart:"Muguet, cedro, couro, immortelle e musgo",base:"Patchouli, sândalo, tiramisone, baunilha, musk, caramelo, âmbar e Sugar Booster"}
  };
+Object.assign(PERFUME_INFO,{
+ "touti-vip-12":{
+  family:"Amadeirado",
+  top:"Maçã, ameixa, bergamota, limão, musgo de carvalho e gerânio",
+  heart:"Canela, mogno e cravo",
+  base:"Baunilha, sândalo, cedro, vetiver e oliveira",
+  referenceNotice:"Pirâmide publicada para o Touti VIP 12 na ficha do fornecedor consultado. Como é uma fragrância inspirada, a composição pode variar da fragrância de referência."
+ },
+ "touti-vip-80":{
+  family:"Aromático fougère",
+  top:"Maçã, gengibre e bergamota",
+  heart:"Sálvia, bagas de zimbro e gerânio",
+  base:"Madeira de âmbar, fava tonka, cedro, vetiver e olíbano",
+  referenceNotice:"Notas da fragrância de referência Y Eau de Parfum. A formulação do Touti VIP 80 pode variar em relação ao perfume original."
+ },
+ "touti-vip-46":{
+  family:"Aromático ambarado amadeirado",
+  top:"Absinto",
+  heart:"Couro preto",
+  base:"Baunilha e almíscar",
+  referenceNotice:"Descrição da fragrância de referência 212 VIP Black pela Carolina Herrera. A formulação do Touti VIP 46 pode variar em relação ao perfume original."
+ },
+ "212-vip-black":{
+  family:"Aromático ambarado amadeirado",
+  top:"Absinto",
+  heart:"Couro preto",
+  base:"Baunilha e almíscar",
+  longevity:"A marca descreve um rastro quente que permanece durante toda a noite; a duração varia conforme a pele e a aplicação.",
+  projection:"Marcante, mas refinada, segundo a descrição da Carolina Herrera.",
+  dayNight:"Noite",
+  seasons:"Não há classificação sazonal oficial cadastrada."
+ }
+});
+
 const PRODUCT_STORIES={
  "kingdom":{intro:"Abertura herbal de lavanda, menta e sálvia; depois fica mais quente, com tabaco, baunilha e resinas.",occasion:"Trabalho, rotina e encontros quando você quer um perfume aromático com fundo adocicado.",climate:"Versátil. No calor, comece com poucas borrifadas.",story:"The Kingdom passa do frescor herbal para um perfil cremoso e ambarado. O tabaco e a baunilha dão corpo sem apagar a abertura de lavanda e menta.",accords:["Aromático","Herbal","Tabaco","Baunilha","Ambarado"]},
  "the-blend-bourbon":{intro:"Cítricos e pimenta na saída; especiarias, crème brûlée e baunilha Bourbon tornam a fragrância quente e encorpada.",occasion:"Jantares, eventos sociais e encontros em que você quer um perfume mais sofisticado.",climate:"Clima ameno ou frio. Evite exagerar nas borrifadas em ambientes pequenos.",story:"O começo cítrico e apimentado dá lugar a um coração especiado e gourmand. A base de madeiras, âmbar e baunilha Bourbon deixa uma impressão quente, mais formal que esportiva.",accords:["Especiado","Crème brûlée","Madeiras","Âmbar","Baunilha Bourbon"]},
@@ -1330,6 +1424,33 @@ const FULL_SIZE_PRODUCTS = [
 {id:"full-club-6-voyage",name:"Club 6 Voyage",brand:"Eudora",ml:95,image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqq15dhj1kw327",price:119.90,description:"Desodorante colônia oriental amadeirado, com acorde Maridaje de rum envelhecido no carvalho, chocolate e café."},
 {id:"full-egeo-bomb-black",name:"Egeo Bomb Black",brand:"O Boticário",ml:90,image:"https://http2.mlstatic.com/D_NQ_NP_821590-MLB99367857758_112025-O.webp",price:129.90,description:"Desodorante colônia masculino fougère gourmand, com frescor cítrico e herbal, couro, caramelo, baunilha e âmbar."}
 ];
+Object.assign(PRODUCT_STORIES,{
+ "touti-vip-12":{
+  intro:"Perfil amadeirado com abertura frutada e especiarias no corpo.",
+  occasion:"Uso durante o dia, conforme a ficha publicada para o Touti VIP 12.",
+  climate:"Não informado com segurança.",
+  accords:["Amadeirado","Frutado","Especiado","Baunilha","Madeiras"]
+ },
+ "touti-vip-46":{
+  intro:"A referência 212 VIP Black combina absinto, couro preto e base quente de baunilha e almíscar.",
+  occasion:"Noite, jantares e saídas após o anoitecer, conforme a descrição da Carolina Herrera.",
+  climate:"Não informado com segurança.",
+  accords:["Aromático","Âmbar","Amadeirado","Couro","Baunilha"]
+ },
+ "212-vip-black":{
+  intro:"O absinto abre a fragrância; o couro preto acrescenta profundidade e a baunilha com almíscar encerra o perfil.",
+  occasion:"Jantares, saídas noturnas e programas após o anoitecer, conforme a Carolina Herrera.",
+  climate:"A marca descreve a fragrância para uso noturno; a adequação ao clima depende da aplicação.",
+  accords:["Aromático","Âmbar","Amadeirado","Couro","Baunilha"]
+ }
+});
+Object.assign(PRODUCT_ACCORDS,{
+ "touti-vip-12":["Amadeirado","Frutado","Especiado","Baunilha","Canela","Madeiras"],
+ "touti-vip-80":["Aromático","Fresco especiado","Amadeirado","Frutado","Âmbar","Verde"],
+ "touti-vip-46":["Aromático","Âmbar","Amadeirado","Couro","Baunilha"],
+ "212-vip-black":["Aromático","Âmbar","Amadeirado","Couro","Baunilha"]
+});
+
 const EXTRA_GALLERY={
  "kingdom":["https://fragarabic.com/cdn/shop/files/The_Kingdom_Lattafa_Eau_de_Parfum_Para_Hombre_con_fondo_7d886a12-0083-4be8-9d99-6596620cec36.webp?v=1767169721&width=2000"],
  "the-blend-bourbon":["https://dcdn-us.mitiendanube.com/stores/002/832/629/products/download-79-e03a5186e1269c5b6b17128697086555-1024-1024.webp","https://boticoeur.com/cdn/shop/products/Capturadeecra2023-02-28_as11.16.49.png?v=1677583102"],
@@ -1483,7 +1604,56 @@ const NOTE_COLOR_RULES = [
 ];
 function noteColor(label){const value=String(label||"");const accord=ACCORD_COLOR_RULES.find(([pattern])=>pattern.test(value));if(accord)return accord[1];const rule=NOTE_COLOR_RULES.find(([pattern])=>pattern.test(value));return rule?rule[1]:"#a0a0a0";}
 function splitNoteList(value){return String(value||"").replace(/\s+e\s+(?=[^,]+$)/i,", ").split(/[,;•]/).map(note=>note.trim().replace(/^e\s+/i,"")).filter(Boolean);}
-function renderIngredientNotes(targetId,value){const target=document.getElementById(targetId);if(!target)return;const notes=splitNoteList(value);target.innerHTML=notes.map(note=>'<span class="note-word" style="--note-color:'+noteColor(note)+'"><span class="note-dot" aria-hidden="true"></span>'+escapeHTML(note)+'</span>').join('<span class="note-separator" aria-hidden="true">·</span>');}
+
+/* Miniaturas de ingredientes com origem e licença verificadas.
+   Ingredientes sem fotografia específica usam um marcador neutro, sem imagem substituta enganosa. */
+const NOTE_PHOTO_MAP=[
+ {test:/bergamota/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Citrus_bergamia_fructus.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Citrus_bergamia_fructus.jpg",author:"Rillke",license:"CC BY-SA 3.0 / GFDL 1.2"},
+ {test:/^lavanda$/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Lavender_Plant_Flowers.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Lavender_Plant_Flowers.jpg",author:"Alabama Extension",license:"CC0 1.0"},
+ {test:/pimenta[ -]preta|pimenta[ -]do[ -]reino/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Tellicherry_Black_Peppercorns.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Tellicherry_Black_Peppercorns.jpg",author:"Misterneedlemouse",license:"CC0 1.0"},
+ {test:/maçã verde|ma[cç]ã/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Green_apple.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Green_apple.jpg",author:"Faustas L.",license:"Domínio público"},
+ {test:/s[aá]lvia/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Sage_leaves.JPG?width=320",page:"https://commons.wikimedia.org/wiki/File:Sage_leaves.JPG",author:"Miansari66",license:"Domínio público"},
+ {test:/menta|hortel[aã]/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Mint_leaves_picture.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Mint_leaves_picture.jpg",author:"Mgmoscatello",license:"CC BY-SA 3.0"},
+ {test:/baunilha|vanilla/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/VAINILLA.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:VAINILLA.jpg",author:"El Caminito",license:"CC0 1.0"},
+ {test:/cacau|cocoa/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Cocoa_beans.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Cocoa_beans.jpg",author:"Mikkel Houmøller",license:"CC BY-SA 4.0"},
+ {test:/gengibre/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Ginger_Root.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Ginger_Root.jpg",author:"Sanjay Acharya",license:"CC BY-SA 4.0"},
+ {test:/cedro/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Steam_distillation_unit_with_eastern_red_cedar_shavings.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Steam_distillation_unit_with_eastern_red_cedar_shavings.jpg",author:"Spoingus101",license:"CC0 1.0"},
+ {test:/canela/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Cinnamon_sticks_(1).jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Cinnamon_sticks_(1).jpg",author:"Fumikas Sagisavas",license:"CC0 1.0"},
+ {test:/noz[ -]moscada/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Nutmeg-spice.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Nutmeg-spice.jpg",author:"Dominikmatus",license:"CC0 1.0"},
+ {test:/jasmim/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Common_jasmine.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Common_jasmine.jpg",author:"Abithavelu",license:"CC0 1.0"},
+ {test:/^rosa$/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Roseflower.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Roseflower.jpg",author:"Sridhar1000",license:"CC0 1.0"},
+ {test:/cardamomo/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Green_Cardamom_Pods.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Green_Cardamom_Pods.jpg",author:"Misterneedlemouse",license:"CC0 1.0"},
+ {test:/zimbro|juniper/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Junipers_berry_berries.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Junipers_berry_berries.jpg",author:"Jon Sullivan",license:"Domínio público"},
+ {test:/lim[aã]o/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Lemon_Fruit.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Lemon_Fruit.jpg",author:"Ben Dalton",license:"CC BY 2.0"},
+ {test:/pera/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Pear_fruit.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Pear_fruit.jpg",author:"Dusan Bicanski",license:"Domínio público"},
+ {test:/caf[eé]/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_beans_photo.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Coffee_beans_photo.jpg",author:"Jon Sullivan",license:"Domínio público"}
+];
+const NOTE_IMAGE_CREDITS_USED=new Map();
+function getNotePhoto(note){return NOTE_PHOTO_MAP.find(item=>item.test.test(String(note||"")))||null;}
+function renderNoteImageCredits(){
+ const target=document.getElementById("noteImageCredits");
+ if(!target)return;
+ const entries=[...NOTE_IMAGE_CREDITS_USED.values()];
+ target.hidden=!entries.length;
+ if(!entries.length)return;
+ target.innerHTML='<summary>Créditos das imagens dos ingredientes</summary><ul>'+entries.map(item=>'<li><a href="'+escapeHTML(item.page)+'" target="_blank" rel="noopener noreferrer">'+escapeHTML(item.author)+'</a> · '+escapeHTML(item.license)+' · miniatura recortada</li>').join("")+'</ul>';
+}
+function renderIngredientNotes(targetId,value){
+ const target=document.getElementById(targetId);if(!target)return;
+ const notes=splitNoteList(value);
+ target.innerHTML=notes.map(note=>{
+  const photo=getNotePhoto(note);
+  const initial=escapeHTML(String(note).trim().charAt(0).toLocaleUpperCase("pt-BR"));
+  let picture;
+  if(photo){
+   NOTE_IMAGE_CREDITS_USED.set(photo.page,photo);
+   picture='<a class="note-image-shell" href="'+escapeHTML(photo.page)+'" target="_blank" rel="noopener noreferrer" aria-label="Ver origem da fotografia de '+escapeHTML(note)+'"><img class="note-photo" src="'+escapeHTML(photo.src)+'" alt="" loading="lazy" decoding="async"><span class="note-photo-fallback" hidden>'+initial+'</span></a>';
+  }else{
+   picture='<span class="note-image-shell note-image-placeholder"><span class="note-photo-fallback">'+initial+'</span></span>';
+  }
+  return '<span class="note-word" style="--note-color:'+noteColor(note)+'">'+picture+'<span class="note-name">'+escapeHTML(note)+'</span></span>';
+ }).join("");
+}
 
 const params=new URLSearchParams(window.location.search),requestedId=params.get("id")||"";
 const story=PRODUCT_STORIES[requestedId]||PRODUCT_STORIES[requestedId.replace(/^full-/,"")]||null;
@@ -1494,11 +1664,11 @@ else{
 const isQuasarIce=product.id.replace(/^full-/,"")==="quasar-ice";document.body.classList.toggle("quasar-ice-notes",isQuasarIce);const olfactorySection=$("olfactorySection");if(olfactorySection){olfactorySection.classList.toggle("quasar-ice-notes-active",isQuasarIce);if(isQuasarIce){olfactorySection.style.setProperty("background","#050505","important");olfactorySection.style.setProperty("color","#f2f2f2","important");const iceStyles=[[".content-heading h2","color","#f2f2f2"],[".content-heading p","color","#a7b9bf"],[".note-infographic","background","#050505"],[".note-infographic","border-color","#29373b"],[".note-visual-bottle","background","linear-gradient(145deg,#eef7fa,#dcecf1)"],[".note-visual-details","background","#050505"],[".note-graphic-head h3","color","#f1f1f1"],[".accord-title","color","#a8c4cc"],[".note-composition","border-top-color","#292929"],[".composition-row","border-bottom-color","#292929"],[".composition-row>strong","color","#a8c4cc"],[".note-pyramid .note-stage p","color","#d5e0e3"],[".note-fact","background","#050505"],[".note-fact","border-color","#292929"],[".note-fact strong","color","#a8c4cc"],[".note-fact span","color","#c4d0d3"]];iceStyles.forEach(([selector,property,value])=>olfactorySection.querySelectorAll(selector).forEach(el=>el.style.setProperty(property,value,"important")));}}
 document.title="SANTINO | "+product.name;$("crumbName").textContent=product.name;$("productName").textContent=product.name;$("productBrand").textContent=product.brand;$("categoryLabel").textContent=isFull?"Frasco inteiro":"Decant · "+product.tag;
 $("productMeta").textContent=isFull?(product.ml+" ml"):"Escolha o volume do seu decant";$("productDescription").textContent=story?story.intro:(product.description||"Uma fragrância para conhecer em detalhes.");$("longDescription").textContent=story?story.story:(product.description||"Explore o perfil olfativo desta fragrância e escolha o volume desejado.");if(story){
- $("climateText").textContent=story.climate;
- $("dayNightText").textContent="Não há classificação cadastrada.";
- $("seasonsText").textContent="Não há classificação cadastrada.";
+ $("climateText").textContent=story.climate||"Não informado com segurança.";
+ $("dayNightText").textContent=info?.dayNight||"Não há classificação cadastrada.";
+ $("seasonsText").textContent=info?.seasons||"Não há classificação cadastrada.";
 }$("authenticityNote").textContent=product.toutiImage?"Produto vendido: Touti original · 50 ml. A fragrância de grife é apenas referência e não está incluída.":(isFull?"Frasco original · selo de originalidade SANTINO":"Fragrância original · decant com selo de originalidade SANTINO");
-$("highlightOccasion").textContent=story?story.occasion:"Ocasião não cadastrada";
+$("highlightOccasion").textContent=story&&story.occasion?story.occasion:"Ocasião em validação";
 const previewStages=$("notePreviewStages");
 if(previewStages&&info){
  const stages=[["Saída",info.top],["Coração",info.heart],["Fundo",info.base]];
@@ -1507,7 +1677,7 @@ if(previewStages&&info){
   return '<div class="detail-note-preview-stage"><span>'+label+'</span><div>'+notes.map(note=>'<i style="--note-color:'+noteColor(note)+'">'+escapeHTML(note)+'</i>').join("")+'</div></div>';
  }).join("");
 }else if(previewStages){
- $("notePreview").hidden=true;
+ previewStages.innerHTML='<p class="detail-note-pending-inline">Notas em validação; não há prévia confiável cadastrada.</p>';
 }
 $("backCatalog").href=isFull?"frascos.html#full-size-catalog":"decants.html#catalog";$("cartLink").href=(isFull?"frascos.html":"decants.html")+"?openCart=1";
 if(isFull){
@@ -1566,9 +1736,17 @@ $("mainImage").addEventListener("click",()=>{if($("mainImage").src)window.open($
 if(info){
  $("familyText").textContent=info.family;
  $("familyDetailText").textContent=info.family;
+ $("noteGraphName").textContent=product.name;
+ $("longevityText").textContent=info.longevity||"Não há avaliação confiável cadastrada.";
+ $("projectionText").textContent=info.projection||"Não há avaliação confiável cadastrada.";
+ $("dayNightText").textContent=info.dayNight||"Não há classificação cadastrada.";
+ $("seasonsText").textContent=info.seasons||"Não há classificação cadastrada.";
+ const noteReferenceNotice=$("noteReferenceNotice");
+ if(noteReferenceNotice&&info.referenceNotice){noteReferenceNotice.textContent=info.referenceNotice;noteReferenceNotice.hidden=false;}
  renderIngredientNotes("topNotes",info.top);
  renderIngredientNotes("heartNotes",info.heart);
  renderIngredientNotes("baseNotes",info.base);
+ renderNoteImageCredits();
  $("noteGraphName").textContent=product.name;
  const noteBottle=$("noteBottleImage");
  noteBottle.alt="Frasco de "+product.name;
@@ -1578,7 +1756,20 @@ if(info){
  if(noteBottle.complete&&noteBottle.naturalWidth===0)noteFallback();
  const accords=PRODUCT_ACCORDS[product.id.replace(/^full-/,"")]||(story&&story.accords&&story.accords.length?story.accords:[info.top,info.heart,info.base]);
  $("accordBars").innerHTML=accords.slice(0,10).map((label,index)=>'<div class="accord-row" style="--bar-width:'+(100-index*4.5)+'%;--bar-color:'+noteColor(label)+'"><span class="accord-bar-dot" aria-hidden="true"></span><span class="accord-bar-label">'+escapeHTML(label)+'</span></div>').join("");
-}else{$("olfactorySection").style.display="none"}
+}else{
+ $("familyText").textContent="Ficha olfativa em validação";
+ $("familyDetailText").textContent="Não informada.";
+ $("noteGraphName").textContent=product.name;
+ $("noteDataPending").hidden=false;
+ $("accordTitle").hidden=true;
+ $("accordBars").hidden=true;
+ document.querySelector("#olfactorySection .note-composition").hidden=true;
+ const pendingBottle=$("noteBottleImage");
+ pendingBottle.alt="Frasco de "+product.name;
+ pendingBottle.addEventListener("error",()=>{pendingBottle.hidden=true;$("noteBottleFallback").hidden=false;},{once:true});
+ pendingBottle.src=product.image||"";
+ if(pendingBottle.complete&&pendingBottle.naturalWidth===0){pendingBottle.hidden=true;$("noteBottleFallback").hidden=false;}
+}
 const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?(Number.isFinite(product.price)?"Adicionar ao carrinho — "+money(product.price):"Consultar pelo WhatsApp"):"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
 const stickyPurchase=window.SantinoStickyPurchase.init({
  bar:$("stickyPurchaseBar"),
