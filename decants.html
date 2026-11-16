@@ -531,8 +531,8 @@ function showToast(message){
  const toast=$("toast");
  if(!toast)return;
  toast.textContent=message;
- toast.classList.add("is-visible");
- window.setTimeout(()=>toast.classList.remove("is-visible"),2200);
+ toast.style.display="block";
+ window.setTimeout(()=>toast.style.display="none",2200);
 }
 setupDecantFilters();renderProducts();renderCart();
 
