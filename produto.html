@@ -1618,7 +1618,15 @@ const NOTE_PHOTO_MAP=[
  {test:/cacau|cocoa/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Cocoa_beans.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Cocoa_beans.jpg",author:"Mikkel Houmøller",license:"CC BY-SA 4.0"},
  {test:/gengibre/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Ginger_Root.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Ginger_Root.jpg",author:"Sanjay Acharya",license:"CC BY-SA 4.0"},
  {test:/cedro/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Steam_distillation_unit_with_eastern_red_cedar_shavings.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Steam_distillation_unit_with_eastern_red_cedar_shavings.jpg",author:"Spoingus101",license:"CC0 1.0"},
- {test:/canela/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Cinnamon_sticks_(1).jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Cinnamon_sticks_(1).jpg",author:"Fumikas Sagisavas",license:"CC0 1.0"}
+ {test:/canela/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Cinnamon_sticks_(1).jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Cinnamon_sticks_(1).jpg",author:"Fumikas Sagisavas",license:"CC0 1.0"},
+ {test:/noz[ -]moscada/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Nutmeg-spice.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Nutmeg-spice.jpg",author:"Dominikmatus",license:"CC0 1.0"},
+ {test:/jasmim/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Common_jasmine.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Common_jasmine.jpg",author:"autor da fotografia no Commons",license:"CC0 1.0"},
+ {test:/rosa/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Roseflower.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Roseflower.jpg",author:"Sridhar1000",license:"CC0 1.0"},
+ {test:/cardamomo/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Green_Cardamom_Pods.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Green_Cardamom_Pods.jpg",author:"Misterneedlemouse",license:"CC0 1.0"},
+ {test:/zimbro|juniper/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Junipers_berry_berries.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Junipers_berry_berries.jpg",author:"Jon Sullivan",license:"Domínio público"},
+ {test:/lim[aã]o/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Lemon_Fruit.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Lemon_Fruit.jpg",author:"Ben Dalton",license:"CC0 1.0"},
+ {test:/pera/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Pear_fruit.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Pear_fruit.jpg",author:"Dusan Bicanski",license:"Domínio público"},
+ {test:/caf[eé]/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_beans_photo.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Coffee_beans_photo.jpg",author:"Jon Sullivan",license:"Domínio público"}
 ];
 const NOTE_IMAGE_CREDITS_USED=new Map();
 function getNotePhoto(note){return NOTE_PHOTO_MAP.find(item=>item.test.test(String(note||"")))||null;}
