@@ -229,7 +229,7 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
       <div class="eyebrow">PERFUMARIA PARA DESCOBRIR</div>
       <h1 id="homeHeading">Descubra seu próximo perfume, começando pelo decant.</h1>
       <p>Experimente em 5 ou 10 ml, confira as notas olfativas e escolha o frasco inteiro quando encontrar sua fragrância.</p>
-      <a class="home-offer-link" href="#promocoes">10% OFF em decants a partir de R$ 80 <span aria-hidden="true">→</span></a>
+      
       <a class="home-help-link" href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20SANTINO%20e%20gostaria%20de%20ajuda%20para%20escolher%20uma%20fragr%C3%A2ncia." target="_blank" rel="noopener noreferrer">Prefere ajuda? Fale com a SANTINO pelo WhatsApp</a>
     </div>
     <div class="hero-visual">
@@ -287,14 +287,6 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
   <script src="home-featured.js?v=20261115-6" defer></script>
   
   <section class="promo-grid" id="promocoes" aria-label="Descontos SANTINO">
-    <article class="promo-card">
-      <div class="promo-symbol" aria-hidden="true">%</div>
-      <div>
-        <div class="promo-label">Desconto em decants</div>
-        <h2 class="promo-title">10% OFF</h2>
-        <p>Ganhe 10% de desconto em pedidos de decants a partir de R$ 80. O desconto é aplicado automaticamente no carrinho.</p>
-      </div>
-    </article>
     <article class="promo-card">
       <div class="promo-symbol" aria-hidden="true">↗</div>
       <div>
@@ -357,78 +349,6 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
 </script>
 <script src="search.js?v=20261115-6" defer></script>
 <script src="santino-ui.js?v=20261115-6" defer></script>
-<div class="welcome-offer" id="welcomeOffer" role="dialog" aria-modal="true" aria-labelledby="welcomeOfferHeading" aria-describedby="welcomeOfferMessage" hidden>
-  <div class="welcome-offer-backdrop" data-welcome-close></div>
-  <section class="welcome-offer-card" role="document">
-    <button type="button" class="welcome-offer-close" data-welcome-close aria-label="Fechar oferta">×</button>
-    <p class="welcome-offer-eyebrow">Boas-vindas à SANTINO</p>
-    <h2 id="welcomeOfferHeading">Bem-vindo(a) à SANTINO!</h2>
-    <p id="welcomeOfferMessage">Monte R$ 80 em decants e ganhe 10% de desconto automático no carrinho.</p>
-    <p class="welcome-offer-terms">O desconto é aplicado à soma dos decants; frascos inteiros não participam.</p>
-    <a class="welcome-offer-cta" href="decants.html">Explorar decants</a>
-  </section>
-</div>
-<script>
-(function(){
-  "use strict";
-  var offer = document.getElementById("welcomeOffer");
-  if (!offer) return;
-  var closeButtons = offer.querySelectorAll("[data-welcome-close]");
-  var closeButton = offer.querySelector(".welcome-offer-close");
-  var action = offer.querySelector(".welcome-offer-cta");
-  var storageKey = "santino_welcome_offer_seen";
-  var lastFocus = null;
-  function seen(){
-    try { return window.sessionStorage.getItem(storageKey) === "1"; }
-    catch (error) { return false; }
-  }
-  function markSeen(){
-    try { window.sessionStorage.setItem(storageKey, "1"); }
-    catch (error) {}
-  }
-  function closeOffer(){
-    if (offer.hidden) return;
-    offer.hidden = true;
-    document.body.classList.remove("welcome-offer-open");
-    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
-  }
-  if (!seen()) {
-    window.setTimeout(function(){
-      if (seen()) return;
-      lastFocus = document.activeElement;
-      markSeen();
-      offer.hidden = false;
-      document.body.classList.add("welcome-offer-open");
-      if (closeButton) closeButton.focus();
-    }, 2000);
-  }
-  closeButtons.forEach(function(button){
-    button.addEventListener("click", closeOffer);
-  });
-  offer.addEventListener("click", function(event){
-    if (event.target === offer) closeOffer();
-  });
-  document.addEventListener("keydown", function(event){
-    if (offer.hidden) return;
-    if (event.key === "Escape") {
-      closeOffer();
-      return;
-    }
-    if (event.key === "Tab") {
-      var focusable = [closeButton, action].filter(Boolean);
-      if (!focusable.length) return;
-      var first = focusable[0];
-      var last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-  });
-})();
-</script>
+
 </body>
 </html>
