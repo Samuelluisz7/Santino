@@ -128,3 +128,24 @@ test("shared perfume details provide a responsive mobile purchase bar", async ()
   assert.match(styles, /#stickyPurchaseBar\.is-visible/);
   assert.match(styles, /@media \(max-width: 760px\)/);
 });
+
+
+test("decants and full-bottle pages use the shared side cart without wiping saved items", async () => {
+  const [script, decants, full] = await Promise.all([
+    readFile(path.join(REPOSITORY_ROOT, "santino-ui.js"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "frascos.html"), "utf8"),
+  ]);
+
+  assert.match(script, /document.querySelector\("\.cart-link, \.cart-button"\)/);
+  assert.match(script, /\.cart-button, \[data-santino-open-cart\]/);
+  assert.match(script, /stopImmediatePropagation\(\)/);
+  assert.match(script, /params.get\("openCart"\) === "1"/);
+
+  for (const html of [decants, full]) {
+    assert.match(html, /function syncCatalogCartFromStorage/);
+    assert.match(html, /window.addEventListener\("santino:cart-updated",syncCatalogCartFromStorage\)/);
+    assert.match(html, /window.dispatchEvent\(new Event\("santino:cart-updated"\)\)/);
+    assert.doesNotMatch(html, /get\("openCart"\).*openCart\(\)/);
+  }
+});
