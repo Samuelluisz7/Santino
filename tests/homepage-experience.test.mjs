@@ -5,12 +5,13 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const [home, refreshStyles, policies, decants, kits] = await Promise.all([
+const [home, refreshStyles, policies, decants, kits, sharedCart] = await Promise.all([
   readFile(path.join(ROOT, "index.html"), "utf8"),
   readFile(path.join(ROOT, "home-refresh.css"), "utf8"),
   readFile(path.join(ROOT, "politicas.html"), "utf8"),
   readFile(path.join(ROOT, "decants.html"), "utf8"),
   readFile(path.join(ROOT, "kits.html"), "utf8"),
+  readFile(path.join(ROOT, "santino-ui.js"), "utf8"),
 ]);
 
 test("homepage uses top navigation and one explore section without duplicated category shortcuts", () => {
