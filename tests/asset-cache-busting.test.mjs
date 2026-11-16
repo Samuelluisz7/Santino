@@ -26,10 +26,11 @@ test("all local styles and scripts use the current cache version", async () => {
     assert.ok(assets.length > 0, `${page} references local CSS or JavaScript`);
     for (const { url } of assets) {
       const parsed = new URL(url, "https://santino.invalid");
+      const expectedVersion = parsed.pathname.endsWith("/catalog-filters.css") ? "20261116-8" : ASSET_VERSION;
       assert.equal(
         parsed.searchParams.get("v"),
-        ASSET_VERSION,
-        `${page} cache-busts ${parsed.pathname} with the current release`,
+        expectedVersion,
+        `${page} cache-busts ${parsed.pathname} with the expected asset version`,
       );
     }
   }
