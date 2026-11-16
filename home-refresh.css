@@ -87,7 +87,7 @@
 }
 .recommended-card-sagaz{grid-column:span 7;min-height:385px}
 .recommended-card-kmax{grid-column:span 5;min-height:315px;margin-top:38px}
-.recommended-card-clash{grid-column:span 5;min-height:315px;margin-top:-22px}
+.recommended-card-nautica{grid-column:span 5;min-height:315px;margin-top:-22px}
 .recommended-card-kingdom{grid-column:span 7;min-height:355px;margin-top:16px}
 .recommended-image{
   display:flex;
@@ -99,7 +99,7 @@
   background:linear-gradient(145deg,#f5f2ed,#ded8cd);
 }
 .recommended-card-kmax .recommended-image,
-.recommended-card-clash .recommended-image{min-height:190px}
+.recommended-card-nautica .recommended-image{min-height:190px}
 .recommended-image img{
   display:block;
   width:100%;
@@ -112,7 +112,7 @@
 }
 .recommended-card:hover .recommended-image img{transform:scale(1.035)}
 .recommended-card-kmax .recommended-image img,
-.recommended-card-clash .recommended-image img{max-height:240px}
+.recommended-card-nautica .recommended-image img{max-height:240px}
 .recommended-meta{
   display:block;
   margin:14px 0 5px;
@@ -260,7 +260,7 @@
   .home-recommended-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
   .recommended-card-sagaz{grid-column:span 2;min-height:310px}
   .recommended-card-kmax{grid-column:span 1;min-height:270px;margin-top:0}
-  .recommended-card-clash{grid-column:span 1;min-height:270px;margin-top:17px}
+  .recommended-card-nautica{grid-column:span 1;min-height:270px;margin-top:17px}
   .recommended-card-kingdom{grid-column:span 2;min-height:300px;margin-top:0}
   .recommended-image{min-height:150px}
   .recommended-card-sagaz .recommended-image,
@@ -284,7 +284,7 @@
   .home-refresh{width:calc(100% - 24px)}
   .home-recommended-grid{gap:8px}
   .recommended-card{padding:8px}
-  .recommended-card-kmax,.recommended-card-clash{min-height:238px}
+  .recommended-card-kmax,.recommended-card-nautica{min-height:238px}
   .recommended-card strong{font-size:19px}
   .recommended-meta{font-size:8px;letter-spacing:.08em}
   .recommended-action{font-size:10px}
@@ -400,7 +400,7 @@
 }
 .recommended-card-sagaz,
 .recommended-card-kmax,
-.recommended-card-clash,
+.recommended-card-nautica,
 .recommended-card-kingdom{
   grid-column:span 1;
   min-height:0;
@@ -412,7 +412,7 @@
   min-height:0;
 }
 .recommended-card-kmax .recommended-image,
-.recommended-card-clash .recommended-image{min-height:0}
+.recommended-card-nautica .recommended-image{min-height:0}
 .recommended-image img{
   height:100%;
   min-height:0;
@@ -420,7 +420,7 @@
   padding:12px;
 }
 .recommended-card-kmax .recommended-image img,
-.recommended-card-clash .recommended-image img{max-height:none}
+.recommended-card-nautica .recommended-image img{max-height:none}
 .recommended-meta{margin-top:11px}
 .recommended-card strong{font-size:clamp(18px,1.8vw,23px)}
 .recommended-action{margin-top:9px}
@@ -429,7 +429,7 @@
   .home-recommended-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
   .recommended-card-sagaz,
   .recommended-card-kmax,
-  .recommended-card-clash,
+  .recommended-card-nautica,
   .recommended-card-kingdom{grid-column:span 1;min-height:0;margin-top:0}
   .recommended-image,
   .recommended-card-sagaz .recommended-image,
