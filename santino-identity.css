@@ -556,3 +556,132 @@ footer a, footer .footer-links a { color: #b89a68 !important; }
   body.home-page .home-pathways,
   body.home-page .home-featured { padding-inline: 15px; }
 }
+
+
+/* SANTINO — direção final: preto predominante, dourado somente como acento. */
+:root {
+  --santino-ink: #080808;
+  --santino-ink-soft: #111111;
+  --santino-paper: #111111;
+  --santino-paper-raised: #171717;
+  --santino-paper-muted: #242424;
+  --santino-paper-ink: #eeeae2;
+  --santino-paper-muted-ink: #aaa49a;
+  --santino-gold: #b89a68;
+  --santino-gold-deep: #a88a5b;
+  --santino-rule: rgba(184,154,104,.22);
+}
+html, body { background: #080808 !important; color: #eeeae2 !important; }
+body.home-page .home-pathways,
+body.home-page .home-featured,
+body:not(.home-page) .section:not(.faq-section),
+body:not(.home-page) .full-size-section,
+body:not(.home-page) .kit-grid,
+body:not(.home-page) .page-search {
+  background: #101010 !important;
+  color: #eeeae2 !important;
+  border-color: #292929 !important;
+}
+body.home-page .home-pathways .home-category-heading h2,
+body.home-page .home-pathways .home-section-heading h2,
+body.home-page .home-featured .home-section-heading h2,
+body:not(.home-page) .section:not(.faq-section) .section-head h2,
+body:not(.home-page) .full-size-section .section-head h2,
+body:not(.home-page) .section:not(.faq-section) .section-head p,
+body:not(.home-page) .full-size-section .section-head p {
+  color: #eeeae2 !important;
+}
+body.home-page .home-pathway,
+body.home-page .home-product-card,
+body:not(.home-page) .products .product,
+body:not(.home-page) .kit-card,
+body:not(.home-page) .results .result-card {
+  background: #171717 !important;
+  color: #eeeae2 !important;
+  border-color: #2d2d2d !important;
+  box-shadow: 0 5px 18px rgba(0,0,0,.22) !important;
+}
+body.home-page .home-pathway strong,
+body.home-page .home-product-detail > strong,
+body.home-page .home-product-price,
+body:not(.home-page) .products .product h3,
+body:not(.home-page) .products .product-detail-link h3,
+body:not(.home-page) .kit-card h3,
+body:not(.home-page) .results .result-card h3 {
+  color: #eeeae2 !important;
+}
+body.home-page .home-pathway-kicker,
+body.home-page .home-pathway-action,
+body.home-page .home-featured .eyebrow,
+body:not(.home-page) .section .eyebrow,
+body:not(.home-page) .full-size-section .eyebrow {
+  color: #b89a68 !important;
+}
+body.home-page .home-pathway:hover,
+body.home-page .home-product-card:hover,
+body:not(.home-page) .products .product:hover,
+body:not(.home-page) .kit-card:hover,
+body:not(.home-page) .results .result-card:hover {
+  border-color: rgba(184,154,104,.58) !important;
+}
+body.home-page .home-product-controls select,
+body:not(.home-page) .origin-filter,
+body:not(.home-page) .collection-controls,
+body:not(.home-page) .origin-filter button,
+body:not(.home-page) .collection-controls select,
+body:not(.home-page) .page-search input {
+  background: #111 !important;
+  color: #eeeae2 !important;
+  border-color: #333 !important;
+}
+body.home-page .home-product-add,
+body:not(.home-page) .products .product .add,
+body:not(.home-page) .products .product .btn,
+body:not(.home-page) .kit-add,
+body:not(.home-page) .page-search-row .btn,
+body:not(.home-page) .results .result-card .btn {
+  background: #b89a68 !important;
+  color: #111 !important;
+  border-color: #b89a68 !important;
+}
+body:not(.home-page) .policy,
+body.perfume-detail-page .product-layout,
+body.perfume-detail-page .summary,
+body.perfume-detail-page .content-section,
+body.perfume-detail-page .content-section:nth-of-type(2),
+body.perfume-detail-page .content-section:nth-of-type(3) {
+  background: #111 !important;
+  color: #eeeae2 !important;
+  border-color: #292929 !important;
+}
+body:not(.home-page) .policy h2,
+body:not(.home-page) .policy p,
+body:not(.home-page) .policy strong,
+body.perfume-detail-page .content-section h2,
+body.perfume-detail-page .content-section h3,
+body.perfume-detail-page .content-section p {
+  color: #d8d2c8 !important;
+}
+body:not(.home-page) .policy a,
+body:not(.home-page) .results .result-type,
+body:not(.home-page) .faq-section .eyebrow {
+  color: #b89a68 !important;
+}
+body:not(.home-page) .faq-section,
+body:not(.home-page) .faq-section .section-head h2,
+body:not(.home-page) .faq-section .section-head p,
+body:not(.home-page) .faq-answer {
+  color: #eeeae2 !important;
+}
+.site-promo-banner,
+.home-offer-link,
+.welcome-offer,
+.welcome-offer-card {
+  background-color: #111 !important;
+}
+.site-promo-banner strong,
+.home-offer-link { color: #b89a68 !important; }
+@media (max-width:720px) {
+  body.home-page .home-pathways,
+  body.home-page .home-featured { padding-inline: 15px; }
+}
