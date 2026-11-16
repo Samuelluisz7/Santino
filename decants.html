@@ -276,10 +276,10 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .brand::before{content:"S";position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:30px;border:1px solid var(--beige);border-radius:50%;display:grid;place-items:center;color:var(--beige);font:700 16px/1 Georgia,"Times New Roman",serif;letter-spacing:0}
 @media(max-width:720px){.brand{padding-left:36px;min-height:28px}.brand::before{width:26px;height:26px;font-size:14px}}
 </style>
-  <link rel="stylesheet" href="santino-ui.css?v=20261116-3">
+  <link rel="stylesheet" href="santino-ui.css?v=20261116-4">
 
   <link rel="stylesheet" href="santino-identity.css?v=20261116-3">
-  <link rel="stylesheet" href="catalog-filters.css?v=20261116-3">
+  <link rel="stylesheet" href="catalog-filters.css?v=20261116-4">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/decants.html">
   <meta name="robots" content="index,follow">
@@ -336,18 +336,6 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <p>As marcas e fragrâncias pertencem aos respectivos titulares.</p>
   <nav class="footer-links" aria-label="Informações da loja"><a href="politicas.html">Políticas e condições de compra</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">Atendimento via WhatsApp</a></nav>
 </footer>
-<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Carrinho de compras">
-  <div class="drawer">
-    <div class="drawer-head"><h2>Seu carrinho</h2><button class="close" id="closeCart">Fechar ✕</button></div>
-    <div class="goal-box" id="goalBox" aria-live="polite" hidden><p class="goal-copy" id="goalCopy">Faltam R$ 80,00 para liberar 10% de desconto.</p><div class="goal-track"><div class="goal-fill" id="goalFill"></div></div><div class="goal-meta"><span id="goalCurrent">R$ 0,00</span><span>Meta: R$ 80,00</span></div></div>
-     <div class="cart-items" id="cartItems"></div>
-    <div class="cart-total">
-      <div class="total-line"><span>Total do pedido</span><strong id="cartTotal">R$ 0,00</strong></div>
-      <button class="btn checkout" id="checkout">Confirmar pedido pelo WhatsApp</button>
-      <div class="small-note">Você revisa a mensagem antes de enviá-la. O pedido só é confirmado após a loja validar disponibilidade, total e entrega. Não faça pagamento antes dessa confirmação.</div>
-    </div>
-  </div>
-</div>
 <div class="toast" id="toast" role="status"></div>
 <script>
 /* Preços de decants calculados a partir de referência do frasco de 100 ml + margem estimada e embalagem; confirme o custo real de compra. */
@@ -536,71 +524,13 @@ function removeItem(key){cart=cart.filter(x=>x.key!==key);renderCart()}
 function renderCart(){
  try { localStorage.setItem("santino_nobre_cart", JSON.stringify(cart)); } catch (e) {}
  window.dispatchEvent(new Event("santino:cart-updated"));
- $("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
- const allPriced=cart.length>0 && cart.every(x=>Number.isFinite(x.price));
- const total=cart.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
- const goal=80, discountRate=0.10, hasEligibleItems=cart.some(x=>x.category==="Decant"&&Number.isFinite(x.price)), goalTotal=cart.reduce((s,x)=>s+(Number.isFinite(x.price)&&x.category==="Decant"?x.price*x.qty:0),0);
- const discount=goalTotal>=goal?goalTotal*discountRate:0;
- const totalAfterDiscount=total-discount;
- const progress=Math.min(100,(goalTotal/goal)*100), reached=goalTotal>=goal;
- $("goalBox").hidden=!hasEligibleItems;
- $("goalFill").style.width=progress+"%"; $("goalCurrent").textContent=money(goalTotal);
- $("goalCopy").innerHTML=reached?"<strong>Desconto liberado.</strong> Você economiza "+money(discount)+" neste pedido.":"Faltam "+money(goal-goalTotal)+" para liberar 10% de desconto.";
- $("cartTotal").textContent=allPriced?money(totalAfterDiscount):(total>0?money(totalAfterDiscount)+" + frascos a confirmar":"Preço a confirmar");
- const emptyCart=cart.length===0;
- $("cartItems").classList.toggle("is-empty",emptyCart);
- $("cartTotal").closest(".cart-total").hidden=emptyCart;
- $("goalBox").hidden=emptyCart||!hasEligibleItems;
- if(emptyCart){$("cartItems").innerHTML='<div class="empty"><strong>Seu carrinho está vazio.</strong><p>Escolha uma fragrância para começar sua compra.</p><div class="empty-actions"><a href="frascos.html">Ver frascos inteiros</a><a href="decants.html">Explorar decants</a></div></div>';return}
- $("cartItems").innerHTML=cart.map(x=>`<div class="cart-item">${x.image?'<img class="cart-item-image" src="'+escapeHTML(x.image)+'" alt="" loading="lazy" onerror="this.hidden=true">':'<span class="cart-item-placeholder" aria-hidden="true">S</span>'}<div class="cart-item-main"><strong>${escapeHTML(x.name)}</strong><small>${escapeHTML(x.brand)} · ${x.category?escapeHTML(x.category)+" · ":""}${escapeHTML(x.ml)} ml</small><div class="item-controls"><button data-minus="${escapeHTML(x.key)}" aria-label="Diminuir quantidade">−</button><span>${escapeHTML(x.qty)}</span><button data-plus="${escapeHTML(x.key)}" aria-label="Aumentar quantidade">+</button></div><div class="item-controls"><button class="remove" data-remove="${escapeHTML(x.key)}">Remover</button></div></div><div class="cart-item-side"><strong>${Number.isFinite(x.price)?money(x.price*x.qty):"A confirmar"}</strong></div></div>`).join("");
- document.querySelectorAll("[data-minus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.minus,-1)));
- document.querySelectorAll("[data-plus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.plus,1)));
- document.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>removeItem(b.dataset.remove)));
+ const counter=$("cartCount");
+ if(counter) counter.textContent=String(cart.reduce((sum,item)=>sum+(Number(item.qty)||0),0));
 }
-function openCart(){$("overlay").classList.add("open");document.body.style.overflow="hidden"}
-function closeCart(){$("overlay").classList.remove("open");document.body.style.overflow=""}
-function showToast(msg){$("toast").textContent=msg;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",2300)}
-function checkout(){
- if(!cart.length){showToast("Adicione ao menos um produto ao carrinho.");return}
- let number=STORE_WHATSAPP;
- if(!/^55\d{10,11}$/.test(number)){number=prompt("Digite o WhatsApp da loja com código do país e DDD, somente números (ex.: 5531999999999):")||"";number=number.replace(/\D/g,"")}
- if(!/^55\d{10,11}$/.test(number)){showToast("Número de WhatsApp inválido. Informe um número válido.");return}
- const decants=cart.filter(x=>x.category==="Decant"&&Number.isFinite(x.price));
- const fullSizes=cart.filter(x=>x.category==="Frasco inteiro");
- const decantSubtotal=decants.reduce((s,x)=>s+x.price*x.qty,0);
- const discount=decantSubtotal>=80?decantSubtotal*0.10:0;
- const lines=cart.map(x=>"• "+x.name+" — "+x.ml+" ml ×"+x.qty+" — "+(Number.isFinite(x.price)?money(x.price*x.qty):"sob consulta"));
- const summary=[];
- if(decants.length&&fullSizes.length){
-   summary.push("Subtotal dos decants: "+money(decantSubtotal));
-   summary.push("Desconto: "+(discount>0?"−"+money(discount):"não aplicado"));
-   summary.push("Total parcial: "+money(decantSubtotal-discount));
-   summary.push("Frascos inteiros: preço a confirmar");
- }else if(decants.length){
-   summary.push("Subtotal: "+money(decantSubtotal));
-   summary.push("Desconto: "+(discount>0?"−"+money(discount):"não aplicado"));
-   summary.push("Total: "+money(decantSubtotal-discount));
- }else{
-   summary.push("Preço dos frascos inteiros: a confirmar");
- }
- const message=[
-   "Gostaria de confirmar este pedido:",
-   "",
-   lines.join("\n"),
-   "",
-   summary.join("\n"),
-   "",
-   "Pode confirmar a disponibilidade?"
- ].join("\n");
- window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
-}
-$("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
-$("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
-$("checkout").addEventListener("click",checkout);
 setupDecantFilters();renderProducts();renderCart();
 
 </script>
 <script src="search.js?v=20261116-3" defer></script>
-<script src="santino-ui.js?v=20261116-3" defer></script>
+<script src="santino-ui.js?v=20261116-4" defer></script>
 </body>
 </html>
