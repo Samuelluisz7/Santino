@@ -61,8 +61,8 @@ test("perfume details show occasion and note preview before a collapsed addition
   assert.match(html, /id="projectionText"/);
   assert.match(html, /id="dayNightText"/);
   assert.match(html, /id="seasonsText"/);
-  assert.match(html, /Não há avaliação confiável cadastrada/);
-  assert.match(html, /Não há classificação cadastrada/);
+  assert.doesNotMatch(html, /Não há avaliação confiável cadastrada/);
+  assert.doesNotMatch(html, /Não há classificação cadastrada/);
 });
 
 test("shared cart UI animates a product image toward the cart only after local cart count changes", async () => {
