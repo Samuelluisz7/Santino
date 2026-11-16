@@ -847,6 +847,57 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
 .brand{position:relative;padding-left:42px;min-height:32px;display:inline-flex;flex-direction:column;justify-content:center}
 .brand::before{content:"S";position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:30px;border:1px solid var(--beige);border-radius:50%;display:grid;place-items:center;color:var(--beige);font:700 16px/1 Georgia,"Times New Roman",serif;letter-spacing:0}
 @media(max-width:720px){.brand{padding-left:36px;min-height:28px}.brand::before{width:26px;height:26px;font-size:14px}}
+/* Notas olfativas em miniaturas circulares inspiradas na leitura da Fragrantica */
+#olfactorySection .note-composition{display:flex!important;flex-direction:column!important;gap:0!important}
+#olfactorySection .composition-row{
+ display:grid!important;grid-template-columns:1fr!important;align-items:start!important;
+ gap:9px!important;width:100%!important;padding:12px 0!important;
+ border:0!important;border-bottom:1px solid #292929!important;
+ background:transparent!important;text-align:left!important;
+}
+#olfactorySection .composition-row>strong{
+ display:block!important;margin:0!important;color:#c9b18b!important;
+ font-size:10px!important;letter-spacing:.12em!important;text-transform:uppercase!important;
+}
+#olfactorySection .composition-row .note-words{
+ display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;
+ justify-content:start!important;align-items:start!important;gap:11px 7px!important;
+ width:100%!important;min-width:0!important;
+}
+#olfactorySection .note-word{
+ display:flex!important;flex-direction:column!important;align-items:center!important;
+ justify-content:flex-start!important;gap:5px!important;min-width:0!important;
+ padding:0!important;border:0!important;background:transparent!important;
+ color:#e9e2d7!important;font:400 10px/1.25 Arial,Helvetica,sans-serif!important;
+ text-align:center!important;white-space:normal!important;
+}
+#olfactorySection .note-image-shell{
+ position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;
+ width:48px!important;height:48px!important;overflow:hidden!important;flex:0 0 48px!important;
+ border:1px solid color-mix(in srgb,var(--note-color,#a99a80) 55%,#3a342b)!important;
+ border-radius:50%!important;background:#171511!important;text-decoration:none!important;
+}
+#olfactorySection .note-photo{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;border-radius:50%!important}
+#olfactorySection .note-photo-fallback{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ width:100%!important;height:100%!important;border-radius:50%!important;
+ background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--note-color,#a99a80) 34%,#1a1712),#11100e 75%)!important;
+ color:color-mix(in srgb,var(--note-color,#a99a80) 80%,#f3eadb)!important;
+ font:400 17px/1 Georgia,"Times New Roman",serif!important;
+}
+#olfactorySection .note-name{display:block!important;max-width:100%!important;overflow-wrap:anywhere!important;color:#ddd5c9!important;font-size:9px!important;line-height:1.25!important}
+#olfactorySection .note-image-credits{margin-top:10px!important;color:#8e877b!important;font-size:9px!important}
+#olfactorySection .note-image-credits>summary{cursor:pointer;color:#a79a85!important}
+#olfactorySection .note-image-credits ul{margin:7px 0 0;padding-left:15px!important;display:grid;gap:4px}
+#olfactorySection .note-image-credits a{color:#d2bc94!important;text-decoration:underline!important;text-underline-offset:2px}
+@media(max-width:720px){
+ #olfactorySection .composition-row .note-words{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:10px 5px!important}
+ #olfactorySection .note-image-shell{width:42px!important;height:42px!important;flex-basis:42px!important}
+ #olfactorySection .note-name{font-size:9px!important}
+}
+@media(max-width:380px){
+ #olfactorySection .composition-row .note-words{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
 </style>
   <link rel="stylesheet" href="santino-ui.css?v=20261116-1">
 
@@ -1144,6 +1195,7 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
       <div class="composition-row"><strong>Saída</strong><div class="note-words" id="topNotes"></div></div>
       <div class="composition-row"><strong>Coração</strong><div class="note-words" id="heartNotes"></div></div>
       <div class="composition-row"><strong>Fundo</strong><div class="note-words" id="baseNotes"></div></div>
+      <details class="note-image-credits" id="noteImageCredits" hidden><summary>Créditos das imagens dos ingredientes</summary></details>
      </div>
     </div>
    </div>
@@ -1483,7 +1535,48 @@ const NOTE_COLOR_RULES = [
 ];
 function noteColor(label){const value=String(label||"");const accord=ACCORD_COLOR_RULES.find(([pattern])=>pattern.test(value));if(accord)return accord[1];const rule=NOTE_COLOR_RULES.find(([pattern])=>pattern.test(value));return rule?rule[1]:"#a0a0a0";}
 function splitNoteList(value){return String(value||"").replace(/\s+e\s+(?=[^,]+$)/i,", ").split(/[,;•]/).map(note=>note.trim().replace(/^e\s+/i,"")).filter(Boolean);}
-function renderIngredientNotes(targetId,value){const target=document.getElementById(targetId);if(!target)return;const notes=splitNoteList(value);target.innerHTML=notes.map(note=>'<span class="note-word" style="--note-color:'+noteColor(note)+'"><span class="note-dot" aria-hidden="true"></span>'+escapeHTML(note)+'</span>').join('<span class="note-separator" aria-hidden="true">·</span>');}
+
+/* Miniaturas de ingredientes com origem e licença verificadas.
+   Ingredientes sem fotografia específica usam um marcador neutro, sem imagem substituta enganosa. */
+const NOTE_PHOTO_MAP=[
+ {test:/bergamota/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Citrus_bergamia_fructus.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Citrus_bergamia_fructus.jpg",author:"Rillke",license:"CC BY-SA 3.0 / GFDL 1.2"},
+ {test:/lavanda|lavandim/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Lavender_Plant_Flowers.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Lavender_Plant_Flowers.jpg",author:"Alabama Extension",license:"CC0 1.0"},
+ {test:/pimenta[ -]preta|pimenta[ -]do[ -]reino/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Tellicherry_Black_Peppercorns.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Tellicherry_Black_Peppercorns.jpg",author:"Misterneedlemouse",license:"CC0 1.0"},
+ {test:/maçã verde|ma[cç]ã/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Green_apple.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Green_apple.jpg",author:"Faustas L.",license:"Domínio público"},
+ {test:/s[aá]lvia/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Sage_leaves.JPG?width=320",page:"https://commons.wikimedia.org/wiki/File:Sage_leaves.JPG",author:"Miansari66",license:"Domínio público"},
+ {test:/menta|hortel[aã]/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Mint_leaves_picture.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Mint_leaves_picture.jpg",author:"Mgmoscatello",license:"CC BY-SA 3.0"},
+ {test:/baunilha|vanilla/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/VAINILLA.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:VAINILLA.jpg",author:"El Caminito",license:"CC0 1.0"},
+ {test:/cacau|cocoa/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Cocoa_beans.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Cocoa_beans.jpg",author:"Mikkel Houmøller",license:"CC BY-SA 4.0"},
+ {test:/gengibre/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Ginger_Root.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Ginger_Root.jpg",author:"Sanjay Acharya",license:"CC BY-SA 4.0"},
+ {test:/cedro/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Steam_distillation_unit_with_eastern_red_cedar_shavings.jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Steam_distillation_unit_with_eastern_red_cedar_shavings.jpg",author:"Spoingus101",license:"CC0 1.0"},
+ {test:/canela/i,src:"https://commons.wikimedia.org/wiki/Special:FilePath/Cinnamon_sticks_(1).jpg?width=320",page:"https://commons.wikimedia.org/wiki/File:Cinnamon_sticks_(1).jpg",author:"Fumikas Sagisavas",license:"CC0 1.0"}
+];
+const NOTE_IMAGE_CREDITS_USED=new Map();
+function getNotePhoto(note){return NOTE_PHOTO_MAP.find(item=>item.test.test(String(note||"")))||null;}
+function renderNoteImageCredits(){
+ const target=document.getElementById("noteImageCredits");
+ if(!target)return;
+ const entries=[...NOTE_IMAGE_CREDITS_USED.values()];
+ target.hidden=!entries.length;
+ if(!entries.length)return;
+ target.innerHTML='<summary>Créditos das imagens dos ingredientes</summary><ul>'+entries.map(item=>'<li><a href="'+escapeHTML(item.page)+'" target="_blank" rel="noopener noreferrer">'+escapeHTML(item.author)+'</a> · '+escapeHTML(item.license)+' · miniatura recortada</li>').join("")+'</ul>';
+}
+function renderIngredientNotes(targetId,value){
+ const target=document.getElementById(targetId);if(!target)return;
+ const notes=splitNoteList(value);
+ target.innerHTML=notes.map(note=>{
+  const photo=getNotePhoto(note);
+  const initial=escapeHTML(String(note).trim().charAt(0).toLocaleUpperCase("pt-BR"));
+  let picture;
+  if(photo){
+   NOTE_IMAGE_CREDITS_USED.set(photo.page,photo);
+   picture='<a class="note-image-shell" href="'+escapeHTML(photo.page)+'" target="_blank" rel="noopener noreferrer" aria-label="Ver origem da fotografia de '+escapeHTML(note)+'"><img class="note-photo" src="'+escapeHTML(photo.src)+'" alt="" loading="lazy" decoding="async"><span class="note-photo-fallback" hidden>'+initial+'</span></a>';
+  }else{
+   picture='<span class="note-image-shell note-image-placeholder"><span class="note-photo-fallback">'+initial+'</span></span>';
+  }
+  return '<span class="note-word" style="--note-color:'+noteColor(note)+'">'+picture+'<span class="note-name">'+escapeHTML(note)+'</span></span>';
+ }).join("");
+}
 
 const params=new URLSearchParams(window.location.search),requestedId=params.get("id")||"";
 const story=PRODUCT_STORIES[requestedId]||PRODUCT_STORIES[requestedId.replace(/^full-/,"")]||null;
@@ -1569,6 +1662,7 @@ if(info){
  renderIngredientNotes("topNotes",info.top);
  renderIngredientNotes("heartNotes",info.heart);
  renderIngredientNotes("baseNotes",info.base);
+ renderNoteImageCredits();
  $("noteGraphName").textContent=product.name;
  const noteBottle=$("noteBottleImage");
  noteBottle.alt="Frasco de "+product.name;
