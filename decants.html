@@ -276,9 +276,10 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .brand::before{content:"S";position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:30px;border:1px solid var(--beige);border-radius:50%;display:grid;place-items:center;color:var(--beige);font:700 16px/1 Georgia,"Times New Roman",serif;letter-spacing:0}
 @media(max-width:720px){.brand{padding-left:36px;min-height:28px}.brand::before{width:26px;height:26px;font-size:14px}}
 </style>
-  <link rel="stylesheet" href="santino-ui.css?v=20261115-9">
+  <link rel="stylesheet" href="santino-ui.css?v=20261116-1">
 
-  <link rel="stylesheet" href="santino-identity.css?v=20261115-9">
+  <link rel="stylesheet" href="santino-identity.css?v=20261116-1">
+  <link rel="stylesheet" href="catalog-filters.css?v=20261116-1">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/decants.html">
   <meta name="robots" content="index,follow">
@@ -306,12 +307,12 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   </section>
   <section class="section" id="catalog">
     <div class="section-head"><div><div class="eyebrow">Explore a coleção</div><h2>Escolha sua fragrância</h2><p>5 ou 10 ml · 10% OFF automático em pedidos de decants a partir de R$ 80 · Entrega local em Viçosa combinada pelo WhatsApp.</p></div></div>
-    <div class="origin-filter" role="group" aria-label="Filtrar decants por origem">
-      <span class="origin-filter-label">Origem</span>
-      <button type="button" data-origin-filter="Todos" aria-pressed="true">Todos</button>
-      <button type="button" data-origin-filter="Nacional" aria-pressed="false">Nacionais</button>
-      <button type="button" data-origin-filter="Importado" aria-pressed="false">Importados</button>
-      <button type="button" data-origin-filter="Touti" aria-pressed="false">Touti</button>
+    <div class="catalog-filter-wrap">
+      <button class="catalog-filter-toggle" type="button" id="decantFiltersToggle" aria-expanded="false" aria-controls="decantFiltersPanel">Filtros <span aria-hidden="true">＋</span></button>
+      <div class="catalog-filter-panel" id="decantFiltersPanel" hidden>
+        <label for="decantBrandFilter"><span>Marca</span><select id="decantBrandFilter"><option value="">Todas as marcas</option></select></label>
+        <label for="decantSort"><span>Ordenar por</span><select id="decantSort"><option value="featured">Mais relevantes</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option></select></label>
+      </div>
     </div>
     <div class="products" id="products"></div>
   </section>
@@ -436,13 +437,40 @@ function bindProductImageFallbacks(root) {
 try { const savedCart = JSON.parse(localStorage.getItem("santino_nobre_cart") || "[]"); if (Array.isArray(savedCart)) cart = savedCart; } catch (e) { cart = []; }
 const $ = id => document.getElementById(id);
 function money(n){return CURRENCY.format(n)}
-let activeOriginFilter = ""; function renderProducts(){
- const filteredProducts = PRODUCTS.filter(p => !activeOriginFilter || p.tag === activeOriginFilter);
+function getBrandKey(product){return /natura/i.test(String(product.brand||""))?"Natura":String(product.brand||"").trim()}
+function getBrandDisplay(product){return String(product.brand||"").trim()==="Natura Kaiak"?"Natura · Kaiak":String(product.brand||"").trim()}
+function setupDecantFilters(){
+ const brandSelect=$("decantBrandFilter"),sortSelect=$("decantSort");
+ if(brandSelect){
+  const brands=[...new Set(PRODUCTS.map(getBrandKey))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
+  brandSelect.innerHTML='<option value="">Todas as marcas</option>'+brands.map(brand=>'<option value="'+escapeHTML(brand)+'">'+escapeHTML(brand)+'</option>').join("");
+  brandSelect.addEventListener("change",renderProducts);
+ }
+ if(sortSelect)sortSelect.addEventListener("change",renderProducts);
+ bindCatalogFilters("decantFiltersToggle","decantFiltersPanel");
+}
+function bindCatalogFilters(toggleId,panelId){
+ const toggle=$(toggleId),panel=$(panelId);
+ if(!toggle||!panel)return;
+ toggle.addEventListener("click",()=>{
+  const opening=panel.hidden;
+  panel.hidden=!opening;
+  toggle.setAttribute("aria-expanded",String(opening));
+  const mark=toggle.querySelector("span");
+  if(mark)mark.textContent=opening?"－":"＋";
+ });
+}
+function renderProducts(){
+ const brand=$("decantBrandFilter")?.value||"",sort=$("decantSort")?.value||"featured";
+ let filteredProducts=PRODUCTS.filter(p=>!brand||getBrandKey(p)===brand);
+ const priceForSort=p=>Math.min(...p.volumes.map(v=>Number.isFinite(v.price)?v.price:Number.POSITIVE_INFINITY));
+ if(sort==="price-asc")filteredProducts.sort((a,b)=>priceForSort(a)-priceForSort(b)||a.name.localeCompare(b.name,"pt-BR"));
+ if(sort==="price-desc")filteredProducts.sort((a,b)=>priceForSort(b)-priceForSort(a)||a.name.localeCompare(b.name,"pt-BR"));
  $("products").innerHTML = filteredProducts.map(p=>`<article class="product">
    <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
-   <div class="product-art decant-product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Imagem ilustrativa do perfume original ${escapeHTML(p.name)}; o produto vendido é o decant em mini frasco SANTINO" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div><img class="decant-vial-overlay" src="decant-vials.svg?v=20261115-9" alt="Mini frascos de decant SANTINO de 5 e 10 ml" loading="lazy" decoding="async"><span class="decant-photo-badge">PRODUTO VENDIDO · DECANT</span></div>
+   <div class="product-art decant-product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Imagem ilustrativa do perfume original ${escapeHTML(p.name)}; o produto vendido é o decant em mini frasco SANTINO" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div><img class="decant-vial-overlay" src="decant-vials.svg?v=20261116-1" alt="Mini frascos de decant SANTINO de 5 e 10 ml" loading="lazy" decoding="async"><span class="decant-photo-badge">PRODUTO VENDIDO · DECANT</span></div>
    <h3>${escapeHTML(p.name)}</h3>
-   <div class="product-brandline"><span class="product-brand-name">${escapeHTML(p.brand)}</span><span class="product-origin-tag">${escapeHTML(p.tag||"")}</span></div>
+   <div class="product-brandline"><span class="product-brand-name">${escapeHTML(getBrandDisplay(p))}</span><span class="product-origin-tag">${escapeHTML(p.tag||"")}</span></div>
    </a>
    <p class="decant-image-note">Imagem do perfume de referência. Você recebe o decant em mini frasco SANTINO.</p>
    <div class="variants"><label style="flex:1">Volume
@@ -555,10 +583,10 @@ function checkout(){
 $("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
 $("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
 $("checkout").addEventListener("click",checkout);
-document.querySelectorAll("[data-origin-filter]").forEach(button=>button.addEventListener("click",()=>{activeOriginFilter=button.dataset.originFilter==="Todos"?"":button.dataset.originFilter;document.querySelectorAll("[data-origin-filter]").forEach(item=>item.setAttribute("aria-pressed",String((item.dataset.originFilter==="Todos"?"":item.dataset.originFilter)===activeOriginFilter)));renderProducts()})); renderProducts();renderCart();
+setupDecantFilters();renderProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
-<script src="search.js?v=20261115-9" defer></script>
-<script src="santino-ui.js?v=20261115-9" defer></script>
+<script src="search.js?v=20261116-1" defer></script>
+<script src="santino-ui.js?v=20261116-1" defer></script>
 </body>
 </html>

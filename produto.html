@@ -848,7 +848,7 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
 .brand::before{content:"S";position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:30px;border:1px solid var(--beige);border-radius:50%;display:grid;place-items:center;color:var(--beige);font:700 16px/1 Georgia,"Times New Roman",serif;letter-spacing:0}
 @media(max-width:720px){.brand{padding-left:36px;min-height:28px}.brand::before{width:26px;height:26px;font-size:14px}}
 </style>
-  <link rel="stylesheet" href="santino-ui.css?v=20261115-9">
+  <link rel="stylesheet" href="santino-ui.css?v=20261116-1">
 
 <style id="santino-pyramid-finish">
 /* Acabamento final SANTINO: packshot maior + pirâmide olfativa legível */
@@ -992,10 +992,111 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
   #olfactorySection .composition-row:nth-child(2) {width:92%!important;}
   #olfactorySection .composition-row {padding:8px 5px!important;}
 }
+/* Página de perfume: resumo externo e detalhes recolhidos */
+.detail-highlights{
+ display:grid!important;
+ grid-template-columns:minmax(0,.82fr) minmax(0,1.6fr)!important;
+ gap:12px!important;
+ align-items:stretch!important;
+ margin:20px 0 18px!important;
+}
+.detail-occasion,.detail-note-preview{
+ padding:14px 15px!important;
+ border:1px solid #3b352c!important;
+ background:#15130f!important;
+ min-width:0;
+}
+.detail-occasion>span,.detail-note-preview-title{
+ display:block;
+ margin-bottom:8px;
+ color:#c9b18b;
+ font-size:9px;
+ font-weight:700;
+ letter-spacing:.13em;
+ text-transform:uppercase;
+}
+.detail-occasion>strong{
+ display:block;
+ color:#f3eadb;
+ font-size:13px;
+ line-height:1.55;
+}
+.detail-note-preview-stages{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:8px;
+}
+.detail-note-preview-stage{min-width:0}
+.detail-note-preview-stage>span{
+ display:block;
+ margin-bottom:6px;
+ color:#a99b84;
+ font-size:9px;
+ letter-spacing:.08em;
+ text-transform:uppercase;
+}
+.detail-note-preview-stage>div{display:flex;flex-wrap:wrap;gap:5px}
+.detail-note-preview-stage i{
+ display:inline-flex;
+ align-items:center;
+ min-height:24px;
+ max-width:100%;
+ padding:4px 7px;
+ border:1px solid color-mix(in srgb,var(--note-color) 40%,#37312a);
+ border-radius:2px;
+ background:color-mix(in srgb,var(--note-color) 11%,#15130f);
+ color:#eee6d9;
+ font-size:10px;
+ font-style:normal;
+ line-height:1.3;
+}
+.product-additional-details{
+ margin:22px 0 24px;
+ border:1px solid #544735;
+ background:#11100e;
+}
+.product-additional-details>summary{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:14px;
+ min-height:54px;
+ padding:14px 17px;
+ color:#e0cba9;
+ font-size:13px;
+ font-weight:700;
+ letter-spacing:.02em;
+ list-style:none;
+ cursor:pointer;
+}
+.product-additional-details>summary::-webkit-details-marker{display:none}
+.product-additional-details>summary span{font-size:17px;transition:transform .18s ease}
+.product-additional-details[open]>summary span{transform:rotate(45deg)}
+.product-additional-content{padding:0 15px 16px;border-top:1px solid #302a22}
+.product-additional-content .content-section{padding:22px 0 10px;border:0;margin:0}
+.product-additional-content .content-section+.content-section{border-top:1px solid #302a22;margin-top:20px}
+.note-performance-facts{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+@media(max-width:720px){
+ .detail-highlights{grid-template-columns:1fr!important;gap:8px!important}
+ .detail-occasion,.detail-note-preview{padding:12px!important}
+ .detail-note-preview-stages{gap:5px}
+ .detail-note-preview-stage i{font-size:9px;padding:4px 5px}
+ .product-additional-details>summary{min-height:50px;padding:13px}
+ .product-additional-content{padding:0 11px 12px}
+ .note-performance-facts{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:390px){
+ .detail-note-preview-stages{grid-template-columns:1fr;gap:8px}
+ .detail-note-preview-stage{display:grid;grid-template-columns:65px 1fr;align-items:start}
+ .detail-note-preview-stage>span{margin:5px 0 0}
+ .note-performance-facts{grid-template-columns:1fr!important}
+}
+@media(prefers-reduced-motion:reduce){.product-additional-details>summary span{transition:none}}
+
 </style>
 
-  <link rel="stylesheet" href="sticky-purchase.css?v=20261115-9">
-  <link rel="stylesheet" href="santino-identity.css?v=20261115-9">
+  <link rel="stylesheet" href="sticky-purchase.css?v=20261116-1">
+  <link rel="stylesheet" href="santino-identity.css?v=20261116-1">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/produto.html">
   <meta name="robots" content="index,follow">
@@ -1011,12 +1112,14 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
 <header><div class="nav"><a href="index.html" class="brand" style="text-decoration:none">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a><form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="nav-links" aria-label="Navegação"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a><a href="kits.html">Kits</a></nav><a class="cart-link" id="cartLink" href="decants.html?openCart=1">Carrinho <span class="cart-count" id="cartCount">0</span></a></div></header>
 <main><div class="breadcrumbs"><a id="backCatalog" href="decants.html">← Voltar ao catálogo</a> / <span id="crumbName">Perfume</span></div>
 
-<section class="product-layout"><div class="gallery"><div class="gallery-main"><img id="mainImage" alt="" decoding="async"><div class="gallery-fallback" id="galleryFallback">Imagem indisponível</div><img id="detailDecantVials" class="detail-decant-vials" src="decant-vials.svg?v=20261115-9" alt="Mini frascos de decant SANTINO de 5 e 10 ml" hidden><span id="detailDecantNotice" class="detail-decant-notice" hidden></span><div class="comparison-gallery" id="comparisonGallery" hidden><figure><div class="comparison-gallery-label">Produto vendido · Touti</div><div class="comparison-gallery-photo"><img id="toutiComparisonImage" alt="" decoding="async" referrerpolicy="no-referrer"><span class="comparison-image-missing">Foto do produto indisponível</span></div><figcaption class="comparison-gallery-name" id="toutiComparisonCaption"></figcaption></figure><figure><div class="comparison-gallery-label">Referência olfativa</div><div class="comparison-gallery-photo"><img id="referenceComparisonImage" alt="" decoding="async" referrerpolicy="no-referrer"><span class="comparison-image-missing">Foto da referência indisponível</span></div><figcaption class="comparison-gallery-name" id="referenceComparisonCaption"></figcaption></figure></div></div><div class="gallery-thumbs" id="galleryThumbs" aria-label="Mais fotos do perfume"></div><p class="gallery-caption" id="galleryCaption">Foto do frasco do perfume</p></div>
+<section class="product-layout"><div class="gallery"><div class="gallery-main"><img id="mainImage" alt="" decoding="async"><div class="gallery-fallback" id="galleryFallback">Imagem indisponível</div><img id="detailDecantVials" class="detail-decant-vials" src="decant-vials.svg?v=20261116-1" alt="Mini frascos de decant SANTINO de 5 e 10 ml" hidden><span id="detailDecantNotice" class="detail-decant-notice" hidden></span><div class="comparison-gallery" id="comparisonGallery" hidden><figure><div class="comparison-gallery-label">Produto vendido · Touti</div><div class="comparison-gallery-photo"><img id="toutiComparisonImage" alt="" decoding="async" referrerpolicy="no-referrer"><span class="comparison-image-missing">Foto do produto indisponível</span></div><figcaption class="comparison-gallery-name" id="toutiComparisonCaption"></figcaption></figure><figure><div class="comparison-gallery-label">Referência olfativa</div><div class="comparison-gallery-photo"><img id="referenceComparisonImage" alt="" decoding="async" referrerpolicy="no-referrer"><span class="comparison-image-missing">Foto da referência indisponível</span></div><figcaption class="comparison-gallery-name" id="referenceComparisonCaption"></figcaption></figure></div></div><div class="gallery-thumbs" id="galleryThumbs" aria-label="Mais fotos do perfume"></div><p class="gallery-caption" id="galleryCaption">Foto do frasco do perfume</p></div>
 <div class="summary"><div class="eyebrow" id="categoryLabel">Fragrância</div><h1 id="productName">Carregando perfume…</h1><div class="brand-line" id="productBrand"></div><div class="product-meta" id="productMeta"></div><p class="description" id="productDescription"></p><p class="authenticity-note" id="authenticityNote">Fragrância original · selo de originalidade SANTINO</p>
 <div class="detail-highlights" aria-label="Resumo da fragrância">
-  <div class="detail-highlight"><span>Perfil olfativo</span><strong id="highlightFamily"></strong></div>
-  <div class="detail-highlight"><span>Quando usar</span><strong id="highlightOccasion"></strong></div>
-  <div class="detail-highlight"><span>Clima</span><strong id="highlightClimate"></strong></div>
+  <div class="detail-highlight detail-occasion"><span>Ocasião indicada</span><strong id="highlightOccasion"></strong></div>
+  <div class="detail-note-preview" id="notePreview" aria-label="Prévia da pirâmide olfativa">
+    <span class="detail-note-preview-title">Prévia olfativa</span>
+    <div class="detail-note-preview-stages" id="notePreviewStages"></div>
+  </div>
 </div><div class="price" id="productPrice"></div>
 <div class="purchase-controls"><div class="control" id="volumeControl"><label for="volumeSelect">Volume do decant</label><select id="volumeSelect"></select></div><div class="control"><label for="quantitySelect">Quantidade</label><select id="quantitySelect"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div></div><button class="add-button" id="addButton">Adicionar ao carrinho</button><p class="stock-note" id="stockNote">Confira o volume e a quantidade antes de adicionar. A disponibilidade será confirmada pelo WhatsApp. Confira o total e a entrega antes de pagar.</p></div></section>
 <div class="sticky-purchase" id="stickyPurchaseBar" role="region" aria-label="Compra rápida" aria-hidden="true">
@@ -1026,28 +1129,36 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
   </div>
   <button class="sticky-purchase-button" id="stickyAddButton" type="button">Adicionar</button>
 </div>
-<section class="content-section" id="olfactorySection">
- <div class="content-heading"><div><div class="eyebrow">A composição</div><h2>Notas da fragrância</h2><p><strong>Acordes em destaque.</strong> As etiquetas coloridas resumem o perfil da fragrância; abaixo, a pirâmide organiza as notas em saída, coração e fundo. As cores ajudam a distinguir ingredientes e acordes.</p></div></div>
- <div class="note-infographic">
-  <div class="note-visual-bottle"><img id="noteBottleImage" alt="" loading="lazy" decoding="async"><div class="note-bottle-fallback" id="noteBottleFallback" hidden>SANTINO<br>FRAGRÂNCIAS</div></div>
-  <div class="note-visual-details">
-   <div class="note-graphic-head"><div class="eyebrow" id="familyText"></div><h3 id="noteGraphName">Fragrância</h3></div>
-   <p class="accord-title">Acordes em destaque</p>
-   <div class="note-accords" id="accordBars" aria-label="Acordes em destaque"></div>
-   <div class="note-composition" aria-label="Notas de saída, coração e fundo">
-    <div class="composition-row"><strong>Saída</strong><div class="note-words" id="topNotes"></div></div>
-    <div class="composition-row"><strong>Coração</strong><div class="note-words" id="heartNotes"></div></div>
-    <div class="composition-row"><strong>Fundo</strong><div class="note-words" id="baseNotes"></div></div>
+<details class="product-additional-details" id="productAdditionalDetails">
+ <summary>Informações adicionais <span aria-hidden="true">＋</span></summary>
+ <div class="product-additional-content">
+  <section class="content-section" id="olfactorySection">
+   <div class="content-heading"><div><div class="eyebrow">A composição</div><h2>Notas da fragrância</h2><p><strong>Principais acordes e pirâmide olfativa.</strong> As barras coloridas destacam os acordes; as três etapas organizam as notas de saída, coração e fundo.</p></div></div>
+   <div class="note-infographic">
+    <div class="note-visual-bottle"><img id="noteBottleImage" alt="" loading="lazy" decoding="async"><div class="note-bottle-fallback" id="noteBottleFallback" hidden>SANTINO<br>FRAGRÂNCIAS</div></div>
+    <div class="note-visual-details">
+     <div class="note-graphic-head"><div class="eyebrow" id="familyText"></div><h3 id="noteGraphName">Fragrância</h3></div>
+     <p class="accord-title">Principais acordes</p>
+     <div class="note-accords" id="accordBars" aria-label="Acordes em destaque"></div>
+     <div class="note-composition" aria-label="Notas de saída, coração e fundo">
+      <div class="composition-row"><strong>Saída</strong><div class="note-words" id="topNotes"></div></div>
+      <div class="composition-row"><strong>Coração</strong><div class="note-words" id="heartNotes"></div></div>
+      <div class="composition-row"><strong>Fundo</strong><div class="note-words" id="baseNotes"></div></div>
+     </div>
+    </div>
    </div>
-  </div>
+   <div class="note-facts note-performance-facts">
+    <div class="note-fact"><strong>Longevidade</strong><span id="longevityText">Não há avaliação confiável cadastrada.</span></div>
+    <div class="note-fact"><strong>Projeção</strong><span id="projectionText">Não há avaliação confiável cadastrada.</span></div>
+    <div class="note-fact"><strong>Período de uso</strong><span id="dayNightText">Não informado com segurança.</span></div>
+    <div class="note-fact"><strong>Estações</strong><span id="seasonsText">Não informado com segurança.</span></div>
+    <div class="note-fact"><strong>Clima e aplicação</strong><span id="climateText">Não informado com segurança.</span></div>
+    <div class="note-fact"><strong>Família olfativa</strong><span id="familyDetailText">Não informada.</span></div>
+   </div>
+  </section>
+  <section class="content-section"><h2>Sobre esta fragrância</h2><p class="description" id="longDescription"></p></section>
  </div>
- <div class="note-facts">
-  <div class="note-fact"><strong>Quando usar</strong><span id="occasionText"></span></div>
-  <div class="note-fact"><strong>Clima e aplicação</strong><span id="climateText"></span></div>
-  <div class="note-fact"><strong>Perfil olfativo</strong><span id="familyDetailText"></span></div>
- </div>
-</section>
-<section class="content-section"><h2>Sobre esta fragrância</h2><p class="description" id="longDescription"></p></section></main>
+</details></main>
 <svg aria-hidden="true" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
  <filter id="santino-packshot-cutout" color-interpolation-filters="sRGB">
   <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -1.25 -1.25 -1.25 0 3.75" result="lightnessKey"/>
@@ -1056,7 +1167,7 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
  </filter>
 </svg>
 <div class="toast" id="toast" role="status"></div><footer>SANTINO · Decants &amp; Fragrâncias · <a href="politicas.html" style="color:var(--beige)">Políticas de compra</a></footer>
-<script src="sticky-purchase.js?v=20261115-9"></script>
+<script src="sticky-purchase.js?v=20261116-1"></script>
 <script>
 const CURRENCY=new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});function money(value){return CURRENCY.format(value)}function escapeHTML(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 const PRODUCTS = [
@@ -1382,10 +1493,22 @@ if(!product){document.querySelector("main").innerHTML='<section class="summary">
 else{
 const isQuasarIce=product.id.replace(/^full-/,"")==="quasar-ice";document.body.classList.toggle("quasar-ice-notes",isQuasarIce);const olfactorySection=$("olfactorySection");if(olfactorySection){olfactorySection.classList.toggle("quasar-ice-notes-active",isQuasarIce);if(isQuasarIce){olfactorySection.style.setProperty("background","#050505","important");olfactorySection.style.setProperty("color","#f2f2f2","important");const iceStyles=[[".content-heading h2","color","#f2f2f2"],[".content-heading p","color","#a7b9bf"],[".note-infographic","background","#050505"],[".note-infographic","border-color","#29373b"],[".note-visual-bottle","background","linear-gradient(145deg,#eef7fa,#dcecf1)"],[".note-visual-details","background","#050505"],[".note-graphic-head h3","color","#f1f1f1"],[".accord-title","color","#a8c4cc"],[".note-composition","border-top-color","#292929"],[".composition-row","border-bottom-color","#292929"],[".composition-row>strong","color","#a8c4cc"],[".note-pyramid .note-stage p","color","#d5e0e3"],[".note-fact","background","#050505"],[".note-fact","border-color","#292929"],[".note-fact strong","color","#a8c4cc"],[".note-fact span","color","#c4d0d3"]];iceStyles.forEach(([selector,property,value])=>olfactorySection.querySelectorAll(selector).forEach(el=>el.style.setProperty(property,value,"important")));}}
 document.title="SANTINO | "+product.name;$("crumbName").textContent=product.name;$("productName").textContent=product.name;$("productBrand").textContent=product.brand;$("categoryLabel").textContent=isFull?"Frasco inteiro":"Decant · "+product.tag;
-$("productMeta").textContent=isFull?(product.ml+" ml"):"Escolha o volume do seu decant";$("productDescription").textContent=story?story.intro:(product.description||"Uma fragrância para conhecer em detalhes.");$("longDescription").textContent=story?story.story:(product.description||"Explore o perfil olfativo desta fragrância e escolha o volume desejado.");if(story){$("occasionText").textContent=story.occasion;$("climateText").textContent=story.climate;}$("authenticityNote").textContent=product.toutiImage?"Produto vendido: Touti original · 50 ml. A fragrância de grife é apenas referência e não está incluída.":(isFull?"Frasco original · selo de originalidade SANTINO":"Fragrância original · decant com selo de originalidade SANTINO");
-$("highlightFamily").textContent=info?info.family:"Perfil olfativo";
-$("highlightOccasion").textContent=story?story.occasion:"Consulte a SANTINO";
-$("highlightClimate").textContent=story?story.climate:"Consulte a SANTINO";
+$("productMeta").textContent=isFull?(product.ml+" ml"):"Escolha o volume do seu decant";$("productDescription").textContent=story?story.intro:(product.description||"Uma fragrância para conhecer em detalhes.");$("longDescription").textContent=story?story.story:(product.description||"Explore o perfil olfativo desta fragrância e escolha o volume desejado.");if(story){
+ $("climateText").textContent=story.climate;
+ $("dayNightText").textContent="Não há classificação cadastrada.";
+ $("seasonsText").textContent="Não há classificação cadastrada.";
+}$("authenticityNote").textContent=product.toutiImage?"Produto vendido: Touti original · 50 ml. A fragrância de grife é apenas referência e não está incluída.":(isFull?"Frasco original · selo de originalidade SANTINO":"Fragrância original · decant com selo de originalidade SANTINO");
+$("highlightOccasion").textContent=story?story.occasion:"Ocasião não cadastrada";
+const previewStages=$("notePreviewStages");
+if(previewStages&&info){
+ const stages=[["Saída",info.top],["Coração",info.heart],["Fundo",info.base]];
+ previewStages.innerHTML=stages.map(([label,value])=>{
+  const notes=splitNoteList(value).slice(0,2);
+  return '<div class="detail-note-preview-stage"><span>'+label+'</span><div>'+notes.map(note=>'<i style="--note-color:'+noteColor(note)+'">'+escapeHTML(note)+'</i>').join("")+'</div></div>';
+ }).join("");
+}else if(previewStages){
+ $("notePreview").hidden=true;
+}
 $("backCatalog").href=isFull?"frascos.html#full-size-catalog":"decants.html#catalog";$("cartLink").href=(isFull?"frascos.html":"decants.html")+"?openCart=1";
 if(isFull){
  document.body.classList.add("full-size-mode");
@@ -1515,7 +1638,7 @@ function addToCart(){
  button.textContent="Adicionado ao carrinho ✓";
  setTimeout(()=>{button.textContent=original;$("toast").style.display="none"},2000);
 }
-</script><script src="search.js?v=20261115-9" defer></script>
-<script src="santino-ui.js?v=20261115-9" defer></script>
+</script><script src="search.js?v=20261116-1" defer></script>
+<script src="santino-ui.js?v=20261116-1" defer></script>
 </body>
 </html>
