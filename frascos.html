@@ -303,9 +303,10 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .brand::before{content:"S";position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:30px;border:1px solid var(--beige);border-radius:50%;display:grid;place-items:center;color:var(--beige);font:700 16px/1 Georgia,"Times New Roman",serif;letter-spacing:0}
 @media(max-width:720px){.brand{padding-left:36px;min-height:28px}.brand::before{width:26px;height:26px;font-size:14px}}
 </style>
-  <link rel="stylesheet" href="santino-ui.css?v=20261115-9">
+  <link rel="stylesheet" href="santino-ui.css?v=20261116-1">
 
-  <link rel="stylesheet" href="santino-identity.css?v=20261115-9">
+  <link rel="stylesheet" href="santino-identity.css?v=20261116-1">
+  <link rel="stylesheet" href="catalog-filters.css?v=20261116-1">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/frascos.html">
   <meta name="robots" content="index,follow">
@@ -337,15 +338,12 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <section class="section full-size-section" id="full-size-catalog">
     <div class="section-head full-size-head">
       <div class="collection-heading"><div class="eyebrow">A seleção</div><h2>Explore os perfumes</h2><p>Informações sobre cada fragrância e entrega local pelo WhatsApp.</p></div>
-      <div class="collection-controls">
-        <div class="origin-filter full-size-origin-filter" role="group" aria-label="Filtrar frascos inteiros por origem">
-          <span class="origin-filter-label">Origem</span>
-          <button type="button" data-full-origin-filter="Todos" aria-pressed="true">Todos</button>
-          <button type="button" data-full-origin-filter="Nacional" aria-pressed="false">Nacionais</button>
-          <button type="button" data-full-origin-filter="Importado" aria-pressed="false">Importados</button>
+      <div class="catalog-filter-wrap">
+        <button class="catalog-filter-toggle" type="button" id="fullFiltersToggle" aria-expanded="false" aria-controls="fullFiltersPanel">Filtros <span aria-hidden="true">＋</span></button>
+        <div class="catalog-filter-panel" id="fullFiltersPanel" hidden>
+          <label for="fullSizeBrandFilter"><span>Marca</span><select id="fullSizeBrandFilter"><option value="">Todas as marcas</option></select></label>
+          <label for="fullSizeSort"><span>Ordenar por</span><select id="fullSizeSort"><option value="featured">Mais relevantes</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option></select></label>
         </div>
-        <label for="fullSizeBrandFilter"><span>Marca</span><select id="fullSizeBrandFilter"><option value="">Todas as marcas</option></select></label>
-        <label for="fullSizeSort"><span>Ordenar por</span><select id="fullSizeSort"><option value="featured">Destaques</option><option value="name">Nome A–Z</option><option value="brand">Marca A–Z</option></select></label>
       </div>
     </div>
     <div class="products" id="fullSizeProducts"></div>
@@ -504,23 +502,41 @@ function renderProducts(){
  PRODUCTS.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price);$("selected-volume-"+p.id).textContent=v.ml+" ml";const button=document.querySelector('[data-add="'+p.id+'"]');if(button)button.textContent="Adicionar "+v.ml+" ml — "+money(v.price)})});
  document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(b.dataset.add)));
 }
-let activeFullOriginFilter = ""; function getProductOrigin(product){return /botic[aá]rio|natura|kaiak|jequiti|touti|eudora/i.test(String(product.brand||""))?"Nacional":"Importado"} function setupFullSizeFilters(){
- const brandSelect=$("fullSizeBrandFilter");
- const sortSelect=$("fullSizeSort");
+function getProductOrigin(product){return /botic[aá]rio|natura|kaiak|jequiti|touti|eudora/i.test(String(product.brand||""))?"Nacional":"Importado"}
+function getBrandKey(product){return /natura/i.test(String(product.brand||""))?"Natura":String(product.brand||"").trim()}
+function getBrandDisplay(product){return String(product.brand||"").trim()==="Natura Kaiak"?"Natura · Kaiak":String(product.brand||"").trim()}
+function bindCatalogFilters(toggleId,panelId){
+ const toggle=$(toggleId),panel=$(panelId);
+ if(!toggle||!panel)return;
+ toggle.addEventListener("click",()=>{
+  const opening=panel.hidden;
+  panel.hidden=!opening;
+  toggle.setAttribute("aria-expanded",String(opening));
+  const mark=toggle.querySelector("span");
+  if(mark)mark.textContent=opening?"－":"＋";
+ });
+}
+function setupFullSizeFilters(){
+ const brandSelect=$("fullSizeBrandFilter"),sortSelect=$("fullSizeSort");
  if(brandSelect){
-  const brands=[...new Set(FULL_SIZE_PRODUCTS.map(p=>p.brand))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
+  const brands=[...new Set(FULL_SIZE_PRODUCTS.map(getBrandKey))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
   brandSelect.innerHTML='<option value="">Todas as marcas</option>'+brands.map(brand=>'<option value="'+escapeHTML(brand)+'">'+escapeHTML(brand)+'</option>').join("");
   brandSelect.addEventListener("change",renderFullSizeProducts);
  }
  if(sortSelect)sortSelect.addEventListener("change",renderFullSizeProducts);
- document.querySelectorAll("[data-full-origin-filter]").forEach(button=>button.addEventListener("click",()=>{activeFullOriginFilter=button.dataset.fullOriginFilter==="Todos"?"":button.dataset.fullOriginFilter;if(brandSelect)brandSelect.value="";document.querySelectorAll("[data-full-origin-filter]").forEach(item=>item.setAttribute("aria-pressed",String((item.dataset.fullOriginFilter==="Todos"?"":item.dataset.fullOriginFilter)===activeFullOriginFilter)));renderFullSizeProducts()}));
+ bindCatalogFilters("fullFiltersToggle","fullFiltersPanel");
 }
 function renderFullSizeProducts(){
- const brand = $("fullSizeBrandFilter")?.value || "";
- const sort = $("fullSizeSort")?.value || "featured";
- let items = FULL_SIZE_PRODUCTS.filter(p => (!activeFullOriginFilter || getProductOrigin(p) === activeFullOriginFilter) && (!brand || p.brand === brand));
- if (sort === "name") items.sort((a,b) => a.name.localeCompare(b.name,"pt-BR"));
- if (sort === "brand") items.sort((a,b) => a.brand.localeCompare(b.brand,"pt-BR") || a.name.localeCompare(b.name,"pt-BR"));
+ const brand=$("fullSizeBrandFilter")?.value||"";
+ const sort=$("fullSizeSort")?.value||"featured";
+ let items=FULL_SIZE_PRODUCTS.filter(p=>!brand||getBrandKey(p)===brand);
+ const priceForSort=p=>{
+  const first=Array.isArray(p.volumes)&&p.volumes.length?p.volumes[0]:p;
+  const value=first.price;
+  return Number.isFinite(value)?value:Number.POSITIVE_INFINITY;
+ };
+ if(sort==="price-asc")items.sort((a,b)=>priceForSort(a)-priceForSort(b)||a.name.localeCompare(b.name,"pt-BR"));
+ if(sort==="price-desc")items.sort((a,b)=>priceForSort(b)-priceForSort(a)||a.name.localeCompare(b.name,"pt-BR"));
  $("fullSizeProducts").innerHTML = items.map(p =>
    '<article class="product full-size-product">' +
    '<a class="product-detail-link" href="produto.html?v=20261113-9&id=' + encodeURIComponent(p.id) + '" aria-label="Ver detalhes de ' + escapeHTML(p.name) + '">' +
@@ -534,7 +550,7 @@ function renderFullSizeProducts(){
           '<div class="photo-fallback" style="' + (p.image ? 'display:none;' : '') + '"><div class="vial"></div></div>' +
          '</div>') +
      '<h3>' + escapeHTML(p.name) + '</h3>' +
-     '<div class="product-brand">' + escapeHTML(p.brand) + '</div>' +
+     '<div class="product-brand">' + escapeHTML(getBrandDisplay(p)) + '</div>' +
      '<span class="product-origin-tag">' + getProductOrigin(p) + '</span>' +
    '</a>' +
    (Array.isArray(p.volumes)&&p.volumes.length
@@ -556,7 +572,7 @@ function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":
 function addToCart(id){
  const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
  const key=id+"-"+v.ml; const existing=cart.find(x=>x.key===key);
- if(existing)existing.qty++;else cart.push({key,id,name:p.name,brand:p.brand,ml:v.ml,price:v.price,qty:1,category:"Decant"});
+ if(existing){existing.qty++;existing.image=existing.image||p.image;}else cart.push({key,id,name:p.name,brand:p.brand,image:p.image,ml:v.ml,price:v.price,qty:1,category:"Decant"});
  renderCart();showToast(p.name+" adicionado ao carrinho.");
 }
 function addFullSizeToCart(id){
@@ -564,7 +580,7 @@ function addFullSizeToCart(id){
  const select=document.querySelector('[data-full-volume="'+id+'"]'),v=getFullSizeVolume(p,Number(select?.value)||0);
  if(!Number.isFinite(v.price)){consultFullSize(id,v.ml);return;}
  const key=id+"-full-"+v.ml,existing=cart.find(x=>x.key===key);
- if(existing)existing.qty++;else cart.push({key,id,name:p.name,brand:p.brand,ml:v.ml,price:v.price,qty:1,category:"Frasco inteiro"});
+ if(existing){existing.qty++;existing.image=existing.image||p.image;}else cart.push({key,id,name:p.name,brand:p.brand,image:p.image,ml:v.ml,price:v.price,qty:1,category:"Frasco inteiro"});
  renderCart();showToast(p.name+" · "+v.ml+" ml adicionado ao carrinho.");
 }
 function changeQty(key,delta){const item=cart.find(x=>x.key===key);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.key!==key);renderCart()}
@@ -583,7 +599,7 @@ function renderCart(){
  $("goalCopy").innerHTML=reached?"<strong>Desconto liberado.</strong> Você economiza "+money(discount)+" neste pedido.":"Faltam "+money(goal-goalTotal)+" para liberar 10% de desconto.";
  $("cartTotal").textContent=allPriced?money(totalAfterDiscount):(total>0?money(totalAfterDiscount)+" + frascos a confirmar":"A confirmar");
  if(!cart.length){$("cartItems").innerHTML='<div class="empty">Seu carrinho está vazio.<br>Escolha uma fragrância para começar.</div>';return}
- $("cartItems").innerHTML=cart.map(x=>`<div class="cart-item"><div><strong>${escapeHTML(x.name)}</strong><small>${escapeHTML(x.brand)} · ${x.category?escapeHTML(x.category)+" · ":""}${escapeHTML(x.ml)} ml${Number.isFinite(x.price)?money(x.price)+" cada":"preço a confirmar"}</small><div class="item-controls"><button data-minus="${escapeHTML(x.key)}" aria-label="Diminuir quantidade">−</button><span>${escapeHTML(x.qty)}</span><button data-plus="${escapeHTML(x.key)}" aria-label="Aumentar quantidade">+</button></div></div><div style="text-align:right"><strong>${Number.isFinite(x.price)?money(x.price*x.qty):"A confirmar"}</strong><div class="item-controls"><button class="remove" data-remove="${escapeHTML(x.key)}">Remover</button></div></div></div>`).join("");
+ $("cartItems").innerHTML=cart.map(x=>`<div class="cart-item">${x.image?'<img class="cart-item-image" src="'+escapeHTML(x.image)+'" alt="" loading="lazy" onerror="this.hidden=true">':'<span class="cart-item-placeholder" aria-hidden="true">S</span>'}<div class="cart-item-main"><strong>${escapeHTML(x.name)}</strong><small>${escapeHTML(x.brand)} · ${x.category?escapeHTML(x.category)+" · ":""}${escapeHTML(x.ml)} ml</small><div class="item-controls"><button data-minus="${escapeHTML(x.key)}" aria-label="Diminuir quantidade">−</button><span>${escapeHTML(x.qty)}</span><button data-plus="${escapeHTML(x.key)}" aria-label="Aumentar quantidade">+</button></div><div class="item-controls"><button class="remove" data-remove="${escapeHTML(x.key)}">Remover</button></div></div><div class="cart-item-side"><strong>${Number.isFinite(x.price)?money(x.price*x.qty):"A confirmar"}</strong></div></div>`).join("");
  document.querySelectorAll("[data-minus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.minus,-1)));
  document.querySelectorAll("[data-plus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.plus,1)));
  document.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>removeItem(b.dataset.remove)));
@@ -637,7 +653,7 @@ $("checkout").addEventListener("click",checkout);
 setupFullSizeFilters();renderFullSizeProducts();renderCart();
 if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
 </script>
-<script src="search.js?v=20261115-9" defer></script>
-<script src="santino-ui.js?v=20261115-9" defer></script>
+<script src="search.js?v=20261116-1" defer></script>
+<script src="santino-ui.js?v=20261116-1" defer></script>
 </body>
 </html>
