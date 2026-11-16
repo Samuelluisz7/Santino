@@ -24,3 +24,22 @@ body.catalog-filters-open::before{content:"";position:fixed;inset:0;z-index:60;b
 @keyframes catalogBackdropEnter{from{opacity:0}to{opacity:1}}
 @media(max-width:720px){.catalog-filter-wrap{margin-bottom:15px}.catalog-filter-toggle{min-height:46px}.catalog-filter-panel{width:100%;max-height:84vh;max-height:84dvh;padding:18px 16px calc(18px + env(safe-area-inset-bottom))}.catalog-filter-panel-head strong{font-size:21px}.catalog-filter-price{gap:9px}.catalog-filter-price input{font-size:16px}}
 @media(prefers-reduced-motion:reduce){.catalog-filter-toggle,.catalog-filter-close,.catalog-filter-clear,.catalog-filter-panel{transition:none}.catalog-filter-panel.is-open{transform:translate(-50%,0)}.catalog-filter-panel,.catalog-filter-toggle{animation:none}}
+
+/* Seletor de marcas SANTINO — visual próprio, sem janela nativa do sistema */
+.catalog-brand-picker{display:flex;flex-direction:column;gap:7px;position:relative}
+.catalog-brand-label{color:#c9b18b;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.catalog-brand-native{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;clip-path:inset(50%)!important;white-space:nowrap!important;opacity:0!important;pointer-events:none!important}
+.catalog-brand-trigger{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:48px;padding:11px 13px;border:1px solid #66543b;border-radius:4px;background:#11110f;color:#f3eadb;text-align:left;font-size:14px;cursor:pointer;transition:border-color .18s ease,background .18s ease}
+.catalog-brand-trigger[aria-expanded="true"]{border-color:#c9b18b;background:#201d18}
+.catalog-brand-chevron{color:#c9b18b;font-size:19px;transition:transform .18s ease}
+.catalog-brand-trigger[aria-expanded="true"] .catalog-brand-chevron{transform:rotate(180deg)}
+.catalog-brand-options{display:flex;flex-direction:column;max-height:220px;overflow-y:auto;overscroll-behavior:contain;border:1px solid #51432f;border-radius:4px;background:#171613;box-shadow:0 12px 28px #0008;animation:brandOptionsIn .16s ease both}
+.catalog-brand-options[hidden]{display:none!important}
+.catalog-brand-option{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:42px;padding:10px 13px;border:0;border-bottom:1px solid #302b24;background:transparent;color:#d9d0c3;text-align:left;font-size:13px;cursor:pointer}
+.catalog-brand-option:last-child{border-bottom:0}
+.catalog-brand-option::after{content:"";width:9px;height:9px;flex:0 0 auto;border:1px solid #80725d;border-radius:50%}
+.catalog-brand-option.is-selected{background:#292319;color:#e5cda6}
+.catalog-brand-option.is-selected::after{border:3px solid #c9b18b;background:#171613}
+.catalog-brand-option:active{background:#332b1e}
+@keyframes brandOptionsIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.catalog-brand-trigger,.catalog-brand-chevron{transition:none}.catalog-brand-options{animation:none}}
