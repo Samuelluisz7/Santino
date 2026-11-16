@@ -29,7 +29,7 @@ test("homepage displays exactly the approved four asymmetric recommendations", a
   const expected = [
     ["Homem Sagaz", "produto.html?id=homem-sagaz"],
     ["K Max", "produto.html?id=k-max"],
-    ["Clash", "produto.html?id=clash"],
+    ["Nautica Voyage", "produto.html?id=nautica-voyage"],
     ["The Kingdom", "produto.html?id=kingdom"],
   ];
   const cards = [...home.matchAll(/<a class="recommended-card [^"]+" href="([^"]+)">([\s\S]*?)<\/a>/g)];
