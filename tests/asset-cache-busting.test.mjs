@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const ASSET_VERSION = "20261116-8";
+const ASSET_VERSION = "20261116-6";
 
 test("all local styles and scripts use the current cache version", async () => {
   const pages = (await readdir(ROOT)).filter((file) => file.toLowerCase().endsWith(".html"));
@@ -26,7 +26,7 @@ test("all local styles and scripts use the current cache version", async () => {
     assert.ok(assets.length > 0, `${page} references local CSS or JavaScript`);
     for (const { url } of assets) {
       const parsed = new URL(url, "https://santino.invalid");
-      const expectedVersion = parsed.pathname.endsWith("/catalog-filters.css") ? "20261116-8" : ASSET_VERSION;
+      const expectedVersion = parsed.pathname.endsWith("/catalog-filters.css") ? "20261116-8" : parsed.pathname.endsWith("/decant-scene.css") ? "20261116-1" : ASSET_VERSION;
       assert.equal(
         parsed.searchParams.get("v"),
         expectedVersion,
