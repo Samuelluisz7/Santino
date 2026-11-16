@@ -1616,8 +1616,8 @@ function addToCart(){
    return;
   }
   const key=product.id+"-full-"+selectedFullVolume.ml,item=cart.find(x=>x.key===key);
-  if(item)item.qty=(Number(item.qty)||0)+1;
-  else cart.push({key,id:product.id,name:product.name,brand:product.brand,ml:selectedFullVolume.ml,price:selectedFullVolume.price,qty:1,category:"Frasco inteiro"});
+  if(item){item.qty=(Number(item.qty)||0)+1;item.image=item.image||product.image;}
+  else cart.push({key,id:product.id,name:product.name,brand:product.brand,image:product.image,ml:selectedFullVolume.ml,price:selectedFullVolume.price,qty:1,category:"Frasco inteiro"});
   try{localStorage.setItem("santino_nobre_cart",JSON.stringify(cart))}catch(e){}
   $("cartCount").textContent=cart.reduce((sum,x)=>sum+(Number(x.qty)||0),0);
   $("toast").textContent=product.name+" adicionado ao carrinho.";
@@ -1628,8 +1628,8 @@ function addToCart(){
   return;
  }
  const amount=Math.max(1,Math.min(10,Number($("quantitySelect").value)||1)),ml=currentVolume.ml,price=currentVolume.price,key=product.id+"-"+ml,item=cart.find(x=>x.key===key);
- if(item)item.qty=(Number(item.qty)||0)+amount;
- else cart.push({key,id:product.id,name:product.name,brand:product.brand,ml,price,qty:amount,category:"Decant"});
+ if(item){item.qty=(Number(item.qty)||0)+amount;item.image=item.image||product.image;}
+ else cart.push({key,id:product.id,name:product.name,brand:product.brand,image:product.image,ml,price,qty:amount,category:"Decant"});
  try{localStorage.setItem("santino_nobre_cart",JSON.stringify(cart))}catch(e){}
  $("cartCount").textContent=cart.reduce((sum,x)=>sum+(Number(x.qty)||0),0);
  $("toast").textContent=amount+" unidade(s) de "+product.name+" adicionada(s) ao carrinho.";
