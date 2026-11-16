@@ -5,7 +5,8 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const ASSET_VERSION = "20261116-6";
+const ASSET_VERSION = "20261116-5";
+const CATALOG_FILTERS_VERSION = "20261116-6";
 
 test("all local styles and scripts use the current cache version", async () => {
   const pages = (await readdir(ROOT)).filter((file) => file.toLowerCase().endsWith(".html"));
@@ -28,7 +29,7 @@ test("all local styles and scripts use the current cache version", async () => {
       const parsed = new URL(url, "https://santino.invalid");
       assert.equal(
         parsed.searchParams.get("v"),
-        ASSET_VERSION,
+        parsed.pathname.endsWith("/catalog-filters.css") ? CATALOG_FILTERS_VERSION : ASSET_VERSION,
         `${page} cache-busts ${parsed.pathname} with the current release`,
       );
     }
