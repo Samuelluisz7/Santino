@@ -1631,3 +1631,117 @@ body:not(.home-page) .bottom-note {
 @media(prefers-reduced-motion:reduce){
  .santino-cart-pulse{animation:none}
 }
+
+
+/* Carrinho lateral compartilhado nas páginas sem carrinho nativo */
+.santino-global-cart{
+ position:fixed;inset:0;z-index:1200;visibility:hidden;pointer-events:none;
+ transition:visibility .25s ease;
+}
+.santino-global-cart.is-open{visibility:visible;pointer-events:auto}
+.santino-global-cart-backdrop{
+ position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;
+ background:#000b;opacity:0;cursor:default;transition:opacity .25s ease;
+}
+.santino-global-cart.is-open .santino-global-cart-backdrop{opacity:1}
+.santino-global-cart-panel{
+ position:absolute;top:0;right:0;display:flex;flex-direction:column;
+ width:min(470px,100%);height:100%;height:100dvh;overflow:hidden;
+ padding:clamp(17px,3vw,25px);
+ border-left:1px solid #554735;background:#171613;color:#f3eadb;
+ box-shadow:-18px 0 55px #0007;
+ transform:translateX(102%);transition:transform .3s cubic-bezier(.2,.7,.2,1);
+}
+.santino-global-cart.is-open .santino-global-cart-panel{transform:translateX(0)}
+.santino-global-cart-head{
+ display:flex;align-items:center;justify-content:space-between;gap:15px;
+ padding-bottom:16px;border-bottom:1px solid #39342d;
+}
+.santino-global-cart-kicker{
+ display:block;margin-bottom:5px;color:#c9b18b;font-size:9px;
+ font-weight:700;letter-spacing:.2em;
+}
+.santino-global-cart-head h2{
+ margin:0;color:#f3eadb;font:400 27px/1.1 Georgia,"Times New Roman",serif;
+}
+.santino-global-cart-close{
+ display:grid;place-items:center;width:40px;height:40px;border:1px solid #514737;
+ background:transparent;color:#e4d6c1;font-size:24px;cursor:pointer;
+}
+.santino-global-cart-goal{
+ margin:14px 0 2px;padding:12px;border:1px solid #4c4132;background:#1c1914;
+}
+.santino-global-cart-goal p{margin:0 0 9px;color:#d9c6a9;font-size:11px;line-height:1.5}
+.santino-global-cart-track{height:6px;overflow:hidden;background:#39342d}
+.santino-global-cart-track span{display:block;width:0;height:100%;background:#c9b18b;transition:width .2s ease}
+.santino-global-cart-goal-meta{display:flex;justify-content:space-between;gap:10px;margin-top:7px;color:#aa9c87;font-size:10px}
+.santino-global-cart-items{flex:1;min-height:0;overflow:auto;padding:6px 0 14px}
+.santino-global-cart-empty{
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ min-height:230px;color:#b9ad9c;text-align:center;
+}
+.santino-global-cart-empty>span{margin-bottom:13px;color:#c9b18b;font-size:28px}
+.santino-global-cart-empty strong{color:#eee4d4;font:400 20px/1.2 Georgia,"Times New Roman",serif}
+.santino-global-cart-empty p{max-width:230px;margin:8px 0 0;font-size:12px;line-height:1.5}
+.santino-global-cart-item{
+ display:grid;grid-template-columns:64px minmax(0,1fr) auto;align-items:start;
+ gap:11px;padding:14px 0;border-bottom:1px solid #39342d;
+}
+.santino-global-cart-item>img,.santino-global-cart-placeholder{
+ display:grid;place-items:center;width:64px;height:72px;object-fit:contain;
+ padding:5px;background:#eee9df;color:#78664b;
+}
+.santino-global-cart-placeholder{font:700 24px/1 Georgia,"Times New Roman",serif}
+.santino-global-cart-product{min-width:0}
+.santino-global-cart-product>strong{
+ display:block;color:#f3eadb;font-size:13px;font-weight:600;line-height:1.35;
+}
+.santino-global-cart-product>small{
+ display:block;margin-top:4px;color:#b4a898;font-size:10px;line-height:1.4;
+}
+.santino-global-cart-actions{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:9px}
+.santino-global-cart-actions button{
+ min-width:27px;min-height:27px;padding:3px 7px;border:1px solid #52483a;
+ background:transparent;color:#e6d9c6;font-size:12px;cursor:pointer;
+}
+.santino-global-cart-actions button:last-child{margin-left:4px;color:#d6b8a0}
+.santino-global-cart-actions span{min-width:16px;color:#f3eadb;font-size:12px;text-align:center}
+.santino-global-cart-item-price{max-width:92px;color:#e4d3b7;font-size:11px;line-height:1.4;text-align:right}
+.santino-global-cart-footer{padding-top:14px;border-top:1px solid #514737}
+.santino-global-cart-summary>div{
+ display:flex;justify-content:space-between;gap:12px;margin:0 0 8px;
+ color:#baaf9f;font-size:12px;
+}
+.santino-global-cart-summary strong{color:#eee4d4;font-weight:600;text-align:right}
+.santino-global-cart-summary .santino-global-cart-total{
+ margin-top:12px;padding-top:12px;border-top:1px solid #39342d;
+ color:#f3eadb;font-size:16px;
+}
+.santino-global-cart-summary .santino-global-cart-total strong{color:#e7d0ad;font-size:20px}
+.santino-global-cart-summary>p{margin:6px 0 12px;color:#c5b89f;font-size:10px;line-height:1.45}
+.santino-global-cart-checkout{
+ width:100%;min-height:48px;padding:13px 15px;border:1px solid #c9b18b;
+ background:#c9b18b;color:#171512;font-size:12px;font-weight:700;cursor:pointer;
+}
+.santino-global-cart-checkout:hover{background:#dfcba9}
+.santino-global-cart-note{margin:10px 0 0;color:#a99e8e;font-size:10px;line-height:1.5}
+.santino-global-cart-toast{
+ position:fixed;z-index:1300;left:50%;bottom:22px;max-width:90%;
+ padding:11px 16px;background:#eee7db;color:#171512;font-size:12px;
+ box-shadow:0 8px 25px #0008;opacity:0;transform:translate(-50%,10px);
+ pointer-events:none;transition:opacity .2s ease,transform .2s ease;
+}
+.santino-global-cart-toast.is-visible{opacity:1;transform:translate(-50%,0)}
+@media(max-width:520px){
+ .santino-global-cart-panel{width:100%;padding:16px 14px calc(14px + env(safe-area-inset-bottom));border-left:0}
+ .santino-global-cart-item{grid-template-columns:56px minmax(0,1fr) auto;gap:9px}
+ .santino-global-cart-item>img,.santino-global-cart-placeholder{width:56px;height:66px}
+ .santino-global-cart-item-price{max-width:70px;font-size:10px}
+ .santino-global-cart-head h2{font-size:24px}
+}
+@media(prefers-reduced-motion:reduce){
+ .santino-global-cart,.santino-global-cart-backdrop,.santino-global-cart-panel,
+ .santino-global-cart-track span,.santino-global-cart-toast{transition:none}
+ .santino-global-cart-panel{transform:none;opacity:0}
+ .santino-global-cart.is-open .santino-global-cart-panel{opacity:1}
+}
