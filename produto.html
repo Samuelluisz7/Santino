@@ -904,6 +904,10 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
 .note-data-pending{margin:10px 0 0;padding:12px;border:1px dashed #68543a;background:#15130f;color:#c5b79e;font-size:11px;line-height:1.55}
 .detail-note-pending-inline{grid-column:1/-1;margin:2px 0;color:#a99b84;font-size:10px;line-height:1.45}
 
+
+/* Segurança visual: elementos exclusivos de decants nunca aparecem em frascos inteiros. */
+#detailDecantVials[hidden],#detailDecantNotice[hidden]{display:none!important}
+body.full-size-mode #detailDecantVials,body.full-size-mode #detailDecantNotice{display:none!important}
 </style>
   <link rel="stylesheet" href="santino-ui.css?v=20261116-6">
 
@@ -1869,8 +1873,8 @@ $("backCatalog").href=isFull?"frascos.html#full-size-catalog":"decants.html#cata
 if(isFull){
  document.body.classList.add("full-size-mode");
  const fullPageDecantVials=$("detailDecantVials"),fullPageDecantNotice=$("detailDecantNotice");
- if(fullPageDecantVials)fullPageDecantVials.hidden=true;
- if(fullPageDecantNotice)fullPageDecantNotice.hidden=true;
+ if(fullPageDecantVials){fullPageDecantVials.hidden=true;fullPageDecantVials.style.setProperty("display","none","important");}
+ if(fullPageDecantNotice){fullPageDecantNotice.hidden=true;fullPageDecantNotice.style.setProperty("display","none","important");}
  $("quantitySelect").parentElement.style.display="none";
  const fullVolumes=Array.isArray(product.volumes)&&product.volumes.length?product.volumes:[{ml:product.ml,price:Number.isFinite(product.price)?product.price:null}];
  $("volumeControl").style.display=fullVolumes.length>1?"block":"none";
