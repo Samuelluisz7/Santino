@@ -16,7 +16,7 @@ test("both catalogs expose one collapsed Filtros control", async () => {
     assert.match(html, /Menor preço/);
     assert.match(html, /Maior preço/);
     assert.match(html, /aria-expanded="false"/);
-    assert.match(html, /catalog-filters\.css\?v=20261116-3/);
+    assert.match(html, /catalog-filters\.css\?v=20261116-4/);
   }
 });
 

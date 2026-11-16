@@ -5,12 +5,13 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const [home, refreshStyles, policies, decants, kits] = await Promise.all([
+const [home, refreshStyles, policies, decants, kits, sharedCart] = await Promise.all([
   readFile(path.join(ROOT, "index.html"), "utf8"),
   readFile(path.join(ROOT, "home-refresh.css"), "utf8"),
   readFile(path.join(ROOT, "politicas.html"), "utf8"),
   readFile(path.join(ROOT, "decants.html"), "utf8"),
   readFile(path.join(ROOT, "kits.html"), "utf8"),
+  readFile(path.join(ROOT, "santino-ui.js"), "utf8"),
 ]);
 
 test("homepage uses top navigation and one explore section without duplicated category shortcuts", () => {
@@ -52,8 +53,8 @@ test("homepage displays exactly the approved four asymmetric recommendations", a
 test("decant promotion explains the approved cumulative 10% rule", () => {
   assert.match(home, /10% OFF em decants/);
   assert.match(home, /A partir de R\$ 80 em decants, o desconto é calculado sobre todo o subtotal elegível/);
-  assert.match(decants, /goalTotal\*discountRate/);
-  assert.match(decants, /goalTotal>=goal/);
+  assert.match(sharedCart, /decantSubtotal >= 80 \? decantSubtotal \* 0\.10 : 0/);
+  assert.match(sharedCart, /category === "Decant"/);
 });
 
 test("benefits are accessible through a floating tab and terms remain explicit", () => {

@@ -389,3 +389,62 @@
 .home-full-bottle-actions a:hover{background:#dfcba9;border-color:#dfcba9;color:#171512}
 @media(max-width:520px){.home-full-bottle-hero{margin-top:22px}.home-full-bottle-hero img{aspect-ratio:1.35/1;object-position:center}.home-full-bottle-actions{grid-template-columns:1fr;gap:9px}.home-full-bottle-actions a{min-height:48px}}
 @media(prefers-reduced-motion:reduce){.home-full-bottle-actions a{transition:none}}
+
+
+/* Grade compacta de recomendações: quatro cards equilibrados, sem blocos gigantes. */
+.home-recommended{padding-bottom:38px}
+.home-recommended-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  align-items:stretch;
+}
+.recommended-card-sagaz,
+.recommended-card-kmax,
+.recommended-card-clash,
+.recommended-card-kingdom{
+  grid-column:span 1;
+  min-height:0;
+  margin-top:0;
+}
+.recommended-image{
+  flex:0 0 auto;
+  height:clamp(145px,19vw,205px);
+  min-height:0;
+}
+.recommended-card-kmax .recommended-image,
+.recommended-card-clash .recommended-image{min-height:0}
+.recommended-image img{
+  height:100%;
+  min-height:0;
+  max-height:none;
+  padding:12px;
+}
+.recommended-card-kmax .recommended-image img,
+.recommended-card-clash .recommended-image img{max-height:none}
+.recommended-meta{margin-top:11px}
+.recommended-card strong{font-size:clamp(18px,1.8vw,23px)}
+.recommended-action{margin-top:9px}
+@media(max-width:760px){
+  .home-recommended{padding-bottom:30px}
+  .home-recommended-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .recommended-card-sagaz,
+  .recommended-card-kmax,
+  .recommended-card-clash,
+  .recommended-card-kingdom{grid-column:span 1;min-height:0;margin-top:0}
+  .recommended-image,
+  .recommended-card-sagaz .recommended-image,
+  .recommended-card-kingdom .recommended-image{height:clamp(112px,30vw,150px);min-height:0}
+  .recommended-image img{padding:8px}
+  .recommended-card strong{font-size:clamp(17px,4vw,21px)}
+  .recommended-meta{margin:9px 0 4px;font-size:8px}
+  .recommended-action{margin-top:8px;font-size:10px}
+}
+@media(max-width:420px){
+  .home-recommended-grid{gap:8px}
+  .recommended-card{padding:8px}
+  .recommended-image,
+  .recommended-card-sagaz .recommended-image,
+  .recommended-card-kingdom .recommended-image{height:112px;min-height:0}
+  .recommended-image img{padding:6px}
+  .recommended-card strong{font-size:18px}
+}
