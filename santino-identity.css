@@ -1,0 +1,411 @@
+/* SANTINO — identidade visual transversal, aplicada após os estilos específicos.
+   Mantém o catálogo e os comportamentos existentes; altera somente apresentação. */
+:root {
+  --santino-ink: #151411;
+  --santino-ink-soft: #201d18;
+  --santino-paper: #f1ece3;
+  --santino-paper-raised: #faf7f1;
+  --santino-paper-muted: #e5ddd0;
+  --santino-paper-ink: #28251f;
+  --santino-paper-muted-ink: #6d665c;
+  --santino-gold: #b99a68;
+  --santino-gold-deep: #8a6b3e;
+  --santino-rule: rgba(185, 154, 104, .34);
+}
+
+html { background: var(--santino-ink); }
+body {
+  font-family: Inter, "Segoe UI", Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, .brand, .footer-brand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--santino-gold);
+  outline-offset: 3px;
+}
+
+/* Cabeçalho: mesma hierarquia, busca legível e navegação discreta. */
+header, .site-header {
+  background: rgba(18, 17, 14, .97);
+  border-bottom: 1px solid var(--santino-rule);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+}
+body:not(.home-page) header .nav {
+  display: grid;
+  grid-template-columns: minmax(145px, .85fr) minmax(175px, 230px) minmax(0, 1.5fr) auto;
+  align-items: center;
+  gap: 17px;
+  width: min(100%, 1240px);
+  padding: 15px 24px;
+}
+header .brand {
+  color: #f3eadb;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: .16em;
+}
+header .brand small {
+  color: var(--santino-gold);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  letter-spacing: .2em;
+}
+header .nav-links, header .catalog-nav, header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 1.5vw, 19px);
+}
+header .nav-links a, header .catalog-nav a, header nav a {
+  color: #c5bcad;
+  font-size: 12px;
+  text-decoration: none;
+  transition: color .18s ease;
+}
+header .nav-links a:hover, header .catalog-nav a:hover, header nav a:hover,
+header .nav-links a[aria-current="page"], header .catalog-nav a[aria-current="page"] {
+  color: #f5ecde;
+}
+header .cart-link, header .cart-button {
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid #5b4a31;
+  border-radius: 3px;
+  background: transparent;
+  color: #f3eadb;
+  font-size: 11px;
+}
+header .cart-count, header #cartCount {
+  background: var(--santino-gold);
+  color: #17140f;
+}
+.nav-search {
+  border-color: #4b4030;
+  background: #171613;
+}
+.nav-search input { color: #f3eadb; }
+.nav-search button { color: var(--santino-gold); }
+
+/* Home: alternância clara/escura para dar ritmo sem tirar o protagonismo dos frascos. */
+body.home-page .home-pathways {
+  width: 100%;
+  max-width: none;
+  padding: 28px max(24px, calc((100% - 1180px) / 2)) 30px;
+  border-top: 0;
+  border-bottom: 1px solid #ded5c7;
+  background: var(--santino-paper);
+  color: var(--santino-paper-ink);
+}
+body.home-page .home-pathways .home-category-heading h2,
+body.home-page .home-pathways .home-section-heading h2 {
+  color: var(--santino-paper-ink);
+}
+body.home-page .home-pathways .home-category-heading p { color: var(--santino-paper-muted-ink); }
+body.home-page .home-pathways .eyebrow { color: var(--santino-gold-deep); }
+body.home-page .home-pathway {
+  border: 1px solid #d7cbbc;
+  background: var(--santino-paper-raised);
+  color: var(--santino-paper-ink);
+  box-shadow: 0 5px 18px rgba(40, 34, 24, .045);
+}
+body.home-page .home-pathway strong { color: var(--santino-paper-ink); }
+body.home-page .home-pathway-kicker,
+body.home-page .home-pathway-action { color: var(--santino-gold-deep); }
+body.home-page .home-pathway::after { color: rgba(138, 107, 62, .08); }
+body.home-page .home-pathway:hover {
+  border-color: var(--santino-gold);
+  background: #fffdf8;
+}
+body.home-page .service-strip {
+  background: #151411;
+  border-block: 1px solid #393126;
+}
+body.home-page .home-featured {
+  width: 100%;
+  max-width: none;
+  padding: 35px max(24px, calc((100% - 1180px) / 2)) 42px;
+  background: var(--santino-paper);
+  color: var(--santino-paper-ink);
+}
+body.home-page .home-featured .home-section-heading h2 { color: var(--santino-paper-ink); }
+body.home-page .home-featured .eyebrow { color: var(--santino-gold-deep); }
+body.home-page .home-featured-intro p { color: var(--santino-paper-muted-ink); }
+body.home-page .home-featured-intro a { color: var(--santino-gold-deep); }
+body.home-page .home-product-card {
+  border-color: #d9d0c3;
+  background: var(--santino-paper-raised);
+  box-shadow: 0 5px 18px rgba(40, 34, 24, .05);
+}
+body.home-page .home-product-detail > strong { color: var(--santino-paper-ink); }
+body.home-page .home-product-brand,
+body.home-page .home-product-controls label { color: var(--santino-paper-muted-ink); }
+body.home-page .home-product-controls select {
+  border-color: #cfc3b2;
+  background: #fffdf8;
+  color: var(--santino-paper-ink);
+}
+body.home-page .home-product-price { color: var(--santino-paper-ink); }
+body.home-page .home-product-add {
+  border-color: var(--santino-gold-deep);
+  background: var(--santino-gold-deep);
+  color: #fffaf2;
+}
+body.home-page .home-product-add:hover { background: #72552f; }
+body.home-page .home-featured-status { color: var(--santino-gold-deep); }
+
+/* Banners editoriais: imagem de campanha/cenário; não substituem as fotos limpas dos produtos. */
+body.home-page .home-hero .hero-visual {
+  border: 1px solid rgba(185, 154, 104, .42);
+  background: #17130e;
+}
+body:not(.home-page) main > .hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(185, 154, 104, .36);
+  background-color: #17130e;
+  background-image:
+    linear-gradient(90deg, rgba(15, 14, 12, .94) 0%, rgba(15, 14, 12, .76) 42%, rgba(15, 14, 12, .22) 100%),
+    url("banner-home-original.webp");
+  background-position: center, center 55%;
+  background-size: cover;
+}
+body:not(.home-page) main > .hero:not(.redesigned-catalog-hero) {
+  background-image:
+    linear-gradient(90deg, rgba(15, 14, 12, .94) 0%, rgba(15, 14, 12, .72) 45%, rgba(15, 14, 12, .2) 100%),
+    url("banner-decants.webp");
+}
+body:not(.home-page) main > .hero .eyebrow { color: #d1b582; }
+body:not(.home-page) main > .hero h1 { color: #f7f0e5; }
+body:not(.home-page) main > .hero p { color: #d5cbbb; }
+
+/* Catálogos: superfície clara para comparar frascos, marcas, volumes e preços. */
+body:not(.home-page) .section:not(.faq-section),
+body:not(.home-page) .full-size-section {
+  width: min(100% - 36px, 1240px);
+  max-width: 1240px;
+  margin: 20px auto 28px;
+  padding: clamp(22px, 3.5vw, 38px);
+  border: 1px solid #ddd3c5;
+  border-radius: 5px;
+  background: var(--santino-paper);
+  color: var(--santino-paper-ink);
+}
+body:not(.home-page) .section:not(.faq-section) .eyebrow,
+body:not(.home-page) .full-size-section .eyebrow { color: var(--santino-gold-deep); }
+body:not(.home-page) .section:not(.faq-section) .section-head h2,
+body:not(.home-page) .full-size-section .section-head h2,
+body:not(.home-page) .section:not(.faq-section) .section-head p,
+body:not(.home-page) .full-size-section .section-head p { color: var(--santino-paper-ink); }
+body:not(.home-page) .section:not(.faq-section) .section-head p,
+body:not(.home-page) .full-size-section .section-head p { color: var(--santino-paper-muted-ink); }
+body:not(.home-page) .origin-filter,
+body:not(.home-page) .collection-controls {
+  border-color: #d6cbbb;
+  border-radius: 4px;
+  background: #e8e0d4;
+  color: var(--santino-paper-ink);
+}
+body:not(.home-page) .origin-filter-label,
+body:not(.home-page) .collection-controls label,
+body:not(.home-page) .collection-controls label span { color: var(--santino-paper-muted-ink); }
+body:not(.home-page) .origin-filter button,
+body:not(.home-page) .collection-controls select {
+  border-color: #cfc3b2;
+  border-radius: 3px;
+  background: #faf7f1;
+  color: var(--santino-paper-ink);
+}
+body:not(.home-page) .origin-filter button[aria-pressed="true"],
+body:not(.home-page) [data-full-origin-filter][aria-pressed="true"] {
+  border-color: #7e6035;
+  background: #7e6035;
+  color: #fffaf2;
+}
+body:not(.home-page) .products .product,
+body:not(.home-page) .kit-card,
+body:not(.home-page) .results .result-card {
+  border: 1px solid #d9d0c3;
+  border-radius: 4px;
+  background: var(--santino-paper-raised);
+  box-shadow: 0 5px 16px rgba(40, 34, 24, .055);
+  color: var(--santino-paper-ink);
+}
+body:not(.home-page) .products .product:hover,
+body:not(.home-page) .kit-card:hover,
+body:not(.home-page) .results .result-card:hover {
+  border-color: var(--santino-gold);
+  box-shadow: 0 9px 22px rgba(40, 34, 24, .09);
+}
+body:not(.home-page) .products .product-detail-link h3,
+body:not(.home-page) .products .product h3,
+body:not(.home-page) .kit-card h3,
+body:not(.home-page) .results .result-card h3 { color: var(--santino-paper-ink); }
+body:not(.home-page) .products .product-brand,
+body:not(.home-page) .products .product-brand-name,
+body:not(.home-page) .products .product-origin-tag,
+body:not(.home-page) .results .result-brand { color: var(--santino-paper-muted-ink); }
+body:not(.home-page) .products .product .add,
+body:not(.home-page) .products .product .btn,
+body:not(.home-page) .kit-add,
+body:not(.home-page) .page-search-row .btn {
+  border-color: #7e6035;
+  background: #7e6035;
+  color: #fffaf2;
+}
+body:not(.home-page) .products .product .add:hover,
+body:not(.home-page) .kit-add:hover,
+body:not(.home-page) .page-search-row .btn:hover { background: #6c502c; }
+
+/* Dúvidas, leitura e rodapé voltam ao fundo escuro para manter a alternância. */
+body:not(.home-page) .faq-section {
+  padding-top: 32px;
+  border-top: 1px solid var(--santino-rule);
+  color: #eee5d8;
+}
+body:not(.home-page) .faq-section .section-head h2 { color: #f3eadb; }
+body:not(.home-page) .faq-section .section-head p,
+body:not(.home-page) .faq-answer { color: #c5bbad; }
+body:not(.home-page) .faq-item { border-color: #453b2c; }
+body:not(.home-page) .faq-item summary { color: #f0e6d8; }
+
+/* Página de kits e busca: superfície editorial clara, mantendo os componentes funcionais. */
+body:not(.home-page) main > .intro { color: #c6bcad; }
+body:not(.home-page) .kit-grid {
+  padding: clamp(14px, 2.5vw, 24px);
+  border: 1px solid #d8cdbd;
+  border-radius: 5px;
+  background: var(--santino-paper);
+}
+body:not(.home-page) .kit-card { color: var(--santino-paper-ink); }
+body:not(.home-page) .bottom-note {
+  margin-top: 22px;
+  padding: 20px;
+  border: 1px solid #40372b;
+  border-radius: 4px;
+  background: #191713;
+  color: #c9bead;
+}
+body:not(.home-page) .page-search {
+  border-color: #d9d0c3;
+  border-radius: 4px;
+  background: var(--santino-paper);
+}
+body:not(.home-page) .page-search label { color: var(--santino-gold-deep); }
+body:not(.home-page) .page-search input {
+  border-color: #cfc3b2;
+  background: #fffdf8;
+  color: var(--santino-paper-ink);
+}
+body:not(.home-page) .results-head h2 { color: #f3eadb; }
+body:not(.home-page) .results .result-card { color: var(--santino-paper-ink); }
+body:not(.home-page) .results .result-type { color: var(--santino-gold-deep); }
+body:not(.home-page) .results .result-card .btn {
+  border-color: #7e6035;
+  background: #7e6035;
+  color: #fffaf2;
+}
+
+/* Detalhe do perfume: frasco neutro, compra escura e conteúdo em superfícies alternadas. */
+body.perfume-detail-page .product-layout {
+  border-color: #40372b;
+  border-radius: 5px;
+  background: #191713;
+}
+body.perfume-detail-page .summary {
+  border-color: #3b3328;
+  border-radius: 4px;
+  background: #11100e;
+}
+body.perfume-detail-page .content-section {
+  border-radius: 4px;
+  box-shadow: none;
+}
+body.perfume-detail-page .content-section:nth-of-type(2) {
+  border-color: #ddd3c5;
+  background: var(--santino-paper);
+  color: var(--santino-paper-ink);
+}
+body.perfume-detail-page .content-section:nth-of-type(2) h2,
+body.perfume-detail-page .content-section:nth-of-type(2) h3,
+body.perfume-detail-page .content-section:nth-of-type(2) p { color: var(--santino-paper-ink); }
+body.perfume-detail-page .content-section:nth-of-type(3) {
+  border-color: #40372b;
+  background: #191713;
+  color: #eee5d8;
+}
+body.perfume-detail-page .content-section:nth-of-type(3) h2,
+body.perfume-detail-page .content-section:nth-of-type(3) h3 { color: #f3eadb; }
+
+/* Políticas: leitura longa com alternância de cartões e contraste confortável. */
+body:not(.home-page) .policy {
+  margin: 18px 0;
+  padding: clamp(19px, 3vw, 28px);
+  border: 1px solid #40372b;
+  border-radius: 4px;
+  background: #191713;
+}
+body:not(.home-page) .policy:nth-of-type(odd) {
+  border-color: #ddd3c5;
+  background: var(--santino-paper);
+}
+body:not(.home-page) .policy:nth-of-type(odd) h2,
+body:not(.home-page) .policy:nth-of-type(odd) p,
+body:not(.home-page) .policy:nth-of-type(odd) strong { color: var(--santino-paper-ink); }
+body:not(.home-page) .policy:nth-of-type(odd) p { color: #5f594f; }
+body:not(.home-page) .policy:nth-of-type(even) h2 { color: #f3eadb; }
+body:not(.home-page) .policy:nth-of-type(even) p { color: #c5bbad; }
+body:not(.home-page) .policy a { color: var(--santino-gold-deep); }
+body:not(.home-page) footer,
+body.home-page footer {
+  border-top: 1px solid var(--santino-rule);
+  background: #10100e;
+  color: #bcb2a3;
+}
+footer .footer-links a, footer a { color: #d1b582; text-underline-offset: 3px; }
+footer .footer-brand, footer .brand { color: #f1e8da; }
+
+@media (max-width: 960px) {
+  body:not(.home-page) header .nav {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 9px 12px;
+    padding: 13px 16px 10px;
+  }
+  body:not(.home-page) header .nav .brand { grid-column: 1; grid-row: 1; }
+  body:not(.home-page) header .nav .cart-link,
+  body:not(.home-page) header .nav .cart-button { grid-column: 2; grid-row: 1; }
+  body:not(.home-page) header .nav .nav-search { grid-column: 1 / -1; grid-row: 2; max-width: none; }
+  body:not(.home-page) header .nav nav { grid-column: 1 / -1; grid-row: 3; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding: 2px 0 4px; }
+  body:not(.home-page) header .nav nav a { flex: 0 0 auto; }
+}
+@media (max-width: 720px) {
+  body.home-page .home-pathways { padding: 22px 15px 24px; }
+  body.home-page .home-featured { padding: 27px 15px 31px; }
+  body:not(.home-page) .section:not(.faq-section),
+  body:not(.home-page) .full-size-section {
+    width: calc(100% - 24px);
+    margin: 14px auto 21px;
+    padding: 18px 13px 23px;
+  }
+  body:not(.home-page) main > .hero {
+    width: calc(100% - 24px);
+    min-height: 210px;
+    margin: 12px auto 15px;
+    padding: 26px 18px;
+    background-position: center, 58% center;
+  }
+  body:not(.home-page) .kit-grid { padding: 10px; }
+  body:not(.home-page) .policy { padding: 18px 15px; }
+  body.perfume-detail-page .content-section:nth-of-type(2),
+  body.perfume-detail-page .content-section:nth-of-type(3) {
+    width: calc(100% - 24px);
+    margin-inline: auto;
+    padding: 20px 15px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
