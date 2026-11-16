@@ -1407,12 +1407,12 @@ body.quasar-ice-notes #olfactorySection .note-visual-bottle img{filter:none!impo
     </div>
    </div>
    <div class="note-facts note-performance-facts">
-    <div class="note-fact"><strong>Longevidade</strong><span id="longevityText">Não há avaliação confiável cadastrada.</span></div>
-    <div class="note-fact"><strong>Projeção</strong><span id="projectionText">Não há avaliação confiável cadastrada.</span></div>
-    <div class="note-fact"><strong>Período de uso</strong><span id="dayNightText">Não informado com segurança.</span></div>
-    <div class="note-fact"><strong>Estações</strong><span id="seasonsText">Não informado com segurança.</span></div>
-    <div class="note-fact"><strong>Clima e aplicação</strong><span id="climateText">Não informado com segurança.</span></div>
-    <div class="note-fact"><strong>Família olfativa</strong><span id="familyDetailText">Não informada.</span></div>
+    <div class="note-fact"><strong>Longevidade</strong><span id="longevityText"></span></div>
+    <div class="note-fact"><strong>Projeção</strong><span id="projectionText"></span></div>
+    <div class="note-fact"><strong>Período de uso</strong><span id="dayNightText"></span></div>
+    <div class="note-fact"><strong>Estações</strong><span id="seasonsText"></span></div>
+    <div class="note-fact"><strong>Clima e aplicação</strong><span id="climateText"></span></div>
+    <div class="note-fact"><strong>Família olfativa</strong><span id="familyDetailText"></span></div>
    </div>
   </section>
   <section class="content-section"><h2>Sobre esta fragrância</h2><p class="description" id="longDescription"></p></section>
@@ -1854,9 +1854,9 @@ else{
 const isQuasarIce=product.id.replace(/^full-/,"")==="quasar-ice";document.body.classList.toggle("quasar-ice-notes",isQuasarIce);const olfactorySection=$("olfactorySection");if(olfactorySection){olfactorySection.classList.toggle("quasar-ice-notes-active",isQuasarIce);if(isQuasarIce){olfactorySection.style.setProperty("background","#050505","important");olfactorySection.style.setProperty("color","#f2f2f2","important");const iceStyles=[[".content-heading h2","color","#f2f2f2"],[".content-heading p","color","#a7b9bf"],[".note-infographic","background","#050505"],[".note-infographic","border-color","#29373b"],[".note-visual-bottle","background","linear-gradient(145deg,#eef7fa,#dcecf1)"],[".note-visual-details","background","#050505"],[".note-graphic-head h3","color","#f1f1f1"],[".accord-title","color","#a8c4cc"],[".note-composition","border-top-color","#292929"],[".composition-row","border-bottom-color","#292929"],[".composition-row>strong","color","#a8c4cc"],[".note-pyramid .note-stage p","color","#d5e0e3"],[".note-fact","background","#050505"],[".note-fact","border-color","#292929"],[".note-fact strong","color","#a8c4cc"],[".note-fact span","color","#c4d0d3"]];iceStyles.forEach(([selector,property,value])=>olfactorySection.querySelectorAll(selector).forEach(el=>el.style.setProperty(property,value,"important")));}}
 document.title="SANTINO | "+product.name;$("crumbName").textContent=product.name;$("productName").textContent=product.name;$("productBrand").textContent=product.brand;$("categoryLabel").textContent=isFull?"Frasco inteiro":"Decant · "+product.tag;
 $("productMeta").textContent=isFull?(product.ml+" ml"):"Escolha o volume do seu decant";$("productDescription").textContent=story?story.intro:(product.description||"Uma fragrância para conhecer em detalhes.");$("longDescription").textContent=story?story.story:(product.description||"Explore o perfil olfativo desta fragrância e escolha o volume desejado.");if(story){
- $("climateText").textContent=story.climate||"Não informado com segurança.";
- $("dayNightText").textContent=info?.dayNight||"Não há classificação cadastrada.";
- $("seasonsText").textContent=info?.seasons||"Não há classificação cadastrada.";
+ $("climateText").textContent=story.climate||"";
+ $("dayNightText").textContent=info?.dayNight||"";
+ $("seasonsText").textContent=info?.seasons||"";
 }$("authenticityNote").textContent=product.toutiImage?"Produto vendido: Touti original · 50 ml. A fragrância de grife é apenas referência e não está incluída.":(isFull?"Frasco original · selo de originalidade SANTINO":"Fragrância original · decant com selo de originalidade SANTINO");
 $("highlightOccasion").textContent=story&&story.occasion?story.occasion:"Ocasião em validação";
 const previewStages=$("notePreviewStages");
@@ -1931,10 +1931,10 @@ if(info){
  $("familyText").textContent=info.family;
  $("familyDetailText").textContent=info.family;
  $("noteGraphName").textContent=product.name;
- $("longevityText").textContent=info.longevity||"Não há avaliação confiável cadastrada.";
- $("projectionText").textContent=info.projection||"Não há avaliação confiável cadastrada.";
- $("dayNightText").textContent=info.dayNight||"Não há classificação cadastrada.";
- $("seasonsText").textContent=info.seasons||"Não há classificação cadastrada.";
+ $("longevityText").textContent=info.longevity||"";
+ $("projectionText").textContent=info.projection||"";
+ $("dayNightText").textContent=info.dayNight||"";
+ $("seasonsText").textContent=info.seasons||"";
  const noteReferenceNotice=$("noteReferenceNotice");
  if(noteReferenceNotice&&info.referenceNotice){noteReferenceNotice.textContent=info.referenceNotice;noteReferenceNotice.hidden=false;}
  renderIngredientNotes("topNotes",info.top);
@@ -1952,7 +1952,7 @@ if(info){
  $("accordBars").innerHTML=accords.slice(0,10).map((label,index)=>'<div class="accord-row" style="--bar-width:'+(100-index*4.5)+'%;--bar-color:'+noteColor(label)+'"><span class="accord-bar-dot" aria-hidden="true"></span><span class="accord-bar-label">'+escapeHTML(label)+'</span></div>').join("");
 }else{
  $("familyText").textContent="Ficha olfativa em validação";
- $("familyDetailText").textContent="Não informada.";
+ $("familyDetailText").textContent="";
  $("noteGraphName").textContent=product.name;
  $("noteDataPending").hidden=false;
  $("accordTitle").hidden=true;
@@ -1964,6 +1964,9 @@ if(info){
  pendingBottle.src=product.image||"";
  if(pendingBottle.complete&&pendingBottle.naturalWidth===0){pendingBottle.hidden=true;$("noteBottleFallback").hidden=false;}
 }
+document.querySelectorAll(".note-facts .note-fact").forEach(fact=>{const value=fact.querySelector("span");fact.hidden=!value||!value.textContent.trim();});
+const noteFacts=document.querySelector(".note-performance-facts");
+if(noteFacts)noteFacts.hidden=!noteFacts.querySelector(".note-fact:not([hidden])");
 const saved=readCart();$("cartCount").textContent=saved.reduce((sum,item)=>sum+(Number(item.qty)||0),0);$("addButton").textContent=isFull?(Number.isFinite(product.price)?"Adicionar ao carrinho — "+money(product.price):"Consultar pelo WhatsApp"):"Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);$("addButton").addEventListener("click",addToCart);
 const stickyPurchase=window.SantinoStickyPurchase.init({
  bar:$("stickyPurchaseBar"),
