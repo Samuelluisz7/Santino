@@ -125,6 +125,8 @@
     window.setTimeout(function () { toast.classList.remove("is-visible"); }, 2200);
   }
 
+  window.SantinoCartToast = showGlobalCartToast;
+
   function renderGlobalCart() {
     if (!globalCartRoot) return;
     const items = readCartItems();
