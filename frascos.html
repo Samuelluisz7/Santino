@@ -437,6 +437,15 @@ const FULL_SIZE_PRODUCTS = [
 
 ];
 let cart = [];
+function syncCatalogCartFromStorage(){
+ try {
+  const saved=JSON.parse(localStorage.getItem("santino_nobre_cart")||"[]");
+  cart=Array.isArray(saved)?saved:[];
+ } catch(error) { cart=[]; }
+}
+syncCatalogCartFromStorage();
+window.addEventListener("santino:cart-updated",syncCatalogCartFromStorage);
+window.addEventListener("storage",function(event){if(event.key==="santino_nobre_cart")syncCatalogCartFromStorage();});
 
 const PRODUCT_IMAGE_FALLBACKS = {
  "homem-essence": ["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw03464062/Produtos/NATBRA-59847_2.jpg?q=80&sw=600", "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600"],
@@ -587,6 +596,7 @@ function changeQty(key,delta){const item=cart.find(x=>x.key===key);if(!item)retu
 function removeItem(key){cart=cart.filter(x=>x.key!==key);renderCart()}
 function renderCart(){
  try { localStorage.setItem("santino_nobre_cart", JSON.stringify(cart)); } catch (e) {}
+ window.dispatchEvent(new Event("santino:cart-updated"));
  $("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
  const allPriced=cart.length>0 && cart.every(x=>Number.isFinite(x.price));
  const total=cart.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
@@ -651,7 +661,7 @@ $("openCart").addEventListener("click",openCart);$("closeCart").addEventListener
 $("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
 $("checkout").addEventListener("click",checkout);
 setupFullSizeFilters();renderFullSizeProducts();renderCart();
-if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
+
 </script>
 <script src="search.js?v=20261116-1" defer></script>
 <script src="santino-ui.js?v=20261116-1" defer></script>
