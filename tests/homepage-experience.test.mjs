@@ -226,7 +226,7 @@ test("internal catalog surfaces use a dark background instead of pale panels", (
 });
 
 test("homepage loads the redesigned storefront presentation", () => {
-  assert.ok(home.includes("home-storefront.css?v=20261115-8"));
+  assert.ok(home.includes("home-storefront.css?v=20261115-9"));
   assert.ok(storefront.includes("min-height: clamp(370px, 42vw, 560px)"));
   assert.ok(storefront.includes("grid-template-columns: repeat(3, minmax(0,1fr))"));
   assert.ok(storefront.includes("aspect-ratio: 1 / 1"));
