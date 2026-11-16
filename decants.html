@@ -527,6 +527,13 @@ function renderCart(){
  const counter=$("cartCount");
  if(counter) counter.textContent=String(cart.reduce((sum,item)=>sum+(Number(item.qty)||0),0));
 }
+function showToast(message){
+ const toast=$("toast");
+ if(!toast)return;
+ toast.textContent=message;
+ toast.classList.add("is-visible");
+ window.setTimeout(()=>toast.classList.remove("is-visible"),2200);
+}
 setupDecantFilters();renderProducts();renderCart();
 
 </script>
