@@ -1405,7 +1405,7 @@ if(isFull){
   ?"Preço anunciado para a apresentação selecionada. A entrega local em Viçosa é combinada no atendimento."
   :"Para informações sobre esta fragrância e a apresentação selecionada, fale com a SANTINO pelo WhatsApp.";
 }
-else{$("volumeSelect").innerHTML=product.volumes.map((v,i)=>'<option value="'+i+'">'+v.ml+' ml</option>').join("");updatePrice();const decantVials=$("detailDecantVials"),decantNotice=$("detailDecantNotice");if(decantVials)decantVials.hidden=false;if(decantNotice){decantNotice.hidden=false;const refreshDecantNotice=()=>{decantNotice.textContent="PRODUTO VENDIDO · DECANT EM MINI FRASCO SANTINO · "+currentVolume.ml+" ML"};refreshDecantNotice();$("volumeSelect").addEventListener("change",refreshDecantNotice)}$("volumeSelect").addEventListener("change",()=>{currentVolume=product.volumes[Number($("volumeSelect").value)];updatePrice()})}
+else{$("volumeSelect").innerHTML=product.volumes.map((v,i)=>'<option value="'+i+'">'+v.ml+' ml</option>').join("");updatePrice();const decantVials=$("detailDecantVials"),decantNotice=$("detailDecantNotice");if(decantVials)decantVials.hidden=false;if(decantNotice){decantNotice.hidden=false;decantNotice.textContent="PRODUTO VENDIDO · DECANT EM MINI FRASCO SANTINO · "+currentVolume.ml+" ML"}$("volumeSelect").addEventListener("change",()=>{currentVolume=product.volumes[Number($("volumeSelect").value)];updatePrice();if(decantNotice)decantNotice.textContent="PRODUTO VENDIDO · DECANT EM MINI FRASCO SANTINO · "+currentVolume.ml+" ML"})}
 const baseGalleryId=product.id.replace(/^full-/,"");
 const extraGallery=EXTRA_GALLERY[product.id]||EXTRA_GALLERY[baseGalleryId]||[];
 gallery=[...new Set([product.image,...extraGallery.filter(src=>!ENGLISH_INFOGRAPHIC_URLS.has(src))].filter(Boolean))];
