@@ -306,7 +306,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <link rel="stylesheet" href="santino-ui.css?v=20261116-6">
 
   <link rel="stylesheet" href="santino-identity.css?v=20261116-6">
-  <link rel="stylesheet" href="catalog-filters.css?v=20261116-7">
+  <link rel="stylesheet" href="catalog-filters.css?v=20261116-8">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/frascos.html">
   <meta name="robots" content="index,follow">
@@ -343,7 +343,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
         <div class="catalog-filter-panel" id="fullFiltersPanel" role="dialog" aria-modal="true" aria-labelledby="fullFiltersTitle" hidden>
           <div class="catalog-filter-panel-head"><strong id="fullFiltersTitle">Filtrar frascos inteiros</strong><button class="catalog-filter-close" type="button" aria-label="Fechar filtros">×</button></div>
           <label for="fullSizeSort"><span>Ordenar por</span><select id="fullSizeSort"><option value="featured">Mais relevantes / mais vendidos</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option></select></label>
-          <label for="fullSizeBrandFilter"><span>Marca</span><select id="fullSizeBrandFilter"><option value="">Todas as marcas</option></select></label>
+          <div class="catalog-brand-picker"><span class="catalog-brand-label">Marca</span><button type="button" class="catalog-brand-trigger" id="fullSizeBrandTrigger" aria-expanded="false" aria-controls="fullSizeBrandOptions"><span id="fullSizeBrandCurrent">Todas as marcas</span><span class="catalog-brand-chevron" aria-hidden="true">⌄</span></button><div class="catalog-brand-options" id="fullSizeBrandOptions" role="listbox" aria-label="Selecionar marca" hidden></div><select id="fullSizeBrandFilter" class="catalog-brand-native" tabindex="-1" aria-hidden="true"><option value="">Todas as marcas</option></select></div>
           <div class="catalog-filter-price">
             <label for="fullSizePriceMin"><span>Preço mínimo (R$)</span><input id="fullSizePriceMin" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sem mínimo"></label>
             <label for="fullSizePriceMax"><span>Preço máximo (R$)</span><input id="fullSizePriceMax" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sem máximo"></label>
@@ -558,13 +558,22 @@ function bindCatalogFilters(toggleId,panelId,clearId,render){
   if(typeof render==="function")render();
  });
 }
+function setupCatalogBrandPicker(selectId,triggerId,currentId,optionsId,onChange){
+ const select=$(selectId),trigger=$(triggerId),current=$(currentId),options=$(optionsId);
+ if(!select||!trigger||!current||!options)return;
+ const renderOptions=()=>{options.innerHTML=[...select.options].map(option=>'<button type="button" class="catalog-brand-option'+(option.value===select.value?' is-selected':'')+'" role="option" aria-selected="'+(option.value===select.value)+'" data-value="'+escapeHTML(option.value)+'">'+escapeHTML(option.textContent)+'</button>').join("");};
+ renderOptions();
+ trigger.addEventListener("click",()=>{const opening=options.hidden;options.hidden=!opening;trigger.setAttribute("aria-expanded",String(opening));});
+ options.addEventListener("click",event=>{const option=event.target.closest(".catalog-brand-option");if(!option)return;select.value=option.dataset.value||"";current.textContent=select.selectedOptions[0]?.textContent||"Todas as marcas";options.hidden=true;trigger.setAttribute("aria-expanded","false");renderOptions();select.dispatchEvent(new Event("change",{bubbles:true}));onChange();});
+ select.addEventListener("change",()=>{current.textContent=select.selectedOptions[0]?.textContent||"Todas as marcas";renderOptions();});
+}
 function setupFullSizeFilters(){
  const brandSelect=$("fullSizeBrandFilter"),sortSelect=$("fullSizeSort");
  const minInput=$("fullSizePriceMin"),maxInput=$("fullSizePriceMax");
  if(brandSelect){
   const brands=[...new Set(FULL_SIZE_PRODUCTS.map(getBrandKey))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
   brandSelect.innerHTML='<option value="">Todas as marcas</option>'+brands.map(brand=>'<option value="'+escapeHTML(brand)+'">'+escapeHTML(brand)+'</option>').join("");
-  brandSelect.addEventListener("change",renderFullSizeProducts);
+  setupCatalogBrandPicker("fullSizeBrandFilter","fullSizeBrandTrigger","fullSizeBrandCurrent","fullSizeBrandOptions",renderFullSizeProducts);
  }
  if(sortSelect)sortSelect.addEventListener("change",renderFullSizeProducts);
  [minInput,maxInput].forEach(input=>input?.addEventListener("input",renderFullSizeProducts));
