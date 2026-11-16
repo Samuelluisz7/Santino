@@ -49,17 +49,6 @@
     }, { once: true });
     imageFrame.append(image, fallback);
 
-    const vialOverlay = document.createElement("img");
-    vialOverlay.className = "home-decant-vials";
-    vialOverlay.src = "decant-vials.svg?v=20261115-8";
-    vialOverlay.alt = "Mini frascos de decant SANTINO de 5 e 10 ml";
-    vialOverlay.loading = "lazy";
-    vialOverlay.decoding = "async";
-    const vialBadge = document.createElement("span");
-    vialBadge.className = "home-decant-badge";
-    vialBadge.textContent = "DECANT · 5 / 10 ML";
-    imageFrame.append(vialOverlay, vialBadge);
-
     const name = document.createElement("strong");
     name.textContent = product.name;
     const brand = document.createElement("span");
