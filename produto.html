@@ -905,7 +905,7 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
 .detail-note-pending-inline{grid-column:1/-1;margin:2px 0;color:#a99b84;font-size:10px;line-height:1.45}
 
 </style>
-  <link rel="stylesheet" href="santino-ui.css?v=20261116-4">
+  <link rel="stylesheet" href="santino-ui.css?v=20261116-5">
 
 <style id="santino-pyramid-finish">
 /* Acabamento final SANTINO: packshot maior + pirâmide olfativa legível */
@@ -1152,8 +1152,203 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
 
 </style>
 
-  <link rel="stylesheet" href="sticky-purchase.css?v=20261116-4">
-  <link rel="stylesheet" href="santino-identity.css?v=20261116-4">
+<style id="santino-pyramid-reference">
+/* Pirâmide SANTINO — reprodução do layout de referência: frasco à esquerda, acordes em barras e notas em três faixas. */
+#olfactorySection .note-infographic{
+  display:grid!important;
+  grid-template-columns:minmax(130px,.36fr) minmax(0,.64fr)!important;
+  gap:0!important;
+  background:#050505!important;
+  border:1px solid #292929!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+}
+#olfactorySection .note-visual-bottle{
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  min-width:0!important;
+  padding:16px 12px!important;
+  background:#050505!important;
+  border-right:1px solid #292929!important;
+}
+#olfactorySection .note-visual-bottle img{
+  display:block!important;
+  width:100%!important;
+  max-width:220px!important;
+  height:auto!important;
+  aspect-ratio:1/1!important;
+  object-fit:contain!important;
+  padding:6px!important;
+  background:#f7f7f4!important;
+  border:0!important;
+  border-radius:0!important;
+  filter:none!important;
+  transform:none!important;
+  mix-blend-mode:normal!important;
+  box-shadow:none!important;
+}
+#olfactorySection .note-visual-details{
+  min-width:0!important;
+  padding:18px 16px 16px!important;
+  background:#050505!important;
+}
+#olfactorySection .note-accords{
+  display:flex!important;
+  flex-direction:column!important;
+  flex-wrap:nowrap!important;
+  align-items:flex-start!important;
+  gap:7px!important;
+  margin:0 0 16px!important;
+}
+#olfactorySection .note-accords .accord-row{
+  display:flex!important;
+  align-items:center!important;
+  width:var(--bar-width,100%)!important;
+  min-width:0!important;
+  max-width:100%!important;
+  min-height:32px!important;
+  margin:0!important;
+  padding:0 11px!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:1px!important;
+  background:var(--bar-color,#8dc6d4)!important;
+  box-shadow:none!important;
+}
+#olfactorySection .note-accords .accord-bar-dot{display:none!important}
+#olfactorySection .note-accords .accord-bar-label{
+  display:block!important;
+  padding:5px 0!important;
+  color:#171717!important;
+  font:600 12px/1.3 Arial,Helvetica,sans-serif!important;
+  overflow-wrap:anywhere!important;
+}
+#olfactorySection .note-composition{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:7px!important;
+  width:100%!important;
+  margin:16px 0 0!important;
+  padding:15px 0 0!important;
+  border-top:1px solid #292929!important;
+}
+#olfactorySection .note-composition .composition-row{
+  display:grid!important;
+  grid-template-columns:75px minmax(0,1fr)!important;
+  align-items:center!important;
+  gap:8px!important;
+  width:100%!important;
+  min-width:0!important;
+  margin:0 auto!important;
+  padding:12px 10px!important;
+  border:1px solid #292929!important;
+  border-top:2px solid var(--pyramid-tone,#a99a83)!important;
+  border-radius:1px!important;
+  background:linear-gradient(180deg,#10100f,#080808)!important;
+  box-shadow:none!important;
+  text-align:left!important;
+  box-sizing:border-box!important;
+}
+#olfactorySection .note-composition .composition-row:nth-child(1){
+  width:82%!important;
+  --pyramid-tone:#87c7ac;
+  background:linear-gradient(180deg,#101714,#080808)!important;
+}
+#olfactorySection .note-composition .composition-row:nth-child(2){
+  width:92%!important;
+  --pyramid-tone:#8dc6d4;
+  background:linear-gradient(180deg,#101619,#080808)!important;
+}
+#olfactorySection .note-composition .composition-row:nth-child(3){
+  width:100%!important;
+  --pyramid-tone:#c4a28a;
+  background:linear-gradient(180deg,#18120e,#080808)!important;
+}
+#olfactorySection .note-composition .composition-row>strong{
+  display:block!important;
+  margin:0!important;
+  color:#aaa49b!important;
+  font:700 10px/1.35 Arial,Helvetica,sans-serif!important;
+  letter-spacing:.13em!important;
+  text-align:left!important;
+}
+#olfactorySection .note-composition .note-words{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:6px 10px!important;
+  width:100%!important;
+  min-width:0!important;
+}
+#olfactorySection .note-composition .note-word{
+  display:inline-flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:5px!important;
+  min-width:0!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  color:var(--note-color,#bbb)!important;
+  font:400 11px/1.5 Arial,Helvetica,sans-serif!important;
+  text-align:left!important;
+}
+#olfactorySection .note-composition .note-dot{
+  display:inline-block!important;
+  flex:0 0 8px!important;
+  width:8px!important;
+  height:8px!important;
+  border-radius:50%!important;
+  background:var(--note-color,#bbb)!important;
+}
+#olfactorySection .note-composition .note-name{
+  display:inline!important;
+  max-width:100%!important;
+  color:var(--note-color,#bbb)!important;
+  font-size:11px!important;
+  line-height:1.45!important;
+  overflow-wrap:anywhere!important;
+}
+#olfactorySection .note-image-credits{display:none!important}
+#olfactorySection .note-facts{grid-template-columns:1fr!important}
+body.quasar-ice-notes #olfactorySection .note-visual-bottle{background:#050505!important}
+body.quasar-ice-notes #olfactorySection .note-visual-bottle img{filter:none!important}
+@media(max-width:720px){
+  #olfactorySection .note-infographic{grid-template-columns:minmax(118px,.36fr) minmax(0,.64fr)!important}
+  #olfactorySection .note-visual-bottle{padding:12px 8px!important}
+  #olfactorySection .note-visual-bottle img{max-width:100%!important;padding:4px!important}
+  #olfactorySection .note-visual-details{padding:13px 10px!important}
+  #olfactorySection .note-graphic-head h3{font-size:21px!important}
+  #olfactorySection .note-accords{gap:6px!important;margin-bottom:12px!important}
+  #olfactorySection .note-accords .accord-row{min-height:28px!important;padding:0 8px!important}
+  #olfactorySection .note-accords .accord-bar-label{font-size:10px!important}
+  #olfactorySection .note-composition{gap:6px!important;margin-top:12px!important;padding-top:12px!important}
+  #olfactorySection .note-composition .composition-row{grid-template-columns:58px minmax(0,1fr)!important;gap:6px!important;padding:9px 7px!important}
+  #olfactorySection .note-composition .composition-row>strong{font-size:9px!important}
+  #olfactorySection .note-composition .note-words{gap:5px 7px!important}
+  #olfactorySection .note-composition .note-word,
+  #olfactorySection .note-composition .note-name{font-size:9px!important}
+  #olfactorySection .note-composition .note-dot{width:7px!important;height:7px!important;flex-basis:7px!important}
+}
+@media(max-width:390px){
+  #olfactorySection .note-infographic{grid-template-columns:minmax(105px,.34fr) minmax(0,.66fr)!important}
+  #olfactorySection .note-visual-details{padding:11px 8px!important}
+  #olfactorySection .note-graphic-head h3{font-size:18px!important}
+  #olfactorySection .note-composition .composition-row{grid-template-columns:51px minmax(0,1fr)!important;gap:5px!important;padding:8px 5px!important}
+  #olfactorySection .note-composition .composition-row>strong{font-size:8px!important}
+  #olfactorySection .note-composition .note-word,
+  #olfactorySection .note-composition .note-name{font-size:8px!important}
+}
+</style>
+
+  <link rel="stylesheet" href="sticky-purchase.css?v=20261116-5">
+  <link rel="stylesheet" href="santino-identity.css?v=20261116-5">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/produto.html">
   <meta name="robots" content="index,follow">
@@ -1227,7 +1422,7 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
  </filter>
 </svg>
 <div class="toast" id="toast" role="status"></div><footer>SANTINO · Decants &amp; Fragrâncias · <a href="politicas.html" style="color:var(--beige)">Políticas de compra</a></footer>
-<script src="sticky-purchase.js?v=20261116-4"></script>
+<script src="sticky-purchase.js?v=20261116-5"></script>
 <script>
 const CURRENCY=new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});function money(value){return CURRENCY.format(value)}function escapeHTML(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 const PRODUCTS = [
@@ -1641,18 +1836,9 @@ function renderNoteImageCredits(){
 function renderIngredientNotes(targetId,value){
  const target=document.getElementById(targetId);if(!target)return;
  const notes=splitNoteList(value);
- target.innerHTML=notes.map(note=>{
-  const photo=getNotePhoto(note);
-  const initial=escapeHTML(String(note).trim().charAt(0).toLocaleUpperCase("pt-BR"));
-  let picture;
-  if(photo){
-   NOTE_IMAGE_CREDITS_USED.set(photo.page,photo);
-   picture='<a class="note-image-shell" href="'+escapeHTML(photo.page)+'" target="_blank" rel="noopener noreferrer" aria-label="Ver origem da fotografia de '+escapeHTML(note)+'"><img class="note-photo" src="'+escapeHTML(photo.src)+'" alt="" loading="lazy" decoding="async"><span class="note-photo-fallback" hidden>'+initial+'</span></a>';
-  }else{
-   picture='<span class="note-image-shell note-image-placeholder"><span class="note-photo-fallback">'+initial+'</span></span>';
-  }
-  return '<span class="note-word" style="--note-color:'+noteColor(note)+'">'+picture+'<span class="note-name">'+escapeHTML(note)+'</span></span>';
- }).join("");
+ target.innerHTML=notes.map(note=>
+  '<span class="note-word" style="--note-color:'+noteColor(note)+'"><span class="note-dot" aria-hidden="true"></span><span class="note-name">'+escapeHTML(note)+'</span></span>'
+ ).join("");
 }
 
 const params=new URLSearchParams(window.location.search),requestedId=params.get("id")||"";
@@ -1833,7 +2019,7 @@ function addToCart(){
  button.textContent="Adicionado ao carrinho ✓";
  setTimeout(()=>{button.textContent=original;$("toast").style.display="none"},2000);
 }
-</script><script src="search.js?v=20261116-4" defer></script>
-<script src="santino-ui.js?v=20261116-4" defer></script>
+</script><script src="search.js?v=20261116-5" defer></script>
+<script src="santino-ui.js?v=20261116-5" defer></script>
 </body>
 </html>
