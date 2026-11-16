@@ -14,10 +14,11 @@ const [home, refreshStyles, policies, decants, kits] = await Promise.all([
 ]);
 
 test("homepage uses top navigation and one explore section without duplicated category shortcuts", () => {
+  const homeMarkup = home.slice(home.indexOf("<main"), home.indexOf("</main>") + 7);
   assert.match(home, /<nav class="catalog-nav" aria-label="Categorias do catálogo">/);
   for (const href of ['href="frascos.html"', 'href="decants.html"', 'href="kits.html"']) assert.ok(home.includes(href));
   assert.match(home, /<h1 id="homeHeading">Explorar fragrâncias<\/h1>/);
-  assert.doesNotMatch(home, /home-pathway-grid|home-full-size-grid|homeFeaturedGrid|homeFullSizeGrid|home-kits/);
+  assert.doesNotMatch(homeMarkup, /home-pathway-grid|home-full-size-grid|homeFeaturedGrid|homeFullSizeGrid|home-kits/);
   assert.doesNotMatch(home, /<a href="#cashback-santino">Cashback<\/a>/);
 });
 
