@@ -1682,6 +1682,9 @@ if(previewStages&&info){
 $("backCatalog").href=isFull?"frascos.html#full-size-catalog":"decants.html#catalog";$("cartLink").href=(isFull?"frascos.html":"decants.html")+"?openCart=1";
 if(isFull){
  document.body.classList.add("full-size-mode");
+ const fullPageDecantVials=$("detailDecantVials"),fullPageDecantNotice=$("detailDecantNotice");
+ if(fullPageDecantVials)fullPageDecantVials.hidden=true;
+ if(fullPageDecantNotice)fullPageDecantNotice.hidden=true;
  $("quantitySelect").parentElement.style.display="none";
  const fullVolumes=Array.isArray(product.volumes)&&product.volumes.length?product.volumes:[{ml:product.ml,price:Number.isFinite(product.price)?product.price:null}];
  $("volumeControl").style.display=fullVolumes.length>1?"block":"none";
@@ -1700,7 +1703,8 @@ if(isFull){
 }
 else{$("volumeSelect").innerHTML=product.volumes.map((v,i)=>'<option value="'+i+'">'+v.ml+' ml</option>').join("");updatePrice();const decantVials=$("detailDecantVials"),decantNotice=$("detailDecantNotice");if(decantVials)decantVials.hidden=false;if(decantNotice){decantNotice.hidden=false;decantNotice.textContent="PRODUTO VENDIDO · DECANT EM MINI FRASCO SANTINO · "+currentVolume.ml+" ML"}$("volumeSelect").addEventListener("change",()=>{currentVolume=product.volumes[Number($("volumeSelect").value)];updatePrice();if(decantNotice)decantNotice.textContent="PRODUTO VENDIDO · DECANT EM MINI FRASCO SANTINO · "+currentVolume.ml+" ML"})}
 const baseGalleryId=product.id.replace(/^full-/,"");
-const extraGallery=EXTRA_GALLERY[product.id]||EXTRA_GALLERY[baseGalleryId]||[];
+/* Frascos inteiros não herdam galerias de decants: elas podem conter montagens com mini frascos SANTINO. */
+const extraGallery=isFull?(EXTRA_GALLERY[product.id]||[]):(EXTRA_GALLERY[product.id]||EXTRA_GALLERY[baseGalleryId]||[]);
 gallery=[...new Set([product.image,...extraGallery.filter(src=>!ENGLISH_INFOGRAPHIC_URLS.has(src))].filter(Boolean))];
 if(product.toutiImage && product.referenceImage){
  const comparison=$("comparisonGallery");comparison.hidden=false;
