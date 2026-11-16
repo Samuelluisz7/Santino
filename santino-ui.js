@@ -52,6 +52,207 @@
     }
   }
 
+  function readCartItems() {
+    try {
+      const items = JSON.parse(window.localStorage.getItem("santino_nobre_cart") || "[]");
+      return Array.isArray(items) ? items : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function globalCartEscape(value) {
+    return String(value == null ? "" : value).replace(/[&<>"']/g, function (char) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char];
+    });
+  }
+
+  let globalCartRoot = null;
+  if (!document.getElementById("overlay") && document.querySelector(".cart-link, .cart-button")) {
+    globalCartRoot = document.createElement("div");
+    globalCartRoot.className = "santino-global-cart";
+    globalCartRoot.id = "santinoGlobalCart";
+    globalCartRoot.setAttribute("aria-hidden", "true");
+    globalCartRoot.innerHTML = `
+      <button class="santino-global-cart-backdrop" type="button" data-global-cart-close aria-label="Fechar carrinho"></button>
+      <section class="santino-global-cart-panel" role="dialog" aria-modal="true" aria-labelledby="santinoGlobalCartTitle" tabindex="-1">
+        <header class="santino-global-cart-head">
+          <div><span class="santino-global-cart-kicker">SANTINO</span><h2 id="santinoGlobalCartTitle">Seu carrinho</h2></div>
+          <button class="santino-global-cart-close" type="button" data-global-cart-close aria-label="Fechar carrinho">×</button>
+        </header>
+        <div class="santino-global-cart-goal" id="santinoGlobalCartGoal" hidden>
+          <p id="santinoGlobalCartGoalCopy"></p><div class="santino-global-cart-track"><span id="santinoGlobalCartGoalFill"></span></div>
+          <div class="santino-global-cart-goal-meta"><span id="santinoGlobalCartGoalValue"></span><span>Meta: R$ 80,00</span></div>
+        </div>
+        <div class="santino-global-cart-items" id="santinoGlobalCartItems"></div>
+        <footer class="santino-global-cart-footer">
+          <div class="santino-global-cart-summary">
+            <div><span>Subtotal</span><strong id="santinoGlobalCartSubtotal"></strong></div>
+            <div id="santinoGlobalCartDiscountRow" hidden><span>Desconto nos decants</span><strong id="santinoGlobalCartDiscount"></strong></div>
+            <div class="santino-global-cart-total"><span>Total</span><strong id="santinoGlobalCartTotal"></strong></div>
+            <p id="santinoGlobalCartPending" hidden></p>
+          </div>
+          <button class="santino-global-cart-checkout" type="button" id="santinoGlobalCartCheckout">Confirmar pedido pelo WhatsApp</button>
+          <p class="santino-global-cart-note">O pedido será conferido pela SANTINO. Frete e produtos com preço sob consulta são confirmados antes do pagamento.</p>
+        </footer>
+      </section>`;
+    document.body.appendChild(globalCartRoot);
+  }
+
+  function globalCartMoney(value) {
+    return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(value);
+  }
+
+  function saveGlobalCart(items) {
+    try { window.localStorage.setItem("santino_nobre_cart", JSON.stringify(items)); }
+    catch (error) { showGlobalCartToast("Não foi possível atualizar o carrinho neste navegador."); }
+    updateCartCounters();
+    window.dispatchEvent(new Event("santino:cart-updated"));
+    renderGlobalCart();
+  }
+
+  function showGlobalCartToast(message) {
+    let toast = document.querySelector(".santino-global-cart-toast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.className = "santino-global-cart-toast";
+      toast.setAttribute("role", "status");
+      toast.setAttribute("aria-live", "polite");
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    window.setTimeout(function () { toast.classList.remove("is-visible"); }, 2200);
+  }
+
+  function renderGlobalCart() {
+    if (!globalCartRoot) return;
+    const items = readCartItems();
+    const knownSubtotal = items.reduce(function (sum, item) {
+      return sum + (typeof item.price === "number" && Number.isFinite(item.price) ? item.price * (Number(item.qty) || 0) : 0);
+    }, 0);
+    const pendingItems = items.filter(function (item) {
+      return !(typeof item.price === "number" && Number.isFinite(item.price));
+    }).reduce(function (sum, item) { return sum + (Number(item.qty) || 0); }, 0);
+    const decantSubtotal = items.reduce(function (sum, item) {
+      return sum + (item.category === "Decant" && typeof item.price === "number" && Number.isFinite(item.price) ? item.price * (Number(item.qty) || 0) : 0);
+    }, 0);
+    const discount = decantSubtotal >= 80 ? decantSubtotal * 0.10 : 0;
+    const total = knownSubtotal - discount;
+    const goal = globalCartRoot.querySelector("#santinoGlobalCartGoal");
+    goal.hidden = !items.some(function (item) { return item.category === "Decant" && typeof item.price === "number" && Number.isFinite(item.price); });
+    if (!goal.hidden) {
+      globalCartRoot.querySelector("#santinoGlobalCartGoalCopy").textContent = discount > 0
+        ? "Desconto de 10% liberado para seus decants. Você economiza " + globalCartMoney(discount) + "."
+        : "Faltam " + globalCartMoney(Math.max(0, 80 - decantSubtotal)) + " em decants para liberar 10% de desconto.";
+      globalCartRoot.querySelector("#santinoGlobalCartGoalFill").style.width = Math.min(100, decantSubtotal / 80 * 100) + "%";
+      globalCartRoot.querySelector("#santinoGlobalCartGoalValue").textContent = globalCartMoney(decantSubtotal);
+    }
+    globalCartRoot.querySelector("#santinoGlobalCartSubtotal").textContent = globalCartMoney(knownSubtotal);
+    globalCartRoot.querySelector("#santinoGlobalCartDiscountRow").hidden = discount <= 0;
+    globalCartRoot.querySelector("#santinoGlobalCartDiscount").textContent = "−" + globalCartMoney(discount);
+    globalCartRoot.querySelector("#santinoGlobalCartTotal").textContent = globalCartMoney(total) + (pendingItems ? " + consulta" : "");
+    const pending = globalCartRoot.querySelector("#santinoGlobalCartPending");
+    pending.hidden = pendingItems === 0;
+    pending.textContent = pendingItems ? pendingItems + " item(ns) aguardam confirmação de preço." : "";
+    const list = globalCartRoot.querySelector("#santinoGlobalCartItems");
+    if (!items.length) {
+      list.innerHTML = '<div class="santino-global-cart-empty"><span aria-hidden="true">✦</span><strong>Seu carrinho está vazio.</strong><p>Explore as fragrâncias e escolha por onde começar.</p></div>';
+      return;
+    }
+    list.innerHTML = items.map(function (item) {
+      const key = globalCartEscape(item.key);
+      const qty = Math.max(1, Number(item.qty) || 1);
+      const itemPrice = typeof item.price === "number" && Number.isFinite(item.price) ? globalCartMoney(item.price * qty) : "A confirmar";
+      const image = typeof item.image === "string" && /^https:\/\//i.test(item.image)
+        ? '<img src="' + globalCartEscape(item.image) + '" alt="" loading="lazy" onerror="this.hidden=true">'
+        : '<span class="santino-global-cart-placeholder" aria-hidden="true">S</span>';
+      return '<article class="santino-global-cart-item">' + image +
+        '<div class="santino-global-cart-product"><strong>' + globalCartEscape(item.name) + '</strong>' +
+        '<small>' + globalCartEscape(item.brand) + ' · ' + globalCartEscape(item.category || "Produto") + ' · ' + globalCartEscape(item.ml) + ' ml</small>' +
+        '<div class="santino-global-cart-actions"><button type="button" data-global-cart-minus="' + key + '" aria-label="Diminuir quantidade">−</button><span>' + qty + '</span><button type="button" data-global-cart-plus="' + key + '" aria-label="Aumentar quantidade">＋</button><button type="button" data-global-cart-remove="' + key + '">Remover</button></div></div>' +
+        '<strong class="santino-global-cart-item-price">' + itemPrice + '</strong></article>';
+    }).join("");
+  }
+
+  function openGlobalCart() {
+    if (!globalCartRoot) return;
+    renderGlobalCart();
+    globalCartRoot.classList.add("is-open");
+    globalCartRoot.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    const closeButton = globalCartRoot.querySelector(".santino-global-cart-close");
+    if (closeButton) closeButton.focus();
+  }
+
+  function closeGlobalCart() {
+    if (!globalCartRoot) return;
+    globalCartRoot.classList.remove("is-open");
+    globalCartRoot.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  function updateGlobalCartItem(key, action) {
+    const items = readCartItems();
+    const item = items.find(function (entry) { return String(entry.key) === key; });
+    if (!item) return;
+    if (action === "remove") {
+      saveGlobalCart(items.filter(function (entry) { return String(entry.key) !== key; }));
+      return;
+    }
+    item.qty = (Number(item.qty) || 0) + (action === "plus" ? 1 : -1);
+    saveGlobalCart(items.filter(function (entry) { return (Number(entry.qty) || 0) > 0; }));
+  }
+
+  function checkoutGlobalCart() {
+    const items = readCartItems();
+    if (!items.length) { showGlobalCartToast("Adicione ao menos um produto ao carrinho."); return; }
+    const decantSubtotal = items.reduce(function (sum, item) {
+      return sum + (item.category === "Decant" && typeof item.price === "number" && Number.isFinite(item.price) ? item.price * (Number(item.qty) || 0) : 0);
+    }, 0);
+    const discount = decantSubtotal >= 80 ? decantSubtotal * 0.10 : 0;
+    const knownSubtotal = items.reduce(function (sum, item) {
+      return sum + (typeof item.price === "number" && Number.isFinite(item.price) ? item.price * (Number(item.qty) || 0) : 0);
+    }, 0);
+    const lines = items.map(function (item) {
+      return "• " + item.name + " — " + item.ml + " ml ×" + item.qty + " — " +
+        (typeof item.price === "number" && Number.isFinite(item.price) ? globalCartMoney(item.price * item.qty) : "preço a confirmar");
+    });
+    const summary = [
+      "Subtotal conhecido: " + globalCartMoney(knownSubtotal),
+      "Desconto nos decants: " + (discount > 0 ? "−" + globalCartMoney(discount) : "não aplicado"),
+      "Total parcial: " + globalCartMoney(knownSubtotal - discount),
+      "Frete: a confirmar"
+    ];
+    const message = ["Gostaria de confirmar este pedido:", "", lines.join("\n"), "", summary.join("\n"), "", "Pode confirmar a disponibilidade e a entrega?"].join("\n");
+    window.open("https://wa.me/5531996312579?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
+  }
+
+  if (globalCartRoot) {
+    globalCartRoot.addEventListener("click", function (event) {
+      if (event.target.closest("[data-global-cart-close]")) { closeGlobalCart(); return; }
+      const minus = event.target.closest("[data-global-cart-minus]");
+      const plus = event.target.closest("[data-global-cart-plus]");
+      const remove = event.target.closest("[data-global-cart-remove]");
+      if (minus) updateGlobalCartItem(minus.dataset.globalCartMinus, "minus");
+      if (plus) updateGlobalCartItem(plus.dataset.globalCartPlus, "plus");
+      if (remove) updateGlobalCartItem(remove.dataset.globalCartRemove, "remove");
+    });
+    globalCartRoot.querySelector("#santinoGlobalCartCheckout").addEventListener("click", checkoutGlobalCart);
+    document.addEventListener("click", function (event) {
+      const trigger = event.target.closest("a.cart-link, button.cart-link, [data-santino-open-cart]");
+      if (!trigger) return;
+      event.preventDefault();
+      openGlobalCart();
+    }, true);
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && globalCartRoot.classList.contains("is-open")) closeGlobalCart();
+    });
+    window.addEventListener("storage", function () { updateCartCounters(); renderGlobalCart(); });
+    window.addEventListener("santino:cart-updated", function () { updateCartCounters(); renderGlobalCart(); });
+    renderGlobalCart();
+  }
+
   function productImageFor(button) {
     const card = button.closest(".product, .home-product-card, .kit-card, article");
     const cardImage = card && card.querySelector(".product-art img.product-photo:not([hidden]), .product-art img:not([hidden])");
@@ -121,8 +322,10 @@
     if (before === null || !imageUrl) return;
     window.setTimeout(function () {
       const after = readCartCount();
+      updateCartCounters();
+      renderGlobalCart();
       if (after !== null && after > before) animateProductToCart(imageUrl, button);
-    }, 30);
+    }, 45);
   }, true);
 
   document.querySelectorAll('label.quantity-label').forEach(function (label) {
