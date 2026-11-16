@@ -177,11 +177,12 @@ function addKit(id){
   const p=products[productId],choice=selected(kit.id,productId);
   if(choice.qty<1||choice.qty>5||![5,10].includes(choice.ml))return;
   const key=productId+"-"+choice.ml,existing=cart.find(item=>item.key===key);
-  if(existing){existing.qty=(Number(existing.qty)||0)+choice.qty;}
-  else{cart.push({key:key,id:productId,name:p.name,brand:p.brand,ml:choice.ml,price:choice.price,qty:choice.qty,category:"Decant"});}
+  if(existing){existing.qty=(Number(existing.qty)||0)+choice.qty;existing.image=existing.image||p.image;}
+  else{cart.push({key:key,id:productId,name:p.name,brand:p.brand,image:p.image,ml:choice.ml,price:choice.price,qty:choice.qty,category:"Decant"});}
  });
  try{localStorage.setItem(CART_KEY,JSON.stringify(cart));}catch(e){alert("Não foi possível salvar os itens deste combo neste navegador. Tente novamente.");return;}
- window.location.href="decants.html?openCart=1";
+ window.dispatchEvent(new Event("santino:cart-updated"));
+  if(window.SantinoCartToast)window.SantinoCartToast("Kit adicionado ao carrinho.");
 }
 function renderCartCount(){const c=readCart().reduce((sum,item)=>sum+(Number(item.qty)||0),0);document.getElementById("cartCount").textContent=String(c)}
 render();renderCartCount();
