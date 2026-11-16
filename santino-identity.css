@@ -409,3 +409,150 @@ footer .footer-brand, footer .brand { color: #f1e8da; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+
+/* SANTINO — direção final: preto predominante, dourado somente como acento. */
+:root {
+  --santino-ink: #090909;
+  --santino-ink-soft: #111111;
+  --santino-paper: #101010;
+  --santino-paper-raised: #171717;
+  --santino-paper-muted: #202020;
+  --santino-paper-ink: #f1eee8;
+  --santino-paper-muted-ink: #aaa49a;
+  --santino-gold: #b89a68;
+  --santino-gold-deep: #a88958;
+  --santino-rule: rgba(184, 154, 104, .22);
+}
+html, body { background: #090909 !important; color: #eeeae2; }
+body.home-page .home-pathways,
+body.home-page .home-featured,
+body:not(.home-page) .section:not(.faq-section),
+body:not(.home-page) .full-size-section,
+body:not(.home-page) .kit-grid,
+body:not(.home-page) .page-search,
+body:not(.home-page) .origin-filter,
+body:not(.home-page) .collection-controls {
+  background: #101010 !important;
+  color: #eeeae2 !important;
+  border-color: #29251f !important;
+}
+body.home-page .home-pathways .home-category-heading h2,
+body.home-page .home-featured .home-section-heading h2,
+body:not(.home-page) .section:not(.faq-section) .section-head h2,
+body:not(.home-page) .full-size-section .section-head h2,
+body:not(.home-page) .section:not(.faq-section) .section-head p,
+body:not(.home-page) .full-size-section .section-head p,
+body:not(.home-page) .origin-filter-label,
+body:not(.home-page) .collection-controls label,
+body:not(.home-page) .collection-controls label span,
+body:not(.home-page) .products .product-detail-link h3,
+body:not(.home-page) .products .product h3,
+body:not(.home-page) .kit-card h3,
+body:not(.home-page) .results .result-card h3 {
+  color: #eeeae2 !important;
+}
+body.home-page .home-pathway,
+body.home-page .home-product-card,
+body:not(.home-page) .products .product,
+body:not(.home-page) .kit-card,
+body:not(.home-page) .results .result-card {
+  background: #151515 !important;
+  border-color: #302c26 !important;
+  color: #eeeae2 !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.22) !important;
+}
+body.home-page .home-pathway strong,
+body.home-page .home-product-detail > strong { color: #f1eee8 !important; }
+body.home-page .home-pathway:hover,
+body.home-page .home-product-card:hover,
+body:not(.home-page) .products .product:hover,
+body:not(.home-page) .kit-card:hover,
+body:not(.home-page) .results .result-card:hover {
+  border-color: rgba(184,154,104,.58) !important;
+  background: #191816 !important;
+}
+body.home-page .home-pathway-kicker,
+body.home-page .home-pathway-action,
+body.home-page .eyebrow,
+body:not(.home-page) .section:not(.faq-section) .eyebrow,
+body:not(.home-page) .full-size-section .eyebrow {
+  color: #b89a68 !important;
+}
+body.home-page .home-featured-intro p,
+body.home-page .home-product-brand,
+body.home-page .home-product-controls label,
+body:not(.home-page) .products .product-brand,
+body:not(.home-page) .products .product-brand-name,
+body:not(.home-page) .products .product-origin-tag,
+body:not(.home-page) .results .result-brand {
+  color: #aaa49a !important;
+}
+body.home-page .home-product-controls select,
+body:not(.home-page) .origin-filter button,
+body:not(.home-page) .collection-controls select,
+body:not(.home-page) .page-search input {
+  background: #0d0d0d !important;
+  border-color: #38332b !important;
+  color: #eeeae2 !important;
+}
+body.home-page .home-product-add,
+body:not(.home-page) .products .product .add,
+body:not(.home-page) .products .product .btn,
+body:not(.home-page) .kit-add,
+body:not(.home-page) .page-search-row .btn {
+  background: #b89a68 !important;
+  border-color: #b89a68 !important;
+  color: #111 !important;
+}
+body.home-page .home-product-add:hover,
+body:not(.home-page) .products .product .add:hover,
+body:not(.home-page) .kit-add:hover,
+body:not(.home-page) .page-search-row .btn:hover {
+  background: #c8aa78 !important;
+}
+body.home-page .home-pathway::after { color: rgba(184,154,104,.035) !important; }
+body:not(.home-page) .faq-section,
+body:not(.home-page) .faq-section .section-head h2,
+body:not(.home-page) .faq-item summary,
+body:not(.home-page) .policy,
+body:not(.home-page) .policy:nth-of-type(odd),
+body:not(.home-page) .policy:nth-of-type(even) {
+  background: #101010 !important;
+  color: #eeeae2 !important;
+  border-color: #29251f !important;
+}
+body:not(.home-page) .policy:nth-of-type(odd) h2,
+body:not(.home-page) .policy:nth-of-type(odd) p,
+body:not(.home-page) .policy:nth-of-type(odd) strong,
+body:not(.home-page) .policy:nth-of-type(even) h2,
+body:not(.home-page) .policy:nth-of-type(even) p,
+body:not(.home-page) .faq-section .section-head p,
+body:not(.home-page) .faq-answer {
+  color: #c2bbb0 !important;
+}
+body:not(.home-page) .policy a,
+body:not(.home-page) .results .result-type { color: #b89a68 !important; }
+body.perfume-detail-page .content-section:nth-of-type(2),
+body.perfume-detail-page .content-section:nth-of-type(3) {
+  background: #111 !important;
+  color: #eeeae2 !important;
+  border-color: #29251f !important;
+}
+body.perfume-detail-page .content-section:nth-of-type(2) h2,
+body.perfume-detail-page .content-section:nth-of-type(2) h3,
+body.perfume-detail-page .content-section:nth-of-type(2) p,
+body.perfume-detail-page .content-section:nth-of-type(3) h2,
+body.perfume-detail-page .content-section:nth-of-type(3) h3 {
+  color: #eeeae2 !important;
+}
+header, .site-header, footer {
+  background: #080808 !important;
+  border-color: #29251f !important;
+}
+footer, footer .footer-brand { color: #aaa49a !important; }
+footer a, footer .footer-links a { color: #b89a68 !important; }
+@media (max-width: 720px) {
+  body.home-page .home-pathways,
+  body.home-page .home-featured { padding-inline: 15px; }
+}
