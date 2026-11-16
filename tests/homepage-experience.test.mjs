@@ -55,7 +55,11 @@ test("decant promotion explains the approved cumulative 10% rule", () => {
 });
 
 test("benefits are accessible through a floating tab and terms remain explicit", () => {
-  assert.match(home, /class="home-benefits-float" href="#beneficios"/);
+  assert.match(home, /class="home-benefits-float" id="homeBenefitsTrigger" type="button"/);
+  assert.match(home, /id="homeBenefitsDialog" hidden/);
+  const mainMarkup = home.slice(home.indexOf("<main"), home.indexOf("</main>") + 7);
+  assert.doesNotMatch(mainMarkup, /class="home-benefits"/);
+  assert.match(home, /role="dialog" aria-modal="true" aria-labelledby="benefitsHeading"/);
   assert.match(home, /id="beneficios"/);
   assert.match(home, /5% do valor efetivamente pago pelos produtos/);
   assert.match(home, /depois dos descontos/);
