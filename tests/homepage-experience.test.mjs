@@ -6,11 +6,13 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const [home, featured, styles, storefront, decants, kits, policies] = await Promise.all([
+const [home, featured, fullSizeFeatured, styles, storefront, identity, decants, kits, policies] = await Promise.all([
   readFile(path.join(ROOT, "index.html"), "utf8"),
   readFile(path.join(ROOT, "home-featured.js"), "utf8"),
+  readFile(path.join(ROOT, "home-full-size.js"), "utf8"),
   readFile(path.join(ROOT, "santino-ui.css"), "utf8"),
   readFile(path.join(ROOT, "home-storefront.css"), "utf8"),
+  readFile(path.join(ROOT, "santino-identity.css"), "utf8"),
   readFile(path.join(ROOT, "decants.html"), "utf8"),
   readFile(path.join(ROOT, "kits.html"), "utf8"),
   readFile(path.join(ROOT, "politicas.html"), "utf8"),
@@ -184,28 +186,49 @@ test("homepage follows the reference structure without unverified popularity cla
   assert.match(styles, /@media \(max-width: 720px\)/);
   assert.match(styles, /prefers-reduced-motion/);
 });
-test("homepage places purchase assurances before featured products and offers", () => {
+test("homepage orders full bottles before decants and places one sale banner between them", () => {
   const hero = home.indexOf('<section class="hero home-hero"');
   const categories = home.indexOf('<section class="home-pathways"');
-  const products = home.indexOf('<section class="home-featured"');
-  const trust = home.indexOf('<section class="service-strip"');
-  const offers = home.indexOf('<section class="promo-grid"');
+  const fullSize = home.indexOf('<section class="home-full-size"');
+  const sale = home.indexOf('<section class="home-sale-banner"');
+  const decants = home.indexOf('<section class="home-featured"');
+  const kits = home.indexOf('<section class="home-kits"');
   assert.ok(hero >= 0 && hero < categories);
-  assert.ok(categories < trust && trust < products && products < offers);
-  assert.match(home, /Descubra seu próximo perfume, começando pelo decant\./);
-  assert.match(home, /<nav class="home-pathway-grid" aria-label="Comprar por categoria">/);
-  assert.match(home, /href="decants\.html"[\s\S]*?<strong>Decants<\/strong>/);
-  assert.match(home, /href="frascos\.html"[\s\S]*?<strong>Frascos inteiros<\/strong>/);
-  assert.match(home, /href="kits\.html"[\s\S]*?<strong>Kits<\/strong>/);
-  assert.match(styles, /min-height: 420px/);
-  assert.match(styles, /grid-auto-columns: minmax\(190px, 77%\)/);
+  assert.ok(categories < fullSize && fullSize < sale && sale < decants && decants < kits);
+  assert.match(home, /Sua próxima fragrância começa aqui/);
+  assert.match(home, /home-full-size\.js/);
+  assert.match(home, /id="homeFullSizeGrid"/);
+  assert.match(home, /home-featured\.js/);
+  assert.match(home, /10% OFF em decants/);
+  assert.equal((home.match(/10% OFF em decants/g) || []).length, 1);
+  assert.doesNotMatch(home, /site-promo-banner|promo-grid|welcomeOffer|Bem-vindo\(a\) à SANTINO/);
+  assert.match(home, /href="frascos\.html"/);
+  assert.match(home, /href="decants\.html"/);
+  assert.match(home, /href="kits\.html"/);
+  assert.match(fullSizeFeatured, /category: "Frasco inteiro"/);
+  assert.match(fullSizeFeatured, /homeFullSizeGrid/);
 });
 
+test("decant product imagery discloses the miniature bottle actually sold", () => {
+  assert.match(home, /Imagem do perfume de referência/);
+  assert.match(home, /mini frasco SANTINO/);
+  assert.match(featured, /decant-vials\.svg/);
+  assert.match(featured, /home-decant-badge/);
+  assert.match(decants, /decant-vial-overlay/);
+  assert.match(decants, /decant-photo-badge/);
+  assert.match(decants, /mini frasco SANTINO/);
+  assert.match(identity, /\.decant-product-art \.decant-vial-overlay/);
+});
+
+test("internal catalog surfaces use a dark background instead of pale panels", () => {
+  assert.match(identity, /body:not\(\.home-page\) main > \.section[\s\S]*?background-color: #101010 !important/);
+  assert.match(identity, /body:not\(\.home-page\) \.products \.product-art[\s\S]*?background: #111 !important/);
+});
 
 test("homepage loads the redesigned storefront presentation", () => {
-  assert.ok(home.includes("home-storefront.css?v=20261115-7"));
-  assert.ok(storefront.includes("min-height: clamp(540px, 55vw, 710px)"));
-  assert.ok(storefront.includes("grid-template-columns: repeat(3, minmax(0, 1fr))"));
+  assert.ok(home.includes("home-storefront.css?v=20261115-8"));
+  assert.ok(storefront.includes("min-height: clamp(370px, 42vw, 560px)"));
+  assert.ok(storefront.includes("grid-template-columns: repeat(3, minmax(0,1fr))"));
   assert.ok(storefront.includes("aspect-ratio: 1 / 1"));
   assert.ok(storefront.includes("@media (max-width: 720px)"));
   assert.ok(storefront.includes("@media (prefers-reduced-motion: reduce)"));
