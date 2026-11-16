@@ -292,9 +292,13 @@ footer{border-top:1px solid var(--line);padding:24px 15px;text-align:center;colo
 
   results.innerHTML = matches.map(function(product){
     const detailUrl = "produto.html?id=" + encodeURIComponent(product.id);
+    const isDecant = product.category === "Decant";
     const imageFrame = product.image
-      ? '<span class="result-image"><img data-search-image src="' + escapeHTML(product.image) + '" alt="Frasco de ' + escapeHTML(product.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="result-image-fallback" aria-hidden="true">SANTINO</span></span>'
-      : '<span class="result-image is-missing"><span class="result-image-fallback" aria-hidden="true">SANTINO</span></span>';
+      ? '<span class="result-image' + (isDecant ? ' result-image-decant' : '') + '"><img data-search-image src="' + escapeHTML(product.image) + '" alt="' + (isDecant ? 'Imagem de referência de ' : 'Frasco inteiro de ') + escapeHTML(product.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="result-image-fallback" aria-hidden="true">SANTINO</span>' +
+        (isDecant ? '<img class="result-decant-vials" src="decant-vials.svg?v=20261115-8" alt="Mini frascos SANTINO de 5 e 10 ml"><span class="result-decant-badge">PRODUTO VENDIDO · DECANT</span>' : '') +
+        '</span>'
+      : '<span class="result-image is-missing"><span class="result-image-fallback" aria-hidden="true">SANTINO</span>' +
+        (isDecant ? '<span class="result-decant-badge">PRODUTO VENDIDO · DECANT</span>' : '') + '</span>';
     return '<article class="result-card">' +
       '<a class="result-image-link" href="' + detailUrl + '" aria-label="Ver detalhes de ' + escapeHTML(product.name) + '">' + imageFrame + '</a>' +
       '<div class="result-type">' + escapeHTML(product.category) + '</div>' +
