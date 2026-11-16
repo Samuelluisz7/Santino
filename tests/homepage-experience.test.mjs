@@ -92,3 +92,9 @@ test("homepage uses readable responsive styling and reduced-motion support", () 
   assert.match(refreshStyles, /@media\(max-width:420px\)/);
   assert.match(refreshStyles, /prefers-reduced-motion:reduce/);
 });
+
+
+test("homepage perfume banner is compact on mobile while keeping the full-bottle-first sequence", () => {
+  assert.match(refreshStyles, /\.home-full-bottle-hero img\{aspect-ratio:16\/8\.2!important;max-height:185px!important/);
+  assert.ok(home.indexOf('class="home-full-bottle-hero"') < home.indexOf('id="homeFeaturedGrid"'));
+});
