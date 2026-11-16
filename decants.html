@@ -279,7 +279,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <link rel="stylesheet" href="santino-ui.css?v=20261116-5">
 
   <link rel="stylesheet" href="santino-identity.css?v=20261116-5">
-  <link rel="stylesheet" href="catalog-filters.css?v=20261116-5">
+  <link rel="stylesheet" href="catalog-filters.css?v=20261116-6">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/decants.html">
   <meta name="robots" content="index,follow">
@@ -294,7 +294,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 <body>
 <header><div class="nav">
   <a class="brand brand-home" href="index.html">SANTINO<small>DECANTS & FRAGRÂNCIAS</small></a>
-  <form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a><a href="kits.html">Kits</a></nav>
+  <form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="index.html">Início</a><a href="frascos.html">Frascos inteiros</a><a href="decants.html" aria-current="page">Decants</a><a href="kits.html">Kits</a></nav>
   <button class="cart-button" id="openCart" aria-label="Abrir carrinho">Carrinho <span id="cartCount">0</span></button>
 </div></header>
 <main>
@@ -309,9 +309,15 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
     <div class="section-head"><div><div class="eyebrow">Explore a coleção</div><h2>Escolha sua fragrância</h2><p>5 ou 10 ml · 10% OFF automático em pedidos de decants a partir de R$ 80 · Entrega local em Viçosa combinada pelo WhatsApp.</p></div></div>
     <div class="catalog-filter-wrap">
       <button class="catalog-filter-toggle" type="button" id="decantFiltersToggle" aria-expanded="false" aria-controls="decantFiltersPanel">Filtros <span aria-hidden="true">＋</span></button>
-      <div class="catalog-filter-panel" id="decantFiltersPanel" hidden>
+      <div class="catalog-filter-panel" id="decantFiltersPanel" role="dialog" aria-modal="true" aria-labelledby="decantFiltersTitle" hidden>
+        <div class="catalog-filter-panel-head"><strong id="decantFiltersTitle">Filtrar decants</strong><button class="catalog-filter-close" type="button" aria-label="Fechar filtros">×</button></div>
+        <label for="decantSort"><span>Ordenar por</span><select id="decantSort"><option value="featured">Mais relevantes / mais vendidos</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option></select></label>
         <label for="decantBrandFilter"><span>Marca</span><select id="decantBrandFilter"><option value="">Todas as marcas</option></select></label>
-        <label for="decantSort"><span>Ordenar por</span><select id="decantSort"><option value="featured">Mais relevantes</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option></select></label>
+        <div class="catalog-filter-price">
+          <label for="decantPriceMin"><span>Preço mínimo (R$)</span><input id="decantPriceMin" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sem mínimo"></label>
+          <label for="decantPriceMax"><span>Preço máximo (R$)</span><input id="decantPriceMax" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sem máximo"></label>
+        </div>
+        <div class="catalog-filter-actions"><button class="catalog-filter-clear" id="decantFiltersClear" type="button">Limpar filtros</button></div>
       </div>
     </div>
     <div class="products" id="products"></div>
@@ -438,31 +444,83 @@ function getBrandKey(product){return /natura/i.test(String(product.brand||""))?"
 function getBrandDisplay(product){return String(product.brand||"").trim()==="Natura Kaiak"?"Natura · Kaiak":String(product.brand||"").trim()}
 function setupDecantFilters(){
  const brandSelect=$("decantBrandFilter"),sortSelect=$("decantSort");
+ const minInput=$("decantPriceMin"),maxInput=$("decantPriceMax");
  if(brandSelect){
   const brands=[...new Set(PRODUCTS.map(getBrandKey))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
   brandSelect.innerHTML='<option value="">Todas as marcas</option>'+brands.map(brand=>'<option value="'+escapeHTML(brand)+'">'+escapeHTML(brand)+'</option>').join("");
   brandSelect.addEventListener("change",renderProducts);
  }
  if(sortSelect)sortSelect.addEventListener("change",renderProducts);
- bindCatalogFilters("decantFiltersToggle","decantFiltersPanel");
+ [minInput,maxInput].forEach(input=>input?.addEventListener("input",renderProducts));
+ bindCatalogFilters("decantFiltersToggle","decantFiltersPanel","decantFiltersClear",renderProducts);
 }
-function bindCatalogFilters(toggleId,panelId){
- const toggle=$(toggleId),panel=$(panelId);
+function bindCatalogFilters(toggleId,panelId,clearId,render){
+ const toggle=$(toggleId),panel=$(panelId),clear=$(clearId);
  if(!toggle||!panel)return;
- toggle.addEventListener("click",()=>{
-  const opening=panel.hidden;
-  panel.hidden=!opening;
-  toggle.setAttribute("aria-expanded",String(opening));
+ const closeButton=panel.querySelector(".catalog-filter-close");
+ let transitionToken=0;
+ function open(){
+  transitionToken++;
+  panel.hidden=false;
+  document.body.classList.add("catalog-filters-open");
+  toggle.setAttribute("aria-expanded","true");
   const mark=toggle.querySelector("span");
-  if(mark)mark.textContent=opening?"－":"＋";
+  if(mark)mark.textContent="−";
+  window.requestAnimationFrame(()=>panel.classList.add("is-open"));
+  window.setTimeout(()=>closeButton?.focus({preventScroll:true}),50);
+ }
+ function close(){
+  if(panel.hidden)return;
+  const token=++transitionToken;
+  panel.classList.remove("is-open");
+  document.body.classList.remove("catalog-filters-open");
+  toggle.setAttribute("aria-expanded","false");
+  const mark=toggle.querySelector("span");
+  if(mark)mark.textContent="＋";
+  window.setTimeout(()=>{
+   if(token===transitionToken&&!panel.classList.contains("is-open"))panel.hidden=true;
+  },300);
+  toggle.focus({preventScroll:true});
+ }
+ toggle.addEventListener("click",()=>panel.hidden?open():close());
+ closeButton?.addEventListener("click",close);
+ document.addEventListener("click",event=>{
+  if(!document.body.classList.contains("catalog-filters-open"))return;
+  if(panel.contains(event.target)||toggle.contains(event.target))return;
+  close();
+ });
+ document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"&&document.body.classList.contains("catalog-filters-open"))close();
+ });
+ clear?.addEventListener("click",()=>{
+  const brand=panel.querySelector("select[id$='BrandFilter']");
+  const sort=panel.querySelector("select[id$='Sort']");
+  const min=panel.querySelector("input[id$='PriceMin']");
+  const max=panel.querySelector("input[id$='PriceMax']");
+  if(brand)brand.value="";
+  if(sort)sort.value="featured";
+  if(min)min.value="";
+  if(max)max.value="";
+  if(typeof render==="function")render();
  });
 }
 function renderProducts(){
  const brand=$("decantBrandFilter")?.value||"",sort=$("decantSort")?.value||"featured";
- let filteredProducts=PRODUCTS.filter(p=>!brand||getBrandKey(p)===brand);
+ const minRaw=Number.parseFloat($("decantPriceMin")?.value||"");
+ const maxRaw=Number.parseFloat($("decantPriceMax")?.value||"");
+ const minPrice=Number.isFinite(minRaw)?minRaw:null,maxPrice=Number.isFinite(maxRaw)?maxRaw:null;
+ let filteredProducts=PRODUCTS.filter(p=>{
+  if(brand&&getBrandKey(p)!==brand)return false;
+  if(minPrice===null&&maxPrice===null)return true;
+  return p.volumes.some(v=>{
+   const price=Number(v.price);
+   return Number.isFinite(price)&&(minPrice===null||price>=minPrice)&&(maxPrice===null||price<=maxPrice);
+  });
+ });
  const priceForSort=p=>Math.min(...p.volumes.map(v=>Number.isFinite(v.price)?v.price:Number.POSITIVE_INFINITY));
  if(sort==="price-asc")filteredProducts.sort((a,b)=>priceForSort(a)-priceForSort(b)||a.name.localeCompare(b.name,"pt-BR"));
  if(sort==="price-desc")filteredProducts.sort((a,b)=>priceForSort(b)-priceForSort(a)||a.name.localeCompare(b.name,"pt-BR"));
+ if(!filteredProducts.length){$("products").innerHTML='<p class="catalog-empty-state">Nenhuma fragrância corresponde aos filtros selecionados.</p>';return;}
  $("products").innerHTML = filteredProducts.map(p=>`<article class="product">
    <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
    <div class="product-art decant-product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Imagem ilustrativa do perfume original ${escapeHTML(p.name)}; o produto vendido é o decant em mini frasco SANTINO" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div><img class="decant-vial-overlay" src="decant-vials.svg?v=20261116-1" alt="Mini frascos de decant SANTINO de 5 e 10 ml" loading="lazy" decoding="async"><span class="decant-photo-badge">PRODUTO VENDIDO · DECANT</span></div>
