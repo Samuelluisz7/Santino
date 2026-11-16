@@ -9,27 +9,21 @@ const REPOSITORY_ROOT = path.resolve(
   "..",
 );
 
-test("home page presents frascos inteiros before decants and keeps their paths distinct", async () => {
+test("home page presents the approved recommendation cards and keeps catalog navigation", async () => {
   const html = await readFile(path.join(REPOSITORY_ROOT, "index.html"), "utf8");
-  const fullSizeScript = await readFile(path.join(REPOSITORY_ROOT, "home-full-size.js"), "utf8");
   const decants = await readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8");
-
   assert.match(html, /<body class="home-page">/);
-  assert.match(html, /id="homeHeading"/);
-  assert.match(html, /id="homeFullSizeGrid"/);
-  assert.match(html, /home-full-size\.js/);
-  assert.match(html, /id="homeFeaturedGrid"/);
-  assert.match(html, /href="frascos\.html"/);
-  assert.match(html, /href="decants\.html"/);
-  assert.match(html, /href="kits\.html"/);
-  assert.ok(html.indexOf('id="homeFullSizeGrid"') < html.indexOf('id="homeFeaturedGrid"'));
-  assert.match(fullSizeScript, /category: "Frasco inteiro"/);
-  assert.match(fullSizeScript, /-full-/);
+  assert.match(html, /<h1 id="homeHeading">Explorar fragrâncias<\/h1>/);
+  for (const href of ['href="frascos.html"', 'href="decants.html"', 'href="kits.html"']) assert.ok(html.includes(href));
+  for (const [name, id] of [["Homem Sagaz","homem-sagaz"],["K Max","k-max"],["Clash","clash"],["The Kingdom","kingdom"]]) {
+    assert.match(html, new RegExp('<a class="recommended-card [^"]+" href="produto\\.html\\?id=' + id + '">'));
+    assert.match(html, new RegExp('<strong>' + name + '<\\/strong>'));
+  }
+  assert.doesNotMatch(html, /The Blend Bourbon|home-kits|homeFeaturedGrid|homeFullSizeGrid/);
+  assert.match(html, /home-refresh\.css/);
   assert.match(decants, /decant-vial-overlay/);
   assert.match(decants, /decant-image-note/);
-  assert.doesNotMatch(html, /home-offer-link/);
 });
-
 test("all catalog cards use the same image frame without cropping product photos", async () => {
   const styles = await readFile(path.join(REPOSITORY_ROOT, "santino-ui.css"), "utf8");
 
