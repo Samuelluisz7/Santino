@@ -257,7 +257,11 @@
 
   function productImageFor(button) {
     const card = button.closest(".product, .home-product-card, .kit-card, article");
-    const cardImage = card && card.querySelector(".product-art img.product-photo:not([hidden]), .product-art img:not([hidden])");
+    const cardImage = card && card.querySelector(
+      ".home-product-image > img:not(.home-decant-vials):not([hidden]), " +
+      ".home-full-bottle-image > img:not(.home-decant-vials):not([hidden]), " +
+      ".product-art img.product-photo:not([hidden]), .product-art img:not([hidden])"
+    );
     if (cardImage && (cardImage.currentSrc || cardImage.src)) return cardImage.currentSrc || cardImage.src;
     const detailImage = document.querySelector("#mainImage");
     if (detailImage && (detailImage.currentSrc || detailImage.src)) return detailImage.currentSrc || detailImage.src;
@@ -317,7 +321,7 @@
 
   /* A animação só ocorre quando o armazenamento confirma que o item entrou no carrinho. */
   document.addEventListener("click", function (event) {
-    const button = event.target.closest("#addButton, [data-add], [data-add-full]");
+    const button = event.target.closest("#addButton, [data-add], [data-add-full], .home-product-add");
     if (!button || button.disabled) return;
     const before = readCartCount();
     const imageUrl = productImageFor(button);
