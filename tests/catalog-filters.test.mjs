@@ -26,9 +26,8 @@ test("Natura and Natura Kaiak are grouped under Natura while line identity remai
     readFile(path.join(ROOT, "decants.html"), "utf8"),
   ]);
   for (const html of [full, decants]) {
-    assert.match(html, /function getBrandKey\(product\)\{return \/natura\/i\.test/);
-    assert.match(html, /?"Natura":String\(product\.brand\|\|""\)\.trim\(\)/);
-    assert.match(html, /Natura · Kaiak/);
+    assert.ok(html.includes('function getBrandKey(product){return /natura/i.test(String(product.brand||""))?"Natura":String(product.brand||"").trim()}'));
+    assert.ok(html.includes('"Natura · Kaiak"'));
   }
 });
 
@@ -38,8 +37,8 @@ test("price ordering is ascending or descending without changing the default rec
     readFile(path.join(ROOT, "decants.html"), "utf8"),
   ]);
   for (const html of [full, decants]) {
-    assert.match(html, /sort==="price-asc"/);
-    assert.match(html, /sort==="price-desc"/);
-    assert.match(html, /value="featured">Mais relevantes/);
+    assert.ok(html.includes('sort==="price-asc"'));
+    assert.ok(html.includes('sort==="price-desc"'));
+    assert.ok(html.includes('value="featured">Mais relevantes'));
   }
 });
