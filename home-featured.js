@@ -35,7 +35,7 @@
     imageFrame.className = "home-product-image";
     const image = document.createElement("img");
     image.src = product.image;
-    image.alt = "Frasco de " + product.name;
+    image.alt = "Imagem de referência da fragrância " + product.name + "; o item vendido é o decant em mini frasco SANTINO";
     image.loading = "lazy";
     image.decoding = "async";
     image.referrerPolicy = "no-referrer";
@@ -51,7 +51,7 @@
 
     const vialOverlay = document.createElement("img");
     vialOverlay.className = "home-decant-vials";
-    vialOverlay.src = "decant-vials.svg";
+    vialOverlay.src = "decant-vials.svg?v=20261115-8";
     vialOverlay.alt = "Mini frascos de decant SANTINO de 5 e 10 ml";
     vialOverlay.loading = "lazy";
     vialOverlay.decoding = "async";
