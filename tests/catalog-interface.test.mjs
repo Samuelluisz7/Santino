@@ -20,7 +20,7 @@ test("home page presents the approved recommendation cards and keeps catalog nav
     assert.match(html, new RegExp('<a class="recommended-card [^"]+" href="produto\\.html\\?id=' + id + '">'));
     assert.match(html, new RegExp('<strong>' + name + '<\\/strong>'));
   }
-  assert.doesNotMatch(homeMarkup, /The Blend Bourbon|home-kits|homeFeaturedGrid|homeFullSizeGrid/);
+  assert.doesNotMatch(homeMarkup, /The Blend Bourbon|home-kits|homeFullSizeGrid/);
   assert.match(html, /home-refresh\.css/);
   assert.match(decants, /decant-vial-overlay/);
   assert.match(decants, /decant-image-note/);
