@@ -192,7 +192,7 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
   <link rel="stylesheet" href="home-storefront.css?v=20261116-1">
 
   <link rel="stylesheet" href="santino-identity.css?v=20261116-1">
-  <link rel="stylesheet" href="home-refresh.css?v=20261116-1">
+  <link rel="stylesheet" href="home-refresh.css?v=20261116-2">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/">
   <meta name="robots" content="index,follow">
@@ -356,6 +356,29 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
 <script src="search.js?v=20261116-1" defer></script>
 <script src="santino-ui.js?v=20261116-2" defer></script>
 
-<script src="home-benefits.js?v=20261116-1" defer></script>
+<script>
+(function () {
+  "use strict";
+  const toggle = document.getElementById("homeBenefitsToggle");
+  const panel = document.getElementById("homeBenefitsPanel");
+  const close = document.getElementById("homeBenefitsClose");
+  if (!toggle || !panel || !close) return;
+  function setOpen(open) {
+    panel.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    const marker = toggle.querySelector("span");
+    if (marker) marker.textContent = open ? "×" : "＋";
+    if (open) close.focus();
+  }
+  toggle.addEventListener("click", function () { setOpen(panel.hidden); });
+  close.addEventListener("click", function () { setOpen(false); toggle.focus(); });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && !panel.hidden) { setOpen(false); toggle.focus(); }
+  });
+  document.addEventListener("click", function (event) {
+    if (!panel.hidden && !event.target.closest(".home-benefits-widget")) setOpen(false);
+  });
+})();
+</script>
 </body>
 </html>
