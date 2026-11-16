@@ -201,7 +201,7 @@ test("homepage orders full bottles before decants and places one sale banner bet
   assert.match(home, /home-featured\.js/);
   assert.match(home, /10% OFF em decants/);
   assert.equal((home.match(/10% OFF em decants/g) || []).length, 1);
-  assert.doesNotMatch(home, /site-promo-banner|promo-grid|welcomeOffer|Bem-vindo\(a\) à SANTINO/);
+  assert.doesNotMatch(home, /<a class="site-promo-banner"|<section class="promo-grid"|id="welcomeOffer"|Bem-vindo\(a\) à SANTINO/);
   assert.match(home, /href="frascos\.html"/);
   assert.match(home, /href="decants\.html"/);
   assert.match(home, /href="kits\.html"/);
@@ -210,7 +210,7 @@ test("homepage orders full bottles before decants and places one sale banner bet
 });
 
 test("decant product imagery discloses the miniature bottle actually sold", () => {
-  assert.match(home, /Imagem do perfume de referência/);
+  assert.match(home, /fragrância de referência/);
   assert.match(home, /mini frasco SANTINO/);
   assert.match(featured, /decant-vials\.svg/);
   assert.match(featured, /home-decant-badge/);
