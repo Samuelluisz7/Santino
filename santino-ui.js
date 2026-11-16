@@ -68,7 +68,7 @@
   }
 
   let globalCartRoot = null;
-  if (!document.getElementById("overlay") && document.querySelector(".cart-link, .cart-button")) {
+  if (document.querySelector(".cart-link, .cart-button")) {
     globalCartRoot = document.createElement("div");
     globalCartRoot.className = "santino-global-cart";
     globalCartRoot.id = "santinoGlobalCart";
@@ -242,9 +242,10 @@
     });
     globalCartRoot.querySelector("#santinoGlobalCartCheckout").addEventListener("click", checkoutGlobalCart);
     document.addEventListener("click", function (event) {
-      const trigger = event.target.closest("a.cart-link, button.cart-link, [data-santino-open-cart]");
+      const trigger = event.target.closest("a.cart-link, button.cart-link, .cart-button, [data-santino-open-cart]");
       if (!trigger) return;
       event.preventDefault();
+      event.stopImmediatePropagation();
       openGlobalCart();
     }, true);
     document.addEventListener("keydown", function (event) {
@@ -253,6 +254,7 @@
     window.addEventListener("storage", function () { updateCartCounters(); renderGlobalCart(); });
     window.addEventListener("santino:cart-updated", function () { updateCartCounters(); renderGlobalCart(); });
     renderGlobalCart();
+    if (params.get("openCart") === "1") openGlobalCart();
   }
 
   function productImageFor(button) {
