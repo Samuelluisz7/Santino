@@ -122,7 +122,8 @@
         ml: ml,
         price: amount,
         qty: 1,
-        category: "Decant"
+        category: "Decant",
+        image: product.image
       });
 
       try {
@@ -136,6 +137,7 @@
       document.querySelectorAll("#homeCartCount").forEach(function (counter) {
         counter.textContent = String(count);
       });
+      window.dispatchEvent(new Event("santino:cart-updated"));
       if (status) status.textContent = product.name + " de " + ml + " ml foi adicionado ao carrinho.";
     });
 
