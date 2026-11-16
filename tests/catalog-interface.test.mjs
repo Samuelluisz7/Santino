@@ -45,6 +45,35 @@ test("shared perfume details retain the olfactory pyramid", async () => {
   assert.match(html, /aria-label="Notas de saída, coração e fundo"/);
 });
 
+test("perfume details show occasion and note preview before a collapsed additional-information section", async () => {
+  const html = await readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8");
+  const summaryIndex = html.indexOf('id="productAdditionalDetails"');
+  const previewIndex = html.indexOf('id="notePreview"');
+  const accordIndex = html.indexOf('id="accordBars"');
+  assert.ok(previewIndex > 0 && summaryIndex > 0 && accordIndex > 0);
+  assert.ok(previewIndex < summaryIndex);
+  assert.ok(summaryIndex < accordIndex);
+  assert.match(html, /<summary>Informações adicionais/);
+  assert.match(html, /id="highlightOccasion"/);
+  assert.match(html, /id="longevityText"/);
+  assert.match(html, /id="projectionText"/);
+  assert.match(html, /id="dayNightText"/);
+  assert.match(html, /id="seasonsText"/);
+  assert.match(html, /Não há avaliação confiável cadastrada/);
+  assert.match(html, /Não há classificação cadastrada/);
+});
+
+test("shared cart UI animates a product image toward the cart only after local cart count changes", async () => {
+  const js = await readFile(path.join(REPOSITORY_ROOT, "santino-ui.js"), "utf8");
+  const styles = await readFile(path.join(REPOSITORY_ROOT, "santino-ui.css"), "utf8");
+  assert.match(js, /function animateProductToCart/);
+  assert.match(js, /readCartCount\(\)/);
+  assert.match(js, /#addButton, \[data-add\], \[data-add-full\]/);
+  assert.match(js, /setTimeout\(function \(\)/);
+  assert.match(styles, /\.santino-cart-flight/);
+  assert.match(styles, /\.santino-cart-pulse/);
+});
+
 test("shared perfume details provide a responsive mobile purchase bar", async () => {
   const html = await readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8");
   const styles = await readFile(path.join(REPOSITORY_ROOT, "sticky-purchase.css"), "utf8");
