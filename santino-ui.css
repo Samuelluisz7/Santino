@@ -1745,3 +1745,31 @@ body:not(.home-page) .bottom-note {
  .santino-global-cart-panel{transform:none;opacity:0}
  .santino-global-cart.is-open .santino-global-cart-panel{opacity:1}
 }
+
+
+/* Miniaturas no carrinho nativo dos catálogos */
+.cart-item{
+ grid-template-columns:58px minmax(0,1fr) auto!important;
+ align-items:start!important;
+ gap:10px!important;
+}
+.cart-item-image,.cart-item-placeholder{
+ display:grid;
+ place-items:center;
+ width:58px;
+ height:68px;
+ padding:5px;
+ object-fit:contain;
+ background:#eee9df;
+ color:#78664b;
+}
+.cart-item-main{min-width:0}
+.cart-item-main>strong{display:block;line-height:1.35}
+.cart-item-side{max-width:98px;text-align:right}
+.cart-item-side>strong{font-size:12px;line-height:1.4}
+@media(max-width:420px){
+ .cart-item{grid-template-columns:50px minmax(0,1fr) auto!important;gap:8px!important}
+ .cart-item-image,.cart-item-placeholder{width:50px;height:62px}
+ .cart-item-side{max-width:78px}
+ .cart-item-side>strong{font-size:11px}
+}
