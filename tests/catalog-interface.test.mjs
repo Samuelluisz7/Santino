@@ -74,6 +74,47 @@ test("shared cart UI animates a product image toward the cart only after local c
   assert.match(styles, /\.santino-cart-pulse/);
 });
 
+test("cart drawer stays on the current page outside the catalog", async () => {
+  const [script, home, product, kits, search] = await Promise.all([
+    readFile(path.join(REPOSITORY_ROOT, "santino-ui.js"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "index.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "kits.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "buscar.html"), "utf8"),
+  ]);
+  assert.match(script, /santino-global-cart-panel/);
+  assert.match(script, /function openGlobalCart/);
+  assert.match(script, /trigger\.addEventListener|document\.addEventListener\("click"/);
+  for (const html of [home, product, kits, search]) {
+    assert.match(html, /class="cart-link"/);
+  }
+  assert.match(script, /santino:cart-updated/);
+  assert.match(script, /function checkoutGlobalCart/);
+});
+
+test("cart item thumbnails are stored for the shared drawer and catalog cart", async () => {
+  const [decants, full, product, kits] = await Promise.all([
+    readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "frascos.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "kits.html"), "utf8"),
+  ]);
+  for (const html of [decants, full, product, kits]) {
+    assert.match(html, /image:p\.image|image:product\.image/);
+  }
+  for (const html of [decants, full]) {
+    assert.match(html, /class="cart-item-image"/);
+  }
+  assert.match(kits, /window\.dispatchEvent\(new Event\("santino:cart-updated"\)\)/);
+  assert.doesNotMatch(kits, /window\.location\.href="decants\.html\?openCart=1"/);
+});
+
+test("cashback homepage explains applicable product categories and current self-service limitation", async () => {
+  const html = await readFile(path.join(REPOSITORY_ROOT, "index.html"), "utf8");
+  assert.match(html, /Válido para decants, frascos inteiros, kits e outros produtos/);
+  assert.match(html, /consulta automática de saldo e a aplicação do cashback pelo site ainda não estão disponíveis/i);
+});
+
 test("shared perfume details provide a responsive mobile purchase bar", async () => {
   const html = await readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8");
   const styles = await readFile(path.join(REPOSITORY_ROOT, "sticky-purchase.css"), "utf8");
