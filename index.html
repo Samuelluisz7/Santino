@@ -265,36 +265,36 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
     </div>
   </section>
 
-  <section class="home-decant-promo" aria-labelledby="decantPromoHeading">
-    <div>
-      <div class="eyebrow">VANTAGEM PARA EXPERIMENTAR</div>
-      <h2 id="decantPromoHeading">10% de desconto em decants</h2>
+  <section class="home-sale-banner" id="promocoes" aria-label="Oferta em decants">
+    <div class="home-sale-copy">
+      <div class="eyebrow">UMA FORMA DE DESCOBRIR MAIS</div>
+      <h2>10% OFF em decants</h2>
       <p>A partir de R$ 80 em decants, o desconto é calculado sobre todo o subtotal elegível.</p>
+      <a href="decants.html">Explorar decants <span aria-hidden="true">→</span></a>
     </div>
-    <a href="decants.html">Conhecer os decants <span aria-hidden="true">→</span></a>
   </section>
 
-  <section class="home-benefits" id="beneficios" aria-labelledby="benefitsHeading">
-    <div class="eyebrow">VANTAGENS SANTINO</div>
-    <h2 id="benefitsHeading">Benefícios para suas próximas escolhas</h2>
-    <div class="home-benefit-card">
-      <div class="home-benefit-rate">5% <span>de cashback</span></div>
-      <div class="home-benefit-copy">
-        <h3>Uma parte da sua compra volta como crédito</h3>
-        <p>Você recebe 5% do valor efetivamente pago pelos produtos, depois dos descontos, para utilizar em uma próxima compra.</p>
-        <ul>
-          <li>Crédito liberado após a confirmação do pagamento.</li>
-          <li>Validade de 90 dias.</li>
-          <li>Pode ser acumulado com promoções e descontos de produtos.</li>
-          <li>Válido para decants, frascos inteiros, kits e outros produtos da loja.</li>
-          <li>É possível usar até 100% do valor dos produtos; o frete é pago à parte.</li>
-          <li>O crédito não pode ser convertido em dinheiro.</li>
-        </ul>
-        <p class="home-benefit-notice">A consulta automática de saldo e a aplicação do cashback pelo site ainda não estão disponíveis. As condições do benefício estão descritas aqui e nas políticas da loja.</p>
-        <a href="politicas.html#pedidos">Consultar todas as condições <span aria-hidden="true">→</span></a>
+  <section class="home-featured" id="decants" aria-labelledby="homeFeaturedHeading">
+    <div class="home-section-heading">
+      <div>
+        <div class="eyebrow">DESCUBRA EM PEQUENOS VOLUMES</div>
+        <h2 id="homeFeaturedHeading">Decants para experimentar</h2>
+      </div>
+      <div class="home-featured-intro">
+        <p>As imagens mostram a fragrância de referência. O produto vendido é o decant em mini frasco SANTINO, no volume selecionado.</p>
+        <a href="decants.html">Ver todos os decants <span aria-hidden="true">→</span></a>
       </div>
     </div>
+    <div class="home-product-grid" id="homeFeaturedGrid" aria-label="Seleção de decants SANTINO"></div>
+    <p class="home-featured-status" id="homeFeaturedStatus" role="status" aria-live="polite"></p>
   </section>
+  <script type="application/json" id="homeFeaturedProducts">[
+    {"id":"kingdom","name":"The Kingdom","brand":"Lattafa","image":"https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&amp;width=1946","prices":{"5":18.9,"10":35.9}},
+    {"id":"asad-bourbon","name":"Asad Bourbon","brand":"Lattafa","image":"https://scentira.in/cdn/shop/files/LATTAFAAl_Asad_Bourbon_1_34bc0e05-10ec-4d25-9df5-34b68222f16c.png?v=1756889307&amp;width=5000","prices":{"5":17.9,"10":33.9}},
+    {"id":"homem-sagaz","name":"Homem Sagaz","brand":"Natura","image":"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&amp;sw=600","prices":{"5":12.9,"10":24.9}},
+    {"id":"k-max","name":"Natura K Max","brand":"Natura","image":"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&amp;sw=600","prices":{"5":16.9,"10":30.9}}
+  ]</script>
+  <script src="home-featured.js?v=20261116-2" defer></script>
 
   <section class="home-trust-strip" aria-label="Informações essenciais">
     <span>Fragrâncias originais</span>
@@ -302,7 +302,37 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
     <span>Entrega local em Viçosa</span>
   </section>
 </main>
-<a class="home-benefits-float" href="#beneficios" aria-label="Ver benefícios SANTINO">Benefícios <span aria-hidden="true">↗</span></a>
+<div class="home-benefits-widget">
+  <button class="home-benefits-float" id="homeBenefitsToggle" type="button" aria-expanded="false" aria-controls="homeBenefitsPanel">
+    Benefícios <span aria-hidden="true">＋</span>
+  </button>
+  <section class="home-benefits-panel" id="homeBenefitsPanel" role="dialog" aria-labelledby="homeBenefitsTitle" hidden>
+    <div class="home-benefits-panel-head">
+      <div><span class="home-benefits-panel-kicker">VANTAGENS SANTINO</span><h2 id="homeBenefitsTitle">Benefícios para suas escolhas</h2></div>
+      <button type="button" class="home-benefits-close" id="homeBenefitsClose" aria-label="Fechar benefícios">×</button>
+    </div>
+    <article class="home-benefit-detail">
+      <div class="home-benefit-detail-rate">5% <span>de cashback</span></div>
+      <h3>Parte do valor da compra volta como crédito</h3>
+      <p>Você recebe 5% do valor efetivamente pago pelos produtos, depois dos descontos, para utilizar em uma próxima compra.</p>
+      <ul>
+        <li>Crédito liberado após a confirmação do pagamento.</li>
+        <li>Validade de 90 dias.</li>
+        <li>Acumulável com promoções e descontos de produtos.</li>
+        <li>Válido para decants, frascos inteiros, kits e outros produtos.</li>
+        <li>Uso de até 100% do valor dos produtos; frete pago à parte.</li>
+        <li>Não pode ser convertido em dinheiro.</li>
+      </ul>
+      <p class="home-benefit-detail-note">A consulta e a aplicação automática do saldo pelo site ainda não estão disponíveis. O crédito é conferido pela SANTINO antes da confirmação do pedido.</p>
+    </article>
+    <article class="home-benefit-detail home-decant-benefit">
+      <div class="home-benefit-detail-rate">10% <span>de desconto</span></div>
+      <h3>Promoção de decants</h3>
+      <p>A partir de R$ 80 em decants, você recebe 10% de desconto sobre o valor integral dos decants no carrinho. Frascos inteiros, kits e frete não entram nesse cálculo.</p>
+    </article>
+    <a class="home-benefits-policy" href="politicas.html#pedidos">Consultar políticas e condições <span aria-hidden="true">→</span></a>
+  </section>
+</div>
 <footer>
   <div class="footer-brand">SANTINO</div>
   <p>Descubra sua próxima fragrância.</p>
@@ -324,7 +354,8 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
 })();
 </script>
 <script src="search.js?v=20261116-1" defer></script>
-<script src="santino-ui.js?v=20261116-1" defer></script>
+<script src="santino-ui.js?v=20261116-2" defer></script>
 
+<script src="home-benefits.js?v=20261116-1" defer></script>
 </body>
 </html>
