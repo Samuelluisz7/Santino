@@ -102,8 +102,12 @@ test("cart item thumbnails are stored for the shared drawer and catalog cart", a
   for (const html of [decants, full, product, kits]) {
     assert.match(html, /image:p\.image|image:product\.image/);
   }
+  const sharedCart = await readFile(path.join(REPOSITORY_ROOT, "santino-ui.js"), "utf8");
+  assert.match(sharedCart, /class="santino-global-cart-item"/);
+  assert.match(sharedCart, /item\.image/);
   for (const html of [decants, full]) {
-    assert.match(html, /class="cart-item-image"/);
+    assert.match(html, /function renderCart\(\)/);
+    assert.doesNotMatch(html, /id="overlay"|id="cartItems"|id="cartTotal"/);
   }
   assert.match(kits, /window\.dispatchEvent\(new Event\("santino:cart-updated"\)\)/);
   assert.doesNotMatch(kits, /window\.location\.href="decants\.html\?openCart=1"/);
