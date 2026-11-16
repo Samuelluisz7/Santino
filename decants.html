@@ -290,6 +290,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <meta property="og:url" content="https://samuelluisz7.github.io/Santino/decants.html">
   <meta property="og:image" content="https://samuelluisz7.github.io/Santino/banner-home-original.webp">
   <meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="decant-scene.css?v=20261116-1">
 </head>
 <body>
 <header><div class="nav">
@@ -513,6 +514,20 @@ function bindCatalogFilters(toggleId,panelId,clearId,render){
   if(typeof render==="function")render();
  });
 }
+const DECANT_LIQUIDS={"kingdom":"#b77a32","the-blend-bourbon":"#8c451e","asad-bourbon":"#a85b27","homem-sagaz":"#8e171a","homem-dom":"#6e3719","homem-essence":"#172d50","essencial-sentir":"#b18a4b","fakhar-black":"#9d7038","k-max":"#77603b","nautica-voyage":"#278d9a","clash":"#b4a04a","quasar-ice":"#36b8c6","eudora-h-acqua":"#4eaaa4","touti-vip-12":"#a4783e","touti-vip-50":"#253a59","touti-vip-52":"#a96a2b","touti-vip-80":"#6b9b7d","touti-fit-caribe":"#397c9e"};
+function renderDecantScene(product){
+ const uid="decant-"+String(product.id||"perfume").replace(/[^a-z0-9_-]/gi,""),liquid=DECANT_LIQUIDS[product.id]||"#ad824b";
+ const name=escapeHTML(product.name||"Perfume"),src=escapeHTML(product.image||"");
+ return '<div class="decant-generated-stage">'+(src?'<img class="decant-original-bottle" src="'+src+'" alt="'+name+' — frasco original de referência" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+
+ '<span class="scene-reflection" aria-hidden="true"></span><svg class="decant-generated-vials" viewBox="0 0 340 500" role="img" aria-label="Decants SANTINO de 5 ml e 10 ml">'+
+ '<defs><linearGradient id="'+uid+'-glass" x1="0" x2="1"><stop stop-color="#fff" stop-opacity=".2"/><stop offset=".18" stop-color="#fff" stop-opacity=".52"/><stop offset=".5" stop-color="#fff" stop-opacity=".06"/><stop offset=".9" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity=".18"/></linearGradient>'+
+ '<linearGradient id="'+uid+'-cap" x1="0" x2="1"><stop stop-color="#050505"/><stop offset=".3" stop-color="#303030"/><stop offset=".55" stop-color="#080808"/><stop offset="1" stop-color="#292929"/></linearGradient>'+
+ '<linearGradient id="'+uid+'-liquid" x1="0" y1="0" x2="0" y2="1"><stop stop-color="'+liquid+'" stop-opacity=".55"/><stop offset=".2" stop-color="'+liquid+'" stop-opacity=".88"/><stop offset="1" stop-color="'+liquid+'"/></linearGradient>'+
+ '<linearGradient id="'+uid+'-gold"><stop stop-color="#755629"/><stop offset=".5" stop-color="#e3c78f"/><stop offset="1" stop-color="#806034"/></linearGradient>'+
+ '<clipPath id="'+uid+'-clip5"><rect x="25" y="244" width="105" height="222" rx="19"/></clipPath><clipPath id="'+uid+'-clip10"><rect x="183" y="179" width="126" height="287" rx="22"/></clipPath></defs>'+
+ '<g><ellipse cx="78" cy="476" rx="63" ry="10" fill="#000" opacity=".7"/><rect x="25" y="244" width="105" height="222" rx="19" fill="url(#'+uid+'-glass)" stroke="#e8e4dc" stroke-opacity=".8" stroke-width="3"/><rect x="27" y="330" width="101" height="135" fill="url(#'+uid+'-liquid)" clip-path="url(#'+uid+'-clip5)"/><path d="M77 286V450Q77 458 71 463M35 255Q29 270 34 302" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="3"/><rect x="35" y="205" width="85" height="59" rx="9" fill="url(#'+uid+'-glass)" stroke="#ded6c8" stroke-width="2"/><rect x="38" y="93" width="79" height="119" rx="10" fill="url(#'+uid+'-cap)" stroke="#58534c" stroke-width="2"/><rect x="42" y="198" width="71" height="10" rx="3" fill="#080808" stroke="#a08a62"/><circle cx="77.5" cy="116" r="7" fill="#252525" stroke="#9a9a9a" stroke-width="1.5"/><rect x="29" y="335" width="97" height="91" rx="4" fill="#080807" stroke="url(#'+uid+'-gold)" stroke-width="2"/><circle cx="77.5" cy="355" r="12" fill="none" stroke="url(#'+uid+'-gold)" stroke-width="1.4"/><text x="77.5" y="359.5" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#e3c58e">S</text><text x="77.5" y="389" text-anchor="middle" font-family="Georgia,serif" font-size="11" letter-spacing="1.1" fill="#e5d3b0">SANTINO</text><text x="77.5" y="414" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#e5c58a">5 ml</text>'+
+ '<ellipse cx="246" cy="476" rx="75" ry="11" fill="#000" opacity=".7"/><rect x="183" y="179" width="126" height="287" rx="22" fill="url(#'+uid+'-glass)" stroke="#e8e4dc" stroke-opacity=".84" stroke-width="3"/><rect x="185" y="280" width="122" height="185" fill="url(#'+uid+'-liquid)" clip-path="url(#'+uid+'-clip10)"/><path d="M245 213V450Q245 458 237 463M194 191Q188 220 194 263" fill="none" stroke="#fff" stroke-opacity=".62" stroke-width="3"/><rect x="195" y="140" width="102" height="51" rx="9" fill="url(#'+uid+'-glass)" stroke="#ded6c8" stroke-width="2"/><rect x="205" y="18" width="82" height="127" rx="11" fill="url(#'+uid+'-cap)" stroke="#58534c" stroke-width="2"/><rect x="210" y="132" width="72" height="10" rx="3" fill="#080808" stroke="#a08a62"/><circle cx="246" cy="42" r="7" fill="#252525" stroke="#9a9a9a" stroke-width="1.5"/><rect x="194" y="300" width="104" height="111" rx="4" fill="#080807" stroke="url(#'+uid+'-gold)" stroke-width="2"/><circle cx="246" cy="324" r="13" fill="none" stroke="url(#'+uid+'-gold)" stroke-width="1.4"/><text x="246" y="328.5" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#e3c58e">S</text><text x="246" y="360" text-anchor="middle" font-family="Georgia,serif" font-size="12" letter-spacing="1.3" fill="#e5d3b0">SANTINO</text><text x="246" y="391" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#e5c58a">10 ml</text></g></svg></div>';
+}
 function renderProducts(){
  const brand=$("decantBrandFilter")?.value||"",sort=$("decantSort")?.value||"featured";
  const minRaw=Number.parseFloat($("decantPriceMin")?.value||"");
@@ -532,11 +547,11 @@ function renderProducts(){
  if(!filteredProducts.length){$("products").innerHTML='<p class="catalog-empty-state">Nenhuma fragrância corresponde aos filtros selecionados.</p>';return;}
  $("products").innerHTML = filteredProducts.map(p=>`<article class="product">
    <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
-   <div class="product-art decant-product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Imagem ilustrativa do perfume original ${escapeHTML(p.name)}; o produto vendido é o decant em mini frasco SANTINO" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><div class="vial"></div></div><img class="decant-vial-overlay" src="decant-vials.svg?v=20261116-1" alt="Mini frascos de decant SANTINO de 5 e 10 ml" loading="lazy" decoding="async"><span class="decant-photo-badge">PRODUTO VENDIDO · DECANT</span></div>
+   <div class="product-art decant-product-art">${renderDecantScene(p)}</div>
    <h3>${escapeHTML(p.name)}</h3>
    <div class="product-brandline"><span class="product-brand-name">${escapeHTML(getBrandDisplay(p))}</span><span class="product-origin-tag">${escapeHTML(p.tag||"")}</span></div>
    </a>
-   <p class="decant-image-note">Imagem do perfume de referência. Você recebe o decant em mini frasco SANTINO.</p>
+   <p class="decant-image-note">Decant SANTINO · escolha 5 ml ou 10 ml.</p>
    <div class="variants"><label style="flex:1">Volume
      <select id="volume-${p.id}" aria-label="Volume de ${escapeHTML(p.name)}">${p.volumes.map((v,i)=>`<option value="${i}">${v.ml} ml</option>`).join("")}</select>
    </label><label class="quantity-label">Quantidade
@@ -606,5 +621,6 @@ setupDecantFilters();renderProducts();renderCart();
 </script>
 <script src="search.js?v=20261116-6" defer></script>
 <script src="santino-ui.js?v=20261116-6" defer></script>
+<svg aria-hidden="true" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg"><filter id="santino-packshot-cutout" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -1.25 -1.25 -1.25 0 3.75" result="lightnessKey"/><feComponentTransfer in="lightnessKey" result="cleanKey"><feFuncA type="table" tableValues="0 0 0 0.01 0.06 0.25 0.75 1"/></feComponentTransfer><feComposite in="SourceGraphic" in2="cleanKey" operator="in"/></filter></svg>
 </body>
 </html>
