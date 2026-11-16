@@ -56,3 +56,14 @@ test("olfactory profile migration preserves the existing perfume detail fields s
   assert.doesNotMatch(sql, /\b(drop\s+table|truncate(?:\s+table)?|delete\s+from|insert\s+into\s+public\.)\b/i);
   assert.doesNotMatch(sql, /pesquisas_santino/i);
 });
+
+
+test("product pyramid uses horizontal accord bars and three compact note rows with colored dots", async () => {
+  const productPage = await readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8");
+  assert.match(productPage, /id="santino-pyramid-reference"/);
+  assert.match(productPage, /grid-template-columns:75px minmax\(0,1fr\)!important/);
+  assert.match(productPage, /\.note-accords \.accord-row/);
+  assert.match(productPage, /class="note-dot" aria-hidden="true"/);
+  assert.match(productPage, /class="note-name"/);
+  assert.doesNotMatch(productPage, /picture='<a class="note-image-shell"/);
+});
