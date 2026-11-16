@@ -377,3 +377,15 @@
 @media(prefers-reduced-motion:reduce){
   .home-benefits-dialog,.home-benefits-panel{transition:none}
 }
+
+
+/* Hero fotográfico: frascos inteiros primeiro, decants na sequência. */
+.home-full-bottle-hero{width:100%;margin:26px 0 0;overflow:hidden;border:1px solid #34302a;background:#090807}
+.home-full-bottle-hero img{display:block;width:100%;aspect-ratio:16/8.4;object-fit:cover;object-position:center 52%}
+.home-full-bottle-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.home-full-bottle-actions a{display:flex;align-items:center;justify-content:center;gap:14px;min-height:54px;padding:13px 16px;text-align:center;text-decoration:none;font-size:13px;font-weight:700;transition:background .2s ease,border-color .2s ease}
+.home-full-bottle-primary{background:#c9b18b;border:1px solid #c9b18b;color:#171512}
+.home-full-bottle-secondary{background:transparent;border:1px solid #806c4d;color:#f3eadb}
+.home-full-bottle-actions a:hover{background:#dfcba9;border-color:#dfcba9;color:#171512}
+@media(max-width:520px){.home-full-bottle-hero{margin-top:22px}.home-full-bottle-hero img{aspect-ratio:1.35/1;object-position:center}.home-full-bottle-actions{grid-template-columns:1fr;gap:9px}.home-full-bottle-actions a{min-height:48px}}
+@media(prefers-reduced-motion:reduce){.home-full-bottle-actions a{transition:none}}
