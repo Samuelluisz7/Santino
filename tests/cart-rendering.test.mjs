@@ -24,3 +24,21 @@ for (const page of ["decants.html", "frascos.html"]) {
     }
   });
 }
+
+
+test("empty cart hides totals and checkout and offers direct catalog paths", async () => {
+  const [decants, full, shared, styles] = await Promise.all([
+    readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "frascos.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "santino-ui.js"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "santino-ui.css"), "utf8"),
+  ]);
+  for (const html of [decants, full]) {
+    assert.match(html, /cartTotal[^\n]*closest\("\.cart-total"\)\.hidden=emptyCart/);
+    assert.match(html, /Ver frascos inteiros/);
+    assert.match(html, /Explorar decants/);
+  }
+  assert.match(shared, /footer\.hidden = items\.length === 0/);
+  assert.match(shared, /Seu carrinho está vazio/);
+  assert.match(styles, /\.santino-global-cart-footer\[hidden\]\{display:none!important\}/);
+});
