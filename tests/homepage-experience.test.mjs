@@ -53,8 +53,8 @@ test("homepage displays exactly the approved four asymmetric recommendations", a
 test("decant promotion explains the approved cumulative 10% rule", () => {
   assert.match(home, /10% OFF em decants/);
   assert.match(home, /A partir de R\$ 80 em decants, o desconto é calculado sobre todo o subtotal elegível/);
-  assert.match(decants, /goalTotal\*discountRate/);
-  assert.match(decants, /goalTotal>=goal/);
+  assert.match(sharedCart, /decantSubtotal >= 80 \? decantSubtotal \* 0\.10 : 0/);
+  assert.match(sharedCart, /category === "Decant"/);
 });
 
 test("benefits are accessible through a floating tab and terms remain explicit", () => {
