@@ -306,7 +306,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <link rel="stylesheet" href="santino-ui.css?v=20261116-6">
 
   <link rel="stylesheet" href="santino-identity.css?v=20261116-6">
-  <link rel="stylesheet" href="catalog-filters.css?v=20261116-6">
+  <link rel="stylesheet" href="catalog-filters.css?v=20261116-7">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/frascos.html">
   <meta name="robots" content="index,follow">
@@ -551,7 +551,7 @@ function bindCatalogFilters(toggleId,panelId,clearId,render){
   const sort=panel.querySelector("select[id$='Sort']");
   const min=panel.querySelector("input[id$='PriceMin']");
   const max=panel.querySelector("input[id$='PriceMax']");
-  if(brand)brand.value="";
+  if(brand){brand.value="";brand.dispatchEvent(new Event("change",{bubbles:true}));}
   if(sort)sort.value="featured";
   if(min)min.value="";
   if(max)max.value="";
