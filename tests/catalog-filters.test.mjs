@@ -21,9 +21,12 @@ test("both catalogs expose one collapsed Filtros control", async () => {
     assert.match(html, /Preço máximo/);
     assert.match(html, /Limpar filtros/);
     assert.doesNotMatch(html, /Mais recentes/);
-    const nav = html.match(/<nav class="catalog-nav"[^>]*>[\\s\\S]*?<\\/nav>/)?.[0] || "";
+    const navStart = html.indexOf('<nav class="catalog-nav"');
+    const navEnd = html.indexOf("</nav>", navStart);
+    const nav = navStart >= 0 && navEnd >= 0 ? html.slice(navStart, navEnd) : "";
+    assert.ok(nav.indexOf('href="frascos.html"') < nav.indexOf('href="decants.html"'));
     assert.ok(nav.indexOf("href=\"frascos.html\"") < nav.indexOf("href=\"decants.html\""));
-    assert.match(html, /addEventListener\\("input",render(?:Products|FullSizeProducts)\\)/);
+    assert.ok(html.includes('addEventListener("input",renderProducts)') || html.includes('addEventListener("input",renderFullSizeProducts)'));
     assert.match(html, /catalog-filters\.css\?v=20261116-6/);
   }
   const styles = await readFile(path.join(ROOT, "catalog-filters.css"), "utf8");
