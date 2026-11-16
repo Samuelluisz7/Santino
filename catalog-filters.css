@@ -1,0 +1,45 @@
+/* SANTINO — filtros compactos e recolhíveis para o catálogo */
+.catalog-filter-wrap{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:10px;width:100%;margin:0 0 18px}
+.catalog-filter-toggle{
+ display:inline-flex;align-items:center;justify-content:space-between;gap:22px;
+ min-width:128px;min-height:42px;padding:10px 13px;
+ border:1px solid #7f694b;border-radius:3px;background:#191713;color:#e6d4b8;
+ font-size:12px;font-weight:700;letter-spacing:.025em;cursor:pointer;
+ transition:background .18s ease,border-color .18s ease,color .18s ease;
+}
+.catalog-filter-toggle:hover,.catalog-filter-toggle[aria-expanded="true"]{background:#c9b18b;border-color:#c9b18b;color:#171512}
+.catalog-filter-toggle span{font-size:14px;line-height:1}
+.catalog-filter-panel{
+ display:flex;align-items:end;flex-wrap:wrap;gap:12px;
+ width:min(100%,520px);padding:15px;
+ border:1px solid #39352f;background:#171613;
+ box-shadow:0 12px 30px #0005;
+ animation:catalogFiltersEnter .18s ease both;
+}
+.catalog-filter-panel[hidden]{display:none!important}
+.catalog-filter-panel label{
+ display:flex;flex:1 1 190px;flex-direction:column;gap:6px;
+ color:#c9b18b;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+}
+.catalog-filter-panel select{
+ width:100%;min-width:0;min-height:42px;padding:9px 11px;
+ border:1px solid #4a4033;border-radius:3px;background:#10100e;color:#f3eadb;
+ font-size:13px;letter-spacing:normal;text-transform:none;
+}
+.catalog-filter-panel select:focus-visible,.catalog-filter-toggle:focus-visible{
+ outline:2px solid #d9c29d;outline-offset:3px;
+}
+@keyframes catalogFiltersEnter{
+ from{opacity:0;transform:translateY(-7px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:720px){
+ .catalog-filter-wrap{margin-bottom:15px}
+ .catalog-filter-toggle{min-height:44px}
+ .catalog-filter-panel{width:100%;align-items:stretch;flex-direction:column;gap:11px;padding:12px}
+ .catalog-filter-panel label{flex-basis:auto}
+}
+@media(prefers-reduced-motion:reduce){
+ .catalog-filter-toggle{transition:none}
+ .catalog-filter-panel{animation:none}
+}

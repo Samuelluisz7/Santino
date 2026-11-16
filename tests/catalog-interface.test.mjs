@@ -9,27 +9,22 @@ const REPOSITORY_ROOT = path.resolve(
   "..",
 );
 
-test("home page presents frascos inteiros before decants and keeps their paths distinct", async () => {
+test("home page presents the approved recommendation cards and keeps catalog navigation", async () => {
   const html = await readFile(path.join(REPOSITORY_ROOT, "index.html"), "utf8");
-  const fullSizeScript = await readFile(path.join(REPOSITORY_ROOT, "home-full-size.js"), "utf8");
   const decants = await readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8");
-
+  const homeMarkup = html.slice(html.indexOf("<main"), html.indexOf("</main>") + 7);
   assert.match(html, /<body class="home-page">/);
-  assert.match(html, /id="homeHeading"/);
-  assert.match(html, /id="homeFullSizeGrid"/);
-  assert.match(html, /home-full-size\.js/);
-  assert.match(html, /id="homeFeaturedGrid"/);
-  assert.match(html, /href="frascos\.html"/);
-  assert.match(html, /href="decants\.html"/);
-  assert.match(html, /href="kits\.html"/);
-  assert.ok(html.indexOf('id="homeFullSizeGrid"') < html.indexOf('id="homeFeaturedGrid"'));
-  assert.match(fullSizeScript, /category: "Frasco inteiro"/);
-  assert.match(fullSizeScript, /-full-/);
+  assert.match(html, /<h1 id="homeHeading">Explorar fragrâncias<\/h1>/);
+  for (const href of ['href="frascos.html"', 'href="decants.html"', 'href="kits.html"']) assert.ok(html.includes(href));
+  for (const [name, id] of [["Homem Sagaz","homem-sagaz"],["K Max","k-max"],["Clash","clash"],["The Kingdom","kingdom"]]) {
+    assert.match(html, new RegExp('<a class="recommended-card [^"]+" href="produto\\.html\\?id=' + id + '">'));
+    assert.match(html, new RegExp('<strong>' + name + '<\\/strong>'));
+  }
+  assert.doesNotMatch(homeMarkup, /The Blend Bourbon|home-kits|homeFeaturedGrid|homeFullSizeGrid/);
+  assert.match(html, /home-refresh\.css/);
   assert.match(decants, /decant-vial-overlay/);
   assert.match(decants, /decant-image-note/);
-  assert.doesNotMatch(html, /home-offer-link/);
 });
-
 test("all catalog cards use the same image frame without cropping product photos", async () => {
   const styles = await readFile(path.join(REPOSITORY_ROOT, "santino-ui.css"), "utf8");
 
@@ -48,6 +43,76 @@ test("shared perfume details retain the olfactory pyramid", async () => {
   assert.match(html, /id="heartNotes"/);
   assert.match(html, /id="baseNotes"/);
   assert.match(html, /aria-label="Notas de saída, coração e fundo"/);
+});
+
+test("perfume details show occasion and note preview before a collapsed additional-information section", async () => {
+  const html = await readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8");
+  const summaryIndex = html.indexOf('id="productAdditionalDetails"');
+  const previewIndex = html.indexOf('id="notePreview"');
+  const accordIndex = html.indexOf('id="accordBars"');
+  assert.ok(previewIndex > 0 && summaryIndex > 0 && accordIndex > 0);
+  assert.ok(previewIndex < summaryIndex);
+  assert.ok(summaryIndex < accordIndex);
+  assert.match(html, /<summary>Informações adicionais/);
+  assert.match(html, /id="highlightOccasion"/);
+  assert.match(html, /id="longevityText"/);
+  assert.match(html, /id="projectionText"/);
+  assert.match(html, /id="dayNightText"/);
+  assert.match(html, /id="seasonsText"/);
+  assert.match(html, /Não há avaliação confiável cadastrada/);
+  assert.match(html, /Não há classificação cadastrada/);
+});
+
+test("shared cart UI animates a product image toward the cart only after local cart count changes", async () => {
+  const js = await readFile(path.join(REPOSITORY_ROOT, "santino-ui.js"), "utf8");
+  const styles = await readFile(path.join(REPOSITORY_ROOT, "santino-ui.css"), "utf8");
+  assert.match(js, /function animateProductToCart/);
+  assert.match(js, /readCartCount\(\)/);
+  assert.match(js, /#addButton, \[data-add\], \[data-add-full\]/);
+  assert.match(js, /setTimeout\(function \(\)/);
+  assert.match(styles, /\.santino-cart-flight/);
+  assert.match(styles, /\.santino-cart-pulse/);
+});
+
+test("cart drawer stays on the current page outside the catalog", async () => {
+  const [script, home, product, kits, search] = await Promise.all([
+    readFile(path.join(REPOSITORY_ROOT, "santino-ui.js"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "index.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "kits.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "buscar.html"), "utf8"),
+  ]);
+  assert.match(script, /santino-global-cart-panel/);
+  assert.match(script, /function openGlobalCart/);
+  assert.match(script, /trigger\.addEventListener|document\.addEventListener\("click"/);
+  for (const html of [home, product, kits, search]) {
+    assert.match(html, /class="cart-link"/);
+  }
+  assert.match(script, /santino:cart-updated/);
+  assert.match(script, /function checkoutGlobalCart/);
+});
+
+test("cart item thumbnails are stored for the shared drawer and catalog cart", async () => {
+  const [decants, full, product, kits] = await Promise.all([
+    readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "frascos.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "kits.html"), "utf8"),
+  ]);
+  for (const html of [decants, full, product, kits]) {
+    assert.match(html, /image:p\.image|image:product\.image/);
+  }
+  for (const html of [decants, full]) {
+    assert.match(html, /class="cart-item-image"/);
+  }
+  assert.match(kits, /window\.dispatchEvent\(new Event\("santino:cart-updated"\)\)/);
+  assert.doesNotMatch(kits, /window\.location\.href="decants\.html\?openCart=1"/);
+});
+
+test("cashback homepage explains applicable product categories and current self-service limitation", async () => {
+  const html = await readFile(path.join(REPOSITORY_ROOT, "index.html"), "utf8");
+  assert.match(html, /Válido para decants, frascos inteiros, kits e outros produtos/);
+  assert.match(html, /consulta automática de saldo e a aplicação do cashback pelo site ainda não estão disponíveis/i);
 });
 
 test("shared perfume details provide a responsive mobile purchase bar", async () => {
