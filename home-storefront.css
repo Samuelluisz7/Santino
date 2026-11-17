@@ -2172,3 +2172,6 @@ body.home-page footer {
 /* Decants em destaque: remover a montagem de mini frascos e valorizar o packshot original. */
 body.home-page .home-product-image{background:radial-gradient(ellipse at 50% 38%,#30271b 0%,#17130e 48%,#080808 100%)!important;border-color:#4b3b26!important}
 body.home-page .home-product-image>img:not(.home-decant-vials){mix-blend-mode:multiply!important;background:transparent!important}
+
+/* Correção: preservar a luminosidade original das fotos. */
+body.home-page .home-product-image>img:not(.home-decant-vials){mix-blend-mode:normal!important;filter:none!important;opacity:1!important}
