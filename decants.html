@@ -322,6 +322,41 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
  #products .decant-product-card .price{font-size:17px}
  #products .decant-product-card .add{min-height:44px;padding:10px 6px;font-size:12px}
 }
+/* Layout compacto aprovado: seis decants em três fileiras no celular. */
+@media(max-width:720px){
+ #products{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ #products .decant-product-card{display:flex;flex-direction:column;gap:5px;padding:7px;border-radius:11px;min-width:0}
+ #products .decant-product-card .product-detail-link{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.88fr);gap:7px;align-items:start;min-width:0}
+ #products .decant-product-art{width:100%;aspect-ratio:1/1!important;height:auto!important;min-height:0;margin:0;padding:3px;border-radius:8px}
+ #products .decant-product-card .decant-card-info{min-width:0;padding-top:2px}
+ #products .decant-product-card h3{font-size:clamp(12px,3.5vw,15px);line-height:1.15;margin:0 0 5px;overflow-wrap:anywhere}
+ #products .decant-product-card .product-brandline{gap:3px;display:flex;flex-direction:column;align-items:flex-start}
+ #products .decant-product-card .product-brand-name{font-size:10px;line-height:1.2}
+ #products .decant-product-card .product-origin-tag{font-size:7px;padding:2px 4px}
+ #products .decant-product-card .product-concentration-tag{font-size:8px;margin-top:4px}
+ #products .decant-product-card .price-row{margin:0;min-height:0;padding:0 1px}
+ #products .decant-product-card .price{font-size:16px;line-height:1.15}
+ #products .decant-purchase-row{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr) minmax(0,1.05fr);gap:4px;align-items:center}
+ #products .volume-trigger{min-height:32px;padding:5px 6px;font-size:10px;gap:3px;border-radius:7px}
+ #products .volume-chevron{font-size:13px}
+ #products .quantity-stepper{min-height:32px;border-radius:7px}
+ #products .quantity-stepper button{width:20px;height:30px;font-size:15px;padding:0}
+ #products .quantity-stepper output{min-width:12px;font-size:11px}
+ #products .decant-product-card .add{min-height:32px;padding:5px 3px;font-size:10px;line-height:1.1;border-radius:7px;white-space:nowrap}
+ #products .volume-menu{min-width:64px}
+ .hero{padding-top:10px!important;padding-bottom:10px!important;gap:8px!important}
+ .hero h1{font-size:24px!important;margin:0}
+ .hero p{font-size:11px!important;margin:4px 0 0}
+ #catalog .section-head{margin-bottom:8px}
+ #catalog .section-head h2{font-size:18px;margin:0}
+ #catalog .section-head p{font-size:10px;line-height:1.3;margin:3px 0 0}
+}
+@media(max-width:380px){
+ #products .decant-product-card{padding:5px}
+ #products .decant-product-card h3{font-size:12px}
+ #products .decant-purchase-row{gap:3px}
+ #products .decant-product-card .add{font-size:9px}
+}
 </style>
 <link rel="stylesheet" href="santino-ui.css?v=20261117-1">
 
@@ -407,7 +442,7 @@ const CURRENCY = new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"}
 /* Os volumes de decant comercializados atualmente são 5 ml e 10 ml. */
 const PRODUCTS = [
  {id:"kingdom",name:"The Kingdom",brand:"Lattafa",concentration:"EDP · Eau de Parfum",image:"imagens-perfumes/file_000000001bcc820eaacfaa778590d3b2.png",tag:"Importado",description:"Aromático e ambarado, com notas de lavanda, menta e baunilha.",volumes:[{ml:5,price:18.9},{ml:10,price:35.9}]},
- {id:"the-blend-bourbon",name:"The Blend Bourbon",brand:"O Boticário",concentration:"EDP · Eau de Parfum",image:"imagens-perfumes/file_00000000294c820e955ad9d271829d93.png",tag:"Nacional",description:"Especiado e amadeirado, com um toque quente de bourbon.",volumes:[{ml:5,price:22.9},{ml:10,price:42.9}]},
+ {id:"the-blend-bourbon",name:"The Blend Bourbon",brand:"O Boticário",concentration:"EDP · Eau de Parfum",image:"imagens-perfumes/file_00000000294c820e955ad9d271829d93.png",tag:"Nacional",description:"Especiado e amadeirado, com um toque quente de bourbon.",volumes:[{ml:5,price:24.9},{ml:10,price:42.9}]},
  {id:"asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",concentration:"EDP · Eau de Parfum",image:"imagens-perfumes/file_00000000ec34820e8ef9f9d86598f27c.png",tag:"Importado",description:"Especiado e adocicado, com ameixa, cacau e baunilha bourbon.",volumes:[{ml:5,price:17.9},{ml:10,price:33.9}]},
  {id:"homem-sagaz",name:"Homem Sagaz",brand:"Natura",concentration:"Deo Parfum",image:"imagens-perfumes/file_000000009260820e960992d939501568.png",tag:"Nacional",description:"Amadeirado e marcante, com perfil moderno e intenso. Uma opção para quem gosta de presença e elegância.",volumes:[{ml:5,price:12.9},{ml:10,price:24.9}]},
  {id:"homem-dom",name:"Homem Dom",brand:"Natura",concentration:"Deo Parfum",image:"imagens-perfumes/file_00000000d6b4820ea291f02fce000da9.png",tag:"Nacional",description:"Amadeirado e especiado, com baunilha negra e madeiras.",volumes:[{ml:5,price:12.9},{ml:10,price:24.9}]},
@@ -663,35 +698,24 @@ function renderProducts(){
  if(!filteredProducts.length){$("products").innerHTML='<p class="catalog-empty-state">Nenhuma fragrância corresponde aos filtros selecionados.</p>';return;}
  $("products").innerHTML=filteredProducts.map(p=>`<article class="product decant-product-card" id="card-${p.id}" data-decant-id="${escapeHTML(p.id)}" data-volume-index="0" data-quantity="1">
    <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
-    <div class="product-art decant-product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Perfume ${escapeHTML(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><span class="photo-fallback-label">SANTINO</span></div></div>
-    <h3>${escapeHTML(p.name)}</h3>
-    <div class="product-brandline"><span class="product-brand-name">${escapeHTML(getBrandDisplay(p))}</span><span class="product-origin-tag">${escapeHTML(p.tag||"")}</span></div>
-    ${getCompactConcentration(p.concentration)?`<div class="product-concentration-tag">${escapeHTML(getCompactConcentration(p.concentration))}</div>`:""}
-   </a>
-   <div class="decant-controls" aria-label="Opções de compra">
-    <div class="control-group volume-group">
-     <span class="control-caption">Volume</span>
+     <div class="product-art decant-product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Perfume ${escapeHTML(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><span class="photo-fallback-label">SANTINO</span></div></div>
+     <div class="decant-card-info">
+      <h3>${escapeHTML(p.name)}</h3>
+      <div class="product-brandline"><span class="product-brand-name">${escapeHTML(getBrandDisplay(p))}</span><span class="product-origin-tag">${escapeHTML(p.tag||"")}</span></div>
+      ${getCompactConcentration(p.concentration)?`<div class="product-concentration-tag">${escapeHTML(getCompactConcentration(p.concentration))}</div>`:""}
+     </div>
+    </a>
+    <div class="price-row"><span class="price" id="price-${p.id}" data-card-price>${money(p.volumes[0].price)}</span></div>
+    <div class="decant-purchase-row">
      <div class="volume-picker">
-      <button type="button" class="volume-trigger" id="volume-${p.id}" data-volume-toggle aria-expanded="false" aria-haspopup="true" aria-label="Escolher volume de ${escapeHTML(p.name)}">
-       <span data-volume-current>${p.volumes[0].ml} ml</span><span class="volume-chevron" aria-hidden="true">⌄</span>
-      </button>
-      <div class="volume-menu" role="group" aria-label="Volumes disponíveis" hidden>
-       ${p.volumes.map((v,i)=>`<button type="button" class="volume-option" data-volume-option="${i}" aria-pressed="${i===0?"true":"false"}">${v.ml} ml</button>`).join("")}
-      </div>
+      <button type="button" class="volume-trigger" id="volume-${p.id}" data-volume-toggle aria-expanded="false" aria-haspopup="true" aria-label="Escolher volume de ${escapeHTML(p.name)}"><span data-volume-current>${p.volumes[0].ml} ml</span><span class="volume-chevron" aria-hidden="true">⌄</span></button>
+      <div class="volume-menu" role="group" aria-label="Volumes disponíveis" hidden>${p.volumes.map((v,i)=>`<button type="button" class="volume-option" data-volume-option="${i}" aria-pressed="${i===0?"true":"false"}">${v.ml} ml</button>`).join("")}</div>
      </div>
-    </div>
-    <div class="control-group quantity-group">
-     <span class="control-caption">Qtd.</span>
      <div class="quantity-stepper">
-      <button type="button" data-quantity-change="-1" aria-label="Diminuir quantidade de ${escapeHTML(p.name)}" disabled>−</button>
-      <output id="qty-${p.id}" data-quantity-value aria-live="polite">1</output>
-      <button type="button" data-quantity-change="1" aria-label="Aumentar quantidade de ${escapeHTML(p.name)}">+</button>
+      <button type="button" data-quantity-change="-1" aria-label="Diminuir quantidade de ${escapeHTML(p.name)}" disabled>−</button><output id="qty-${p.id}" data-quantity-value aria-live="polite">1</output><button type="button" data-quantity-change="1" aria-label="Aumentar quantidade de ${escapeHTML(p.name)}">+</button>
      </div>
-    </div>
-   </div>
-   <div class="price-row"><span class="price" id="price-${p.id}" data-card-price>${money(p.volumes[0].price)}</span></div>
-   <button class="add" type="button" data-add="${p.id}">Adicionar ao carrinho</button>
-  </article>`).join("");
+     <button class="add" type="button" data-add="${p.id}" aria-label="Adicionar ${escapeHTML(p.name)} ao carrinho">Adicionar</button>
+    </div></article>`).join("");
  bindProductImageFallbacks($("products"));
  document.querySelectorAll("[data-add]").forEach(button=>button.addEventListener("click",()=>addToCart(button.dataset.add)));
 }
