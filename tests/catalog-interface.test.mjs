@@ -36,11 +36,9 @@ test("all catalog cards use the same image frame without cropping product photos
   assert.match(styles, /@media \(max-width: 720px\)/);
 });
 
-test("mobile decant cards place a larger perfume image above all details and purchase controls", async () => {
+test("mobile decant cards use compact two-column layout and The Blend Bourbon 5 ml costs R$ 24,90", async () => {
   const html = await readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8");
-  assert.match(html, /#products\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)!important;gap:10px!important\}/);
-  assert.match(html, /#products \.decant-product-card \.product-detail-link\{display:flex;flex-direction:column/);
-  assert.match(html, /aspect-ratio:1\.55\/1!important/);
+  assert.match(html, /#products\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)!important;gap:8px!important\}/);
   assert.match(html, /class="decant-card-info"/);
   assert.match(html, /class="decant-purchase-row"/);
   assert.match(html, /id:"the-blend-bourbon"[\s\S]*?volumes:\[\{ml:5,price:24\.9\},\{ml:10,price:46\.65\}\]/);
