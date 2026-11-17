@@ -25,6 +25,10 @@ test("conflicting commercial text is retained by source and excluded from import
   assert.deepEqual(byId.get("k-max").conflicts, {
     name: ["Natura K Max", "Natura Kaiak K Max"],
     brand: ["Natura", "Natura Kaiak"],
+    image: [
+      "imagens-perfumes/file_000000002630820eb1e3fc68c0103081.png",
+      "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600",
+    ],
   });
   assert.deepEqual(byId.get("full-cebolinha").conflicts.description, [
     "Colônia masculina fougère refrescante da Turma da Mônica, em frasco de 50 ml. Consulte a SANTINO para disponibilidade e condições.",
