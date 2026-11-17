@@ -1,6 +1,6 @@
 # Conciliação das fontes de catálogo
 
-Auditoria automatizada executada em 15/11/2026. O comando `node scripts/audit-catalog-sources.mjs` lê apenas os arquivos atuais do site e imprime contagens e diferenças por ID/campo; não altera catálogo, preços, imagens nem o banco.
+Auditoria automatizada atualizada em 17/11/2026. O comando `node scripts/audit-catalog-sources.mjs` lê apenas os arquivos atuais do site e imprime contagens e diferenças por ID/campo; não altera catálogo, preços, imagens nem o banco.
 
 ## Cobertura
 
@@ -16,11 +16,11 @@ Todos os 54 IDs de catálogo têm um registro na página compartilhada de detalh
 
 ## Diferenças entre as listas
 
-- Imagem: 5 IDs — `asad-bourbon`, `fakhar-black`, `homem-dom`, `kingdom`, `the-blend-bourbon`.
+- Imagem: 12 IDs — `asad-bourbon`, `clash`, `essencial-sentir`, `eudora-h-acqua`, `fakhar-black`, `homem-dom`, `homem-sagaz`, `k-max`, `kingdom`, `nautica-voyage`, `quasar-ice` e `the-blend-bourbon`.
 - Nome ou marca: 1 ID — `k-max`.
 - Descrição: 2 IDs — `full-cebolinha`, `full-nautica-voyage`.
 
-A auditoria registra IDs e campos divergentes, sem copiar URLs, preços ou textos comerciais. Ela não decide se uma imagem diferente é intencional para a apresentação, nem qual valor deve prevalecer em nome, marca ou descrição.
+A auditoria registra IDs e campos divergentes, sem copiar URLs, preços ou textos comerciais. As diferenças de imagem incluem as novas fotos próprias dos decants; as fotos dos frascos inteiros foram mantidas separadas e não foram substituídas. A auditoria não decide qual valor deve prevalecer em nome, marca ou descrição.
 
 ## Consequência para o modelo do banco
 
