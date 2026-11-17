@@ -17,7 +17,7 @@ const EXCLUDED_ROOT_ENTRIES = new Set([
   "tests",
 ]);
 const PUBLIC_ROOT_FILES = new Set(["robots.txt"]);
-const PUBLIC_ROOT_DIRECTORIES = new Set(["assets", "data", "fonts", "images"]);
+const PUBLIC_ROOT_DIRECTORIES = new Set(["assets", "data", "fonts", "images", "imagens-perfumes"]);
 const PUBLIC_ASSET_EXTENSIONS = new Set([
   ".avif",
   ".css",
