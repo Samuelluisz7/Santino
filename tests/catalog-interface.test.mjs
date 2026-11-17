@@ -241,3 +241,27 @@ test("decant mobile metadata has no reserved blank title space and purchase cont
   assert.match(html, /\.quantity-stepper output\{flex:0 0 10px;min-width:10px/);
   assert.match(html, /\.decant-product-card \.add\{width:100%;min-width:0;min-height:36px!important;height:36px/);
 });
+
+
+test("home decant showcase reuses the exact decant catalog images and replaces The Kingdom with Essencial Sentir", async () => {
+  const [home, decants] = await Promise.all([
+    readFile(path.join(REPOSITORY_ROOT, "index.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8"),
+  ]);
+  const payload = home.match(/<script type="application\/json" id="homeFeaturedProducts">([\s\S]*?)<\/script>/);
+  assert.ok(payload, "home featured product data should exist");
+  const featured = JSON.parse(payload[1]);
+  assert.deepEqual(featured.map(product => product.id), ["essencial-sentir", "asad-bourbon", "homem-sagaz", "k-max"]);
+  assert.equal(featured.some(product => product.id === "kingdom"), false);
+
+  for (const product of featured) {
+    const catalogLine = decants.split("\n").find(line => line.includes('id:"' + product.id + '"'));
+    assert.ok(catalogLine, "missing decant catalog product " + product.id);
+    const image = catalogLine.match(/image:"([^"]+)"/);
+    const volumes = catalogLine.match(/volumes:\[\{ml:5,price:([0-9.]+)\},\{ml:10,price:([0-9.]+)\}\]/);
+    assert.ok(image, "missing decant image " + product.id);
+    assert.ok(volumes, "missing 5 ml/10 ml prices " + product.id);
+    assert.equal(product.image, image[1], product.id + " should use the exact image from Decants");
+    assert.deepEqual(product.prices, {"5": Number(volumes[1]), "10": Number(volumes[2])});
+  }
+});
