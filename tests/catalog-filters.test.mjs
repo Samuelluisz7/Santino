@@ -68,3 +68,16 @@ test("product performance facts hide completely when their values are unavailabl
  assert.match(html, /if\(noteFacts\)noteFacts\.hidden=!noteFacts\.querySelector/);
  assert.doesNotMatch(html, /id="longevityText">Não há avaliação confiável cadastrada/);
 });
+
+
+test("full-size catalog starts on national products and switches compactly to imports", async () => {
+  const html = await readFile(path.join(ROOT, "frascos.html"), "utf8");
+  assert.match(html, /class="full-size-origin-switch"/);
+  assert.match(html, /data-full-size-origin="Nacional" aria-pressed="true">Nacionais/);
+  assert.match(html, /data-full-size-origin="Importado" aria-pressed="false">Importados/);
+  assert.match(html, /let currentFullSizeOrigin="Nacional"/);
+  assert.match(html, /function getFullSizeProductsForOrigin\(\)\{return FULL_SIZE_PRODUCTS\.filter\(product=>getProductOrigin\(product\)===currentFullSizeOrigin\)\}/);
+  assert.match(html, /let items=getFullSizeProductsForOrigin\(\)\.filter\(p=>/);
+  assert.match(html, /getFullSizeProductsForOrigin\(\)\.map\(getBrandKey\)/);
+  assert.match(html, /currentFullSizeOrigin=nextOrigin;[\s\S]*?populateFullSizeBrandFilter\(\);[\s\S]*?renderFullSizeProducts\(\)/);
+});
