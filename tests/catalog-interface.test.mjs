@@ -120,6 +120,30 @@ test("cashback homepage explains applicable product categories and current self-
   assert.match(html, /consulta automática de saldo e a aplicação do cashback pelo site ainda não estão disponíveis/i);
 });
 
+test("recent Touti products have complete olfactory profiles and FIT Caribe uses the correct reference", async () => {
+  const [details, full, decants] = await Promise.all([
+    readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "frascos.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8"),
+  ]);
+  const profileStart = details.indexOf("Object.assign(PERFUME_INFO,{");
+  assert.ok(profileStart > 0);
+  for (const id of ["touti-vip-50", "touti-vip-52", "touti-fit-caribe"]) {
+    const start = details.indexOf('"' + id + '":{', profileStart);
+    assert.ok(start > profileStart, id + " olfactory profile is missing");
+    const end = details.indexOf("},", start);
+    const profile = details.slice(start, end);
+    assert.match(profile, /top:"[^"]+"/);
+    assert.match(profile, /heart:"[^"]+"/);
+    assert.match(profile, /base:"[^"]+"/);
+    assert.match(profile, /referenceNotice:"[^"]+"/);
+  }
+  assert.match(details, /name:"Touti FIT Caribe · Acqua di Giò Profondo"/);
+  assert.match(full, /name:"FIT Caribe · Acqua di Giò Profondo"/);
+  assert.match(full, /referenceName:"Acqua di Giò Profondo · Giorgio Armani"/);
+  assert.match(decants, /Touti FIT Caribe, referência olfativa Acqua di Giò Profondo/);
+});
+
 test("shared perfume details provide a responsive mobile purchase bar", async () => {
   const html = await readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8");
   const styles = await readFile(path.join(REPOSITORY_ROOT, "sticky-purchase.css"), "utf8");

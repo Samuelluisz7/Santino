@@ -1455,7 +1455,7 @@ const PRODUCTS = [
  {id:"touti-vip-50",name:"Touti VIP 50 · Bleu de Chanel",brand:"Touti",image:"https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",tag:"Touti",description:"Touti VIP 50, referência olfativa Bleu de Chanel. Preço calculado a R$ 2,00 por ml.",volumes:[{ml:5,price:10},{ml:10,price:20}]},
  {id:"touti-vip-52",name:"Touti VIP 52 · One Million Privé",brand:"Touti",image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvhxs3jke5r48d",tag:"Touti",description:"Touti VIP 52, referência olfativa One Million Privé. Preço calculado a R$ 2,00 por ml.",volumes:[{ml:5,price:10},{ml:10,price:20}]},
  {id:"touti-vip-80",name:"Touti VIP 80 · Y Eau de Parfum",brand:"Touti",image:"decants-reference-sprite-20261116.svg#v7",tag:"Touti",description:"Touti VIP 80, referência olfativa Y Eau de Parfum. Preço calculado a R$ 2,00 por ml.",volumes:[{ml:5,price:10},{ml:10,price:20}]},
- {id:"touti-fit-caribe",name:"Touti FIT Caribe · Polo Ultra Blue",brand:"Touti",image:"decants-reference-sprite-20261116.svg#v8",tag:"Touti",description:"Touti FIT Caribe, referência olfativa Polo Ultra Blue. Preço calculado a R$ 2,00 por ml.",volumes:[{ml:5,price:10},{ml:10,price:20}]}
+ {id:"touti-fit-caribe",name:"Touti FIT Caribe · Acqua di Giò Profondo",brand:"Touti",image:"decants-reference-sprite-20261116.svg#v8",tag:"Touti",description:"Touti FIT Caribe, referência olfativa Acqua di Giò Profondo. Preço calculado a R$ 2,00 por ml.",volumes:[{ml:5,price:10},{ml:10,price:20}]}
 ];
 const PERFUME_INFO = {
  "kingdom":{family:"Aromático ambarado",top:"Lavanda, menta e sálvia",heart:"Baunilha, tabaco e flor de laranjeira",base:"Fava tonka, benjoim e ládano"},
@@ -1497,6 +1497,27 @@ Object.assign(PERFUME_INFO,{
   heart:"Canela, mogno e cravo",
   base:"Baunilha, sândalo, cedro, vetiver e oliveira",
   referenceNotice:"Pirâmide publicada para o Touti VIP 12 na ficha do fornecedor consultado. Como é uma fragrância inspirada, a composição pode variar da fragrância de referência."
+ },
+ "touti-vip-50":{
+  family:"Amadeirado aromático",
+  top:"Toranja, limão, hortelã e pimenta rosa",
+  heart:"Gengibre, noz-moscada, jasmim e Iso E Super",
+  base:"Incenso, vetiver, cedro, sândalo, patchouli e ládano",
+  referenceNotice:"Pirâmide publicada pela loja VIP Touti para o VIP 50, inspirado em Bleu de Chanel. A composição do produto inspirado pode variar em relação à referência."
+ },
+ "touti-vip-52":{
+  family:"Oriental",
+  top:"Tangerina sanguínea e canela",
+  heart:"Tabaco e mirra",
+  base:"Fava tonka e patchouli",
+  referenceNotice:"Pirâmide publicada pela loja VIP Touti para o VIP 52, inspirado em One Million Privé. A composição do produto inspirado pode variar em relação à referência."
+ },
+ "touti-fit-caribe":{
+  family:"Fougère aromático",
+  top:"Notas marinhas e mandarina verde",
+  heart:"Lavandim e alecrim",
+  base:"Cedro e patchouli",
+  referenceNotice:"Pirâmide da referência Acqua di Giò Profondo Eau de Parfum, publicada pela Armani. O FIT Caribe é uma fragrância inspirada e pode apresentar composição diferente."
  },
  "touti-vip-80":{
   family:"Aromático fougère",
@@ -1599,7 +1620,7 @@ const FULL_SIZE_PRODUCTS = [
 {id:"full-touti-vip-50",name:"VIP 50 · Bleu de Chanel",brand:"Touti · 50 ml",ml:50,price:54.90,image:"https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",toutiImage:"https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",referenceImage:"https://9f8e62d4.delivery.rocketcdn.me/wp-content/uploads/2023/07/bleu-de-chanel.jpg",referenceName:"Bleu de Chanel · Chanel",toutiCaption:"Touti VIP 50 · frasco 50 ml",description:"O produto vendido é o perfume Touti VIP 50, 50 ml. Bleu de Chanel é apenas a referência olfativa e não está incluído."},
 {id:"full-touti-vip-52",name:"VIP 52 · One Million Privé",brand:"Touti · 50 ml",ml:50,price:54.90,image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvhxs3jke5r48d",toutiImage:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvhxs3jke5r48d",referenceImage:"https://e7cbb2c9-bb84-4880-8504-79f06f158221.svc.edge.scw.cloud/product/19130/detailsc.jpg",referenceName:"One Million Privé · Rabanne",toutiCaption:"Touti VIP 52 · frasco e caixa",description:"O produto vendido é o perfume Touti VIP 52, 50 ml. One Million Privé é apenas a referência olfativa e não está incluído."},
 {id:"full-touti-vip-80",name:"VIP 80 · Y Eau de Parfum",brand:"Touti · 50 ml",ml:50,price:54.90,image:"https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",toutiImage:"https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",referenceImage:"https://beautyhouse.com/cdn/shop/files/01bdmtewnr.jpg?v=1760981447&width=1492",referenceName:"Y Eau de Parfum · Yves Saint Laurent",toutiCaption:"Frasco padrão da linha VIP Touti · 50 ml",description:"O produto vendido é o perfume Touti VIP 80, 50 ml. A foto mostra o frasco padrão da linha VIP; Y Eau de Parfum é apenas a referência olfativa e não está incluído."},
-{id:"full-touti-fit-caribe",name:"FIT Caribe · Polo Ultra Blue",brand:"Touti · 50 ml",ml:50,price:54.90,image:"https://down-br.img.susercontent.com/file/sg-11134201-7rbkn-llw9seqvwa09e4",toutiImage:"https://down-br.img.susercontent.com/file/sg-11134201-7rbkn-llw9seqvwa09e4",referenceImage:"https://images.tcdn.com.br/img/img_prod/1144493/perfume_polo_ultra_blue_ralph_lauren_eau_de_toilette_masculino_4631_1_406d4d38ef38a973edfe0fc8af436757.jpg",referenceName:"Polo Ultra Blue · Ralph Lauren",toutiCaption:"Touti FIT Caribe · frasco",description:"O produto vendido é o perfume Touti FIT Caribe, 50 ml. Polo Ultra Blue é apenas a referência olfativa e não está incluído."},
+{id:"full-touti-fit-caribe",name:"FIT Caribe · Acqua di Giò Profondo",brand:"Touti · 50 ml",ml:50,price:54.90,image:"https://down-br.img.susercontent.com/file/sg-11134201-7rbkn-llw9seqvwa09e4",toutiImage:"https://down-br.img.susercontent.com/file/sg-11134201-7rbkn-llw9seqvwa09e4",referenceImage:"https://www.armanibeauty.nl/dw/image/v2/AAQP_PRD/on/demandware.static/-/Sites-gac-master-catalog/default/dw95c7bffa/products/ww-00848-arm/3614273953856/3614273953856_acqua-di-gio-profondo_50ml_main_v2.jpg",referenceName:"Acqua di Giò Profondo · Giorgio Armani",toutiCaption:"Touti FIT Caribe · frasco",description:"O produto vendido é o perfume Touti FIT Caribe, 50 ml. Acqua di Giò Profondo é apenas a referência olfativa e não está incluído."},
 {id:"full-kingdom",name:"The Kingdom",brand:"Lattafa",ml:100,image:"https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&width=1946",price:189.00,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
 {id:"full-212-vip-black",name:"212 VIP Black",brand:"Carolina Herrera",ml:100,volumes:[{"ml":50,"price":439.90},{"ml":100,"price":465.95},{"ml":200,"price":648.90}],image:"https://cdn.salla.sa/DGdDlG/c8ab83f8-76ec-45e6-a9e9-3c35260c28b9-1000x1000-z7c64TKXbUSTNjJpzdzsZ6frKO0DM0gAjXPF22wN.jpg",price:465.95,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
 {id:"full-the-blend-bourbon",name:"The Blend Bourbon",brand:"O Boticário",ml:100,image:"https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_1800%2Cc_limit/e_trim/v1/imagens/product/B77489/c97c55ee-65fe-4339-9a99-1363b969701b-the-blend-bourbon-eau-de-parfum-100ml.png",price:349.90,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
@@ -1638,6 +1659,27 @@ Object.assign(PRODUCT_STORIES,{
   climate:"Não informado com segurança.",
   accords:["Amadeirado","Frutado","Especiado","Baunilha","Madeiras"]
  },
+ "touti-vip-50":{
+  intro:"Toranja, limão, hortelã e pimenta rosa abrem com frescor cítrico; gengibre, noz-moscada e jasmim formam o coração, enquanto incenso e madeiras sustentam o fundo.",
+  occasion:"Trabalho, reuniões, jantares de negócios e ocasiões especiais, conforme a orientação da loja VIP Touti.",
+  climate:"Versátil; ajuste a quantidade de borrifadas ao ambiente e à temperatura.",
+  story:"A ficha publicada pela loja VIP Touti descreve o VIP 50 como inspirado em Bleu de Chanel. A pirâmide reúne cítricos e hortelã na saída, especiarias no coração e madeiras e resinas no fundo.",
+  accords:["Amadeirado","Aromático","Cítrico","Especiado","Incenso"]
+ },
+ "touti-vip-52":{
+  intro:"Tangerina sanguínea e canela abrem com calor e picância; tabaco e mirra aprofundam o coração, enquanto tonka e patchouli sustentam o fundo.",
+  occasion:"Noites frias e encontros noturnos, conforme a ficha da loja VIP Touti.",
+  climate:"Perfil quente e denso; prefira clima ameno ou frio e reduza a aplicação em ambientes fechados.",
+  story:"A ficha publicada pela loja VIP Touti associa o VIP 52 a One Million Privé. A composição informada combina uma saída de tangerina e canela, um coração de tabaco e mirra e uma base de tonka e patchouli.",
+  accords:["Oriental","Especiado quente","Canela","Tabaco","Mirra","Doce","Patchouli"]
+ },
+ "touti-fit-caribe":{
+  intro:"Notas marinhas e mandarina verde abrem a referência; lavandim e alecrim formam o coração aromático, sobre cedro e patchouli.",
+  occasion:"Uso diário e momentos casuais, especialmente para quem procura um perfil fresco e marinho.",
+  climate:"Perfil fresco e aquático, confortável para dias quentes; a percepção varia conforme a pele e a aplicação.",
+  story:"O catálogo da Touti associa o FIT Caribe ao Acqua di Giò Profondo. A pirâmide exibida corresponde à referência publicada pela Armani; a formulação do FIT Caribe pode ser diferente.",
+  accords:["Aquático","Marinho","Aromático","Fresco","Cítrico","Amadeirado"]
+ },
  "touti-vip-46":{
   intro:"A referência 212 VIP Black combina absinto, couro preto e base quente de baunilha e almíscar.",
   occasion:"Noite, jantares e saídas após o anoitecer, conforme a descrição da Carolina Herrera.",
@@ -1653,6 +1695,9 @@ Object.assign(PRODUCT_STORIES,{
 });
 Object.assign(PRODUCT_ACCORDS,{
  "touti-vip-12":["Amadeirado","Frutado","Especiado","Baunilha","Canela","Madeiras"],
+ "touti-vip-50":["Amadeirado","Aromático","Cítrico","Fresco especiado","Incenso","Vetiver"],
+ "touti-vip-52":["Oriental","Especiado quente","Canela","Tabaco","Mirra","Doce","Patchouli"],
+ "touti-fit-caribe":["Aquático","Marinho","Fresco","Aromático","Cítrico","Amadeirado"],
  "touti-vip-80":["Aromático","Fresco especiado","Amadeirado","Frutado","Âmbar","Verde"],
  "touti-vip-46":["Aromático","Âmbar","Amadeirado","Couro","Baunilha"],
  "212-vip-black":["Aromático","Âmbar","Amadeirado","Couro","Baunilha"]
