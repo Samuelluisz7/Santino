@@ -318,7 +318,6 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 
   <link rel="stylesheet" href="santino-identity.css?v=20261117-1">
   <link rel="stylesheet" href="catalog-filters.css?v=20261116-8">
-  <link rel="stylesheet" href="full-size-compact.css?v=20261117-2">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/frascos.html">
   <meta name="robots" content="index,follow">
@@ -639,39 +638,34 @@ function renderFullSizeProducts(){
  if(!items.length){$("fullSizeProducts").innerHTML='<p class="catalog-empty-state">Nenhuma fragrância corresponde aos filtros selecionados.</p>';return;}
  $("fullSizeProducts").innerHTML = items.map(p =>
    '<article class="product full-size-product">' +
-    '<div class="full-size-product-layout">' +
-     '<a class="product-detail-link full-size-product-image-link" href="produto.html?v=20261116-7&id=' + encodeURIComponent(p.id) + '" aria-label="Ver foto de ' + escapeHTML(p.name) + '">' +
-      (p.toutiImage && p.referenceImage
-        ? '<div class="product-art product-comparison">' +
-           '<div class="comparison-side"><div class="comparison-label">Produto vendido</div><div class="comparison-photo"><img data-pair-photo src="' + escapeHTML(p.toutiImage) + '" alt="' + escapeHTML(p.name) + ' — frasco Touti anunciado" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto do produto indisponível</span></div><div class="comparison-name">' + escapeHTML(p.toutiCaption || p.name) + '</div></div>' +
-           '<div class="comparison-side"><div class="comparison-label">Referência olfativa</div><div class="comparison-photo"><img data-pair-photo src="' + escapeHTML(p.referenceImage) + '" alt="' + escapeHTML(p.referenceName) + ' — referência olfativa, não incluída na venda" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto da referência indisponível</span></div><div class="comparison-name">' + escapeHTML(p.referenceName) + '<small>Não incluído na venda</small></div></div>' +
-          '</div>'
-        : '<div class="product-art">' +
-           (p.image ? '<img class="product-photo" data-product-id="' + escapeHTML(p.id) + '" src="' + escapeHTML(p.image) + '" alt="Frasco de ' + escapeHTML(p.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer">' : '') +
-           '<div class="photo-fallback" style="' + (p.image ? 'display:none;' : '') + '"><div class="vial"></div></div>' +
-          '</div>') +
-     '</a>' +
-     '<div class="full-size-product-info">' +
-      '<a class="product-detail-link full-size-product-title-link" href="produto.html?v=20261116-7&id=' + encodeURIComponent(p.id) + '" aria-label="Ver detalhes de ' + escapeHTML(p.name) + '"><h3>' + escapeHTML(p.name) + '</h3></a>' +
-      '<div class="product-brand">' + escapeHTML(getBrandDisplay(p)) + '</div>' +
-      '<div class="product-concentration-tag">' + escapeHTML(p.concentration) + '</div>' +
-      '<span class="product-origin-tag">' + getProductOrigin(p) + '</span>' +
-      (Array.isArray(p.volumes)&&p.volumes.length
-        ? '<label class="full-volume-label">Volume<select class="full-volume-select" data-full-volume="' + p.id + '" aria-label="Escolher volume de ' + escapeHTML(p.name) + '">' + p.volumes.map((v,i)=>'<option value="' + i + '">' + (v.label || (v.ml + ' ml')) + (Number.isFinite(v.price)?' — '+money(v.price):' — consultar') + '</option>').join('') + '</select></label>'
-        : '<p class="card-meta">' + p.ml + ' ml</p>') +
-      '<p class="price full-size-price" data-full-price="' + p.id + '">' + (Number.isFinite(p.volumes?.[0]?.price ?? p.price)?money(p.volumes?.[0]?.price ?? p.price):'Consulte o preço') + '</p>' +
-     '</div>' +
-     '<button class="add full-size-product-action" type="button" data-add-full="' + p.id + '">' + (Number.isFinite(p.volumes?.[0]?.price ?? p.price)?'Adicionar':'Consultar no WhatsApp') + '</button>' +
-    '</div>' +
+   '<a class="product-detail-link" href="produto.html?v=20261116-7&id=' + encodeURIComponent(p.id) + '" aria-label="Ver detalhes de ' + escapeHTML(p.name) + '">' +
+     (p.toutiImage && p.referenceImage
+       ? '<div class="product-art product-comparison">' +
+          '<div class="comparison-side"><div class="comparison-label">Produto vendido</div><div class="comparison-photo"><img data-pair-photo src="' + escapeHTML(p.toutiImage) + '" alt="' + escapeHTML(p.name) + ' — frasco Touti anunciado" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto do produto indisponível</span></div><div class="comparison-name">' + escapeHTML(p.toutiCaption || p.name) + '</div></div>' +
+          '<div class="comparison-side"><div class="comparison-label">Referência olfativa</div><div class="comparison-photo"><img data-pair-photo src="' + escapeHTML(p.referenceImage) + '" alt="' + escapeHTML(p.referenceName) + ' — referência olfativa, não incluída na venda" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto da referência indisponível</span></div><div class="comparison-name">' + escapeHTML(p.referenceName) + '<small>Não incluído na venda</small></div></div>' +
+         '</div>'
+       : '<div class="product-art">' +
+          (p.image ? '<img class="product-photo" data-product-id="' + escapeHTML(p.id) + '" src="' + escapeHTML(p.image) + '" alt="Frasco de ' + escapeHTML(p.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer">' : '') +
+          '<div class="photo-fallback" style="' + (p.image ? 'display:none;' : '') + '"><div class="vial"></div></div>' +
+         '</div>') +
+     '<h3>' + escapeHTML(p.name) + '</h3>' +
+     '<div class="product-brand">' + escapeHTML(getBrandDisplay(p)) + '</div>' +'<div class="product-concentration-tag">Concentração: ' + escapeHTML(p.concentration) + '</div>' +
+     '<span class="product-origin-tag">' + getProductOrigin(p) + '</span>' +
+   '</a>' +
+   (Array.isArray(p.volumes)&&p.volumes.length
+     ? '<label class="full-volume-label">Volume<select class="full-volume-select" data-full-volume="' + p.id + '" aria-label="Escolher volume de ' + escapeHTML(p.name) + '">' + p.volumes.map((v,i)=>'<option value="' + i + '">' + (v.label || (v.ml + ' ml')) + (Number.isFinite(v.price)?' — '+money(v.price):' — consultar') + '</option>').join('') + '</select></label>'
+     : '<p class="card-meta">' + p.ml + ' ml</p>') +
+   '<p class="price full-size-price" data-full-price="' + p.id + '">' + (Number.isFinite(p.volumes?.[0]?.price ?? p.price)?money(p.volumes?.[0]?.price ?? p.price):'Consulte o preço') + '</p>' +
+   '<button class="add" type="button" data-add-full="' + p.id + '">' + (Number.isFinite(p.volumes?.[0]?.price ?? p.price)?'Adicionar ao carrinho — '+money(p.volumes?.[0]?.price ?? p.price):'Consultar pelo WhatsApp') + '</button>' +
    '</article>'
-  ).join("");
+ ).join("");
  bindProductImageFallbacks($("fullSizeProducts"));
  $("fullSizeProducts").querySelectorAll("[data-pair-photo]").forEach(img=>img.addEventListener("error",()=>{img.hidden=true;}));
  $("fullSizeProducts").querySelectorAll("[data-full-volume]").forEach(select=>select.addEventListener("change",()=>updateFullSizeSelection(select.dataset.fullVolume,Number(select.value))));
  document.querySelectorAll("[data-add-full]").forEach(button => button.addEventListener("click", () => addFullSizeToCart(button.dataset.addFull)));
 }
 function getFullSizeVolume(p,index){return Array.isArray(p.volumes)&&p.volumes.length?p.volumes[index]||p.volumes[0]:{ml:p.ml,price:Number.isFinite(p.price)?p.price:null};}
-function updateFullSizeSelection(id,index){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const v=getFullSizeVolume(p,index),price=document.querySelector('[data-full-price="'+id+'"]'),button=document.querySelector('[data-add-full="'+id+'"]');if(price)price.textContent=Number.isFinite(v.price)?money(v.price):"Consulte o preço";if(button)button.textContent=Number.isFinite(v.price)?"Adicionar":"Consultar no WhatsApp";}
+function updateFullSizeSelection(id,index){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const v=getFullSizeVolume(p,index),price=document.querySelector('[data-full-price="'+id+'"]'),button=document.querySelector('[data-add-full="'+id+'"]');if(price)price.textContent=Number.isFinite(v.price)?money(v.price):"Consulte o preço";if(button)button.textContent=Number.isFinite(v.price)?"Adicionar ao carrinho — "+money(v.price):"Consultar pelo WhatsApp";}
 function consultFullSize(id,ml){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message="Olá! Gostaria de consultar "+p.name+" na apresentação de "+ml+" ml.";window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
