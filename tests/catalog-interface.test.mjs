@@ -178,3 +178,26 @@ test("decants and full-bottle pages use the shared side cart without wiping save
     assert.doesNotMatch(html, /get\("openCart"\).*openCart\(\)/);
   }
 });
+
+test("every catalog perfume declares a concentration and the storefront displays it", async () => {
+  const [decants, full, details, home, featured] = await Promise.all([
+    readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "frascos.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "index.html"), "utf8"),
+    readFile(path.join(REPOSITORY_ROOT, "home-featured.js"), "utf8"),
+  ]);
+  for (const [file, html, expectedCount] of [["decants", decants, 32], ["full bottles", full, 49], ["product details", details, 54]]) {
+    const rows = [...html.matchAll(/\{id:"([^"]+)",name:"[^"]+",brand:"[^"]+",concentration:"([^"]+)"/g)];
+    assert.equal(rows.length, expectedCount, file + " concentration coverage");
+    for (const row of rows) assert.ok(row[2].trim(), file + " missing concentration for " + row[1]);
+  }
+  assert.match(decants, /product-concentration-tag/);
+  assert.match(full, /product-concentration-tag/);
+  assert.match(details, /Concentração:/);
+  assert.match(home, /recommended-concentration/);
+  assert.match(home, /"concentration":"Deo Parfum"/);
+  assert.match(featured, /home-product-concentration/);
+  assert.match(details, /Não divulgada pela Touti/);
+});
+

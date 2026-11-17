@@ -455,3 +455,8 @@
   .home-full-bottle-hero{margin-top:16px!important}
   .home-full-bottle-hero img{aspect-ratio:16/8.2!important;max-height:185px!important;object-fit:cover!important;object-position:center 52%!important}
 }
+
+
+/* Concentração da fragrância: etiqueta discreta nos cards. */
+.home-product-concentration{display:block;margin-top:4px;color:#c9b18b;font-size:10px;line-height:1.4;letter-spacing:.04em}
+.recommended-concentration{display:block;margin-top:4px;color:#c9b18b;font-size:9px;line-height:1.4;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
