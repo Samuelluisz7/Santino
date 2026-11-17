@@ -54,7 +54,10 @@
     const brand = document.createElement("span");
     brand.className = "home-product-brand";
     brand.textContent = product.brand;
-    detailLink.append(imageFrame, name, brand);
+    const concentration = document.createElement("span");
+    concentration.className = "home-product-concentration";
+    concentration.textContent = product.concentration || "Concentração não informada";
+    detailLink.append(imageFrame, name, brand, concentration);
 
     const controls = document.createElement("div");
     controls.className = "home-product-controls";
