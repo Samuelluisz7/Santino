@@ -322,28 +322,29 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
  #products .decant-product-card .price{font-size:17px}
  #products .decant-product-card .add{min-height:44px;padding:10px 6px;font-size:12px}
 }
-/* Layout compacto aprovado: seis decants em três fileiras no celular. */
+/* Decants mobile: foto centralizada acima, detalhes e compra abaixo. */
 @media(max-width:720px){
- #products{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
- #products .decant-product-card{display:flex;flex-direction:column;gap:5px;padding:7px;border-radius:11px;min-width:0}
- #products .decant-product-card .product-detail-link{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.88fr);gap:7px;align-items:start;min-width:0}
- #products .decant-product-art{width:100%;aspect-ratio:1/1!important;height:auto!important;min-height:0;margin:0;padding:3px;border-radius:8px}
- #products .decant-product-card .decant-card-info{min-width:0;padding-top:2px}
- #products .decant-product-card h3{font-size:clamp(12px,3.5vw,15px);line-height:1.15;margin:0 0 5px;overflow-wrap:anywhere}
- #products .decant-product-card .product-brandline{gap:3px;display:flex;flex-direction:column;align-items:flex-start}
- #products .decant-product-card .product-brand-name{font-size:10px;line-height:1.2}
- #products .decant-product-card .product-origin-tag{font-size:7px;padding:2px 4px}
- #products .decant-product-card .product-concentration-tag{font-size:8px;margin-top:4px}
- #products .decant-product-card .price-row{margin:0;min-height:0;padding:0 1px}
- #products .decant-product-card .price{font-size:16px;line-height:1.15}
- #products .decant-purchase-row{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr) minmax(0,1.05fr);gap:4px;align-items:center}
- #products .volume-trigger{min-height:32px;padding:5px 6px;font-size:10px;gap:3px;border-radius:7px}
- #products .volume-chevron{font-size:13px}
- #products .quantity-stepper{min-height:32px;border-radius:7px}
- #products .quantity-stepper button{width:20px;height:30px;font-size:15px;padding:0}
- #products .quantity-stepper output{min-width:12px;font-size:11px}
- #products .decant-product-card .add{min-height:32px;padding:5px 3px;font-size:10px;line-height:1.1;border-radius:7px;white-space:nowrap}
- #products .volume-menu{min-width:64px}
+ #products{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ #products .decant-product-card{display:flex;flex-direction:column;gap:8px;padding:9px;border-radius:12px;min-width:0}
+ #products .decant-product-card .product-detail-link{display:flex;flex-direction:column;gap:8px;align-items:stretch;min-width:0}
+ #products .decant-product-art{display:block;width:100%;height:auto!important;aspect-ratio:1.55/1!important;min-height:0;margin:0;padding:5px;border-radius:9px}
+ #products .decant-product-art .product-photo{width:100%;height:100%;object-fit:contain!important;object-position:center!important}
+ #products .decant-product-card .decant-card-info{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:0 2px}
+ #products .decant-product-card h3{font-size:clamp(15px,4.2vw,18px);line-height:1.16;margin:0 0 5px;overflow-wrap:anywhere}
+ #products .decant-product-card .product-brandline{display:flex;flex-direction:row;align-items:center;gap:6px;flex-wrap:wrap;margin:0}
+ #products .decant-product-card .product-brand-name{font-size:11px;line-height:1.2}
+ #products .decant-product-card .product-origin-tag{font-size:8px;padding:2px 5px}
+ #products .decant-product-card .product-concentration-tag{font-size:9px;margin-top:4px}
+ #products .decant-product-card .price-row{margin:0;min-height:0;padding:0 2px}
+ #products .decant-product-card .price{font-size:18px;line-height:1.2}
+ #products .decant-purchase-row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr) minmax(0,1.1fr);gap:5px;align-items:center}
+ #products .volume-trigger{min-height:38px;padding:6px 7px;font-size:11px;gap:3px;border-radius:7px}
+ #products .volume-chevron{font-size:14px}
+ #products .quantity-stepper{min-height:38px;border-radius:7px}
+ #products .quantity-stepper button{width:23px;height:36px;font-size:16px;padding:0}
+ #products .quantity-stepper output{min-width:14px;font-size:12px}
+ #products .decant-product-card .add{min-height:38px;padding:6px 4px;font-size:11px;line-height:1.1;border-radius:7px;white-space:nowrap}
+ #products .volume-menu{min-width:70px}
  .hero{padding-top:10px!important;padding-bottom:10px!important;gap:8px!important}
  .hero h1{font-size:24px!important;margin:0}
  .hero p{font-size:11px!important;margin:4px 0 0}
@@ -352,10 +353,10 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
  #catalog .section-head p{font-size:10px;line-height:1.3;margin:3px 0 0}
 }
 @media(max-width:380px){
- #products .decant-product-card{padding:5px}
- #products .decant-product-card h3{font-size:12px}
+ #products .decant-product-card{padding:7px}
+ #products .decant-product-card h3{font-size:15px}
  #products .decant-purchase-row{gap:3px}
- #products .decant-product-card .add{font-size:9px}
+ #products .decant-product-card .add{font-size:10px}
 }
 </style>
 <link rel="stylesheet" href="santino-ui.css?v=20261117-1">
