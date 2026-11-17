@@ -358,6 +358,33 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
  #products .decant-purchase-row{gap:3px}
  #products .decant-product-card .add{font-size:10px}
 }
+
+/* Ajuste fino do mobile: remove altura vazia e alinha os controles de compra. */
+@media(max-width:720px){
+ #products .decant-product-card .decant-card-info{gap:0!important;padding:0 2px!important}
+ #products .decant-product-card h3{min-height:0!important;margin:0 0 4px!important;line-height:1.16!important}
+ #products .decant-product-card .product-brandline{min-height:0!important;margin:0!important;gap:4px!important;line-height:1.2!important}
+ #products .decant-product-card .product-origin-tag{margin:0!important}
+ #products .decant-product-card .product-concentration-tag{margin:2px 0 0!important;line-height:1.2!important}
+ #products .decant-product-card .price-row{min-height:0!important;margin:3px 0 6px!important;padding:0 2px!important}
+ #products .decant-purchase-row{grid-template-columns:minmax(0,.82fr) minmax(0,.95fr) minmax(0,1.05fr)!important;gap:4px!important;align-items:stretch!important}
+ #products .volume-picker{width:100%;min-width:0}
+ #products .volume-trigger{width:100%;min-width:0;min-height:36px!important;height:36px;padding:5px 4px!important;gap:1px!important;font-size:10px!important;white-space:nowrap}
+ #products .volume-trigger [data-volume-current]{min-width:0;white-space:nowrap}
+ #products .volume-chevron{flex:0 0 auto;font-size:11px}
+ #products .quantity-stepper{width:100%;min-width:0;height:36px;min-height:36px!important}
+ #products .quantity-stepper button{flex:1 1 0;width:auto;min-width:0;height:34px;font-size:14px}
+ #products .quantity-stepper output{flex:0 0 10px;min-width:10px;font-size:11px}
+ #products .decant-product-card .add{width:100%;min-width:0;min-height:36px!important;height:36px;padding:5px 2px!important;font-size:9px!important;white-space:nowrap}
+}
+@media(max-width:380px){
+ #products .decant-purchase-row{grid-template-columns:minmax(0,.82fr) minmax(0,.95fr) minmax(0,1.05fr)!important;gap:3px!important}
+ #products .volume-trigger{padding:4px 3px!important;font-size:9px!important}
+ #products .quantity-stepper button{font-size:13px}
+ #products .quantity-stepper output{flex-basis:9px;min-width:9px;font-size:10px}
+ #products .decant-product-card .add{font-size:8.5px!important}
+}
+
 </style>
 <link rel="stylesheet" href="santino-ui.css?v=20261117-1">
 
