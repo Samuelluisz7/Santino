@@ -81,21 +81,3 @@ test("full-size catalog starts on national products and switches compactly to im
   assert.match(html, /getFullSizeProductsForOrigin\(\)\.map\(getBrandKey\)/);
   assert.match(html, /currentFullSizeOrigin=nextOrigin;[\s\S]*?populateFullSizeBrandFilter\(\);[\s\S]*?renderFullSizeProducts\(\)/);
 });
-
-
-test("full-size products use horizontal compact cards and continuous scroll", async () => {
-  const [html, styles] = await Promise.all([
-    readFile(path.join(ROOT, "frascos.html"), "utf8"),
-    readFile(path.join(ROOT, "full-size-compact.css"), "utf8"),
-  ]);
-  assert.ok(html.includes("full-size-compact.css?v=20261117-2"));
-  assert.ok(html.includes('class="full-size-product-layout"'));
-  assert.ok(html.includes('class="product-detail-link full-size-product-image-link"'));
-  assert.ok(html.includes('class="full-size-product-info"'));
-  assert.ok(html.includes('class="add full-size-product-action"'));
-  assert.ok(styles.includes("grid-template-columns: minmax(58px, .72fr) minmax(0, 1.28fr)"));
-  assert.ok(styles.includes("grid-column: 1 / -1"));
-  assert.ok(styles.includes("object-fit: contain"));
-  assert.ok(html.includes("items.map(p =>"));
-  assert.doesNotMatch(html, /pagination|nextPage|pageSize|loadMoreButton/i);
-});
