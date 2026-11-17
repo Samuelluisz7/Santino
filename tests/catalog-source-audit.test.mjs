@@ -22,7 +22,20 @@ test("every catalog product has one matching shared detail record", () => {
 
 test("cross-catalog differences are explicit and cannot silently drift", () => {
   assert.deepEqual(report.differences, {
-    image: ["asad-bourbon", "fakhar-black", "homem-dom", "kingdom", "the-blend-bourbon"],
+    image: [
+      "asad-bourbon",
+      "clash",
+      "essencial-sentir",
+      "eudora-h-acqua",
+      "fakhar-black",
+      "homem-dom",
+      "homem-sagaz",
+      "k-max",
+      "kingdom",
+      "nautica-voyage",
+      "quasar-ice",
+      "the-blend-bourbon",
+    ],
     identity: ["k-max"],
     description: ["full-cebolinha", "full-nautica-voyage"],
   });
