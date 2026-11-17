@@ -228,3 +228,16 @@ test("every catalog perfume declares a concentration and the storefront displays
   assert.match(details, /Não divulgada pela Touti/);
 });
 
+
+
+test("decant mobile metadata has no reserved blank title space and purchase controls stay aligned", async () => {
+  const html = await readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8");
+  assert.match(html, /\.decant-product-card h3\{min-height:0!important;margin:0 0 4px/);
+  assert.match(html, /\.decant-product-card \.product-brandline\{min-height:0!important/);
+  assert.match(html, /\.decant-product-card \.product-concentration-tag\{margin:2px 0 0!important/);
+  assert.match(html, /\.price-row\{min-height:0!important;margin:3px 0 6px!important/);
+  assert.match(html, /\.volume-trigger \[data-volume-current\]\{min-width:0;white-space:nowrap\}/);
+  assert.match(html, /\.decant-purchase-row\{grid-template-columns:minmax\(0,\.82fr\) minmax\(0,\.95fr\) minmax\(0,1\.05fr\)!important/);
+  assert.match(html, /\.quantity-stepper output\{flex:0 0 10px;min-width:10px/);
+  assert.match(html, /\.decant-product-card \.add\{width:100%;min-width:0;min-height:36px!important;height:36px/);
+});
