@@ -280,6 +280,48 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .decant-product-art{padding:0!important;background:#11110f!important;overflow:hidden!important}
 .decant-product-art .product-photo{display:block;width:100%!important;height:100%!important;padding:0!important;object-fit:cover!important;object-position:center bottom!important;object-position:50% 100%!important;transform-origin:center bottom!important;border:0!important;border-radius:0!important;transform:scale(1.22)!important}
 @media(max-width:720px){.decant-product-art{height:155px!important}}
+
+/* SANTINO Decants — cartões compactos e controles próprios */
+#products .decant-product-card{border-radius:14px;padding:10px;overflow:visible;position:relative}
+#products .decant-product-art{width:100%;height:auto!important;aspect-ratio:1/1!important;min-height:0;margin:0 0 11px;padding:5px;display:block;overflow:hidden;border:1px solid var(--beige);border-radius:14px;background:#171512}
+#products .decant-product-art .product-photo{display:block;width:100%;height:100%;min-width:0;min-height:0;padding:0!important;object-fit:contain!important;object-position:center!important;transform:none!important;transform-origin:center center!important;border:0;border-radius:0!important;background:transparent!important;mix-blend-mode:normal!important}
+#products .decant-product-art .photo-fallback{inset:5px;border-radius:0}
+#products .decant-product-card .product-detail-link{border-radius:0}
+#products .decant-product-card h3{font-size:19px;line-height:1.2;margin:0 0 6px}
+#products .decant-product-card .product-brandline{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:0}
+#products .decant-product-card .product-brand-name{font-size:12px;color:var(--muted)}
+#products .decant-product-card .product-origin-tag{font-size:9px;letter-spacing:.08em;padding:3px 6px;border:1px solid var(--line);border-radius:4px;color:var(--muted)}
+#products .decant-product-card .product-concentration-tag{display:block;margin:4px 0 0;color:#8d8376;font-size:10px;letter-spacing:.07em;line-height:1.3;text-transform:uppercase}
+#products .decant-controls{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:9px;margin:15px 0 10px}
+#products .control-group{min-width:0;display:flex;flex-direction:column;gap:5px}
+#products .control-caption{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#9e9588}
+#products .volume-picker{position:relative;min-width:0}
+#products .volume-trigger{width:100%;min-height:40px;display:flex;align-items:center;justify-content:space-between;gap:9px;padding:8px 11px;border:1px solid #514638;border-radius:9px;background:#211f1b;color:var(--cream);font-size:13px;text-align:left}
+#products .volume-chevron{color:var(--beige);font-size:17px;line-height:1}
+#products .volume-menu{position:absolute;left:0;right:0;bottom:calc(100% + 7px);z-index:12;padding:5px;border:1px solid var(--beige);border-radius:11px;background:#201d18;box-shadow:0 10px 24px #000b}
+#products .volume-menu[hidden]{display:none!important}
+#products .volume-option{display:block;width:100%;min-height:37px;padding:8px 10px;border:0;border-radius:7px;background:transparent;color:var(--cream);font-size:13px;text-align:left}
+#products .volume-option[aria-pressed="true"]{background:#393126;color:var(--beige)}
+#products .quantity-stepper{display:flex;align-items:center;justify-content:center;min-height:40px;border:1px solid #514638;border-radius:9px;background:#211f1b;overflow:hidden}
+#products .quantity-stepper button{width:32px;height:38px;border:0;background:transparent;color:var(--beige);font-size:19px;line-height:1}
+#products .quantity-stepper button:disabled{opacity:.35;cursor:not-allowed}
+#products .quantity-stepper output{min-width:20px;text-align:center;color:var(--cream);font-size:13px;font-variant-numeric:tabular-nums}
+#products .decant-product-card .price-row{margin:1px 0 10px;min-height:25px}
+#products .decant-product-card .price{font-size:19px}
+@media(max-width:720px){
+ #products .decant-product-card{padding:8px;border-radius:12px}
+ #products .decant-product-art{aspect-ratio:1/1!important;height:auto!important;margin-bottom:9px;padding:4px;border-radius:12px}
+ #products .decant-product-card h3{font-size:16px;line-height:1.23}
+ #products .decant-product-card .product-brand-name{font-size:11px}
+ #products .decant-product-card .product-origin-tag{font-size:8px;padding:2px 5px}
+ #products .decant-product-card .product-concentration-tag{font-size:9px}
+ #products .decant-controls{gap:7px;margin:12px 0 9px}
+ #products .volume-trigger{min-height:38px;padding:7px 8px;font-size:12px}
+ #products .quantity-stepper{min-height:38px}
+ #products .quantity-stepper button{width:28px;height:36px}
+ #products .decant-product-card .price{font-size:17px}
+ #products .decant-product-card .add{min-height:44px;padding:10px 6px;font-size:12px}
+}
 </style>
 <link rel="stylesheet" href="santino-ui.css?v=20261117-1">
 
@@ -528,6 +570,80 @@ function bindCatalogFilters(toggleId,panelId,clearId,render){
   if(typeof render==="function")render();
  });
 }
+function getCompactConcentration(value){
+ const raw=String(value||"").trim();
+ if(raw.startsWith("EDP")||raw.includes("Eau de Parfum"))return "EDP";
+ if(raw.startsWith("EDT")||raw.includes("Eau de Toilette"))return "EDT";
+ if(/Deo Parfum/i.test(raw))return "Deo Parfum";
+ if(/Desodorante Col[oô]nia/i.test(raw))return "Colônia";
+ if(/Não divulgada/i.test(raw))return "";
+ return raw;
+}
+function setupDecantProductControls(){
+ const root=$("products");
+ if(!root||root.dataset.purchaseControlsBound==="1")return;
+ root.dataset.purchaseControlsBound="1";
+ root.addEventListener("click",event=>{
+  const toggle=event.target.closest("[data-volume-toggle]");
+  if(toggle){
+   const article=toggle.closest("[data-decant-id]");
+   const menu=article?.querySelector(".volume-menu");
+   if(!menu)return;
+   const willOpen=menu.hidden;
+   root.querySelectorAll(".volume-menu").forEach(item=>{item.hidden=true;item.previousElementSibling?.setAttribute("aria-expanded","false");});
+   menu.hidden=!willOpen;
+   toggle.setAttribute("aria-expanded",String(willOpen));
+   return;
+  }
+  const option=event.target.closest("[data-volume-option]");
+  if(option){
+   const article=option.closest("[data-decant-id]");
+   const product=PRODUCTS.find(item=>item.id===article?.dataset.decantId);
+   const index=Number(option.dataset.volumeOption);
+   const selected=product?.volumes[index];
+   if(!article||!selected)return;
+   article.dataset.volumeIndex=String(index);
+   article.querySelector("[data-volume-current]").textContent=selected.ml+" ml";
+   article.querySelector("[data-card-price]").textContent=money(selected.price);
+   article.querySelectorAll("[data-volume-option]").forEach(button=>{
+    const active=Number(button.dataset.volumeOption)===index;
+    button.setAttribute("aria-pressed",String(active));
+   });
+   const menu=article.querySelector(".volume-menu");
+   if(menu)menu.hidden=true;
+   article.querySelector("[data-volume-toggle]")?.setAttribute("aria-expanded","false");
+   return;
+  }
+  const quantityButton=event.target.closest("[data-quantity-change]");
+  if(quantityButton){
+   const article=quantityButton.closest("[data-decant-id]");
+   if(!article)return;
+   const current=Number(article.dataset.quantity)||1;
+   const next=Math.max(1,Math.min(10,current+Number(quantityButton.dataset.quantityChange||0)));
+   article.dataset.quantity=String(next);
+   const output=article.querySelector("[data-quantity-value]");
+   if(output)output.textContent=String(next);
+   article.querySelectorAll("[data-quantity-change]").forEach(button=>{
+    const delta=Number(button.dataset.quantityChange);
+    button.disabled=(delta<0&&next===1)||(delta>0&&next===10);
+   });
+  }
+ });
+ document.addEventListener("click",event=>{
+  if(event.target.closest(".volume-picker"))return;
+  root.querySelectorAll(".volume-menu").forEach(menu=>{
+   menu.hidden=true;
+   menu.previousElementSibling?.setAttribute("aria-expanded","false");
+  });
+ });
+ document.addEventListener("keydown",event=>{
+  if(event.key!=="Escape")return;
+  root.querySelectorAll(".volume-menu").forEach(menu=>{
+   menu.hidden=true;
+   menu.previousElementSibling?.setAttribute("aria-expanded","false");
+  });
+ });
+}
 function renderProducts(){
  const brand=$("decantBrandFilter")?.value||"",sort=$("decantSort")?.value||"featured";
  const minRaw=Number.parseFloat($("decantPriceMin")?.value||"");
@@ -545,24 +661,39 @@ function renderProducts(){
  if(sort==="price-asc")filteredProducts.sort((a,b)=>priceForSort(a)-priceForSort(b)||a.name.localeCompare(b.name,"pt-BR"));
  if(sort==="price-desc")filteredProducts.sort((a,b)=>priceForSort(b)-priceForSort(a)||a.name.localeCompare(b.name,"pt-BR"));
  if(!filteredProducts.length){$("products").innerHTML='<p class="catalog-empty-state">Nenhuma fragrância corresponde aos filtros selecionados.</p>';return;}
- $("products").innerHTML = filteredProducts.map(p=>`<article class="product">
+ $("products").innerHTML=filteredProducts.map(p=>`<article class="product decant-product-card" id="card-${p.id}" data-decant-id="${escapeHTML(p.id)}" data-volume-index="0" data-quantity="1">
    <a class="product-detail-link" href="produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
-   <div class="product-art decant-product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Perfume ${escapeHTML(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><span class="photo-fallback-label">SANTINO</span></div></div>
-   <h3>${escapeHTML(p.name)}</h3>
-   <div class="product-brandline"><span class="product-brand-name">${escapeHTML(getBrandDisplay(p))}</span><span class="product-origin-tag">${escapeHTML(p.tag||"")}</span></div><div class="product-concentration-tag">Concentração: ${escapeHTML(p.concentration)}</div>
+    <div class="product-art decant-product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Perfume ${escapeHTML(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><span class="photo-fallback-label">SANTINO</span></div></div>
+    <h3>${escapeHTML(p.name)}</h3>
+    <div class="product-brandline"><span class="product-brand-name">${escapeHTML(getBrandDisplay(p))}</span><span class="product-origin-tag">${escapeHTML(p.tag||"")}</span></div>
+    ${getCompactConcentration(p.concentration)?`<div class="product-concentration-tag">${escapeHTML(getCompactConcentration(p.concentration))}</div>`:""}
    </a>
-   <p class="decant-image-note">Imagem do perfume de referência. Você recebe o decant em mini frasco SANTINO.</p>
-   <div class="variants"><label style="flex:1">Volume
-     <select id="volume-${p.id}" aria-label="Volume de ${escapeHTML(p.name)}">${p.volumes.map((v,i)=>`<option value="${i}">${v.ml} ml</option>`).join("")}</select>
-   </label><label class="quantity-label">Quantidade
-     <select id="qty-${p.id}" aria-label="Quantidade de ${escapeHTML(p.name)}">${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}</select>
-   </label></div>
-   <div class="price-row"><span class="price" id="price-${p.id}">${money(p.volumes[0].price)}</span></div>
-   <button class="add" data-add="${p.id}">Adicionar ao carrinho</button>
- </article>`).join("");
+   <div class="decant-controls" aria-label="Opções de compra">
+    <div class="control-group volume-group">
+     <span class="control-caption">Volume</span>
+     <div class="volume-picker">
+      <button type="button" class="volume-trigger" id="volume-${p.id}" data-volume-toggle aria-expanded="false" aria-haspopup="true" aria-label="Escolher volume de ${escapeHTML(p.name)}">
+       <span data-volume-current>${p.volumes[0].ml} ml</span><span class="volume-chevron" aria-hidden="true">⌄</span>
+      </button>
+      <div class="volume-menu" role="group" aria-label="Volumes disponíveis" hidden>
+       ${p.volumes.map((v,i)=>`<button type="button" class="volume-option" data-volume-option="${i}" aria-pressed="${i===0?"true":"false"}">${v.ml} ml</button>`).join("")}
+      </div>
+     </div>
+    </div>
+    <div class="control-group quantity-group">
+     <span class="control-caption">Qtd.</span>
+     <div class="quantity-stepper">
+      <button type="button" data-quantity-change="-1" aria-label="Diminuir quantidade de ${escapeHTML(p.name)}" disabled>−</button>
+      <output id="qty-${p.id}" data-quantity-value aria-live="polite">1</output>
+      <button type="button" data-quantity-change="1" aria-label="Aumentar quantidade de ${escapeHTML(p.name)}">+</button>
+     </div>
+    </div>
+   </div>
+   <div class="price-row"><span class="price" id="price-${p.id}" data-card-price>${money(p.volumes[0].price)}</span></div>
+   <button class="add" type="button" data-add="${p.id}">Adicionar ao carrinho</button>
+  </article>`).join("");
  bindProductImageFallbacks($("products"));
- filteredProducts.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price)})});
- document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(b.dataset.add)));
+ document.querySelectorAll("[data-add]").forEach(button=>button.addEventListener("click",()=>addToCart(button.dataset.add)));
 }
 function renderFullSizeProducts(){
  const items = FULL_SIZE_PRODUCTS.slice();
@@ -590,8 +721,14 @@ function consultFullSize(id){
  window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
 }function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
- const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
- const key=id+"-"+v.ml; const requested=Math.max(1,Math.min(10,Number($("qty-"+id)?.value)||1)); const existing=cart.find(x=>x.key===key);
+ const p=PRODUCTS.find(x=>x.id===id);
+ const card=$("card-"+id);
+ if(!p||!card)return;
+ const index=Math.max(0,Math.min(p.volumes.length-1,Number(card.dataset.volumeIndex)||0));
+ const v=p.volumes[index];
+ const key=id+"-"+v.ml;
+ const requested=Math.max(1,Math.min(10,Number(card.dataset.quantity)||1));
+ const existing=cart.find(x=>x.key===key);
  if(existing){existing.qty+=requested;existing.image=existing.image||p.image;}else cart.push({key,id,name:p.name,brand:p.brand,image:p.image,ml:v.ml,price:v.price,qty:requested,category:"Decant"});
  renderCart();showToast(p.name+" adicionado ao carrinho.");
 }
@@ -616,7 +753,7 @@ function showToast(message){
  toast.style.display="block";
  window.setTimeout(()=>toast.style.display="none",2200);
 }
-setupDecantFilters();renderProducts();renderCart();
+setupDecantProductControls();setupDecantFilters();renderProducts();renderCart();
 
 </script>
 <script src="search.js?v=20261117-1" defer></script>

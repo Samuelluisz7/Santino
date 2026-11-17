@@ -29,6 +29,7 @@ test("cross-catalog differences are explicit and cannot silently drift", () => {
       "eudora-h-acqua",
       "fakhar-black",
       "homem-dom",
+      "homem-essence",
       "homem-sagaz",
       "k-max",
       "kingdom",

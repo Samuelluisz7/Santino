@@ -36,6 +36,20 @@ test("all catalog cards use the same image frame without cropping product photos
   assert.match(styles, /@media \(max-width: 720px\)/);
 });
 
+test("decants use square inset imagery, compact concentration, a floating volume picker and plus/minus quantity", async () => {
+  const html = await readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8");
+  assert.ok(html.includes("#products .decant-product-art{width:100%;height:auto!important;aspect-ratio:1/1!important"));
+  assert.ok(html.includes('class="volume-picker"'));
+  assert.ok(html.includes('class="volume-menu"'));
+  assert.ok(html.includes('data-quantity-change="-1"'));
+  assert.ok(html.includes('data-quantity-change="1"'));
+  assert.ok(html.includes("getCompactConcentration"));
+  assert.ok(!html.includes("decant-image-note"));
+  assert.ok(!html.includes('<select id="qty-'));
+  assert.ok(html.includes('data-volume-index="0"'));
+  assert.ok(html.includes("Number(card.dataset.quantity)||1"));
+});
+
 test("shared perfume details retain the olfactory pyramid", async () => {
   const html = await readFile(path.join(REPOSITORY_ROOT, "produto.html"), "utf8");
 
