@@ -138,6 +138,7 @@ test("recent Touti products have complete olfactory profiles and FIT Caribe uses
     assert.match(profile, /base:"[^"]+"/);
     assert.match(profile, /referenceNotice:"[^"]+"/);
   }
+  assert.match(details, /name:"Touti FIT Caribe · Acqua di Giò Profondo"/);
   assert.match(full, /name:"FIT Caribe · Acqua di Giò Profondo"/);
   assert.match(full, /referenceName:"Acqua di Giò Profondo · Giorgio Armani"/);
   assert.match(decants, /Touti FIT Caribe, referência olfativa Acqua di Giò Profondo/);
