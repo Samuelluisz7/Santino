@@ -104,7 +104,7 @@ test("category tab styles target the actual home-refresh main element", async ()
   const homeMarkup = await readFile(path.join(ROOT, "index.html"), "utf8");
   const storefrontStyles = await readFile(path.join(ROOT, "home-storefront.css"), "utf8");
   assert.match(homeMarkup, /<main class="santino-storefront home-refresh">/);
-  assert.doesNotMatch(storefrontStyles, /body\\.home-refresh/);
-  assert.match(storefrontStyles, /\\.home-refresh \\.home-category-tabs \\{/);
-  assert.match(storefrontStyles, /\\.home-refresh \\.home-category-tab-content strong \\{/);
+  assert.doesNotMatch(storefrontStyles, /body\.home-refresh/);
+  assert.match(storefrontStyles, /\.home-refresh \.home-category-tabs \{/);
+  assert.match(storefrontStyles, /\.home-refresh \.home-category-tab-content strong \{/);
 });
