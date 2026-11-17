@@ -27,10 +27,10 @@ test("homepage uses top navigation and one explore section without duplicated ca
 
 test("homepage displays exactly the approved four asymmetric recommendations", async () => {
   const expected = [
-    ["Homem Sagaz", "produto.html?id=homem-sagaz"],
-    ["K Max", "produto.html?id=k-max"],
-    ["Nautica Voyage", "produto.html?id=nautica-voyage"],
-    ["The Kingdom", "produto.html?id=kingdom"],
+    ["Homem Sagaz", "produto.html?id=full-homem-sagaz"],
+    ["K Max", "produto.html?id=full-k-max"],
+    ["Nautica Voyage", "produto.html?id=full-nautica-voyage"],
+    ["The Kingdom", "produto.html?id=full-kingdom"],
   ];
   const cards = [...home.matchAll(/<a class="recommended-card [^"]+" href="([^"]+)">([\s\S]*?)<\/a>/g)];
   assert.equal(cards.length, 4);

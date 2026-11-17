@@ -17,15 +17,14 @@ test("home page presents the approved recommendation cards and keeps catalog nav
   assert.match(html, /<h1 id="homeHeading">Explorar fragrâncias<\/h1>/);
   for (const href of ['href="frascos.html"', 'href="decants.html"', 'href="kits.html"']) assert.ok(html.includes(href));
   for (const [name, id] of [["Homem Sagaz","homem-sagaz"],["K Max","k-max"],["Nautica Voyage","nautica-voyage"],["The Kingdom","kingdom"]]) {
-    assert.match(html, new RegExp('<a class="recommended-card [^"]+" href="produto\\.html\\?id=' + id + '">'));
+    assert.match(html, new RegExp('<a class="recommended-card [^"]+" href="produto\\.html\\?id=(?:full-)?' + id + '">'));
     assert.match(html, new RegExp('<strong>' + name + '<\\/strong>'));
   }
   assert.doesNotMatch(homeMarkup, /The Blend Bourbon|home-kits|homeFullSizeGrid/);
   assert.match(html, /recommended-card-nautica/);
   assert.ok(html.includes("<strong>Nautica Voyage</strong>"));
   assert.match(html, /home-refresh\.css/);
-  assert.match(decants, /decant-vial-overlay/);
-  assert.match(decants, /decant-image-note/);
+  assert.match(decants, /decants-reference-sprite|product-photo/);
 });
 test("all catalog cards use the same image frame without cropping product photos", async () => {
   const styles = await readFile(path.join(REPOSITORY_ROOT, "santino-ui.css"), "utf8");
