@@ -271,3 +271,61 @@ body:not(.home-page) .full-size-section .products .full-size-product {
   .full-size-product-info h3 { font-size: 12px !important; }
   .full-size-product-action { font-size: 9px !important; }
 }
+
+
+/* Precedência explícita sobre as regras globais de identidade já carregadas
+   pela página. Esta página importa este arquivo por último. */
+body:not(.home-page) .full-size-section .products .full-size-product .full-size-product-image-link .product-art:not(.product-comparison) {
+  aspect-ratio: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 112px !important;
+  max-height: 144px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #eee7dc !important;
+  border: 1px solid #d8cbb8 !important;
+}
+
+body:not(.home-page) .full-size-section .products .full-size-product .full-size-product-image-link .product-photo {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  padding: 5px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  mix-blend-mode: normal !important;
+}
+
+body:not(.home-page) .full-size-section .products .full-size-product .full-size-product-info .full-size-product-title-link h3 {
+  min-height: 0 !important;
+  margin: 0 0 2px !important;
+  font: 600 15px/1.2 Arial, Helvetica, sans-serif !important;
+}
+
+body:not(.home-page) .full-size-section .products .full-size-product .full-size-product-action {
+  min-height: 36px !important;
+  margin: 0 !important;
+  padding: 7px 8px !important;
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+}
+
+@media (max-width: 720px) {
+  body:not(.home-page) .full-size-section .products .full-size-product .full-size-product-image-link .product-art:not(.product-comparison) {
+    min-height: 92px !important;
+    max-height: 112px !important;
+  }
+
+  body:not(.home-page) .full-size-section .products .full-size-product .full-size-product-info .full-size-product-title-link h3 {
+    font-size: 13px !important;
+    line-height: 1.16 !important;
+  }
+
+  body:not(.home-page) .full-size-section .products .full-size-product .full-size-product-action {
+    min-height: 33px !important;
+    padding: 6px 4px !important;
+    font-size: 10px !important;
+  }
+}
