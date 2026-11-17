@@ -84,6 +84,11 @@ test("real Pages build excludes repository documentation and Supabase files", as
 
   await access(path.join(outputRoot, "index.html"));
   await access(path.join(outputRoot, "search.js"));
+  await access(path.join(outputRoot, "home-featured.js"));
+  await access(path.join(outputRoot, "home-full-size.js"));
+  await access(path.join(outputRoot, "decant-vials.svg"));
+  await access(path.join(outputRoot, "sticky-purchase.css"));
+  await access(path.join(outputRoot, "sticky-purchase.js"));
   await access(path.join(outputRoot, ".nojekyll"));
 
   for (const excluded of ["CATALOGO.md", "LEIA-ME.txt", "docs", "scripts", "supabase", "tests", ".gitignore"]) {

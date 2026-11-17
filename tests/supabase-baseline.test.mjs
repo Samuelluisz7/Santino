@@ -16,6 +16,9 @@ const MIGRATIONS_DIRECTORY = path.join(
 const baselineFiles = (await readdir(MIGRATIONS_DIRECTORY)).filter((name) =>
   /^\d{14}_baseline_pesquisas_santino\.sql$/.test(name),
 );
+const catalogFiles = (await readdir(MIGRATIONS_DIRECTORY)).filter((name) =>
+  /^\d{14}_catalog_core\.sql$/.test(name),
+);
 
 test("versioned baseline preserves the legacy search table and its access rules", async () => {
   assert.equal(baselineFiles.length, 1, "one CLI-versioned baseline must exist");
@@ -33,6 +36,36 @@ test("versioned baseline preserves the legacy search table and its access rules"
   assert.match(sql, /grant insert on table public\.pesquisas_santino to anon/i);
   assert.match(sql, /policyname = 'Permitir registrar pesquisas'/i);
   assert.match(sql, /for insert\s+to anon\s+with check \(char_length\(trim\(termo\)\) between 1 and 100\)/i);
+  assert.doesNotMatch(sql, /\b(drop\s+table|truncate(?:\s+table)?|delete\s+from)\b/i);
+});
+
+test("catalog foundation is additive and closed until reviewed", async () => {
+  assert.equal(catalogFiles.length, 1, "one CLI-versioned catalog migration must exist");
+
+  const sql = await readFile(
+    path.join(MIGRATIONS_DIRECTORY, catalogFiles[0]),
+    "utf8",
+  );
+
+  for (const table of [
+    "products",
+    "product_variants",
+    "kits",
+    "kit_components",
+    "kit_component_variants",
+  ]) {
+    assert.match(
+      sql,
+      new RegExp(`alter table public\\.${table} enable row level security`, "i"),
+      `${table} must have RLS enabled`,
+    );
+  }
+
+  assert.match(sql, /is_active boolean not null default false/i);
+  assert.match(sql, /revoke all on table[\s\S]*from public, anon, authenticated/i);
+  assert.match(sql, /grant select on table[\s\S]*to anon, authenticated/i);
+  assert.doesNotMatch(sql, /grant (?:insert|update|delete)[^;]*\b(?:anon|authenticated)\b/i);
+  assert.doesNotMatch(sql, /insert\s+into\s+public\./i);
   assert.doesNotMatch(sql, /\b(drop\s+table|truncate(?:\s+table)?|delete\s+from)\b/i);
 });
 
@@ -62,3 +95,15 @@ test("Pages workflow validates migrations only against a local database", async 
   assert.doesNotMatch(workflow, /--remote|supabase db push|SUPABASE_ACCESS_TOKEN/i);
 });
 
+test("pgTAP plans match the assertions declared in every SQL test file", async () => {
+  const testDirectory = path.join(REPOSITORY_ROOT, "supabase", "tests");
+  const sqlFiles = (await readdir(testDirectory)).filter((name) => name.endsWith(".test.sql"));
+
+  for (const name of sqlFiles) {
+    const sql = await readFile(path.join(testDirectory, name), "utf8");
+    const plan = sql.match(/^\s*select\s+plan\((\d+)\)\s*;/im);
+    const assertions = [...sql.matchAll(/^\s*select\s+(?:ok|is|isnt|has_column|has_index|throws_ok|lives_ok)\s*\(/gim)].length;
+    assert.ok(plan, `${name} declares a pgTAP plan`);
+    assert.equal(Number(plan[1]), assertions, `${name} plan matches its pgTAP assertions`);
+  }
+});

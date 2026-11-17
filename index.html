@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#11110f">
+<meta name="theme-color" content="#090909">
 <meta name="description" content="SANTINO — decants e perfumes em frascos inteiros, com atendimento local em Viçosa.">
 <title>SANTINO | Decants &amp; Fragrâncias</title>
 <style>
@@ -182,9 +182,17 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
 .home-kit-card p{margin:6px 15px 0 0;color:var(--muted);font-size:11px;line-height:1.45}
 .home-kit-card b{position:absolute;right:11px;bottom:9px;color:var(--beige);font-size:15px;font-weight:400}
 @media(max-width:720px){.home-kits{padding:17px 15px 18px}.home-kits-head{align-items:start;gap:8px}.home-kits-head h2{font-size:25px}.home-kits-head p{font-size:11px}.home-kits-all{font-size:11px;padding-top:8px}.home-kit-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.home-kit-card{min-height:106px;padding:11px}.home-kit-card strong{font-size:18px}.home-kit-card p{font-size:10px}}
-</style>
-  <link rel="stylesheet" href="santino-ui.css">
 
+/* Marca SANTINO: monograma consistente no cabeçalho */
+.brand{position:relative;padding-left:42px;min-height:32px;display:inline-flex;flex-direction:column;justify-content:center}
+.brand::before{content:"S";position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:30px;border:1px solid var(--beige);border-radius:50%;display:grid;place-items:center;color:var(--beige);font:700 16px/1 Georgia,"Times New Roman",serif;letter-spacing:0}
+@media(max-width:720px){.brand{padding-left:36px;min-height:28px}.brand::before{width:26px;height:26px;font-size:14px}}
+</style>
+  <link rel="stylesheet" href="santino-ui.css?v=20261116-7">
+  <link rel="stylesheet" href="home-storefront.css?v=20261116-7">
+
+  <link rel="stylesheet" href="santino-identity.css?v=20261116-7">
+  <link rel="stylesheet" href="home-refresh.css?v=20261116-7">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/">
   <meta name="robots" content="index,follow">
@@ -208,90 +216,159 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
   </div>
   <nav class="catalog-nav" aria-label="Categorias do catálogo">
     <a href="index.html" aria-current="page">Início</a>
+    <a href="frascos.html">Frascos inteiros</a>
     <a href="decants.html">Decants</a>
-    <a href="frascos.html">Frascos inteiros</a><a href="kits.html">Kits</a>
+    <a href="kits.html">Kits</a>
   </nav>
 </header>
-<main>
-  <section class="hero home-hero" aria-labelledby="homeHeading">
-    <div class="hero-copy">
-      <div class="eyebrow">Descubra. Experimente. Escolha.</div>
-      <h1 id="homeHeading">Seu próximo perfume começa com uma descoberta.</h1>
-      <p>Explore a coleção, compare a pirâmide olfativa e experimente em decants de 5 ou 10 ml antes de escolher um frasco inteiro.</p>
-      <a class="home-offer-link" href="#promocoes">10% OFF em decants a partir de R$ 80 <span aria-hidden="true">→</span></a>
-      <a class="home-help-link" href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20SANTINO%20e%20gostaria%20de%20ajuda%20para%20escolher%20uma%20fragr%C3%A2ncia." target="_blank" rel="noopener noreferrer">Prefere ajuda? Fale com a SANTINO pelo WhatsApp</a>
+
+<main class="santino-storefront home-refresh">
+  <section class="home-explore" aria-labelledby="homeHeading">
+    <div class="home-explore-kicker">SANTINO · DECANTS &amp; FRAGRÂNCIAS</div>
+    <h1 id="homeHeading">Explorar fragrâncias</h1>
+    <p>Encontre uma fragrância que combine com seu estilo, sua rotina e seus momentos.</p>
+    <div class="home-full-bottle-hero">
+      <img src="banner-home-original.webp?v=20261116-7" alt="Seleção de perfumes em frascos inteiros da SANTINO" loading="eager" decoding="async">
     </div>
-    <div class="hero-visual">
-      <img class="hero-banner" src="banner-home-original.webp?v=1" alt="Coleção de perfumes SANTINO alinhados em uma composição horizontal" fetchpriority="high" decoding="async">
-    </div>
-    <div class="hero-actions">
-      <a class="hero-link primary" href="decants.html">Escolher um decant <span aria-hidden="true">→</span></a>
-      <a class="hero-link" href="kits.html">Explorar os kits <span aria-hidden="true">→</span></a>
+    <div class="home-full-bottle-actions">
+      <a class="home-full-bottle-primary" href="frascos.html">Explorar frascos inteiros <span aria-hidden="true">→</span></a>
+      <a class="home-full-bottle-secondary" href="#decants">Conhecer os decants <span aria-hidden="true">→</span></a>
     </div>
   </section>
-  <section class="service-strip" aria-label="Informações essenciais de compra">
-    <div><strong>DECANTS DE 5 E 10 ML</strong><span>Escolha o volume no catálogo</span></div>
-    <div><strong>FRAGRÂNCIAS ORIGINAIS</strong><span>Procedência informada com clareza</span></div>
-    <div><strong>PIX OU DINHEIRO</strong><span>Formas de pagamento aceitas</span></div>
-    <div><strong>ENTREGA LOCAL EM VIÇOSA</strong><span>Combine os detalhes com a loja</span></div>
+
+  <section class="home-category-tabs" aria-labelledby="homeCategoryHeading">
+    <div class="home-category-tabs-heading">
+      <div class="eyebrow">ESCOLHA COMO COMPRAR</div>
+      <h2 id="homeCategoryHeading">Encontre o formato ideal para você</h2>
+    </div>
+    <div class="home-category-tabs-grid">
+      <a class="home-category-tab home-category-tab-decants" href="decants.html">
+        <span class="home-category-tab-overlay"></span>
+        <span class="home-category-tab-content">
+          <small>EXPERIMENTE PRIMEIRO</small>
+          <strong>Decants</strong>
+          <span>Descubra novas fragrâncias em 5 ou 10 ml <b aria-hidden="true">→</b></span>
+        </span>
+      </a>
+      <a class="home-category-tab home-category-tab-full" href="frascos.html">
+        <span class="home-category-tab-overlay"></span>
+        <span class="home-category-tab-content">
+          <small>PARA FICAR</small>
+          <strong>Frascos inteiros</strong>
+          <span>Escolha sua fragrância em tamanho completo <b aria-hidden="true">→</b></span>
+        </span>
+      </a>
+    </div>
   </section>
-  <section class="home-pathways" aria-labelledby="homePathwaysHeading">
+
+  <section class="home-recommended" aria-labelledby="recommendedHeading">
+    <div class="home-recommended-heading">
+      <div>
+        <div class="eyebrow">SELEÇÃO SANTINO</div>
+        <h2 id="recommendedHeading">Recomendadas para conhecer</h2>
+      </div>
+      <p>Quatro fragrâncias para começar sua descoberta.</p>
+    </div>
+    <div class="home-recommended-grid">
+      <a class="recommended-card recommended-card-sagaz" href="produto.html?id=full-homem-sagaz">
+        <span class="recommended-image"><img src="https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&amp;sw=600" alt="Perfume Homem Sagaz da Natura" loading="eager" decoding="async"></span>
+        <span class="recommended-meta">NATURA · AMADEIRADO</span>
+        <strong>Homem Sagaz</strong>
+        <span class="recommended-action">Conhecer fragrância <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="recommended-card recommended-card-kmax" href="produto.html?id=full-k-max">
+        <span class="recommended-image"><img src="https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&amp;sw=600" alt="Perfume Natura Kaiak K Max" loading="lazy" decoding="async"></span>
+        <span class="recommended-meta">NATURA KAIAK · AROMÁTICO</span>
+        <strong>K Max</strong>
+        <span class="recommended-action">Conhecer fragrância <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="recommended-card recommended-card-nautica" href="produto.html?id=full-nautica-voyage">
+        <span class="recommended-image"><img src="https://amobeleza.vtexassets.com/arquivos/ids/338641/15282_0.jpg?v=639124732241930000" alt="Perfume Nautica Voyage" loading="lazy" decoding="async"></span>
+        <span class="recommended-meta">NAUTICA · AQUÁTICO FRESCO</span>
+        <strong>Nautica Voyage</strong>
+        <span class="recommended-action">Conhecer fragrância <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="recommended-card recommended-card-kingdom" href="produto.html?id=full-kingdom">
+        <span class="recommended-image"><img src="https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&amp;width=1946" alt="Perfume The Kingdom da Lattafa" loading="lazy" decoding="async"></span>
+        <span class="recommended-meta">LATTAFA · AROMÁTICO AMBARADO</span>
+        <strong>The Kingdom</strong>
+        <span class="recommended-action">Conhecer fragrância <span aria-hidden="true">↗</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="home-sale-banner" id="promocoes" aria-label="Oferta em decants">
+    <div class="home-sale-copy">
+      <div class="eyebrow">UMA FORMA DE DESCOBRIR MAIS</div>
+      <h2>10% OFF em decants</h2>
+      <p>A partir de R$ 80 em decants, o desconto é calculado sobre todo o subtotal elegível.</p>
+      <a href="decants.html">Explorar decants <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="home-featured" id="decants" aria-labelledby="homeFeaturedHeading">
     <div class="home-section-heading">
-      <div><div class="eyebrow">Explore a SANTINO</div><h2 id="homePathwaysHeading">Por onde você quer começar?</h2></div>
-      <p>Veja as fragrâncias, escolha o volume e monte seu pedido.</p>
-    </div>
-    <div class="home-pathway-grid">
-      <a class="home-pathway" href="decants.html">
-        <span class="home-pathway-kicker">EXPERIMENTE PRIMEIRO</span>
-        <strong>Decants</strong>
-        <p>Conheça a fragrância em 5 ou 10 ml antes de escolher um frasco inteiro.</p>
-        <span class="home-pathway-action">Ver decants <b aria-hidden="true">→</b></span>
-      </a>
-      <a class="home-pathway" href="kits.html">
-        <span class="home-pathway-kicker">ESCOLHA PELA OCASIÃO</span>
-        <strong>Kits</strong>
-        <p>Explore combinações para rotina, festa, encontro e noite.</p>
-        <span class="home-pathway-action">Encontrar um kit <b aria-hidden="true">→</b></span>
-      </a>
-      <a class="home-pathway" href="frascos.html">
-        <span class="home-pathway-kicker">ENCONTRE SUA PRÓXIMA ASSINATURA</span>
-        <strong>Frascos inteiros</strong>
-        <p>Veja a seleção de perfumes em frasco inteiro e consulte as opções.</p>
-        <span class="home-pathway-action">Ver frascos <b aria-hidden="true">→</b></span>
-      </a>
-    </div>
-  </section>
-  <section class="promo-grid" id="promocoes" aria-label="Descontos SANTINO">
-    <article class="promo-card">
-      <div class="promo-symbol" aria-hidden="true">%</div>
       <div>
-        <div class="promo-label">Desconto em decants</div>
-        <h2 class="promo-title">10% OFF</h2>
-        <p>Ganhe 10% de desconto em pedidos de decants a partir de R$ 80. O desconto é aplicado automaticamente no carrinho.</p>
+        <div class="eyebrow">DESCUBRA EM PEQUENOS VOLUMES</div>
+        <h2 id="homeFeaturedHeading">Decants para experimentar</h2>
       </div>
-    </article>
-    <article class="promo-card">
-      <div class="promo-symbol" aria-hidden="true">↗</div>
-      <div>
-        <div class="promo-label">Indicação</div>
-        <h2 class="promo-title">R$ 20 em crédito</h2>
-        <p>Indique alguém. Quando vocês dois concluírem compras de pelo menos R$ 100 cada, você recebe R$ 20 em crédito, após confirmação da loja.</p>
-        <a href="https://wa.me/?text=Estou%20te%20indicando%20a%20SANTINO!%20Para%20eu%20receber%20R%24%2020%20em%20cr%C3%A9dito%2C%20voc%C3%AA%20e%20eu%20precisamos%20concluir%20uma%20compra%20de%20pelo%20menos%20R%24%20100%20cada%2C%20confirmada%20pela%20loja.%20Ao%20falar%20com%20a%20SANTINO%2C%20informe%20meu%20nome%20para%20registrar%20a%20indica%C3%A7%C3%A3o%3A%20https%3A%2F%2Fwa.me%2F5531996312579" target="_blank" rel="noopener noreferrer">Compartilhar indicação</a>
+      <div class="home-featured-intro">
+        <p>As imagens mostram a fragrância de referência. O produto vendido é o decant em mini frasco SANTINO, no volume selecionado.</p>
+        <a href="decants.html">Ver todos os decants <span aria-hidden="true">→</span></a>
       </div>
-    </article>
-  </section>
-  <section class="home-kits" aria-labelledby="homeKitsHeading">
-    <div class="home-kits-head">
-      <div><div class="eyebrow">Escolha pela ocasião</div><h2 id="homeKitsHeading">Combinações recomendadas</h2><p>Combinações pensadas para diferentes ocasiões, sem precisar escolher perfume por perfume.</p></div>
-      <a href="kits.html" class="home-kits-all">Ver todos os kits <span aria-hidden="true">→</span></a>
     </div>
-    <div class="home-kit-grid">
-      <a class="home-kit-card" href="kits.html#kit-dia-a-dia"><span>01 · ROTINA</span><strong>Dia a dia</strong><p>Opções versáteis para acompanhar o dia a dia.</p><b aria-hidden="true">↗</b></a>
-      <a class="home-kit-card" href="kits.html#kit-festa"><span>02 · OCASIÃO</span><strong>Festa</strong><p>Uma seleção com presença para festas e saídas à noite.</p><b aria-hidden="true">↗</b></a>
-      <a class="home-kit-card" href="kits.html#kit-encontro"><span>03 · ENCONTRO</span><strong>Encontro</strong><p>Perfis envolventes para momentos a dois.</p><b aria-hidden="true">↗</b></a>
-      <a class="home-kit-card" href="kits.html#kit-noturno"><span>04 · NOITE</span><strong>Noturno</strong><p>Perfis intensos para noites e ocasiões especiais.</p><b aria-hidden="true">↗</b></a>
+    <div class="home-product-grid" id="homeFeaturedGrid" aria-label="Seleção de decants SANTINO"></div>
+    <p class="home-featured-status" id="homeFeaturedStatus" role="status" aria-live="polite"></p>
+  </section>
+  <script type="application/json" id="homeFeaturedProducts">[
+    {"id":"kingdom","name":"The Kingdom","brand":"Lattafa","image":"https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&width=1946","prices":{"5":18.9,"10":35.9}},
+    {"id":"asad-bourbon","name":"Asad Bourbon","brand":"Lattafa","image":"https://scentira.in/cdn/shop/files/LATTAFAAl_Asad_Bourbon_1_34bc0e05-10ec-4d25-9df5-34b68222f16c.png?v=1756889307&width=5000","prices":{"5":17.9,"10":33.9}},
+    {"id":"homem-sagaz","name":"Homem Sagaz","brand":"Natura","image":"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600","prices":{"5":12.9,"10":24.9}},
+    {"id":"k-max","name":"Natura K Max","brand":"Natura","image":"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600","prices":{"5":16.9,"10":30.9}}
+  ]</script>
+  <script src="home-featured.js?v=20261116-7" defer></script>
+
+
+
+</main>
+  <div class="home-benefits-dialog" id="homeBenefitsDialog" hidden aria-hidden="true">
+    <button class="home-benefits-backdrop" type="button" data-benefits-close aria-label="Fechar benefícios"></button>
+    <aside class="home-benefits-panel" role="dialog" aria-modal="true" aria-labelledby="benefitsHeading" tabindex="-1">
+      <div class="home-benefits-panel-head">
+        <span>VANTAGENS SANTINO</span>
+        <button class="home-benefits-close" type="button" data-benefits-close aria-label="Fechar benefícios">×</button>
+      </div>
+  <section class="home-benefits" id="beneficios" aria-labelledby="benefitsHeading">
+    <div class="eyebrow">VANTAGENS SANTINO</div>
+    <h2 id="benefitsHeading">Benefícios para suas próximas escolhas</h2>
+    <div class="home-benefit-card">
+      <div class="home-benefit-rate">5% <span>de cashback</span></div>
+      <div class="home-benefit-copy">
+        <h3>Uma parte da sua compra volta como crédito</h3>
+        <p>Você recebe 5% do valor efetivamente pago pelos produtos, depois dos descontos, para utilizar em uma próxima compra.</p>
+        <ul>
+          <li>Crédito liberado após a confirmação do pagamento.</li>
+          <li>Validade de 90 dias.</li>
+          <li>Pode ser acumulado com promoções e descontos de produtos.</li>
+          <li>Válido para decants, frascos inteiros, kits e outros produtos da loja.</li>
+          <li>É possível usar até 100% do valor dos produtos; o frete é pago à parte.</li>
+          <li>O crédito não pode ser convertido em dinheiro.</li>
+        </ul>
+        <p class="home-benefit-notice">A consulta automática de saldo e a aplicação do cashback pelo site ainda não estão disponíveis. As condições do benefício estão descritas aqui e nas políticas da loja.</p>
+        <a href="politicas.html#pedidos">Consultar todas as condições <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="home-benefit-card home-decant-benefit-card">
+      <div class="home-benefit-rate">10% <span>de desconto</span></div>
+      <div class="home-benefit-copy">
+        <h3>Desconto automático em decants</h3>
+        <p>A partir de R$ 80 em decants, você recebe 10% de desconto sobre o valor integral dos decants no carrinho. Frascos inteiros, kits e frete não entram nesse cálculo.</p>
+      </div>
     </div>
   </section>
+    </aside>
+  </div>
+<button class="home-benefits-float" id="homeBenefitsTrigger" type="button" aria-controls="homeBenefitsDialog" aria-expanded="false">Benefícios <span aria-hidden="true">↗</span></button>
 <footer>
   <div class="footer-brand">SANTINO</div>
   <p>Descubra sua próxima fragrância.</p>
@@ -312,8 +389,52 @@ footer{border-top:1px solid #2e2922;padding:25px 20px;color:var(--muted);font-si
   } catch (error) {}
 })();
 </script>
-<script src="search.js" defer></script>
-<script src="santino-ui.js" defer></script>
+<script src="search.js?v=20261116-7" defer></script>
+<script src="santino-ui.js?v=20261116-7" defer></script>
+
+
+<script>
+(function () {
+  "use strict";
+  const dialog = document.getElementById("homeBenefitsDialog");
+  const trigger = document.getElementById("homeBenefitsTrigger");
+  if (!dialog || !trigger) return;
+  const closeButton = dialog.querySelector(".home-benefits-close");
+  let previousFocus = null;
+  let previousOverflow = "";
+  let closeTimer = null;
+  function openBenefits() {
+    window.clearTimeout(closeTimer);
+    previousFocus = document.activeElement;
+    previousOverflow = document.body.style.overflow;
+    dialog.hidden = false;
+    dialog.setAttribute("aria-hidden", "false");
+    trigger.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+    window.requestAnimationFrame(function () {
+      dialog.classList.add("is-open");
+      if (closeButton) closeButton.focus();
+    });
+  }
+  function closeBenefits() {
+    if (dialog.hidden) return;
+    dialog.classList.remove("is-open");
+    dialog.setAttribute("aria-hidden", "true");
+    trigger.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = previousOverflow;
+    closeTimer = window.setTimeout(function () {
+      dialog.hidden = true;
+      if (previousFocus && typeof previousFocus.focus === "function") previousFocus.focus();
+    }, 240);
+  }
+  trigger.addEventListener("click", openBenefits);
+  dialog.addEventListener("click", function (event) {
+    if (event.target.closest("[data-benefits-close]")) closeBenefits();
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && !dialog.hidden) closeBenefits();
+  });
+})();
+</script>
 </body>
 </html>
-

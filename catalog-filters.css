@@ -1,0 +1,45 @@
+/* SANTINO — gaveta inferior de filtros, com aplicação automática */
+.catalog-filter-wrap{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:10px;width:100%;margin:0 0 18px}
+.catalog-filter-toggle{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;min-width:128px;min-height:44px;padding:10px 14px;border:1px solid #7f694b;border-radius:3px;background:#191713;color:#e6d4b8;font-size:12px;font-weight:700;letter-spacing:.025em;cursor:pointer;transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease}
+.catalog-filter-toggle:hover,.catalog-filter-toggle[aria-expanded="true"]{background:#c9b18b;border-color:#c9b18b;color:#171512}
+.catalog-filter-toggle:active{transform:scale(.98)}
+.catalog-filter-toggle span{font-size:14px;line-height:1}
+.catalog-filter-panel{position:fixed;left:50%;bottom:0;z-index:61;display:flex;flex-direction:column;align-items:stretch;gap:14px;width:min(calc(100% - 24px),560px);max-height:min(82vh,680px);max-height:min(82dvh,680px);overflow-y:auto;overscroll-behavior:contain;padding:20px 20px calc(20px + env(safe-area-inset-bottom));border:1px solid #39352f;border-bottom:0;border-radius:16px 16px 0 0;background:#171613;color:#f3eadb;box-shadow:0 -18px 55px #0009;transform:translate(-50%,105%);transition:transform .28s cubic-bezier(.2,.75,.25,1)}
+.catalog-filter-panel.is-open{transform:translate(-50%,0)}
+.catalog-filter-panel[hidden]{display:none!important}
+.catalog-filter-panel-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid #39352f}
+.catalog-filter-panel-head strong{font-family:Georgia,serif;font-size:22px;font-weight:400;color:#f3eadb}
+.catalog-filter-close{display:grid;place-items:center;width:40px;height:40px;flex:0 0 auto;border:1px solid #4a4033;border-radius:50%;background:#11110f;color:#f3eadb;font-size:25px;line-height:1;cursor:pointer;transition:background .18s ease,border-color .18s ease}
+.catalog-filter-close:hover{background:#c9b18b;border-color:#c9b18b;color:#171512}
+.catalog-filter-panel>label,.catalog-filter-price label{display:flex;flex-direction:column;gap:7px;min-width:0;color:#c9b18b;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.catalog-filter-panel select,.catalog-filter-panel input{width:100%;min-width:0;min-height:46px;padding:10px 12px;border:1px solid #4a4033;border-radius:3px;background:#10100e;color:#f3eadb;font-size:14px;letter-spacing:normal;text-transform:none}
+.catalog-filter-panel select:focus-visible,.catalog-filter-panel input:focus-visible,.catalog-filter-toggle:focus-visible,.catalog-filter-close:focus-visible,.catalog-filter-clear:focus-visible{outline:2px solid #d9c29d;outline-offset:3px}
+.catalog-filter-price{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.catalog-filter-actions{display:flex;justify-content:flex-end;padding-top:2px}
+.catalog-filter-clear{min-height:42px;padding:9px 13px;border:1px solid #7f694b;border-radius:3px;background:transparent;color:#e6d4b8;font-size:12px;font-weight:700;cursor:pointer;transition:background .18s ease,color .18s ease,border-color .18s ease}
+.catalog-filter-clear:hover{background:#c9b18b;border-color:#c9b18b;color:#171512}
+.catalog-empty-state{grid-column:1/-1;margin:8px 0;padding:22px 16px;border:1px solid #39352f;background:#171613;color:#b9b0a2;font-size:13px;line-height:1.6;text-align:center}
+body.catalog-filters-open{overflow:hidden}
+body.catalog-filters-open::before{content:"";position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.68);backdrop-filter:blur(4px);animation:catalogBackdropEnter .2s ease both}
+@keyframes catalogBackdropEnter{from{opacity:0}to{opacity:1}}
+@media(max-width:720px){.catalog-filter-wrap{margin-bottom:15px}.catalog-filter-toggle{min-height:46px}.catalog-filter-panel{width:100%;max-height:84vh;max-height:84dvh;padding:18px 16px calc(18px + env(safe-area-inset-bottom))}.catalog-filter-panel-head strong{font-size:21px}.catalog-filter-price{gap:9px}.catalog-filter-price input{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.catalog-filter-toggle,.catalog-filter-close,.catalog-filter-clear,.catalog-filter-panel{transition:none}.catalog-filter-panel.is-open{transform:translate(-50%,0)}.catalog-filter-panel,.catalog-filter-toggle{animation:none}}
+
+/* Seletor de marcas SANTINO — visual próprio, sem janela nativa do sistema */
+.catalog-brand-picker{display:flex;flex-direction:column;gap:7px;position:relative}
+.catalog-brand-label{color:#c9b18b;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.catalog-brand-native{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;clip-path:inset(50%)!important;white-space:nowrap!important;opacity:0!important;pointer-events:none!important}
+.catalog-brand-trigger{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:48px;padding:11px 13px;border:1px solid #66543b;border-radius:4px;background:#11110f;color:#f3eadb;text-align:left;font-size:14px;cursor:pointer;transition:border-color .18s ease,background .18s ease}
+.catalog-brand-trigger[aria-expanded="true"]{border-color:#c9b18b;background:#201d18}
+.catalog-brand-chevron{color:#c9b18b;font-size:19px;transition:transform .18s ease}
+.catalog-brand-trigger[aria-expanded="true"] .catalog-brand-chevron{transform:rotate(180deg)}
+.catalog-brand-options{display:flex;flex-direction:column;max-height:220px;overflow-y:auto;overscroll-behavior:contain;border:1px solid #51432f;border-radius:4px;background:#171613;box-shadow:0 12px 28px #0008;animation:brandOptionsIn .16s ease both}
+.catalog-brand-options[hidden]{display:none!important}
+.catalog-brand-option{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:42px;padding:10px 13px;border:0;border-bottom:1px solid #302b24;background:transparent;color:#d9d0c3;text-align:left;font-size:13px;cursor:pointer}
+.catalog-brand-option:last-child{border-bottom:0}
+.catalog-brand-option::after{content:"";width:9px;height:9px;flex:0 0 auto;border:1px solid #80725d;border-radius:50%}
+.catalog-brand-option.is-selected{background:#292319;color:#e5cda6}
+.catalog-brand-option.is-selected::after{border:3px solid #c9b18b;background:#171613}
+.catalog-brand-option:active{background:#332b1e}
+@keyframes brandOptionsIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.catalog-brand-trigger,.catalog-brand-chevron{transition:none}.catalog-brand-options{animation:none}}

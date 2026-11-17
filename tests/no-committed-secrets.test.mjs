@@ -74,4 +74,3 @@ test("repository text files contain no recognizable secrets", async () => {
 
   assert.deepEqual([...new Set(findings)], []);
 });
-

@@ -45,7 +45,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .drawer{position:absolute;right:0;top:0;height:100%;width:min(440px,100%);background:#171613;border-left:1px solid var(--line);padding:22px;display:flex;flex-direction:column}
 .drawer-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:15px}
 .drawer h2{font-size:27px}.close{background:transparent;border:1px solid var(--line);color:var(--cream);padding:7px 11px}
-.cart-items{overflow:auto;flex:1;padding:12px 0}.empty{color:var(--muted);line-height:1.6;padding:25px 0}
+.cart-items{overflow:auto;flex:1;min-height:0;padding:12px 0}.cart-items.is-empty{display:flex;align-items:center;justify-content:center;padding:20px 0}.empty{width:100%;color:var(--muted);line-height:1.6;padding:25px 12px;text-align:center}.empty strong{display:block;color:var(--cream);font:400 21px/1.25 Georgia,serif}.empty p{margin:8px auto 0;max-width:260px;font-size:13px}.empty-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:20px}.empty-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 13px;border:1px solid var(--beige);color:var(--cream);font-size:11px;font-weight:700;text-decoration:none}.empty-actions a:first-child{background:var(--beige);color:#171512}.cart-total[hidden],.goal-box[hidden]{display:none!important}
 .cart-item{padding:13px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:8px}
 .cart-item strong{font-weight:500}.cart-item small{display:block;color:var(--muted);margin-top:5px}.item-controls{display:flex;gap:7px;align-items:center;margin-top:10px}.item-controls button{background:transparent;border:1px solid var(--line);color:var(--cream);padding:4px 9px}.remove{color:#d9bca0!important}
 .cart-total{border-top:1px solid var(--line);padding-top:15px}.goal-box{border:1px solid var(--line);padding:12px;margin:14px 0;background:#1a1916}.goal-copy{font-size:12px;line-height:1.5;color:var(--muted);margin:0 0 9px}.goal-copy strong{color:var(--cream)}.goal-track{height:7px;background:#39352f;border-radius:8px;overflow:hidden}.goal-fill{height:100%;width:0;background:var(--beige);transition:width .2s}.goal-meta{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--muted);margin-top:7px}.total-line{display:flex;justify-content:space-between;margin-bottom:15px;font-size:18px}.checkout{width:100%;padding:14px}.small-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px}
@@ -228,8 +228,8 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
  .nav-search{grid-column:2;grid-row:1;width:100%;min-width:0;max-width:none!important;height:36px!important;margin:0!important;order:initial!important}
  .nav-search input{font-size:11px!important;padding-left:9px!important}
  .nav-search button{width:29px!important;min-width:29px!important;font-size:18px!important}
- .nav .catalog-nav{grid-column:1/-1!important;grid-row:2;flex-wrap:wrap;row-gap:5px;column-gap:13px;order:initial!important;width:100%;margin:0!important;padding:3px 0 0!important;gap:16px!important}
- .nav .catalog-nav a{font-size:12px}
+ .nav .catalog-nav{grid-column:1/-1!important;grid-row:2;flex-wrap:nowrap!important;white-space:nowrap;overflow-x:auto;scrollbar-width:none;row-gap:0!important;column-gap:9px;order:initial!important;width:100%;margin:0!important;padding:0!important;gap:10px!important}
+ .nav .catalog-nav a{font-size:11px;line-height:1.1;padding:3px 0}
  .nav .cart-button{grid-column:3;grid-row:1;min-width:30px;width:30px;height:36px;min-height:36px;padding:0!important;font-size:0;border-color:transparent}
  .nav .cart-button span{width:22px;height:22px;margin:0;font-size:11px}
 }
@@ -297,9 +297,16 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
  .product-comparison .comparison-name small{font-size:8px}
 }
 
-</style>
-  <link rel="stylesheet" href="santino-ui.css">
 
+/* Marca SANTINO: monograma consistente no cabeçalho */
+.brand{position:relative;padding-left:42px;min-height:32px;display:inline-flex;flex-direction:column;justify-content:center}
+.brand::before{content:"S";position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:30px;border:1px solid var(--beige);border-radius:50%;display:grid;place-items:center;color:var(--beige);font:700 16px/1 Georgia,"Times New Roman",serif;letter-spacing:0}
+@media(max-width:720px){.brand{padding-left:36px;min-height:28px}.brand::before{width:26px;height:26px;font-size:14px}}
+</style>
+<link rel="stylesheet" href="santino-ui.css?v=20261116-7">
+
+  <link rel="stylesheet" href="santino-identity.css?v=20261116-7">
+  <link rel="stylesheet" href="catalog-filters.css?v=20261116-8">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://samuelluisz7.github.io/Santino/frascos.html">
   <meta name="robots" content="index,follow">
@@ -314,7 +321,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 <body>
 <header><div class="nav">
   <a class="brand brand-home" href="index.html">SANTINO<small>DECANTS & FRAGRÂNCIAS</small></a>
-  <form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a><a href="kits.html">Kits</a></nav>
+  <form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="index.html">Início</a><a href="frascos.html" aria-current="page">Frascos inteiros</a><a href="decants.html">Decants</a><a href="kits.html">Kits</a></nav>
   <button class="cart-button" id="openCart" aria-label="Abrir carrinho">Carrinho <span id="cartCount">0</span></button>
 </div></header>
 <main>
@@ -331,15 +338,18 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <section class="section full-size-section" id="full-size-catalog">
     <div class="section-head full-size-head">
       <div class="collection-heading"><div class="eyebrow">A seleção</div><h2>Explore os perfumes</h2><p>Informações sobre cada fragrância e entrega local pelo WhatsApp.</p></div>
-      <div class="collection-controls">
-        <div class="origin-filter full-size-origin-filter" role="group" aria-label="Filtrar frascos inteiros por origem">
-          <span class="origin-filter-label">Origem</span>
-          <button type="button" data-full-origin-filter="Todos" aria-pressed="true">Todos</button>
-          <button type="button" data-full-origin-filter="Nacional" aria-pressed="false">Nacionais</button>
-          <button type="button" data-full-origin-filter="Importado" aria-pressed="false">Importados</button>
+      <div class="catalog-filter-wrap">
+        <button class="catalog-filter-toggle" type="button" id="fullFiltersToggle" aria-expanded="false" aria-controls="fullFiltersPanel">Filtros <span aria-hidden="true">＋</span></button>
+        <div class="catalog-filter-panel" id="fullFiltersPanel" role="dialog" aria-modal="true" aria-labelledby="fullFiltersTitle" hidden>
+          <div class="catalog-filter-panel-head"><strong id="fullFiltersTitle">Filtrar frascos inteiros</strong><button class="catalog-filter-close" type="button" aria-label="Fechar filtros">×</button></div>
+          <label for="fullSizeSort"><span>Ordenar por</span><select id="fullSizeSort"><option value="featured">Mais relevantes / mais vendidos</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option></select></label>
+          <div class="catalog-brand-picker"><span class="catalog-brand-label">Marca</span><button type="button" class="catalog-brand-trigger" id="fullSizeBrandTrigger" aria-expanded="false" aria-controls="fullSizeBrandOptions"><span id="fullSizeBrandCurrent">Todas as marcas</span><span class="catalog-brand-chevron" aria-hidden="true">⌄</span></button><div class="catalog-brand-options" id="fullSizeBrandOptions" role="listbox" aria-label="Selecionar marca" hidden></div><select id="fullSizeBrandFilter" class="catalog-brand-native" tabindex="-1" aria-hidden="true"><option value="">Todas as marcas</option></select></div>
+          <div class="catalog-filter-price">
+            <label for="fullSizePriceMin"><span>Preço mínimo (R$)</span><input id="fullSizePriceMin" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sem mínimo"></label>
+            <label for="fullSizePriceMax"><span>Preço máximo (R$)</span><input id="fullSizePriceMax" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sem máximo"></label>
+          </div>
+          <div class="catalog-filter-actions"><button class="catalog-filter-clear" id="fullFiltersClear" type="button">Limpar filtros</button></div>
         </div>
-        <label for="fullSizeBrandFilter"><span>Marca</span><select id="fullSizeBrandFilter"><option value="">Todas as marcas</option></select></label>
-        <label for="fullSizeSort"><span>Ordenar por</span><select id="fullSizeSort"><option value="featured">Destaques</option><option value="name">Nome A–Z</option><option value="brand">Marca A–Z</option></select></label>
       </div>
     </div>
     <div class="products" id="fullSizeProducts"></div>
@@ -361,18 +371,6 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <p>As marcas e fragrâncias pertencem aos respectivos titulares.</p>
   <nav class="footer-links" aria-label="Informações da loja"><a href="politicas.html">Políticas e condições de compra</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579?text=Ol%C3%A1%21%20Quero%20saber%20as%20regras%20do%20cr%C3%A9dito%20de%20indica%C3%A7%C3%A3o%20de%20R%24%2020.%20Entendi%20que%20as%20duas%20pessoas%20precisam%20comprar%20pelo%20menos%20R%24%20100%20cada." target="_blank" rel="noopener noreferrer">Cupom de indicação</a><span aria-hidden="true">·</span><a href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">Atendimento via WhatsApp</a></nav>
 </footer>
-<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Carrinho de compras">
-  <div class="drawer">
-    <div class="drawer-head"><h2>Seu carrinho</h2><button class="close" id="closeCart">Fechar ✕</button></div>
-    <div class="goal-box" id="goalBox" aria-live="polite" hidden><p class="goal-copy" id="goalCopy">Faltam R$ 80,00 para liberar 10% de desconto.</p><div class="goal-track"><div class="goal-fill" id="goalFill"></div></div><div class="goal-meta"><span id="goalCurrent">R$ 0,00</span><span>Meta: R$ 80,00</span></div></div>
-     <div class="cart-items" id="cartItems"></div>
-    <div class="cart-total">
-      <div class="total-line"><span>Total do pedido</span><strong id="cartTotal">R$ 0,00</strong></div>
-      <button class="btn checkout" id="checkout">Confirmar pedido pelo WhatsApp</button>
-      <div class="small-note">Você revisa a mensagem antes de enviá-la. O pedido só é confirmado após a loja validar os dados do produto, o total e a entrega. Não faça pagamento antes dessa confirmação.</div>
-    </div>
-  </div>
-</div>
 <div class="toast" id="toast" role="status"></div>
 <script>
 /* Preços de decants calculados a partir de referência do frasco de 100 ml + margem estimada e embalagem; confirme o custo real de compra. */
@@ -397,7 +395,7 @@ const FULL_SIZE_PRODUCTS = [
 {id:"full-homem-sagaz",name:"Homem Sagaz",brand:"Natura",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600",price:159.00,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
 {id:"full-homem-dom",name:"Homem Dom",brand:"Natura",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw035424b3/Produtos/PRODUTO/NATBRA-71770_1.jpg?q=80&sw=600",price:163.90,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
 {id:"full-homem-essence",name:"Homem Essence",brand:"Natura",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600",price:162.90,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
-{id:"full-quasar-ice",name:"Quasar Ice",brand:"O Boticário",ml:100,image:"https://down-br.img.susercontent.com/file/b7e357f69053ee8fed9a7156dc053519",price:149.90,description:"Desodorante colônia masculino de perfil fougère aldeídico e frescor gelado. Consulte a SANTINO para disponibilidade e condições."},
+{id:"full-quasar-ice",name:"Quasar Ice",brand:"O Boticário",ml:100,image:"https://down-br.img.susercontent.com/file/b7e357f69053ee8fed9a7156dc053519",price:164.99,description:"Desodorante colônia masculino de perfil fougère aldeídico e frescor gelado. Consulte a SANTINO para disponibilidade e condições."},
 {id:"full-quasar-blue",name:"Quasar Blue",brand:"O Boticário",ml:100,image:"https://paradea.it/cdn/shop/files/o-boticario-quasar-blue-eau-de-toilette-100ml-o-boticario-38217504.jpg?v=1751143053&width=1946",price:75.90,description:"Desodorante colônia masculino fougère fresco, com notas cítricas, lavanda, gerânio, cedro e musk."},
 {id:"full-clash",name:"Clash",brand:"O Boticário",ml:100,image:"https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Abest/v1/imagens/product/B50677/cae5b3cb-4709-4ad6-abac-8c54b813587e-bot-50677-clash-desodorante-colonia-frontal-01.jpg?v=20261024",price:149.90,description:"Desodorante colônia masculino de perfil fougère aquoso. Consulte a SANTINO para disponibilidade e condições."},
 {id:"full-egeo-bomb-black",name:"Egeo Bomb Black",brand:"O Boticário",ml:90,image:"https://http2.mlstatic.com/D_NQ_NP_821590-MLB99367857758_112025-O.webp",price:129.90,description:"Desodorante colônia masculino fougère gourmand, com frescor cítrico e herbal, couro, caramelo, baunilha e âmbar."},
@@ -433,6 +431,15 @@ const FULL_SIZE_PRODUCTS = [
 
 ];
 let cart = [];
+function syncCatalogCartFromStorage(){
+ try {
+  const saved=JSON.parse(localStorage.getItem("santino_nobre_cart")||"[]");
+  cart=Array.isArray(saved)?saved:[];
+ } catch(error) { cart=[]; }
+}
+syncCatalogCartFromStorage();
+window.addEventListener("santino:cart-updated",syncCatalogCartFromStorage);
+window.addEventListener("storage",function(event){if(event.key==="santino_nobre_cart")syncCatalogCartFromStorage();});
 
 const PRODUCT_IMAGE_FALLBACKS = {
  "homem-essence": ["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw03464062/Produtos/NATBRA-59847_2.jpg?q=80&sw=600", "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600"],
@@ -498,26 +505,103 @@ function renderProducts(){
  PRODUCTS.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price);$("selected-volume-"+p.id).textContent=v.ml+" ml";const button=document.querySelector('[data-add="'+p.id+'"]');if(button)button.textContent="Adicionar "+v.ml+" ml — "+money(v.price)})});
  document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(b.dataset.add)));
 }
-let activeFullOriginFilter = ""; function getProductOrigin(product){return /botic[aá]rio|natura|kaiak|jequiti|touti|eudora/i.test(String(product.brand||""))?"Nacional":"Importado"} function setupFullSizeFilters(){
- const brandSelect=$("fullSizeBrandFilter");
- const sortSelect=$("fullSizeSort");
+function getProductOrigin(product){return /botic[aá]rio|natura|kaiak|jequiti|touti|eudora/i.test(String(product.brand||""))?"Nacional":"Importado"}
+function getBrandKey(product){return /natura/i.test(String(product.brand||""))?"Natura":String(product.brand||"").trim()}
+function getBrandDisplay(product){return String(product.brand||"").trim()==="Natura Kaiak"?"Natura · Kaiak":String(product.brand||"").trim()}
+function bindCatalogFilters(toggleId,panelId,clearId,render){
+ const toggle=$(toggleId),panel=$(panelId),clear=$(clearId);
+ if(!toggle||!panel)return;
+ const closeButton=panel.querySelector(".catalog-filter-close");
+ let transitionToken=0;
+ function open(){
+  transitionToken++;
+  panel.hidden=false;
+  document.body.classList.add("catalog-filters-open");
+  toggle.setAttribute("aria-expanded","true");
+  const mark=toggle.querySelector("span");
+  if(mark)mark.textContent="−";
+  window.requestAnimationFrame(()=>panel.classList.add("is-open"));
+  window.setTimeout(()=>closeButton?.focus({preventScroll:true}),50);
+ }
+ function close(){
+  if(panel.hidden)return;
+  const token=++transitionToken;
+  panel.classList.remove("is-open");
+  document.body.classList.remove("catalog-filters-open");
+  toggle.setAttribute("aria-expanded","false");
+  const mark=toggle.querySelector("span");
+  if(mark)mark.textContent="＋";
+  window.setTimeout(()=>{
+   if(token===transitionToken&&!panel.classList.contains("is-open"))panel.hidden=true;
+  },300);
+  toggle.focus({preventScroll:true});
+ }
+ toggle.addEventListener("click",()=>panel.hidden?open():close());
+ closeButton?.addEventListener("click",close);
+ document.addEventListener("click",event=>{
+  if(!document.body.classList.contains("catalog-filters-open"))return;
+  if(panel.contains(event.target)||toggle.contains(event.target))return;
+  close();
+ });
+ document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"&&document.body.classList.contains("catalog-filters-open"))close();
+ });
+ clear?.addEventListener("click",()=>{
+  const brand=panel.querySelector("select[id$='BrandFilter']");
+  const sort=panel.querySelector("select[id$='Sort']");
+  const min=panel.querySelector("input[id$='PriceMin']");
+  const max=panel.querySelector("input[id$='PriceMax']");
+  if(brand){brand.value="";brand.dispatchEvent(new Event("change",{bubbles:true}));}
+  if(sort)sort.value="featured";
+  if(min)min.value="";
+  if(max)max.value="";
+  if(typeof render==="function")render();
+ });
+}
+function setupCatalogBrandPicker(selectId,triggerId,currentId,optionsId,onChange){
+ const select=$(selectId),trigger=$(triggerId),current=$(currentId),options=$(optionsId);
+ if(!select||!trigger||!current||!options)return;
+ const renderOptions=()=>{options.innerHTML=[...select.options].map(option=>'<button type="button" class="catalog-brand-option'+(option.value===select.value?' is-selected':'')+'" role="option" aria-selected="'+(option.value===select.value)+'" data-value="'+escapeHTML(option.value)+'">'+escapeHTML(option.textContent)+'</button>').join("");};
+ renderOptions();
+ trigger.addEventListener("click",()=>{const opening=options.hidden;options.hidden=!opening;trigger.setAttribute("aria-expanded",String(opening));});
+ options.addEventListener("click",event=>{const option=event.target.closest(".catalog-brand-option");if(!option)return;select.value=option.dataset.value||"";current.textContent=select.selectedOptions[0]?.textContent||"Todas as marcas";options.hidden=true;trigger.setAttribute("aria-expanded","false");renderOptions();select.dispatchEvent(new Event("change",{bubbles:true}));onChange();});
+ select.addEventListener("change",()=>{current.textContent=select.selectedOptions[0]?.textContent||"Todas as marcas";renderOptions();});
+}
+function setupFullSizeFilters(){
+ const brandSelect=$("fullSizeBrandFilter"),sortSelect=$("fullSizeSort");
+ const minInput=$("fullSizePriceMin"),maxInput=$("fullSizePriceMax");
  if(brandSelect){
-  const brands=[...new Set(FULL_SIZE_PRODUCTS.map(p=>p.brand))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
+  const brands=[...new Set(FULL_SIZE_PRODUCTS.map(getBrandKey))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
   brandSelect.innerHTML='<option value="">Todas as marcas</option>'+brands.map(brand=>'<option value="'+escapeHTML(brand)+'">'+escapeHTML(brand)+'</option>').join("");
-  brandSelect.addEventListener("change",renderFullSizeProducts);
+  setupCatalogBrandPicker("fullSizeBrandFilter","fullSizeBrandTrigger","fullSizeBrandCurrent","fullSizeBrandOptions",renderFullSizeProducts);
  }
  if(sortSelect)sortSelect.addEventListener("change",renderFullSizeProducts);
- document.querySelectorAll("[data-full-origin-filter]").forEach(button=>button.addEventListener("click",()=>{activeFullOriginFilter=button.dataset.fullOriginFilter==="Todos"?"":button.dataset.fullOriginFilter;if(brandSelect)brandSelect.value="";document.querySelectorAll("[data-full-origin-filter]").forEach(item=>item.setAttribute("aria-pressed",String((item.dataset.fullOriginFilter==="Todos"?"":item.dataset.fullOriginFilter)===activeFullOriginFilter)));renderFullSizeProducts()}));
+ [minInput,maxInput].forEach(input=>input?.addEventListener("input",renderFullSizeProducts));
+ bindCatalogFilters("fullFiltersToggle","fullFiltersPanel","fullFiltersClear",renderFullSizeProducts);
 }
 function renderFullSizeProducts(){
- const brand = $("fullSizeBrandFilter")?.value || "";
- const sort = $("fullSizeSort")?.value || "featured";
- let items = FULL_SIZE_PRODUCTS.filter(p => (!activeFullOriginFilter || getProductOrigin(p) === activeFullOriginFilter) && (!brand || p.brand === brand));
- if (sort === "name") items.sort((a,b) => a.name.localeCompare(b.name,"pt-BR"));
- if (sort === "brand") items.sort((a,b) => a.brand.localeCompare(b.brand,"pt-BR") || a.name.localeCompare(b.name,"pt-BR"));
+ const brand=$("fullSizeBrandFilter")?.value||"";
+ const sort=$("fullSizeSort")?.value||"featured";
+ const minRaw=Number.parseFloat($("fullSizePriceMin")?.value||"");
+ const maxRaw=Number.parseFloat($("fullSizePriceMax")?.value||"");
+ const minPrice=Number.isFinite(minRaw)?minRaw:null,maxPrice=Number.isFinite(maxRaw)?maxRaw:null;
+ let items=FULL_SIZE_PRODUCTS.filter(p=>{
+  if(brand&&getBrandKey(p)!==brand)return false;
+  if(minPrice===null&&maxPrice===null)return true;
+  const prices=Array.isArray(p.volumes)?p.volumes.map(v=>Number(v.price)).filter(Number.isFinite):[Number(p.price)].filter(Number.isFinite);
+  return prices.some(price=>(minPrice===null||price>=minPrice)&&(maxPrice===null||price<=maxPrice));
+ });
+ const priceForSort=p=>{
+  const first=Array.isArray(p.volumes)&&p.volumes.length?p.volumes[0]:p;
+  const value=first.price;
+  return Number.isFinite(value)?value:Number.POSITIVE_INFINITY;
+ };
+ if(sort==="price-asc")items.sort((a,b)=>priceForSort(a)-priceForSort(b)||a.name.localeCompare(b.name,"pt-BR"));
+ if(sort==="price-desc")items.sort((a,b)=>priceForSort(b)-priceForSort(a)||a.name.localeCompare(b.name,"pt-BR"));
+ if(!items.length){$("fullSizeProducts").innerHTML='<p class="catalog-empty-state">Nenhuma fragrância corresponde aos filtros selecionados.</p>';return;}
  $("fullSizeProducts").innerHTML = items.map(p =>
    '<article class="product full-size-product">' +
-   '<a class="product-detail-link" href="produto.html?v=20261113-9&id=' + encodeURIComponent(p.id) + '" aria-label="Ver detalhes de ' + escapeHTML(p.name) + '">' +
+   '<a class="product-detail-link" href="produto.html?v=20261116-7&id=' + encodeURIComponent(p.id) + '" aria-label="Ver detalhes de ' + escapeHTML(p.name) + '">' +
      (p.toutiImage && p.referenceImage
        ? '<div class="product-art product-comparison">' +
           '<div class="comparison-side"><div class="comparison-label">Produto vendido</div><div class="comparison-photo"><img data-pair-photo src="' + escapeHTML(p.toutiImage) + '" alt="' + escapeHTML(p.name) + ' — frasco Touti anunciado" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto do produto indisponível</span></div><div class="comparison-name">' + escapeHTML(p.toutiCaption || p.name) + '</div></div>' +
@@ -528,7 +612,7 @@ function renderFullSizeProducts(){
           '<div class="photo-fallback" style="' + (p.image ? 'display:none;' : '') + '"><div class="vial"></div></div>' +
          '</div>') +
      '<h3>' + escapeHTML(p.name) + '</h3>' +
-     '<div class="product-brand">' + escapeHTML(p.brand) + '</div>' +
+     '<div class="product-brand">' + escapeHTML(getBrandDisplay(p)) + '</div>' +
      '<span class="product-origin-tag">' + getProductOrigin(p) + '</span>' +
    '</a>' +
    (Array.isArray(p.volumes)&&p.volumes.length
@@ -550,7 +634,7 @@ function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":
 function addToCart(id){
  const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
  const key=id+"-"+v.ml; const existing=cart.find(x=>x.key===key);
- if(existing)existing.qty++;else cart.push({key,id,name:p.name,brand:p.brand,ml:v.ml,price:v.price,qty:1,category:"Decant"});
+ if(existing){existing.qty++;existing.image=existing.image||p.image;}else cart.push({key,id,name:p.name,brand:p.brand,image:p.image,ml:v.ml,price:v.price,qty:1,category:"Decant"});
  renderCart();showToast(p.name+" adicionado ao carrinho.");
 }
 function addFullSizeToCart(id){
@@ -558,80 +642,28 @@ function addFullSizeToCart(id){
  const select=document.querySelector('[data-full-volume="'+id+'"]'),v=getFullSizeVolume(p,Number(select?.value)||0);
  if(!Number.isFinite(v.price)){consultFullSize(id,v.ml);return;}
  const key=id+"-full-"+v.ml,existing=cart.find(x=>x.key===key);
- if(existing)existing.qty++;else cart.push({key,id,name:p.name,brand:p.brand,ml:v.ml,price:v.price,qty:1,category:"Frasco inteiro"});
+ if(existing){existing.qty++;existing.image=existing.image||p.image;}else cart.push({key,id,name:p.name,brand:p.brand,image:p.image,ml:v.ml,price:v.price,qty:1,category:"Frasco inteiro"});
  renderCart();showToast(p.name+" · "+v.ml+" ml adicionado ao carrinho.");
 }
 function changeQty(key,delta){const item=cart.find(x=>x.key===key);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.key!==key);renderCart()}
 function removeItem(key){cart=cart.filter(x=>x.key!==key);renderCart()}
 function renderCart(){
  try { localStorage.setItem("santino_nobre_cart", JSON.stringify(cart)); } catch (e) {}
- $("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
- const allPriced=cart.length>0 && cart.every(x=>Number.isFinite(x.price));
- const total=cart.reduce((s,x)=>s+(Number.isFinite(x.price)?x.price*x.qty:0),0);
- const goal=80, discountRate=0.10, hasEligibleItems=cart.some(x=>x.category==="Decant"&&Number.isFinite(x.price)), goalTotal=cart.reduce((s,x)=>s+(Number.isFinite(x.price)&&x.category==="Decant"?x.price*x.qty:0),0);
- const discount=goalTotal>=goal?goalTotal*discountRate:0;
- const totalAfterDiscount=total-discount;
- const progress=Math.min(100,(goalTotal/goal)*100), reached=goalTotal>=goal;
- $("goalBox").hidden=!hasEligibleItems;
- $("goalFill").style.width=progress+"%"; $("goalCurrent").textContent=money(goalTotal);
- $("goalCopy").innerHTML=reached?"<strong>Desconto liberado.</strong> Você economiza "+money(discount)+" neste pedido.":"Faltam "+money(goal-goalTotal)+" para liberar 10% de desconto.";
- $("cartTotal").textContent=allPriced?money(totalAfterDiscount):(total>0?money(totalAfterDiscount)+" + frascos a confirmar":"A confirmar");
- if(!cart.length){$("cartItems").innerHTML='<div class="empty">Seu carrinho está vazio.<br>Escolha uma fragrância para começar.</div>';return}
- $("cartItems").innerHTML=cart.map(x=>`<div class="cart-item"><div><strong>${escapeHTML(x.name)}</strong><small>${escapeHTML(x.brand)} · ${x.category?escapeHTML(x.category)+" · ":""}${escapeHTML(x.ml)} ml${Number.isFinite(x.price)?money(x.price)+" cada":"preço a confirmar"}</small><div class="item-controls"><button data-minus="${escapeHTML(x.key)}" aria-label="Diminuir quantidade">−</button><span>${escapeHTML(x.qty)}</span><button data-plus="${escapeHTML(x.key)}" aria-label="Aumentar quantidade">+</button></div></div><div style="text-align:right"><strong>${Number.isFinite(x.price)?money(x.price*x.qty):"A confirmar"}</strong><div class="item-controls"><button class="remove" data-remove="${escapeHTML(x.key)}">Remover</button></div></div></div>`).join("");
- document.querySelectorAll("[data-minus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.minus,-1)));
- document.querySelectorAll("[data-plus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.plus,1)));
- document.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>removeItem(b.dataset.remove)));
+ window.dispatchEvent(new Event("santino:cart-updated"));
+ const counter=$("cartCount");
+ if(counter) counter.textContent=String(cart.reduce((sum,item)=>sum+(Number(item.qty)||0),0));
 }
-function openCart(){$("overlay").classList.add("open");document.body.style.overflow="hidden"}
-function closeCart(){$("overlay").classList.remove("open");document.body.style.overflow=""}
-function showToast(msg){$("toast").textContent=msg;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",2300)}
-function checkout(){
- if(!cart.length){showToast("Adicione ao menos um produto ao carrinho.");return}
- let number=STORE_WHATSAPP;
- if(!/^55\d{10,11}$/.test(number)){number=prompt("Digite o WhatsApp da loja com código do país e DDD, somente números (ex.: 5531999999999):")||"";number=number.replace(/\D/g,"")}
- if(!/^55\d{10,11}$/.test(number)){showToast("Número de WhatsApp inválido. Informe um número válido.");return}
- const decants=cart.filter(x=>x.category==="Decant"&&Number.isFinite(x.price));
- const fullSizes=cart.filter(x=>x.category==="Frasco inteiro");
- const decantSubtotal=decants.reduce((s,x)=>s+x.price*x.qty,0);
- const discount=decantSubtotal>=80?decantSubtotal*0.10:0;
- const lines=cart.map(x=>"• "+x.name+" — "+x.ml+" ml ×"+x.qty+" — "+(Number.isFinite(x.price)?money(x.price*x.qty):"sob consulta"));
- const summary=[];
- const pricedFull=fullSizes.filter(x=>Number.isFinite(x.price));
- const pendingFull=fullSizes.filter(x=>!Number.isFinite(x.price));
- const fullSubtotal=pricedFull.reduce((s,x)=>s+x.price*x.qty,0);
- if(decants.length&&fullSizes.length){
-   summary.push("Subtotal dos decants: "+money(decantSubtotal));
-   summary.push("Desconto nos decants: "+(discount>0?"−"+money(discount):"não aplicado"));
-   if(pricedFull.length)summary.push("Subtotal dos frascos inteiros: "+money(fullSubtotal));
-   if(pendingFull.length)summary.push("Frascos inteiros sem preço: consultar");
-   summary.push("Total"+(pendingFull.length?" parcial":"")+": "+money(decantSubtotal-discount+fullSubtotal));
- }else if(decants.length){
-   summary.push("Subtotal: "+money(decantSubtotal));
-   summary.push("Desconto: "+(discount>0?"−"+money(discount):"não aplicado"));
-   summary.push("Total: "+money(decantSubtotal-discount));
- }else if(fullSizes.length){
-   if(pricedFull.length)summary.push("Subtotal dos frascos inteiros: "+money(fullSubtotal));
-   if(pendingFull.length)summary.push("Frascos inteiros sem preço: consultar");
-   summary.push("Total"+(pendingFull.length?" parcial":"")+": "+money(fullSubtotal));
- }
- const message=[
-   "Gostaria de confirmar este pedido:",
-   "",
-   lines.join("\n"),
-   "",
-   summary.join("\n"),
-   "",
-   "Pode confirmar a disponibilidade?"
- ].join("\n");
- window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
+function showToast(message){
+ const toast=$("toast");
+ if(!toast)return;
+ toast.textContent=message;
+ toast.style.display="block";
+ window.setTimeout(()=>toast.style.display="none",2200);
 }
-$("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);
-$("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeCart()});
-$("checkout").addEventListener("click",checkout);
 setupFullSizeFilters();renderFullSizeProducts();renderCart();
-if(new URLSearchParams(window.location.search).get("openCart")==="1")openCart();
+
 </script>
-<script src="search.js" defer></script>
-<script src="santino-ui.js" defer></script>
+<script src="search.js?v=20261116-7" defer></script>
+<script src="santino-ui.js?v=20261116-7" defer></script>
 </body>
 </html>
