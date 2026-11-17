@@ -83,16 +83,19 @@ test("full-size catalog starts on national products and switches compactly to im
 });
 
 
-test("full-size catalog cards are compact while the grid keeps continuous scrolling", async () => {
+test("full-size products use horizontal compact cards and continuous scroll", async () => {
   const [html, styles] = await Promise.all([
     readFile(path.join(ROOT, "frascos.html"), "utf8"),
     readFile(path.join(ROOT, "full-size-compact.css"), "utf8"),
   ]);
-  assert.match(html, /full-size-compact\.css/);
-  assert.match(styles, /grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/);
-  assert.match(styles, /aspect-ratio: 1\.48 \/ 1/);
-  assert.match(styles, /object-fit: contain/);
-  assert.match(styles, /min-height: 40px/);
+  assert.ok(html.includes("full-size-compact.css?v=20261117-2"));
+  assert.ok(html.includes('class="full-size-product-layout"'));
+  assert.ok(html.includes('class="product-detail-link full-size-product-image-link"'));
+  assert.ok(html.includes('class="full-size-product-info"'));
+  assert.ok(html.includes('class="add full-size-product-action"'));
+  assert.ok(styles.includes("grid-template-columns: minmax(58px, .72fr) minmax(0, 1.28fr)"));
+  assert.ok(styles.includes("grid-column: 1 / -1"));
+  assert.ok(styles.includes("object-fit: contain"));
+  assert.ok(html.includes("items.map(p =>"));
   assert.doesNotMatch(html, /pagination|nextPage|pageSize|loadMoreButton/i);
-  assert.match(html, /items\.map\(p\s*=>/);
 });
