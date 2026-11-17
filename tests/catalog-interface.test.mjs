@@ -40,7 +40,7 @@ test("mobile decant cards show a centered product image above details and keep 5
   const html = await readFile(path.join(REPOSITORY_ROOT, "decants.html"), "utf8");
   assert.match(html, /#products\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)!important;gap:10px!important\}/);
   assert.match(html, /\.decant-product-card \.product-detail-link\{display:flex;flex-direction:column/);
-  assert.match(html, /aspect-ratio:1\.55\/1!important/);
+  assert.match(html, /aspect-ratio:1\/1!important/);
   assert.match(html, /object-fit:contain!important;object-position:center!important/);
   assert.match(html, /class="decant-card-info"/);
   assert.match(html, /class="decant-purchase-row"/);
