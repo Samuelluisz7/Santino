@@ -1,0 +1,19 @@
+name: Export decant images for catalog mapping
+on:
+  push:
+    branches:
+      - inspect-decant-assets
+    paths:
+      - ".github/workflows/export-decant-images.yml"
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: santino-decant-images
+          path: imagens-perfumes/*.png
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
