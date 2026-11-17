@@ -98,3 +98,13 @@ test("homepage perfume banner is compact on mobile while keeping the full-bottle
   assert.match(refreshStyles, /\.home-full-bottle-hero img\{aspect-ratio:16\/8\.2!important;max-height:185px!important/);
   assert.ok(home.indexOf('class="home-full-bottle-hero"') < home.indexOf('id="homeFeaturedGrid"'));
 });
+
+
+test("category tab styles target the actual home-refresh main element", async () => {
+  const homeMarkup = await readFile(path.join(ROOT, "index.html"), "utf8");
+  const storefrontStyles = await readFile(path.join(ROOT, "home-storefront.css"), "utf8");
+  assert.match(homeMarkup, /<main class="santino-storefront home-refresh">/);
+  assert.doesNotMatch(storefrontStyles, /body\.home-refresh/);
+  assert.match(storefrontStyles, /\.home-refresh \.home-category-tabs \{/);
+  assert.match(storefrontStyles, /\.home-refresh \.home-category-tab-content strong \{/);
+});
