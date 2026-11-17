@@ -92,7 +92,7 @@ test("full-size catalog cards are compact while the grid keeps continuous scroll
   assert.match(styles, /grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/);
   assert.match(styles, /aspect-ratio: 1\.48 \/ 1/);
   assert.match(styles, /object-fit: contain/);
-  assert.match(styles, /min-height: 37px/);
+  assert.match(styles, /min-height: 40px/);
   assert.doesNotMatch(html, /pagination|nextPage|pageSize|loadMoreButton/i);
   assert.match(html, /items\.map\(p\s*=>/);
 });
