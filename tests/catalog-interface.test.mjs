@@ -41,7 +41,7 @@ test("mobile decant cards use compact two-column layout and The Blend Bourbon 5 
   assert.match(html, /#products\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)!important;gap:8px!important\}/);
   assert.match(html, /class="decant-card-info"/);
   assert.match(html, /class="decant-purchase-row"/);
-  assert.match(html, /id:"the-blend-bourbon"[\s\S]*?volumes:\[\{ml:5,price:24\.9\},\{ml:10,price:42\.9\}\]/);
+  assert.match(html, /id:"the-blend-bourbon"[\s\S]*?volumes:\[\{ml:5,price:24\.9\},\{ml:10,price:46\.65\}\]/);
 });
 
 test("decants use square inset imagery, compact concentration, a floating volume picker and plus/minus quantity", async () => {
