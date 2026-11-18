@@ -379,6 +379,38 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
   <meta property="og:url" content="https://samuelluisz7.github.io/Santino/frascos.html">
   <meta property="og:image" content="https://samuelluisz7.github.io/Santino/banner-home-original.webp">
   <meta name="twitter:card" content="summary_large_image">
+
+<style id="full-size-compact-layout">
+/* Correção final: compactação real dos cartões, com cascata posterior às folhas globais. */
+#fullSizeProducts .full-size-product{display:flex!important;flex-direction:column!important;justify-content:flex-start!important;gap:0!important;min-width:0!important}
+#fullSizeProducts .full-size-product .product-detail-link{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;min-width:0!important;flex:0 0 auto!important}
+#fullSizeProducts .full-size-product .product-art:not(.product-comparison){display:grid!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:1/1!important;margin:0 0 8px!important;padding:4px!important;overflow:hidden!important}
+#fullSizeProducts .full-size-product .product-art:not(.product-comparison) .product-photo{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;padding:6px!important;object-fit:contain!important;object-position:center!important}
+#fullSizeProducts .full-size-product .product-detail-link h3{display:block!important;min-height:0!important;height:auto!important;margin:0 0 4px!important;padding:0!important;font-size:clamp(15px,4.2vw,18px)!important;line-height:1.16!important;font-weight:400!important}
+#fullSizeProducts .full-size-product .full-size-brandline{display:flex!important;min-height:0!important;align-items:center!important;gap:5px!important;flex-wrap:wrap!important;margin:0 0 3px!important;padding:0!important;line-height:1.2!important}
+#fullSizeProducts .full-size-product .product-brand-name{display:inline!important;min-height:0!important;margin:0!important;padding:0!important;color:var(--muted)!important;font-size:11px!important;line-height:1.2!important}
+#fullSizeProducts .full-size-product .product-origin-tag{display:inline-flex!important;align-items:center!important;width:fit-content!important;min-height:0!important;margin:0!important;padding:2px 5px!important;font-size:8px!important;line-height:1.2!important}
+#fullSizeProducts .full-size-product .product-concentration-tag{display:block!important;min-height:0!important;margin:0 0 3px!important;padding:0!important;font-size:10px!important;line-height:1.2!important}
+#fullSizeProducts .full-size-product .full-size-fixed-volume{display:block!important;min-height:0!important;margin:0 0 5px!important;padding:0!important;font-size:10px!important;line-height:1.2!important}
+#fullSizeProducts .full-size-product .price-row{display:flex!important;align-items:center!important;justify-content:flex-start!important;min-height:0!important;margin:0 0 7px!important;padding:0 1px!important}
+#fullSizeProducts .full-size-product .full-size-price{display:block!important;margin:0!important;font-size:17px!important;line-height:1.2!important}
+#fullSizeProducts .full-size-product .fullsize-purchase-row{display:grid!important;grid-template-columns:minmax(0,.82fr) minmax(0,.95fr) minmax(0,1.05fr)!important;gap:4px!important;align-items:stretch!important;margin:0!important;padding:0!important}
+#fullSizeProducts .full-size-product .fullsize-purchase-row.no-volume{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)!important}
+#fullSizeProducts .full-size-product .volume-picker{position:relative!important;min-width:0!important;margin:0!important}
+#fullSizeProducts .full-size-product .volume-trigger{display:flex!important;width:100%!important;height:36px!important;min-height:36px!important;margin:0!important;padding:5px 5px!important;border-radius:7px!important;font-size:10px!important}
+#fullSizeProducts .full-size-product .volume-menu{z-index:30!important}
+#fullSizeProducts .full-size-product .quantity-stepper{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;height:36px!important;min-height:36px!important;margin:0!important;padding:0!important;border-radius:7px!important}
+#fullSizeProducts .full-size-product .quantity-stepper button{height:34px!important;min-height:0!important;flex:1 1 0!important;width:auto!important;min-width:0!important;margin:0!important;padding:0!important;font-size:15px!important}
+#fullSizeProducts .full-size-product .quantity-stepper output{flex:0 0 14px!important;min-width:14px!important;padding:0!important;margin:0!important;font-size:11px!important}
+#fullSizeProducts .full-size-product .add{display:block!important;width:100%!important;height:36px!important;min-height:36px!important;margin:0!important;padding:5px 3px!important;border-radius:7px!important;font-size:10px!important;line-height:1.1!important;white-space:nowrap!important}
+@media(max-width:380px){
+ #fullSizeProducts .full-size-product{padding:7px!important}
+ #fullSizeProducts .full-size-product .fullsize-purchase-row{gap:3px!important}
+ #fullSizeProducts .full-size-product .add{font-size:9px!important;padding:4px 2px!important}
+ #fullSizeProducts .full-size-product .quantity-stepper output{flex-basis:11px!important;min-width:11px!important}
+}
+</style>
+
 </head>
 <body>
 <header><div class="nav">
@@ -749,8 +781,10 @@ function renderFullSizeProducts(){
     (p.toutiImage&&p.referenceImage
      ? '<div class="product-art product-comparison"><div class="comparison-side"><div class="comparison-label">Produto vendido</div><div class="comparison-photo"><img data-pair-photo src="'+escapeHTML(p.toutiImage)+'" alt="'+escapeHTML(p.name)+' — frasco Touti anunciado" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto do produto indisponível</span></div><div class="comparison-name">'+escapeHTML(p.toutiCaption||p.name)+'</div></div><div class="comparison-side"><div class="comparison-label">Referência olfativa</div><div class="comparison-photo"><img data-pair-photo src="'+escapeHTML(p.referenceImage)+'" alt="'+escapeHTML(p.referenceName)+' — referência olfativa, não incluída na venda" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto da referência indisponível</span></div><div class="comparison-name">'+escapeHTML(p.referenceName)+'<small>Não incluído na venda</small></div></div></div>'
      : '<div class="product-art">'+(p.image?'<img class="product-photo" data-product-id="'+escapeHTML(p.id)+'" src="'+escapeHTML(p.image)+'" alt="Frasco de '+escapeHTML(p.name)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+'<div class="photo-fallback" style="'+(p.image?'display:none;':'')+'"><div class="vial"></div></div></div>')+
-    '<h3>'+escapeHTML(p.name)+'</h3><div class="product-brand">'+escapeHTML(getBrandDisplay(p))+'</div><div class="product-concentration-tag">Concentração: '+escapeHTML(p.concentration)+'</div><span class="product-origin-tag">'+getProductOrigin(p)+'</span>'+
-    (!hasVolumeOptions?'<p class="card-meta">'+escapeHTML(String(firstVolume.ml||p.ml))+' ml</p>':'')+
+    '<h3>'+escapeHTML(p.name)+'</h3>'+
+    '<div class="product-brandline full-size-brandline"><span class="product-brand-name">'+escapeHTML(getBrandDisplay(p))+'</span><span class="product-origin-tag">'+getProductOrigin(p)+'</span></div>'+
+    '<div class="product-concentration-tag">'+escapeHTML(p.concentration)+'</div>'+
+    (!hasVolumeOptions?'<p class="card-meta full-size-fixed-volume">'+escapeHTML(String(firstVolume.ml||p.ml))+' ml</p>':'')+
    '</a>'+
    '<div class="price-row"><span class="price full-size-price" data-full-card-price>'+(initialPrice!==null?money(initialPrice):'Consulte o preço')+'</span></div>'+
    '<div class="fullsize-purchase-row'+(hasVolumeOptions?'':' no-volume')+'">'+volumePicker+
