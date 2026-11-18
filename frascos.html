@@ -425,7 +425,8 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
       <h1>Frascos inteiros.</h1>
       <p>Explore a seleção de perfumes em frasco inteiro e fale com a SANTINO para informações de compra.</p>
       <div class="full-size-origin-switch" role="group" aria-label="Selecionar origem dos perfumes">
-        <button class="full-size-origin-tab" type="button" data-full-size-origin="Nacional" aria-pressed="true">Nacionais</button>
+        <button class="full-size-origin-tab" type="button" data-full-size-origin="" aria-pressed="true">Todos</button>
+        <button class="full-size-origin-tab" type="button" data-full-size-origin="Nacional" aria-pressed="false">Nacionais</button>
         <button class="full-size-origin-tab" type="button" data-full-size-origin="Importado" aria-pressed="false">Importados</button>
       </div>
     </div>
@@ -601,9 +602,9 @@ function renderProducts(){
  PRODUCTS.forEach(p=>{$("volume-"+p.id).addEventListener("change",e=>{const v=p.volumes[Number(e.target.value)];$("price-"+p.id).textContent=money(v.price);$("selected-volume-"+p.id).textContent=v.ml+" ml";const button=document.querySelector('[data-add="'+p.id+'"]');if(button)button.textContent="Adicionar "+v.ml+" ml — "+money(v.price)})});
  document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>addToCart(b.dataset.add)));
 }
-let currentFullSizeOrigin="Nacional";
+let currentFullSizeOrigin="";
 function getProductOrigin(product){return /botic[aá]rio|natura|kaiak|jequiti|touti|eudora/i.test(String(product.brand||""))?"Nacional":"Importado"}
-function getFullSizeProductsForOrigin(){return FULL_SIZE_PRODUCTS.filter(product=>getProductOrigin(product)===currentFullSizeOrigin)}
+function getFullSizeProductsForOrigin(){return FULL_SIZE_PRODUCTS.filter(product=>!currentFullSizeOrigin||getProductOrigin(product)===currentFullSizeOrigin)}
 function updateFullSizeOriginTabs(){
  document.querySelectorAll("[data-full-size-origin]").forEach(button=>button.setAttribute("aria-pressed",String(button.dataset.fullSizeOrigin===currentFullSizeOrigin)));
 }
@@ -617,7 +618,7 @@ function populateFullSizeBrandFilter(){
 }
 function setupFullSizeOriginSwitch(){
  document.querySelectorAll("[data-full-size-origin]").forEach(button=>button.addEventListener("click",()=>{
-  const nextOrigin=button.dataset.fullSizeOrigin;
+  const nextOrigin=button.dataset.fullSizeOrigin||"";
   if(nextOrigin===currentFullSizeOrigin)return;
   currentFullSizeOrigin=nextOrigin;
   updateFullSizeOriginTabs();
