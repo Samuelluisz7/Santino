@@ -274,7 +274,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .product .add:hover{background:#dbc6a4!important;border-color:#dbc6a4!important}
 @media(max-width:720px){.product .add{min-height:54px!important;font-size:12px!important;padding:12px 7px!important}.catalog-nav{gap:14px!important}.catalog-nav a{font-size:12px!important}}
 .origin-filter{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:0 0 18px}.origin-filter-label{font-size:10px;color:var(--muted);letter-spacing:.13em;text-transform:uppercase;margin-right:4px}.origin-filter button{border:1px solid #39352f;background:#171613;color:var(--muted);border-radius:3px;padding:9px 13px;font-size:12px;transition:background .15s,border-color .15s,color .15s}.origin-filter button[aria-pressed="true"]{background:var(--beige);border-color:var(--beige);color:#171512;font-weight:700}.full-size-origin-filter{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0}.full-size-origin-filter .origin-filter-label{width:100%;margin:0 0 1px}.product-origin-tag{display:inline-flex;align-items:center;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--beige);border:1px solid #5b4d38;padding:3px 6px;border-radius:2px;align-self:flex-start;margin:4px 0 6px}
-.full-size-price{margin:8px 0 12px;color:var(--cream);font-size:20px;font-weight:600}.full-volume-label{display:block;margin:8px 0;color:var(--muted);font-size:11px}.full-volume-select{display:block;width:100%;margin-top:5px;min-height:42px;padding:9px 10px;background:#171613;color:var(--cream);border:1px solid #5b4d38;border-radius:3px;font-size:13px}
+.full-size-price{margin:8px 0 12px;color:var(--cream);font-size:20px;font-weight:600}
 @media(max-width:720px){.full-size-price{font-size:17px;margin:7px 0 10px}}
 
 /* Fotos comparativas Touti: produto vendido sempre separado da referência olfativa */
@@ -313,6 +313,57 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 .brand{position:relative;padding-left:42px;min-height:32px;display:inline-flex;flex-direction:column;justify-content:center}
 .brand::before{content:"S";position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:30px;border:1px solid var(--beige);border-radius:50%;display:grid;place-items:center;color:var(--beige);font:700 16px/1 Georgia,"Times New Roman",serif;letter-spacing:0}
 @media(max-width:720px){.brand{padding-left:36px;min-height:28px}.brand::before{width:26px;height:26px;font-size:14px}}
+
+/* Frascos inteiros: controles de compra no mesmo padrão dos decants */
+#fullSizeProducts .full-size-product{display:flex;flex-direction:column;gap:8px;min-width:0}
+#fullSizeProducts .full-size-product .volume-picker{position:relative;min-width:0}
+#fullSizeProducts .full-size-product .volume-trigger{width:100%;min-height:40px;display:flex;align-items:center;justify-content:space-between;gap:9px;padding:8px 11px;border:1px solid #514638;border-radius:9px;background:#211f1b;color:var(--cream);font-size:13px;text-align:left}
+#fullSizeProducts .full-size-product .volume-chevron{color:var(--beige);font-size:17px;line-height:1}
+#fullSizeProducts .full-size-product .volume-menu{position:absolute;left:0;right:0;bottom:calc(100% + 7px);z-index:12;padding:5px;border:1px solid var(--beige);border-radius:11px;background:#201d18;box-shadow:0 10px 24px #000b}
+#fullSizeProducts .full-size-product .volume-menu[hidden]{display:none!important}
+#fullSizeProducts .full-size-product .volume-option{display:block;width:100%;min-height:37px;padding:8px 10px;border:0;border-radius:7px;background:transparent;color:var(--cream);font-size:13px;text-align:left}
+#fullSizeProducts .full-size-product .volume-option[aria-pressed="true"]{background:#393126;color:var(--beige)}
+#fullSizeProducts .full-size-product .quantity-stepper{display:flex;align-items:center;justify-content:center;min-width:0;min-height:40px;border:1px solid #514638;border-radius:9px;background:#211f1b;overflow:hidden}
+#fullSizeProducts .full-size-product .quantity-stepper button{width:32px;height:38px;border:0;background:transparent;color:var(--beige);font-size:19px;line-height:1}
+#fullSizeProducts .full-size-product .quantity-stepper button:disabled{opacity:.35;cursor:not-allowed}
+#fullSizeProducts .full-size-product .quantity-stepper output{min-width:20px;text-align:center;color:var(--cream);font-size:13px;font-variant-numeric:tabular-nums}
+#fullSizeProducts .fullsize-purchase-row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr) minmax(0,1.1fr);gap:5px;align-items:center;margin-top:auto}
+#fullSizeProducts .fullsize-purchase-row.no-volume{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+#fullSizeProducts .full-size-product .add{width:100%;min-width:0;min-height:40px!important;padding:7px 5px!important;border-radius:9px!important;font-size:12px!important;line-height:1.15;white-space:nowrap}
+#fullSizeProducts .full-size-price{margin:0 0 5px!important}
+#fullSizeProducts .full-size-product .card-meta{margin:4px 0 7px}
+@media(max-width:720px){
+ #fullSizeProducts .full-size-product{display:flex;flex-direction:column;gap:8px;padding:9px!important;border-radius:12px!important;min-width:0}
+ #fullSizeProducts .full-size-product .product-detail-link{display:flex;flex-direction:column;gap:8px;align-items:stretch;min-width:0}
+ #fullSizeProducts .full-size-product .product-art:not(.product-comparison){display:block;width:100%;height:auto!important;aspect-ratio:1/1!important;min-height:0;margin:0 0 1px;padding:5px;border-radius:9px}
+ #fullSizeProducts .full-size-product .product-art:not(.product-comparison) .product-photo{width:100%;height:100%;object-fit:contain!important;object-position:center!important;padding:4px!important}
+ #fullSizeProducts .full-size-product h3{font-size:clamp(15px,4.2vw,18px);line-height:1.16;margin:0 0 4px!important;overflow-wrap:anywhere}
+ #fullSizeProducts .full-size-product .product-brand{font-size:11px;line-height:1.2;margin:0!important}
+ #fullSizeProducts .full-size-product .product-concentration-tag{font-size:9px;margin:3px 0 0!important;line-height:1.2}
+ #fullSizeProducts .full-size-product .product-origin-tag{font-size:8px;padding:2px 5px;margin:3px 0 0}
+ #fullSizeProducts .full-size-product .card-meta{font-size:10px;margin:3px 0 0}
+ #fullSizeProducts .full-size-product .price-row{margin:0;min-height:0;padding:0 2px}
+ #fullSizeProducts .full-size-price{font-size:18px;line-height:1.2;margin:0!important}
+ #fullSizeProducts .fullsize-purchase-row{grid-template-columns:minmax(0,.82fr) minmax(0,.95fr) minmax(0,1.05fr);gap:4px;align-items:stretch}
+ #fullSizeProducts .fullsize-purchase-row.no-volume{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}
+ #fullSizeProducts .full-size-product .volume-trigger{width:100%;min-width:0;min-height:36px!important;height:36px;padding:5px 4px!important;gap:1px;font-size:10px;white-space:nowrap;border-radius:7px}
+ #fullSizeProducts .full-size-product .volume-trigger [data-full-volume-current]{min-width:0;white-space:nowrap}
+ #fullSizeProducts .full-size-product .volume-chevron{flex:0 0 auto;font-size:11px}
+ #fullSizeProducts .full-size-product .quantity-stepper{width:100%;min-width:0;height:36px;min-height:36px!important;border-radius:7px}
+ #fullSizeProducts .full-size-product .quantity-stepper button{flex:1 1 0;width:auto;min-width:0;height:34px;font-size:14px}
+ #fullSizeProducts .full-size-product .quantity-stepper output{flex:0 0 10px;min-width:10px;font-size:11px}
+ #fullSizeProducts .full-size-product .add{width:100%;min-width:0;min-height:36px!important;height:36px;padding:5px 2px!important;font-size:9px!important;white-space:nowrap;border-radius:7px!important}
+ #fullSizeProducts .full-size-product .volume-menu{min-width:70px}
+}
+@media(max-width:380px){
+ #fullSizeProducts .full-size-product{padding:7px!important}
+ #fullSizeProducts .fullsize-purchase-row{gap:3px}
+ #fullSizeProducts .full-size-product .add{font-size:8.5px!important}
+ #fullSizeProducts .full-size-product .volume-trigger{padding:4px 3px!important;font-size:9px}
+ #fullSizeProducts .full-size-product .quantity-stepper button{font-size:13px}
+ #fullSizeProducts .full-size-product .quantity-stepper output{flex-basis:9px;min-width:9px;font-size:10px}
+}
+
 </style>
 <link rel="stylesheet" href="santino-ui.css?v=20261117-1">
 
@@ -616,11 +667,65 @@ function setupFullSizeFilters(){
  setupFullSizeOriginSwitch();
  updateFullSizeOriginTabs();
 }
+function setupFullSizeProductControls(){
+ const root=$("fullSizeProducts");
+ if(!root||root.dataset.purchaseControlsBound==="1")return;
+ root.dataset.purchaseControlsBound="1";
+ root.addEventListener("click",event=>{
+  const toggle=event.target.closest("[data-full-volume-toggle]");
+  if(toggle){
+   const article=toggle.closest("[data-full-size-id]");
+   const menu=article?.querySelector(".volume-menu");
+   if(!menu)return;
+   const willOpen=menu.hidden;
+   root.querySelectorAll(".volume-menu").forEach(item=>{item.hidden=true;item.previousElementSibling?.setAttribute("aria-expanded","false");});
+   menu.hidden=!willOpen;
+   toggle.setAttribute("aria-expanded",String(willOpen));
+   return;
+  }
+  const option=event.target.closest("[data-full-volume-option]");
+  if(option){
+   const article=option.closest("[data-full-size-id]");
+   const product=FULL_SIZE_PRODUCTS.find(item=>item.id===article?.dataset.fullSizeId);
+   const index=Number(option.dataset.fullVolumeOption);
+   const selected=product?.volumes?.[index];
+   if(!article||!selected)return;
+   article.dataset.volumeIndex=String(index);
+   article.querySelector("[data-full-volume-current]").textContent=selected.label||selected.ml+" ml";
+   article.querySelector("[data-full-card-price]").textContent=Number.isFinite(selected.price)?money(selected.price):"Consulte o preço";
+   article.querySelectorAll("[data-full-volume-option]").forEach(button=>button.setAttribute("aria-pressed",String(Number(button.dataset.fullVolumeOption)===index)));
+   const menu=article.querySelector(".volume-menu");
+   if(menu)menu.hidden=true;
+   article.querySelector("[data-full-volume-toggle]")?.setAttribute("aria-expanded","false");
+   return;
+  }
+  const quantityButton=event.target.closest("[data-full-quantity-change]");
+  if(quantityButton){
+   const article=quantityButton.closest("[data-full-size-id]");
+   if(!article)return;
+   const current=Number(article.dataset.quantity)||1;
+   const next=Math.max(1,Math.min(10,current+Number(quantityButton.dataset.fullQuantityChange||0)));
+   article.dataset.quantity=String(next);
+   const output=article.querySelector("[data-full-quantity-value]");
+   if(output)output.textContent=String(next);
+   article.querySelectorAll("[data-full-quantity-change]").forEach(button=>{
+    const delta=Number(button.dataset.fullQuantityChange);
+    button.disabled=(delta<0&&next===1)||(delta>0&&next===10);
+   });
+  }
+ });
+ document.addEventListener("click",event=>{
+  if(event.target.closest("#fullSizeProducts .volume-picker"))return;
+  root.querySelectorAll(".volume-menu").forEach(menu=>{menu.hidden=true;menu.previousElementSibling?.setAttribute("aria-expanded","false");});
+ });
+ document.addEventListener("keydown",event=>{
+  if(event.key!=="Escape")return;
+  root.querySelectorAll(".volume-menu").forEach(menu=>{menu.hidden=true;menu.previousElementSibling?.setAttribute("aria-expanded","false");});
+ });
+}
 function renderFullSizeProducts(){
- const brand=$("fullSizeBrandFilter")?.value||"";
- const sort=$("fullSizeSort")?.value||"featured";
- const minRaw=Number.parseFloat($("fullSizePriceMin")?.value||"");
- const maxRaw=Number.parseFloat($("fullSizePriceMax")?.value||"");
+ const brand=$("fullSizeBrandFilter")?.value||"",sort=$("fullSizeSort")?.value||"featured";
+ const minRaw=Number.parseFloat($("fullSizePriceMin")?.value||""),maxRaw=Number.parseFloat($("fullSizePriceMax")?.value||"");
  const minPrice=Number.isFinite(minRaw)?minRaw:null,maxPrice=Number.isFinite(maxRaw)?maxRaw:null;
  let items=getFullSizeProductsForOrigin().filter(p=>{
   if(brand&&getBrandKey(p)!==brand)return false;
@@ -628,45 +733,36 @@ function renderFullSizeProducts(){
   const prices=Array.isArray(p.volumes)?p.volumes.map(v=>Number(v.price)).filter(Number.isFinite):[Number(p.price)].filter(Number.isFinite);
   return prices.some(price=>(minPrice===null||price>=minPrice)&&(maxPrice===null||price<=maxPrice));
  });
- const priceForSort=p=>{
-  const first=Array.isArray(p.volumes)&&p.volumes.length?p.volumes[0]:p;
-  const value=first.price;
-  return Number.isFinite(value)?value:Number.POSITIVE_INFINITY;
- };
+ const priceForSort=p=>{const first=Array.isArray(p.volumes)&&p.volumes.length?p.volumes[0]:p;return Number.isFinite(first.price)?first.price:Number.POSITIVE_INFINITY;};
  if(sort==="price-asc")items.sort((a,b)=>priceForSort(a)-priceForSort(b)||a.name.localeCompare(b.name,"pt-BR"));
  if(sort==="price-desc")items.sort((a,b)=>priceForSort(b)-priceForSort(a)||a.name.localeCompare(b.name,"pt-BR"));
  if(!items.length){$("fullSizeProducts").innerHTML='<p class="catalog-empty-state">Nenhuma fragrância corresponde aos filtros selecionados.</p>';return;}
- $("fullSizeProducts").innerHTML = items.map(p =>
-   '<article class="product full-size-product">' +
-   '<a class="product-detail-link" href="produto.html?v=20261116-7&id=' + encodeURIComponent(p.id) + '" aria-label="Ver detalhes de ' + escapeHTML(p.name) + '">' +
-     (p.toutiImage && p.referenceImage
-       ? '<div class="product-art product-comparison">' +
-          '<div class="comparison-side"><div class="comparison-label">Produto vendido</div><div class="comparison-photo"><img data-pair-photo src="' + escapeHTML(p.toutiImage) + '" alt="' + escapeHTML(p.name) + ' — frasco Touti anunciado" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto do produto indisponível</span></div><div class="comparison-name">' + escapeHTML(p.toutiCaption || p.name) + '</div></div>' +
-          '<div class="comparison-side"><div class="comparison-label">Referência olfativa</div><div class="comparison-photo"><img data-pair-photo src="' + escapeHTML(p.referenceImage) + '" alt="' + escapeHTML(p.referenceName) + ' — referência olfativa, não incluída na venda" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto da referência indisponível</span></div><div class="comparison-name">' + escapeHTML(p.referenceName) + '<small>Não incluído na venda</small></div></div>' +
-         '</div>'
-       : '<div class="product-art">' +
-          (p.image ? '<img class="product-photo" data-product-id="' + escapeHTML(p.id) + '" src="' + escapeHTML(p.image) + '" alt="Frasco de ' + escapeHTML(p.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer">' : '') +
-          '<div class="photo-fallback" style="' + (p.image ? 'display:none;' : '') + '"><div class="vial"></div></div>' +
-         '</div>') +
-     '<h3>' + escapeHTML(p.name) + '</h3>' +
-     '<div class="product-brand">' + escapeHTML(getBrandDisplay(p)) + '</div>' +'<div class="product-concentration-tag">Concentração: ' + escapeHTML(p.concentration) + '</div>' +
-     '<span class="product-origin-tag">' + getProductOrigin(p) + '</span>' +
-   '</a>' +
-   (Array.isArray(p.volumes)&&p.volumes.length
-     ? '<label class="full-volume-label">Volume<select class="full-volume-select" data-full-volume="' + p.id + '" aria-label="Escolher volume de ' + escapeHTML(p.name) + '">' + p.volumes.map((v,i)=>'<option value="' + i + '">' + (v.label || (v.ml + ' ml')) + (Number.isFinite(v.price)?' — '+money(v.price):' — consultar') + '</option>').join('') + '</select></label>'
-     : '<p class="card-meta">' + p.ml + ' ml</p>') +
-   '<p class="price full-size-price" data-full-price="' + p.id + '">' + (Number.isFinite(p.volumes?.[0]?.price ?? p.price)?money(p.volumes?.[0]?.price ?? p.price):'Consulte o preço') + '</p>' +
-   '<button class="add" type="button" data-add-full="' + p.id + '">' + (Number.isFinite(p.volumes?.[0]?.price ?? p.price)?'Adicionar ao carrinho — '+money(p.volumes?.[0]?.price ?? p.price):'Consultar pelo WhatsApp') + '</button>' +
-   '</article>'
- ).join("");
+ $("fullSizeProducts").innerHTML=items.map(p=>{
+  const hasVolumeOptions=Array.isArray(p.volumes)&&p.volumes.length>1;
+  const firstVolume=getFullSizeVolume(p,0);
+  const initialPrice=Number.isFinite(firstVolume.price)?firstVolume.price:null;
+  const volumePicker=hasVolumeOptions
+   ? '<div class="volume-picker"><button type="button" class="volume-trigger" data-full-volume-toggle aria-expanded="false" aria-haspopup="true" aria-label="Escolher volume de '+escapeHTML(p.name)+'"><span data-full-volume-current>'+(firstVolume.label||firstVolume.ml+' ml')+'</span><span class="volume-chevron" aria-hidden="true">⌄</span></button><div class="volume-menu" role="group" aria-label="Volumes disponíveis" hidden>'+p.volumes.map((v,i)=>'<button type="button" class="volume-option" data-full-volume-option="'+i+'" aria-pressed="'+(i===0?'true':'false')+'">'+escapeHTML(v.label||v.ml+' ml')+'</button>').join('')+'</div></div>'
+   : '';
+  return '<article class="product full-size-product" id="full-card-'+escapeHTML(p.id)+'" data-full-size-id="'+escapeHTML(p.id)+'" data-volume-index="0" data-quantity="1">'+
+   '<a class="product-detail-link" href="produto.html?v=20261116-7&id='+encodeURIComponent(p.id)+'" aria-label="Ver detalhes de '+escapeHTML(p.name)+'">'+
+    (p.toutiImage&&p.referenceImage
+     ? '<div class="product-art product-comparison"><div class="comparison-side"><div class="comparison-label">Produto vendido</div><div class="comparison-photo"><img data-pair-photo src="'+escapeHTML(p.toutiImage)+'" alt="'+escapeHTML(p.name)+' — frasco Touti anunciado" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto do produto indisponível</span></div><div class="comparison-name">'+escapeHTML(p.toutiCaption||p.name)+'</div></div><div class="comparison-side"><div class="comparison-label">Referência olfativa</div><div class="comparison-photo"><img data-pair-photo src="'+escapeHTML(p.referenceImage)+'" alt="'+escapeHTML(p.referenceName)+' — referência olfativa, não incluída na venda" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="comparison-missing">Foto da referência indisponível</span></div><div class="comparison-name">'+escapeHTML(p.referenceName)+'<small>Não incluído na venda</small></div></div></div>'
+     : '<div class="product-art">'+(p.image?'<img class="product-photo" data-product-id="'+escapeHTML(p.id)+'" src="'+escapeHTML(p.image)+'" alt="Frasco de '+escapeHTML(p.name)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+'<div class="photo-fallback" style="'+(p.image?'display:none;':'')+'"><div class="vial"></div></div></div>')+
+    '<h3>'+escapeHTML(p.name)+'</h3><div class="product-brand">'+escapeHTML(getBrandDisplay(p))+'</div><div class="product-concentration-tag">Concentração: '+escapeHTML(p.concentration)+'</div><span class="product-origin-tag">'+getProductOrigin(p)+'</span>'+
+    (!hasVolumeOptions?'<p class="card-meta">'+escapeHTML(String(firstVolume.ml||p.ml))+' ml</p>':'')+
+   '</a>'+
+   '<div class="price-row"><span class="price full-size-price" data-full-card-price>'+(initialPrice!==null?money(initialPrice):'Consulte o preço')+'</span></div>'+
+   '<div class="fullsize-purchase-row'+(hasVolumeOptions?'':' no-volume')+'">'+volumePicker+
+    '<div class="quantity-stepper"><button type="button" data-full-quantity-change="-1" aria-label="Diminuir quantidade de '+escapeHTML(p.name)+'" disabled>−</button><output data-full-quantity-value aria-live="polite">1</output><button type="button" data-full-quantity-change="1" aria-label="Aumentar quantidade de '+escapeHTML(p.name)+'">+</button></div>'+
+    '<button class="add" type="button" data-add-full="'+escapeHTML(p.id)+'">'+(initialPrice!==null?'Adicionar':'Consultar')+'</button></div></article>';
+ }).join("");
  bindProductImageFallbacks($("fullSizeProducts"));
  $("fullSizeProducts").querySelectorAll("[data-pair-photo]").forEach(img=>img.addEventListener("error",()=>{img.hidden=true;}));
- $("fullSizeProducts").querySelectorAll("[data-full-volume]").forEach(select=>select.addEventListener("change",()=>updateFullSizeSelection(select.dataset.fullVolume,Number(select.value))));
- document.querySelectorAll("[data-add-full]").forEach(button => button.addEventListener("click", () => addFullSizeToCart(button.dataset.addFull)));
+ document.querySelectorAll("[data-add-full]").forEach(button=>button.addEventListener("click",()=>addFullSizeToCart(button.dataset.addFull)));
 }
 function getFullSizeVolume(p,index){return Array.isArray(p.volumes)&&p.volumes.length?p.volumes[index]||p.volumes[0]:{ml:p.ml,price:Number.isFinite(p.price)?p.price:null};}
-function updateFullSizeSelection(id,index){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const v=getFullSizeVolume(p,index),price=document.querySelector('[data-full-price="'+id+'"]'),button=document.querySelector('[data-add-full="'+id+'"]');if(price)price.textContent=Number.isFinite(v.price)?money(v.price):"Consulte o preço";if(button)button.textContent=Number.isFinite(v.price)?"Adicionar ao carrinho — "+money(v.price):"Consultar pelo WhatsApp";}
-function consultFullSize(id,ml){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message="Olá! Gostaria de consultar "+p.name+" na apresentação de "+ml+" ml.";window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
+function consultFullSize(id,ml,quantity=1){const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;const message="Olá! Gostaria de consultar "+p.name+" na apresentação de "+ml+" ml. Quantidade: "+quantity+".";window.open("https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function addToCart(id){
  const p=PRODUCTS.find(x=>x.id===id); const select=$("volume-"+id); const v=p.volumes[Number(select.value)];
@@ -675,11 +771,14 @@ function addToCart(id){
  renderCart();showToast(p.name+" adicionado ao carrinho.");
 }
 function addFullSizeToCart(id){
- const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id);if(!p)return;
- const select=document.querySelector('[data-full-volume="'+id+'"]'),v=getFullSizeVolume(p,Number(select?.value)||0);
- if(!Number.isFinite(v.price)){consultFullSize(id,v.ml);return;}
+ const p=FULL_SIZE_PRODUCTS.find(x=>x.id===id),card=$("full-card-"+id);
+ if(!p||!card)return;
+ const v=getFullSizeVolume(p,Number(card.dataset.volumeIndex)||0);
+ const requested=Math.max(1,Math.min(10,Number(card.dataset.quantity)||1));
+ if(!Number.isFinite(v.price)){consultFullSize(id,v.ml,requested);return;}
  const key=id+"-full-"+v.ml,existing=cart.find(x=>x.key===key);
- if(existing){existing.qty++;existing.image=existing.image||p.image;}else cart.push({key,id,name:p.name,brand:p.brand,image:p.image,ml:v.ml,price:v.price,qty:1,category:"Frasco inteiro"});
+ if(existing){existing.qty+=requested;existing.image=existing.image||p.image;}
+ else cart.push({key,id,name:p.name,brand:p.brand,image:p.image,ml:v.ml,price:v.price,qty:requested,category:"Frasco inteiro"});
  renderCart();showToast(p.name+" · "+v.ml+" ml adicionado ao carrinho.");
 }
 function changeQty(key,delta){const item=cart.find(x=>x.key===key);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.key!==key);renderCart()}
@@ -697,7 +796,7 @@ function showToast(message){
  toast.style.display="block";
  window.setTimeout(()=>toast.style.display="none",2200);
 }
-setupFullSizeFilters();renderFullSizeProducts();renderCart();
+setupFullSizeFilters();setupFullSizeProductControls();renderFullSizeProducts();renderCart();
 
 </script>
 <script src="search.js?v=20261117-1" defer></script>
