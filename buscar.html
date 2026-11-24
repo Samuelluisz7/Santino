@@ -163,6 +163,24 @@ body .results .result-image img{
   background:#11110f!important;
 }
 body .results .result-image-fallback{background:#11110f!important}
+/* Decants: mostrar o produto vendido (frascos SANTINO), não o frasco grande de referência. */
+body .results .result-image-decant{
+  border:0!important;
+  background:radial-gradient(ellipse at 50% 44%,#332819 0%,#1a150f 57%,#090807 100%)!important;
+}
+body .results .result-image-decant .result-decant-primary{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  padding:4px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:transparent!important;
+}
 </style>
 
 </head>
@@ -170,7 +188,7 @@ body .results .result-image-fallback{background:#11110f!important}
 <header>
   <div class="nav">
     <a class="brand" href="index.html">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a>
-    <form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="nav-links" aria-label="Navegação">
+    <form class="nav-search" action="buscar.html?v=20261124-7" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="nav-links" aria-label="Navegação">
       <a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a><a href="kits.html">Kits</a>
     </nav>
     <a href="decants.html?openCart=1" class="cart-link" aria-label="Abrir carrinho">Carrinho <span class="cart-count" id="searchCartCount">0</span></a>
@@ -180,7 +198,7 @@ body .results .result-image-fallback{background:#11110f!important}
   <div class="eyebrow">Catálogo SANTINO</div>
   <h1>Encontre sua fragrância.</h1>
   <p class="intro">Pesquise pelo nome do perfume ou pela marca. A busca considera decants e frascos inteiros.</p>
-  <form class="page-search" action="buscar.html" method="get" data-santino-search>
+  <form class="page-search" action="buscar.html?v=20261124-7" method="get" data-santino-search>
     <label for="siteSearchInput">Pesquisar fragrância</label>
     <div class="page-search-row"><input id="siteSearchInput" type="search" name="q" maxlength="100" placeholder="Ex.: Asad Bourbon, Sauvage, Azzaro..." autocomplete="off" required><button class="btn" type="submit">Pesquisar</button></div>
   </form>
@@ -332,9 +350,10 @@ body .results .result-image-fallback{background:#11110f!important}
     const detailUrl = "produto.html?id=" + encodeURIComponent(product.id);
     const isDecant = product.category === "Decant";
     const imageFrame = product.image
-      ? '<span class="result-image' + (isDecant ? ' result-image-decant' : '') + '"><img data-search-image src="' + escapeHTML(product.image) + '" alt="' + (isDecant ? 'Imagem de referência de ' : 'Frasco inteiro de ') + escapeHTML(product.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="result-image-fallback" aria-hidden="true">SANTINO</span>' +
-        '</span>'
-      : '<span class="result-image is-missing"><span class="result-image-fallback" aria-hidden="true">SANTINO</span>' + '</span>';
+      ? (isDecant
+        ? '<span class="result-image result-image-decant"><img class="result-decant-primary" src="decant-vials.svg?v=20261124-7" alt="Frascos SANTINO de 5 ml e 10 ml — decant de ' + escapeHTML(product.name) + '" loading="lazy" decoding="async"><span class="result-image-fallback" aria-hidden="true">SANTINO</span></span>'
+        : '<span class="result-image"><img data-search-image src="' + escapeHTML(product.image) + '" alt="Frasco inteiro de ' + escapeHTML(product.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="result-image-fallback" aria-hidden="true">SANTINO</span></span>')
+      : '<span class="result-image is-missing"><span class="result-image-fallback" aria-hidden="true">SANTINO</span></span>';
     return '<article class="result-card">' +
       '<a class="result-image-link" href="' + detailUrl + '" aria-label="Ver detalhes de ' + escapeHTML(product.name) + '">' + imageFrame + '</a>' +
       '<div class="result-type">' + escapeHTML(product.category) + '</div>' +
