@@ -475,3 +475,25 @@
   .recommended-card-kingdom .recommended-image{min-height:205px}
   .recommended-image img{max-height:245px;padding:10px}
 }
+
+
+/* Segundo ajuste: fotos um pouco maiores somente na vitrine da página inicial */
+.home-recommended .recommended-image{min-height:238px}
+.home-recommended .recommended-image img{max-height:355px}
+.home-recommended .recommended-card-kmax .recommended-image,
+.home-recommended .recommended-card-nautica .recommended-image{min-height:225px}
+.home-recommended .recommended-card-kmax .recommended-image img,
+.home-recommended .recommended-card-nautica .recommended-image img{max-height:280px}
+@media(max-width:760px){
+  .home-recommended .recommended-image{height:auto;min-height:185px}
+  .home-recommended .recommended-card-sagaz .recommended-image,
+  .home-recommended .recommended-card-kingdom .recommended-image{min-height:225px}
+  .home-recommended .recommended-image img{max-height:270px}
+}
+@media(max-width:520px){
+  .home-recommended .recommended-image,
+  .home-recommended .recommended-card-sagaz .recommended-image,
+  .home-recommended .recommended-card-kingdom .recommended-image{height:180px;min-height:180px}
+  .home-recommended .recommended-card-kmax .recommended-image,
+  .home-recommended .recommended-card-nautica .recommended-image{height:170px;min-height:170px}
+}
