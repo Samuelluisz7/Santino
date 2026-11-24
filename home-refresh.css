@@ -460,3 +460,18 @@
 /* Concentração da fragrância: etiqueta discreta nos cards. */
 .home-product-concentration{display:block;margin-top:4px;color:#c9b18b;font-size:10px;line-height:1.4;letter-spacing:.04em}
 .recommended-concentration{display:block;margin-top:4px;color:#c9b18b;font-size:9px;line-height:1.4;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
+
+/* Aumento discreto das fotos dos perfumes recomendados */
+.recommended-image{min-height:220px}
+.recommended-image img{max-height:330px;padding:10px}
+.recommended-card-kmax .recommended-image,
+.recommended-card-nautica .recommended-image{min-height:210px}
+.recommended-card-kmax .recommended-image img,
+.recommended-card-nautica .recommended-image img{max-height:255px}
+@media(max-width:760px){
+  .recommended-image{min-height:165px}
+  .recommended-card-sagaz .recommended-image,
+  .recommended-card-kingdom .recommended-image{min-height:205px}
+  .recommended-image img{max-height:245px;padding:10px}
+}
