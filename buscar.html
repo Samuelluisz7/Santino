@@ -133,6 +133,38 @@ body .results .result-image img{
   body .results .result-image{aspect-ratio:1 / 1!important}
 }
 </style>
+
+<style id="search-result-image-cleanup">
+/* Busca: usar a foto correta do decant e eliminar moldura clara e sobras. */
+body .results .result-image{
+  display:block!important;
+  position:relative!important;
+  width:100%!important;
+  aspect-ratio:1 / 1!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:5px!important;
+  background:#11110f!important;
+}
+body .results .result-image img{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  padding:0!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  background:#11110f!important;
+}
+body .results .result-image-fallback{background:#11110f!important}
+</style>
+
 </head>
 <body>
 <header>
@@ -212,15 +244,15 @@ body .results .result-image img{
   ];
 
   const IMAGE_BY_PRODUCT_ID = {
-  "kingdom": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000c494820eba5581e6bf0d0642.png",
-  "the-blend-bourbon": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000e024820e9883046276537e20.png",
-  "asad-bourbon": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000000e24820ebf41633b0088e8a3.png",
-  "homem-sagaz": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000003db8820eb67b82101f4664af.png",
-  "homem-dom": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000002b30820e927cebd52eea46ac.png",
-  "homem-essence": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000001f5c820e91e9bef6200544a2.png",
-  "essencial-sentir": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000003d54820e901cd94a92752917.png",
-  "fakhar-black": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000007c2c820e8a98545ef64abbd6.png",
-  "k-max": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_0000000013e4820e8ff8293356d8a462.png",
+  "kingdom": "imagens-perfumes/file_000000001bcc820eaacfaa778590d3b2.png",
+  "the-blend-bourbon": "imagens-perfumes/file_00000000294c820e955ad9d271829d93.png",
+  "asad-bourbon": "imagens-perfumes/file_00000000ec34820e8ef9f9d86598f27c.png",
+  "homem-sagaz": "imagens-perfumes/file_000000009260820e960992d939501568.png",
+  "homem-dom": "imagens-perfumes/file_00000000d6b4820ea291f02fce000da9.png",
+  "homem-essence": "imagens-perfumes/file_00000000536c820eb4a4d9c3ece0cba3.png",
+  "essencial-sentir": "imagens-perfumes/file_00000000ec54820eaed4d12ec4da56cb.png",
+  "fakhar-black": "imagens-perfumes/file_0000000076d4820e9f124ecbb51bf017.png",
+  "k-max": "imagens-perfumes/file_000000002630820eb1e3fc68c0103081.png",
   "full-kingdom": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000c494820eba5581e6bf0d0642.png",
   "full-212-vip-black": "https://cdn.salla.sa/DGdDlG/c8ab83f8-76ec-45e6-a9e9-3c35260c28b9-1000x1000-z7c64TKXbUSTNjJpzdzsZ6frKO0DM0gAjXPF22wN.jpg",
   "full-the-blend-bourbon": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000e024820e9883046276537e20.png",
@@ -239,14 +271,14 @@ body .results .result-image img{
   "full-sauvage": "https://www.sephora.com.mx/on/demandware.static/-/Sites-masterCatalog_Sephora/es_MX/dwdefc1b76/images/hi-res/eau-de-toilette-dior-dior-sauvage-eau-de-toilette-100ml3348901250146A.jpg",
   "full-invictus": "https://medias.lookatme.com.ph/publishing/LOOKPH-70030889-front-zoom.jpg?version=1767696583",
   "full-myslf": "https://www.houseoffraser.co.uk/images/imgzoom/75/75510669_xxl.jpg",
-  "nautica-voyage": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000009fd4820e865c12ae1ea9a48d.png",
+  "nautica-voyage": "imagens-perfumes/file_000000006ae8820ead14023212f61e03.png",
   "full-nautica-voyage": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000009fd4820e865c12ae1ea9a48d.png",
-  "clash": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000f9b8820e8ffaef6216fb25c6.png",
-  "quasar-ice": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000a354820e8702f77198eb1b10.png",
+  "clash": "imagens-perfumes/file_00000000bae8820e898a2dd84bd4ea9e.png",
+  "quasar-ice": "imagens-perfumes/file_000000004710820eb877f3d23c83677a.png",
   "full-clash": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000f9b8820e8ffaef6216fb25c6.png",
   "full-cebolinha": "https://http2.mlstatic.com/D_Q_NP_2X_990616-MLB92509253839_092025-E.webp",
   "full-quasar-ice": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000a354820e8702f77198eb1b10.png",
-  "eudora-h-acqua": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000009208820e8079bec1f39116e2.png",
+  "eudora-h-acqua": "imagens-perfumes/file_0000000078dc820ea30ea64d059e400d.png",
   "full-eudora-h-acqua": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000009208820e8079bec1f39116e2.png",
   "full-quasar-blue": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000edf0820e973ad95e3df3b1f6.png",
   "full-egeo-bomb-black": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000000dd4820e96f31c5eb61d9b4d.png",
@@ -301,10 +333,8 @@ body .results .result-image img{
     const isDecant = product.category === "Decant";
     const imageFrame = product.image
       ? '<span class="result-image' + (isDecant ? ' result-image-decant' : '') + '"><img data-search-image src="' + escapeHTML(product.image) + '" alt="' + (isDecant ? 'Imagem de referência de ' : 'Frasco inteiro de ') + escapeHTML(product.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="result-image-fallback" aria-hidden="true">SANTINO</span>' +
-        (isDecant ? '<span class="result-decant-badge">PRODUTO VENDIDO · DECANT</span>' : '') +
         '</span>'
-      : '<span class="result-image is-missing"><span class="result-image-fallback" aria-hidden="true">SANTINO</span>' +
-        (isDecant ? '<span class="result-decant-badge">PRODUTO VENDIDO · DECANT</span>' : '') + '</span>';
+      : '<span class="result-image is-missing"><span class="result-image-fallback" aria-hidden="true">SANTINO</span>' + '</span>';
     return '<article class="result-card">' +
       '<a class="result-image-link" href="' + detailUrl + '" aria-label="Ver detalhes de ' + escapeHTML(product.name) + '">' + imageFrame + '</a>' +
       '<div class="result-type">' + escapeHTML(product.category) + '</div>' +
