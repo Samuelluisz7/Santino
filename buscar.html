@@ -116,6 +116,27 @@ footer{border-top:1px solid var(--line);padding:24px 15px;text-align:center;colo
   <meta property="og:url" content="https://samuelluisz7.github.io/Santino/buscar.html">
   <meta property="og:image" content="https://samuelluisz7.github.io/Santino/banner-home-original.webp">
   <meta name="twitter:card" content="summary_large_image">
+<style id="search-result-image-ratio">
+/* Resultados de busca: fotos maiores, em quadro quadrado, sem recortar os frascos. */
+body .results .result-image{
+  aspect-ratio:1 / 1!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+}
+body .results .result-image img{
+  object-fit:contain!important;
+  object-position:center center!important;
+  padding:5px!important;
+}
+body .results .result-image .result-decant-vials{
+  object-fit:contain!important;
+  padding:0!important;
+}
+@media(max-width:720px){
+  body .results .result-image{aspect-ratio:1 / 1!important}
+}
+</style>
 </head>
 <body>
 <header>
@@ -199,56 +220,45 @@ footer{border-top:1px solid var(--line);padding:24px 15px;text-align:center;colo
   "the-blend-bourbon": "imagens-perfumes/file_00000000294c820e955ad9d271829d93.png",
   "asad-bourbon": "imagens-perfumes/file_00000000ec34820e8ef9f9d86598f27c.png",
   "homem-sagaz": "imagens-perfumes/file_000000009260820e960992d939501568.png",
-  "homem-dom": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw035424b3/Produtos/PRODUTO/NATBRA-71770_1.jpg?q=80&sw=600",
-  "homem-essence": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600",
+  "homem-dom": "imagens-perfumes/file_00000000d6b4820ea291f02fce000da9.png",
+  "homem-essence": "imagens-perfumes/file_00000000536c820eb4a4d9c3ece0cba3.png",
   "essencial-sentir": "imagens-perfumes/file_00000000ec54820eaed4d12ec4da56cb.png",
   "fakhar-black": "imagens-perfumes/file_0000000076d4820e9f124ecbb51bf017.png",
   "k-max": "imagens-perfumes/file_000000002630820eb1e3fc68c0103081.png",
-  "nautica-voyage": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000009fd4820e865c12ae1ea9a48d.png",
-  "clash": "imagens-perfumes/file_00000000bae8820e898a2dd84bd4ea9e.png",
-  "quasar-ice": "imagens-perfumes/file_000000004710820eb877f3d23c83677a.png",
-  "eudora-h-acqua": "imagens-perfumes/file_0000000078dc820ea30ea64d059e400d.png",
-  "touti-vip-12": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu9nuwstd4rk7a",
-  "touti-vip-50": "imagens-perfumes/file_00000000bc08820e8d0171c8c4d187f4.png",
-  "touti-vip-52": "imagens-perfumes/file_00000000c444820ebcf15519d790b589.png",
-  "touti-vip-80": "imagens-perfumes/file_000000007048820e9138d6cc8716afaf.png",
-  "touti-fit-caribe": "imagens-perfumes/file_00000000f21c820ebb4893ea7af07722.png",
-  "full-touti-vip-12": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu9nuwstd4rk7a",
-  "full-touti-vip-46": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvhzvrznhtwg3e",
-  "full-touti-vip-50": "https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",
-  "full-touti-vip-52": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvhxs3jke5r48d",
-  "full-touti-vip-80": "https://viptouti.com.br/cdn/shop/files/vip_touti.webp?v=1780365174",
-  "full-touti-fit-caribe": "https://down-br.img.susercontent.com/file/sg-11134201-7rbkn-llw9seqvwa09e4",
-  "full-kingdom": "https://www.lattafa-usa.com/cdn/shop/files/The-Kingdom-Men-1_ecd1b262-1319-4fee-846b-8b6f30939677.png?v=1747416549&width=1946",
+  "full-kingdom": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000c494820eba5581e6bf0d0642.png",
   "full-212-vip-black": "https://cdn.salla.sa/DGdDlG/c8ab83f8-76ec-45e6-a9e9-3c35260c28b9-1000x1000-z7c64TKXbUSTNjJpzdzsZ6frKO0DM0gAjXPF22wN.jpg",
-  "full-the-blend-bourbon": "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_1800%2Cc_limit/e_trim/v1/imagens/product/B77489/c97c55ee-65fe-4339-9a99-1363b969701b-the-blend-bourbon-eau-de-parfum-100ml.png",
-  "full-homem-sagaz": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw07c342e4/Produtos/PRODUTO/NATBRA-81951_1.jpg?q=80&sw=600",
-  "full-homem-dom": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw035424b3/Produtos/PRODUTO/NATBRA-71770_1.jpg?q=80&sw=600",
-  "full-homem-essence": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600",
-  "full-essencial-sentir": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw62148647/Produtos/NATBRA-167755_1.jpg?q=80&sw=600",
-  "full-fakhar-black": "https://www.lattafa-usa.com/cdn/shop/files/1_aa0a5a38-775b-4814-a909-837c1d360d9c.png?v=1747500778&width=1946",
-  "full-k-max": "https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600",
+  "full-the-blend-bourbon": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000e024820e9883046276537e20.png",
+  "full-homem-sagaz": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000003db8820eb67b82101f4664af.png",
+  "full-homem-dom": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000002b30820e927cebd52eea46ac.png",
+  "full-homem-essence": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000001f5c820e91e9bef6200544a2.png",
+  "full-essencial-sentir": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000003d54820e901cd94a92752917.png",
+  "full-fakhar-black": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000007c2c820e8a98545ef64abbd6.png",
+  "full-k-max": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_0000000013e4820e8ff8293356d8a462.png",
   "full-le-male": "https://scale.coolshop-cdn.com/product-media.coolshop-cdn.com/23UC4G/f178d6ad2668454da17223e593c9cbd7.jpg/f/jean-paul-gaultier-le-male-le-parfum-125-ml.jpg",
-  "full-afnan-9pm": "https://emiratesfragrance.com/cdn/shop/files/afnan-9-pm-eau-de-parfum-for-men-1.jpg?v=1726044462&width=2048",
-  "full-asad-bourbon": "https://scentira.in/cdn/shop/files/LATTAFAAl_Asad_Bourbon_1_34bc0e05-10ec-4d25-9df5-34b68222f16c.png?v=1756889307&width=5000",
-  "full-asad": "https://www.opulensi.com/cdn/shop/files/AsadMain.jpg?v=1683748573&width=1445",
+  "full-afnan-9pm": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000570c820ea46a52ef015bee58.png",
+  "full-asad-bourbon": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000000e24820ebf41633b0088e8a3.png",
+  "full-asad": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000004aac820e9f9e8dec3805e644.png",
   "full-eros": "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw8b197414/original/90_R740010-R100MLS_RNUL_20_Eros~EDT~100~ml-Accessories-Versace-online-store_3_1.jpg?q=85&strip=true&sw=850",
   "full-million": "https://media.ulta.com/i/ulta/2276633?fmt=auto&h=1080&w=1080",
   "full-sauvage": "https://www.sephora.com.mx/on/demandware.static/-/Sites-masterCatalog_Sephora/es_MX/dwdefc1b76/images/hi-res/eau-de-toilette-dior-dior-sauvage-eau-de-toilette-100ml3348901250146A.jpg",
   "full-invictus": "https://medias.lookatme.com.ph/publishing/LOOKPH-70030889-front-zoom.jpg?version=1767696583",
   "full-myslf": "https://www.houseoffraser.co.uk/images/imgzoom/75/75510669_xxl.jpg",
+  "nautica-voyage": "imagens-perfumes/file_000000006ae8820ead14023212f61e03.png",
   "full-nautica-voyage": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000009fd4820e865c12ae1ea9a48d.png",
-  "full-clash": "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Abest/v1/imagens/product/B50677/cae5b3cb-4709-4ad6-abac-8c54b813587e-bot-50677-clash-desodorante-colonia-frontal-01.jpg?v=20261024",
+  "clash": "imagens-perfumes/file_00000000bae8820e898a2dd84bd4ea9e.png",
+  "quasar-ice": "imagens-perfumes/file_000000004710820eb877f3d23c83677a.png",
+  "full-clash": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000f9b8820e8ffaef6216fb25c6.png",
   "full-cebolinha": "https://http2.mlstatic.com/D_Q_NP_2X_990616-MLB92509253839_092025-E.webp",
-  "full-quasar-ice": "https://down-br.img.susercontent.com/file/b7e357f69053ee8fed9a7156dc053519",
-  "full-eudora-h-acqua": "https://carrefourbr.vtexassets.com/arquivos/ids/135847808/e50e11a539fe43b882dbb643abc964e4.jpg?v=638384985975970000",
-  "full-club-de-nuit-intense-man": "https://www.kruidvat.nl/medias/sys_master/prd-images/h00/h12/45665477656606/temp-prd-front-6363663-1_600x600/temp-prd-front-6363663-1-600x600.jpg",
-  "full-malbec-gold": "https://carrefourbr.vtexassets.com/arquivos/ids/189467637/image-0.jpg?v=638793147047800000",
-  "full-khamrah": "https://i8.amplience.net/i/manor/10003592325_01",
-  "full-kaiak-extremo": "https://down-br.img.susercontent.com/file/br-11134207-7qukw-li8dv4iehsov76",
-  "full-quasar-blue": "https://paradea.it/cdn/shop/files/o-boticario-quasar-blue-eau-de-toilette-100ml-o-boticario-38217504.jpg?v=1751143053&width=1946",
-  "full-club-6-voyage": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqq15dhj1kw327",
-  "full-egeo-bomb-black": "https://http2.mlstatic.com/D_NQ_NP_821590-MLB99367857758_112025-O.webp"
+  "full-quasar-ice": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000a354820e8702f77198eb1b10.png",
+  "eudora-h-acqua": "imagens-perfumes/file_0000000078dc820ea30ea64d059e400d.png",
+  "full-eudora-h-acqua": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000009208820e8079bec1f39116e2.png",
+  "full-quasar-blue": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_00000000edf0820e973ad95e3df3b1f6.png",
+  "full-egeo-bomb-black": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000000dd4820e96f31c5eb61d9b4d.png",
+  "full-kaiak-extremo": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_0000000081ec820e96da01556d9b0660.png",
+  "full-club-6-voyage": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000008f6c820ea84ac2c4e78d12fb.png",
+  "full-club-de-nuit-intense-man": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_000000000df0820eab6e8f74b67ca744.png",
+  "full-khamrah": "https://raw.githubusercontent.com/Samuelluisz7/Santino/main/imagens-perfumes-inteiros/file_0000000076ac820e9382b52161242337.png",
+  "full-malbec-gold": "https://carrefourbr.vtexassets.com/arquivos/ids/189467637/image-0.jpg?v=638793147047800000"
 };
   products.forEach(function(product){ product.image=IMAGE_BY_PRODUCT_ID[product.id]||""; });
 
