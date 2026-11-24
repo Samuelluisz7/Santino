@@ -135,52 +135,19 @@ body .results .result-image img{
 </style>
 
 <style id="search-result-image-cleanup">
-/* Busca: usar a foto correta do decant e eliminar moldura clara e sobras. */
-body .results .result-image{
-  display:block!important;
-  position:relative!important;
-  width:100%!important;
-  aspect-ratio:1 / 1!important;
-  height:auto!important;
-  min-height:0!important;
-  max-height:none!important;
-  overflow:hidden!important;
-  border:0!important;
-  border-radius:5px!important;
-  background:#11110f!important;
+/* Resultados de busca: foto individual de cada perfume, sem moldura clara ou miniaturas genéricas. */
+body:not(.home-page) .results .result-image{
+  display:grid!important;position:relative!important;width:100%!important;aspect-ratio:1 / 1!important;
+  height:auto!important;min-height:0!important;max-height:none!important;margin:0!important;padding:0!important;
+  overflow:hidden!important;border:0!important;border-radius:5px!important;
+  background:radial-gradient(ellipse at 50% 42%,#30271b 0%,#17130e 54%,#080808 100%)!important;
 }
-body .results .result-image img{
-  position:absolute!important;
-  inset:0!important;
-  display:block!important;
-  width:100%!important;
-  height:100%!important;
-  max-width:none!important;
-  max-height:none!important;
-  padding:0!important;
-  object-fit:cover!important;
-  object-position:center!important;
-  background:#11110f!important;
+body:not(.home-page) .results .result-image img{
+  position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;
+  max-width:100%!important;max-height:100%!important;margin:0!important;padding:0!important;
+  object-fit:contain!important;object-position:center center!important;background:transparent!important;mix-blend-mode:normal!important;
 }
-body .results .result-image-fallback{background:#11110f!important}
-/* Decants: mostrar o produto vendido (frascos SANTINO), não o frasco grande de referência. */
-body .results .result-image-decant{
-  border:0!important;
-  background:radial-gradient(ellipse at 50% 44%,#332819 0%,#1a150f 57%,#090807 100%)!important;
-}
-body .results .result-image-decant .result-decant-primary{
-  position:absolute!important;
-  inset:0!important;
-  display:block!important;
-  width:100%!important;
-  height:100%!important;
-  max-width:100%!important;
-  max-height:100%!important;
-  padding:4px!important;
-  object-fit:contain!important;
-  object-position:center!important;
-  background:transparent!important;
-}
+body:not(.home-page) .results .result-image-fallback{background:transparent!important}
 </style>
 
 </head>
@@ -351,7 +318,7 @@ body .results .result-image-decant .result-decant-primary{
     const isDecant = product.category === "Decant";
     const imageFrame = product.image
       ? (isDecant
-        ? '<span class="result-image result-image-decant"><img class="result-decant-primary" src="decant-vials.svg?v=20261124-7" alt="Frascos SANTINO de 5 ml e 10 ml — decant de ' + escapeHTML(product.name) + '" loading="lazy" decoding="async"><span class="result-image-fallback" aria-hidden="true">SANTINO</span></span>'
+        ? '<span class="result-image result-image-decant"><img class="result-decant-primary" data-search-image src="' + escapeHTML(product.image) + '" alt="Foto do decant de ' + escapeHTML(product.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="result-image-fallback" aria-hidden="true">SANTINO</span></span>'
         : '<span class="result-image"><img data-search-image src="' + escapeHTML(product.image) + '" alt="Frasco inteiro de ' + escapeHTML(product.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="result-image-fallback" aria-hidden="true">SANTINO</span></span>')
       : '<span class="result-image is-missing"><span class="result-image-fallback" aria-hidden="true">SANTINO</span></span>';
     return '<article class="result-card">' +
