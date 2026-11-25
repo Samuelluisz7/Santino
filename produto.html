@@ -25,7 +25,7 @@ main{max-width:1120px;margin:auto;padding:24px 22px 56px}.breadcrumbs{font-size:
 .summary{border:1px solid var(--line);background:linear-gradient(145deg,#1d1b17,#151411);padding:23px}.eyebrow{font-size:11px;color:var(--beige);letter-spacing:.16em;text-transform:uppercase;font-weight:700}
 h1,h2{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(30px,4vw,46px);line-height:1.08;margin:9px 0}.brand-line{color:var(--beige);font-size:14px;margin-bottom:7px}
 .product-meta{color:var(--muted);font-size:13px;margin-bottom:17px}.description{font-size:14px;line-height:1.7;color:var(--muted);margin:16px 0 20px}
-.price{font-size:25px;margin:12px 0;color:var(--cream)}.price.pending{font-size:20px;color:var(--beige)}
+.price{font-size:25px;margin:12px 0;color:var(--cream)}.detail-price-stack{margin:12px 0}.detail-price-stack .price{margin:2px 0}.detail-price-stack .reference-price{font-size:12px;margin-bottom:4px}.detail-price-stack .reference-price small{display:block;font-size:10px;margin-top:2px}.price.pending{font-size:20px;color:var(--beige)}
 .purchase-controls{display:grid;grid-template-columns:1fr 120px;gap:10px;margin:18px 0 12px}.control label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.control select{width:100%;height:48px;background:#11110f;color:var(--cream);border:1px solid #61533d;padding:0 10px;border-radius:3px}
 .add-button{width:100%;background:var(--beige);color:#171512;border:1px solid var(--beige);font-size:14px}.stock-note{font-size:12px;line-height:1.5;color:var(--muted);margin:13px 0 0}
 .content-section{margin-top:32px;border-top:1px solid var(--line);padding-top:27px}.content-section h2{font-size:27px;margin:0 0 16px}
@@ -1384,7 +1384,7 @@ body:not(.full-size-mode) .gallery-main #mainImage{mix-blend-mode:normal!importa
     <span class="detail-note-preview-title">Prévia olfativa</span>
     <div class="detail-note-preview-stages" id="notePreviewStages"></div>
   </div>
-</div><div class="price" id="productPrice"></div>
+</div><div class="detail-price-stack"><div class="reference-price" id="productReferencePrice" hidden></div><div class="price" id="productPrice"></div></div>
 <div class="purchase-controls"><div class="control" id="volumeControl"><label for="volumeSelect">Volume do decant</label><select id="volumeSelect"></select></div><div class="control"><label for="quantitySelect">Quantidade</label><select id="quantitySelect"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div></div><button class="add-button" id="addButton">Adicionar ao carrinho</button><p class="stock-note" id="stockNote">Confira o volume e a quantidade antes de adicionar. A disponibilidade será confirmada pelo WhatsApp. Confira o total e a entrega antes de pagar.</p></div></section>
 <div class="sticky-purchase" id="stickyPurchaseBar" role="region" aria-label="Compra rápida" aria-hidden="true">
   <div class="sticky-purchase-copy">
@@ -1629,7 +1629,7 @@ const FULL_SIZE_PRODUCTS = [
 {id:"full-homem-essence",name:"Homem Essence",brand:"Natura",concentration:"Deo Parfum",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600",price:162.90,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
 {id:"full-essencial-sentir",name:"Essencial Sentir",brand:"Natura",concentration:"Deo Parfum",ml:100,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw62148647/Produtos/NATBRA-167755_1.jpg?q=80&sw=600",price:169.90,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
 {id:"full-fakhar-black",name:"Fakhar Black",brand:"Lattafa",concentration:"EDP · Eau de Parfum",ml:100,image:"https://www.lattafa-usa.com/cdn/shop/files/1_aa0a5a38-775b-4814-a909-837c1d360d9c.png?v=1747500778&width=1946",price:176.90,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
-{id:"full-k-max",name:"Natura K Max",brand:"Natura",concentration:"Deo Parfum",ml:100,price:178.90,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600",description:"Natura K Max em frasco de 100 ml."},
+{id:"full-k-max",name:"Natura K Max",brand:"Natura",concentration:"Deo Parfum",ml:100,price:178.90,referencePrice:299.90,image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600",description:"Natura K Max em frasco de 100 ml."},
 {id:"full-le-male",name:"Le Male Le Parfum",brand:"Jean Paul Gaultier",concentration:"Eau de Parfum Intense",ml:125,volumes:[{"ml":75,"price":599.90},{"ml":125,"price":566.10},{"ml":200,"price":989.90}],image:"https://scale.coolshop-cdn.com/product-media.coolshop-cdn.com/23UC4G/f178d6ad2668454da17223e593c9cbd7.jpg/f/jean-paul-gaultier-le-male-le-parfum-125-ml.jpg",price:566.10,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
 {id:"full-afnan-9pm",name:"9PM",brand:"Afnan",concentration:"EDP · Eau de Parfum",ml:100,image:"https://emiratesfragrance.com/cdn/shop/files/afnan-9-pm-eau-de-parfum-for-men-1.jpg?v=1726044462&width=2048",price:199.90,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
 {id:"full-asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",concentration:"EDP · Eau de Parfum",ml:100,image:"https://scentira.in/cdn/shop/files/LATTAFAAl_Asad_Bourbon_1_34bc0e05-10ec-4d25-9df5-34b68222f16c.png?v=1756889307&width=5000",price:196.90,description:"Frasco inteiro. Consulte a SANTINO para informações sobre esta fragrância."},
@@ -1925,6 +1925,8 @@ if(previewStages&&info){
 $("backCatalog").href=isFull?"frascos.html#full-size-catalog":"decants.html#catalog";$("cartLink").href=(isFull?"frascos.html":"decants.html")+"?openCart=1";
 if(isFull){
  document.body.classList.add("full-size-mode");
+ const referencePrice=$("productReferencePrice");
+ if(referencePrice){const hasReferencePrice=Number.isFinite(product.referencePrice);referencePrice.hidden=!hasReferencePrice;referencePrice.innerHTML=hasReferencePrice?'Preço regular na loja oficial Natura: <del>'+money(product.referencePrice)+'</del><small>Preço de referência; promoções podem alterar o valor.</small>':'';}
  const fullPageDecantVials=$("detailDecantVials"),fullPageDecantNotice=$("detailDecantNotice");
  if(fullPageDecantVials){fullPageDecantVials.hidden=true;fullPageDecantVials.style.setProperty("display","none","important");}
  if(fullPageDecantNotice){fullPageDecantNotice.hidden=true;fullPageDecantNotice.style.setProperty("display","none","important");}
