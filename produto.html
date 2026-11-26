@@ -1371,6 +1371,13 @@ body:not(.full-size-mode) .gallery-main #mainImage{background:transparent!import
 
 body:not(.full-size-mode) .gallery-main #mainImage{mix-blend-mode:normal!important;filter:none!important;opacity:1!important}
 </style>
+<style id="official-reference-price-detail">
+/* Referência da loja oficial — página do produto */
+.detail-price-stack .reference-price{display:flex;flex-direction:column;align-items:flex-start;gap:2px;font-size:11px;color:var(--muted);margin:0 0 7px}
+.detail-price-stack .reference-price span{font-size:11px;line-height:1.2;color:var(--muted)}
+.detail-price-stack .reference-price strong{font-size:20px;line-height:1.1;color:#e3c28e;font-weight:700}
+.detail-price-stack .reference-price del{text-decoration-thickness:1.5px;text-decoration-color:var(--beige)}
+</style>
 </head>
 <body class="perfume-detail-page">
 <header><div class="nav"><a href="index.html" class="brand" style="text-decoration:none">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a><form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="nav-links" aria-label="Navegação"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a><a href="kits.html">Kits</a></nav><a class="cart-link" id="cartLink" href="decants.html?openCart=1">Carrinho <span class="cart-count" id="cartCount">0</span></a></div></header>
@@ -2085,9 +2092,3 @@ function addToCart(){
 <script src="santino-ui.js?v=20261117-1" defer></script>
 </body>
 </html>
-
-/* Referência da loja oficial — página do produto */
-.detail-price-stack .reference-price{display:flex;flex-direction:column;align-items:flex-start;gap:2px;font-size:11px;color:var(--muted);margin:0 0 7px}
-.detail-price-stack .reference-price span{font-size:11px;line-height:1.2;color:var(--muted)}
-.detail-price-stack .reference-price strong{font-size:20px;line-height:1.1;color:#e3c28e;font-weight:700}
-.detail-price-stack .reference-price del{text-decoration-thickness:1.5px;text-decoration-color:var(--beige)}
