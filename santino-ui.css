@@ -1684,14 +1684,13 @@ body:not(.home-page) .bottom-note {
 .santino-global-cart-empty strong{color:#eee4d4;font:400 20px/1.2 Georgia,"Times New Roman",serif}
 .santino-global-cart-empty p{max-width:230px;margin:8px 0 0;font-size:12px;line-height:1.5}
 .santino-global-cart-item{
- display:grid;grid-template-columns:64px minmax(0,1fr) auto;align-items:start;
+ display:grid;grid-template-columns:72px minmax(0,1fr) auto;align-items:start;
  gap:11px;padding:14px 0;border-bottom:1px solid #39342d;
 }
-.santino-global-cart-item>img,.santino-global-cart-placeholder{
- display:grid;place-items:center;width:64px;height:72px;object-fit:contain;
- padding:5px;background:#eee9df;color:#78664b;
+.santino-global-cart-item>img{
+ display:block;width:72px;height:72px;aspect-ratio:1/1;object-fit:cover;
+ object-position:center;padding:0;margin:0;background:transparent;border:0;
 }
-.santino-global-cart-placeholder{font:700 24px/1 Georgia,"Times New Roman",serif}
 .santino-global-cart-product{min-width:0}
 .santino-global-cart-product>strong{
  display:block;color:#f3eadb;font-size:13px;font-weight:600;line-height:1.35;
