@@ -168,8 +168,11 @@
       const key = globalCartEscape(item.key);
       const qty = Math.max(1, Number(item.qty) || 1);
       const itemPrice = typeof item.price === "number" && Number.isFinite(item.price) ? globalCartMoney(item.price * qty) : "A confirmar";
-      const image = typeof item.image === "string" && /^https:\/\//i.test(item.image)
-        ? '<img src="' + globalCartEscape(item.image) + '" alt="" loading="lazy" onerror="this.hidden=true">'
+      const imageSource = typeof item.image === "string" && /^(https:\/\/|\/(?!\/)|\.\.?\/|[a-z0-9_-]+\/)/i.test(item.image.trim())
+        ? item.image.trim()
+        : "";
+      const image = imageSource
+        ? '<img src="' + globalCartEscape(imageSource) + '" alt="' + globalCartEscape(item.name || "Perfume") + '" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="santino-global-cart-placeholder" aria-hidden="true" hidden>S</span>'
         : '<span class="santino-global-cart-placeholder" aria-hidden="true">S</span>';
       return '<article class="santino-global-cart-item">' + image +
         '<div class="santino-global-cart-product"><strong>' + globalCartEscape(item.name) + '</strong>' +
