@@ -318,7 +318,7 @@ body:not(.home-page) .results .result-image-fallback{background:transparent!impo
   }
 
   results.innerHTML = matches.map(function(product){
-    const detailUrl = "produto.html?id=" + encodeURIComponent(product.id);
+    const detailUrl = "produto.html?v=20261126-3&id=" + encodeURIComponent(product.id);
     const isDecant = product.category === "Decant";
     const imageFrame = product.image
       ? (isDecant
