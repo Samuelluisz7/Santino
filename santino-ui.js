@@ -172,7 +172,7 @@
         ? item.image.trim()
         : "";
       const image = imageSource
-        ? '<img src="' + globalCartEscape(imageSource) + '" alt="' + globalCartEscape(item.name || "Perfume") + '" loading="lazy" onerror="this.hidden=true">'
+        ? '<div class="santino-global-cart-image"><img src="' + globalCartEscape(imageSource) + '" alt="' + globalCartEscape(item.name || "Perfume") + '" loading="lazy" onerror="this.parentElement.hidden=true"></div>'
         : '';
       return '<article class="santino-global-cart-item">' + image +
         '<div class="santino-global-cart-product"><strong>' + globalCartEscape(item.name) + '</strong>' +
