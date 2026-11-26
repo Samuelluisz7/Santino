@@ -1687,10 +1687,15 @@ body:not(.home-page) .bottom-note {
  display:grid;grid-template-columns:72px minmax(0,1fr) auto;align-items:start;
  gap:11px;padding:14px 0;border-bottom:1px solid #39342d;
 }
-.santino-global-cart-item>img{
- display:block;width:72px;height:72px;aspect-ratio:1/1;object-fit:cover;
- object-position:center;padding:0;margin:0;background:transparent;border:0;
+.santino-global-cart-image{
+ display:block;width:72px;height:72px;aspect-ratio:1/1;overflow:hidden;
+ margin:0;padding:0;background:transparent;border:0;
 }
+.santino-global-cart-image img{
+ display:block;width:100%;height:100%;object-fit:cover;object-position:center;
+ padding:0;margin:0;border:0;background:transparent;transform:scale(1.16);
+}
+.santino-global-cart-placeholder[hidden]{display:none!important;}
 .santino-global-cart-product{min-width:0}
 .santino-global-cart-product>strong{
  display:block;color:#f3eadb;font-size:13px;font-weight:600;line-height:1.35;
