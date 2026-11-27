@@ -1863,3 +1863,5 @@ body:not(.home-page) .bottom-note {
 body.santino-menu-open{overflow:hidden}
 @media(max-width:520px){.santino-menu-layer{grid-template-columns:0 min(390px,100vw)}.santino-menu-panel{padding:20px 20px calc(20px + env(safe-area-inset-bottom))}.santino-menu-link{min-height:54px;font-size:15px}}
 @media(prefers-reduced-motion:reduce){.santino-menu-layer,.santino-menu-panel{transition:none!important}}
+
+.santino-header-search button svg{display:block;width:19px;height:19px;margin:auto;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
