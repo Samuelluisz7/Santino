@@ -999,3 +999,39 @@ body.perfume-detail-page .detail-decant-notice {
   .kit-product{grid-template-columns:58px minmax(0,1fr) !important}
   .kit-product-img{width:58px !important;height:58px !important}
 }
+
+
+/* Kits — mesmas imagens tratadas e mesma apresentação visual dos cards de decants. */
+.kit-product-img{
+  width:76px !important;
+  height:auto !important;
+  aspect-ratio:1 / 1 !important;
+  padding:4px !important;
+  display:grid !important;
+  place-items:center !important;
+  overflow:hidden !important;
+  border:1px solid var(--beige) !important;
+  border-radius:12px !important;
+  background:#171512 !important;
+}
+.kit-product-img img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  padding:0 !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  transform:none !important;
+  background:transparent !important;
+  mix-blend-mode:normal !important;
+}
+@media(max-width:780px){
+  .kit-product{grid-template-columns:68px minmax(0,1fr) !important}
+  .kit-product-img{width:68px !important}
+}
+@media(max-width:355px){
+  .kit-product{grid-template-columns:58px minmax(0,1fr) !important}
+  .kit-product-img{width:58px !important}
+}
