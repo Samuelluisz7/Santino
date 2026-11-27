@@ -1938,7 +1938,7 @@ $("backCatalog").href=isFull?"frascos.html#full-size-catalog":"decants.html#cata
 if(isFull){
  document.body.classList.add("full-size-mode");
  const referencePrice=$("productReferencePrice");
- if(referencePrice){const hasReferencePrice=Number.isFinite(product.referencePrice);referencePrice.hidden=!hasReferencePrice;referencePrice.innerHTML=hasReferencePrice?'<span>Preço de referência</span><strong><del>'+money(product.referencePrice)+'</del></strong>':'';}
+ if(referencePrice){const hasReferencePrice=Number.isFinite(product.referencePrice);referencePrice.hidden=!hasReferencePrice;referencePrice.innerHTML=hasReferencePrice?'<span>Preço oficial</span><strong><del>'+money(product.referencePrice)+'</del></strong>':'';}
  const fullPageDecantVials=$("detailDecantVials"),fullPageDecantNotice=$("detailDecantNotice");
  if(fullPageDecantVials){fullPageDecantVials.hidden=true;fullPageDecantVials.style.setProperty("display","none","important");}
  if(fullPageDecantNotice){fullPageDecantNotice.hidden=true;fullPageDecantNotice.style.setProperty("display","none","important");}
@@ -2058,7 +2058,7 @@ $("volumeSelect").addEventListener("change",()=>stickyPurchase?.refresh());
 $("quantitySelect").addEventListener("change",()=>stickyPurchase?.refresh());
 }
 function selectGallery(index){if(!gallery[index])return;$("mainImage").style.display="block";$("galleryFallback").style.display="none";$("mainImage").src=gallery[index];$("mainImage").alt=isFull?product.name+" — foto do frasco inteiro "+(index+1):product.name+" — imagem de referência; o produto vendido é o decant SANTINO "+(currentVolume?.ml||"")+" ml";$("galleryCaption").textContent=isFull?(index===0?"Foto do frasco inteiro":(INGREDIENT_IMAGE_URLS.has(gallery[index])?"Imagem de notas ou ingredientes da fragrância":"Foto complementar do perfume")):"Imagem de referência da fragrância. O produto vendido é o decant SANTINO em mini frasco no volume selecionado.";document.querySelectorAll("[data-gallery-index]").forEach(button=>button.setAttribute("aria-pressed",String(Number(button.dataset.galleryIndex)===index)));}
-function updatePrice(){if(!currentVolume)return;$("productPrice").textContent=money(currentVolume.price);$("productPrice").classList.remove("pending");$("addButton").textContent="Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);if(isFull){const ref=$("productReferencePrice");const value=Number.isFinite(currentVolume.referencePrice)?currentVolume.referencePrice:product.referencePrice;if(ref){ref.hidden=!Number.isFinite(value);ref.innerHTML=Number.isFinite(value)?'<span>Preço de referência</span><strong><del>'+money(value)+'</del></strong>':'';}}}
+function updatePrice(){if(!currentVolume)return;$("productPrice").textContent=money(currentVolume.price);$("productPrice").classList.remove("pending");$("addButton").textContent="Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);if(isFull){const ref=$("productReferencePrice");const value=Number.isFinite(currentVolume.referencePrice)?currentVolume.referencePrice:product.referencePrice;if(ref){ref.hidden=!Number.isFinite(value);ref.innerHTML=Number.isFinite(value)?'<span>Preço oficial</span><strong><del>'+money(value)+'</del></strong>':'';}}}
 function readCart(){try{const value=JSON.parse(localStorage.getItem("santino_nobre_cart")||"[]");return Array.isArray(value)?value:[]}catch(e){return []}}
 function addToCart(){
  if(!product)return;
