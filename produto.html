@@ -909,7 +909,7 @@ body.quasar-ice-notes #olfactorySection .note-composition .composition-row{
 #detailDecantVials[hidden],#detailDecantNotice[hidden]{display:none!important}
 body.full-size-mode #detailDecantVials,body.full-size-mode #detailDecantNotice{display:none!important}
 </style>
-  <link rel="stylesheet" href="santino-ui.css?v=20261126-5">
+  <link rel="stylesheet" href="santino-ui.css?v=20261127-9">
 
 <style id="santino-pyramid-finish">
 /* Acabamento final SANTINO: packshot maior + pirâmide olfativa legível */
@@ -1380,7 +1380,35 @@ body:not(.full-size-mode) .gallery-main #mainImage{mix-blend-mode:normal!importa
 </style>
 </head>
 <body class="perfume-detail-page">
-<header><div class="nav"><a href="index.html" class="brand" style="text-decoration:none">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a><form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="nav-links" aria-label="Navegação"><a href="index.html">Início</a><a href="decants.html">Decants</a><a href="frascos.html">Frascos inteiros</a><a href="kits.html">Kits</a></nav><a class="cart-link" id="cartLink" href="decants.html?openCart=1">Carrinho <span class="cart-count" id="cartCount">0</span></a></div></header>
+<header class="santino-site-header">
+  <div class="santino-header-shell">
+    <div class="santino-header-top">
+      <a class="brand brand-home santino-header-brand" href="index.html">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a>
+      <div class="santino-header-actions">
+        <button class="santino-header-icon" type="button" data-santino-focus-search aria-label="Ir para a busca" title="Buscar perfumes">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        </button>
+        <a class="cart-link santino-header-icon santino-header-cart" id="cartLink" href="decants.html?openCart=1" aria-label="Abrir carrinho">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l1 13H3L4 8Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <button class="santino-header-icon santino-menu-button" type="button" data-santino-menu-open aria-controls="santinoMenuLayer" aria-expanded="false" aria-label="Abrir menu" title="Menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <form class="nav-search santino-header-search" action="buscar.html" method="get" data-santino-search>
+      <input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required>
+      <button type="submit" aria-label="Pesquisar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></button>
+    </form>
+    <nav class="catalog-nav santino-category-nav" aria-label="Categorias do catálogo">
+      <a href="index.html">Início</a>
+      <a href="frascos.html">Frascos inteiros</a>
+      <a href="decants.html">Decants</a>
+      <a href="kits.html">Kits</a>
+    </nav>
+  </div>
+</header>
 <main><div class="breadcrumbs"><a id="backCatalog" href="decants.html">← Voltar ao catálogo</a> / <span id="crumbName">Perfume</span></div>
 
 <section class="product-layout"><div class="gallery"><div class="gallery-main"><img id="mainImage" alt="" decoding="async"><div class="gallery-fallback" id="galleryFallback">Imagem indisponível</div><div class="comparison-gallery" id="comparisonGallery" hidden><figure><div class="comparison-gallery-label">Produto vendido · Touti</div><div class="comparison-gallery-photo"><img id="toutiComparisonImage" alt="" decoding="async" referrerpolicy="no-referrer"><span class="comparison-image-missing">Foto do produto indisponível</span></div><figcaption class="comparison-gallery-name" id="toutiComparisonCaption"></figcaption></figure><figure><div class="comparison-gallery-label">Referência olfativa</div><div class="comparison-gallery-photo"><img id="referenceComparisonImage" alt="" decoding="async" referrerpolicy="no-referrer"><span class="comparison-image-missing">Foto da referência indisponível</span></div><figcaption class="comparison-gallery-name" id="referenceComparisonCaption"></figcaption></figure></div></div><div class="gallery-thumbs" id="galleryThumbs" aria-label="Mais fotos do perfume"></div><p class="gallery-caption" id="galleryCaption">Foto do frasco do perfume</p></div>
@@ -2094,6 +2122,6 @@ function addToCart(){
  setTimeout(()=>{button.textContent=original;$("toast").style.display="none"},2000);
 }
 </script><script src="search.js?v=20261117-1" defer></script>
-<script src="santino-ui.js?v=20261126-6" defer></script>
+<script src="santino-ui.js?v=20261127-9" defer></script>
 </body>
 </html>
