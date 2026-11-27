@@ -1042,7 +1042,7 @@ function renderFullSizeProducts(){
 }
 function getFullSizeVolume(p,index){return Array.isArray(p.volumes)&&p.volumes.length?p.volumes[index]||p.volumes[0]:{ml:p.ml,price:Number.isFinite(p.price)?p.price:null,referencePrice:Number.isFinite(p.referencePrice)?p.referencePrice:null};}
 function getFullSizeReferencePrice(product,volume){return Number.isFinite(volume?.referencePrice)?volume.referencePrice:Number.isFinite(product?.referencePrice)?product.referencePrice:null;}
-function renderOfficialReference(price){return Number.isFinite(price)?'<div class="official-price-reference"><span>Preço de referência</span><strong><del>'+money(price)+'</del></strong></div>':'';}
+function renderOfficialReference(price){return Number.isFinite(price)?'<div class="official-price-reference"><span>Preço oficial</span><strong><del>'+money(price)+'</del></strong></div>':'';}
 function renderSavingBadge(referencePrice,salePrice){
  const reference=referencePrice,sale=salePrice;
  if(typeof reference!=="number"||typeof sale!=="number"||!Number.isFinite(reference)||!Number.isFinite(sale)||reference<=0||reference<=sale||sale<0)return '';
