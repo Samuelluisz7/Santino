@@ -456,7 +456,7 @@
  }
  if(openButton)openButton.addEventListener("click",openMenu);
  closeButtons.forEach(function(button){button.addEventListener("click",function(){closeMenu(true);});});
- menu.querySelectorAll("[data-menu-page],.santino-menu-brand,a[href='politicas.html'],a[href^='https://wa.me/']").forEach(function(link){
+ menu.querySelectorAll(".santino-menu-panel a[href]:not([data-santino-menu-cart])").forEach(function(link){
   link.addEventListener("click",function(){closeMenu(false);});
  });
  const cartAction=menu.querySelector("[data-santino-menu-cart]");
