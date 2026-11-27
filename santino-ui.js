@@ -367,3 +367,122 @@
     document.body.appendChild(link);
   }
 })();
+
+
+/* SANTINO — menu lateral compartilhado */
+(function(){
+ "use strict";
+ const header=document.querySelector(".santino-site-header");
+ if(!header)return;
+ const openButton=header.querySelector("[data-santino-menu-open]");
+ const closeIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+ const icons={
+  home:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9M9 21v-7h6v7"/></svg>',
+  bottle:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v4l-3 3v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V10l-3-3V3M8 12h8"/></svg>',
+  drop:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2s7 8 7 13a7 7 0 1 1-14 0c0-5 7-13 7-13Z"/></svg>',
+  gift:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M2 6h20v3H2zM12 6v15M12 6H8a2 2 0 1 1 2-2c0 1.1 2 2 2 2Zm0 0h4a2 2 0 1 0-2-2c0 1.1-2 2-2 2Z"/></svg>',
+  bag:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l1 13H3L4 8Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg>',
+  info:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7h.01"/></svg>',
+  chat:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.7 8.7 0 0 1-3.5-.7L4 20l1.3-3.3A7.2 7.2 0 0 1 4 12c0-4.4 3.6-8 8-8s8 3.1 8 7.5Z"/></svg>'
+ };
+ const cartCounter=header.querySelector(".santino-header-cart .cart-count");
+ const menu=document.createElement("div");
+ menu.className="santino-menu-layer";
+ menu.id="santinoMenuLayer";
+ menu.hidden=true;
+ menu.setAttribute("aria-hidden","true");
+ menu.innerHTML=
+  '<button type="button" class="santino-menu-backdrop" data-santino-menu-close aria-label="Fechar menu"></button>'+
+  '<aside class="santino-menu-panel" role="dialog" aria-modal="true" aria-labelledby="santinoMenuTitle" tabindex="-1">'+
+   '<div class="santino-menu-head"><a href="index.html" class="santino-menu-brand" id="santinoMenuTitle">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a><button type="button" class="santino-menu-close" data-santino-menu-close aria-label="Fechar menu">×</button></div>'+
+   '<nav class="santino-menu-group" aria-label="Categorias">'+
+    '<a class="santino-menu-link" href="index.html" data-menu-page="index.html">'+icons.home+'<span>Início</span></a>'+
+    '<a class="santino-menu-link" href="frascos.html" data-menu-page="frascos.html">'+icons.bottle+'<span>Frascos inteiros</span></a>'+
+    '<a class="santino-menu-link" href="decants.html" data-menu-page="decants.html">'+icons.drop+'<span>Decants</span></a>'+
+    '<a class="santino-menu-link" href="kits.html" data-menu-page="kits.html">'+icons.gift+'<span>Kits</span></a>'+
+   '</nav>'+
+   '<div class="santino-menu-group">'+
+    '<a class="santino-menu-link" href="#" data-santino-menu-cart>'+icons.bag+'<span>Meu carrinho</span><span class="santino-menu-count" data-menu-cart-count>0</span></a>'+
+    '<a class="santino-menu-link" href="index.html#beneficios">'+icons.info+'<span>Sobre a SANTINO</span></a>'+
+    '<a class="santino-menu-link" href="politicas.html">'+icons.info+'<span>Políticas e informações</span></a>'+
+    '<a class="santino-menu-link" href="https://wa.me/5531996312579" target="_blank" rel="noopener noreferrer">'+icons.chat+'<span>Fale com a SANTINO</span></a>'+
+   '</div>'+
+   '<div class="santino-menu-footer"><strong>SANTINO</strong><span>DECANTS &amp; FRAGRÂNCIAS</span></div>'+
+  '</aside>';
+ document.body.appendChild(menu);
+ const panel=menu.querySelector(".santino-menu-panel");
+ const closeButtons=menu.querySelectorAll("[data-santino-menu-close]");
+ const page=(window.location.pathname.split("/").pop()||"index.html");
+ let previousFocus=null,closeTimer=0;
+ menu.querySelectorAll("[data-menu-page]").forEach(function(link){
+  if(link.dataset.menuPage===page||(page==="produto.html"&&((new URLSearchParams(location.search).get("id")||"").startsWith("full-")?link.dataset.menuPage==="frascos.html":link.dataset.menuPage==="decants.html"))){
+   link.setAttribute("aria-current","page");
+  }
+ });
+ function countItems(){
+  try{
+   const items=JSON.parse(localStorage.getItem("santino_nobre_cart")||"[]");
+   return Array.isArray(items)?items.reduce((sum,item)=>sum+(Number(item&&item.qty)||0),0):0;
+  }catch(e){return 0;}
+ }
+ function updateMenuCount(){
+  const count=countItems();
+  const output=menu.querySelector("[data-menu-cart-count]");
+  if(output)output.textContent=String(count);
+  if(cartCounter)cartCounter.textContent=String(count);
+ }
+ function openMenu(){
+  window.clearTimeout(closeTimer);
+  previousFocus=document.activeElement;
+  menu.hidden=false;
+  menu.setAttribute("aria-hidden","false");
+  document.body.classList.add("santino-menu-open");
+  if(openButton)openButton.setAttribute("aria-expanded","true");
+  window.requestAnimationFrame(function(){
+   menu.classList.add("is-open");
+   menu.querySelector(".santino-menu-close").focus();
+  });
+ }
+ function closeMenu(restoreFocus){
+  if(menu.hidden)return;
+  menu.classList.remove("is-open");
+  menu.setAttribute("aria-hidden","true");
+  document.body.classList.remove("santino-menu-open");
+  if(openButton)openButton.setAttribute("aria-expanded","false");
+  closeTimer=window.setTimeout(function(){
+   menu.hidden=true;
+   if(restoreFocus!==false&&previousFocus&&typeof previousFocus.focus==="function")previousFocus.focus();
+  },230);
+ }
+ if(openButton)openButton.addEventListener("click",openMenu);
+ closeButtons.forEach(function(button){button.addEventListener("click",function(){closeMenu(true);});});
+ menu.querySelectorAll("[data-menu-page],.santino-menu-brand,a[href='politicas.html'],a[href^='https://wa.me/']").forEach(function(link){
+  link.addEventListener("click",function(){closeMenu(false);});
+ });
+ const cartAction=menu.querySelector("[data-santino-menu-cart]");
+ if(cartAction)cartAction.addEventListener("click",function(event){
+  event.preventDefault();
+  closeMenu(false);
+  window.setTimeout(function(){
+   const cartLink=header.querySelector(".santino-header-cart");
+   if(cartLink)cartLink.click();
+  },40);
+ });
+ menu.addEventListener("keydown",function(event){
+  if(event.key==="Escape"){event.preventDefault();closeMenu(true);return;}
+  if(event.key!=="Tab")return;
+  const focusable=Array.from(menu.querySelectorAll('a[href],button:not([disabled])')).filter(el=>el.offsetParent!==null);
+  if(!focusable.length)return;
+  const first=focusable[0],last=focusable[focusable.length-1];
+  if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+  else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+ });
+ const searchButton=header.querySelector("[data-santino-focus-search]");
+ if(searchButton)searchButton.addEventListener("click",function(){
+  const input=header.querySelector(".santino-header-search input");
+  if(input){input.focus();input.scrollIntoView({behavior:"smooth",block:"nearest"});}
+ });
+ window.addEventListener("storage",updateMenuCount);
+ window.addEventListener("santino:cart-updated",updateMenuCount);
+ updateMenuCount();
+})();
