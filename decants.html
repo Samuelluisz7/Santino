@@ -386,7 +386,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 }
 
 </style>
-<link rel="stylesheet" href="santino-ui.css?v=20261126-5">
+<link rel="stylesheet" href="santino-ui.css?v=20261127-9">
 
   <link rel="stylesheet" href="santino-identity.css?v=20261117-1">
   <link rel="stylesheet" href="catalog-filters.css?v=20261116-8">
@@ -412,11 +412,35 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 </style>
 </head>
 <body>
-<header><div class="nav">
-  <a class="brand brand-home" href="index.html">SANTINO<small>DECANTS & FRAGRÂNCIAS</small></a>
-  <form class="nav-search" action="buscar.html" method="get" data-santino-search><input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required><button type="submit" aria-label="Pesquisar">⌕</button></form><nav class="catalog-nav" aria-label="Categorias do catálogo"><a href="index.html">Início</a><a href="frascos.html">Frascos inteiros</a><a href="decants.html" aria-current="page">Decants</a><a href="kits.html">Kits</a></nav>
-  <button class="cart-button" id="openCart" aria-label="Abrir carrinho">Carrinho <span id="cartCount">0</span></button>
-</div></header>
+<header class="santino-site-header">
+  <div class="santino-header-shell">
+    <div class="santino-header-top">
+      <a class="brand brand-home santino-header-brand" href="index.html">SANTINO<small>DECANTS &amp; FRAGRÂNCIAS</small></a>
+      <div class="santino-header-actions">
+        <button class="santino-header-icon" type="button" data-santino-focus-search aria-label="Ir para a busca" title="Buscar perfumes">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        </button>
+        <a class="cart-link santino-header-icon santino-header-cart" href="decants.html?openCart=1" aria-label="Abrir carrinho">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l1 13H3L4 8Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <button class="santino-header-icon santino-menu-button" type="button" data-santino-menu-open aria-controls="santinoMenuLayer" aria-expanded="false" aria-label="Abrir menu" title="Menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <form class="nav-search santino-header-search" action="buscar.html" method="get" data-santino-search>
+      <input type="search" name="q" maxlength="100" placeholder="Buscar perfumes..." aria-label="Buscar perfumes" required>
+      <button type="submit" aria-label="Pesquisar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></button>
+    </form>
+    <nav class="catalog-nav santino-category-nav" aria-label="Categorias do catálogo">
+      <a href="index.html">Início</a>
+      <a href="frascos.html">Frascos inteiros</a>
+      <a href="decants.html" aria-current="page">Decants</a>
+      <a href="kits.html">Kits</a>
+    </nav>
+  </div>
+</header>
 <main>
   <section class="hero">
     <div>
@@ -809,6 +833,6 @@ setupDecantProductControls();setupDecantFilters();renderProducts();renderCart();
 
 </script>
 <script src="search.js?v=20261117-1" defer></script>
-<script src="santino-ui.js?v=20261126-6" defer></script>
+<script src="santino-ui.js?v=20261127-9" defer></script>
 </body>
 </html>
