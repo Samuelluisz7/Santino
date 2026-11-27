@@ -1803,3 +1803,63 @@ body:not(.home-page) .bottom-note {
 .santino-global-cart-actions button{min-width:32px;min-height:32px;border-radius:2px}
 .santino-global-cart-checkout{min-height:52px;border-radius:3px;font-size:13px}
 @media(max-width:520px){.santino-global-cart-panel{padding:17px 16px calc(16px + env(safe-area-inset-bottom))}.santino-global-cart-empty-actions{width:100%;flex-direction:column}.santino-global-cart-empty-actions a{width:100%}}
+
+
+/* SANTINO — navegação compacta e menu lateral próprio */
+.santino-site-header{position:sticky;top:0;z-index:40;background:rgba(12,12,11,.97);border-bottom:1px solid #39342c;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.santino-header-shell{width:min(1160px,100%);margin:0 auto;padding:11px 22px 0;display:grid;grid-template-columns:minmax(155px,auto) minmax(220px,420px) auto;grid-template-rows:auto auto;align-items:center;column-gap:24px}
+.santino-header-top{display:contents}
+.santino-header-brand{grid-column:1;grid-row:1;display:block;white-space:nowrap}
+.santino-header-actions{grid-column:3;grid-row:1;display:flex;align-items:center;justify-content:flex-end;gap:9px}
+.santino-header-search{grid-column:2;grid-row:1;width:100%;max-width:420px;height:44px;margin:0;flex:none}
+.santino-header-search input{font-size:13px}
+.santino-header-icon{position:relative;display:inline-grid;place-items:center;width:43px;height:43px;min-width:43px;padding:0;border:1px solid #40392e;border-radius:50%;background:transparent;color:#d2bc91;text-decoration:none;cursor:pointer}
+.santino-header-icon:hover{border-color:#c9b18b;background:#211d16;color:#f3eadb}
+.santino-header-icon svg{width:20px;height:20px;display:block;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.santino-header-cart .cart-count{position:absolute;right:-4px;top:-4px;min-width:19px;height:19px;padding:0 4px;font-size:10px;border:1px solid #0c0c0b}
+.santino-menu-button[aria-expanded="true"]{background:#c9b18b;color:#171512;border-color:#c9b18b}
+.santino-category-nav{grid-column:1/-1;grid-row:2;display:flex;justify-content:center;gap:clamp(18px,4vw,42px);min-width:0;min-height:48px;margin-top:10px;border-top:1px solid #29251f;overflow-x:auto;scrollbar-width:none}
+.santino-category-nav::-webkit-scrollbar{display:none}
+.santino-category-nav a{display:inline-flex;align-items:center;min-height:47px;padding:0 3px;color:#c4bbad;font-size:13px;font-weight:600;white-space:nowrap;text-decoration:none;border-bottom:2px solid transparent}
+.santino-category-nav a[aria-current="page"]{color:#f3eadb!important;border-bottom-color:#c9b18b}
+.santino-category-nav a:hover{color:#fffaf2}
+@media(max-width:720px){
+ .santino-header-shell{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:9px 14px 0}
+ .santino-header-top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:43px}
+ .santino-header-brand{flex:1;min-width:0}
+ .santino-header-actions{display:flex;gap:7px}
+ .santino-header-icon{width:40px;height:40px;min-width:40px}
+ .santino-header-search{width:100%;max-width:none;height:43px;margin:10px 0 0}
+ .santino-category-nav{width:100%;justify-content:space-between;gap:15px;min-height:45px;margin-top:9px}
+ .santino-category-nav a{min-height:44px;font-size:12px}
+}
+@media(max-width:360px){
+ .santino-header-shell{padding-left:10px;padding-right:10px}
+ .santino-header-icon{width:36px;height:36px;min-width:36px}
+ .santino-header-actions{gap:5px}
+ .santino-category-nav{gap:10px}
+ .santino-category-nav a{font-size:11px}
+}
+
+/* Menu lateral */
+.santino-menu-layer{position:fixed;inset:0;z-index:120;display:grid;grid-template-columns:minmax(0,1fr) min(420px,90vw);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility .22s ease}
+.santino-menu-layer[hidden]{display:none!important}
+.santino-menu-layer.is-open{opacity:1;visibility:visible;pointer-events:auto}
+.santino-menu-backdrop{grid-column:1;grid-row:1;width:100%;height:100%;padding:0;border:0;background:rgba(0,0,0,.72);cursor:pointer}
+.santino-menu-panel{grid-column:2;grid-row:1;display:flex;flex-direction:column;min-width:0;height:100%;overflow-y:auto;padding:25px 25px calc(22px + env(safe-area-inset-bottom));border-left:1px solid #51432f;background:linear-gradient(180deg,#11110f 0%,#090908 100%);box-shadow:-18px 0 60px #0009;transform:translateX(28px);transition:transform .22s ease}
+.santino-menu-layer.is-open .santino-menu-panel{transform:translateX(0)}
+.santino-menu-head{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-bottom:25px;border-bottom:1px solid #373127}
+.santino-menu-brand{color:#f3eadb;font:400 27px/1 Georgia,"Times New Roman",serif;letter-spacing:.15em;text-decoration:none}
+.santino-menu-brand small{display:block;margin-top:8px;color:#b59c70;font:600 9px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.22em}
+.santino-menu-close{width:42px;height:42px;border:1px solid #4a4031;border-radius:50%;background:transparent;color:#d7c49a;font-size:26px;line-height:1;cursor:pointer}
+.santino-menu-group{display:grid;gap:5px;padding:20px 0;border-bottom:1px solid #373127}
+.santino-menu-link{display:flex;align-items:center;gap:15px;min-height:56px;padding:10px 14px;border:1px solid transparent;border-radius:4px;color:#eee8dc;text-decoration:none;font-size:16px;transition:background .18s,border-color .18s,color .18s}
+.santino-menu-link:hover,.santino-menu-link[aria-current="page"]{border-color:#4b402e;background:#211c14;color:#e4c58c}
+.santino-menu-link svg{width:22px;height:22px;flex:none;fill:none;stroke:#c9b18b;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.santino-menu-link .santino-menu-count{display:grid;place-items:center;min-width:23px;height:23px;margin-left:auto;padding:0 5px;border-radius:50%;background:#c9b18b;color:#171512;font-size:11px;font-weight:700}
+.santino-menu-footer{margin-top:auto;padding-top:25px;text-align:center;color:#a99b7c}
+.santino-menu-footer strong{display:block;color:#d7c49a;font:400 22px/1 Georgia,"Times New Roman",serif;letter-spacing:.2em}
+.santino-menu-footer span{display:block;margin-top:8px;font-size:9px;letter-spacing:.22em}
+body.santino-menu-open{overflow:hidden}
+@media(max-width:520px){.santino-menu-layer{grid-template-columns:0 min(390px,100vw)}.santino-menu-panel{padding:20px 20px calc(20px + env(safe-area-inset-bottom))}.santino-menu-link{min-height:54px;font-size:15px}}
+@media(prefers-reduced-motion:reduce){.santino-menu-layer,.santino-menu-panel{transition:none!important}}
