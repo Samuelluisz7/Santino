@@ -1417,46 +1417,60 @@ body.perfume-detail-page .gallery-thumbs{
 .detail-price-stack .reference-price del{text-decoration-thickness:1.5px;text-decoration-color:var(--beige)}
 </style>
 <style id="santino-full-size-gallery-ratio">
-/* Frascos inteiros: foto vertical sem moldura clara ou margens artificiais. */
-body.perfume-detail-page.full-size-mode .gallery{
-  width:100%!important;max-width:none!important;min-width:0!important;
-  display:flex!important;flex-direction:column!important;gap:8px!important;
+/* Galeria padronizada: foto principal + miniaturas, para frascos e decants. */
+body.perfume-detail-page .gallery{width:100%!important;min-width:0!important;display:flex!important;flex-direction:column!important;gap:7px!important}
+body.perfume-detail-page .gallery-main{
+ width:100%!important;max-width:500px!important;aspect-ratio:4/5!important;height:auto!important;min-height:0!important;
+ margin:0 auto!important;padding:0!important;display:grid!important;place-items:center!important;overflow:hidden!important;
+ background:#050505!important;border:1px solid #3a3328!important;border-radius:4px!important;
 }
-body.perfume-detail-page.full-size-mode .gallery-main{
-  width:100%!important;max-width:480px!important;aspect-ratio:4/5!important;
-  height:auto!important;min-height:0!important;margin:0 auto!important;padding:0!important;
-  display:grid!important;place-items:center!important;overflow:hidden!important;
-  background:#050505!important;border:1px solid #332d23!important;border-radius:4px!important;
+body.perfume-detail-page .gallery-main #mainImage{
+ display:block!important;width:100%!important;height:100%!important;max-height:none!important;
+ margin:0!important;padding:0!important;object-fit:contain!important;object-position:center!important;
+ background:#050505!important;cursor:zoom-in!important;
 }
-body.perfume-detail-page.full-size-mode .gallery-main #mainImage{
-  display:block!important;width:100%!important;height:100%!important;max-height:none!important;
-  padding:0!important;margin:0!important;object-fit:cover!important;object-position:center!important;
-  background:#050505!important;transform:none!important;
+body.perfume-detail-page .gallery-fallback{height:100%!important;min-height:100%!important;background:#050505!important;color:#c9b18b!important}
+body.perfume-detail-page .gallery-thumbs{
+ width:100%!important;max-width:500px!important;margin:0 auto!important;padding:2px 0 0!important;
+ display:flex!important;gap:7px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x proximity;
 }
-body.perfume-detail-page.full-size-mode .gallery-main .gallery-fallback{
-  height:100%!important;min-height:100%!important;color:#c9b18b!important;
+body.perfume-detail-page .gallery-thumbs:empty{display:none!important}
+body.perfume-detail-page .gallery-thumbs .thumb{
+ flex:0 0 68px!important;width:68px!important;height:68px!important;min-width:68px!important;
+ aspect-ratio:1/1!important;padding:2px!important;overflow:hidden!important;scroll-snap-align:start;
+ background:#050505!important;border:1px solid #40372a!important;border-radius:3px!important;
 }
-body.perfume-detail-page.full-size-mode .gallery-thumbs{
-  width:100%!important;max-width:480px!important;margin:0 auto!important;padding:2px 0 0!important;
-  display:flex!important;gap:6px!important;overflow-x:auto!important;overflow-y:hidden!important;
-  scrollbar-width:thin;scroll-snap-type:x proximity;
+body.perfume-detail-page .gallery-thumbs .thumb[aria-pressed="true"]{border:2px solid #c9b18b!important}
+body.perfume-detail-page .gallery-thumbs .thumb img{
+ display:block!important;width:100%!important;height:100%!important;margin:0!important;padding:0!important;
+ object-fit:contain!important;object-position:center!important;background:#050505!important;
 }
-body.perfume-detail-page.full-size-mode .gallery-thumbs:empty{display:none!important}
-body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{
-  flex:0 0 58px!important;width:58px!important;height:58px!important;aspect-ratio:1/1!important;
-  min-width:58px!important;padding:1px!important;overflow:hidden!important;scroll-snap-align:start;
-  background:#050505!important;border:1px solid #40372a!important;border-radius:3px!important;
+body.perfume-detail-page .gallery-caption{margin:2px 0 0!important;font-size:11px!important;line-height:1.4!important;color:var(--muted)!important}
+body.santino-gallery-lightbox-open{overflow:hidden!important}
+.santino-gallery-lightbox[hidden]{display:none!important}
+.santino-gallery-lightbox{
+ position:fixed;inset:0;z-index:10050;display:flex;align-items:center;justify-content:center;
+ padding:calc(18px + env(safe-area-inset-top)) 16px calc(18px + env(safe-area-inset-bottom));
+ background:rgba(0,0,0,.97);overscroll-behavior:contain;
 }
-body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb[aria-pressed="true"]{border:2px solid #c9b18b!important}
-body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb img{
-  display:block!important;width:100%!important;height:100%!important;padding:0!important;
-  object-fit:cover!important;object-position:center!important;background:#050505!important;
+.santino-lightbox-figure{width:min(100%,1100px);height:100%;max-height:100%;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.santino-lightbox-image{display:block;width:auto;height:auto;max-width:94vw;max-height:calc(100dvh - 112px);object-fit:contain;object-position:center;background:transparent}
+.santino-lightbox-caption{color:#d4c7b1;font-size:12px;text-align:center;line-height:1.4}
+.santino-lightbox-close,.santino-lightbox-arrow{
+ position:absolute;z-index:2;display:grid;place-items:center;border:1px solid rgba(201,177,139,.6);
+ background:rgba(18,17,15,.88);color:#ead9b8;cursor:pointer;
 }
-body.perfume-detail-page.full-size-mode .gallery-caption{margin:2px 0 0!important;font-size:10px!important;line-height:1.35!important}
+.santino-lightbox-close{top:calc(12px + env(safe-area-inset-top));right:14px;width:44px;height:44px;border-radius:50%;font-size:28px;line-height:1}
+.santino-lightbox-arrow{top:50%;transform:translateY(-50%);width:42px;height:54px;border-radius:3px;font-size:34px;line-height:1}
+.santino-lightbox-prev{left:10px}.santino-lightbox-next{right:10px}
+.santino-lightbox-arrow:disabled{opacity:.45;cursor:default}
 @media(max-width:720px){
- body.perfume-detail-page.full-size-mode .gallery-main{width:100%!important;max-width:none!important;aspect-ratio:4/5!important}
- body.perfume-detail-page.full-size-mode .gallery-thumbs{max-width:none!important;gap:5px!important;justify-content:flex-start!important}
- body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{flex-basis:56px!important;width:56px!important;height:56px!important;min-width:56px!important}
+ body.perfume-detail-page .gallery-main{max-width:100%!important;aspect-ratio:4/5!important}
+ body.perfume-detail-page .gallery-thumbs{max-width:100%!important;gap:6px!important}
+ body.perfume-detail-page .gallery-thumbs .thumb{flex-basis:60px!important;width:60px!important;height:60px!important;min-width:60px!important}
+ .santino-lightbox-arrow{width:34px;height:46px;font-size:28px;background:rgba(18,17,15,.55)}
+ .santino-lightbox-prev{left:4px}.santino-lightbox-next{right:4px}
+ .santino-lightbox-image{max-width:94vw;max-height:calc(100dvh - 112px)}
 }
 </style>
 </head>
@@ -1558,8 +1572,8 @@ const PRODUCTS = [
  {id:"the-blend-bourbon",name:"The Blend Bourbon",brand:"O Boticário",concentration:"EDP · Eau de Parfum",image:"imagens-perfumes/file_00000000294c820e955ad9d271829d93.png",tag:"Nacional",description:"Especiado e amadeirado, com um toque quente de bourbon.",volumes:[{ml:5,price:22.9},{ml:10,price:42.9}]},
  {id:"asad-bourbon",name:"Asad Bourbon",brand:"Lattafa",concentration:"EDP · Eau de Parfum",image:"imagens-perfumes/file_00000000ec34820e8ef9f9d86598f27c.png",tag:"Importado",description:"Especiado e adocicado, com ameixa, cacau e baunilha bourbon.",volumes:[{ml:5,price:17.9},{ml:10,price:33.9}]},
  {id:"homem-sagaz",name:"Homem Sagaz",brand:"Natura",concentration:"Deo Parfum",image:"imagens-perfumes/file_000000009260820e960992d939501568.png",tag:"Nacional",description:"Amadeirado e marcante, com perfil moderno e intenso. Uma opção para quem gosta de presença e elegância.",volumes:[{ml:5,price:12.9},{ml:10,price:24.9}]},
- {id:"homem-dom",name:"Homem Dom",brand:"Natura",concentration:"Deo Parfum",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw035424b3/Produtos/PRODUTO/NATBRA-71770_1.jpg?q=80&sw=600",tag:"Nacional",description:"Amadeirado e especiado, com baunilha negra e madeiras.",volumes:[{ml:5,price:12.9},{ml:10,price:24.9}]},
- {id:"homem-essence",name:"Homem Essence",brand:"Natura",concentration:"Deo Parfum",image:"https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw804b5e1a/Produtos/NATBRA-59847_1.jpg?q=80&sw=600",tag:"Nacional",description:"Amadeirado e especiado, com bergamota, gengibre e cedro.",volumes:[{ml:5,price:16.9},{ml:10,price:31.9}]},
+ {id:"homem-dom",name:"Homem Dom",brand:"Natura",concentration:"Deo Parfum",image:"imagens-perfumes/file_00000000d6b4820ea291f02fce000da9.png",tag:"Nacional",description:"Amadeirado e especiado, com baunilha negra e madeiras.",volumes:[{ml:5,price:12.9},{ml:10,price:24.9}]},
+ {id:"homem-essence",name:"Homem Essence",brand:"Natura",concentration:"Deo Parfum",image:"imagens-perfumes/file_00000000536c820eb4a4d9c3ece0cba3.png",tag:"Nacional",description:"Amadeirado e especiado, com bergamota, gengibre e cedro.",volumes:[{ml:5,price:16.9},{ml:10,price:31.9}]},
  {id:"essencial-sentir",name:"Essencial Sentir",brand:"Natura",concentration:"Deo Parfum",image:"imagens-perfumes/file_00000000ec54820eaed4d12ec4da56cb.png",tag:"Nacional",description:"Amadeirado aromático, com sândalo e toque especiado.",volumes:[{ml:5,price:18.9},{ml:10,price:35.9}]},
  {id:"fakhar-black",name:"Fakhar Black",brand:"Lattafa",concentration:"EDP · Eau de Parfum",image:"imagens-perfumes/file_0000000076d4820e9f124ecbb51bf017.png",tag:"Importado",description:"Aromático e amadeirado, combinando frescor e notas ambaradas.",volumes:[{ml:5,price:13.9},{ml:10,price:25.9}]},
  {id:"k-max",name:"Natura K Max",brand:"Natura",concentration:"Deo Parfum",image:"imagens-perfumes/file_000000002630820eb1e3fc68c0103081.png",tag:"Nacional",description:"Aromático e amadeirado, com frescor cítrico e especiarias.",volumes:[{ml:5,price:16.9},{ml:10,price:30.9}]},
@@ -1567,11 +1581,11 @@ const PRODUCTS = [
  {id:"clash",name:"Clash",brand:"O Boticário",concentration:"Desodorante Colônia",image:"imagens-perfumes/file_00000000bae8820e898a2dd84bd4ea9e.png",tag:"Nacional",description:"Fresco aquático e aromático, com notas geladas, lavanda, alecrim e sálvia sobre uma base de vetiver e cashmeran.",volumes:[{ml:5,price:16.9},{ml:10,price:31.9}]},
  {id:"quasar-ice",name:"Quasar Ice",brand:"O Boticário",concentration:"Desodorante Colônia",image:"imagens-perfumes/file_000000004710820eb877f3d23c83677a.png",tag:"Nacional",description:"Fougère aldeídico de frescor limpo, metálico e quase aquoso, com notas aquosas, sálvia, cardamomo, lavanda, madeiras e musk.",volumes:[{ml:5,price:17.9},{ml:10,price:33.9}]},
   {id:"eudora-h-acqua",name:"Eudora H Acqua",brand:"Eudora H",concentration:"Desodorante Colônia",image:"imagens-perfumes/file_0000000078dc820ea30ea64d059e400d.png",tag:"Nacional",description:"Fougère aquático com cítricos gelados, pera e noz-moscada, notas oceânicas e aromáticas e fundo de sândalo, musgo, musk e âmbar.",volumes:[{ml:5,price:9.9},{ml:10,price:17.9}]},
- {id:"touti-vip-12",name:"Touti VIP 12 · Boss Bottled",brand:"Touti",concentration:"Não divulgada pela Touti",image:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu9nuwstd4rk7a",tag:"Touti",description:"Touti VIP 12, referência olfativa Boss Bottled. Preço calculado a R$ 2,00 por ml.",volumes:[{ml:5,price:10},{ml:10,price:20}]},
+ {id:"touti-vip-12",name:"Touti VIP 12 · Boss Bottled",brand:"Touti",concentration:"Não divulgada pela Touti",image:"imagens-perfumes/file_00000000b514820e9839b6c9f796de4c.png",tag:"Touti",description:"Touti VIP 12, referência olfativa Boss Bottled. Preço calculado a R$ 2,00 por ml.",volumes:[{ml:5,price:10},{ml:10,price:20}]},
  {id:"touti-vip-50",name:"Touti VIP 50 · Bleu de Chanel",brand:"Touti",concentration:"Não divulgada pela Touti",image:"imagens-perfumes/file_00000000bc08820e8d0171c8c4d187f4.png",tag:"Touti",description:"Touti VIP 50, referência olfativa Bleu de Chanel. Preço calculado a R$ 2,00 por ml.",volumes:[{ml:5,price:10},{ml:10,price:20}]},
  {id:"touti-vip-52",name:"Touti VIP 52 · One Million Privé",brand:"Touti",concentration:"Não divulgada pela Touti",image:"imagens-perfumes/file_00000000c444820ebcf15519d790b589.png",tag:"Touti",description:"Touti VIP 52, referência olfativa One Million Privé. Preço calculado a R$ 2,00 por ml.",volumes:[{ml:5,price:10},{ml:10,price:20}]},
  {id:"touti-vip-80",name:"Touti VIP 80 · Y Eau de Parfum",brand:"Touti",concentration:"Não divulgada pela Touti",image:"imagens-perfumes/file_000000007048820e9138d6cc8716afaf.png",tag:"Touti",description:"Touti VIP 80, referência olfativa Y Eau de Parfum. Preço calculado a R$ 2,00 por ml.",volumes:[{ml:5,price:10},{ml:10,price:20}]},
- {id:"touti-fit-caribe",name:"Touti FIT Caribe · Acqua di Giò Profondo",brand:"Touti",concentration:"Não divulgada pela Touti",image:"imagens-perfumes/file_00000000f21c820ebb4893ea7af07722.png",tag:"Touti",description:"Touti FIT Caribe, referência olfativa Acqua di Giò Profondo. Preço calculado a R$ 2,00 por ml.",volumes:[{ml:5,price:10},{ml:10,price:20}]}
+ {id:"touti-fit-caribe",name:"Touti FIT Caribe · Acqua di Giò Profondo",brand:"Touti",concentration:"Não divulgada pela Touti",image:"imagens-perfumes/file_0000000010f0820e925bc6bc1983a06d.png",tag:"Touti",description:"Touti FIT Caribe, referência olfativa Acqua di Giò Profondo. Preço calculado a R$ 2,00 por ml.",volumes:[{ml:5,price:10},{ml:10,price:20}]}
 ];
 const PERFUME_INFO = {
  "kingdom":{family:"Aromático ambarado",top:"Lavanda, menta e sálvia",heart:"Baunilha, tabaco e flor de laranjeira",base:"Fava tonka, benjoim e ládano"},
@@ -1843,24 +1857,24 @@ const EXTRA_GALLERY={
  "cebolinha":["https://jequiti.vtexassets.com/arquivos/ids/172245/402.png?v=638863702214230000","https://down-br.img.susercontent.com/file/br-11134207-820m1-mosqy6d1h43n45"],
  "full-cebolinha":["https://www.lemeyer.com.br/cdn/shop/files/JEQUITI_DESOD_COL_CEBOLINHA_M_25ML_4.webp?v=1776370723&width=416","https://www.lemeyer.com.br/cdn/shop/files/JEQUITI_DESOD_COL_CEBOLINHA_M_25ML_5.webp?v=1776370723&width=416","https://www.lemeyer.com.br/cdn/shop/files/JEQUITI_DESOD_COL_CEBOLINHA_M_25ML_6.webp?v=1776370723&width=416","https://www.lemeyer.com.br/cdn/shop/files/JEQUITI_DESOD_COL_CEBOLINHA_M_25ML_3.webp?v=1776370723&width=416"],
  "full-homem-sagaz":["https://down-br.img.susercontent.com/file/br-11134201-23010-skeky61fssmv94","https://acdn-us.mitiendanube.com/stores/006/410/677/products/97a684f8af9c93ac5b29888b04758614-dfef4cc8d1dd544d6317834577537758-1024-1024.webp","https://down-br.img.susercontent.com/file/br-11134207-7r98o-lys67y60wq3p25","https://production.na01.natura.com/on/demandware.static/-/Sites-NatBrazil-Library/default/dwcfdffb28/Produtos%20Joia/Nova%20experi%C3%AAncia/NATBRA-81951/NATBRA-81951_widePic_2_desktop.jpg"],
- "full-homem-dom":["https://fimgs.net/mdimg/perfume-thumbs/375x500.56083.jpg","https://down-br.img.susercontent.com/file/d0c28b71f06110500c350510c96a8e37","https://http2.mlstatic.com/D_NQ_NP_2X_820398-MLB46097031343_052021-F.jpg","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw77f30640/Produtos/PRODUTO/NATBRA-71770_2.jpg?q=80&sw=1200"],
- "full-homem-essence":["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw03464062/Produtos/NATBRA-59847_2.jpg?q=80&sw=600","https://production.na01.natura.com/on/demandware.static/-/Sites-natura-pe-storefront-catalog/default/dweb6b3e6c/ProdutoJoia/mobile/59848.jpg?q=80&sw=800","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dwb372f997/produto-joia/background/desktop/59847.jpg?q=80&sw=1200","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw0898f993/produto-joia/background/mobile/59847.jpg?q=80&sw=1000"],
+ "full-homem-dom":["https://fimgs.net/mdimg/perfume-thumbs/375x500.56083.jpg","https://down-br.img.susercontent.com/file/d0c28b71f06110500c350510c96a8e37","https://http2.mlstatic.com/D_NQ_NP_2X_820398-MLB46097031343_052021-F.jpg","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw77f30640/Produtos/PRODUTO/NATBRA-71770_2.jpg?q=80&sw=1200","https://production.na01.natura.com/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw2dae1178/produto-joia/background/mobile/71770.jpg","https://http2.mlstatic.com/D_NQ_NP_636198-MLA71769369363_092023-O.webp"],
+ "full-homem-essence":["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw03464062/Produtos/NATBRA-59847_2.jpg?q=80&sw=600","https://production.na01.natura.com/on/demandware.static/-/Sites-natura-pe-storefront-catalog/default/dweb6b3e6c/ProdutoJoia/mobile/59848.jpg?q=80&sw=800","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dwb372f997/produto-joia/background/desktop/59847.jpg?q=80&sw=1200","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw0898f993/produto-joia/background/mobile/59847.jpg?q=80&sw=1000","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-NatColombia-Library/default/dw7bf792ce/Produtos%20Joia/59848_widepic_1_desktop.jpg"],
  "quasar-ice":["https://down-br.img.susercontent.com/file/br-11134207-7qukw-li0igwg6gu328c","https://cdn.notinoimg.com/detail_main_hq/oboticario/7891033629954_02-o/quasar-ice___260213.jpg","https://paradea.it/cdn/shop/files/QuasarIce-EaudeToilette_1.png?v=1738341760"],
  "full-quasar-ice":["https://down-br.img.susercontent.com/file/br-11134207-7qukw-li0igwg6gu328c","https://cdn.notinoimg.com/detail_main_hq/oboticario/7891033629954_02-o/quasar-ice___260213.jpg","https://paradea.it/cdn/shop/files/QuasarIce-EaudeToilette_1.png?v=1738341760","https://cdn.gbmedia.com.br/images/w_1200%2Cf_webp%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_1200/v1/imagens/product/B89258/5927c766-c255-48c5-b15e-0ae2c8452f46-bot-50831-quasar-ice-maos-03.jpg","https://cdn.gbmedia.com.br/images/w_1200%2Cf_webp%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_1200/v1/imagens/product/B89258/161be0ae-8cba-43eb-8cff-414e0610840c-bot-50831-quasar-ice-ambientada-04.jpg"],
  "eudora-h-acqua":["https://acdn-us.mitiendanube.com/stores/003/785/764/products/photo_2023-12-28_18-16-39-ad73fd410be703955717037988819524-1024-1024.webp","https://acdn-us.mitiendanube.com/stores/003/785/764/products/1000942973-24131f7dd1797179c717735045113655-1024-1024.webp"],
  "full-eudora-h-acqua":["https://acdn-us.mitiendanube.com/stores/003/785/764/products/photo_2023-12-28_18-16-39-ad73fd410be703955717037988819524-1024-1024.webp","https://acdn-us.mitiendanube.com/stores/003/785/764/products/1000942973-24131f7dd1797179c717735045113655-1024-1024.webp","https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_avif%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_800/v1/imagens/product/E94054/887dfd57-7edc-4752-bb3a-6e5b3ce4080a-eudora-h-acqua-100ml-v2-e94054-segredinho-2.jpg","https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_avif%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_800/v1/imagens/product/E94054/85165d8e-316b-4cf4-9855-7fa03466fa8b-eudora-h-acqua-100ml-v2-e94054.jpg"],
  "full-le-male":["https://enigma.md/upload/iblock/dfb/6njnw37o873p7wd45ftgqrj0725s5k6d.jpg","https://media.douglas.es/medias/LWQlIZ614222-1-global.jpg?context=bWFzdGVyfGltYWdlc3wxODQwNzd8aW1hZ2UvanBlZ3xhRFF4TDJnNE5TOHpNVGMzTXpNek5qa3lPREk0Tmk5Tmk5TVYxRnNTVm8yTVRReU1qSmZNVjluYkc5aVlXd3VhbkJufDhjYTZmM2I3M2UxNmZhODdiMWZjNzk4MzkxYzE0NGQ3ODk1YWQ0YzM3YjNmMmI2YjViNTZiMzM0NzMwNWMzNGQ&grid=true","https://cdn.salla.sa/q1CnuU2VkT5fMyXqgn1RgRoZ8VUmmYOOyy68iq5R.jpeg","https://medias.jeanpaulgaultier.com/cdn-cgi/image/width%3D3840%2Cquality%3D90%2Cformat%3Davif/medias/sys_master/images/h35/h0f/9534723588126/9534723522590/9534723522590.png","https://medias.jeanpaulgaultier.com/cdn-cgi/image/width%3D3840%2Cquality%3D90%2Cformat%3Davif/medias/sys_master/images/h89/hcf/9857848901662/push-le-male-le-parfum%20%281%29/push-le-male-le-parfum-1-.jpg","https://medias.jeanpaulgaultier.com/cdn-cgi/image/width%3D3840%2Cquality%3D90%2Cformat%3Davif/medias/sys_master/images/h9d/h3f/10688839843870/flacon-pdp-le-male-lp-jean-paul-gaultier/flacon-pdp-le-male-lp-jean-paul-gaultier.png"],
- "full-afnan-9pm":["https://bulldog.vn/uploads/sanpham/03-9pm-1000x-jpeg-20230827104142WA1HaqVHBJ.jpeg","https://www.eepees.in/cdn/shop/files/Afnan_9PM_perfume_ideal_for_night_wear_dates_parties_and_winter_season.png?v=1775044568&width=3840","https://theboroughcollection.com/cdn/shop/files/AfnanMen_s9PM.png?v=1780105049&width=1254","https://rgoleacucdhljffopkku.supabase.co/storage/v1/object/public/perfume-images/afnan-9pm.webp","https://www.nemeshop.com/cdn/shop/files/9-Pm-Black-by-Afnan-Eau-de-Parfum_1.jpg?v=1734469801&width=1946"],
+ "full-afnan-9pm":["https://bulldog.vn/uploads/sanpham/03-9pm-1000x-jpeg-20230827104142WA1HaqVHBJ.jpeg","https://www.eepees.in/cdn/shop/files/Afnan_9PM_perfume_ideal_for_night_wear_dates_parties_and_winter_season.png?v=1775044568&width=3840","https://theboroughcollection.com/cdn/shop/files/AfnanMen_s9PM.png?v=1780105049&width=1254","https://rgoleacucdhljffopkku.supabase.co/storage/v1/object/public/perfume-images/afnan-9pm.webp","https://www.nemeshop.com/cdn/shop/files/9-Pm-Black-by-Afnan-Eau-de-Parfum_1.jpg?v=1734469801&width=1946","https://www.thedelhiperfumeco.in/cdn/shop/files/pomelli-image_67.jpg?v=1777746931&width=900"],
  "full-asad":["https://down-br.img.susercontent.com/file/br-11134207-7r98o-m1srez49ieuie0","https://m.media-amazon.com/images/I/71obuzjGgtL._SL1500_.jpg","https://priveperfumes.com/cdn/shop/files/perfume-lattafa-asad-edp-m-100-ml-1-prive-perfumes.webp?v=1743662566&width=1024","https://cdn.ouzarstore.com.br/produtos/arquivo_1770773371673_tivhg6.webp","https://noirperfumeria.co/cdn/shop/files/Lattafa_Asad.png?v=1729357174&width=720"],
  "full-eros":["https://www.tjhughes.co.uk/cdn/shop/files/5783205--Versace-Eros-Eau-de-Toilette-100ml-10001940--Lifestyle-2000-x-2000_2b0e0e5c-5547-40c5-8ccd-410f45cf68bf_1024x.jpg?v=1781522021","https://sensabeauty.com/cdn/shop/files/versace-eros-men-edt.jpg?v=1770911848&width=800","https://product.hstatic.net/200000441803/product/img_e3991-02_651e2ed355be4b86b5b697fa3b79bbef_e2ddf213fd6e47fea93b3a2539d9db05.jpeg","https://cdn.gbmedia.com.br/images/w_1500%2Cf_webp%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_800/v1/imagens/product/20581/627cdde4-e891-4128-98bd-a21c48abdc13-eros-versace-eau-de-toilette-perfume-masculino-100ml.png","https://cdn.gbmedia.com.br/images/w_1500%2Cf_webp%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_800/v1/imagens/product/20581/e41c3310-cc4f-4517-92ed-4d53a8edd2e6-eros-versace-eau-de-toilette-perfume-masculino-100ml.png","https://cdn.gbmedia.com.br/images/w_1500%2Cf_webp%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_800/v1/imagens/5/20581-complementar-2-4815403428207543083.jpg"],
- "full-million":["https://www.profumeriamarino.it/components/com_virtuemart/shop_image/product/c0ca5082ef3f6a8176937df40f63cc26.jpg","https://southeastfragrance.com/cdn/shop/files/1_million_notes.png?v=1789668042&width=500","https://images.tcdn.com.br/img/img_prod/1255365/perfume_one_million_paco_rabanne_eau_de_toilette_decant_231_4_7e55ead64fd6bec64b23210caecfc7b3.jpg","https://cdn-s3.pttavm.com/pimages/592/146/235/101a081e-8e70-49c7-b6de-3e16103e20e1.webp","https://image-optimizer-reg.production.sephora-asia.net/images/product_images/zoom_1_Product_18490-Paco-Rabanne-Paco-Rabanne-One-Million-Eau-De-Toilette-Default_d1d6f01ad9d64806c67a356d923e2ed0e13a39d5_1554108850.png"],
+ "full-million":["https://www.profumeriamarino.it/components/com_virtuemart/shop_image/product/c0ca5082ef3f6a8176937df40f63cc26.jpg","https://southeastfragrance.com/cdn/shop/files/1_million_notes.png?v=1789668042&width=500","https://images.tcdn.com.br/img/img_prod/1255365/perfume_one_million_paco_rabanne_eau_de_toilette_decant_231_4_7e55ead64fd6bec64b23210caecfc7b3.jpg","https://cdn-s3.pttavm.com/pimages/592/146/235/101a081e-8e70-49c7-b6de-3e16103e20e1.webp","https://image-optimizer-reg.production.sephora-asia.net/images/product_images/zoom_1_Product_18490-Paco-Rabanne-Paco-Rabanne-One-Million-Eau-De-Toilette-Default_d1d6f01ad9d64806c67a356d923e2ed0e13a39d5_1554108850.png","https://assets.myntassets.com/assets/images/7605332/2022/8/5/7697a94d-6c10-4524-abbe-f593f6c841201659708574806PacoRabanneMen1MillionEaudeToilette200ML4.jpg"],
  "full-sauvage":["https://apothecary.rs/17902-large_default/dior-sauvage-eau-de-toilette-100ml.jpg","https://www.sephora.it/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw6523475d/images/hi-res/alternates/PID_alternate2/PID_alternate2_226/P2266017_2.jpg","https://fourthsense.co/wp-content/uploads/2023/10/dior-sauvage-notes-pyramid.jpeg","https://www.gadgetsonline.co.nz/cdn/shop/products/christian-dior-sauvage-100ml-edt-for-men-583534.jpg","https://juleriaque.vtexassets.com/arquivos/ids/258805/1000010-1.jpg?v=638889747667800000","https://images.tcdn.com.br/img/img_prod/626030/sauvage_dior_masculino_eau_de_toilette_100ml_3793_2_20201214175654.jpg"],
  "full-invictus":["https://product-data.raiadrogasil.io/images/5890913.webp","https://images.matas.dk/trs/wNaN/encode/3349668515660_2_20250919095300.jpg","https://medias.rabanne.com/cdn-cgi/image/width%3D700%2Cquality%3D90%2Cformat%3Dauto/https%3A//medias.rabanne.com/medias/sys_master/images/haf/h04/10972042919966/10972042854430/10972042854430.jpg","https://medias.rabanne.com/cdn-cgi/image/width%3D700%2Cquality%3D90%2Cformat%3Dauto/https%3A//medias.rabanne.com/medias/sys_master/images/h64/h46/10972043018270/10972042952734/10972042952734.jpg"],
- "full-myslf":["https://silkperfumes.cl/cdn/shop/files/ysl-myself-edp-100-ml-recargable-Silk-Perfumes.png?v=1750262770&width=1500","https://cdn11.bigcommerce.com/s-7t5voyw6tp/images/stencil/500x659/products/1726/6579/ysl_myslf__72742.1771815459.jpg?c=1","https://media.landmarkshops.in/cdn-cgi/image/h%3D1125%2Cw%3D1125%2Cq%3D85%2Cfit%3Dcover/lifestyle/1000014210937-1000014210936_04-2100.jpg","https://assets.woolworthsstatic.co.za/Myslf-Eau-de-Parfum-100ml-508096282-detail.jpg?V=%24y6Z&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvYWx0ZXJuYXRlLzIwMjQtMDEtMTcvNTA4MDk2MjgyXzEwME1MX2RldGFpbC5qcGcifQ&q=75"],
+ "full-myslf":["https://silkperfumes.cl/cdn/shop/files/ysl-myself-edp-100-ml-recargable-Silk-Perfumes.png?v=1750262770&width=1500","https://cdn11.bigcommerce.com/s-7t5voyw6tp/images/stencil/500x659/products/1726/6579/ysl_myslf__72742.1771815459.jpg?c=1","https://media.landmarkshops.in/cdn-cgi/image/h%3D1125%2Cw%3D1125%2Cq%3D85%2Cfit%3Dcover/lifestyle/1000014210937-1000014210936_04-2100.jpg","https://assets.woolworthsstatic.co.za/Myslf-Eau-de-Parfum-100ml-508096282-detail.jpg?V=%24y6Z&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvYWx0ZXJuYXRlLzIwMjQtMDEtMTcvNTA4MDk2MjgyXzEwME1MX2RldGFpbC5qcGcifQ&q=75","https://perfumefactory.ca/cdn/shop/files/Ysl-Myself_1024x1024_a3d3c183-a3ee-4983-8a22-8d5e0b5478a5.webp?v=1741798014"],
 
- "full-kingdom":["https://fragarabic.com/cdn/shop/files/The_Kingdom_Lattafa_Eau_de_Parfum_Para_Hombre_con_fondo_7d886a12-0083-4be8-9d99-6596620cec36.webp?v=1767169721&width=2000","https://soghaat.co.uk/cdn/shop/files/The-Kingdom-for-Men-Perfume-Eau-De-Parfum-100ml-by-Lattafa.webp?v=1777405357&width=1445","https://soghaat.co.uk/cdn/shop/files/The-Kingdom-for-Men-Perfume-Eau-De-Parfum-100ml-by-Lattafa-1-1.webp?v=1777405357&width=1445","https://soghaat.co.uk/cdn/shop/files/The-Kingdom-for-Men-Perfume-Eau-De-Parfum-100ml-by-Lattafa_2fc70983-4c2b-42f6-ab36-beef8b399ee8.webp?v=1777405357&width=1445"],
- "full-the-blend-bourbon":["https://dcdn-us.mitiendanube.com/stores/002/832/629/products/download-79-e03a5186e1269c5b6b17128697086555-1024-1024.webp","https://boticoeur.com/cdn/shop/products/Capturadeecra2023-02-28_as11.16.49.png?v=1677583102","https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Abest/v1/imagens/products/B77489/the-blend-bourbon_77489_segredinhos.jpg","https://paradea.it/cdn/shop/files/TheBlendBourbon-EaudeParfum100ml_8.jpg?v=1757002981&width=1000"],
- "full-asad-bourbon":["https://tiendalafe.com/cdn/shop/files/Disenosintitulo-2025-02-21T163922.609.png?v=1740177572","https://images.tcdn.com.br/img/img_prod/1142879/perfume_rabe_asad_bourbon_lattafa_eau_de_parfum_ma_5_20260615125833_c0f7f1237677.jpg","https://dubaiblends.com.au/cdn/shop/files/31DDB3FE-3092-4285-8999-98142E1713B1.webp?v=1758855537&width=1445","https://mojezapachy.pl/44435-medium_default/lattafa-asad-bourbon-woda-perfumowana-100ml.jpg"],
+ "full-kingdom":["https://fragarabic.com/cdn/shop/files/The_Kingdom_Lattafa_Eau_de_Parfum_Para_Hombre_con_fondo_7d886a12-0083-4be8-9d99-6596620cec36.webp?v=1767169721&width=2000","https://soghaat.co.uk/cdn/shop/files/The-Kingdom-for-Men-Perfume-Eau-De-Parfum-100ml-by-Lattafa.webp?v=1777405357&width=1445","https://soghaat.co.uk/cdn/shop/files/The-Kingdom-for-Men-Perfume-Eau-De-Parfum-100ml-by-Lattafa-1-1.webp?v=1777405357&width=1445","https://soghaat.co.uk/cdn/shop/files/The-Kingdom-for-Men-Perfume-Eau-De-Parfum-100ml-by-Lattafa_2fc70983-4c2b-42f6-ab36-beef8b399ee8.webp?v=1777405357&width=1445","https://www.duneperfumes.com.au/cdn/shop/files/Untitleddesign_13.png?v=1750994401&width=1445"],
+ "full-the-blend-bourbon":["https://dcdn-us.mitiendanube.com/stores/002/832/629/products/download-79-e03a5186e1269c5b6b17128697086555-1024-1024.webp","https://boticoeur.com/cdn/shop/products/Capturadeecra2023-02-28_as11.16.49.png?v=1677583102","https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Abest/v1/imagens/products/B77489/the-blend-bourbon_77489_segredinhos.jpg","https://paradea.it/cdn/shop/files/TheBlendBourbon-EaudeParfum100ml_8.jpg?v=1757002981&width=1000","https://static.wixstatic.com/media/9523de_5070e9eb25924920836840c58ae0b94d~mv2.webp/v1/fill/w_800%2Ch_800%2Cal_c%2Cq_85%2Cenc_avif%2Cquality_auto/9523de_5070e9eb25924920836840c58ae0b94d~mv2.webp"],
+ "full-asad-bourbon":["https://tiendalafe.com/cdn/shop/files/Disenosintitulo-2025-02-21T163922.609.png?v=1740177572","https://images.tcdn.com.br/img/img_prod/1142879/perfume_rabe_asad_bourbon_lattafa_eau_de_parfum_ma_5_20260615125833_c0f7f1237677.jpg","https://dubaiblends.com.au/cdn/shop/files/31DDB3FE-3092-4285-8999-98142E1713B1.webp?v=1758855537&width=1445","https://mojezapachy.pl/44435-medium_default/lattafa-asad-bourbon-woda-perfumowana-100ml.jpg","https://www.lodoro.cl/cdn/shop/files/Asad_Bourbon_Lattafa_Eau_de_Parf_2_1024x.png?v=1749920133"],
  "full-essencial-sentir":["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw7c3715ed/Produtos/NATBRA-167755_2.jpg?q=80&sw=600","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw62148647/Produtos/NATBRA-167755_1.jpg?q=80&sw=600","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw4dfd9ee4/produto-joia/background/desktop/167755.jpg?q=80&sw=1200","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw9a6446a4/produto-joia/background/mobile/167755.jpg?q=80&sw=1000","https://production.na01.natura.com/on/demandware.static/-/Sites-natura-cl-storefront-catalog/default/dw75d1e191/producto-joia/mobile/179067.jpg"],
  "full-fakhar-black":["https://www.lattafa-usa.com/cdn/shop/files/2_1b8e4113-2278-4e6a-b5d7-1c814516d8bc.png?v=1747500778&width=1946","https://http2.mlstatic.com/D_NQ_NP_931646-MLA100154339260_122025-O.webp","https://lookalyfe.com/cdn/shop/files/Look-Alyfe-Lattafa-Fakhar-Black-Eau-de-Parfum-100m-6917.png?v=1737421697&width=1000","https://mustafafragrances.com/cdn/shop/files/Resize_FL_Man.png?v=1753218762&width=2000","https://mustafafragrances.com/cdn/shop/files/Resize_FL_Man_6.png?v=1753218762&width=2000","https://mustafafragrances.com/cdn/shop/files/Resize_FL_Man_5.png?v=1753218762&width=2000"],
  "full-k-max":["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw7d5b57a1/Produtos/NATBRA-72468_3.jpg?q=80&sw=600","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw9b260517/produto-joia/background/desktop/72468.jpg?q=80&sw=1200","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw21a455c7/produto-joia/background/mobile/72468.jpg?q=80&sw=1000"],
@@ -2052,7 +2066,7 @@ function renderIngredientNotes(targetId,value){
 const params=new URLSearchParams(window.location.search),requestedId=params.get("id")||"";
 const story=PRODUCT_STORIES[requestedId]||PRODUCT_STORIES[requestedId.replace(/^full-/,"")]||null;
 const product=PRODUCTS.find(x=>x.id===requestedId)||FULL_SIZE_PRODUCTS.find(x=>x.id===requestedId),isFull=Boolean(product&&product.id.startsWith("full-")),info=PERFUME_INFO[requestedId]||PERFUME_INFO[requestedId.replace(/^full-/,"")]||null,$=id=>document.getElementById(id);
-let gallery=[],failedGallerySources=new Set(),currentVolume=product&&!isFull?product.volumes[0]:null;
+let gallery=[],currentGalleryIndex=0,failedGallerySources=new Set(),currentVolume=product&&!isFull?product.volumes[0]:null;
 if(!product){document.querySelector("main").innerHTML='<section class="summary"><h1>Perfume não encontrado</h1><p>Volte ao catálogo para escolher uma fragrância.</p><a class="cart-link" href="decants.html">Voltar ao catálogo</a></section>'}
 else{
 const isQuasarIce=product.id.replace(/^full-/,"")==="quasar-ice";document.body.classList.toggle("quasar-ice-notes",isQuasarIce);const olfactorySection=$("olfactorySection");if(olfactorySection){olfactorySection.classList.toggle("quasar-ice-notes-active",isQuasarIce);if(isQuasarIce){olfactorySection.style.setProperty("background","#050505","important");olfactorySection.style.setProperty("color","#f2f2f2","important");const iceStyles=[[".content-heading h2","color","#f2f2f2"],[".content-heading p","color","#a7b9bf"],[".note-infographic","background","#050505"],[".note-infographic","border-color","#29373b"],[".note-visual-bottle","background","linear-gradient(145deg,#eef7fa,#dcecf1)"],[".note-visual-details","background","#050505"],[".note-graphic-head h3","color","#f1f1f1"],[".accord-title","color","#a8c4cc"],[".note-composition","border-top-color","#292929"],[".composition-row","border-bottom-color","#292929"],[".composition-row>strong","color","#a8c4cc"],[".note-pyramid .note-stage p","color","#d5e0e3"],[".note-fact","background","#050505"],[".note-fact","border-color","#292929"],[".note-fact strong","color","#a8c4cc"],[".note-fact span","color","#c4d0d3"]];iceStyles.forEach(([selector,property,value])=>olfactorySection.querySelectorAll(selector).forEach(el=>el.style.setProperty(property,value,"important")));}}
@@ -2099,17 +2113,25 @@ if(isFull){
 }
 else{$("volumeSelect").innerHTML=product.volumes.map((v,i)=>'<option value="'+i+'">'+v.ml+' ml</option>').join("");updatePrice();$("volumeSelect").addEventListener("change",()=>{currentVolume=product.volumes[Number($("volumeSelect").value)];updatePrice()})}
 const baseGalleryId=product.id.replace(/^full-/,"");
-const productGallery=EXTRA_GALLERY[product.id]||EXTRA_GALLERY[baseGalleryId]||[];
-const fullSizeReferenceGallery=EXTRA_GALLERY["full-"+baseGalleryId]||[];
-/* Frascos inteiros usam fotos próprias; decants também aproveitam fotos demonstrativas do mesmo perfume em frasco inteiro. */
-const extraGallery=isFull?productGallery:[...productGallery,...fullSizeReferenceGallery];
-gallery=[...new Set([product.image,...extraGallery.filter(src=>!ENGLISH_INFOGRAPHIC_URLS.has(src))].filter(Boolean))];
+const ownGallery=EXTRA_GALLERY[product.id]||[];
+const fullSizeGallery=EXTRA_GALLERY["full-"+baseGalleryId]||[];
+const baseGallery=EXTRA_GALLERY[baseGalleryId]||[];
+/* A foto principal é sempre a mesma usada no card do catálogo.
+   Depois dela vêm quatro ou mais fotos complementares do mesmo perfume.
+   Infográficos não contam como fotos de produto. */
+const extraGallery=isFull?[...ownGallery,...baseGallery]:[...ownGallery,...fullSizeGallery];
+const seenGallerySources=new Set([product.image]);
+const complementaryGallery=extraGallery.filter(src=>{
+ if(!src||seenGallerySources.has(src)||ENGLISH_INFOGRAPHIC_URLS.has(src)||INGREDIENT_IMAGE_URLS.has(src))return false;
+ seenGallerySources.add(src);return true;
+});
+gallery=[product.image,...complementaryGallery].filter(Boolean);
 if(gallery.length){
  $("mainImage").alt=isFull?product.name+" — frasco inteiro":product.name+" — imagem de referência; produto vendido em mini frasco decant SANTINO";$("mainImage").referrerPolicy="no-referrer";
  $("galleryCaption").textContent=isFull?(gallery.length>1?"Toque nas miniaturas para ver outras fotos.":"Foto do frasco inteiro"): "Imagem de referência da fragrância. O produto vendido é o decant SANTINO em mini frasco.";
- $("galleryThumbs").innerHTML=gallery.length>1?gallery.map((src,index)=>'<button type="button" class="thumb" data-gallery-index="'+index+'" aria-pressed="'+(index===0?'true':'false')+'" aria-label="Ver foto '+(index+1)+'"><img src="'+escapeHTML(src)+'" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button>').join(""):"";
+ $("galleryThumbs").innerHTML=gallery.length>1?gallery.map((src,index)=>'<button type="button" class="thumb" data-gallery-index="'+index+'" aria-pressed="'+(index===0?'true':'false')+'" aria-label="'+(index===0?(isFull?'Foto padrão do catálogo':'Foto padrão do decant SANTINO'):'Ver foto complementar '+index)+'"><img src="'+escapeHTML(src)+'" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button>').join(""):"";
  $("galleryThumbs").querySelectorAll("[data-gallery-index]").forEach(button=>button.addEventListener("click",()=>selectGallery(Number(button.dataset.galleryIndex))));
- $("galleryThumbs").querySelectorAll(".thumb img").forEach(img=>img.addEventListener("error",()=>{if(img.parentElement)img.parentElement.hidden=true;}));
+ $("galleryThumbs").querySelectorAll(".thumb img").forEach(img=>img.addEventListener("error",()=>{failedGallerySources.add(img.currentSrc||img.src);if(img.parentElement)img.parentElement.hidden=true;}));
  $("mainImage").addEventListener("error",function(){
   const failed=this.src;
   failedGallerySources.add(failed);
@@ -2131,7 +2153,7 @@ if(product.toutiImage && product.referenceImage){
  $("referenceComparisonCaption").innerHTML=escapeHTML(product.referenceName)+'<small>Imagem de referência · não incluída na venda</small>';
  referencePhoto.addEventListener("error",()=>{referencePhoto.hidden=true;});
 }
-$("mainImage").addEventListener("click",()=>{if($("mainImage").src)window.open($("mainImage").src,"_blank","noopener,noreferrer")});
+$("mainImage").addEventListener("click",openGalleryLightbox);
 if(info){
  $("familyText").textContent=info.family;
  $("familyDetailText").textContent=info.family;
@@ -2195,7 +2217,75 @@ const stickyPurchase=window.SantinoStickyPurchase.init({
 $("volumeSelect").addEventListener("change",()=>stickyPurchase?.refresh());
 $("quantitySelect").addEventListener("change",()=>stickyPurchase?.refresh());
 }
-function selectGallery(index){if(!gallery[index])return;$("mainImage").style.display="block";$("galleryFallback").style.display="none";$("mainImage").src=gallery[index];$("mainImage").alt=isFull?product.name+" — foto do frasco inteiro "+(index+1):product.name+" — imagem de referência; o produto vendido é o decant SANTINO "+(currentVolume?.ml||"")+" ml";$("galleryCaption").textContent=isFull?(index===0?"Foto do frasco inteiro":(INGREDIENT_IMAGE_URLS.has(gallery[index])?"Imagem de notas ou ingredientes da fragrância":"Foto complementar do perfume")):"Imagem de referência da fragrância. O produto vendido é o decant SANTINO em mini frasco no volume selecionado.";document.querySelectorAll("[data-gallery-index]").forEach(button=>button.setAttribute("aria-pressed",String(Number(button.dataset.galleryIndex)===index)));}
+function ensureGalleryLightbox(){
+ let overlay=document.getElementById("santinoGalleryLightbox");
+ if(overlay)return overlay;
+ overlay=document.createElement("div");
+ overlay.className="santino-gallery-lightbox";
+ overlay.id="santinoGalleryLightbox";
+ overlay.hidden=true;
+ overlay.setAttribute("role","dialog");
+ overlay.setAttribute("aria-modal","true");
+ overlay.setAttribute("aria-label","Visualização ampliada das fotos do perfume");
+ overlay.innerHTML='<button type="button" class="santino-lightbox-close" data-lightbox-close aria-label="Fechar foto">×</button><button type="button" class="santino-lightbox-arrow santino-lightbox-prev" data-lightbox-prev aria-label="Foto anterior">‹</button><figure class="santino-lightbox-figure"><img class="santino-lightbox-image" data-lightbox-image alt=""><figcaption class="santino-lightbox-caption" data-lightbox-caption></figcaption></figure><button type="button" class="santino-lightbox-arrow santino-lightbox-next" data-lightbox-next aria-label="Próxima foto">›</button>';
+ document.body.appendChild(overlay);
+ overlay.querySelector("[data-lightbox-close]").addEventListener("click",closeGalleryLightbox);
+ overlay.addEventListener("click",event=>{if(event.target===overlay)closeGalleryLightbox();});
+ overlay.querySelector("[data-lightbox-prev]").addEventListener("click",()=>stepGalleryLightbox(-1));
+ overlay.querySelector("[data-lightbox-next]").addEventListener("click",()=>stepGalleryLightbox(1));
+ return overlay;
+}
+function updateGalleryLightbox(){
+ const overlay=ensureGalleryLightbox(),img=overlay.querySelector("[data-lightbox-image]");
+ if(!gallery[currentGalleryIndex])return;
+ img.src=gallery[currentGalleryIndex];
+ img.alt=$("mainImage").alt;
+ overlay.querySelector("[data-lightbox-caption]").textContent=(currentGalleryIndex===0?(isFull?"Foto padrão do catálogo":"Foto padrão do decant SANTINO"):"Foto complementar "+currentGalleryIndex)+" · "+product.name+" ("+(currentGalleryIndex+1)+"/"+gallery.length+")";
+ overlay.querySelector("[data-lightbox-prev]").disabled=gallery.length<2;
+ overlay.querySelector("[data-lightbox-next]").disabled=gallery.length<2;
+}
+function openGalleryLightbox(){
+ if(!gallery.length)return;
+ const overlay=ensureGalleryLightbox();
+ updateGalleryLightbox();
+ overlay.hidden=false;
+ document.body.classList.add("santino-gallery-lightbox-open");
+ overlay.querySelector("[data-lightbox-close]").focus();
+}
+function closeGalleryLightbox(){
+ const overlay=document.getElementById("santinoGalleryLightbox");
+ if(!overlay||overlay.hidden)return;
+ overlay.hidden=true;
+ document.body.classList.remove("santino-gallery-lightbox-open");
+ $("mainImage").focus?.();
+}
+function stepGalleryLightbox(direction){
+ if(gallery.length<2)return;
+ const next=(currentGalleryIndex+direction+gallery.length)%gallery.length;
+ selectGallery(next);
+ updateGalleryLightbox();
+}
+document.addEventListener("keydown",event=>{
+ const overlay=document.getElementById("santinoGalleryLightbox");
+ if(!overlay||overlay.hidden)return;
+ if(event.key==="Escape"){event.preventDefault();closeGalleryLightbox();}
+ else if(event.key==="ArrowRight"){event.preventDefault();stepGalleryLightbox(1);}
+ else if(event.key==="ArrowLeft"){event.preventDefault();stepGalleryLightbox(-1);}
+});
+function selectGallery(index){
+ if(!gallery[index])return;
+ currentGalleryIndex=index;
+ $("mainImage").style.display="block";
+ $("galleryFallback").style.display="none";
+ $("mainImage").src=gallery[index];
+ $("mainImage").alt=isFull
+  ?product.name+" — "+(index===0?"foto padrão do catálogo":"foto complementar "+index)
+  :product.name+" — "+(index===0?"foto padrão do decant SANTINO":"foto complementar "+index)+"; volume "+(currentVolume?.ml||"")+" ml";
+ $("galleryCaption").textContent=isFull
+  ?(index===0?"Foto padrão do catálogo de frascos inteiros":"Foto complementar "+index+" de "+product.name)
+  :(index===0?"Foto padrão do decant SANTINO":"Foto complementar "+index+" de "+product.name);
+ document.querySelectorAll("[data-gallery-index]").forEach(button=>button.setAttribute("aria-pressed",String(Number(button.dataset.galleryIndex)===index)));
+}
 function updatePrice(){if(!currentVolume)return;$("productPrice").textContent=money(currentVolume.price);$("productPrice").classList.remove("pending");$("addButton").textContent="Adicionar "+currentVolume.ml+" ml — "+money(currentVolume.price);if(isFull){const ref=$("productReferencePrice");const value=Number.isFinite(currentVolume.referencePrice)?currentVolume.referencePrice:product.referencePrice;if(ref){ref.hidden=!Number.isFinite(value);ref.innerHTML=Number.isFinite(value)?'<span>Preço oficial</span><strong><del>'+money(value)+'</del></strong>':'';}}}
 function readCart(){try{const value=JSON.parse(localStorage.getItem("santino_nobre_cart")||"[]");return Array.isArray(value)?value:[]}catch(e){return []}}
 function addToCart(){
