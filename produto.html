@@ -1416,6 +1416,15 @@ body.perfume-detail-page .gallery-thumbs{
 .detail-price-stack .reference-price strong{font-size:20px;line-height:1.1;color:#e3c28e;font-weight:700}
 .detail-price-stack .reference-price del{text-decoration-thickness:1.5px;text-decoration-color:var(--beige)}
 </style>
+<style id="santino-full-size-gallery-ratio">
+/* Galeria de frascos: enquadramento vertical 4:5, miniaturas quadradas */
+body.perfume-detail-page.full-size-mode .gallery-main{width:100%!important;max-width:460px!important;aspect-ratio:4/5!important;height:auto!important;min-height:0!important;margin:0 auto!important;overflow:hidden!important}
+body.perfume-detail-page.full-size-mode .gallery-main #mainImage{display:block!important;width:100%!important;height:100%!important;max-height:none!important;padding:16px!important;object-fit:contain!important;object-position:center!important}
+body.perfume-detail-page.full-size-mode .gallery-thumbs{width:100%!important;max-width:460px!important;margin:0 auto!important;display:flex!important;gap:9px!important;overflow-x:auto!important}
+body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{flex:0 0 76px!important;width:76px!important;height:76px!important;aspect-ratio:1/1!important}
+body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb img{width:100%!important;height:100%!important;object-fit:contain!important}
+@media(max-width:720px){body.perfume-detail-page.full-size-mode .gallery-main{max-width:100%!important;aspect-ratio:4/5!important}body.perfume-detail-page.full-size-mode .gallery-main #mainImage{padding:12px!important}body.perfume-detail-page.full-size-mode .gallery-thumbs{max-width:100%!important}body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{flex-basis:68px!important;width:68px!important;height:68px!important}}
+</style>
 </head>
 <body class="perfume-detail-page">
 <header class="santino-site-header">
@@ -1809,6 +1818,27 @@ const EXTRA_GALLERY={
  "full-sauvage":["https://apothecary.rs/17902-large_default/dior-sauvage-eau-de-toilette-100ml.jpg","https://www.sephora.it/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw6523475d/images/hi-res/alternates/PID_alternate2/PID_alternate2_226/P2266017_2.jpg","https://fourthsense.co/wp-content/uploads/2023/10/dior-sauvage-notes-pyramid.jpeg"],
  "full-invictus":["https://product-data.raiadrogasil.io/images/5890913.webp","https://images.matas.dk/trs/wNaN/encode/3349668515660_2_20250919095300.jpg"],
  "full-myslf":["https://silkperfumes.cl/cdn/shop/files/ysl-myself-edp-100-ml-recargable-Silk-Perfumes.png?v=1750262770&width=1500","https://cdn11.bigcommerce.com/s-7t5voyw6tp/images/stencil/500x659/products/1726/6579/ysl_myslf__72742.1771815459.jpg?c=1"],
+
+ "full-kingdom":["https://fragarabic.com/cdn/shop/files/The_Kingdom_Lattafa_Eau_de_Parfum_Para_Hombre_con_fondo_7d886a12-0083-4be8-9d99-6596620cec36.webp?v=1767169721&width=2000"],
+ "full-the-blend-bourbon":["https://dcdn-us.mitiendanube.com/stores/002/832/629/products/download-79-e03a5186e1269c5b6b17128697086555-1024-1024.webp","https://boticoeur.com/cdn/shop/products/Capturadeecra2023-02-28_as11.16.49.png?v=1677583102"],
+ "full-asad-bourbon":["https://tiendalafe.com/cdn/shop/files/Disenosintitulo-2025-02-21T163922.609.png?v=1740177572","https://images.tcdn.com.br/img/img_prod/1142879/perfume_rabe_asad_bourbon_lattafa_eau_de_parfum_ma_5_20260615125833_c0f7f1237677.jpg"],
+ "full-essencial-sentir":["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw7c3715ed/Produtos/NATBRA-167755_2.jpg?q=80&sw=600","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw62148647/Produtos/NATBRA-167755_1.jpg?q=80&sw=600"],
+ "full-fakhar-black":["https://www.lattafa-usa.com/cdn/shop/files/2_1b8e4113-2278-4e6a-b5d7-1c814516d8bc.png?v=1747500778&width=1946","https://http2.mlstatic.com/D_NQ_NP_931646-MLA100154339260_122025-O.webp"],
+ "full-k-max":["https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw7d5b57a1/Produtos/NATBRA-72468_3.jpg?q=80&sw=600","https://production.na01.natura.com/dw/image/v2/BFKR_PRD/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw492ca4f5/Produtos/NATBRA-72468_2.jpg?q=80&sw=600"],
+ "full-nautica-voyage":["https://terrywhitechemmart.com.au/cdn-cgi/image/format%3Dauto/https%3A/images.skulibrary.com/media/sys_master/h4d/h22/14643060834334.jpg","https://panvelprd.vteximg.com.br/arquivos/ids/222720"],
+ "full-clash":["https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_auto%2Cfl_progressive%2Cq_auto%3Abest/v1/imagens/product/B50677/b4a74170-be29-4049-ae0c-cd34f8ccc133-bot-50677-clash-desodorante-colonia-card-06.jpg","https://epocacosmeticos.vteximg.com.br/arquivos/ids/1552698/07726420008188.jpg?v=639086728445330000"],
+ "full-quasar-blue":["https://epocacosmeticos.vteximg.com.br/arquivos/ids/1083378-800-800/17590111449540.jpg?v=638947636436930000"],
+ "full-club-6-voyage":["https://beautycarebrazil.com/cdn/shop/files/rascunho-2024-07-04T005030.620.jpg?v=1720065037&width=1024"],
+ "full-egeo-bomb-black":["https://http2.mlstatic.com/D_NQ_NP_821590-MLB99367857758_112025-O.webp","https://photos.enjoei.com.br/perfume-bomb-black-o-boticario-usado-uma-unica-vez-76514841/800x800/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xOTgyNzc5NS8wYjQ3NzZmYTczYjA4ZGYzZDE0MTYxMjBhMTRmZWM4Ny5qcGc"],
+ "full-kaiak-extremo":["https://down-br.img.susercontent.com/file/br-11134207-7qukw-lgnoi11yen5i81","https://down-br.img.susercontent.com/file/br-11134201-22120-54jf22ul77kv69"],
+ "full-malbec-gold":["https://rayppe.com/cdn/shop/files/73849_maos_Malbec_Gold_700x_32a63dfa-2bcb-43e1-a825-0b30cefe2371_2048x.webp?v=1730840386","https://cdn.shopify.com/s/files/1/0630/3029/6801/products/BT_CONTENT_B_73849_individual_escuro_Malbec_Gold_Desodorante_Colonia_100ml_700x.jpg?v=1673974358"],
+ "full-malbec-pure-gold":["https://cdn.shopify.com/s/files/1/0630/3029/6801/files/55141_MALBECGOLDSENSEEDT100ml-3.jpg?v=1764635322","https://www.josikabeauty.com/cdn/shop/files/523444647_795796519627222_6978600828562685322_n.jpg?v=1756427784"],
+ "full-malbec-bleu":["https://down-br.img.susercontent.com/file/br-11134207-7r98p-ll75m9rkjr4m7a","https://media.licdn.com/dms/image/v2/C4D1BAQHCqfLAEbM6Hw/company-background_10000/company-background_10000/0/1626209055211/o_boticrio_cp_produtos_de_beleza_aroma_cover?e=2147483647&t=ZYQdi6rQGz-Qgf-gOIu0VCWE3wDrYi1h8EAluVH-kgI&v=beta"],
+ "full-malbec-magnetic":["https://down-br.img.susercontent.com/file/br-11134207-7r98o-m4mkqgtkr7lt46"],
+ "full-malbec-black":["https://a-static.mlcdn.com.br/%7Bw%7Dx%7Bh%7D/malbec-black-desodorante-colonia-100ml-amadeirado-classico-mais-vendido-o-boticario/jabrasilsilva/54714aaa7acb11eebd2a4201ac185040/2ec9296c23b8bf349fea6f6f22a6c518.jpeg"],
+ "full-khamrah":["https://skinlive.fr/cdn/shop/files/120.png?v=1721994256&width=1445","https://i8.amplience.net/i/manor/10003592325_01"],
+ "full-club-de-nuit-intense-man":["https://resources.sanborns.com.mx/products/cdn/product-channel/15036/2025/7/19/6970831a7d60cf8ef918cc17b88953fa.png?qlty=75&scale=500","https://bizweb.dktcdn.net/100/482/555/products/z5539750733772-3cf433baff00bdb7a5aecdbc1a958a16.jpg?v=1718382688980"],
+ "full-212-vip-black":["https://cdn.awsli.com.br/800x800/2068/2068705/produto/128525726/fefbbe1d82.jpg","https://http2.mlstatic.com/D_NQ_NP_698161-MLA112222352942_062026-O.webp"]
 
 };;
 const INGREDIENT_IMAGE_URLS=new Set([
