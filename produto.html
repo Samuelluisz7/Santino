@@ -1417,13 +1417,100 @@ body.perfume-detail-page .gallery-thumbs{
 .detail-price-stack .reference-price del{text-decoration-thickness:1.5px;text-decoration-color:var(--beige)}
 </style>
 <style id="santino-full-size-gallery-ratio">
-/* Galeria de frascos: enquadramento vertical 4:5, miniaturas quadradas */
-body.perfume-detail-page.full-size-mode .gallery-main{width:100%!important;max-width:460px!important;aspect-ratio:4/5!important;height:auto!important;min-height:0!important;margin:0 auto!important;overflow:hidden!important}
-body.perfume-detail-page.full-size-mode .gallery-main #mainImage{display:block!important;width:100%!important;height:100%!important;max-height:none!important;padding:16px!important;object-fit:contain!important;object-position:center!important}
-body.perfume-detail-page.full-size-mode .gallery-thumbs{width:100%!important;max-width:460px!important;margin:0 auto!important;display:flex!important;gap:9px!important;overflow-x:auto!important}
-body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{flex:0 0 76px!important;width:76px!important;height:76px!important;aspect-ratio:1/1!important}
-body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb img{width:100%!important;height:100%!important;object-fit:contain!important}
-@media(max-width:720px){body.perfume-detail-page.full-size-mode .gallery-main{max-width:100%!important;aspect-ratio:4/5!important}body.perfume-detail-page.full-size-mode .gallery-main #mainImage{padding:12px!important}body.perfume-detail-page.full-size-mode .gallery-thumbs{max-width:100%!important}body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{flex-basis:68px!important;width:68px!important;height:68px!important}}
+/* Galeria de frascos inteiros: quadro quadrado, escuro e sem margens internas. */
+body.perfume-detail-page.full-size-mode .gallery{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:5px!important;
+}
+body.perfume-detail-page.full-size-mode .gallery-main{
+  width:100%!important;
+  max-width:none!important;
+  aspect-ratio:1/1!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0!important;
+  display:grid!important;
+  place-items:center!important;
+  overflow:hidden!important;
+  background:radial-gradient(ellipse at 50% 42%,#1d1a15 0%,#0d0c0a 65%,#050505 100%)!important;
+  border:1px solid #393329!important;
+  border-radius:3px!important;
+}
+body.perfume-detail-page.full-size-mode .gallery-main #mainImage{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-height:none!important;
+  padding:0!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:transparent!important;
+  transform:scale(1.05);
+}
+body.perfume-detail-page.full-size-mode .gallery-main .gallery-fallback{
+  height:100%!important;
+  min-height:100%!important;
+  color:#c9b18b!important;
+}
+body.perfume-detail-page.full-size-mode .gallery-thumbs{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:4px 0 0!important;
+  display:flex!important;
+  gap:7px!important;
+  overflow-x:auto!important;
+  scrollbar-width:thin;
+}
+body.perfume-detail-page.full-size-mode .gallery-thumbs:empty{
+  display:none!important;
+}
+body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{
+  flex:0 0 70px!important;
+  width:70px!important;
+  height:70px!important;
+  aspect-ratio:1/1!important;
+  padding:2px!important;
+  background:#080808!important;
+  border:1px solid #393329!important;
+  border-radius:3px!important;
+}
+body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb[aria-pressed="true"]{
+  border:2px solid #c9b18b!important;
+}
+body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+body.perfume-detail-page.full-size-mode .gallery-caption{
+  margin:3px 0 0!important;
+  font-size:10px!important;
+  line-height:1.35!important;
+}
+@media(max-width:720px){
+  body.perfume-detail-page.full-size-mode .gallery-main{
+    max-width:100%!important;
+    aspect-ratio:1/1!important;
+  }
+  body.perfume-detail-page.full-size-mode .gallery-main #mainImage{
+    transform:scale(1.04);
+  }
+  body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{
+    flex-basis:62px!important;
+    width:62px!important;
+    height:62px!important;
+  }
+  body.perfume-detail-page.full-size-mode .product-layout{
+    gap:9px!important;
+  }
+}
 </style>
 </head>
 <body class="perfume-detail-page">
