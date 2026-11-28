@@ -1417,46 +1417,46 @@ body.perfume-detail-page .gallery-thumbs{
 .detail-price-stack .reference-price del{text-decoration-thickness:1.5px;text-decoration-color:var(--beige)}
 </style>
 <style id="santino-full-size-gallery-ratio">
-/* Galeria de frascos inteiros: visual do Quasar Ice, com quadro vertical e frasco em escala natural. */
+/* Frascos inteiros: foto vertical sem moldura clara ou margens artificiais. */
 body.perfume-detail-page.full-size-mode .gallery{
   width:100%!important;max-width:none!important;min-width:0!important;
-  display:flex!important;flex-direction:column!important;gap:5px!important;
+  display:flex!important;flex-direction:column!important;gap:8px!important;
 }
 body.perfume-detail-page.full-size-mode .gallery-main{
-  width:100%!important;max-width:none!important;aspect-ratio:4/5!important;
-  height:auto!important;min-height:0!important;margin:0!important;
+  width:100%!important;max-width:480px!important;aspect-ratio:4/5!important;
+  height:auto!important;min-height:0!important;margin:0 auto!important;padding:0!important;
   display:grid!important;place-items:center!important;overflow:hidden!important;
-  background:#ede4d7!important;border:1px solid #c9b18b!important;
-  border-radius:3px!important;
+  background:#050505!important;border:1px solid #332d23!important;border-radius:4px!important;
 }
 body.perfume-detail-page.full-size-mode .gallery-main #mainImage{
   display:block!important;width:100%!important;height:100%!important;max-height:none!important;
-  padding:16px!important;object-fit:contain!important;object-position:center!important;
-  background:transparent!important;transform:none!important;
+  padding:0!important;margin:0!important;object-fit:cover!important;object-position:center!important;
+  background:#050505!important;transform:none!important;
 }
 body.perfume-detail-page.full-size-mode .gallery-main .gallery-fallback{
-  height:100%!important;min-height:100%!important;color:#42372c!important;
+  height:100%!important;min-height:100%!important;color:#c9b18b!important;
 }
 body.perfume-detail-page.full-size-mode .gallery-thumbs{
-  width:100%!important;max-width:none!important;margin:0!important;padding:4px 0 0!important;
-  display:flex!important;gap:7px!important;overflow-x:auto!important;scrollbar-width:thin;
+  width:100%!important;max-width:480px!important;margin:0 auto!important;padding:2px 0 0!important;
+  display:flex!important;gap:6px!important;overflow-x:auto!important;overflow-y:hidden!important;
+  scrollbar-width:thin;scroll-snap-type:x proximity;
 }
 body.perfume-detail-page.full-size-mode .gallery-thumbs:empty{display:none!important}
 body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{
-  flex:0 0 70px!important;width:70px!important;height:70px!important;aspect-ratio:1/1!important;
-  padding:2px!important;background:#ede4d7!important;border:1px solid #c9b18b!important;
-  border-radius:3px!important;
+  flex:0 0 58px!important;width:58px!important;height:58px!important;aspect-ratio:1/1!important;
+  min-width:58px!important;padding:1px!important;overflow:hidden!important;scroll-snap-align:start;
+  background:#050505!important;border:1px solid #40372a!important;border-radius:3px!important;
 }
-body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb[aria-pressed="true"]{border:2px solid #9d8058!important}
+body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb[aria-pressed="true"]{border:2px solid #c9b18b!important}
 body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb img{
-  width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;
+  display:block!important;width:100%!important;height:100%!important;padding:0!important;
+  object-fit:cover!important;object-position:center!important;background:#050505!important;
 }
+body.perfume-detail-page.full-size-mode .gallery-caption{margin:2px 0 0!important;font-size:10px!important;line-height:1.35!important}
 @media(max-width:720px){
-  body.perfume-detail-page.full-size-mode .gallery-main{aspect-ratio:4/5!important;}
-  body.perfume-detail-page.full-size-mode .gallery-main #mainImage{padding:12px!important;}
-  body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{
-    flex-basis:68px!important;width:68px!important;height:68px!important;
-  }
+ body.perfume-detail-page.full-size-mode .gallery-main{width:100%!important;max-width:none!important;aspect-ratio:4/5!important}
+ body.perfume-detail-page.full-size-mode .gallery-thumbs{max-width:none!important;gap:5px!important;justify-content:flex-start!important}
+ body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{flex-basis:56px!important;width:56px!important;height:56px!important;min-width:56px!important}
 }
 </style>
 </head>
@@ -1825,10 +1825,10 @@ Object.assign(PRODUCT_ACCORDS,{
 
 const EXTRA_GALLERY={
  "full-touti-vip-80":["https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eelz32x56","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem1w7tdf","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem3as960","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem4pcp0a"],
- "full-touti-vip-52":["https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eelz32x56","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem1w7tdf","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem3as960","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem4pcp0a"],
- "full-touti-vip-50":["https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eelz32x56","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem1w7tdf","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem3as960","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem4pcp0a"],
- "full-touti-vip-46":["https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eelz32x56","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem1w7tdf","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem3as960","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem4pcp0a"],
- "full-touti-vip-12":["https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eelz32x56","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem1w7tdf","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem3as960","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem4pcp0a"],
+ "full-touti-vip-52":["https://down-br.img.susercontent.com/file/br-11134207-7r98o-lyapdpjogsd144","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbnmi836pqwo81","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mc5fgf839xolb9","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mc5fgf838j45f0"],
+ "full-touti-vip-50":["https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eelxoihe9","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eelz32x56","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem1w7tdf","https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbty0eem3as960"],
+ "full-touti-vip-46":["https://http2.mlstatic.com/D_Q_NP_2X_601831-MLA84180840206_052025-E.webp","https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwx8rcwdi1tr99","https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwx8rcwdjge767","https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwx8rcwdkuyn4f"],
+ "full-touti-vip-12":["https://viptouti.com.br/cdn/shop/files/CT_VIP_MASC_12_1.webp?v=1780322301&width=1000","https://http2.mlstatic.com/D_NQ_NP_631266-MLB76692653761_052024-O.webp","https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwcta5zbf9ua1b","https://down-br.img.susercontent.com/file/br-11134207-820m6-mmzcrb8vxngh9a"],
  "kingdom":["https://fragarabic.com/cdn/shop/files/The_Kingdom_Lattafa_Eau_de_Parfum_Para_Hombre_con_fondo_7d886a12-0083-4be8-9d99-6596620cec36.webp?v=1767169721&width=2000"],
  "the-blend-bourbon":["https://dcdn-us.mitiendanube.com/stores/002/832/629/products/download-79-e03a5186e1269c5b6b17128697086555-1024-1024.webp","https://boticoeur.com/cdn/shop/products/Capturadeecra2023-02-28_as11.16.49.png?v=1677583102"],
  "asad-bourbon":["https://tiendalafe.com/cdn/shop/files/Disenosintitulo-2025-02-21T163922.609.png?v=1740177572","https://images.tcdn.com.br/img/img_prod/1142879/perfume_rabe_asad_bourbon_lattafa_eau_de_parfum_ma_5_20260615125833_c0f7f1237677.jpg","https://palette21.com/cdn/shop/files/lattafa-asad-bourbon-perfume-vanilla-rum-notes.webp?v=1770489501"],
