@@ -1417,99 +1417,70 @@ body.perfume-detail-page .gallery-thumbs{
 .detail-price-stack .reference-price del{text-decoration-thickness:1.5px;text-decoration-color:var(--beige)}
 </style>
 <style id="santino-full-size-gallery-ratio">
-/* Galeria de frascos inteiros: quadro quadrado, escuro e sem margens internas. */
+/* Galeria de frascos inteiros: padrão da galeria Quasar Ice, em quadro quadrado. */
 body.perfume-detail-page.full-size-mode .gallery{
-  width:100%!important;
-  max-width:none!important;
-  min-width:0!important;
-  display:flex!important;
-  flex-direction:column!important;
-  gap:5px!important;
+  width:100%!important;max-width:none!important;min-width:0!important;
+  display:flex!important;flex-direction:column!important;gap:5px!important;
 }
 body.perfume-detail-page.full-size-mode .gallery-main{
-  width:100%!important;
-  max-width:none!important;
-  aspect-ratio:1/1!important;
-  height:auto!important;
-  min-height:0!important;
-  margin:0!important;
-  display:grid!important;
-  place-items:center!important;
-  overflow:hidden!important;
-  background:radial-gradient(ellipse at 50% 42%,#1d1a15 0%,#0d0c0a 65%,#050505 100%)!important;
-  border:1px solid #393329!important;
+  width:100%!important;max-width:none!important;aspect-ratio:1/1!important;
+  height:auto!important;min-height:0!important;margin:0!important;
+  display:grid!important;place-items:center!important;overflow:hidden!important;
+  background:#ede4d7!important;border:1px solid #c9b18b!important;
   border-radius:3px!important;
 }
 body.perfume-detail-page.full-size-mode .gallery-main #mainImage{
-  display:block!important;
-  width:100%!important;
-  height:100%!important;
-  max-height:none!important;
-  padding:0!important;
-  object-fit:contain!important;
-  object-position:center!important;
-  background:transparent!important;
-  transform:scale(1.05);
+  display:block!important;width:100%!important;height:100%!important;max-height:none!important;
+  padding:0!important;object-fit:contain!important;object-position:center!important;
+  background:transparent!important;transform:scale(1.12);
 }
 body.perfume-detail-page.full-size-mode .gallery-main .gallery-fallback{
-  height:100%!important;
-  min-height:100%!important;
-  color:#c9b18b!important;
+  height:100%!important;min-height:100%!important;color:#42372c!important;
 }
 body.perfume-detail-page.full-size-mode .gallery-thumbs{
-  width:100%!important;
-  max-width:none!important;
-  margin:0!important;
-  padding:4px 0 0!important;
-  display:flex!important;
-  gap:7px!important;
-  overflow-x:auto!important;
-  scrollbar-width:thin;
+  width:100%!important;max-width:none!important;margin:0!important;padding:4px 0 0!important;
+  display:flex!important;gap:7px!important;overflow-x:auto!important;scrollbar-width:thin;
 }
-body.perfume-detail-page.full-size-mode .gallery-thumbs:empty{
-  display:none!important;
-}
+body.perfume-detail-page.full-size-mode .gallery-thumbs:empty{display:none!important}
 body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{
-  flex:0 0 70px!important;
-  width:70px!important;
-  height:70px!important;
-  aspect-ratio:1/1!important;
-  padding:2px!important;
-  background:#080808!important;
-  border:1px solid #393329!important;
+  flex:0 0 70px!important;width:70px!important;height:70px!important;aspect-ratio:1/1!important;
+  padding:2px!important;background:#ede4d7!important;border:1px solid #c9b18b!important;
   border-radius:3px!important;
 }
-body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb[aria-pressed="true"]{
-  border:2px solid #c9b18b!important;
-}
+body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb[aria-pressed="true"]{border:2px solid #9d8058!important}
 body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb img{
-  display:block!important;
-  width:100%!important;
-  height:100%!important;
-  object-fit:contain!important;
-  object-position:center!important;
+  display:block!important;width:100%!important;height:100%!important;
+  object-fit:contain!important;object-position:center!important;
 }
 body.perfume-detail-page.full-size-mode .gallery-caption{
-  margin:3px 0 0!important;
-  font-size:10px!important;
-  line-height:1.35!important;
+  margin:3px 0 0!important;font-size:10px!important;line-height:1.35!important;
+}
+body.perfume-detail-page.full-size-mode .reference-gallery{
+  display:block!important;width:100%!important;max-width:460px!important;
+  margin:14px auto 0!important;padding:12px!important;
+  background:#171512!important;border:1px solid #393329!important;
+}
+body.perfume-detail-page.full-size-mode .reference-gallery[hidden]{display:none!important}
+body.perfume-detail-page.full-size-mode .reference-gallery figure{margin:0!important}
+body.perfume-detail-page.full-size-mode .reference-gallery .comparison-gallery-label{
+  margin-bottom:8px!important;color:#c9b18b!important;font-size:11px!important;
+}
+body.perfume-detail-page.full-size-mode .reference-gallery .comparison-gallery-photo{
+  display:grid!important;place-items:center!important;background:#ede4d7!important;
+  min-height:0!important;max-height:260px!important;overflow:hidden!important;
+}
+body.perfume-detail-page.full-size-mode .reference-gallery .comparison-gallery-photo img{
+  display:block!important;max-width:100%!important;max-height:260px!important;
+  width:auto!important;height:auto!important;object-fit:contain!important;
+}
+body.perfume-detail-page.full-size-mode .reference-gallery .comparison-gallery-name{
+  color:#b9b0a2!important;font-size:11px!important;line-height:1.4!important;
 }
 @media(max-width:720px){
-  body.perfume-detail-page.full-size-mode .gallery-main{
-    max-width:100%!important;
-    aspect-ratio:1/1!important;
-  }
-  body.perfume-detail-page.full-size-mode .gallery-main #mainImage{
-    transform:scale(1.04);
-  }
-  body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{
-    flex-basis:62px!important;
-    width:62px!important;
-    height:62px!important;
-  }
-  body.perfume-detail-page.full-size-mode .product-layout{
-    gap:9px!important;
-  }
+  body.perfume-detail-page.full-size-mode .gallery-main{max-width:100%!important;aspect-ratio:1/1!important}
+  body.perfume-detail-page.full-size-mode .gallery-main #mainImage{transform:scale(1.10)}
+  body.perfume-detail-page.full-size-mode .gallery-thumbs .thumb{flex-basis:62px!important;width:62px!important;height:62px!important}
+  body.perfume-detail-page.full-size-mode .product-layout{gap:9px!important}
 }
 </style>
 </head>
@@ -1545,7 +1516,7 @@ body.perfume-detail-page.full-size-mode .gallery-caption{
 </header>
 <main><div class="breadcrumbs"><a id="backCatalog" href="decants.html">← Voltar ao catálogo</a> / <span id="crumbName">Perfume</span></div>
 
-<section class="product-layout"><div class="gallery"><div class="gallery-main"><img id="mainImage" alt="" decoding="async"><div class="gallery-fallback" id="galleryFallback">Imagem indisponível</div><div class="comparison-gallery" id="comparisonGallery" hidden><figure><div class="comparison-gallery-label">Produto vendido · Touti</div><div class="comparison-gallery-photo"><img id="toutiComparisonImage" alt="" decoding="async" referrerpolicy="no-referrer"><span class="comparison-image-missing">Foto do produto indisponível</span></div><figcaption class="comparison-gallery-name" id="toutiComparisonCaption"></figcaption></figure><figure><div class="comparison-gallery-label">Referência olfativa</div><div class="comparison-gallery-photo"><img id="referenceComparisonImage" alt="" decoding="async" referrerpolicy="no-referrer"><span class="comparison-image-missing">Foto da referência indisponível</span></div><figcaption class="comparison-gallery-name" id="referenceComparisonCaption"></figcaption></figure></div></div><div class="gallery-thumbs" id="galleryThumbs" aria-label="Mais fotos do perfume"></div><p class="gallery-caption" id="galleryCaption">Foto do frasco do perfume</p></div>
+<section class="product-layout"><div class="gallery"><div class="gallery-main"><img id="mainImage" alt="" decoding="async"><div class="gallery-fallback" id="galleryFallback">Imagem indisponível</div></div><div class="gallery-thumbs" id="galleryThumbs" aria-label="Mais fotos do perfume"></div><p class="gallery-caption" id="galleryCaption">Foto do frasco do perfume</p><div class="comparison-gallery reference-gallery" id="comparisonGallery" hidden><figure><div class="comparison-gallery-label">Referência olfativa · não incluída na venda</div><div class="comparison-gallery-photo"><img id="referenceComparisonImage" alt="" decoding="async" referrerpolicy="no-referrer"><span class="comparison-image-missing">Foto da referência indisponível</span></div><figcaption class="comparison-gallery-name" id="referenceComparisonCaption"></figcaption></figure></div></div>
 <div class="summary"><div class="eyebrow" id="categoryLabel">Fragrância</div><h1 id="productName">Carregando perfume…</h1><div class="brand-line" id="productBrand"></div><div class="product-meta" id="productMeta"></div><p class="description" id="productDescription"></p><p class="authenticity-note" id="authenticityNote">Fragrância original · selo de originalidade SANTINO</p>
 <div class="detail-highlights" aria-label="Resumo da fragrância">
   <div class="detail-highlight detail-occasion"><span>Ocasião indicada</span><strong id="highlightOccasion"></strong></div>
@@ -2149,19 +2120,7 @@ const baseGalleryId=product.id.replace(/^full-/,"");
 /* Frascos inteiros não herdam galerias de decants: elas podem conter montagens com mini frascos SANTINO. */
 const extraGallery=isFull?(EXTRA_GALLERY[product.id]||[]):(EXTRA_GALLERY[product.id]||EXTRA_GALLERY[baseGalleryId]||[]);
 gallery=[...new Set([product.image,...extraGallery.filter(src=>!ENGLISH_INFOGRAPHIC_URLS.has(src))].filter(Boolean))];
-if(product.toutiImage && product.referenceImage){
- const comparison=$("comparisonGallery");comparison.hidden=false;
- $("mainImage").style.display="none";$("galleryFallback").style.display="none";$("galleryThumbs").style.display="none";
- const toutiPhoto=$("toutiComparisonImage"),referencePhoto=$("referenceComparisonImage");
- toutiPhoto.alt=product.name+" — produto Touti vendido";
- referencePhoto.alt=product.referenceName+" — referência olfativa, não incluída";
- toutiPhoto.src=product.toutiImage;referencePhoto.src=product.referenceImage;
- $("toutiComparisonCaption").textContent=product.toutiCaption||product.name;
- $("referenceComparisonCaption").innerHTML=escapeHTML(product.referenceName)+'<small>Imagem de referência · não incluído na venda</small>';
- toutiPhoto.addEventListener("error",()=>{toutiPhoto.hidden=true;});
- referencePhoto.addEventListener("error",()=>{referencePhoto.hidden=true;});
- $("galleryCaption").textContent="À esquerda: produto Touti anunciado. À direita: referência olfativa, não incluída na venda.";
-}else if(gallery.length){
+if(gallery.length){
  $("mainImage").alt=isFull?product.name+" — frasco inteiro":product.name+" — imagem de referência; produto vendido em mini frasco decant SANTINO";$("mainImage").referrerPolicy="no-referrer";
  $("galleryCaption").textContent=isFull?(gallery.length>1?"Toque nas miniaturas para ver outras fotos.":"Foto do frasco inteiro"): "Imagem de referência da fragrância. O produto vendido é o decant SANTINO em mini frasco.";
  $("galleryThumbs").innerHTML=gallery.length>1?gallery.map((src,index)=>'<button type="button" class="thumb" data-gallery-index="'+index+'" aria-pressed="'+(index===0?'true':'false')+'" aria-label="Ver foto '+(index+1)+'"><img src="'+escapeHTML(src)+'" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button>').join(""):"";
@@ -2178,6 +2137,15 @@ if(product.toutiImage && product.referenceImage){
  selectGallery(0);
 }else{
  $("mainImage").style.display="none";$("galleryFallback").style.display="grid";$("galleryCaption").textContent="Foto indisponível.";
+}
+if(product.toutiImage && product.referenceImage){
+ const comparison=$("comparisonGallery");
+ comparison.hidden=false;
+ const referencePhoto=$("referenceComparisonImage");
+ referencePhoto.alt=product.referenceName+" — referência olfativa, não incluída na venda";
+ referencePhoto.src=product.referenceImage;
+ $("referenceComparisonCaption").innerHTML=escapeHTML(product.referenceName)+'<small>Imagem de referência · não incluída na venda</small>';
+ referencePhoto.addEventListener("error",()=>{referencePhoto.hidden=true;});
 }
 $("mainImage").addEventListener("click",()=>{if($("mainImage").src)window.open($("mainImage").src,"_blank","noopener,noreferrer")});
 if(info){
