@@ -749,7 +749,7 @@ function renderProducts(){
  if(sort==="price-desc")filteredProducts.sort((a,b)=>priceForSort(b)-priceForSort(a)||a.name.localeCompare(b.name,"pt-BR"));
  if(!filteredProducts.length){$("products").innerHTML='<p class="catalog-empty-state">Nenhuma fragrância corresponde aos filtros selecionados.</p>';return;}
  $("products").innerHTML=filteredProducts.map(p=>`<article class="product decant-product-card" id="card-${p.id}" data-decant-id="${escapeHTML(p.id)}" data-volume-index="0" data-quantity="1">
-   <a class="product-detail-link" href="produto.html?v=20261127-14&id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
+   <a class="product-detail-link" href="produto.html?v=20261127-15&id=${encodeURIComponent(p.id)}" aria-label="Ver detalhes de ${escapeHTML(p.name)}">
      <div class="product-art decant-product-art">${p.image?`<img class="product-photo" data-product-id="${escapeHTML(p.id)}" src="${escapeHTML(p.image)}" alt="Perfume ${escapeHTML(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:""}<div class="photo-fallback" style="${p.image?"display:none;":""}"><span class="photo-fallback-label">SANTINO</span></div></div>
      <div class="decant-card-info">
       <h3>${escapeHTML(p.name)}</h3>
@@ -775,7 +775,7 @@ function renderFullSizeProducts(){
  const items = FULL_SIZE_PRODUCTS.slice();
  $("fullSizeProducts").innerHTML = items.map(p =>
    '<article class="product full-size-product">' +
-   '<a class="product-detail-link" href="produto.html?v=20261127-14&id=' + encodeURIComponent(p.id) + '" aria-label="Ver detalhes de ' + escapeHTML(p.name) + '">' +
+   '<a class="product-detail-link" href="produto.html?v=20261127-15&id=' + encodeURIComponent(p.id) + '" aria-label="Ver detalhes de ' + escapeHTML(p.name) + '">' +
      '<div class="product-art">' +
        (p.image ? '<img class="product-photo" data-product-id="' + escapeHTML(p.id) + '" src="' + escapeHTML(p.image) + '" alt="Frasco de ' + escapeHTML(p.name) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer">' : '') +
        '<div class="photo-fallback" style="' + (p.image ? 'display:none;' : '') + '"><div class="vial"></div></div>' +
